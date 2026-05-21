@@ -68,16 +68,23 @@ Think:
   available (placeholders are fine), design as if real local SoCal photography
   will go there. Hint at where editorial photography belongs.
 
-Canonical anchors for the mood:
+Anchor references — the redesign should feel close to these:
+
+- **danmartell.com** — confident personal-brand presence, generous typography,
+  premium-but-warm. Note how copy carries the design, not the other way
+  around. The signature element is consistent and identifiable.
+- **apple.com** — generous whitespace, oversized typography moments,
+  product-first storytelling. Editorial restraint — every word and every
+  pixel earns its place.
+- **shopify.com** — confident headline hierarchy, mature use of color, a
+  brand that doesn't feel like a startup template. Strong sense of voice.
+
+Canonical mood references (use as additional anchors):
 
 - **aesop.com** — premium serif typography, generous space, restrained palette
 - **archdigest.com** / **nytimes.com** — editorial hierarchy, drop caps,
   asymmetric compositions
 - **apartamentomagazine.com** — warm intimacy, magazine-like sections
-
-[USER ADDS] — additional inspiration URLs the user has sent me:
-
-- _Paste 2–4 URLs here once Russ sends them_
 
 ---
 
@@ -92,9 +99,13 @@ Canonical anchors for the mood:
 - Brutalist / experimental layouts that sacrifice readability for novelty —
   this is a trust-driven local-business site, not a portfolio
 
-[USER ADDS] — additional URLs the user explicitly wants to avoid:
+Sites we want to **stay away from** in look and feel:
 
-- _Paste 1–2 URLs here if applicable_
+- **attio.com** — too SaaS, too cold, too gradient-driven
+- **linear.app** — too dark-mode-first, too tech-product, too sharp-edged.
+  We are a warm South OC consulting firm, not a developer tool.
+- **coinbase.com** — too corporate-fintech, too sans-serif-heavy, too
+  conservative-default. Lacks the warmth and editorial voice we need.
 
 ---
 
