@@ -1912,13 +1912,15 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 
 /* ========================================================================
    Section dividers — dashed off-white rules at major section boundaries.
-   1px dashed in --paper, full viewport width. Sits at the top edge of
-   every <section> that's preceded by another <section>, and at the top
-   edge of the footer.
+   3px thick, custom dash/gap (10px dash + 12px gap) via linear-gradient
+   so the gap can be tuned independently of stroke thickness — the CSS
+   `dashed` border style locks the ratio at ~2:1, which is too tight at
+   3px width. Full viewport width.
    ======================================================================== */
 main > section + section,
 main + .site-footer {
   position: relative;
+  --divider-color: var(--paper);
 }
 main > section + section::before,
 main + .site-footer::before {
@@ -1927,24 +1929,32 @@ main + .site-footer::before {
   top: 0;
   left: 0;
   right: 0;
-  border-top: 1px dashed var(--paper);
+  height: 3px;
+  background-image: linear-gradient(
+    to right,
+    var(--divider-color) 0 10px,
+    transparent 10px 22px
+  );
+  background-size: 22px 3px;
+  background-repeat: repeat-x;
+  background-position: top left;
   pointer-events: none;
   z-index: 1;
 }
 /* When a section uses --paper as its own background, the dashes would
    blend in. Bump to --line-soft so they still register. */
-main > section + section.section-paper::before,
-main > section + section.bridge::before {
-  border-top-color: var(--line-soft);
+main > section + section.section-paper,
+main > section + section.bridge {
+  --divider-color: var(--line-soft);
 }
 /* Dark mode: --paper flips to deep forest and would be invisible on
    most backgrounds. --line-hair stays readable against forest sections. */
 @media (prefers-color-scheme: dark) {
-  main > section + section::before,
-  main + .site-footer::before,
-  main > section + section.section-paper::before,
-  main > section + section.bridge::before {
-    border-top-color: var(--line-hair);
+  main > section + section,
+  main + .site-footer,
+  main > section + section.section-paper,
+  main > section + section.bridge {
+    --divider-color: var(--line-hair);
   }
 }
 
