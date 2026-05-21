@@ -1911,6 +1911,44 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 .text-italic { font-style: italic; }
 
 /* ========================================================================
+   Section dividers — dashed off-white rules at major section boundaries.
+   1px dashed in --paper, full viewport width. Sits at the top edge of
+   every <section> that's preceded by another <section>, and at the top
+   edge of the footer.
+   ======================================================================== */
+main > section + section,
+main + .site-footer {
+  position: relative;
+}
+main > section + section::before,
+main + .site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--paper);
+  pointer-events: none;
+  z-index: 1;
+}
+/* When a section uses --paper as its own background, the dashes would
+   blend in. Bump to --line-soft so they still register. */
+main > section + section.section-paper::before,
+main > section + section.bridge::before {
+  border-top-color: var(--line-soft);
+}
+/* Dark mode: --paper flips to deep forest and would be invisible on
+   most backgrounds. --line-hair stays readable against forest sections. */
+@media (prefers-color-scheme: dark) {
+  main > section + section::before,
+  main + .site-footer::before,
+  main > section + section.section-paper::before,
+  main > section + section.bridge::before {
+    border-top-color: var(--line-hair);
+  }
+}
+
+/* ========================================================================
    Reveal-on-scroll — fades down-scrolled elements in once.
    JS adds .reveal; IntersectionObserver flips to .is-visible.
    ======================================================================== */
