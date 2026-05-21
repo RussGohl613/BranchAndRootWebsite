@@ -85,6 +85,12 @@
   --surface:  var(--bone);
   --surface-2: var(--cream-soft);
   --header-bg: rgba(247, 245, 240, 0.92);
+
+  /* Fixed brand colors — do NOT flip in dark mode.
+     Use these on elements that live on an always-forest section
+     (hero, page-hero, cta-banner, footer, btn-cream). */
+  --cream-fixed:  #F7F5F0;
+  --forest-fixed: #1B4332;
 }
 
 /* ===========================================================================

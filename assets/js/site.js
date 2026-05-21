@@ -1,6 +1,7 @@
 /* =========================================================================
    Branch and Root Consulting — Site JS
-   Vanilla, no dependencies. Loaded as type="module".
+   Vanilla, no dependencies. Loaded with `defer` (no imports/exports here,
+   so module semantics aren't needed — and `defer` also works under file://).
    ========================================================================= */
 
 // --- Sticky header shadow on scroll ----------------------------------------

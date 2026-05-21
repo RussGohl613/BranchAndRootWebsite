@@ -59,7 +59,7 @@ a {
 }
 a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 
-::selection { background: var(--moss); color: var(--cream); }
+::selection { background: var(--moss); color: var(--cream-fixed); }
 
 /* ----- Layout primitives -------------------------------------------- */
 .container {
@@ -81,10 +81,10 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 
 .section-cream  { background: var(--cream); }
 .section-bone   { background: var(--bone); }
-.section-forest { background: var(--forest); color: var(--cream); }
-.section-forest h1, .section-forest h2, .section-forest h3 { color: var(--cream); }
+.section-forest { background: var(--forest); color: var(--cream-fixed); }
+.section-forest h1, .section-forest h2, .section-forest h3 { color: var(--cream-fixed); }
 .section-forest p { color: rgba(247, 245, 240, 0.85); }
-.section-forest a { color: var(--cream); text-decoration-color: rgba(247, 245, 240, 0.5); }
+.section-forest a { color: var(--cream-fixed); text-decoration-color: rgba(247, 245, 240, 0.5); }
 .section-forest a:hover { color: var(--bone); }
 
 .eyebrow {
@@ -148,14 +148,14 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 }
 
 .btn-cream {
-  background: var(--cream);
-  color: var(--forest);
-  border-color: var(--cream);
+  background: var(--cream-fixed);
+  color: var(--forest-fixed);
+  border-color: var(--cream-fixed);
 }
 .btn-cream:hover {
-  background: var(--bone);
-  border-color: var(--bone);
-  color: var(--forest);
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: var(--forest-fixed);
   text-decoration: none;
   transform: translateY(-1px);
 }
@@ -171,12 +171,12 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   text-decoration: none;
 }
 .section-forest .btn-ghost {
-  color: var(--cream);
-  border-color: var(--cream);
+  color: var(--cream-fixed);
+  border-color: var(--cream-fixed);
 }
 .section-forest .btn-ghost:hover {
-  background: var(--cream);
-  color: var(--forest);
+  background: var(--cream-fixed);
+  color: var(--forest-fixed);
 }
 
 .btn-arrow::after {
@@ -324,13 +324,13 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
     radial-gradient(1100px 600px at 80% -10%, rgba(45, 106, 79, 0.35), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, rgba(45, 106, 79, 0.25), transparent 60%),
     var(--forest);
-  color: var(--cream);
+  color: var(--cream-fixed);
   padding-block: clamp(5rem, 10vw, 9rem);
   position: relative;
   overflow: hidden;
 }
 .hero h1 {
-  color: var(--cream);
+  color: var(--cream-fixed);
   font-size: var(--fs-hero);
   max-width: 22ch;
   font-weight: 600;
@@ -356,16 +356,16 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   gap: 0.4rem;
   padding: 0.5rem 0.25rem;
 }
-.hero-secondary:hover { color: var(--cream); text-decoration: none; }
+.hero-secondary:hover { color: var(--cream-fixed); text-decoration: none; }
 .hero-secondary .arrow { transition: transform var(--dur) var(--ease); }
 .hero-secondary:hover .arrow { transform: translateY(3px); }
 
 .page-hero {
   background: var(--forest);
-  color: var(--cream);
+  color: var(--cream-fixed);
   padding-block: clamp(4rem, 8vw, 6.5rem);
 }
-.page-hero h1 { color: var(--cream); max-width: 22ch; }
+.page-hero h1 { color: var(--cream-fixed); max-width: 22ch; }
 .page-hero .lead { color: rgba(247, 245, 240, 0.9); margin-top: var(--s-3); max-width: 60ch; }
 .page-hero .eyebrow { color: var(--moss-light); }
 
@@ -521,11 +521,11 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 /* ----- Final CTA banner --------------------------------------------- */
 .cta-banner {
   background: var(--forest);
-  color: var(--cream);
+  color: var(--cream-fixed);
   padding-block: clamp(4rem, 8vw, 6.5rem);
   text-align: center;
 }
-.cta-banner h2 { color: var(--cream); max-width: 24ch; margin-inline: auto; }
+.cta-banner h2 { color: var(--cream-fixed); max-width: 24ch; margin-inline: auto; }
 .cta-banner p { color: rgba(247, 245, 240, 0.9); margin: var(--s-3) auto 0; }
 .cta-banner .btn { margin-top: var(--s-5); }
 .cta-banner .footnote {
@@ -924,7 +924,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   margin: 0 auto var(--s-4);
   border-radius: 50%;
   background: var(--moss);
-  color: var(--cream);
+  color: var(--cream-fixed);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -957,7 +957,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   padding-block: var(--s-6) var(--s-3);
   margin-top: auto;
 }
-.site-footer a { color: var(--cream); text-decoration: none; }
+.site-footer a { color: var(--cream-fixed); text-decoration: none; }
 .site-footer a:hover { color: var(--moss-light); }
 .footer-grid {
   display: grid;
@@ -967,8 +967,8 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 @media (min-width: 720px) {
   .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: var(--s-5); }
 }
-.footer-brand .brand { color: var(--cream); }
-.footer-brand .brand-text .brand-name { color: var(--cream); }
+.footer-brand .brand { color: var(--cream-fixed); }
+.footer-brand .brand-text .brand-name { color: var(--cream-fixed); }
 .footer-brand .tagline {
   margin-top: var(--s-3);
   font-style: italic;
@@ -1015,7 +1015,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   top: -100px;
   left: var(--s-3);
   background: var(--forest);
-  color: var(--cream);
+  color: var(--cream-fixed);
   padding: 0.6rem 1rem;
   border-radius: var(--radius);
   text-decoration: none;
@@ -1074,16 +1074,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
     border-color: var(--moss-light);
     color: #0F1B14;
   }
-  .btn-cream {
-    background: var(--cream);
-    color: var(--heading);
-    border-color: var(--cream);
-  }
-  .btn-cream:hover {
-    background: #F1ECDB;
-    border-color: #F1ECDB;
-    color: var(--forest);
-  }
+  /* .btn-cream uses --cream-fixed in the base rule, no dark override needed */
   .btn-ghost {
     color: var(--heading);
     border-color: var(--ink-soft);
