@@ -24,8 +24,8 @@
   <header class="site-header">
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="assets/img/logo-badge.png" alt="" width="44" height="44" />
-        <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting</span></span>
+        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+        <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
@@ -56,11 +56,19 @@
 
   <main id="main">
 
+    <!-- ===== PAGE HERO ===== -->
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">Book a Consultation</span>
-        <h1>Let&rsquo;s take 30 minutes and look at your business honestly.</h1>
-        <p class="lead">No pitch decks. No pressure. Matthew will walk through your current situation, show you where the gaps are, and tell you straight whether Branch &amp; Root is the right fit &mdash; and if so, exactly what we&rsquo;d do about it.</p>
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow">Book a Consultation</span>
+            <h1>Let&rsquo;s take 30 minutes and look at your business <em>honestly</em>.</h1>
+          </div>
+          <div class="page-hero-aside">
+            <span class="annotation">— A note on how this goes</span>
+            <p>No pitch decks. No pressure. Matthew will walk through your current situation, show you where the gaps are, and tell you straight whether Branch &amp; Root is the right fit &mdash; and if so, exactly what we&rsquo;d do about it.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -71,45 +79,48 @@
           <!-- ===== FORM =====
                action="#" routes to thank-you.html via JS for demo purposes.
                To wire to GHL: change action to your GHL form/webhook endpoint and set method="POST".
-               README documents this exact line.
           -->
           <form class="contact-form" id="lead-form" action="#" method="POST" novalidate>
             <h2>Book your free consultation.</h2>
+            <p class="form-intro">We typically respond within one business day. No spam. No sales sequences. Just a real conversation.</p>
 
-            <div class="field">
-              <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="name" name="name" autocomplete="name" data-required required />
-              <span class="error-msg">Please enter your name.</span>
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" data-required required />
+                <span class="error-msg">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="business">Business Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company name" data-required required />
+                <span class="error-msg">Please enter your business name.</span>
+              </div>
             </div>
 
-            <div class="field">
-              <label for="business">Business Name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="business" name="business" autocomplete="organization" data-required required />
-              <span class="error-msg">Please enter your business name.</span>
+            <div class="field-row">
+              <div class="field">
+                <label for="industry">Industry <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="industry" name="industry" placeholder="HVAC, plumbing, dental, salon…" data-required required />
+                <span class="error-msg">Please tell us what industry you&rsquo;re in.</span>
+              </div>
+              <div class="field">
+                <label for="city">City (South OC) <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="city" name="city" placeholder="Mission Viejo, RSM, Ladera Ranch…" data-required required />
+                <span class="error-msg">Please enter your city.</span>
+              </div>
             </div>
 
-            <div class="field">
-              <label for="industry">Business Type / Industry <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="industry" name="industry" placeholder="e.g. HVAC, plumbing, dental, salon" data-required required />
-              <span class="error-msg">Please tell us what industry you&rsquo;re in.</span>
-            </div>
-
-            <div class="field">
-              <label for="city">City (South OC area) <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="city" name="city" placeholder="e.g. Mission Viejo, RSM, Ladera Ranch" data-required required />
-              <span class="error-msg">Please enter your city.</span>
-            </div>
-
-            <div class="field">
-              <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel" data-required required />
-              <span class="error-msg">Please enter a valid phone number.</span>
-            </div>
-
-            <div class="field">
-              <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
-              <input type="email" id="email" name="email" autocomplete="email" data-required required />
-              <span class="error-msg">Please enter a valid email address.</span>
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(949) 555-0100" data-required required />
+                <span class="error-msg">Please enter a valid phone number.</span>
+              </div>
+              <div class="field">
+                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@business.com" data-required required />
+                <span class="error-msg">Please enter a valid email address.</span>
+              </div>
             </div>
 
             <div class="field">
@@ -129,8 +140,8 @@
               <textarea id="challenge" name="challenge" rows="4" placeholder="Missed leads? Dormant customer list? Slow follow-up? Tell us what&rsquo;s costing you the most right now."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Request My Free Consultation</button>
-            <p class="form-footnote">We typically respond within one business day to schedule your call. No spam. No sales sequences. Just a real conversation.</p>
+            <button type="submit" class="btn btn-primary btn-arrow">Request My Free Consultation</button>
+            <p class="form-footnote">We typically respond within one business day to schedule your call.</p>
           </form>
 
           <!-- ===== CONTACT DETAILS ===== -->
@@ -139,32 +150,35 @@
             <ul>
               <li>
                 <div>
-                  <span class="label">Service Area</span><br/>
+                  <span class="label">Service Area</span>
                   South Orange County, California
                 </div>
               </li>
               <li>
                 <div>
-                  <span class="label">Email</span><br/>
+                  <span class="label">Email</span>
                   <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a>
                 </div>
               </li>
               <li>
                 <div>
-                  <span class="label">Hours</span><br/>
+                  <span class="label">Hours</span>
                   Monday&ndash;Friday, 9am&ndash;6pm PST
                 </div>
               </li>
               <li>
                 <div>
-                  <span class="label">Primary Contact</span><br/>
+                  <span class="label">Primary Contact</span>
                   Matthew Sr., Client Relations &amp; Sales Director
                 </div>
               </li>
             </ul>
-            <p class="mt-4" style="font-size: 0.95rem;">Serving Mission Viejo, Rancho Santa Margarita, Ladera Ranch, Aliso Viejo, San Clemente, and all of South OC.</p>
           </aside>
 
+        </div>
+
+        <div class="location-stamp">
+          <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
         </div>
       </div>
     </section>
@@ -173,13 +187,13 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-tag">Branching your business out from a <em>rooted</em> foundation.</p>
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="assets/img/logo-badge.png" alt="" width="44" height="44" />
-            <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting</span></span>
+            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+            <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
           </a>
-          <p class="tagline">&ldquo;Branching your business out from a rooted foundation.&rdquo;</p>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
@@ -193,9 +207,9 @@
         </div>
         <div class="footer-col">
           <h4>Service Area</h4>
-          <p>South Orange County, CA</p>
+          <p>South Orange County, California</p>
           <p>Mission Viejo · RSM · Ladera Ranch · Aliso Viejo · San Clemente</p>
-          <p class="mt-3"><a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a></p>
+          <p><a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a></p>
         </div>
       </div>
       <div class="footer-bottom">

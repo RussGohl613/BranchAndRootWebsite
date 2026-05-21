@@ -1,14 +1,13 @@
 /* =========================================================================
    Branch and Root Consulting — Site JS
-   Vanilla, no dependencies. Loaded with `defer` (no imports/exports here,
-   so module semantics aren't needed — and `defer` also works under file://).
+   Vanilla, no dependencies. Loaded with `defer`.
    ========================================================================= */
 
 // --- Sticky header shadow on scroll ----------------------------------------
 const header = document.querySelector('.site-header');
 if (header) {
   const onScroll = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    header.classList.toggle('is-scrolled', window.scrollY > 16);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -109,7 +108,6 @@ if (form) {
       e.preventDefault();
       const firstInvalid = form.querySelector('.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea');
       firstInvalid?.focus();
-      firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     // If form action is "#" (placeholder), prevent reload and route to thank-you for demo.
     if (allValid && form.getAttribute('action') === '#') {

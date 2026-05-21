@@ -1,12 +1,20 @@
 /* =========================================================================
-   Branch and Root Consulting — Design Tokens
+   Branch and Root Consulting — Design Tokens (Editorial Redesign)
    Single source of truth for color, type, spacing, motion.
    ========================================================================= */
 
 @font-face {
   font-family: 'Fraunces';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-variable.woff2') format('woff2-variations'),
+       url('../fonts/fraunces-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300 900;
   font-display: swap;
   src: url('../fonts/fraunces-variable.woff2') format('woff2-variations'),
        url('../fonts/fraunces-variable.woff2') format('woff2');
@@ -15,7 +23,7 @@
 @font-face {
   font-family: 'Source Sans 3';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 300 800;
   font-display: swap;
   src: url('../fonts/source-sans-3-variable.woff2') format('woff2-variations'),
        url('../fonts/source-sans-3-variable.woff2') format('woff2');
@@ -24,97 +32,118 @@
 :root {
   color-scheme: light dark;
 
-  /* Brand palette (from BRANCH.md §1) */
+  /* ---- Brand palette (locked) ---------------------------------------- */
   --forest:       #1B4332;
-  --forest-deep:  #122E22;
+  --forest-deep:  #0F2A1E;
   --slate:        #4A5568;
   --slate-soft:   #6B7280;
   --cream:        #F7F5F0;
   --cream-soft:   #FBFAF5;
   --moss:         #2D6A4F;
-  --moss-light:   #40916C;
+  --moss-light:   #52946F;
   --bone:         #FFFFFF;
-  --ink:          #1A1A1A;
-  --ink-soft:     #2A2A2A;
-  --line:         #D9D2C2;
-  --line-soft:    #E9E3D3;
   --warm:         #B8704A;
 
-  /* Type */
+  /* ---- Editorial extensions (additions only) ------------------------- */
+  --paper:        #EFEADB;   /* duskier cream for card surfaces on cream page */
+  --paper-soft:   #F2EEE3;   /* even softer for nested surfaces */
+  --ink-warm:     #1F1B16;   /* warm near-black for editorial body */
+  --ink-soft:     #2F2A22;
+  --line:         #D9D2C2;
+  --line-soft:    #E5DFCE;
+  --line-hair:    #C9C0AA;   /* hairline divider color */
+  --rule:         #1B4332;   /* horizon mark dot color (light mode) */
+
+  /* ---- Type families -------------------------------------------------- */
   --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
   --font-body:    'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  --fs-eyebrow: 0.78rem;
-  --fs-body:    1.0625rem;
-  --fs-lead:    1.25rem;
-  --fs-h3:      clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
-  --fs-h2:      clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
-  --fs-h1:      clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
-  --fs-hero:    clamp(2.5rem, 1.8rem + 4vw, 4.5rem);
+  /* ---- Type scale (editorial, generous) ------------------------------ */
+  --fs-anno:    0.68rem;       /* marginal annotations / location stamps */
+  --fs-eyebrow: 0.74rem;
+  --fs-body:    1.0625rem;     /* 17px */
+  --fs-lead:    1.32rem;
+  --fs-large:   1.5rem;
+  --fs-h4:      1.05rem;
+  --fs-h3:      clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
+  --fs-h2:      clamp(1.6rem, 1.3rem + 1.2vw, 2.25rem);
+  --fs-h1:      clamp(2rem, 1.5rem + 1.8vw, 3.75rem);
+  --fs-hero:    clamp(2.25rem, 1.6rem + 2.2vw, 3.75rem);
+  --fs-display: clamp(3rem, 1.5rem + 5vw, 6rem);  /* oversized numerals — decorative, ghosted */
 
-  /* Spacing (8pt scale) */
-  --s-1: 0.5rem;   /* 8 */
-  --s-2: 1rem;     /* 16 */
-  --s-3: 1.5rem;   /* 24 */
-  --s-4: 2rem;     /* 32 */
-  --s-5: 3rem;     /* 48 */
-  --s-6: 4rem;     /* 64 */
-  --s-7: 6rem;     /* 96 */
-  --s-8: 8rem;     /* 128 */
+  /* ---- Tracking ------------------------------------------------------- */
+  --track-eyebrow: 0.22em;
+  --track-tight:  -0.025em;
+  --track-tighter: -0.035em;
 
-  /* Layout */
-  --max-w:        1140px;
-  --max-w-narrow: 760px;
-  --radius:       6px;
-  --radius-lg:    12px;
+  /* ---- Spacing (8pt scale) ------------------------------------------- */
+  --s-1: 0.5rem;
+  --s-2: 1rem;
+  --s-3: 1.5rem;
+  --s-4: 2rem;
+  --s-5: 3rem;
+  --s-6: 4rem;
+  --s-7: 6rem;
+  --s-8: 8rem;
+  --s-9: 12rem;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(27, 67, 50, 0.06), 0 1px 3px rgba(27, 67, 50, 0.05);
-  --shadow:    0 4px 12px rgba(27, 67, 50, 0.08), 0 2px 4px rgba(27, 67, 50, 0.04);
-  --shadow-lg: 0 20px 40px rgba(27, 67, 50, 0.12), 0 8px 16px rgba(27, 67, 50, 0.06);
+  /* ---- Layout -------------------------------------------------------- */
+  --max-w:        1240px;
+  --max-w-wide:   1360px;
+  --max-w-narrow: 720px;
+  --max-w-reading: 62ch;
+  --radius:       4px;
+  --radius-lg:    10px;
 
-  /* Motion */
+  /* ---- Shadows (light, editorial — minimal) -------------------------- */
+  --shadow-sm: 0 1px 2px rgba(15, 42, 30, 0.05);
+  --shadow:    0 6px 24px rgba(15, 42, 30, 0.08), 0 2px 4px rgba(15, 42, 30, 0.04);
+  --shadow-lg: 0 24px 60px rgba(15, 42, 30, 0.14), 0 8px 16px rgba(15, 42, 30, 0.06);
+
+  /* ---- Motion -------------------------------------------------------- */
   --ease: cubic-bezier(.2, .7, .2, 1);
-  --dur:  240ms;
-  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:  260ms;
+  --dur-slow: 520ms;
 
-  /* Semantic aliases — light mode defaults */
-  --heading:  var(--forest);
-  --body-fg:  var(--ink);
-  --page-bg:  var(--cream);
-  --surface:  var(--bone);
-  --surface-2: var(--cream-soft);
-  --header-bg: rgba(247, 245, 240, 0.92);
+  /* ---- Semantic aliases (light mode defaults) ------------------------ */
+  --heading:   var(--forest);
+  --body-fg:   var(--ink-warm);
+  --page-bg:   var(--cream);
+  --surface:   var(--bone);
+  --surface-2: var(--paper);
+  --header-bg: rgba(247, 245, 240, 0.88);
 
   /* Fixed brand colors — do NOT flip in dark mode.
-     Use these on elements that live on an always-forest section
-     (hero, page-hero, cta-banner, footer, btn-cream). */
+     Use these on elements that live on an always-forest section. */
   --cream-fixed:  #F7F5F0;
   --forest-fixed: #1B4332;
 }
 
 /* ===========================================================================
-   Dark mode — auto-switch on prefers-color-scheme: dark
-   Brand-coherent: deep-forest page background, cream type, moss accents.
-   The forest hero/CTA/footer stay forest in both modes (already dark).
+   Dark mode
    =========================================================================== */
 @media (prefers-color-scheme: dark) {
   :root {
     --cream:      #0F1B14;
-    --cream-soft: #152419;
-    --bone:       #1A2C22;
-    --ink:        #E8E1CC;
-    --ink-soft:   #C9C2A8;
+    --cream-soft: #142319;
+    --paper:      #182A20;
+    --paper-soft: #142319;
+    --bone:       #1A2D22;
+    --ink-warm:   #ECE5D0;
+    --ink-soft:   #CFC7AE;
     --line:       #2A4032;
-    --line-soft:  #22372B;
+    --line-soft:  #213429;
+    --line-hair:  #355043;
     --slate:      #9BAEAA;
     --slate-soft: #7A8C84;
+    --rule:       #52946F;
 
     --heading:    #F1ECDB;
-    --body-fg:    #E8E1CC;
+    --body-fg:    #ECE5D0;
     --page-bg:    #0F1B14;
-    --surface:    #1A2C22;
-    --surface-2:  #152419;
-    --header-bg:  rgba(15, 27, 20, 0.88);
+    --surface:    #1A2D22;
+    --surface-2:  #142319;
+    --header-bg:  rgba(15, 27, 20, 0.82);
   }
 }

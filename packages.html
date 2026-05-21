@@ -24,8 +24,8 @@
   <header class="site-header">
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="assets/img/logo-badge.png" alt="" width="44" height="44" />
-        <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting</span></span>
+        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+        <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
@@ -56,63 +56,83 @@
 
   <main id="main">
 
+    <!-- ===== PAGE HERO ===== -->
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">Packages</span>
-        <h1>Two ways in. One goal: a self-sustaining local pipeline.</h1>
-        <p class="lead">Both packages are built as integrated systems &mdash; not a menu of disconnected services. Each tier is designed to do a specific job based on where your business is right now.</p>
+        <div class="page-hero-grid">
+          <div>
+            <span class="eyebrow">Packages</span>
+            <h1 style="font-size: 60px">Two ways in. <em>One goal</em>: a self-sustaining local pipeline.</h1>
+          </div>
+          <div class="page-hero-aside">
+            <span class="annotation">— A note on structure</span>
+            <p>Both packages are built as integrated systems &mdash; not a menu of disconnected services. Each tier is designed to do a specific job based on where your business is right now.</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- ===== EDITORIAL SPREAD ===== -->
     <section class="section section-cream">
-      <div class="container">
-        <div class="packages-grid">
+      <div class="container container-wide">
+        <div class="packages-spread">
 
           <!-- Foundation -->
-          <article class="package-card is-featured">
-            <span class="package-badge">Most Popular Starting Point</span>
-            <h3>The Foundation</h3>
+          <article class="package" aria-labelledby="foundation-title">
+            <span class="package-marker">Most popular starting point</span>
+            <h3 id="foundation-title" style="font-size: 58px">The <span class="accent">Foundation</span></h3>
             <p class="package-tagline">Stop the bleeding. Recover the revenue you&rsquo;ve already earned.</p>
 
-            <div class="package-includes">
-              <h4>Includes</h4>
+            <div class="package-section">
+              <h4>What&rsquo;s included</h4>
               <ul>
                 <li>Service 1 &mdash; Customer Reactivation Engine</li>
                 <li>Service 2 &mdash; Instant Responder System + Custom Web Property</li>
               </ul>
             </div>
 
-            <h4 class="eyebrow" style="margin-bottom: 0.4rem;">Who this is built for</h4>
-            <p>Established South OC service businesses with 2+ years of history, a database of past customers that hasn&rsquo;t been touched, and new leads slipping through the cracks after hours. If you know revenue is leaking but you haven&rsquo;t had a systematic fix &mdash; this is your starting point.</p>
+            <div class="package-section">
+              <h4>Who this is built for</h4>
+              <p>Established South OC service businesses with 2+ years of history, a database of past customers that hasn&rsquo;t been touched, and new leads slipping through the cracks after hours. If you know revenue is leaking but you haven&rsquo;t had a systematic fix &mdash; this is your starting point.</p>
+            </div>
 
-            <h4 class="eyebrow" style="margin-top: 1.25rem; margin-bottom: 0.4rem;">The three-part closed loop</h4>
-            <ol class="steps">
-              <li><strong>Recover</strong> &mdash; Reactivation campaign re-engages past customers who already trust you. No ad spend. No cold outreach.</li>
-              <li><strong>Capture</strong> &mdash; Instant Responder ensures every new inquiry gets a real response before your competitor does.</li>
-              <li><strong>Convert</strong> &mdash; Your custom web property gives reactivated customers and new leads a credible, conversion-optimized destination.</li>
-            </ol>
+            <div class="package-section">
+              <h4>The three-part closed loop</h4>
+              <ol class="steps">
+                <li><strong>Recover</strong>Reactivation campaign re-engages past customers who already trust you. No ad spend. No cold outreach.</li>
+                <li><strong>Capture</strong>Instant Responder ensures every new inquiry gets a real response before your competitor does.</li>
+                <li><strong>Convert</strong>Your custom web property gives reactivated customers and new leads a credible, conversion-optimized destination.</li>
+              </ol>
+            </div>
 
             <div class="roi-note">
-              <strong>ROI note:</strong> Most Foundation clients recover their full setup investment within the first reactivation campaign &mdash; often within 30 to 45 days. The ongoing management fee keeps the inbound engine running without requiring any time from you.
+              <strong>ROI note</strong>
+              Most Foundation clients recover their full setup investment within the first reactivation campaign &mdash; often within 30 to 45 days. The ongoing management fee keeps the inbound engine running without requiring any time from you.
             </div>
 
             <div class="package-pricing">
-              <div class="price-setup">$2,500<span style="font-size: 1rem; color: var(--slate); font-weight: 500;"> one-time setup</span></div>
-              <div class="price-mo">$697/month flat management</div>
-              <span class="price-note">No contracts. No hidden fees. No ad spend required.</span>
+              <div class="price-display">
+                <span class="price-figure"><sup>$</sup>2,500</span>
+                <span class="price-label">One-time setup</span>
+              </div>
+              <div class="price-row">
+                <span class="label">Then</span>
+                <span class="value">$697 / month</span>
+              </div>
+              <p class="price-note">No contracts. No hidden fees. No ad spend required.</p>
             </div>
 
             <a href="contact.html" class="btn btn-primary btn-arrow">Get Started with The Foundation</a>
           </article>
 
           <!-- Full Engine -->
-          <article class="package-card">
-            <span class="package-badge" style="background: var(--forest);">Complete Market Domination Stack</span>
-            <h3>The Full Engine</h3>
+          <article class="package" aria-labelledby="engine-title">
+            <span class="package-marker">Complete market domination stack</span>
+            <h3 id="engine-title" style="font-size: 58px">The <span class="accent">Full Engine</span></h3>
             <p class="package-tagline">Take over the local market. Build a pipeline that runs itself.</p>
 
-            <div class="package-includes">
-              <h4>Includes</h4>
+            <div class="package-section">
+              <h4>What&rsquo;s included</h4>
               <ul>
                 <li>Service 1 &mdash; Customer Reactivation Engine</li>
                 <li>Service 2 &mdash; Instant Responder + Custom Web Property</li>
@@ -120,17 +140,27 @@
               </ul>
             </div>
 
-            <h4 class="eyebrow" style="margin-bottom: 0.4rem;">Who this is built for</h4>
-            <p>South OC service businesses ready to move aggressively &mdash; not just plugging leaks, but actively expanding local market share. You want new customers every week, priority search visibility across every platform, and a growth infrastructure that compounds over time.</p>
+            <div class="package-section">
+              <h4>Who this is built for</h4>
+              <p>South OC service businesses ready to move aggressively &mdash; not just plugging leaks, but actively expanding local market share. You want new customers every week, priority search visibility across every platform, and a growth infrastructure that compounds over time.</p>
+            </div>
 
-            <h4 class="eyebrow" style="margin-top: 1.25rem; margin-bottom: 0.4rem;">What the Full Engine adds</h4>
-            <p>Once The Foundation is running &mdash; recovering past revenue and capturing every new inbound lead &mdash; The Full Engine turns the volume up. Targeted local ads bring in fresh traffic. Automated content keeps your brand visible. SEO and AEO put your name first when South OC consumers search for your category. The system doesn&rsquo;t just maintain. It grows.</p>
+            <div class="package-section">
+              <h4>What the Full Engine adds</h4>
+              <p>Once The Foundation is running &mdash; recovering past revenue and capturing every new inbound lead &mdash; The Full Engine turns the volume up. Targeted local ads bring in fresh traffic. Automated content keeps your brand visible. SEO and AEO put your name first when South OC consumers search for your category. The system doesn&rsquo;t just maintain. It grows.</p>
+            </div>
 
             <div class="package-pricing">
-              <div class="price-setup">$3,500<span style="font-size: 1rem; color: var(--slate); font-weight: 500;"> one-time setup</span></div>
-              <div class="price-mo">$1,697/month management</div>
-              <span class="price-note">Ad spend paid directly by you (full control, full transparency).</span>
-              <span class="price-note">Optional: $500&ndash;$800 standalone SEO/AEO historical optimization.</span>
+              <div class="price-display">
+                <span class="price-figure"><sup>$</sup>3,500</span>
+                <span class="price-label">One-time setup</span>
+              </div>
+              <div class="price-row">
+                <span class="label">Then</span>
+                <span class="value">$1,697 / month</span>
+              </div>
+              <p class="price-note">Ad spend paid directly by you (full control, full transparency).</p>
+              <p class="price-note">Optional: $500&ndash;$800 standalone SEO/AEO historical optimization.</p>
             </div>
 
             <a href="contact.html" class="btn btn-primary btn-arrow">Get Started with The Full Engine</a>
@@ -139,12 +169,12 @@
       </div>
     </section>
 
-    <!-- ===== Comparison ===== -->
-    <section class="section section-bone">
+    <!-- ===== COMPARISON ===== -->
+    <section class="section section-paper">
       <div class="container">
         <div class="section-header center">
           <span class="eyebrow">Side By Side</span>
-          <h2>What&rsquo;s in each package.</h2>
+          <h2>What&rsquo;s in <em class="accent-italic">each</em> package.</h2>
         </div>
         <div class="compare-wrap">
           <table class="compare-table" aria-label="Package comparison">
@@ -168,16 +198,21 @@
             </tbody>
           </table>
         </div>
+
+        <div class="location-stamp">
+          <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
+        </div>
       </div>
     </section>
 
     <!-- ===== CTA ===== -->
     <section class="cta-banner">
       <div class="container">
-        <h2>Still deciding? Let&rsquo;s figure it out together.</h2>
+        <span class="eyebrow">Free Consultation</span>
+        <h2>Still deciding? Let&rsquo;s figure it out <em>together</em>.</h2>
         <p>We won&rsquo;t recommend a package that doesn&rsquo;t fit where you are. Book a free 30-minute call and we&rsquo;ll tell you honestly which tier makes sense &mdash; or whether you should even start with us at all.</p>
         <a href="contact.html" class="btn btn-cream">Book Your Free Consultation</a>
-        <span class="footnote">Mission Viejo · Rancho Santa Margarita · Ladera Ranch · Aliso Viejo · San Clemente</span>
+        <div class="horizon" role="presentation"><i></i></div>
       </div>
     </section>
 
@@ -185,13 +220,13 @@
 
   <footer class="site-footer">
     <div class="container">
+      <p class="footer-tag">Branching your business out from a <em>rooted</em> foundation.</p>
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="assets/img/logo-badge.png" alt="" width="44" height="44" />
-            <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting</span></span>
+            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+            <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
           </a>
-          <p class="tagline">&ldquo;Branching your business out from a rooted foundation.&rdquo;</p>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
@@ -205,9 +240,9 @@
         </div>
         <div class="footer-col">
           <h4>Service Area</h4>
-          <p>South Orange County, CA</p>
+          <p>South Orange County, California</p>
           <p>Mission Viejo · RSM · Ladera Ranch · Aliso Viejo · San Clemente</p>
-          <p class="mt-3"><a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a></p>
+          <p><a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a></p>
         </div>
       </div>
       <div class="footer-bottom">
