@@ -1,0 +1,114 @@
+/* =========================================================================
+   Branch and Root Consulting — Design Tokens
+   Single source of truth for color, type, spacing, motion.
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/fraunces-variable.woff2') format('woff2-variations'),
+       url('../fonts/fraunces-variable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('../fonts/source-sans-3-variable.woff2') format('woff2-variations'),
+       url('../fonts/source-sans-3-variable.woff2') format('woff2');
+}
+
+:root {
+  color-scheme: light dark;
+
+  /* Brand palette (from BRANCH.md §1) */
+  --forest:       #1B4332;
+  --forest-deep:  #122E22;
+  --slate:        #4A5568;
+  --slate-soft:   #6B7280;
+  --cream:        #F7F5F0;
+  --cream-soft:   #FBFAF5;
+  --moss:         #2D6A4F;
+  --moss-light:   #40916C;
+  --bone:         #FFFFFF;
+  --ink:          #1A1A1A;
+  --ink-soft:     #2A2A2A;
+  --line:         #D9D2C2;
+  --line-soft:    #E9E3D3;
+  --warm:         #B8704A;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body:    'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --fs-eyebrow: 0.78rem;
+  --fs-body:    1.0625rem;
+  --fs-lead:    1.25rem;
+  --fs-h3:      clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  --fs-h2:      clamp(1.75rem, 1.3rem + 2vw, 2.5rem);
+  --fs-h1:      clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+  --fs-hero:    clamp(2.5rem, 1.8rem + 4vw, 4.5rem);
+
+  /* Spacing (8pt scale) */
+  --s-1: 0.5rem;   /* 8 */
+  --s-2: 1rem;     /* 16 */
+  --s-3: 1.5rem;   /* 24 */
+  --s-4: 2rem;     /* 32 */
+  --s-5: 3rem;     /* 48 */
+  --s-6: 4rem;     /* 64 */
+  --s-7: 6rem;     /* 96 */
+  --s-8: 8rem;     /* 128 */
+
+  /* Layout */
+  --max-w:        1140px;
+  --max-w-narrow: 760px;
+  --radius:       6px;
+  --radius-lg:    12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(27, 67, 50, 0.06), 0 1px 3px rgba(27, 67, 50, 0.05);
+  --shadow:    0 4px 12px rgba(27, 67, 50, 0.08), 0 2px 4px rgba(27, 67, 50, 0.04);
+  --shadow-lg: 0 20px 40px rgba(27, 67, 50, 0.12), 0 8px 16px rgba(27, 67, 50, 0.06);
+
+  /* Motion */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur:  240ms;
+  --dur-slow: 480ms;
+
+  /* Semantic aliases — light mode defaults */
+  --heading:  var(--forest);
+  --body-fg:  var(--ink);
+  --page-bg:  var(--cream);
+  --surface:  var(--bone);
+  --surface-2: var(--cream-soft);
+  --header-bg: rgba(247, 245, 240, 0.92);
+}
+
+/* ===========================================================================
+   Dark mode — auto-switch on prefers-color-scheme: dark
+   Brand-coherent: deep-forest page background, cream type, moss accents.
+   The forest hero/CTA/footer stay forest in both modes (already dark).
+   =========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream:      #0F1B14;
+    --cream-soft: #152419;
+    --bone:       #1A2C22;
+    --ink:        #E8E1CC;
+    --ink-soft:   #C9C2A8;
+    --line:       #2A4032;
+    --line-soft:  #22372B;
+    --slate:      #9BAEAA;
+    --slate-soft: #7A8C84;
+
+    --heading:    #F1ECDB;
+    --body-fg:    #E8E1CC;
+    --page-bg:    #0F1B14;
+    --surface:    #1A2C22;
+    --surface-2:  #152419;
+    --header-bg:  rgba(15, 27, 20, 0.88);
+  }
+}
