@@ -124,3 +124,49 @@ document.querySelectorAll('[data-nav]').forEach((link) => {
     link.classList.add('is-active');
   }
 });
+
+// --- Reveal-on-scroll ----------------------------------------------------
+// Fade elements in as the user scrolls down. Once revealed, they stay
+// visible — no re-trigger on scroll up. Above-the-fold content on load
+// is marked visible immediately with transitions disabled (no flash).
+const REVEAL_SELECTOR = [
+  '.hero > .container > *',
+  '.page-hero > .container > *',
+  '.section > .container > *',
+  '.service-block > .container > *',
+  '.cta-banner > .container > *',
+  '.card',
+  '.package-card',
+  '.team-member',
+  '.faq-item',
+  '.about-teaser > *',
+  '.footer-grid > *',
+].join(',');
+
+const revealEls = Array.from(document.querySelectorAll(REVEAL_SELECTOR))
+  .filter((el, i, arr) => arr.indexOf(el) === i && !el.hasAttribute('data-no-reveal'));
+
+if ('IntersectionObserver' in window && revealEls.length) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
+
+  const vh = window.innerHeight;
+  revealEls.forEach((el) => {
+    el.classList.add('reveal');
+    // Above-the-fold or already-scrolled-past: skip the animation.
+    if (el.getBoundingClientRect().top < vh - 50) {
+      el.classList.add('no-anim', 'is-visible');
+    } else {
+      io.observe(el);
+    }
+  });
+} else {
+  // Fallback: reveal everything immediately (very old browsers).
+  revealEls.forEach((el) => el.classList.add('reveal', 'is-visible', 'no-anim'));
+}

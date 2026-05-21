@@ -1910,12 +1910,34 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 .text-center { text-align: center; }
 .text-italic { font-style: italic; }
 
+/* ========================================================================
+   Reveal-on-scroll — fades down-scrolled elements in once.
+   JS adds .reveal; IntersectionObserver flips to .is-visible.
+   ======================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease-out),
+    transform 600ms var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* Above-the-fold on initial load: skip the animation entirely. */
+.reveal.no-anim {
+  transition: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* ========================================================================
