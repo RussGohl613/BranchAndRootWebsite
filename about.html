@@ -7,36 +7,62 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14" />
   <title>About — Branch and Root Consulting</title>
   <meta name="description" content="Two families. Four people. One shared belief about how local business should work. Meet the multi-generational South OC team behind Branch and Root Consulting." />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="About — Branch and Root Consulting" />
   <meta property="og:description" content="Built in South Orange County by two fathers and two sons. Not parachuted in. We live here." />
-  <meta property="og:image" content="assets/img/og-image.jpg" />
-  <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/og-image.jpg" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/css/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/css/site.css" />
+  <!-- ===== Analytics & Pixels =============================================
+       Uncomment each block and fill in your ID when the account is ready.
+       ==================================================================== -->
+  <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+  <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'META_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  -->
+  <!-- Google Ads — add your AW-CONVERSION_ID tag here once Google Ads is live -->
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+      <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
+        <img src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/logo-badge.png" alt="" width="40" height="40" />
         <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="services.html" data-nav="services">Services</a></li>
-          <li><a href="packages.html" data-nav="packages">Packages</a></li>
-          <li><a href="about.html"    data-nav="about">About</a></li>
-          <li><a href="faq.html"      data-nav="faq">FAQ</a></li>
-          <li><a href="contact.html"  data-nav="contact">Contact</a></li>
+          <li><a href="/services" data-nav="services">Services</a></li>
+          <li><a href="/packages" data-nav="packages">Packages</a></li>
+          <li><a href="/about"    data-nav="about">About</a></li>
+          <li><a href="/faq"      data-nav="faq">FAQ</a></li>
+          <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="contact.html" class="btn btn-primary nav-cta">Book a Free Consultation</a>
+      <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -44,13 +70,13 @@
     </div>
     <div class="mobile-panel" id="mobile-panel">
       <ul>
-        <li><a href="services.html" data-nav="services">Services</a></li>
-        <li><a href="packages.html" data-nav="packages">Packages</a></li>
-        <li><a href="about.html"    data-nav="about">About</a></li>
-        <li><a href="faq.html"      data-nav="faq">FAQ</a></li>
-        <li><a href="contact.html"  data-nav="contact">Contact</a></li>
+        <li><a href="/services" data-nav="services">Services</a></li>
+        <li><a href="/packages" data-nav="packages">Packages</a></li>
+        <li><a href="/about"    data-nav="about">About</a></li>
+        <li><a href="/faq"      data-nav="faq">FAQ</a></li>
+        <li><a href="/contact"  data-nav="contact">Contact</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-primary mobile-cta">Book a Free Consultation</a>
+      <a href="/contact" class="btn btn-primary mobile-cta">Book a Free Consultation</a>
     </div>
   </header>
 
@@ -171,7 +197,7 @@
         <span class="eyebrow">Meet the Team</span>
         <h2>Want to meet the team before <em>committing</em> to anything?</h2>
         <p>That&rsquo;s exactly how we&rsquo;d want it. Book a free consultation and talk with Matthew directly. No slides, no sales script &mdash; just an honest conversation about where your business is and whether we&rsquo;re the right fit.</p>
-        <a href="contact.html" class="btn btn-cream">Book a Free Consultation</a>
+        <a href="/contact" class="btn btn-cream">Book a Free Consultation</a>
         <div class="horizon" role="presentation"><i></i></div>
       </div>
     </section>
@@ -183,19 +209,19 @@
       <p class="footer-tag">Branching your business out from a <em>rooted</em> foundation.</p>
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+          <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
+            <img src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/logo-badge.png" alt="" width="40" height="40" />
             <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
           </a>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
           <ul>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="packages.html">Packages</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/packages">Packages</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -207,11 +233,12 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Branch and Root Consulting. All rights reserved.</span>
+        <a href="/privacy-policy">Privacy Policy</a>
         <span>Built on a rooted foundation.</span>
       </div>
     </div>
   </footer>
 
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/js/site.js"></script>
 </body>
 </html>

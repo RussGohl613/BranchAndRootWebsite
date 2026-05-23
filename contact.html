@@ -7,36 +7,62 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14" />
   <title>Book a Consultation — Branch and Root Consulting</title>
   <meta name="description" content="Book a free 30-minute consultation with Matthew. We'll walk through your business honestly, identify the gaps, and tell you straight if Branch and Root is the right fit." />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="Book a Consultation — Branch and Root Consulting" />
   <meta property="og:description" content="No pitch decks. No pressure. A 30-minute honest look at where your business is leaking revenue." />
-  <meta property="og:image" content="assets/img/og-image.jpg" />
-  <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/og-image.jpg" />
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/css/tokens.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/css/site.css" />
+  <!-- ===== Analytics & Pixels =============================================
+       Uncomment each block and fill in your ID when the account is ready.
+       ==================================================================== -->
+  <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+  <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'META_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+  -->
+  <!-- Google Ads — add your AW-CONVERSION_ID tag here once Google Ads is live -->
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+      <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
+        <img src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/logo-badge.png" alt="" width="40" height="40" />
         <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
       </a>
       <nav aria-label="Primary">
         <ul class="nav-links">
-          <li><a href="services.html" data-nav="services">Services</a></li>
-          <li><a href="packages.html" data-nav="packages">Packages</a></li>
-          <li><a href="about.html"    data-nav="about">About</a></li>
-          <li><a href="faq.html"      data-nav="faq">FAQ</a></li>
-          <li><a href="contact.html"  data-nav="contact">Contact</a></li>
+          <li><a href="/services" data-nav="services">Services</a></li>
+          <li><a href="/packages" data-nav="packages">Packages</a></li>
+          <li><a href="/about"    data-nav="about">About</a></li>
+          <li><a href="/faq"      data-nav="faq">FAQ</a></li>
+          <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="contact.html" class="btn btn-primary nav-cta">Book a Free Consultation</a>
+      <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
         <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
@@ -44,13 +70,13 @@
     </div>
     <div class="mobile-panel" id="mobile-panel">
       <ul>
-        <li><a href="services.html" data-nav="services">Services</a></li>
-        <li><a href="packages.html" data-nav="packages">Packages</a></li>
-        <li><a href="about.html"    data-nav="about">About</a></li>
-        <li><a href="faq.html"      data-nav="faq">FAQ</a></li>
-        <li><a href="contact.html"  data-nav="contact">Contact</a></li>
+        <li><a href="/services" data-nav="services">Services</a></li>
+        <li><a href="/packages" data-nav="packages">Packages</a></li>
+        <li><a href="/about"    data-nav="about">About</a></li>
+        <li><a href="/faq"      data-nav="faq">FAQ</a></li>
+        <li><a href="/contact"  data-nav="contact">Contact</a></li>
       </ul>
-      <a href="contact.html" class="btn btn-primary mobile-cta">Book a Free Consultation</a>
+      <a href="/contact" class="btn btn-primary mobile-cta">Book a Free Consultation</a>
     </div>
   </header>
 
@@ -76,73 +102,16 @@
       <div class="container">
         <div class="contact-grid">
 
-          <!-- ===== FORM =====
-               action="#" routes to thank-you.html via JS for demo purposes.
-               To wire to GHL: change action to your GHL form/webhook endpoint and set method="POST".
-          -->
-          <form class="contact-form" id="lead-form" action="#" method="POST" novalidate>
-            <h2>Book your free consultation.</h2>
-            <p class="form-intro">We typically respond within one business day. No spam. No sales sequences. Just a real conversation.</p>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" data-required required />
-                <span class="error-msg">Please enter your name.</span>
-              </div>
-              <div class="field">
-                <label for="business">Business Name <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company name" data-required required />
-                <span class="error-msg">Please enter your business name.</span>
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="industry">Industry <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="industry" name="industry" placeholder="HVAC, plumbing, dental, salon…" data-required required />
-                <span class="error-msg">Please tell us what industry you&rsquo;re in.</span>
-              </div>
-              <div class="field">
-                <label for="city">City (South OC) <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="city" name="city" placeholder="Mission Viejo, RSM, Ladera Ranch…" data-required required />
-                <span class="error-msg">Please enter your city.</span>
-              </div>
-            </div>
-
-            <div class="field-row">
-              <div class="field">
-                <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="(949) 555-0100" data-required required />
-                <span class="error-msg">Please enter a valid phone number.</span>
-              </div>
-              <div class="field">
-                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" placeholder="you@business.com" data-required required />
-                <span class="error-msg">Please enter a valid email address.</span>
-              </div>
-            </div>
-
-            <div class="field">
-              <label for="source">How did you hear about us?</label>
-              <select id="source" name="source">
-                <option value="">Select one (optional)</option>
-                <option value="referral">Referral</option>
-                <option value="google">Google Search</option>
-                <option value="social">Social Media</option>
-                <option value="outreach">Cold Outreach</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="challenge">What&rsquo;s the biggest operational challenge your business is facing right now?</label>
-              <textarea id="challenge" name="challenge" rows="4" placeholder="Missed leads? Dormant customer list? Slow follow-up? Tell us what&rsquo;s costing you the most right now."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-arrow">Request My Free Consultation</button>
-            <p class="form-footnote">We typically respond within one business day to schedule your call.</p>
-          </form>
+          <!-- ===== GHL CALENDAR EMBED ========================================
+               After creating your calendar in GHL:
+               Calendars → your calendar → Embed → copy the iframe/script
+               Paste it below, replacing this comment block.
+               ================================================================ -->
+          <div class="ghl-calendar-embed">
+            <h2>Pick a time that works for you.</h2>
+            <p class="form-intro">We&rsquo;ll confirm within minutes. No sales sequences, no spam &mdash; just a real conversation.</p>
+            <!-- PASTE_GHL_CALENDAR_EMBED_CODE_HERE -->
+          </div>
 
           <!-- ===== CONTACT DETAILS ===== -->
           <aside class="contact-details" aria-label="Contact information">
@@ -190,19 +159,19 @@
       <p class="footer-tag">Branching your business out from a <em>rooted</em> foundation.</p>
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+          <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
+            <img src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/img/logo-badge.png" alt="" width="40" height="40" />
             <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
           </a>
         </div>
         <div class="footer-col">
           <h4>Site</h4>
           <ul>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="packages.html">Packages</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/packages">Packages</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -214,11 +183,12 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Branch and Root Consulting. All rights reserved.</span>
+        <a href="/privacy-policy">Privacy Policy</a>
         <span>Built on a rooted foundation.</span>
       </div>
     </div>
   </footer>
 
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/gh/RussGohl613/BranchAndRootWebsite@main/assets/js/site.js"></script>
 </body>
 </html>
