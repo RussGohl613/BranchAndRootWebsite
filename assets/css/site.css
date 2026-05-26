@@ -2419,14 +2419,34 @@ main > section + section.bridge {
   position: relative;
   width: 100%;
   min-height: 920px;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
+  /* Light-mode matte: subtle paper card so the iframe sits *in* the page */
+  background: var(--surface-grad);
+  border: 1px solid var(--line-soft);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 2px 6px rgba(15, 42, 30, 0.05),
+    0 18px 40px -22px rgba(15, 42, 30, 0.18);
 }
 .ghl-form-frame iframe {
   display: block;
   width: 100%;
   min-height: 920px;
   background: transparent;
+}
+/* Dark-mode matte: forest card frame — keeps the iframe from
+   looking like a bright white sticker pasted on a dark page even
+   before the GHL CSS finishes painting. */
+@media (prefers-color-scheme: dark) {
+  .ghl-form-frame {
+    background: linear-gradient(180deg, #182A20 0%, #0F1B14 100%);
+    border-color: #2A4032;
+    box-shadow:
+      0 1px 0 rgba(82, 148, 111, 0.12) inset,
+      0 4px 14px rgba(0, 0, 0, 0.40),
+      0 22px 48px -22px rgba(0, 0, 0, 0.60);
+  }
 }
 .form-fallback {
   font-family: var(--font-display);
@@ -2436,6 +2456,52 @@ main > section + section.bridge {
   padding: var(--s-4);
   border: 1px dashed var(--line-hair);
   border-radius: 8px;
+}
+.form-consent {
+  margin-top: var(--s-3);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--slate);
+  letter-spacing: 0.02em;
+  line-height: 1.55;
+}
+.form-consent a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-decoration-color: rgba(45, 106, 79, 0.4);
+  text-underline-offset: 3px;
+}
+.form-consent a:hover { color: var(--moss); text-decoration-color: var(--moss); }
+@media (prefers-color-scheme: dark) {
+  .form-consent a { color: var(--moss-light); }
+}
+
+/* ---- Footer legal links group ---------------------------------------- */
+/* Two links (Privacy / Terms) with a hairline dot between them, sitting
+   in the center of the flex footer-bottom row. */
+.footer-legal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+}
+.footer-legal a {
+  color: var(--cream-fixed);
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.footer-legal a:hover {
+  opacity: 1;
+  color: var(--moss-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(82, 148, 111, 0.5);
+}
+.footer-legal span[aria-hidden] {
+  color: rgba(247, 245, 240, 0.35);
+  font-weight: 600;
 }
 
 /* ---- Section transition feather: cream after forest band ------------- */
