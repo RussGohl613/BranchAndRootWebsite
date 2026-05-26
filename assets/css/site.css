@@ -2418,7 +2418,7 @@ main > section + section.bridge {
 .ghl-form-frame {
   position: relative;
   width: 100%;
-  min-height: 920px;
+  min-height: 980px;
   border-radius: 10px;
   overflow: hidden;
   /* Light-mode matte: subtle paper card so the iframe sits *in* the page */
@@ -2432,7 +2432,7 @@ main > section + section.bridge {
 .ghl-form-frame iframe {
   display: block;
   width: 100%;
-  min-height: 920px;
+  min-height: 980px;
   background: transparent;
 }
 /* Dark-mode matte: forest card frame — keeps the iframe from
