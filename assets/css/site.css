@@ -1988,6 +1988,473 @@ main > section + section.bridge {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* =========================================================================
+   POLISH LAYER — depth, layering, motion, micro-interactions.
+   Applied additively over the editorial base. Keeps palette + structure.
+   ========================================================================= */
+
+/* ---- Scroll progress bar (1px, forest, top of viewport) ---------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--moss) 0%, var(--moss-light) 100%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(82, 148, 111, 0.4);
+  transition: opacity 200ms var(--ease);
+  opacity: 0;
+}
+.scroll-progress.is-active { opacity: 1; }
+
+/* ---- Hero — atmospheric depth ----------------------------------------- */
+/* Layered radials + grain + bottom vignette feathered into next section.   */
+.hero::before {
+  background:
+    radial-gradient(ellipse 1100px 700px at 78% -8%, rgba(82, 148, 111, 0.28), transparent 60%),
+    radial-gradient(ellipse 900px 500px at -8% 110%, rgba(82, 148, 111, 0.22), transparent 60%),
+    radial-gradient(ellipse 1400px 800px at 50% 50%, rgba(15, 42, 30, 0.0) 0%, rgba(0,0,0,0.18) 90%);
+  animation: heroDrift 22s var(--ease) infinite alternate;
+  will-change: transform;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 240px 240px;
+  mix-blend-mode: overlay;
+  opacity: 0.25;
+  pointer-events: none;
+}
+.hero > .container { position: relative; z-index: 1; }
+
+@keyframes heroDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-2%, 1%, 0) scale(1.04); }
+}
+
+/* Feathered bottom edge — softens the forest→cream cut.
+   Applied to the ::before glow layer only, NOT the section itself, so
+   buttons and content near the bottom never get their edges masked. */
+.hero::before, .page-hero::before, .cta-banner::before {
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 28px), transparent 100%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 calc(100% - 28px), transparent 100%);
+}
+
+/* ---- Page hero — same atmospheric treatment, gentler ------------------ */
+.page-hero::before {
+  background:
+    radial-gradient(ellipse 1000px 600px at 88% -4%, rgba(82, 148, 111, 0.22), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 0% 110%, rgba(82, 148, 111, 0.15), transparent 60%);
+  animation: heroDrift 28s var(--ease) infinite alternate;
+}
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 240px 240px;
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* ---- CTA banner — same family ----------------------------------------- */
+.cta-banner::before {
+  background:
+    radial-gradient(ellipse 950px 520px at 50% 110%, rgba(82, 148, 111, 0.28), transparent 60%),
+    radial-gradient(ellipse 700px 400px at 20% -10%, rgba(82, 148, 111, 0.14), transparent 60%);
+}
+.cta-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 240px 240px;
+  mix-blend-mode: overlay;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* ---- Cream sections — soft warm depth --------------------------------- */
+.section-cream, .section-bone, .section-paper {
+  position: relative;
+}
+.section-cream::after, .section-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  background-size: 240px 240px;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+.section-cream > .container,
+.section-paper > .container,
+.section-bone > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Card depth — package, service-meta, contact-details, badge ------ */
+.package {
+  background: var(--surface-grad-2);
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  padding: clamp(1.75rem, 2vw + 1rem, 2.75rem) clamp(1.5rem, 2vw, 2.5rem);
+  box-shadow: var(--elev-1);
+  transition: transform var(--dur-slow) var(--ease-out),
+              box-shadow var(--dur-slow) var(--ease-out);
+}
+.package:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--elev-2);
+}
+@media (min-width: 980px) {
+  /* Remove the dividing line; cards now provide their own boundary */
+  .packages-spread { gap: var(--s-5); }
+  .packages-spread::before { display: none; }
+  .package { padding: clamp(2rem, 2.5vw + 1rem, 3rem); }
+}
+.package h3 .accent { color: var(--moss); position: relative; }
+
+.service-meta {
+  background: var(--surface-grad);
+  box-shadow: var(--elev-2);
+  border-radius: 8px;
+  border-color: var(--line-soft);
+  position: relative;
+  overflow: hidden;
+}
+.service-meta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 360px 200px at 100% 0%, rgba(82, 148, 111, 0.10), transparent 60%);
+  pointer-events: none;
+}
+.service-meta > * { position: relative; z-index: 1; }
+
+.contact-details {
+  background: var(--surface-grad);
+  box-shadow: var(--elev-1);
+  border-radius: 8px;
+}
+
+/* About teaser badge — concentric rings + soft moss halo */
+.about-teaser .badge-frame {
+  background: var(--surface-grad);
+  box-shadow:
+    0 0 0 1px var(--line-hair),
+    var(--elev-2),
+    0 30px 80px -30px rgba(45, 106, 79, 0.40);
+}
+.about-teaser .badge-frame::before {
+  inset: -16px;
+  border-color: var(--line-hair);
+}
+.about-teaser .badge-frame::after {
+  content: "";
+  position: absolute;
+  inset: -34px;
+  border: 1px dashed var(--line-hair);
+  border-radius: 50%;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: ringPulse 18s linear infinite;
+}
+@keyframes ringPulse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Thank-you check — give it presence */
+.thank-you-wrap .icon-check {
+  box-shadow: var(--elev-2), var(--glow-moss);
+  background: linear-gradient(160deg, var(--forest) 0%, var(--forest-deep) 100%);
+}
+
+/* ---- Compare table — alternating row warmth + hover ------------------ */
+.compare-table tbody tr {
+  transition: background var(--dur) var(--ease);
+}
+.compare-table tbody tr:nth-child(even) {
+  background: rgba(217, 210, 194, 0.18);
+}
+.compare-table tbody tr:hover {
+  background: rgba(82, 148, 111, 0.08);
+}
+
+/* ---- Problem trio — give each item depth on hover -------------------- */
+.problem-item {
+  transition: transform var(--dur) var(--ease), border-top-color var(--dur) var(--ease);
+}
+.problem-item:hover {
+  transform: translateY(-2px);
+  border-top-color: var(--moss);
+}
+.problem-item::before {
+  transition: color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.problem-item:hover::before { color: var(--forest); transform: translateX(2px); }
+
+/* ---- Buttons — premium lift + soft moss glow ------------------------- */
+/* Custom shadows per-surface — the generic --elev-* tokens have a white
+   inset highlight tuned for light cards on cream, which reads as a glitchy
+   bright sliver on dark or cream pills. Each variant gets its own. */
+.btn-primary {
+  background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+  box-shadow:
+    0 1px 0 rgba(82, 148, 111, 0.18) inset,
+    0 2px 6px rgba(15, 42, 30, 0.18);
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, var(--forest-deep) 0%, var(--forest-deep) 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(82, 148, 111, 0.22) inset,
+    0 10px 24px -8px rgba(15, 42, 30, 0.35),
+    var(--glow-moss);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 0 rgba(82, 148, 111, 0.18) inset, 0 2px 6px rgba(15, 42, 30, 0.18);
+}
+
+.btn-cream {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 2px 6px rgba(15, 42, 30, 0.18);
+}
+.btn-cream:hover {
+  transform: translateY(-2px);
+  background: var(--cream-fixed);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 10px 24px -8px rgba(15, 42, 30, 0.28),
+    0 18px 40px -20px rgba(82, 148, 111, 0.55);
+}
+.btn-cream:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--forest);
+  transform: translateY(101%);
+  transition: transform var(--dur-slow) var(--ease-out);
+  z-index: -1;
+}
+.btn-ghost:hover { transform: translateY(-2px); }
+.btn-ghost:hover::before { transform: translateY(0); }
+
+.btn-arrow::after { display: inline-block; }
+.btn-arrow:hover::after { transform: translateX(6px); }
+
+/* ---- Nav — animated underline draw on hover -------------------------- */
+.nav-links a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  background-position: 0 100%;
+  transition: color var(--dur) var(--ease), background-size var(--dur-slow) var(--ease-out);
+}
+.nav-links a:hover { background-size: 100% 1px; }
+.nav-links a.is-active { background-size: 100% 1px; }
+/* The dot stays as the active marker — keep it, animate it */
+.nav-links a.is-active::after {
+  animation: dotPulse 2.4s var(--ease) infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50%      { transform: translateX(-50%) scale(1.6); opacity: 0.6; }
+}
+
+/* ---- Horizon mark — animated draw-in --------------------------------- */
+/* Line scales in, dot punches in slightly after. Triggers via .reveal.    */
+.horizon::before {
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform 900ms var(--ease-out);
+}
+.horizon::after {
+  transform: translateX(-50%) scale(0);
+  transition: transform 500ms var(--ease-out) 400ms;
+}
+.horizon i {
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: 50% 0%;
+  transition: transform 500ms var(--ease-out) 700ms;
+}
+/* Once visible (parent reveal triggers), draw in */
+.is-visible .horizon::before,
+.reveal.is-visible.horizon::before,
+.horizon.is-drawn::before { transform: scaleX(1); }
+.is-visible .horizon::after,
+.reveal.is-visible.horizon::after,
+.horizon.is-drawn::after { transform: translateX(-50%) scale(1); }
+.is-visible .horizon i,
+.reveal.is-visible.horizon i,
+.horizon.is-drawn i { transform: translateX(-50%) scaleY(1); }
+/* Always draw within hero / page-hero / cta-banner (their containers are visible at load) */
+.hero .horizon::before,
+.page-hero .horizon::before,
+.cta-banner .horizon::before { transform: scaleX(1); transition-delay: 600ms; }
+.hero .horizon::after,
+.page-hero .horizon::after,
+.cta-banner .horizon::after { transform: translateX(-50%) scale(1); transition-delay: 1100ms; }
+.hero .horizon i,
+.page-hero .horizon i,
+.cta-banner .horizon i { transform: translateX(-50%) scaleY(1); transition-delay: 1400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .horizon::before { transform: scaleX(1) !important; transition: none !important; }
+  .horizon::after  { transform: translateX(-50%) scale(1) !important; transition: none !important; }
+  .horizon i       { transform: translateX(-50%) scaleY(1) !important; transition: none !important; }
+}
+
+/* ---- Gutter numerals — slow parallax drift --------------------------- */
+.gutter-numeral { transition: transform 1.4s var(--ease-out); will-change: transform; }
+/* JS will set --parallax based on scroll position */
+.gutter-numeral { transform: translate3d(0, var(--parallax, 0px), 0); }
+
+/* ---- FAQ — inner fade-up on open ------------------------------------- */
+.faq-a-inner {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 420ms var(--ease-out) 60ms, transform 420ms var(--ease-out) 60ms;
+}
+.faq-q[aria-expanded="true"] + .faq-a .faq-a-inner {
+  opacity: 1;
+  transform: none;
+}
+.faq-item {
+  transition: background var(--dur) var(--ease);
+}
+.faq-item:hover { background: rgba(82, 148, 111, 0.04); }
+
+/* ---- Staggered reveals — JS sets --reveal-i 0..n -------------------- */
+.reveal {
+  transition-delay: calc(var(--reveal-i, 0) * 80ms);
+}
+.reveal.no-anim { transition-delay: 0ms; }
+
+/* ---- 404 — give the big numeral atmosphere --------------------------- */
+.notfound .big {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(180deg, var(--forest) 0%, var(--moss) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 12px 40px rgba(45, 106, 79, 0.30));
+}
+.notfound .big em {
+  -webkit-text-fill-color: currentColor;
+  color: var(--moss);
+  filter: none;
+}
+
+/* ---- Footer — final-line finale -------------------------------------- */
+.footer-tag {
+  position: relative;
+}
+.footer-tag::after {
+  content: "";
+  display: block;
+  margin-top: var(--s-3);
+  width: 56px;
+  height: 1px;
+  background: var(--moss-light);
+  opacity: 0.7;
+}
+
+/* ---- Inline font-size override safety net ---------------------------- */
+/* The legacy inline `style="font-size: 60px"` on a few h1s/h3s bypasses
+   the responsive token scale. We've removed them — but defend in depth. */
+.hero h1[style*="font-size"],
+.page-hero h1[style*="font-size"],
+.package h3[style*="font-size"] {
+  font-size: revert !important;
+}
+
+/* ---- GHL embedded discovery form -------------------------------------- */
+/* The iframe sandboxes everything inside — visual brand styling lives in
+   the GHL form's own Custom CSS field. We just give the embed a proper
+   editorial frame on the parent page: heading band, intro lede, and a
+   min-height so height:100% has something to fill on first paint. */
+.ghl-form-embed > h2 {
+  font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
+  margin-bottom: var(--s-2);
+  border-bottom: 1px solid var(--line-hair);
+  padding-bottom: var(--s-3);
+}
+.ghl-form-embed > h2 em {
+  font-style: italic;
+  color: var(--moss);
+  font-weight: 500;
+}
+.ghl-form-embed > .form-intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--slate);
+  margin-bottom: var(--s-5);
+  font-size: 1.05rem;
+  max-width: 56ch;
+}
+.ghl-form-frame {
+  position: relative;
+  width: 100%;
+  min-height: 920px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ghl-form-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: 920px;
+  background: transparent;
+}
+.form-fallback {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--slate);
+  font-size: 1.02rem;
+  padding: var(--s-4);
+  border: 1px dashed var(--line-hair);
+  border-radius: 8px;
+}
+
+/* ---- Section transition feather: cream after forest band ------------- */
+.hero + .section,
+.page-hero + .section,
+.cta-banner + footer {
+  position: relative;
+}
+.hero + .section::before,
+.page-hero + .section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 24px;
+  background: linear-gradient(180deg, rgba(15, 42, 30, 0.06) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
 /* ========================================================================
    Dark mode overrides — keep brand voice consistent
    ======================================================================== */

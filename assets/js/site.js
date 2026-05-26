@@ -157,9 +157,20 @@ if ('IntersectionObserver' in window && revealEls.length) {
   }, { rootMargin: '0px 0px -12% 0px', threshold: 0.01 });
 
   const vh = window.innerHeight;
+  // Group siblings to compute stagger index per row/group.
+  const groups = new Map();
+  revealEls.forEach((el) => {
+    const key = el.parentElement;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(el);
+  });
+  groups.forEach((arr) => {
+    arr.forEach((el, i) => {
+      el.style.setProperty('--reveal-i', Math.min(i, 6));
+    });
+  });
   revealEls.forEach((el) => {
     el.classList.add('reveal');
-    // Above-the-fold or already-scrolled-past: skip the animation.
     if (el.getBoundingClientRect().top < vh - 50) {
       el.classList.add('no-anim', 'is-visible');
     } else {
@@ -167,6 +178,62 @@ if ('IntersectionObserver' in window && revealEls.length) {
     }
   });
 } else {
-  // Fallback: reveal everything immediately (very old browsers).
   revealEls.forEach((el) => el.classList.add('reveal', 'is-visible', 'no-anim'));
+}
+
+// --- Horizon mark draw-in (independent observer) --------------------------
+const horizonEls = document.querySelectorAll('.horizon');
+if ('IntersectionObserver' in window && horizonEls.length) {
+  const hio = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-drawn');
+        hio.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  horizonEls.forEach((el) => hio.observe(el));
+}
+
+// --- Scroll progress bar (on long pages) ----------------------------------
+const longPagePaths = new Set(['services.html', 'packages.html', 'faq.html', 'about.html']);
+if (longPagePaths.has(path)) {
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  const updateBar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? window.scrollY / max : 0;
+    bar.style.transform = `scaleX(${pct.toFixed(4)})`;
+    bar.classList.toggle('is-active', window.scrollY > 60);
+  };
+  updateBar();
+  window.addEventListener('scroll', updateBar, { passive: true });
+}
+
+// --- Gutter numeral parallax ----------------------------------------------
+// Subtle vertical drift on decorative numerals as the user scrolls.
+const numeralEls = document.querySelectorAll('.gutter-numeral');
+if (numeralEls.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let raf = 0;
+  const updateNumerals = () => {
+    const vh = window.innerHeight;
+    numeralEls.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      // Only update when on-screen.
+      if (rect.bottom < -200 || rect.top > vh + 200) return;
+      const progress = (rect.top + rect.height / 2 - vh / 2) / vh; // -1 .. 1
+      const drift = Math.max(-30, Math.min(30, -progress * 28));
+      el.style.setProperty('--parallax', `${drift.toFixed(1)}px`);
+    });
+    raf = 0;
+  };
+  const onNumScroll = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(updateNumerals);
+  };
+  updateNumerals();
+  window.addEventListener('scroll', onNumScroll, { passive: true });
+  window.addEventListener('resize', onNumScroll);
 }

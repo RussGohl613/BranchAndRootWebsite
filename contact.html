@@ -7,16 +7,16 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14" />
   <title>Book a Consultation — Branch and Root Consulting</title>
   <meta name="description" content="Book a free 30-minute consultation with Matthew. We'll walk through your business honestly, identify the gaps, and tell you straight if Branch and Root is the right fit." />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://branch-and-root-website.vercel.app/assets/img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://branch-and-root-website.vercel.app/assets/img/favicon-16.png" />
-  <link rel="apple-touch-icon" href="https://branch-and-root-website.vercel.app/assets/img/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="Book a Consultation — Branch and Root Consulting" />
   <meta property="og:description" content="No pitch decks. No pressure. A 30-minute honest look at where your business is leaking revenue." />
-  <meta property="og:image" content="https://branch-and-root-website.vercel.app/assets/img/og-image.jpg" />
-  <link rel="preload" href="https://branch-and-root-website.vercel.app/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="https://branch-and-root-website.vercel.app/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="https://branch-and-root-website.vercel.app/assets/css/tokens.css" />
-  <link rel="stylesheet" href="https://branch-and-root-website.vercel.app/assets/css/site.css" />
+  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/site.css" />
   <!-- ===== Analytics & Pixels =============================================
        Uncomment each block and fill in your ID when the account is ready.
        ==================================================================== -->
@@ -50,7 +50,7 @@
   <header class="site-header">
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="https://branch-and-root-website.vercel.app/assets/img/logo-badge.png" alt="" width="40" height="40" />
+        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
         <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
       </a>
       <nav aria-label="Primary">
@@ -102,15 +102,39 @@
       <div class="container">
         <div class="contact-grid">
 
-          <!-- ===== GHL CALENDAR EMBED ========================================
-               After creating your calendar in GHL:
-               Calendars → your calendar → Embed → copy the iframe/script
-               Paste it below, replacing this comment block.
+          <!-- ===== GHL DISCOVERY FORM EMBED ==================================
+               Form: "Branch and Root — Discovery Inquiry" (GHL form ID below).
+               Brand styling lives in the form's Custom CSS field inside GHL —
+               the iframe sandboxes its DOM, so parent-page CSS cannot reach in.
+               If the form chrome ever looks off-brand, fix it in GHL, not here.
                ================================================================ -->
-          <div class="ghl-calendar-embed">
-            <h2>Pick a time that works for you.</h2>
-            <p class="form-intro">We&rsquo;ll confirm within minutes. No sales sequences, no spam &mdash; just a real conversation.</p>
-            <!-- PASTE_GHL_CALENDAR_EMBED_CODE_HERE -->
+          <div class="ghl-form-embed">
+            <h2>Tell us where the revenue is <em>leaking</em>.</h2>
+            <p class="form-intro">A few quick details and Matthew will reach out inside one business day to lock in your free thirty minutes. No drip sequences. No spam &mdash; just a real conversation between neighbors.</p>
+            <div class="ghl-form-frame">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/eWkpI9FNztg0e8kHUi87"
+                style="width:100%;height:100%;border:none;border-radius:8px"
+                id="inline-eWkpI9FNztg0e8kHUi87"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Branch and Root — Discovery Inquiry"
+                data-height="862"
+                data-layout-iframe-id="inline-eWkpI9FNztg0e8kHUi87"
+                data-form-id="eWkpI9FNztg0e8kHUi87"
+                title="Branch and Root — Discovery Inquiry"
+                loading="lazy">
+              </iframe>
+              <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+              <noscript>
+                <p class="form-fallback">JavaScript is required to load the discovery form. Please email <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a> instead &mdash; we&rsquo;ll respond within one business day.</p>
+              </noscript>
+            </div>
           </div>
 
           <!-- ===== CONTACT DETAILS ===== -->
@@ -160,7 +184,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="https://branch-and-root-website.vercel.app/assets/img/logo-badge.png" alt="" width="40" height="40" />
+            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
             <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · South OC</span></span>
           </a>
         </div>
@@ -189,6 +213,6 @@
     </div>
   </footer>
 
-  <script defer src="https://branch-and-root-website.vercel.app/assets/js/site.js"></script>
+  <script defer src="assets/js/site.js"></script>
 </body>
 </html>

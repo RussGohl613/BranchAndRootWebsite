@@ -100,6 +100,28 @@
   --shadow:    0 6px 24px rgba(15, 42, 30, 0.08), 0 2px 4px rgba(15, 42, 30, 0.04);
   --shadow-lg: 0 24px 60px rgba(15, 42, 30, 0.14), 0 8px 16px rgba(15, 42, 30, 0.06);
 
+  /* ---- Depth (editorial elevation system) ---------------------------- */
+  /* Soft, warm, layered. Two-light model — top key, ambient floor.       */
+  --elev-1: 0 1px 0 rgba(255,255,255,0.6) inset,
+            0 1px 2px rgba(15, 42, 30, 0.04),
+            0 4px 14px -6px rgba(15, 42, 30, 0.10);
+  --elev-2: 0 1px 0 rgba(255,255,255,0.7) inset,
+            0 2px 6px rgba(15, 42, 30, 0.05),
+            0 18px 40px -18px rgba(15, 42, 30, 0.18);
+  --elev-3: 0 1px 0 rgba(255,255,255,0.8) inset,
+            0 8px 22px rgba(15, 42, 30, 0.08),
+            0 32px 70px -22px rgba(15, 42, 30, 0.22);
+  --glow-moss: 0 10px 28px -10px rgba(45, 106, 79, 0.45);
+  --glow-moss-strong: 0 14px 38px -10px rgba(45, 106, 79, 0.60);
+
+  /* Surface gradients — for cards & badges */
+  --surface-grad:  linear-gradient(180deg, var(--bone) 0%, var(--paper) 100%);
+  --surface-grad-2: linear-gradient(160deg, var(--paper-soft) 0%, var(--paper) 100%);
+
+  /* SVG noise (cream-toned grain) — for warm tactile depth.
+     Encoded fractal-noise PNG-like data URI from feTurbulence. */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+
   /* ---- Motion -------------------------------------------------------- */
   --ease: cubic-bezier(.2, .7, .2, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -145,5 +167,21 @@
     --surface:    #1A2D22;
     --surface-2:  #142319;
     --header-bg:  rgba(15, 27, 20, 0.82);
+
+    /* Dark depth — cooler, deeper, with subtle moss inner-glow */
+    --elev-1: 0 1px 0 rgba(82,148,111,0.10) inset,
+              0 2px 6px rgba(0,0,0,0.35),
+              0 6px 18px -8px rgba(0,0,0,0.45);
+    --elev-2: 0 1px 0 rgba(82,148,111,0.12) inset,
+              0 4px 14px rgba(0,0,0,0.40),
+              0 22px 48px -22px rgba(0,0,0,0.60);
+    --elev-3: 0 1px 0 rgba(82,148,111,0.14) inset,
+              0 10px 28px rgba(0,0,0,0.45),
+              0 36px 80px -22px rgba(0,0,0,0.70);
+    --glow-moss: 0 12px 32px -10px rgba(82, 148, 111, 0.45);
+    --glow-moss-strong: 0 18px 44px -10px rgba(82, 148, 111, 0.65);
+
+    --surface-grad:   linear-gradient(180deg, var(--surface) 0%, var(--surface-2) 100%);
+    --surface-grad-2: linear-gradient(160deg, var(--surface-2) 0%, #102017 100%);
   }
 }
