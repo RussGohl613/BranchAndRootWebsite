@@ -4,12 +4,33 @@
    ========================================================================= */
 
 // --- Sticky header shadow on scroll ----------------------------------------
+// Hysteresis: shrink at >SHRINK_AT, only expand back when scroll drops below
+// EXPAND_AT. This avoids the flicker zone where the size change itself shifts
+// scrollY across a single threshold.
 const header = document.querySelector('.site-header');
 if (header) {
-  const onScroll = () => {
-    header.classList.toggle('is-scrolled', window.scrollY > 16);
+  const SHRINK_AT = 48;
+  const EXPAND_AT = 8;
+  let scrolled = false;
+  let ticking = false;
+  const update = () => {
+    const y = window.scrollY;
+    if (!scrolled && y > SHRINK_AT) {
+      scrolled = true;
+      header.classList.add('is-scrolled');
+    } else if (scrolled && y < EXPAND_AT) {
+      scrolled = false;
+      header.classList.remove('is-scrolled');
+    }
+    ticking = false;
   };
-  onScroll();
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  };
+  update();
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
