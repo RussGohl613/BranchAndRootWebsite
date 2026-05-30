@@ -381,9 +381,15 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   -webkit-backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  --nav-pad: 1.6rem;
+  --brand-logo: 48px;
+  --brand-name-size: 1.22rem;
 }
 .site-header.is-scrolled {
   border-bottom-color: var(--line-hair);
+  --nav-pad: 0.85rem;
+  --brand-logo: 40px;
+  --brand-name-size: 1.1rem;
 }
 
 .nav {
@@ -391,7 +397,8 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   align-items: center;
   justify-content: space-between;
   gap: var(--s-3);
-  padding-block: 0.85rem;
+  padding-block: var(--nav-pad);
+  transition: padding-block 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .brand {
@@ -402,16 +409,18 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   color: var(--heading);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: var(--brand-name-size, 1.1rem);
   letter-spacing: -0.015em;
   line-height: 1.05;
+  transition: font-size 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .brand:hover { color: var(--moss); text-decoration: none; }
 .brand img {
-  width: 40px;
-  height: 40px;
+  width: var(--brand-logo, 40px);
+  height: var(--brand-logo, 40px);
   border-radius: 50%;
   object-fit: cover;
+  transition: width 360ms cubic-bezier(0.22, 1, 0.36, 1), height 360ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .brand-text { display: flex; flex-direction: column; gap: 2px; }
 .brand-text .brand-name { font-weight: 700; }
@@ -584,16 +593,17 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 }
 .hero-aside {
   position: relative;
-  border-left: 1px solid rgba(247, 245, 240, 0.18);
+  border-left: 1px solid rgba(247, 245, 240, 0.28);
   padding-left: var(--s-4);
-  color: rgba(247, 245, 240, 0.88);
+  color: var(--cream-fixed);
   font-family: var(--font-display);
   font-size: 1.05rem;
   line-height: 1.5;
   max-width: 30ch;
 }
+.hero-aside p { color: var(--cream-fixed); }
 .hero-aside .annotation {
-  color: rgba(247, 245, 240, 0.55);
+  color: rgba(247, 245, 240, 0.82);
   display: block;
   margin-bottom: var(--s-2);
 }
