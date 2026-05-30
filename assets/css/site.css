@@ -4,7 +4,7 @@
 
 /* ----- Reset --------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 body, h1, h2, h3, h4, h5, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
 img, picture, svg, video { display: block; max-width: 100%; height: auto; }
@@ -30,6 +30,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 main { flex: 1; }
@@ -916,7 +918,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
 .service-block .gutter-numeral {
   position: absolute;
   top: clamp(2rem, 4vw, 4rem);
-  right: clamp(-1rem, -2vw, -3rem);
+  right: clamp(1rem, 4vw, 5rem);
   font-size: clamp(8rem, 18vw, 18rem);
   z-index: 0;
 }
@@ -1058,6 +1060,15 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   font-weight: 500;
 }
 .service-meta .btn { margin-top: var(--s-4); width: 100%; }
+
+.addons-note {
+  margin-top: var(--s-5);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--slate);
+  text-align: center;
+}
+.addons-note em { font-style: italic; }
 
 /* ========================================================================
    PACKAGES PAGE — editorial side-by-side spread
