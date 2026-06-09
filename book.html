@@ -198,13 +198,12 @@
         </header>
 
         <main id="main">
-            <!-- ===== PAGE HERO — tightened: eyebrow + h1 + single-line lede.
-                 The old two-column aside got pushed into the .what-to-expect
-                 column beside the calendar — keeps the hero light so the
-                 calendar leads the page. ============================== -->
-            <section class="page-hero">
-                <div class="container">
-                    <span class="eyebrow">Book a Time</span>
+            <!-- ===== HERO BANNER — dark forest editorial banner. Sets the
+                 stage so the calendar card below reads as the destination.
+                 ====================================================== -->
+            <section class="booking-hero section-forest">
+                <div class="container booking-hero-inner">
+                    <span class="eyebrow">Discovery Call</span>
                     <h1>
                         Pick a time. <em>We&rsquo;ll meet you there.</em>
                     </h1>
@@ -213,105 +212,134 @@
                         honest read on where the revenue is leaking and
                         whether we&rsquo;re the right fit to help fix it.
                     </p>
+                    <div class="horizon booking-hero-rule" aria-hidden="true">
+                        <i></i>
+                    </div>
                 </div>
             </section>
 
-            <section class="section section-cream" id="calendar">
+            <!-- ===== META STRIP — fast scannable details. Mirrors the
+                 address/contact block alschopshop uses above their widget,
+                 translated to Branch & Root editorial vocabulary. ======== -->
+            <section class="booking-meta-strip">
                 <div class="container">
-                    <!-- ===== CALENDAR + ASIDE TWO-COLUMN LAYOUT ===================
-               Calendar iframe in the main column (GHL sandboxes its DOM, so
-               internal styling lives in the GHL appearance settings — we
-               only style the frame around it). The aside is sticky on
-               desktop and stacks below on mobile. Collapses at 900px to
-               match other two-column spreads on the site. =================== -->
-                    <div class="calendar-layout">
-                        <div class="calendar-main">
-                            <div class="calendar-card">
-                                <span class="eyebrow">The Calendar</span>
-                                <h2>
-                                    Grab the slot that
-                                    <em>works for you</em>.
-                                </h2>
-                                <p class="form-intro">
-                                    Open times below. You&rsquo;ll get a
-                                    confirmation by email with everything you
-                                    need &mdash; no back-and-forth, no
-                                    scheduling tag.
-                                </p>
-                                <div class="calendar-frame">
-                                    <div
-                                        class="calendar-skeleton"
-                                        aria-hidden="true"
-                                    >
-                                        <span>Loading the calendar&hellip;</span>
-                                    </div>
-                                    <iframe
-                                        src="https://api.leadconnectorhq.com/widget/booking/c7PuY8SoSbTEfdovYwp8"
-                                        scrolling="no"
-                                        id="c7PuY8SoSbTEfdovYwp8_iframe"
-                                        title="Branch and Root — Discovery Call Booking"
-                                        onload="this.previousElementSibling && this.previousElementSibling.classList.add('is-hidden');"
-                                    ></iframe>
-                                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
-                                    <noscript>
-                                        <p class="form-fallback">
-                                            JavaScript is required to load the
-                                            booking calendar. Email
-                                            <a
-                                                href="mailto:sales@branchandrootconsulting.com"
-                                                >sales@branchandrootconsulting.com</a
-                                            >
-                                            instead &mdash; we&rsquo;ll respond
-                                            within one business day to get you
-                                            on the calendar.
-                                        </p>
-                                    </noscript>
-                                </div>
+                    <ul class="booking-meta" aria-label="Call details">
+                        <li>
+                            <span class="meta-label">Length</span>
+                            <span class="meta-value">30 minutes</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Where</span>
+                            <span class="meta-value">Phone or video</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Cost</span>
+                            <span class="meta-value">Free</span>
+                        </li>
+                        <li>
+                            <span class="meta-label">Local to</span>
+                            <span class="meta-value">Orange County, CA</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ===== BOOKING CARD — single, centered, elevated. The
+                 calendar iframe is GHL&rsquo;s sandbox, so we only style
+                 the frame: deep elevation, generous padding, brand-paper
+                 surface gradient. Width-constrained so it reads as a
+                 deliberate object on the page, not a panel that bled. ==== -->
+            <section class="section booking-section" id="calendar">
+                <div class="container">
+                    <div class="booking-card">
+                        <header class="booking-card-head">
+                            <span class="eyebrow">The Calendar</span>
+                            <h2>
+                                Grab the slot that
+                                <em>works for you</em>.
+                            </h2>
+                            <p class="form-intro">
+                                Open times below. Confirmation hits your
+                                inbox the moment you book &mdash; no
+                                back-and-forth, no scheduling tag.
+                            </p>
+                        </header>
+                        <div class="calendar-frame">
+                            <div class="calendar-skeleton" aria-hidden="true">
+                                <span>Loading the calendar&hellip;</span>
                             </div>
+                            <iframe
+                                src="https://api.leadconnectorhq.com/widget/booking/c7PuY8SoSbTEfdovYwp8"
+                                scrolling="no"
+                                id="c7PuY8SoSbTEfdovYwp8_iframe"
+                                title="Branch and Root — Discovery Call Booking"
+                                onload="this.previousElementSibling && this.previousElementSibling.classList.add('is-hidden');"
+                            ></iframe>
+                            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                            <noscript>
+                                <p class="form-fallback">
+                                    JavaScript is required to load the
+                                    booking calendar. Email
+                                    <a href="mailto:sales@branchandrootconsulting.com"
+                                        >sales@branchandrootconsulting.com</a
+                                    >
+                                    instead &mdash; we&rsquo;ll respond
+                                    within one business day to get you on
+                                    the calendar.
+                                </p>
+                            </noscript>
                         </div>
-
-                        <!-- ===== WHAT TO EXPECT — sticky aside ===== -->
-                        <aside
-                            class="contact-details calendar-aside"
-                            aria-label="What to expect on the call"
-                        >
-                            <span class="eyebrow">What to Expect</span>
-                            <ul>
-                                <li>
-                                    <div>
-                                        <span class="label">The Call</span>
-                                        Thirty minutes &mdash; phone or video,
-                                        your choice.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label">The Conversation</span>
-                                        What&rsquo;s working, what&rsquo;s
-                                        leaking, and what it would take to
-                                        fix it.
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label">The Promise</span>
-                                        No deck. No pitch. If we&rsquo;re not
-                                        the right fit, we&rsquo;ll tell you
-                                        who is.
-                                    </div>
-                                </li>
-                            </ul>
-                        </aside>
                     </div>
+                </div>
+            </section>
 
-                    <div class="location-stamp">
-                        <div
-                            class="horizon"
-                            style="max-width: 360px"
-                            role="presentation"
-                        >
-                            <i></i>
-                        </div>
+            <!-- ===== WHAT TO EXPECT — three editorial pillars on paper.
+                 Big serif numerals as gutter ornaments, aligned to the
+                 numeral pattern used elsewhere on the site. ============== -->
+            <section class="section section-paper booking-expect">
+                <div class="container">
+                    <header class="booking-expect-head">
+                        <span class="eyebrow">What to Expect</span>
+                        <h2>
+                            Three things you can <em>count on</em>.
+                        </h2>
+                    </header>
+                    <div class="booking-pillars">
+                        <article class="booking-pillar">
+                            <span class="pillar-numeral" aria-hidden="true"
+                                >01</span
+                            >
+                            <h3>The Call</h3>
+                            <p>
+                                Thirty minutes &mdash; phone or video, your
+                                choice. Calendar invite lands in your inbox
+                                the second you book.
+                            </p>
+                        </article>
+                        <article class="booking-pillar">
+                            <span class="pillar-numeral" aria-hidden="true"
+                                >02</span
+                            >
+                            <h3>The Conversation</h3>
+                            <p>
+                                What&rsquo;s working, what&rsquo;s leaking,
+                                and what it would take to fix it. We come
+                                prepared. You stay prepared.
+                            </p>
+                        </article>
+                        <article class="booking-pillar">
+                            <span class="pillar-numeral" aria-hidden="true"
+                                >03</span
+                            >
+                            <h3>The Promise</h3>
+                            <p>
+                                No deck. No pitch. If we&rsquo;re not the
+                                right fit, we&rsquo;ll tell you who is.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="horizon booking-expect-rule" aria-hidden="true">
+                        <i></i>
                     </div>
                 </div>
             </section>
