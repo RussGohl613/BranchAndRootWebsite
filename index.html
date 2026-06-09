@@ -135,6 +135,69 @@
       </div>
     </section>
 
+    <!-- ===== LEAD MAGNET ===== -->
+    <section class="section section-bone" id="checklist" aria-labelledby="checklist-h2">
+      <div class="container">
+        <div class="editorial-spread">
+          <div class="col-lede">
+            <span class="eyebrow">Free Self-Audit</span>
+            <h2 id="checklist-h2">Find the revenue leaks <em>yourself</em> &mdash; in about fifteen minutes.</h2>
+          </div>
+          <div class="col-body">
+            <p>The 7-Point Revenue Leak Checklist is the same opening pass we run on every diagnosis call &mdash; written down, in plain English, for established OC service businesses. Seven questions. Honest answers. If any of them sting a little &mdash; that&rsquo;s the leak.</p>
+
+            <form
+              class="lead-form"
+              data-lead-form
+              data-source="magnet"
+              data-tag="lead-magnet"
+              data-require-phone="false"
+              novalidate
+            >
+              <input
+                type="text"
+                name="company_website"
+                tabindex="-1"
+                autocomplete="off"
+                style="position:absolute;left:-9999px"
+                aria-hidden="true"
+              />
+
+              <div class="lead-field">
+                <label for="lm-name">Name</label>
+                <input id="lm-name" name="name" type="text" required autocomplete="name" />
+              </div>
+
+              <div class="lead-field">
+                <label for="lm-email">Email</label>
+                <input id="lm-email" name="email" type="email" required autocomplete="email" />
+              </div>
+
+              <button type="submit" class="btn-primary lead-submit">
+                Send Me the Checklist
+              </button>
+
+              <p class="form-consent">
+                One email with the PDF &mdash; no drip sequence, no spam. Unsubscribe whenever. See our
+                <a href="privacy-policy.html">Privacy Policy</a>.
+              </p>
+            </form>
+
+            <div class="lead-success" data-success hidden>
+              <p>Done. The checklist is on its way to your inbox &mdash; should land in the next minute. If it doesn&rsquo;t, peek in spam for a note from sales@branchandrootconsulting.com.</p>
+            </div>
+
+            <div class="lead-error" data-error hidden>
+              <p>Something went sideways on our end. Fastest way to get the checklist is to
+                <a href="mailto:sales@branchandrootconsulting.com?subject=Send%20me%20the%207-Point%20Checklist">email us directly</a>
+                &mdash; we&rsquo;ll send it over within one business day.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== HONEST TRUTH ===== -->
     <section class="section section-cream" id="how-it-works">
       <div class="container">
@@ -259,5 +322,6 @@
   </footer>
 
   <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/lead-form.js"></script>
 </body>
 </html>

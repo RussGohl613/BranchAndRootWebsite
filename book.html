@@ -28,10 +28,10 @@
             media="(prefers-color-scheme: dark)"
             content="#0F1B14"
         />
-        <title>Book a Consultation — Branch and Root Consulting</title>
+        <title>Book Your Free 30-Minute Discovery — Branch and Root Consulting</title>
         <meta
             name="description"
-            content="Book a free 30-minute consultation with the team. We'll walk through your business honestly, identify the gaps, and tell you straight if Branch and Root is the right fit."
+            content="Pick a time. 30 minutes. Honest read on where your business is leaking revenue and whether we're the right fit to help."
         />
         <link
             rel="icon"
@@ -48,11 +48,11 @@
         <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
         <meta
             property="og:title"
-            content="Book a Consultation — Branch and Root Consulting"
+            content="Book Your Free 30-Minute Discovery — Branch and Root Consulting"
         />
         <meta
             property="og:description"
-            content="No pitch decks. No pressure. A 30-minute honest look at where your business is leaking revenue."
+            content="Pick a time. 30 minutes. Honest read on where your business is leaking revenue and whether we're the right fit to help."
         />
         <meta property="og:image" content="assets/img/og-image.jpg" />
         <link
@@ -72,17 +72,9 @@
         <link rel="stylesheet" href="assets/css/tokens.css" />
         <link rel="stylesheet" href="assets/css/site.css" />
         <!-- ===== Analytics & Pixels =============================================
-       Uncomment each block and fill in your ID when the account is ready.
+       PageView fires from GA4 + GTM above. Conversion events live on
+       thank-you.html — do NOT add booking conversion events on this page.
        ==================================================================== -->
-        <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3746FRPDV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3746FRPDV');
-  </script>
-  -->
         <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -146,8 +138,11 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="contact.html" class="btn btn-primary nav-cta"
-                    >Book a Free Consultation</a
+                <!-- Nav CTA on this page jumps to the calendar below instead of
+                     linking to contact.html — the visitor is already on the
+                     booking page, so bouncing them elsewhere would be silly. -->
+                <a href="#calendar" class="btn btn-primary nav-cta"
+                    >Pick a Time</a
                 >
                 <button
                     class="nav-toggle"
@@ -196,166 +191,113 @@
                         <a href="contact.html" data-nav="contact">Contact</a>
                     </li>
                 </ul>
-                <a href="contact.html" class="btn btn-primary mobile-cta"
-                    >Book a Free Consultation</a
+                <a href="#calendar" class="btn btn-primary mobile-cta"
+                    >Pick a Time</a
                 >
             </div>
         </header>
 
         <main id="main">
-            <!-- ===== PAGE HERO ===== -->
+            <!-- ===== PAGE HERO — tightened: eyebrow + h1 + single-line lede.
+                 The old two-column aside got pushed into the .what-to-expect
+                 column beside the calendar — keeps the hero light so the
+                 calendar leads the page. ============================== -->
             <section class="page-hero">
                 <div class="container">
-                    <div class="page-hero-grid">
-                        <div>
-                            <span class="eyebrow">Book a Consultation</span>
-                            <h1>
-                                Let&rsquo;s take 30 minutes and look at your
-                                business <em>honestly</em>.
-                            </h1>
-                        </div>
-                        <div class="page-hero-aside">
-                            <span class="annotation"
-                                >— A note on how this goes</span
-                            >
-                            <p>
-                                No pitch decks. No pressure. The team will walk
-                                through your current situation, show you where
-                                the gaps are, and tell you straight whether
-                                Branch &amp; Root is the right fit &mdash; and
-                                if so, exactly what we&rsquo;d do about it.
-                            </p>
-                        </div>
-                    </div>
+                    <span class="eyebrow">Book a Time</span>
+                    <h1>
+                        Pick a time. <em>We&rsquo;ll meet you there.</em>
+                    </h1>
+                    <p class="lead">
+                        Thirty minutes &mdash; phone or video, your call. An
+                        honest read on where the revenue is leaking and
+                        whether we&rsquo;re the right fit to help fix it.
+                    </p>
                 </div>
             </section>
 
-            <section class="section section-cream">
+            <section class="section section-cream" id="calendar">
                 <div class="container">
-                    <div class="contact-grid">
-                        <!-- ===== DISCOVERY FORM (native, POSTs to /api/lead) ===== -->
-                        <div class="ghl-form-embed">
-                            <h2>
-                                Tell us where the revenue is <em>leaking</em>.
-                            </h2>
-                            <p class="form-intro">
-                                A few quick details and the team will reach out
-                                inside one business day to lock in your free
-                                thirty minutes. No drip sequences. No spam
-                                &mdash; just a real conversation between
-                                neighbors.
-                            </p>
-
-                            <form
-                                class="lead-form"
-                                data-lead-form
-                                data-source="discovery"
-                                data-tag="form-discovery"
-                                data-require-phone="true"
-                                novalidate
-                            >
-                                <input
-                                    type="text"
-                                    name="company_website"
-                                    tabindex="-1"
-                                    autocomplete="off"
-                                    style="position:absolute;left:-9999px"
-                                    aria-hidden="true"
-                                />
-
-                                <div class="lead-field">
-                                    <label for="lf-name">Name</label>
-                                    <input id="lf-name" name="name" type="text" required autocomplete="name" />
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-email">Email</label>
-                                    <input id="lf-email" name="email" type="email" required autocomplete="email" />
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-phone">Phone</label>
-                                    <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" />
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-biz">Business type <span class="lead-optional">(optional)</span></label>
-                                    <input id="lf-biz" name="business_type" type="text" autocomplete="organization" />
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-msg">Where&rsquo;s the leak? <span class="lead-optional">(optional)</span></label>
-                                    <textarea id="lf-msg" name="message" rows="4"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn-primary lead-submit">
-                                    Request my free thirty minutes
-                                </button>
-                            </form>
-
-                            <div class="lead-success" data-success hidden>
-                                <p>
-                                    Got it. Check your inbox in the next minute
-                                    &mdash; you&rsquo;ll get a booking link to
-                                    pick a time that works for you.
+                    <!-- ===== CALENDAR + ASIDE TWO-COLUMN LAYOUT ===================
+               Calendar iframe in the main column (GHL sandboxes its DOM, so
+               internal styling lives in the GHL appearance settings — we
+               only style the frame around it). The aside is sticky on
+               desktop and stacks below on mobile. Collapses at 900px to
+               match other two-column spreads on the site. =================== -->
+                    <div class="calendar-layout">
+                        <div class="calendar-main">
+                            <div class="calendar-card">
+                                <span class="eyebrow">The Calendar</span>
+                                <h2>
+                                    Grab the slot that
+                                    <em>works for you</em>.
+                                </h2>
+                                <p class="form-intro">
+                                    Open times below. You&rsquo;ll get a
+                                    confirmation by email with everything you
+                                    need &mdash; no back-and-forth, no
+                                    scheduling tag.
                                 </p>
+                                <div class="calendar-frame">
+                                    <div
+                                        class="calendar-skeleton"
+                                        aria-hidden="true"
+                                    >
+                                        <span>Loading the calendar&hellip;</span>
+                                    </div>
+                                    <iframe
+                                        src="https://api.leadconnectorhq.com/widget/booking/c7PuY8SoSbTEfdovYwp8"
+                                        scrolling="no"
+                                        id="c7PuY8SoSbTEfdovYwp8_iframe"
+                                        title="Branch and Root — Discovery Call Booking"
+                                        onload="this.previousElementSibling && this.previousElementSibling.classList.add('is-hidden');"
+                                    ></iframe>
+                                    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+                                    <noscript>
+                                        <p class="form-fallback">
+                                            JavaScript is required to load the
+                                            booking calendar. Email
+                                            <a
+                                                href="mailto:sales@branchandrootconsulting.com"
+                                                >sales@branchandrootconsulting.com</a
+                                            >
+                                            instead &mdash; we&rsquo;ll respond
+                                            within one business day to get you
+                                            on the calendar.
+                                        </p>
+                                    </noscript>
+                                </div>
                             </div>
-
-                            <div class="lead-error" data-error hidden>
-                                <p>
-                                    Something went sideways on our end. The fastest
-                                    way to reach us is to
-                                    <a href="mailto:sales@branchandrootconsulting.com">email us directly</a>
-                                    &mdash; we&rsquo;ll respond within one business day.
-                                </p>
-                            </div>
-
-                            <p class="form-consent">
-                                By submitting the form above, you agree to our
-                                <a href="terms-of-service.html"
-                                    >Terms of Service</a
-                                >
-                                and
-                                <a href="privacy-policy.html">Privacy Policy</a
-                                >.
-                            </p>
                         </div>
 
-                        <!-- ===== CONTACT DETAILS ===== -->
+                        <!-- ===== WHAT TO EXPECT — sticky aside ===== -->
                         <aside
-                            class="contact-details"
-                            aria-label="Contact information"
+                            class="contact-details calendar-aside"
+                            aria-label="What to expect on the call"
                         >
-                            <span class="eyebrow">Or Reach Us Directly</span>
+                            <span class="eyebrow">What to Expect</span>
                             <ul>
                                 <li>
                                     <div>
-                                        <span class="label">Service Area</span>
-                                        Orange County, California
+                                        <span class="label">The Call</span>
+                                        Thirty minutes &mdash; phone or video,
+                                        your choice.
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <span class="label">Email</span>
-                                        <a
-                                            href="mailto:sales@branchandrootconsulting.com"
-                                            >sales@branchandrootconsulting.com</a
-                                        >
+                                        <span class="label">The Conversation</span>
+                                        What&rsquo;s working, what&rsquo;s
+                                        leaking, and what it would take to
+                                        fix it.
                                     </div>
                                 </li>
                                 <li>
                                     <div>
-                                        <span class="label">Hours</span>
-                                        Monday&ndash;Friday, 9am&ndash;6pm PST
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label"
-                                            >Primary Contact</span
-                                        >
-                                        Matthew Sr., Client Relations &amp;
-                                        Sales Director
+                                        <span class="label">The Promise</span>
+                                        No deck. No pitch. If we&rsquo;re not
+                                        the right fit, we&rsquo;ll tell you
+                                        who is.
                                     </div>
                                 </li>
                             </ul>
@@ -443,6 +385,5 @@
         </footer>
 
         <script defer src="assets/js/site.js"></script>
-        <script defer src="assets/js/lead-form.js"></script>
     </body>
 </html>

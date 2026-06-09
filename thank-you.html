@@ -31,20 +31,20 @@
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
   <!-- ===== Conversion Tracking =============================================
-       This page fires after a successful booking — ideal for conversion events.
-       Uncomment each block and fill in your ID when the account is ready.
+       Russ: swap the placeholder IDs below when accounts are live —
+         META_PIXEL_ID, GA4_MEASUREMENT_ID, AW-CONVERSION_ID/AW-CONVERSION_LABEL.
+       Source-specific events fire from the inline script at the end of <body>.
        ==================================================================== -->
-  <!-- GA4 Conversion Event — fires on booking confirmation
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3746FRPDV"></script>
+  <!-- GA4 Conversion Event -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA4_MEASUREMENT_ID"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-D3746FRPDV');
-    gtag('event', 'conversion', { 'event_category': 'lead', 'event_label': 'booking_confirmed' });
+    gtag('config', 'GA4_MEASUREMENT_ID');
+    gtag('config', 'AW-CONVERSION_ID');
   </script>
-  -->
-  <!-- Meta Pixel Lead Event
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -52,12 +52,10 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', 'META_PIXEL_ID');
-    fbq('track', 'Lead');
+    fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=Lead&noscript=1"/></noscript>
-  -->
-  <!-- Google Ads Conversion — add AW-CONVERSION_ID/CONVERSION_LABEL after campaigns are live -->
+    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -106,9 +104,9 @@
           <div class="icon-check" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
-          <span class="eyebrow">Request Received</span>
-          <h1>Got it. We&rsquo;ll be in touch <em>shortly</em>.</h1>
-          <p class="lead">Matthew will personally read what you sent and reach out inside one business day to lock in your free thirty minutes. No drip sequences. No spam. Just a real conversation between neighbors.</p>
+          <span class="eyebrow" id="ty-eyebrow">Request Received</span>
+          <h1 id="ty-heading">Got it. We&rsquo;ll be in touch <em>shortly</em>.</h1>
+          <p class="lead" id="ty-lead">Matthew will personally read what you sent and reach out inside one business day to lock in your free thirty minutes. No drip sequences. No spam. Just a real conversation between neighbors.</p>
           <div class="horizon" role="presentation"><i></i></div>
           <p class="mt-3">In the meantime, if you want a head start, take a look at how <a href="bundles.html">The Foundation</a> works &mdash; it&rsquo;s where most OC service businesses we work with begin.</p>
           <a href="index.html" class="btn btn-ghost btn-arrow mt-4">Back to Home</a>
@@ -157,5 +155,30 @@
   </footer>
 
   <script defer src="assets/js/site.js"></script>
+  <script>
+    (function(){
+      var source = (new URLSearchParams(window.location.search).get('source') || '').toLowerCase();
+      var heading = document.getElementById('ty-heading');
+      var lead = document.getElementById('ty-lead');
+      if (source === 'discovery') {
+        if (heading) heading.textContent = "Thanks — we've got your details";
+        if (lead) lead.textContent = "Check your inbox in the next minute for a booking link. Pick a time that works and we'll be there.";
+        if (typeof gtag === 'function') gtag('event', 'lead_form_submit');
+        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'discovery_form' });
+      } else if (source === 'magnet') {
+        if (heading) heading.textContent = "Check your inbox";
+        if (lead) lead.textContent = "Your 7-Point Revenue Leak Checklist is on its way. Open it, run through it this week, and reply to that email if anything stands out.";
+        if (typeof gtag === 'function') gtag('event', 'lead_magnet_download');
+        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'revenue_leak_checklist' });
+      } else {
+        if (typeof gtag === 'function') gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSION_ID/AW-CONVERSION_LABEL',
+          'event_category': 'lead',
+          'event_label': 'booking_confirmed'
+        });
+        if (typeof fbq === 'function') fbq('track', 'Schedule');
+      }
+    })();
+  </script>
 </body>
 </html>
