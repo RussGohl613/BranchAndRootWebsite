@@ -2549,9 +2549,11 @@ main > section + section.bridge {
   margin: var(--s-5) auto 0;
 }
 
-/* ---- Meta strip (call details, four columns desktop / two mobile) ---- */
+/* ---- Meta strip (call details, four columns desktop / two mobile) ----
+   --paper-soft sits one tone above --page-bg in both modes — so the strip
+   reads as a distinct surface, not just an extension of the hero. */
 .booking-meta-strip {
-  background: var(--cream);
+  background: var(--paper-soft);
   border-bottom: 1px solid var(--line-soft);
   padding-block: var(--s-4);
 }
@@ -2607,9 +2609,12 @@ main > section + section.bridge {
   line-height: 1.2;
 }
 
-/* ---- Booking card (the headline object on the page) ---- */
+/* ---- Booking card (the headline object on the page) ----
+   Gradient lifts gently from --paper-soft → --paper so the section reads
+   as its own act in both light and dark modes (page-bg is --cream which
+   is darker than --paper-soft in dark, lighter than --paper in light). */
 .booking-section {
-  background: linear-gradient(180deg, var(--cream) 0%, var(--paper-soft) 100%);
+  background: linear-gradient(180deg, var(--paper-soft) 0%, var(--paper) 100%);
   padding-block: clamp(3rem, 5vw, 5rem);
 }
 .booking-card {
@@ -2775,6 +2780,28 @@ main > section + section.bridge {
 .booking-expect-rule {
   max-width: 360px;
   margin: var(--s-6) auto 0;
+}
+
+/* ---- Dark-mode polish for the booking page ---- */
+@media (prefers-color-scheme: dark) {
+  .booking-meta-strip { border-bottom-color: rgba(255, 255, 255, 0.06); }
+  .booking-card {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 30px 60px -22px rgba(0, 0, 0, 0.65),
+      0 0 0 1px rgba(45, 106, 79, 0.12);
+  }
+  .booking-card::before {
+    background: linear-gradient(180deg, rgba(45, 106, 79, 0.10), transparent 22%);
+  }
+  .booking-pillar {
+    background: var(--bone);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+  .booking-pillar .pillar-numeral {
+    color: var(--moss-light);
+    opacity: 0.16;
+  }
 }
 .form-consent {
   margin-top: var(--s-3);
