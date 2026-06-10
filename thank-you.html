@@ -31,31 +31,31 @@
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
   <!-- ===== Conversion Tracking =============================================
-       Russ: swap the placeholder IDs below when accounts are live —
-         META_PIXEL_ID, GA4_MEASUREMENT_ID, AW-CONVERSION_ID/AW-CONVERSION_LABEL.
-       Source-specific events fire from the inline script at the end of <body>.
+       GA4 (G-D3746FRPDV) and GTM (GTM-N6MLQZFR) already fire from the head
+       block above — DO NOT add a second gtag/gtag.js loader here.
+
+       To enable the rest of conversion tracking, set the values inside
+       window.__BR_CONV at the very top of <body> when the account is live:
+         googleAdsId      → 'AW-1234567890'  (Google Ads conversion ID)
+         googleAdsLabel   → 'AbCdEfGhIj'     (Conversion label from Ads UI)
+         metaPixelId      → '1234567890123456' (15-digit Meta Pixel ID)
+       Until those are set, the inline script at the end of <body> stays
+       silent — no broken pixel requests, no placeholder events.
        ==================================================================== -->
-  <!-- GA4 Conversion Event -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA4_MEASUREMENT_ID"></script>
+  <!-- Meta Pixel loader (kept dormant until __BR_CONV.metaPixelId is set) -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'GA4_MEASUREMENT_ID');
-    gtag('config', 'AW-CONVERSION_ID');
+    (function(){
+      var id = (window.__BR_CONV && window.__BR_CONV.metaPixelId) || '';
+      if (!id || /^META_/i.test(id)) return; // placeholder → skip entirely
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', id);
+      window.fbq('track', 'PageView');
+    })();
   </script>
-  <!-- Meta Pixel -->
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', 'META_PIXEL_ID');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -156,27 +156,61 @@
 
   <script defer src="assets/js/site.js"></script>
   <script>
+    // ===== Conversion tracking config ====================================
+    // Set these once the accounts are live and the conversion events will
+    // begin firing automatically. Until then the script stays silent — no
+    // failed pixel requests, no garbage in GA4.
+    window.__BR_CONV = {
+      googleAdsId:    '', // e.g. 'AW-1234567890'
+      googleAdsLabel: '', // e.g. 'AbCdEfGhIj'
+      metaPixelId:    ''  // e.g. '1234567890123456'
+    };
+  </script>
+  <script>
     (function(){
+      var conv = window.__BR_CONV || {};
       var source = (new URLSearchParams(window.location.search).get('source') || '').toLowerCase();
       var heading = document.getElementById('ty-heading');
       var lead = document.getElementById('ty-lead');
+      var ga4Ready = typeof window.gtag === 'function';
+      var fbReady  = typeof window.fbq === 'function';
+      var adsReady = !!(conv.googleAdsId && conv.googleAdsLabel
+                        && !/^AW-CONVERSION_/i.test(conv.googleAdsId));
+
+      function copy(headingText, leadText){
+        if (heading) heading.textContent = headingText;
+        if (lead)    lead.textContent    = leadText;
+      }
+
       if (source === 'discovery') {
-        if (heading) heading.textContent = "Thanks — we've got your details";
-        if (lead) lead.textContent = "Check your inbox in the next minute for a booking link. Pick a time that works and we'll be there.";
-        if (typeof gtag === 'function') gtag('event', 'lead_form_submit');
-        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'discovery_form' });
-      } else if (source === 'magnet') {
-        if (heading) heading.textContent = "Check your inbox";
-        if (lead) lead.textContent = "Your 7-Point Revenue Leak Checklist is on its way. Open it, run through it this week, and reply to that email if anything stands out.";
-        if (typeof gtag === 'function') gtag('event', 'lead_magnet_download');
-        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'revenue_leak_checklist' });
-      } else {
-        if (typeof gtag === 'function') gtag('event', 'conversion', {
-          'send_to': 'AW-CONVERSION_ID/AW-CONVERSION_LABEL',
-          'event_category': 'lead',
-          'event_label': 'booking_confirmed'
+        copy(
+          "Thanks — we've got your details",
+          "Check your inbox in the next minute for a booking link. Pick a time that works and we'll be there."
+        );
+        if (ga4Ready) window.gtag('event', 'lead_form_submit', {
+          event_category: 'lead', event_label: 'discovery_form'
         });
-        if (typeof fbq === 'function') fbq('track', 'Schedule');
+        if (fbReady)  window.fbq('track', 'Lead', { content_name: 'discovery_form' });
+      } else if (source === 'magnet') {
+        copy(
+          "Check your inbox",
+          "Your 7-Point Revenue Leak Checklist is on its way. Open it, run through it this week, and reply to that email if anything stands out."
+        );
+        if (ga4Ready) window.gtag('event', 'lead_magnet_download', {
+          event_category: 'lead', event_label: 'revenue_leak_checklist'
+        });
+        if (fbReady)  window.fbq('track', 'Lead', { content_name: 'revenue_leak_checklist' });
+      } else {
+        // Default branch — calendar booking confirmation lands here.
+        if (ga4Ready) window.gtag('event', 'booking_confirmed', {
+          event_category: 'lead', event_label: 'calendar_booking'
+        });
+        if (fbReady)  window.fbq('track', 'Schedule');
+        if (ga4Ready && adsReady) window.gtag('event', 'conversion', {
+          send_to: conv.googleAdsId + '/' + conv.googleAdsLabel,
+          event_category: 'lead',
+          event_label: 'booking_confirmed'
+        });
       }
     })();
   </script>

@@ -67,16 +67,29 @@
     }
 
     const { firstName, lastName } = splitName(name);
+    const source = form.dataset.source || 'website';
     const customFields = {};
     if (businessType) customFields.business_type = businessType;
     if (message) customFields.message = message;
+
+    // Auto-populate Lead Source (custom field) so the GHL contact record
+    // shows where the lead came from without us having to remember to map it.
+    // Keep these labels human-readable — they appear in the GHL UI directly.
+    if (source === 'discovery') {
+      customFields.lead_source = 'Website — Discovery Form';
+    } else if (source === 'magnet') {
+      customFields.lead_source = 'Website — Lead Magnet';
+      customFields.lead_magnet_downloaded = '7-Point Revenue Leak Checklist';
+    } else {
+      customFields.lead_source = 'Website — ' + source.charAt(0).toUpperCase() + source.slice(1);
+    }
 
     const payload = {
       firstName,
       lastName,
       email,
       phone,
-      source: form.dataset.source || 'website',
+      source: source,
       tags: form.dataset.tag ? [form.dataset.tag] : []
     };
     if (Object.keys(customFields).length) payload.customFields = customFields;

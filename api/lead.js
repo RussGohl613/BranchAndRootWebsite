@@ -1,8 +1,12 @@
 // Vercel serverless function — proxies lead submits to GHL v2 API.
+// Custom field IDs come from the GHL location. Keep this map in sync with
+// HANDOFF.md → "Reference values you'll need" → "Custom field IDs".
 const CUSTOM_FIELD_IDS = {
   business_type: 'e3tgSG6HFOeKsbEv7rus',
   message: 'DXFI0RGaO7htZW7jY9xh',
-  lead_source: 'XjIN3AmokIisH9GXZCER'
+  lead_source: 'XjIN3AmokIisH9GXZCER',
+  lead_magnet_downloaded: 'bB3TjBnbDxMRU5pSnlrH',
+  booking_status: 'B28v4TFQK4NHW2aNdUgT'
 };
 
 export default async function handler(req, res) {
