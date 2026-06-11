@@ -36,6 +36,25 @@
     err.style.display = '';
   }
 
+  // Kick off a download of a same-origin file without navigating the page.
+  // The `download` attribute tells the browser to save rather than open, and
+  // the click-on-detached-anchor pattern works across modern browsers. Wrapped
+  // in try/catch so a failure here never blocks the success flow — the
+  // thank-you page carries a visible backup link regardless.
+  function triggerDownload(url) {
+    try {
+      const a = document.createElement('a');
+      a.href = url;
+      a.setAttribute('download', '');
+      a.rel = 'noopener';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      // Swallow — the backup link on thank-you.html covers this case.
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
@@ -103,12 +122,21 @@
         body: JSON.stringify(payload)
       });
       if (!res.ok) throw new Error('upstream');
+
+      // Lead magnet: hand the PDF over immediately on success. The lead is
+      // already captured in GHL above; this guarantees the visitor gets the
+      // checklist even before the GHL nurture email fires (and regardless of
+      // whether that workflow is live). Same-origin asset, so `download` works.
+      const pdf = form.dataset.magnetPdf;
+      if (pdf) triggerDownload(pdf);
+
       form.style.display = 'none';
       const ok = form.parentNode.querySelector('[data-success]');
       if (ok) { ok.hidden = false; ok.style.display = ''; }
+      // Give the download a beat to start before navigating away.
       setTimeout(() => {
         window.location = 'thank-you.html?source=' + encodeURIComponent(payload.source);
-      }, 1500);
+      }, pdf ? 2400 : 1500);
     } catch (err) {
       showError(form, name, email, phone, message);
       if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = originalLabel; }
