@@ -31,7 +31,7 @@
         <title>Book Your Free 30-Minute Discovery — Branch and Root Consulting</title>
         <meta
             name="description"
-            content="Pick a time. 30 minutes. Honest read on where your business is leaking revenue and whether we're the right fit to help."
+            content="Pick a time for your free discovery call. An honest read on where your business is leaking revenue — and whether we're the right fit to help fix it."
         />
         <link
             rel="icon"
@@ -52,7 +52,7 @@
         />
         <meta
             property="og:description"
-            content="Pick a time. 30 minutes. Honest read on where your business is leaking revenue and whether we're the right fit to help."
+            content="Pick a time for your free discovery call. An honest read on where your business is leaking revenue — and whether we're the right fit to help fix it."
         />
         <meta property="og:image" content="assets/img/og-image.jpg" />
         <link
@@ -69,6 +69,13 @@
             type="font/woff2"
             crossorigin
         />
+        <!-- Warm up the connection to GHL so the booking iframe + its resize
+             script start downloading the moment the parser reaches them —
+             shaves the TLS/DNS handshake off the calendar's first paint. -->
+        <link rel="preconnect" href="https://api.leadconnectorhq.com" crossorigin />
+        <link rel="preconnect" href="https://link.msgsndr.com" crossorigin />
+        <link rel="dns-prefetch" href="https://api.leadconnectorhq.com" />
+        <link rel="dns-prefetch" href="https://link.msgsndr.com" />
         <link rel="stylesheet" href="assets/css/tokens.css" />
         <link rel="stylesheet" href="assets/css/site.css" />
         <!-- PageView fires from GA4 + GTM above. -->
@@ -192,13 +199,10 @@
                         Pick a time. <em>We&rsquo;ll meet you there.</em>
                     </h1>
                     <p class="lead">
-                        Thirty minutes &mdash; phone or video, your call. An
-                        honest read on where the revenue is leaking and
-                        whether we&rsquo;re the right fit to help fix it.
+                        Phone or video, your call &mdash; an honest read on
+                        where the revenue is leaking, and whether we&rsquo;re
+                        the right fit to help fix it.
                     </p>
-                    <div class="horizon booking-hero-rule" aria-hidden="true">
-                        <i></i>
-                    </div>
                 </div>
             </section>
 
@@ -243,14 +247,33 @@
                                 <em>works for you</em>.
                             </h2>
                             <p class="form-intro">
-                                Open times below. Confirmation hits your
-                                inbox the moment you book &mdash; no
-                                back-and-forth, no scheduling tag.
+                                Open times below &mdash; your confirmation
+                                lands the moment you book.
                             </p>
                         </header>
                         <div class="calendar-frame">
+                            <!-- Calendar-shaped loading skeleton. Sits behind
+                                 the iframe and fades out on its onload, so the
+                                 visitor sees a calendar taking shape instead of
+                                 a blank white box during GHL's paint window. -->
                             <div class="calendar-skeleton" aria-hidden="true">
-                                <span>Loading the calendar&hellip;</span>
+                                <div class="cal-skel">
+                                    <div class="cal-skel-head">
+                                        <span class="cal-skel-title"></span>
+                                        <span class="cal-skel-nav"><i></i><i></i></span>
+                                    </div>
+                                    <div class="cal-skel-week">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <div class="cal-skel-grid">
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                </div>
+                                <p class="cal-skel-label">Loading available times&hellip;</p>
                             </div>
                             <iframe
                                 src="https://api.leadconnectorhq.com/widget/booking/c7PuY8SoSbTEfdovYwp8"
@@ -295,9 +318,9 @@
                             >
                             <h3>The Call</h3>
                             <p>
-                                Thirty minutes &mdash; phone or video, your
-                                choice. Calendar invite lands in your inbox
-                                the second you book.
+                                Phone or video, your choice. The calendar
+                                invite lands in your inbox the second you
+                                book.
                             </p>
                         </article>
                         <article class="booking-pillar">

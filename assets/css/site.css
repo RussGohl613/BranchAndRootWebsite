@@ -2493,8 +2493,10 @@ main > section + section.bridge {
 /* ---- Hero banner (dark forest) ---- */
 .booking-hero {
   background: var(--forest);
-  color: var(--cream);
-  padding-block: clamp(4rem, 7vw, 6.5rem) clamp(3rem, 5vw, 4.5rem);
+  /* --cream-fixed (not --cream) so the hero text stays light in BOTH modes.
+     --cream flips to near-black in dark mode; the hero background does not. */
+  color: var(--cream-fixed);
+  padding-block: clamp(2.5rem, 4vw, 3.75rem) clamp(2rem, 3vw, 2.75rem);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -2527,13 +2529,16 @@ main > section + section.bridge {
   font-weight: 500;
   letter-spacing: var(--track-tight);
   line-height: 1.05;
-  color: var(--cream);
-  margin-top: var(--s-3);
-  margin-bottom: var(--s-3);
+  /* "Pick a time." — fixed cream so it reads white on forest in dark mode. */
+  color: var(--cream-fixed);
+  margin-top: var(--s-2);
+  margin-bottom: var(--s-2);
 }
 .booking-hero h1 em {
   font-style: italic;
-  color: var(--moss-light);
+  /* Brighter moss than --moss-light so the italic clears AA-large contrast
+     against forest in both modes. */
+  color: #7FC4A0;
   font-weight: 400;
 }
 .booking-hero .lead {
@@ -2615,7 +2620,8 @@ main > section + section.bridge {
    is darker than --paper-soft in dark, lighter than --paper in light). */
 .booking-section {
   background: linear-gradient(180deg, var(--paper-soft) 0%, var(--paper) 100%);
-  padding-block: clamp(3rem, 5vw, 5rem);
+  /* Tighter top than bottom so the calendar rides higher up the page. */
+  padding-block: clamp(1.75rem, 3vw, 2.75rem) clamp(3rem, 5vw, 5rem);
 }
 .booking-card {
   max-width: 820px;
@@ -2640,7 +2646,7 @@ main > section + section.bridge {
 .booking-card-head {
   text-align: center;
   max-width: 600px;
-  margin: 0 auto var(--s-4);
+  margin: 0 auto var(--s-3);
 }
 .booking-card-head .eyebrow { justify-content: center; }
 .booking-card-head h2 {
@@ -2650,8 +2656,8 @@ main > section + section.bridge {
   letter-spacing: var(--track-tight);
   line-height: 1.1;
   color: var(--heading, var(--ink-warm));
-  margin-top: var(--s-2);
-  margin-bottom: var(--s-3);
+  margin-top: var(--s-1);
+  margin-bottom: var(--s-2);
 }
 .booking-card-head h2 em {
   font-style: italic;
@@ -2687,18 +2693,94 @@ main > section + section.bridge {
   inset: 0;
   z-index: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--s-3);
   background: var(--paper);
+  overflow: hidden;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+.calendar-skeleton.is-hidden { opacity: 0; pointer-events: none; }
+
+/* ---- Calendar-shaped skeleton ----
+   A month header, weekday strip, and 5×7 day grid built from brand-toned
+   placeholder blocks — so the loading state mirrors the calendar that's
+   about to replace it, rather than a blank box. A single light sweep
+   passes across the whole mock to signal "working", not "broken". */
+.cal-skel {
+  width: min(420px, 84%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cal-skel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+.cal-skel-title {
+  display: block;
+  width: 44%;
+  height: 1.05rem;
+  border-radius: 5px;
+  background: var(--line-soft);
+}
+.cal-skel-nav { display: inline-flex; gap: 0.5rem; }
+.cal-skel-nav i {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  background: var(--line-soft);
+}
+.cal-skel-week,
+.cal-skel-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+}
+.cal-skel-week span {
+  height: 0.5rem;
+  border-radius: 3px;
+  background: var(--line-soft);
+  opacity: 0.65;
+}
+.cal-skel-grid span {
+  aspect-ratio: 1 / 1;
+  border-radius: 7px;
+  background: var(--line-soft);
+}
+.cal-skel-label {
   font-family: var(--font-body);
   font-size: var(--fs-anno);
   font-weight: 600;
   letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   color: var(--slate);
-  transition: opacity var(--dur-slow) var(--ease);
+  margin: 0;
 }
-.calendar-skeleton.is-hidden { opacity: 0; pointer-events: none; }
+/* The sweep — a soft band of light translating left → right on a loop. */
+.calendar-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 72%
+  );
+  transform: translateX(-100%);
+  animation: calSkelSweep 1.7s var(--ease) infinite;
+  pointer-events: none;
+}
+@keyframes calSkelSweep {
+  to { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .calendar-skeleton::after { animation: none; opacity: 0; }
+}
 
 /* ---- What to Expect — three editorial pillars on paper ---- */
 .booking-expect {
@@ -2801,6 +2883,16 @@ main > section + section.bridge {
   .booking-pillar .pillar-numeral {
     color: var(--moss-light);
     opacity: 0.16;
+  }
+  /* Dimmer, moss-tinted sweep so the skeleton glows softly on dark paper
+     instead of flashing a harsh white band. */
+  .calendar-skeleton::after {
+    background: linear-gradient(
+      100deg,
+      transparent 28%,
+      rgba(82, 148, 111, 0.18) 50%,
+      transparent 72%
+    );
   }
 }
 .form-consent {

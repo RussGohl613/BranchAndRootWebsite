@@ -217,7 +217,7 @@ if ('IntersectionObserver' in window && horizonEls.length) {
 }
 
 // --- Scroll progress bar (on long pages) ----------------------------------
-const longPagePaths = new Set(['', 'index', 'index.html', 'services', 'services.html', 'bundles', 'bundles.html', 'faq', 'faq.html', 'about', 'about.html', 'contact', 'contact.html']);
+const longPagePaths = new Set(['', 'index', 'index.html', 'services', 'services.html', 'bundles', 'bundles.html', 'faq', 'faq.html', 'about', 'about.html', 'contact', 'contact.html', 'book', 'book.html']);
 if (longPagePaths.has(path.replace('.html', '')) || longPagePaths.has(path)) {
   const bar = document.createElement('div');
   bar.className = 'scroll-progress';
