@@ -620,65 +620,56 @@
   text-decoration-color: rgba(247, 245, 240, 0.65);
 }
 
-/* ---- Lead Feature: forest band --------------------------------------- */
+/* ---- Lead Feature: forest band — single editorial column -------------- */
 .blog-lead-feature {
   position: relative;
   overflow: hidden;
   padding-block: clamp(4rem, 9vw, 7rem);
 }
-/* Radial glow, mirroring cta-banner / page-hero aesthetic.
-   NOTE: ellipse origin shifted from 90% 10% → 65% -15% and opacity reduced
-   from 0.20 → 0.11 so the glow sits above the band rather than directly
-   behind the aside column (where the tiny pill + read-time text live). */
+/* Radial glow — warm moss ambient from upper-left and lower-left */
 .blog-lead-feature::before {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 900px 500px at 65% -15%, rgba(82, 148, 111, 0.11), transparent 60%),
+    radial-gradient(ellipse 900px 500px at 5% -15%, rgba(82, 148, 111, 0.13), transparent 60%),
     radial-gradient(ellipse 700px 400px at -5% 90%, rgba(82, 148, 111, 0.14), transparent 60%);
   pointer-events: none;
 }
-.blog-lead-feature .container { position: relative; }
+.blog-lead-feature .container {
+  position: relative;
+  /* Single editorial column: max-content at 1920 stays in the container, no
+     sprawl. Content is capped so nothing reads across the full 1240px. */
+}
 
-/* Ghosted numeral — positioned absolutely in the section */
+/* Ghosted numeral — top-right of container, behind content, hidden below 900px */
 .blog-lead-feature .gutter-numeral {
   position: absolute;
-  top: clamp(1rem, 4vw, 3rem);
+  top: clamp(0.5rem, 3vw, 2rem);
   right: 0;
   line-height: 1;
   /* inherits .section-forest .gutter-numeral: cream-fixed at 0.08 opacity */
 }
+@media (max-width: 899px) {
+  .blog-lead-feature .gutter-numeral { display: none; }
+}
 
-/* Eyebrow sits above the grid */
+/* Eyebrow sits above the headline */
 .blog-lead-feature > .container > .eyebrow {
   display: block;
   margin-bottom: var(--s-3);
   position: relative;
 }
 
-/* Two-col grid: headline body left, aside right */
-.blog-lead-feature-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-5);
-  align-items: start;
-}
-@media (min-width: 900px) {
-  .blog-lead-feature-grid {
-    grid-template-columns: 8.5fr 3.5fr;
-    gap: var(--s-7);
-    align-items: center;
-  }
-}
-
+/* Headline: Fraunces display, capped ~18ch so it wraps as 2-3 strong lines */
 .blog-lead-feature-headline {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.04;
   letter-spacing: var(--track-tighter);
   color: var(--cream-fixed);
+  max-width: 18ch;
   margin: 0 0 var(--s-4);
 }
 .blog-lead-feature-headline em {
@@ -688,59 +679,76 @@
   font-variation-settings: "opsz" 144, "SOFT" 100;
 }
 
+/* Standfirst: italic serif, comfortable measure */
 .blog-lead-feature-standfirst {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  font-size: clamp(1.08rem, 1rem + 0.4vw, 1.22rem);
   line-height: 1.55;
-  color: rgba(247, 245, 240, 0.85);
-  max-width: 56ch;
-  margin: 0;
+  color: rgba(247, 245, 240, 0.86);
+  max-width: 62ch;
+  margin: 0 0 var(--s-4);
 }
 
-/* Aside: meta row + button */
-.blog-lead-feature-aside {
-  display: flex;
-  flex-direction: column;
-  gap: var(--s-4);
-  align-items: flex-start;
-}
-@media (min-width: 900px) {
-  .blog-lead-feature-aside {
-    border-left: 1px solid rgba(247, 245, 240, 0.18);
-    padding-left: var(--s-5);
-  }
-}
-
-/* Meta row tag/readtime — restyled for dark band.
-   Legibility fixes: brighter border, trimmed letter-spacing, full-strength
-   cream on read-time, explicit font-smoothing to prevent subpixel softness. */
+/* Meta row: inline tag + read-time, justified left, below standfirst */
 .blog-lead-feature-meta {
   justify-content: flex-start;
   gap: var(--s-2);
+  margin-bottom: var(--s-4);
 }
+
+/* Tag and read-time on dark band */
 .blog-tag-dark {
   background: rgba(247, 245, 240, 0.10);
-  border-color: rgba(247, 245, 240, 0.40);  /* was 0.22 — clearly visible */
+  border-color: rgba(247, 245, 240, 0.40);
   color: var(--moss-light);
-  font-size: 0.74rem;                        /* was var(--fs-anno) = 0.68rem */
-  letter-spacing: 0.12em;                    /* was var(--track-eyebrow) = 0.22em */
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 .blog-readtime-dark {
-  color: var(--cream-fixed);                 /* was rgba(247,245,240,0.55) — full strength */
-  font-size: 0.74rem;                        /* match tag size */
-  letter-spacing: 0.12em;                    /* trim wide eyebrow tracking */
+  color: var(--cream-fixed);
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* CTA button — color fix: override the .section-forest a rule (cream text)
+   that had higher specificity (0,2,0) than .btn-cream (0,1,0).
+   Using :not(.btn) on band link rules is the hygenic fix; we also raise
+   the button specificity here as a belt-and-suspenders guard. */
+.section-forest a:not(.btn) {
+  color: var(--cream-fixed);
+  text-decoration-color: rgba(247, 245, 240, 0.45);
+}
+.section-forest a:not(.btn):hover {
+  color: var(--bone);
+}
+
+/* Explicit forest-on-cream for btn-cream wherever it appears on a forest band */
+.section-forest .btn-cream,
+.section-forest .btn-cream:hover {
+  color: var(--forest-fixed);
+}
+
+.blog-lead-feature-cta {
+  /* margin-top is provided by .blog-lead-feature-meta margin-bottom above */
+  position: relative;
+  z-index: 1;
+}
+
 /* ---- Secondary Features: bone band, open editorial spread ------------ */
+/* Cap inner content width to keep columns at a comfortable measure at 1920.
+   At max container (1240px) minus padding the two columns are ~560px each —
+   fine. But .container itself can grow; the wrapper cap keeps text measure
+   inside comfortable reading territory on any display. */
 .blog-secondary-spread {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--s-5);
+  max-width: 72rem;   /* ~1152px — two comfortable ~540px reading columns */
 }
 @media (min-width: 900px) {
   .blog-secondary-spread {
@@ -793,6 +801,63 @@
   margin: 0;
 }
 
+/* ---- Library Link Band: wayfinding block to /blog/all-guides ---------- */
+/* Bone background, quieter than the CTA banner (no dark band).
+   Editorial composition: eyebrow + heading + copy + single primary button.
+   On desktop the content + action sit side-by-side; on mobile they stack. */
+.blog-library-band { padding-block: clamp(3.5rem, 7vw, 6rem); }
+
+.blog-library-band-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  align-items: flex-start;
+  /* Hairline top + bottom to delimit the wayfinding block without drama */
+  border-top: 1px solid var(--line-hair);
+  border-bottom: 1px solid var(--line-hair);
+  padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 900px) {
+  .blog-library-band-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-6);
+  }
+}
+
+.blog-library-band-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+/* Override eyebrow margin-bottom inside band to tighten the stack */
+.blog-library-band-content .eyebrow {
+  margin-bottom: var(--s-2);
+}
+
+.blog-library-band-heading {
+  font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: var(--track-tight);
+  color: var(--heading);
+  max-width: 30ch;
+  margin: 0 0 var(--s-2);
+}
+
+.blog-library-band-copy {
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--slate);
+  max-width: 55ch;
+  margin: 0;
+}
+
+.blog-library-band-action {
+  flex-shrink: 0;
+}
+
 /* ---- Accented post cards: alternating moss top border rhythm --------- */
 .post-card--accented {
   border-top: 3px solid var(--moss);
@@ -831,10 +896,19 @@
 
   /* Accented card top border */
   .post-card--accented { border-top-color: var(--moss-light); }
+
+  /* Library link band — hairlines and copy on dark page-bg */
+  .blog-library-band-inner {
+    border-top-color: var(--line);
+    border-bottom-color: var(--line);
+  }
+  .blog-library-band-heading { color: var(--heading); }
+  .blog-library-band-copy { color: var(--slate); }
 }
 
 /* ---- Reduced motion additions ---------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .blog-secondary-feature-headline a { transition: none; }
   .blog-mission a { transition: none; }
+  .blog-lead-feature-cta { transition: none; }
 }

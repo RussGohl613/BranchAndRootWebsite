@@ -55,7 +55,8 @@ Website/
 │       ├── revenue-leak-checklist.pdf   # Lead magnet PDF
 │       └── team/               # Team headshot directory
 ├── blog/
-│   ├── index.html              # Blog hub — 7 categories, 40 post cards
+│   ├── index.html              # Blog hub — featured 12 posts + compact index; links to /blog/all-guides
+│   ├── all-guides/index.html   # Full 35-post category index at /blog/all-guides
 │   └── {slug}/index.html       # One directory per post (40 posts)
 ├── .templates/
 │   └── blog-post.html          # Master post template with {{TOKEN}} placeholders
@@ -112,7 +113,8 @@ linked in nav or footer, disallowed in `robots.txt`, absent from `sitemap.xml`.
 
 ### Architecture
 
-- Hub: `blog/index.html` — 7 categories with post cards (Hiring Decisions · Costs & Compensation · Finding & Vetting Talent · Lead Gen Fundamentals · Tools & Tactics · Performance & Metrics · Industry & Strategy).
+- Hub: `blog/index.html` — features the top 12 posts (lead feature + 2 secondary + 9-card grid) and a compact index of all 35; links to `/blog/all-guides` for the complete category-organized library.
+- Full library: `blog/all-guides/index.html` — all 35 published guides organized across 7 categories, served at `/blog/all-guides`.
 - Posts: each lives at `blog/{slug}/index.html` (40 posts total).
 - Styles: `assets/css/blog.css` loaded in addition to the global sheets.
 - Master template: `.templates/blog-post.html` — contains the full page structure; only the 5 token values change between posts.
