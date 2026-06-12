@@ -64,6 +64,210 @@
       .sitemap-section h3 { color: var(--moss-light); }
       .sitemap-list a { color: var(--moss-light); }
     }
+
+    /* =====================================================================
+       Site-graph styles
+       ===================================================================== */
+
+    /* Wrapper */
+    .sg-wrap {
+      margin-block: 2rem 2.5rem;
+      border: 1px solid var(--line-hair);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      padding: 1rem 0.5rem 0.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* SVG fills its container; aspect from viewBox */
+    #site-graph {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    /* Mobile: hide the graph, show the note */
+    @media (max-width: 767px) {
+      .sg-wrap { display: none; }
+      .sg-mobile-note { display: block; }
+    }
+    @media (min-width: 768px) {
+      .sg-mobile-note { display: none; }
+    }
+
+    .sg-mobile-note {
+      font-size: 0.875rem;
+      color: var(--slate-soft);
+      font-style: italic;
+      margin-block-end: 1rem;
+      padding-inline: 0.25rem;
+    }
+
+    /* --- Edges ---------------------------------------------------------- */
+    .sg-edge {
+      stroke: var(--moss);
+      stroke-width: 1;
+      opacity: 0.2;
+      transition: opacity 200ms var(--ease), stroke-width 200ms var(--ease);
+    }
+    .sg-edge--post {
+      stroke: var(--moss);
+      stroke-width: 0.75;
+      opacity: 0.15;
+    }
+    .sg-edge.sg-related {
+      opacity: 0.8;
+      stroke-width: 1.5;
+    }
+    .sg-edge.sg-edge-dim {
+      opacity: 0.05;
+    }
+    .sg-edge.sg-cluster-hidden {
+      display: none;
+    }
+
+    /* --- Node circles --------------------------------------------------- */
+    .sg-circle {
+      transition: r 200ms var(--ease), fill 200ms var(--ease),
+                  filter 200ms var(--ease), transform 200ms var(--ease);
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    /* Tier fills */
+    .sg-node--home   .sg-circle { fill: var(--forest); }
+    .sg-node--t1     .sg-circle { fill: var(--moss); }
+    .sg-node--legal  .sg-circle { fill: var(--slate); opacity: 0.7; }
+    .sg-node--cat    .sg-circle { fill: var(--moss-light); }
+    .sg-node--post   .sg-circle { fill: var(--slate); opacity: 0.55; }
+
+    /* Active / neighbor states */
+    .sg-node.sg-active   .sg-circle { filter: brightness(1.2); }
+    .sg-node.sg-neighbor .sg-circle { filter: brightness(1.1); }
+    .sg-node.sg-dim      .sg-circle { opacity: 0.2; }
+    .sg-node.sg-dim text { opacity: 0.15; }
+
+    /* Post nodes: scale up on active */
+    .sg-node--post.sg-active .sg-circle,
+    .sg-node--post.sg-neighbor .sg-circle {
+      transform: scale(1.5);
+    }
+
+    /* Post cluster: hidden until parent is open (default: open) */
+    .sg-node--post.sg-cluster-hidden {
+      display: none;
+    }
+
+    /* prefers-reduced-motion */
+    .sg-no-motion .sg-circle,
+    .sg-no-motion .sg-edge,
+    .sg-no-motion text {
+      transition: none !important;
+    }
+
+    /* --- Labels --------------------------------------------------------- */
+    text.sg-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      fill: var(--body-fg);
+      pointer-events: none;
+      user-select: none;
+    }
+    text.sg-label--home {
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--bone);
+      letter-spacing: 0.04em;
+    }
+    text.sg-label--cat {
+      font-size: 10px;
+      font-weight: 600;
+      fill: var(--forest);
+    }
+    text.sg-label--sm {
+      font-size: 9.5px;
+    }
+    text.sg-label--post {
+      font-size: 9px;
+      fill: var(--slate-soft);
+      /* hidden until hover/cluster-open — managed via CSS opacity on parent */
+      opacity: 0;
+      transition: opacity 180ms var(--ease);
+    }
+
+    /* Show post label when its node is active/neighbor or cluster is not hidden */
+    .sg-node--post:not(.sg-cluster-hidden) text.sg-label--post {
+      opacity: 1;
+    }
+    .sg-node--post.sg-active text.sg-label--post,
+    .sg-node--post.sg-neighbor text.sg-label--post {
+      opacity: 1;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .sg-wrap { background: var(--surface); border-color: var(--line); }
+      text.sg-label { fill: var(--ink-soft); }
+      text.sg-label--home { fill: var(--cream-soft); }
+      text.sg-label--cat  { fill: var(--moss-light); }
+      text.sg-label--sm   { fill: var(--slate); }
+      text.sg-label--post { fill: var(--slate); }
+      .sg-node--home  .sg-circle { fill: var(--moss); }
+      .sg-node--t1    .sg-circle { fill: var(--moss-light); }
+      .sg-node--cat   .sg-circle { fill: var(--forest); }
+      .sg-node--post  .sg-circle { fill: var(--slate); opacity: 0.4; }
+      .sg-node--legal .sg-circle { fill: var(--slate); opacity: 0.5; }
+      .sg-edge { stroke: var(--moss-light); }
+    }
+
+    /* --- Category toggle cursor ----------------------------------------- */
+    .sg-node--cat [role="button"] { cursor: pointer; }
+    .sg-node--cat [role="button"]:focus-visible {
+      outline: 2px solid var(--moss);
+      outline-offset: 3px;
+      border-radius: 50%;
+    }
+
+    /* Focus-visible on links inside the SVG */
+    .sg-node a:focus-visible circle.sg-hit {
+      outline: none;
+    }
+    .sg-node a:focus-visible ~ circle.sg-circle,
+    .sg-node a:focus-visible + circle.sg-circle {
+      outline: 2px solid var(--moss);
+    }
+
+    /* --- Tooltip -------------------------------------------------------- */
+    .sg-tooltip {
+      position: fixed;
+      z-index: 1000;
+      background: var(--forest);
+      color: var(--cream-soft);
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      line-height: 1.4;
+      padding: 0.35rem 0.6rem;
+      border-radius: var(--radius);
+      pointer-events: none;
+      white-space: nowrap;
+      max-width: 320px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      opacity: 0;
+      transform: translateY(2px);
+      transition: opacity 120ms var(--ease), transform 120ms var(--ease);
+    }
+    .sg-tooltip--visible {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-color-scheme: dark) {
+      .sg-tooltip {
+        background: var(--moss);
+        color: var(--cream);
+      }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -109,7 +313,7 @@
           <li><a href="/bundles" data-nav="bundles">Bundles</a></li>
           <li><a href="/about"    data-nav="about">About</a></li>
           <li><a href="/faq"      data-nav="faq">FAQ</a></li>
-          <li><a href="/blog"     data-nav="blog">Blog</a></li>
+          <li><a href="/blog"     data-nav="blog">Guides</a></li>
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
@@ -125,7 +329,7 @@
         <li><a href="/bundles" data-nav="bundles">Bundles</a></li>
         <li><a href="/about"    data-nav="about">About</a></li>
         <li><a href="/faq"      data-nav="faq">FAQ</a></li>
-        <li><a href="/blog"     data-nav="blog">Blog</a></li>
+        <li><a href="/blog"     data-nav="blog">Guides</a></li>
         <li><a href="/contact"  data-nav="contact">Contact</a></li>
       </ul>
       <a href="/contact" class="btn btn-primary mobile-cta">Book a Free Consultation</a>
@@ -151,8 +355,501 @@
       </div>
     </section>
 
+    <!-- ===== SITE GRAPH ===== -->
+    <section class="section section-bone" aria-label="Interactive site map" data-no-reveal>
+      <div class="container">
+
+        <p class="sg-mobile-note" aria-hidden="true">The interactive map needs a bigger screen &mdash; everything is listed below.</p>
+
+        <div class="sg-wrap" data-no-reveal>
+          <svg id="site-graph" viewBox="0 0 1400 1000"
+               role="img"
+               aria-labelledby="graph-title graph-desc">
+            <title id="graph-title">Branch and Root Consulting &mdash; Site Map Graph</title>
+            <desc id="graph-desc">Interactive radial network showing all 52 pages: Home at the centre, 7 main pages, 7 guide categories, 35 articles, and 2 legal pages. Hover or tap any node to highlight connections. Click a category node to collapse its articles.</desc>
+
+        <!-- Edges layer -->
+        <g class="sg-edges" aria-hidden="true">
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="services" x1="740" y1="535" x2="740.0" y2="365.0"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="bundles" x1="740" y1="535" x2="872.9" y2="429.0"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="about" x1="740" y1="535" x2="905.7" y2="572.8"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="faq" x1="740" y1="535" x2="813.8" y2="688.2"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="contact" x1="740" y1="535" x2="666.2" y2="688.2"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="book" x1="740" y1="535" x2="574.3" y2="572.8"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="guides" x1="740" y1="535" x2="607.1" y2="429.0"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="privacy" x1="740" y1="535" x2="625.9" y2="290.3"/>
+          <line class="sg-edge sg-edge--t1" data-from="home" data-to="terms" x1="740" y1="535" x2="854.1" y2="290.3"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-hiring" x1="607.1" y1="429.0" x2="402.6" y2="628.1"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-industry" x1="607.1" y1="429.0" x2="390.4" y2="519.3"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-finding" x1="607.1" y1="429.0" x2="412.3" y2="412.0"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-leadfund" x1="607.1" y1="429.0" x2="466.4" y2="316.8"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-tools" x1="607.1" y1="429.0" x2="547.2" y2="242.9"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-costs" x1="607.1" y1="429.0" x2="646.9" y2="197.6"/>
+          <line class="sg-edge sg-edge--cat" data-from="guides" data-to="cat-perf" x1="607.1" y1="429.0" x2="755.7" y2="185.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-hire-lead-gen-agency-vs-sales-team" x1="402.6" y1="628.1" x2="335.6" y2="774.5"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-what-to-look-for-in-lead-generation-expert" x1="402.6" y1="628.1" x2="320.6" y2="747.1"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-is-a-lead-gen-agency-right-for-my-company" x1="402.6" y1="628.1" x2="307.5" y2="718.9"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-fractional-lead-generation-specialist" x1="402.6" y1="628.1" x2="296.2" y2="689.8"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-part-time-lead-generation-hire" x1="402.6" y1="628.1" x2="286.9" y2="660.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-lead-gen-remote-vs-in-office" x1="402.6" y1="628.1" x2="279.6" y2="629.7"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-lead-generation-as-a-career" x1="402.6" y1="628.1" x2="274.4" y2="599.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-experience-level-for-lead-gen-hire" x1="402.6" y1="628.1" x2="271.2" y2="568.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-hiring" data-to="post-should-lead-gen-hire-also-do-sales" x1="402.6" y1="628.1" x2="270.0" y2="536.9"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-costs" data-to="post-cost-to-hire-lead-generation-specialist" x1="646.9" y1="197.6" x2="585.2" y2="91.2"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-costs" data-to="post-lead-generation-salary-guide" x1="646.9" y1="197.6" x2="615.0" y2="81.9"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-costs" data-to="post-commission-pay-for-lead-generation" x1="646.9" y1="197.6" x2="645.3" y2="74.6"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-lead-generation-problem-vs-sales-problem" x1="412.3" y1="412.0" x2="278.7" y2="444.7"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-find-qualified-lead-generation-professionals" x1="412.3" y1="412.0" x2="285.7" y2="414.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-questions-to-ask-when-hiring-lead-gen" x1="412.3" y1="412.0" x2="294.7" y2="384.5"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-how-to-qualify-leads-best-practices" x1="412.3" y1="412.0" x2="305.7" y2="355.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-red-flags-when-hiring-lead-gen-specialist" x1="412.3" y1="412.0" x2="318.5" y2="327.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-finding" data-to="post-job-description-for-lead-generation-role" x1="412.3" y1="412.0" x2="333.3" y2="299.5"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-leadfund" data-to="post-qualified-lead-vs-unqualified-lead" x1="466.4" y1="316.8" x2="337.0" y2="293.1"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-leadfund" data-to="post-lead-generation-vs-sales" x1="466.4" y1="316.8" x2="353.9" y2="267.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-leadfund" data-to="post-lead-generation-vs-lead-qualification" x1="466.4" y1="316.8" x2="372.5" y2="242.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-leadfund" data-to="post-what-does-lead-gen-specialist-do-daily" x1="466.4" y1="316.8" x2="392.8" y2="218.3"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-leadfund" data-to="post-best-way-to-contact-leads" x1="466.4" y1="316.8" x2="414.5" y2="195.9"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-tools" data-to="post-linkedin-sales-navigator-for-lead-generation" x1="547.2" y1="242.9" x2="443.4" y2="170.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-tools" data-to="post-attract-inbound-leads-vs-outbound-hiring" x1="547.2" y1="242.9" x2="468.2" y2="151.6"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-tools" data-to="post-tools-professional-lead-generators-use" x1="547.2" y1="242.9" x2="494.2" y2="134.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-tools" data-to="post-how-to-find-leads-on-linkedin" x1="547.2" y1="242.9" x2="521.3" y2="119.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-perf" data-to="post-how-long-to-see-results-from-lead-gen-hire" x1="755.7" y1="185.4" x2="745.5" y2="65.0"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-perf" data-to="post-how-many-leads-is-your-business-losing" x1="755.7" y1="185.4" x2="776.6" y2="66.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-lead-generation-for-b2b-hiring-guide" x1="390.4" y1="519.3" x2="273.4" y2="591.7"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-industries-that-benefit-from-lead-generators" x1="390.4" y1="519.3" x2="270.7" y2="560.7"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-lead-gen-agency-vs-freelancer" x1="390.4" y1="519.3" x2="270.0" y2="529.5"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-how-to-train-lead-generation-hire" x1="390.4" y1="519.3" x2="271.4" y2="498.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-how-to-qualify-b2b-leads" x1="390.4" y1="519.3" x2="274.9" y2="467.4"/>
+          <line class="sg-edge sg-edge--post" data-from="cat-industry" data-to="post-lead-generation-for-startups" x1="390.4" y1="519.3" x2="280.4" y2="436.7"/>
+        </g>
+
+        <!-- Nodes layer -->
+        <g class="sg-nodes" aria-label="Site pages">
+          <g class="sg-node sg-node--home" data-id="home" role="group">
+            <title>Home &mdash; Branch and Root Consulting</title>
+            <circle class="sg-circle" cx="740" cy="535" r="28"/>
+            <a href="/" aria-label="Home &mdash; Branch and Root Consulting">
+              <circle class="sg-hit" cx="740" cy="535" r="38" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--home" x="740" y="535" dominant-baseline="central" text-anchor="middle">Home</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="services" role="group">
+            <title>Services</title>
+            <circle class="sg-circle" cx="740.0" cy="365.0" r="14"/>
+            <a href="/services" aria-label="Services">
+              <circle class="sg-hit" cx="740.0" cy="365.0" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="740.0" y="365.0" dx="0.0" dy="-23.0" text-anchor="middle">Services</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="bundles" role="group">
+            <title>Bundles</title>
+            <circle class="sg-circle" cx="872.9" cy="429.0" r="14"/>
+            <a href="/bundles" aria-label="Bundles">
+              <circle class="sg-hit" cx="872.9" cy="429.0" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="872.9" y="429.0" dx="16.4" dy="-15.1" text-anchor="start">Bundles</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="about" role="group">
+            <title>About</title>
+            <circle class="sg-circle" cx="905.7" cy="572.8" r="14"/>
+            <a href="/about" aria-label="About">
+              <circle class="sg-hit" cx="905.7" cy="572.8" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="905.7" y="572.8" dx="20.5" dy="8.7" text-anchor="start">About</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="faq" role="group">
+            <title>FAQ</title>
+            <circle class="sg-circle" cx="813.8" cy="688.2" r="14"/>
+            <a href="/faq" aria-label="FAQ">
+              <circle class="sg-hit" cx="813.8" cy="688.2" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="813.8" y="688.2" dx="9.1" dy="22.9" text-anchor="start">FAQ</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="contact" role="group">
+            <title>Contact</title>
+            <circle class="sg-circle" cx="666.2" cy="688.2" r="14"/>
+            <a href="/contact" aria-label="Contact">
+              <circle class="sg-hit" cx="666.2" cy="688.2" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="666.2" y="688.2" dx="-9.1" dy="22.9" text-anchor="end">Contact</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="book" role="group">
+            <title>Book</title>
+            <circle class="sg-circle" cx="574.3" cy="572.8" r="14"/>
+            <a href="/book" aria-label="Book">
+              <circle class="sg-hit" cx="574.3" cy="572.8" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="574.3" y="572.8" dx="-20.5" dy="8.7" text-anchor="end">Book</text>
+          </g>
+          <g class="sg-node sg-node--t1" data-id="guides" role="group">
+            <title>Guides</title>
+            <circle class="sg-circle" cx="607.1" cy="429.0" r="14"/>
+            <a href="/blog" aria-label="Guides">
+              <circle class="sg-hit" cx="607.1" cy="429.0" r="24" fill="transparent"/>
+            </a>
+            <text class="sg-label" x="607.1" y="429.0" dx="-16.4" dy="-15.1" text-anchor="end">Guides</text>
+          </g>
+          <g class="sg-node sg-node--legal" data-id="privacy" role="group">
+            <title>Privacy Policy</title>
+            <circle class="sg-circle" cx="625.9" cy="290.3" r="10"/>
+            <a href="/privacy-policy" aria-label="Privacy Policy">
+              <circle class="sg-hit" cx="625.9" cy="290.3" r="18" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--sm" x="625.9" y="290.3" dx="-7.2" dy="-17.4" text-anchor="end">Privacy Policy</text>
+          </g>
+          <g class="sg-node sg-node--legal" data-id="terms" role="group">
+            <title>Terms of Service</title>
+            <circle class="sg-circle" cx="854.1" cy="290.3" r="10"/>
+            <a href="/terms-of-service" aria-label="Terms of Service">
+              <circle class="sg-hit" cx="854.1" cy="290.3" r="18" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--sm" x="854.1" y="290.3" dx="7.2" dy="-17.4" text-anchor="start">Terms of Service</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-hiring" role="group">
+            <title>Hiring Decisions</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Hiring Decisions articles">
+              <circle class="sg-circle" cx="402.6" cy="628.1" r="12"/>
+              <circle class="sg-hit" cx="402.6" cy="628.1" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="402.6" y="628.1" dx="-18.3" dy="9.1" text-anchor="end">Hiring Decisions</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-industry" role="group">
+            <title>Industry &amp; Strategy</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Industry &amp; Strategy articles">
+              <circle class="sg-circle" cx="390.4" cy="519.3" r="12"/>
+              <circle class="sg-hit" cx="390.4" cy="519.3" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="390.4" y="519.3" dx="-19.0" dy="-2.9" text-anchor="end">Industry &amp; Strategy</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-finding" role="group">
+            <title>Finding &amp; Vetting Talent</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Finding &amp; Vetting Talent articles">
+              <circle class="sg-circle" cx="412.3" cy="412.0" r="12"/>
+              <circle class="sg-hit" cx="412.3" cy="412.0" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="412.3" y="412.0" dx="-17.8" dy="-8.7" text-anchor="end">Finding &amp; Vetting Talent</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-leadfund" role="group">
+            <title>Lead Gen Fundamentals</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Lead Gen Fundamentals articles">
+              <circle class="sg-circle" cx="466.4" cy="316.8" r="12"/>
+              <circle class="sg-hit" cx="466.4" cy="316.8" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="466.4" y="316.8" dx="-14.9" dy="-13.8" text-anchor="end">Lead Gen Fundamentals</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-tools" role="group">
+            <title>Tools &amp; Tactics</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Tools &amp; Tactics articles">
+              <circle class="sg-circle" cx="547.2" cy="242.9" r="12"/>
+              <circle class="sg-hit" cx="547.2" cy="242.9" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="547.2" y="242.9" dx="-10.5" dy="-17.9" text-anchor="end">Tools &amp; Tactics</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-costs" role="group">
+            <title>Costs &amp; Compensation</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Costs &amp; Compensation articles">
+              <circle class="sg-circle" cx="646.9" cy="197.6" r="12"/>
+              <circle class="sg-hit" cx="646.9" cy="197.6" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="646.9" y="197.6" dx="-5.1" dy="-20.3" text-anchor="end">Costs &amp; Compensation</text>
+          </g>
+          <g class="sg-node sg-node--cat" data-id="cat-perf" role="group">
+            <title>Performance &amp; Metrics</title>
+            <g role="button" tabindex="0" aria-expanded="true" aria-label="Toggle Performance &amp; Metrics articles">
+              <circle class="sg-circle" cx="755.7" cy="185.4" r="12"/>
+              <circle class="sg-hit" cx="755.7" cy="185.4" r="22" fill="transparent"/>
+            </g>
+            <text class="sg-label sg-label--cat" x="755.7" y="185.4" dx="0.9" dy="-21.0" text-anchor="middle">Performance &amp; Metrics</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-hire-lead-gen-agency-vs-sales-team" data-parent="cat-hiring" role="group">
+            <title>Should I Hire a Lead Gen Agency or a Sales Team Member?</title>
+            <circle class="sg-circle" cx="335.6" cy="774.5" r="8"/>
+            <a href="/blog/hire-lead-gen-agency-vs-sales-team" aria-label="Should I Hire a Lead Gen Agency or a Sales Team Member?">
+              <circle class="sg-hit" cx="335.6" cy="774.5" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="335.6" y="774.5" dx="-12.9" dy="11.6" text-anchor="end">Should I Hire a Lead Gen Agenc&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-what-to-look-for-in-lead-generation-expert" data-parent="cat-hiring" role="group">
+            <title>What to Look for When Hiring a Lead Generation Expert</title>
+            <circle class="sg-circle" cx="320.6" cy="747.1" r="8"/>
+            <a href="/blog/what-to-look-for-in-lead-generation-expert" aria-label="What to Look for When Hiring a Lead Generation Expert">
+              <circle class="sg-hit" cx="320.6" cy="747.1" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="320.6" y="747.1" dx="-13.4" dy="10.8" text-anchor="end">What to Look for When Hiring a&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-is-a-lead-gen-agency-right-for-my-company" data-parent="cat-hiring" role="group">
+            <title>How Do I Know If a Lead Generation Agency Is Right for My Company?</title>
+            <circle class="sg-circle" cx="307.5" cy="718.9" r="8"/>
+            <a href="/blog/is-a-lead-gen-agency-right-for-my-company" aria-label="How Do I Know If a Lead Generation Agency Is Right for My Company?">
+              <circle class="sg-hit" cx="307.5" cy="718.9" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="307.5" y="718.9" dx="-13.8" dy="9.9" text-anchor="end">How Do I Know If a Lead Genera&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-fractional-lead-generation-specialist" data-parent="cat-hiring" role="group">
+            <title>Should I Hire a Fractional Lead Generation Specialist?</title>
+            <circle class="sg-circle" cx="296.2" cy="689.8" r="8"/>
+            <a href="/blog/fractional-lead-generation-specialist" aria-label="Should I Hire a Fractional Lead Generation Specialist?">
+              <circle class="sg-hit" cx="296.2" cy="689.8" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="296.2" y="689.8" dx="-14.2" dy="8.9" text-anchor="end">Should I Hire a Fractional Lea&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-part-time-lead-generation-hire" data-parent="cat-hiring" role="group">
+            <title>Can I Hire a Lead Generation Person Part-Time?</title>
+            <circle class="sg-circle" cx="286.9" cy="660.0" r="8"/>
+            <a href="/blog/part-time-lead-generation-hire" aria-label="Can I Hire a Lead Generation Person Part-Time?">
+              <circle class="sg-hit" cx="286.9" cy="660.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="286.9" y="660.0" dx="-14.5" dy="8.0" text-anchor="end">Can I Hire a Lead Generation P&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-gen-remote-vs-in-office" data-parent="cat-hiring" role="group">
+            <title>Lead Generation Hiring: Remote vs. In-Office?</title>
+            <circle class="sg-circle" cx="279.6" cy="629.7" r="8"/>
+            <a href="/blog/lead-gen-remote-vs-in-office" aria-label="Lead Generation Hiring: Remote vs. In-Office?">
+              <circle class="sg-hit" cx="279.6" cy="629.7" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="279.6" y="629.7" dx="-14.7" dy="7.0" text-anchor="end">Lead Generation Hiring: Remote&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-as-a-career" data-parent="cat-hiring" role="group">
+            <title>Is Lead Generation a Good Career Path?</title>
+            <circle class="sg-circle" cx="274.4" cy="599.0" r="8"/>
+            <a href="/blog/lead-generation-as-a-career" aria-label="Is Lead Generation a Good Career Path?">
+              <circle class="sg-hit" cx="274.4" cy="599.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="274.4" y="599.0" dx="-14.9" dy="6.0" text-anchor="end">Is Lead Generation a Good Care&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-experience-level-for-lead-gen-hire" data-parent="cat-hiring" role="group">
+            <title>How Much Experience Should a Lead Gen Hire Have?</title>
+            <circle class="sg-circle" cx="271.2" cy="568.0" r="8"/>
+            <a href="/blog/experience-level-for-lead-gen-hire" aria-label="How Much Experience Should a Lead Gen Hire Have?">
+              <circle class="sg-hit" cx="271.2" cy="568.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="271.2" y="568.0" dx="-15.0" dy="5.1" text-anchor="end">How Much Experience Should a L&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-should-lead-gen-hire-also-do-sales" data-parent="cat-hiring" role="group">
+            <title>Should My Lead Gen Hire Also Do Sales?</title>
+            <circle class="sg-circle" cx="270.0" cy="536.9" r="8"/>
+            <a href="/blog/should-lead-gen-hire-also-do-sales" aria-label="Should My Lead Gen Hire Also Do Sales?">
+              <circle class="sg-hit" cx="270.0" cy="536.9" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="270.0" y="536.9" dx="-15.0" dy="4.1" text-anchor="end">Should My Lead Gen Hire Also D&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-cost-to-hire-lead-generation-specialist" data-parent="cat-costs" role="group">
+            <title>How Much Does It Cost to Hire a Lead Generation Specialist?</title>
+            <circle class="sg-circle" cx="585.2" cy="91.2" r="8"/>
+            <a href="/blog/cost-to-hire-lead-generation-specialist" aria-label="How Much Does It Cost to Hire a Lead Generation Specialist?">
+              <circle class="sg-hit" cx="585.2" cy="91.2" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="585.2" y="91.2" dx="-4.9" dy="-16.2" text-anchor="end">How Much Does It Cost to Hire&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-salary-guide" data-parent="cat-costs" role="group">
+            <title>Lead Generation Salary: What Should I Pay?</title>
+            <circle class="sg-circle" cx="615.0" cy="81.9" r="8"/>
+            <a href="/blog/lead-generation-salary-guide" aria-label="Lead Generation Salary: What Should I Pay?">
+              <circle class="sg-hit" cx="615.0" cy="81.9" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="615.0" y="81.9" dx="-4.0" dy="-16.5" text-anchor="end">Lead Generation Salary: What S&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-commission-pay-for-lead-generation" data-parent="cat-costs" role="group">
+            <title>Should I Offer Commission-Based Pay for Lead Generation?</title>
+            <circle class="sg-circle" cx="645.3" cy="74.6" r="8"/>
+            <a href="/blog/commission-pay-for-lead-generation" aria-label="Should I Offer Commission-Based Pay for Lead Generation?">
+              <circle class="sg-hit" cx="645.3" cy="74.6" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="645.3" y="74.6" dx="-3.0" dy="-16.7" text-anchor="end">Should I Offer Commission-Base&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-problem-vs-sales-problem" data-parent="cat-finding" role="group">
+            <title>Do I Have a Lead Generation Problem or a Sales Problem?</title>
+            <circle class="sg-circle" cx="278.7" cy="444.7" r="8"/>
+            <a href="/blog/lead-generation-problem-vs-sales-problem" aria-label="Do I Have a Lead Generation Problem or a Sales Problem?">
+              <circle class="sg-hit" cx="278.7" cy="444.7" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="278.7" y="444.7" dx="-14.7" dy="-4.9" text-anchor="end">Do I Have a Lead Generation Pr&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-find-qualified-lead-generation-professionals" data-parent="cat-finding" role="group">
+            <title>How to Find Qualified Lead Generation Professionals</title>
+            <circle class="sg-circle" cx="285.7" cy="414.4" r="8"/>
+            <a href="/blog/find-qualified-lead-generation-professionals" aria-label="How to Find Qualified Lead Generation Professionals">
+              <circle class="sg-hit" cx="285.7" cy="414.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="285.7" y="414.4" dx="-14.5" dy="-5.8" text-anchor="end">How to Find Qualified Lead Gen&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-questions-to-ask-when-hiring-lead-gen" data-parent="cat-finding" role="group">
+            <title>What Questions Should I Ask When Hiring a Lead Gen Specialist?</title>
+            <circle class="sg-circle" cx="294.7" cy="384.5" r="8"/>
+            <a href="/blog/questions-to-ask-when-hiring-lead-gen" aria-label="What Questions Should I Ask When Hiring a Lead Gen Specialist?">
+              <circle class="sg-hit" cx="294.7" cy="384.5" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="294.7" y="384.5" dx="-14.2" dy="-6.8" text-anchor="end">What Questions Should I Ask Wh&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-to-qualify-leads-best-practices" data-parent="cat-finding" role="group">
+            <title>How to Qualify Leads: Best Practices for Your Business</title>
+            <circle class="sg-circle" cx="305.7" cy="355.4" r="8"/>
+            <a href="/blog/how-to-qualify-leads-best-practices" aria-label="How to Qualify Leads: Best Practices for Your Business">
+              <circle class="sg-hit" cx="305.7" cy="355.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="305.7" y="355.4" dx="-13.9" dy="-7.7" text-anchor="end">How to Qualify Leads: Best Pra&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-red-flags-when-hiring-lead-gen-specialist" data-parent="cat-finding" role="group">
+            <title>Red Flags to Avoid When Hiring a Lead Generation Specialist</title>
+            <circle class="sg-circle" cx="318.5" cy="327.0" r="8"/>
+            <a href="/blog/red-flags-when-hiring-lead-gen-specialist" aria-label="Red Flags to Avoid When Hiring a Lead Generation Specialist">
+              <circle class="sg-hit" cx="318.5" cy="327.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="318.5" y="327.0" dx="-13.5" dy="-8.6" text-anchor="end">Red Flags to Avoid When Hiring&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-job-description-for-lead-generation-role" data-parent="cat-finding" role="group">
+            <title>How to Write a Job Description for a Lead Generation Role</title>
+            <circle class="sg-circle" cx="333.3" cy="299.5" r="8"/>
+            <a href="/blog/job-description-for-lead-generation-role" aria-label="How to Write a Job Description for a Lead Generation Role">
+              <circle class="sg-hit" cx="333.3" cy="299.5" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="333.3" y="299.5" dx="-13.0" dy="-9.5" text-anchor="end">How to Write a Job Description&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-qualified-lead-vs-unqualified-lead" data-parent="cat-leadfund" role="group">
+            <title>What Makes a Qualified Lead vs. an Unqualified Lead?</title>
+            <circle class="sg-circle" cx="337.0" cy="293.1" r="8"/>
+            <a href="/blog/qualified-lead-vs-unqualified-lead" aria-label="What Makes a Qualified Lead vs. an Unqualified Lead?">
+              <circle class="sg-hit" cx="337.0" cy="293.1" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="337.0" y="293.1" dx="-12.9" dy="-9.7" text-anchor="end">What Makes a Qualified Lead vs&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-vs-sales" data-parent="cat-leadfund" role="group">
+            <title>Lead Generation vs. Sales: What&#39;s the Difference?</title>
+            <circle class="sg-circle" cx="353.9" cy="267.0" r="8"/>
+            <a href="/blog/lead-generation-vs-sales" aria-label="Lead Generation vs. Sales: What&#39;s the Difference?">
+              <circle class="sg-hit" cx="353.9" cy="267.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="353.9" y="267.0" dx="-12.3" dy="-10.6" text-anchor="end">Lead Generation vs. Sales: Wha&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-vs-lead-qualification" data-parent="cat-leadfund" role="group">
+            <title>What&#39;s the Difference Between Lead Generation and Lead Qualification?</title>
+            <circle class="sg-circle" cx="372.5" cy="242.0" r="8"/>
+            <a href="/blog/lead-generation-vs-lead-qualification" aria-label="What&#39;s the Difference Between Lead Generation and Lead Qualification?">
+              <circle class="sg-hit" cx="372.5" cy="242.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="372.5" y="242.0" dx="-11.7" dy="-11.4" text-anchor="end">What&#39;s the Difference Between &#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-what-does-lead-gen-specialist-do-daily" data-parent="cat-leadfund" role="group">
+            <title>What Does a Lead Generation Specialist Actually Do Day-to-Day?</title>
+            <circle class="sg-circle" cx="392.8" cy="218.3" r="8"/>
+            <a href="/blog/what-does-lead-gen-specialist-do-daily" aria-label="What Does a Lead Generation Specialist Actually Do Day-to-Day?">
+              <circle class="sg-hit" cx="392.8" cy="218.3" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="392.8" y="218.3" dx="-11.1" dy="-12.1" text-anchor="end">What Does a Lead Generation Sp&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-best-way-to-contact-leads" data-parent="cat-leadfund" role="group">
+            <title>What&#39;s the Best Way to Contact Leads?</title>
+            <circle class="sg-circle" cx="414.5" cy="195.9" r="8"/>
+            <a href="/blog/best-way-to-contact-leads" aria-label="What&#39;s the Best Way to Contact Leads?">
+              <circle class="sg-hit" cx="414.5" cy="195.9" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="414.5" y="195.9" dx="-10.4" dy="-12.8" text-anchor="end">What&#39;s the Best Way to Contact&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-linkedin-sales-navigator-for-lead-generation" data-parent="cat-tools" role="group">
+            <title>How to Use LinkedIn Sales Navigator for Lead Generation</title>
+            <circle class="sg-circle" cx="443.4" cy="170.4" r="8"/>
+            <a href="/blog/linkedin-sales-navigator-for-lead-generation" aria-label="How to Use LinkedIn Sales Navigator for Lead Generation">
+              <circle class="sg-hit" cx="443.4" cy="170.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="443.4" y="170.4" dx="-9.5" dy="-13.6" text-anchor="end">How to Use LinkedIn Sales Navi&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-attract-inbound-leads-vs-outbound-hiring" data-parent="cat-tools" role="group">
+            <title>How to Attract Inbound Leads Instead of Hiring for Outbound</title>
+            <circle class="sg-circle" cx="468.2" cy="151.6" r="8"/>
+            <a href="/blog/attract-inbound-leads-vs-outbound-hiring" aria-label="How to Attract Inbound Leads Instead of Hiring for Outbound">
+              <circle class="sg-hit" cx="468.2" cy="151.6" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="468.2" y="151.6" dx="-8.7" dy="-14.2" text-anchor="end">How to Attract Inbound Leads I&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-tools-professional-lead-generators-use" data-parent="cat-tools" role="group">
+            <title>What Tools Do Professional Lead Generators Use?</title>
+            <circle class="sg-circle" cx="494.2" cy="134.4" r="8"/>
+            <a href="/blog/tools-professional-lead-generators-use" aria-label="What Tools Do Professional Lead Generators Use?">
+              <circle class="sg-hit" cx="494.2" cy="134.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="494.2" y="134.4" dx="-7.8" dy="-14.8" text-anchor="end">What Tools Do Professional Lea&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-to-find-leads-on-linkedin" data-parent="cat-tools" role="group">
+            <title>How to Find Leads Using LinkedIn for Your Sales Team</title>
+            <circle class="sg-circle" cx="521.3" cy="119.0" r="8"/>
+            <a href="/blog/how-to-find-leads-on-linkedin" aria-label="How to Find Leads Using LinkedIn for Your Sales Team">
+              <circle class="sg-hit" cx="521.3" cy="119.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="521.3" y="119.0" dx="-7.0" dy="-15.3" text-anchor="end">How to Find Leads Using Linked&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-long-to-see-results-from-lead-gen-hire" data-parent="cat-perf" role="group">
+            <title>How Long Does It Take to See Results From a Lead Generation Hire?</title>
+            <circle class="sg-circle" cx="745.5" cy="65.0" r="8"/>
+            <a href="/blog/how-long-to-see-results-from-lead-gen-hire" aria-label="How Long Does It Take to See Results From a Lead Generation Hire?">
+              <circle class="sg-hit" cx="745.5" cy="65.0" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="745.5" y="65.0" dx="0.2" dy="-17.0" text-anchor="middle">How Long Does It Take to See R&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-many-leads-is-your-business-losing" data-parent="cat-perf" role="group">
+            <title>How Many Leads Does Your Business Lose per Month?</title>
+            <circle class="sg-circle" cx="776.6" cy="66.4" r="8"/>
+            <a href="/blog/how-many-leads-is-your-business-losing" aria-label="How Many Leads Does Your Business Lose per Month?">
+              <circle class="sg-hit" cx="776.6" cy="66.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="776.6" y="66.4" dx="1.2" dy="-17.0" text-anchor="start">How Many Leads Does Your Busin&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-for-b2b-hiring-guide" data-parent="cat-industry" role="group">
+            <title>Lead Generation for B2B: What&#39;s Different About Hiring?</title>
+            <circle class="sg-circle" cx="273.4" cy="591.7" r="8"/>
+            <a href="/blog/lead-generation-for-b2b-hiring-guide" aria-label="Lead Generation for B2B: What&#39;s Different About Hiring?">
+              <circle class="sg-hit" cx="273.4" cy="591.7" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="273.4" y="591.7" dx="-14.9" dy="5.8" text-anchor="end">Lead Generation for B2B: What&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-industries-that-benefit-from-lead-generators" data-parent="cat-industry" role="group">
+            <title>What Industries Benefit Most From Hiring Lead Generators?</title>
+            <circle class="sg-circle" cx="270.7" cy="560.7" r="8"/>
+            <a href="/blog/industries-that-benefit-from-lead-generators" aria-label="What Industries Benefit Most From Hiring Lead Generators?">
+              <circle class="sg-hit" cx="270.7" cy="560.7" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="270.7" y="560.7" dx="-15.0" dy="4.8" text-anchor="end">What Industries Benefit Most F&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-gen-agency-vs-freelancer" data-parent="cat-industry" role="group">
+            <title>Lead Generation Agency vs. Freelancer: Which Is Better?</title>
+            <circle class="sg-circle" cx="270.0" cy="529.5" r="8"/>
+            <a href="/blog/lead-gen-agency-vs-freelancer" aria-label="Lead Generation Agency vs. Freelancer: Which Is Better?">
+              <circle class="sg-hit" cx="270.0" cy="529.5" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="270.0" y="529.5" dx="-15.0" dy="-2.2" text-anchor="end">Lead Generation Agency vs. Fre&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-to-train-lead-generation-hire" data-parent="cat-industry" role="group">
+            <title>How to Train a New Lead Generation Hire</title>
+            <circle class="sg-circle" cx="271.4" cy="498.4" r="8"/>
+            <a href="/blog/how-to-train-lead-generation-hire" aria-label="How to Train a New Lead Generation Hire">
+              <circle class="sg-hit" cx="271.4" cy="498.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="271.4" y="498.4" dx="-15.0" dy="-3.2" text-anchor="end">How to Train a New Lead Genera&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-how-to-qualify-b2b-leads" data-parent="cat-industry" role="group">
+            <title>How to Qualify B2B Leads Effectively</title>
+            <circle class="sg-circle" cx="274.9" cy="467.4" r="8"/>
+            <a href="/blog/how-to-qualify-b2b-leads" aria-label="How to Qualify B2B Leads Effectively">
+              <circle class="sg-hit" cx="274.9" cy="467.4" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="274.9" y="467.4" dx="-14.8" dy="-4.2" text-anchor="end">How to Qualify B2B Leads Effec&#8230;</text>
+          </g>
+          <g class="sg-node sg-node--post" data-id="post-lead-generation-for-startups" data-parent="cat-industry" role="group">
+            <title>Lead Generation for Startups: How to Start?</title>
+            <circle class="sg-circle" cx="280.4" cy="436.7" r="8"/>
+            <a href="/blog/lead-generation-for-startups" aria-label="Lead Generation for Startups: How to Start?">
+              <circle class="sg-hit" cx="280.4" cy="436.7" r="15" fill="transparent"/>
+            </a>
+            <text class="sg-label sg-label--post" x="280.4" y="436.7" dx="-14.7" dy="-5.1" text-anchor="end">Lead Generation for Startups: &#8230;</text>
+          </g>
+        </g>
+
+          </svg>
+        </div><!-- /.sg-wrap -->
+      </div><!-- /.container -->
+    </section>
+
     <!-- ===== MAIN PAGES ===== -->
-    <section class="section section-bone sitemap-section" aria-labelledby="sitemap-main">
+    <section class="section section-bone sitemap-section" aria-labelledby="sitemap-main" data-no-reveal>
       <div class="container">
         <h2 id="sitemap-main">Main Pages</h2>
         <ul class="sitemap-list">
@@ -168,7 +865,7 @@
     </section>
 
     <!-- ===== BLOG / HIRING GUIDE ===== -->
-    <section class="section section-cream sitemap-section" aria-labelledby="sitemap-blog">
+    <section class="section section-cream sitemap-section" aria-labelledby="sitemap-blog" data-no-reveal>
       <div class="container">
         <h2 id="sitemap-blog">Lead Generation Hiring Guide</h2>
         <p class="sitemap-intro">35 expert answers on hiring lead gen specialists, agency vs.&nbsp;in-house, pricing, tools, and metrics. <a href="/blog">View the full guide hub &rarr;</a></p>
@@ -247,7 +944,7 @@
     </section>
 
     <!-- ===== LEGAL & RESOURCES ===== -->
-    <section class="section section-bone sitemap-section" aria-labelledby="sitemap-legal">
+    <section class="section section-bone sitemap-section" aria-labelledby="sitemap-legal" data-no-reveal>
       <div class="container">
         <h2 id="sitemap-legal">Legal &amp; Resources</h2>
         <ul class="sitemap-list">
@@ -281,7 +978,7 @@
             <li><a href="/bundles">Bundles</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
-            <li><a href="/blog">Blog</a></li>
+            <li><a href="/blog">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
@@ -306,5 +1003,6 @@
   </footer>
 
   <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/sitemap-graph.js"></script>
 </body>
 </html>

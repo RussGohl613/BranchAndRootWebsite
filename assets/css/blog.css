@@ -162,9 +162,9 @@
   gap: 0.6em;
   margin-bottom: var(--s-4);
   font-family: var(--font-body);
-  font-size: var(--fs-anno);
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: var(--track-eyebrow);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--slate);
   line-height: 1.7;
@@ -182,7 +182,7 @@
 .breadcrumb span[aria-hidden] { color: var(--line-hair); }
 .breadcrumb [aria-current="page"] {
   color: var(--moss);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
 }
 
 /* ========================================================================
@@ -216,17 +216,16 @@
   color: var(--slate);
 }
 
-/* Opening lede — serif, larger; also the Speakable target */
+/* Opening lede — sans-serif, readable; also the Speakable target */
 .post .post-lede {
   max-width: none;
   margin-bottom: var(--s-4);
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 1.28rem;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.12rem;
+  line-height: 1.65;
+  letter-spacing: normal;
   color: var(--body-fg);
-  font-variation-settings: "opsz" 144;
 }
 
 /* ----- In-article typography ----------------------------------------- */
@@ -385,7 +384,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--s-2);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 /* Category tag — small-caps pill, extends count-badge visual language */
@@ -403,6 +402,9 @@
   text-transform: uppercase;
   color: var(--moss);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
   /* Sits behind the stretched link overlay but is still visible */
   position: relative;
   z-index: 1;
@@ -416,6 +418,7 @@
   letter-spacing: 0.06em;
   color: var(--slate-soft);
   white-space: nowrap;
+  flex-shrink: 0;
   position: relative;
   z-index: 1;
 }
@@ -496,6 +499,39 @@
 }
 
 /* ========================================================================
+   POSTS — Field Note aside (process-proof callout from Branch & Root)
+   Markup: <aside class="field-note">
+             <span class="field-note-label">From the Field · Branch &amp; Root</span>
+             <p>…</p>
+           </aside>
+   ======================================================================== */
+.field-note {
+  border-left: 3px solid var(--moss);
+  background: var(--surface-grad);
+  padding: var(--s-3) var(--s-4);
+  margin-block: var(--s-4);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.field-note-label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+.field-note p {
+  margin: 0;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--body-fg);
+}
+
+/* ========================================================================
    Dark mode — accent adjustments only (tokens flip the rest).
    Same mechanism as site.css: moss → moss-light, soft borders → line.
    ======================================================================== */
@@ -534,6 +570,10 @@
   .related-posts h2 { color: var(--moss-light); }
   .related-posts a:hover { color: var(--moss-light); }
   .related-posts a::after { color: var(--moss-light); }
+
+  /* Field note */
+  .field-note { border-left-color: var(--moss-light); }
+  .field-note-label { color: var(--moss-light); }
 }
 
 /* ========================================================================
@@ -548,4 +588,253 @@
   .post-card:focus-within .post-card-more .arrow { transform: none; }
   .related-posts a:hover::after { transform: none; }
   .post-index-list a { transition: none; }
+}
+
+/* ========================================================================
+   HUB — Magazine-style editorial sections
+   Added to rebrand the guides hub from FAQ-style to editorial magazine.
+   All values from tokens.css — zero hardcoded hex.
+   ======================================================================== */
+
+/* ---- Hero mission annotation line ------------------------------------ */
+.blog-mission {
+  margin-top: var(--s-3);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 240, 0.6);
+  line-height: 1.55;
+  max-width: 52ch;
+}
+.blog-mission a {
+  color: rgba(247, 245, 240, 0.85);
+  text-decoration: underline;
+  text-decoration-color: rgba(247, 245, 240, 0.35);
+  text-underline-offset: 3px;
+  transition: color var(--dur) var(--ease);
+}
+.blog-mission a:hover {
+  color: var(--cream-fixed);
+  text-decoration-color: rgba(247, 245, 240, 0.65);
+}
+
+/* ---- Lead Feature: forest band --------------------------------------- */
+.blog-lead-feature {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+/* Radial glow, mirroring cta-banner / page-hero aesthetic.
+   NOTE: ellipse origin shifted from 90% 10% → 65% -15% and opacity reduced
+   from 0.20 → 0.11 so the glow sits above the band rather than directly
+   behind the aside column (where the tiny pill + read-time text live). */
+.blog-lead-feature::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 900px 500px at 65% -15%, rgba(82, 148, 111, 0.11), transparent 60%),
+    radial-gradient(ellipse 700px 400px at -5% 90%, rgba(82, 148, 111, 0.14), transparent 60%);
+  pointer-events: none;
+}
+.blog-lead-feature .container { position: relative; }
+
+/* Ghosted numeral — positioned absolutely in the section */
+.blog-lead-feature .gutter-numeral {
+  position: absolute;
+  top: clamp(1rem, 4vw, 3rem);
+  right: 0;
+  line-height: 1;
+  /* inherits .section-forest .gutter-numeral: cream-fixed at 0.08 opacity */
+}
+
+/* Eyebrow sits above the grid */
+.blog-lead-feature > .container > .eyebrow {
+  display: block;
+  margin-bottom: var(--s-3);
+  position: relative;
+}
+
+/* Two-col grid: headline body left, aside right */
+.blog-lead-feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .blog-lead-feature-grid {
+    grid-template-columns: 8.5fr 3.5fr;
+    gap: var(--s-7);
+    align-items: center;
+  }
+}
+
+.blog-lead-feature-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: var(--track-tighter);
+  color: var(--cream-fixed);
+  margin: 0 0 var(--s-4);
+}
+.blog-lead-feature-headline em {
+  font-style: italic;
+  color: var(--moss-light);
+  font-weight: 800;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.blog-lead-feature-standfirst {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(247, 245, 240, 0.85);
+  max-width: 56ch;
+  margin: 0;
+}
+
+/* Aside: meta row + button */
+.blog-lead-feature-aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  align-items: flex-start;
+}
+@media (min-width: 900px) {
+  .blog-lead-feature-aside {
+    border-left: 1px solid rgba(247, 245, 240, 0.18);
+    padding-left: var(--s-5);
+  }
+}
+
+/* Meta row tag/readtime — restyled for dark band.
+   Legibility fixes: brighter border, trimmed letter-spacing, full-strength
+   cream on read-time, explicit font-smoothing to prevent subpixel softness. */
+.blog-lead-feature-meta {
+  justify-content: flex-start;
+  gap: var(--s-2);
+}
+.blog-tag-dark {
+  background: rgba(247, 245, 240, 0.10);
+  border-color: rgba(247, 245, 240, 0.40);  /* was 0.22 — clearly visible */
+  color: var(--moss-light);
+  font-size: 0.74rem;                        /* was var(--fs-anno) = 0.68rem */
+  letter-spacing: 0.12em;                    /* was var(--track-eyebrow) = 0.22em */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.blog-readtime-dark {
+  color: var(--cream-fixed);                 /* was rgba(247,245,240,0.55) — full strength */
+  font-size: 0.74rem;                        /* match tag size */
+  letter-spacing: 0.12em;                    /* trim wide eyebrow tracking */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Secondary Features: bone band, open editorial spread ------------ */
+.blog-secondary-spread {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+@media (min-width: 900px) {
+  .blog-secondary-spread {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-6);
+    align-items: start;
+  }
+}
+
+.blog-secondary-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+/* Right column: border-left hairline on desktop; top border on mobile */
+.blog-secondary-col--right {
+  border-top: 1px solid var(--line-hair);
+  padding-top: var(--s-5);
+}
+@media (min-width: 900px) {
+  .blog-secondary-col--right {
+    border-top: none;
+    padding-top: 0;
+    border-left: 1px solid var(--line-hair);
+    padding-left: var(--s-6);
+  }
+}
+
+.blog-secondary-feature-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--track-tight);
+  margin: 0;
+}
+.blog-secondary-feature-headline a {
+  color: var(--heading);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+.blog-secondary-feature-headline a:hover { color: var(--moss); }
+
+.blog-secondary-feature-standfirst {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--slate);
+  margin: 0;
+}
+
+/* ---- Accented post cards: alternating moss top border rhythm --------- */
+.post-card--accented {
+  border-top: 3px solid var(--moss);
+}
+
+/* ---- Grid overflow fix: force grid track to shrink below max-content -- */
+/* post-card-tag is nowrap; without min-width:0 the 1fr track inherits the
+   tag's max-content width and overflows at mobile. This matches the
+   existing site.css convention (min-width:0 on flex/grid children). */
+.post-grid > .post-card {
+  min-width: 0;
+}
+
+/* ========================================================================
+   HUB — Dark mode overrides for new editorial sections
+   Forest band is brand-locked (no flip needed).
+   Bone/cream sections and secondary spread use token cascade; only
+   adjust accents that don't auto-flip.
+   ======================================================================== */
+@media (prefers-color-scheme: dark) {
+  /* Mission line in page-hero (forest — fixed, no flip) — already ok
+     because it uses rgba(247,245,240,…) literal which is brand-locked */
+
+  /* Secondary spread hairline */
+  .blog-secondary-col--right {
+    border-top-color: var(--line);
+  }
+  @media (min-width: 900px) {
+    .blog-secondary-col--right {
+      border-left-color: var(--line);
+    }
+  }
+
+  /* Secondary feature headlines and standfirst cascade through tokens */
+  .blog-secondary-feature-headline a:hover { color: var(--moss-light); }
+
+  /* Accented card top border */
+  .post-card--accented { border-top-color: var(--moss-light); }
+}
+
+/* ---- Reduced motion additions ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .blog-secondary-feature-headline a { transition: none; }
+  .blog-mission a { transition: none; }
 }

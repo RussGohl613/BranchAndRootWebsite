@@ -164,8 +164,11 @@ const REVEAL_SELECTOR = [
   '.footer-grid > *',
 ].join(',');
 
+/* data-no-reveal is ancestor-aware: tagging a container opts out the container
+   AND everything inside it (sitemap-page.html uses this to disable reveal
+   animations page-wide). Tag individual elements instead for narrower opt-outs. */
 const revealEls = Array.from(document.querySelectorAll(REVEAL_SELECTOR))
-  .filter((el, i, arr) => arr.indexOf(el) === i && !el.hasAttribute('data-no-reveal'));
+  .filter((el, i, arr) => arr.indexOf(el) === i && !el.closest('[data-no-reveal]'));
 
 if ('IntersectionObserver' in window && revealEls.length) {
   const io = new IntersectionObserver((entries) => {
