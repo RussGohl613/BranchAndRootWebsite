@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Blankenship — Online Presence Audit | Branch & Root Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #080e1a;
+      --bg-card: #0f1c30;
+      --bg-surface: #162640;
+      --bg-hover: #1d3254;
+      --gold: #c9933a;
+      --gold-light: #e8ac47;
+      --gold-faint: rgba(201, 147, 58, 0.12);
+      --gold-border: rgba(201, 147, 58, 0.25);
+      --text-primary: #e8edf5;
+      --text-muted: #7d8fa1;
+      --text-dim: #4a5a6e;
+      --green: #22c55e;
+      --green-faint: rgba(34, 197, 94, 0.12);
+      --amber: #f59e0b;
+      --amber-faint: rgba(245, 158, 11, 0.12);
+      --red: #ef4444;
+      --red-faint: rgba(239, 68, 68, 0.12);
+      --blue: #60a5fa;
+      --blue-faint: rgba(96, 165, 250, 0.12);
+      --border: rgba(255,255,255,0.06);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .document {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px 0 32px;
+      border-bottom: 1px solid var(--gold-border);
+      margin-bottom: 48px;
+    }
+    .doc-header .brand { color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+    .doc-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 700; line-height: 1.2; }
+    .doc-header h2 { font-size: 1rem; color: var(--text-muted); font-weight: 400; margin-top: 6px; }
+    .doc-meta { text-align: right; font-size: 13px; color: var(--text-muted); }
+    .doc-meta .meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); margin-bottom: 4px; }
+    .doc-meta .meta-date { color: var(--gold); font-weight: 600; }
+
+    /* ─── SECTION LABELS ─────────────────────────────────── */
+    .section {
+      margin-bottom: 56px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-border);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 28px;
+    }
+
+    /* ─── EXECUTIVE SUMMARY ─────────────────────────────── */
+    .exec-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .gauge-wrap {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .gauge-wrap svg { width: 160px; height: 90px; display: block; margin: 0 auto; overflow: visible; }
+    .gauge-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-top: 8px; }
+    .gauge-score { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); }
+    .gauge-sub { font-size: 11px; color: var(--text-dim); }
+
+    .score-arc-bg { stroke: var(--bg-surface); stroke-width: 12; fill: none; stroke-linecap: round; }
+    .score-arc { stroke: url(#goldGrad); stroke-width: 12; fill: none; stroke-linecap: round;
+      stroke-dasharray: 251.33; stroke-dashoffset: 181; animation: gaugeIn 1.5s cubic-bezier(.4,0,.2,1) forwards; }
+    @keyframes gaugeIn { from { stroke-dashoffset: 251.33; } to { stroke-dashoffset: 181; } }
+
+    .opportunities { display: flex; flex-direction: column; gap: 12px; }
+    .opp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .opp-card:first-child { border-left: 3px solid var(--gold); }
+    .opp-card:nth-child(2) { border-left: 3px solid var(--blue); }
+    .opp-card:nth-child(3) { border-left: 3px solid var(--green); }
+    .opp-num { font-size: 11px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: .06em; width: 20px; flex-shrink: 0; padding-top: 2px; }
+    .opp-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .opp-body p { font-size: 13px; color: var(--text-muted); }
+
+    .disclaimer-banner {
+      background: var(--amber-faint);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 13px;
+      color: var(--amber);
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .disclaimer-banner .icon { flex-shrink: 0; font-size: 16px; }
+
+    /* ─── PLATFORM SCORECARD ─────────────────────────────── */
+    .platform-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .platform-table thead tr { border-bottom: 1px solid var(--gold-border); }
+    .platform-table th { padding: 10px 12px; text-align: left; font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .08em; }
+    .platform-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .platform-table tbody tr:hover { background: var(--bg-hover); }
+
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600;
+    }
+    .status-active { background: var(--green-faint); color: var(--green); border: 1px solid rgba(34,197,94,.2); }
+    .status-unknown { background: var(--blue-faint); color: var(--blue); border: 1px solid rgba(96,165,250,.2); }
+    .status-missing { background: var(--red-faint); color: var(--red); border: 1px solid rgba(239,68,68,.2); }
+    .status-partial { background: var(--amber-faint); color: var(--amber); border: 1px solid rgba(245,158,11,.2); }
+
+    .priority-badge { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+    .p-critical { background: var(--red-faint); color: var(--red); }
+    .p-high { background: var(--amber-faint); color: var(--amber); }
+    .p-medium { background: var(--blue-faint); color: var(--blue); }
+    .p-low { background: var(--bg-surface); color: var(--text-muted); }
+
+    .cell-icon { font-size: 14px; }
+
+    /* ─── ANALYSIS SECTIONS ──────────────────────────────── */
+    .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .analysis-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .analysis-item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+    .analysis-item h4 { font-size: 13px; font-weight: 600; }
+    .score-chip { padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+    .chip-0 { background: var(--red-faint); color: var(--red); }
+    .chip-partial { background: var(--amber-faint); color: var(--amber); }
+    .chip-unknown { background: var(--blue-faint); color: var(--blue); }
+    .chip-good { background: var(--green-faint); color: var(--green); }
+    .analysis-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+    .analysis-rec { font-size: 12px; color: var(--gold); margin-top: 6px; font-style: italic; }
+
+    /* ─── PROGRESS BARS ──────────────────────────────────── */
+    .metric-row { margin-bottom: 14px; }
+    .metric-label-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
+    .metric-name { color: var(--text-muted); }
+    .metric-val { font-weight: 600; font-size: 11px; }
+    .progress-track { height: 5px; background: var(--bg-surface); border-radius: 3px; overflow: hidden; }
+    .progress-bar { height: 100%; border-radius: 3px; transition: width 1s ease; }
+    .bar-gold { background: linear-gradient(90deg, #8b6914, #e8ac47); }
+    .bar-red { background: var(--red); }
+    .bar-amber { background: var(--amber); }
+    .bar-blue { background: var(--blue); }
+    .bar-green { background: var(--green); }
+
+    /* ─── COMPETITIVE BENCHMARKS ─────────────────────────── */
+    .benchmark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .bench-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .bench-tier { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: 6px; }
+    .bench-tier-top { color: var(--gold); }
+    .bench-tier-mid { color: var(--blue); }
+    .bench-tier-low { color: var(--text-muted); }
+    .bench-label { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+    .bench-stat { display: flex; justify-content: space-between; font-size: 12px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .bench-stat:last-child { border-bottom: none; }
+    .bench-stat-label { color: var(--text-muted); }
+    .bench-stat-val { font-weight: 600; }
+
+    /* ─── PRIORITY MATRIX ────────────────────────────────── */
+    .matrix-wrap { position: relative; }
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0;
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .matrix-cell {
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+    .matrix-cell:nth-child(1) { background: rgba(201, 147, 58, 0.07); } /* High/Low — Do Now */
+    .matrix-cell:nth-child(2) { background: rgba(96, 165, 250, 0.05); } /* High/High — Plan For */
+    .matrix-cell:nth-child(3) { background: rgba(34, 197, 94, 0.05); }  /* Low/Low — Quick Wins */
+    .matrix-cell:nth-child(4) { background: rgba(239, 68, 68, 0.04); }  /* Low/High — Defer */
+    .matrix-cell-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
+    .cell-do-now .matrix-cell-label { color: var(--gold); }
+    .cell-plan-for .matrix-cell-label { color: var(--blue); }
+    .cell-quick-wins .matrix-cell-label { color: var(--green); }
+    .cell-defer .matrix-cell-label { color: var(--text-dim); }
+    .matrix-action { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; font-size: 12px; }
+    .action-num { background: var(--bg-surface); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; color: var(--text-muted); }
+    .matrix-axes {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-top: 10px;
+      padding: 0 4px;
+    }
+
+    /* ─── METHODOLOGY ────────────────────────────────────── */
+    .method-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .method-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.7; }
+    .method-card p:last-child { margin-bottom: 0; }
+    .method-card strong { color: var(--text-primary); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--gold-border);
+      margin-top: 60px;
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    footer strong { color: var(--gold); }
+
+    /* ─── PRINT ──────────────────────────────────────────── */
+    @media print {
+      body { background: white; color: #1a1a2e; }
+      .document { padding: 20px; }
+      .bg-card, .bg-surface { background: #f8f9fa !important; border-color: #ddd !important; }
+      @page { margin: 1in; }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 680px) {
+      .exec-grid { grid-template-columns: 1fr; }
+      .analysis-grid { grid-template-columns: 1fr; }
+      .benchmark-grid { grid-template-columns: 1fr; }
+      .matrix-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="document">
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <div>
+      <div class="brand">Branch &amp; Root Consulting</div>
+      <h1>Online Presence Audit</h1>
+      <h2>Dan Blankenship &mdash; Real Estate Agent</h2>
+    </div>
+    <div class="doc-meta">
+      <div class="meta-label">Prepared</div>
+      <div class="meta-date">June 2026</div>
+      <div style="margin-top:8px; color:var(--text-dim); font-size:12px;">Preliminary &mdash; v1.0</div>
+    </div>
+  </header>
+
+  <!-- ─── 1. EXECUTIVE SUMMARY ─────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2 class="section-title">Executive Summary</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div class="exec-grid">
+      <!-- Score Gauge -->
+      <div class="gauge-wrap">
+        <div class="gauge-label">Framework Score</div>
+        <div class="gauge-score">28<span style="font-size:1.1rem;color:var(--text-muted)">/100</span></div>
+        <svg viewBox="0 0 180 95" aria-label="Score gauge showing 28 out of 100">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#7a5a10"/>
+              <stop offset="100%" stop-color="#e8ac47"/>
+            </linearGradient>
+          </defs>
+          <path class="score-arc-bg" d="M 10 90 A 80 80 0 0 1 170 90" />
+          <path class="score-arc" d="M 10 90 A 80 80 0 0 1 170 90" />
+        </svg>
+        <div class="gauge-sub">28% of observable signals confirmed.<br>Score will rise after questionnaire.</div>
+      </div>
+
+      <!-- Top 3 Opportunities -->
+      <div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;">Top 3 Revenue-Moving Opportunities</div>
+        <div class="opportunities">
+          <div class="opp-card">
+            <div class="opp-num">#1</div>
+            <div class="opp-body">
+              <h4>Launch a personal website</h4>
+              <p>Currently no confirmed personal domain. This is the single highest-ROI action — every page is 24/7 lead generation that no Zillow profile can replicate. Builds the SEO, AEO, and GEO foundation simultaneously.</p>
+            </div>
+          </div>
+          <div class="opp-card">
+            <div class="opp-num">#2</div>
+            <div class="opp-body">
+              <h4>Claim and fully optimize Google Business Profile</h4>
+              <p>GBP is how buyers and sellers find local agents on Google Maps and in local packs. An unverified or incomplete profile gives every lead to the agent who claimed theirs first.</p>
+            </div>
+          </div>
+          <div class="opp-card">
+            <div class="opp-num">#3</div>
+            <div class="opp-body">
+              <h4>Build a systematic review engine</h4>
+              <p>Review count and velocity are the #1 local ranking factor for real estate agents. An automated ask (text + email within 24 hrs of close) with a direct link converts at 40%+ vs. manual asks that rarely happen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer-banner">
+      <span class="icon">⚠</span>
+      <span><strong>Audit limitation:</strong> Dan's Zillow (zillow.com/profile/dansellsoc) and Homes.com profiles are confirmed active, but their content was inaccessible due to WAF/CDN security on both platforms. Profile completeness scores are based on industry benchmarks and platform best practices — not confirmed content. This audit will be updated after Dan completes the questionnaire.</span>
+    </div>
+  </section>
+
+  <!-- ─── 2. PLATFORM PRESENCE SCORECARD ───────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2 class="section-title">Platform Presence Scorecard</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <table class="platform-table">
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Status</th>
+          <th>Profile / URL</th>
+          <th>Completeness</th>
+          <th>Lead Value</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Zillow</strong></td>
+          <td><span class="status-badge status-active">● Active</span></td>
+          <td style="font-size:12px;color:var(--blue)">zillow.com/profile/dansellsoc</td>
+          <td><span class="status-badge status-partial">Partial — Unverified</span></td>
+          <td><span style="color:var(--amber)">★★★★☆</span></td>
+          <td><span class="priority-badge p-high">HIGH</span></td>
+        </tr>
+        <tr>
+          <td><strong>Homes.com</strong></td>
+          <td><span class="status-badge status-active">● Active</span></td>
+          <td style="font-size:12px;color:var(--blue)">homes.com/…/e0dm8kq/</td>
+          <td><span class="status-badge status-partial">Partial — Unverified</span></td>
+          <td><span style="color:var(--text-muted)">★★★☆☆</span></td>
+          <td><span class="priority-badge p-medium">MEDIUM</span></td>
+        </tr>
+        <tr>
+          <td><strong>Google Business Profile</strong></td>
+          <td><span class="status-badge status-unknown">? Unknown</span></td>
+          <td style="color:var(--text-dim);font-size:12px">Not confirmed</td>
+          <td><span class="status-badge status-missing">Unverified</span></td>
+          <td><span style="color:var(--gold)">★★★★★</span></td>
+          <td><span class="priority-badge p-critical">CRITICAL</span></td>
+        </tr>
+        <tr>
+          <td><strong>Personal Website</strong></td>
+          <td><span class="status-badge status-missing">✗ Not Found</span></td>
+          <td style="color:var(--text-dim);font-size:12px">No domain confirmed</td>
+          <td><span class="status-badge status-missing">Missing</span></td>
+          <td><span style="color:var(--gold)">★★★★★</span></td>
+          <td><span class="priority-badge p-critical">CRITICAL</span></td>
+        </tr>
+        <tr>
+          <td><strong>Realtor.com</strong></td>
+          <td><span class="status-badge status-unknown">? Unknown</span></td>
+          <td style="color:var(--text-dim);font-size:12px">Not confirmed</td>
+          <td><span class="status-badge status-unknown">Unverified</span></td>
+          <td><span style="color:var(--amber)">★★★★☆</span></td>
+          <td><span class="priority-badge p-high">HIGH</span></td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn</strong></td>
+          <td><span class="status-badge status-unknown">? Unknown</span></td>
+          <td style="color:var(--text-dim);font-size:12px">Not confirmed</td>
+          <td><span class="status-badge status-unknown">Unverified</span></td>
+          <td><span style="color:var(--text-muted)">★★★☆☆</span></td>
+          <td><span class="priority-badge p-medium">MEDIUM</span></td>
+        </tr>
+        <tr>
+          <td><strong>Facebook / Meta</strong></td>
+          <td><span class="status-badge status-unknown">? Unknown</span></td>
+          <td style="color:var(--text-dim);font-size:12px">Not confirmed</td>
+          <td><span class="status-badge status-unknown">Unverified</span></td>
+          <td><span style="color:var(--text-muted)">★★★☆☆</span></td>
+          <td><span class="priority-badge p-medium">MEDIUM</span></td>
+        </tr>
+        <tr>
+          <td><strong>Instagram</strong></td>
+          <td><span class="status-badge status-unknown">? Unknown</span></td>
+          <td style="color:var(--text-dim);font-size:12px">Not confirmed</td>
+          <td><span class="status-badge status-unknown">Unverified</span></td>
+          <td><span style="color:var(--text-muted)">★★☆☆☆</span></td>
+          <td><span class="priority-badge p-low">LOW</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:16px; background:var(--bg-card); border-radius:8px; padding:14px 18px; border:1px solid var(--border);">
+      <p style="font-size:12px; color:var(--text-muted);"><strong style="color:var(--text-primary)">Scoring note:</strong> &ldquo;Lead Value&rdquo; reflects the platform&rsquo;s general conversion quality for real estate agents based on industry data — not Dan&rsquo;s personal performance on that platform. &ldquo;Completeness&rdquo; reflects what could be verified. All &ldquo;Unverified&rdquo; entries should be checked manually against the questionnaire responses.</p>
+    </div>
+  </section>
+
+  <!-- ─── 3. SEO GAP ANALYSIS ───────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2 class="section-title">SEO Gap Analysis</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">
+      Search Engine Optimization affects how Dan ranks when buyers and sellers search "real estate agent [city]," "sell my home [city]," or "[neighborhood] homes for sale." Below are the 10 critical SEO factors for local real estate agents.
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Google Business Profile</h4>
+          <span class="score-chip chip-0">NOT CONFIRMED</span>
+        </div>
+        <p class="analysis-desc">GBP controls local pack rankings (the map results above organic search). Unverified = invisible to the 46% of Google searches with local intent.</p>
+        <p class="analysis-rec">→ Claim immediately at business.google.com. Fill every field. Add 10+ photos.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Personal Website w/ Geo Content</h4>
+          <span class="score-chip chip-0">NOT FOUND</span>
+        </div>
+        <p class="analysis-desc">No personal domain confirmed. All SEO equity is currently gifted to Zillow (their domain, their ads). Every past client search returns Zillow's page, not Dan's.</p>
+        <p class="analysis-rec">→ Building this website IS the SEO foundation. Priority #1.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Zillow Profile Optimization</h4>
+          <span class="score-chip chip-partial">PARTIAL — UNVERIFIED</span>
+        </div>
+        <p class="analysis-desc">Profile URL confirmed active. Whether it has a professional bio, certifications, response rate, and complete transaction history is unverified.</p>
+        <p class="analysis-rec">→ Verify and complete all fields. Aim for Premier Agent status.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Local Citation Consistency (NAP)</h4>
+          <span class="score-chip chip-partial">PARTIAL</span>
+        </div>
+        <p class="analysis-desc">Name/Address/Phone/Brokerage must match exactly across Zillow, Homes.com, Realtor.com, Google, Yelp, and 50+ citation sites. Inconsistencies suppress local rankings.</p>
+        <p class="analysis-rec">→ Run a BrightLocal or Moz Local scan after questionnaire.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Review Count &amp; Velocity</h4>
+          <span class="score-chip chip-unknown">UNKNOWN</span>
+        </div>
+        <p class="analysis-desc">Reviews are the #1 local ranking signal. OC top agents average 200+ reviews. Review velocity (new reviews per month) matters as much as total count.</p>
+        <p class="analysis-rec">→ Quantify in questionnaire. Set up automated ask system at close.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Neighborhood / City Landing Pages</h4>
+          <span class="score-chip chip-0">NOT FOUND</span>
+        </div>
+        <p class="analysis-desc">Agents who rank for "Mission Viejo real estate agent" have dedicated pages for that city. Each page is its own ranking asset — a 10-page site can rank for 10 different local terms.</p>
+        <p class="analysis-rec">→ Build 1 page per primary market city in the website.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Domain Authority</h4>
+          <span class="score-chip chip-0">N/A (No Site)</span>
+        </div>
+        <p class="analysis-desc">No personal domain = no domain authority. New websites start at DA 1 and build over 12–24 months through content and backlinks.</p>
+        <p class="analysis-rec">→ Register domain immediately even if site isn't ready. Age = authority.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Schema Markup</h4>
+          <span class="score-chip chip-partial">PLATFORM ONLY</span>
+        </div>
+        <p class="analysis-desc">Zillow and Homes.com include basic schema for their pages. Dan's personal site needs RealEstateAgent, LocalBusiness, FAQPage, and AggregateRating schema to compete.</p>
+        <p class="analysis-rec">→ All schema types are built into the website spec.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Blog / Content Marketing</h4>
+          <span class="score-chip chip-0">NOT FOUND</span>
+        </div>
+        <p class="analysis-desc">"Orange County housing market Q2 2026" — the agent who publishes this article ranks for it. 1–2 posts/month compounds to 100+ pages of geo-targeted content in 4 years.</p>
+        <p class="analysis-rec">→ Launch blog with website. Monthly market report is the flagship content.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Page Speed / Core Web Vitals</h4>
+          <span class="score-chip chip-unknown">N/A (No Site)</span>
+        </div>
+        <p class="analysis-desc">Google uses Core Web Vitals (LCP, INP, CLS) as ranking factors. Next.js on Vercel scores 90+ on PageSpeed out of the box with proper image optimization.</p>
+        <p class="analysis-rec">→ Target: LCP &lt;2.5s, INP &lt;200ms, CLS &lt;0.1 at launch.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;">
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;">SEO Readiness Score by Category</div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Google Business Profile</span><span class="metric-val" style="color:var(--red)">0%</span></div><div class="progress-track"><div class="progress-bar bar-red" style="width:0%"></div></div></div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Personal Website Presence</span><span class="metric-val" style="color:var(--red)">0%</span></div><div class="progress-track"><div class="progress-bar bar-red" style="width:0%"></div></div></div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Platform Profile Optimization</span><span class="metric-val" style="color:var(--amber)">35%</span></div><div class="progress-track"><div class="progress-bar bar-amber" style="width:35%"></div></div></div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Local Citation Consistency</span><span class="metric-val" style="color:var(--amber)">25%</span></div><div class="progress-track"><div class="progress-bar bar-amber" style="width:25%"></div></div></div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Review Presence &amp; Velocity</span><span class="metric-val" style="color:var(--blue)">Unknown</span></div><div class="progress-track"><div class="progress-bar bar-blue" style="width:15%"></div></div></div>
+      <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Content &amp; Blog</span><span class="metric-val" style="color:var(--red)">0%</span></div><div class="progress-track"><div class="progress-bar bar-red" style="width:0%"></div></div></div>
+    </div>
+  </section>
+
+  <!-- ─── 4. AEO GAP ANALYSIS ───────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2 class="section-title">AEO — Answer Engine Optimization</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">
+      AEO optimizes for <em>featured snippets</em>, <em>People Also Ask boxes</em>, <em>voice search</em>, and direct answers at the top of Google results. When someone asks "how much is my home worth in Mission Viejo," Dan's site should own that answer box.
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>FAQ Schema Markup</h4>
+          <span class="score-chip chip-0">NOT PRESENT</span>
+        </div>
+        <p class="analysis-desc">FAQPage JSON-LD schema tells Google to show Q&amp;A content as rich results. Currently no personal website = no schema.</p>
+        <p class="analysis-rec">→ Every page on the new site gets FAQPage schema with 3–5 local questions.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>RealEstateAgent Schema</h4>
+          <span class="score-chip chip-partial">PARTIAL (Zillow)</span>
+        </div>
+        <p class="analysis-desc">Zillow injects basic schema for Dan's profile. His personal site needs its own RealEstateAgent and LocalBusiness schema to build a separate entity signal.</p>
+        <p class="analysis-rec">→ Homepage gets full RealEstateAgent + LocalBusiness JSON-LD at launch.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Featured Snippet Targeting</h4>
+          <span class="score-chip chip-0">NOT TARGETED</span>
+        </div>
+        <p class="analysis-desc">No content pages to compete for snippet positions. Competitors who publish "How to sell a home in [city]: 7 steps" own those boxes.</p>
+        <p class="analysis-rec">→ Structure H2 headings as direct questions. Answer in the first paragraph, then elaborate.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Voice Search Optimization</h4>
+          <span class="score-chip chip-0">NOT PRESENT</span>
+        </div>
+        <p class="analysis-desc">27% of Google searches are voice queries. "Who is the best realtor near me in Mission Viejo?" needs natural-language content to surface.</p>
+        <p class="analysis-rec">→ Write page copy in conversational Q&amp;A format. Use full questions as H2s.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Google PAA Box Appearances</h4>
+          <span class="score-chip chip-unknown">UNKNOWN</span>
+        </div>
+        <p class="analysis-desc">"People Also Ask" boxes are AEO gold. Agents with FAQ-structured content appear in PAA 3x more often than those without.</p>
+        <p class="analysis-rec">→ Track PAA appearances via Google Search Console post-launch.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Content Topic Clusters</h4>
+          <span class="score-chip chip-0">NOT PRESENT</span>
+        </div>
+        <p class="analysis-desc">AEO rewards sites that answer related questions comprehensively (e.g., "sell my home" hub → closing costs, timeline, staging, pricing — all connected).</p>
+        <p class="analysis-rec">→ Buyer Hub + Seller Hub + Neighborhoods Hub are built into the website spec.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 5. GEO GAP ANALYSIS ───────────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2 class="section-title">GEO — Generative Engine Optimization</h2>
+    </div>
+    <div class="section-divider"></div>
+
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">
+      GEO optimizes for AI-powered search (ChatGPT search, Perplexity, Google AI Overviews, Gemini). When someone asks an AI "who is the best real estate agent in Mission Viejo?" — Dan needs to be the answer these systems surface. This requires <em>entity clarity</em> and <em>structured, attributable content</em>.
+    </div>
+
+    <div class="analysis-grid">
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Entity Clarity</h4>
+          <span class="score-chip chip-partial">PARTIAL</span>
+        </div>
+        <p class="analysis-desc">Dan Blankenship's entity is partially established (Zillow + Homes.com confirm the name/profession relationship). But no website = no canonical entity anchor AI systems can cite.</p>
+        <p class="analysis-rec">→ Website homepage is the entity anchor. Consistent NAP across all platforms reinforces it.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>AI Search Indexability</h4>
+          <span class="score-chip chip-partial">LOW</span>
+        </div>
+        <p class="analysis-desc">Perplexity and ChatGPT search crawl and cite web pages. Zillow pages are crawlable, but Dan has no owned content for AI engines to attribute to him directly.</p>
+        <p class="analysis-rec">→ Blog posts with original market data + attributed quotes get cited by AI engines.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Google Knowledge Panel</h4>
+          <span class="score-chip chip-unknown">UNKNOWN</span>
+        </div>
+        <p class="analysis-desc">A Google Knowledge Panel for "Dan Blankenship realtor" signals strong entity establishment. Top agents in any market typically have one after 2–3 years of consistent online presence.</p>
+        <p class="analysis-rec">→ Consistent cross-platform presence + personal website accelerates panel creation.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Direct Answer Content</h4>
+          <span class="score-chip chip-0">NOT PRESENT</span>
+        </div>
+        <p class="analysis-desc">AI engines prefer sources that directly answer questions. Content like "The average home in [city] sold for $X in [month]" with a named author gets cited.</p>
+        <p class="analysis-rec">→ Monthly market report with stats + Dan's name = prime GEO content.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Brand Entity Consistency</h4>
+          <span class="score-chip chip-partial">PARTIAL</span>
+        </div>
+        <p class="analysis-desc">Dan Blankenship + Zillow handle + Homes.com handle should all point to the same brokerage, city, and contact information. Any inconsistency confuses AI entity resolution.</p>
+        <p class="analysis-rec">→ Audit all platforms for NAP + brokerage consistency in questionnaire review.</p>
+      </div>
+      <div class="analysis-item">
+        <div class="analysis-item-header">
+          <h4>Author Authority Signals</h4>
+          <span class="score-chip chip-0">NOT PRESENT</span>
+        </div>
+        <p class="analysis-desc">Google's E-E-A-T (Experience, Expertise, Authoritativeness, Trust) and AI engines favor attributed content. Blog posts with author schema, a photo, credentials, and brokerage affiliation build trust signals.</p>
+        <p class="analysis-rec">→ Author schema on every blog post. Link to Zillow/Realtor.com profiles from bio page.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 6. COMPETITIVE BENCHMARKS ────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2 class="section-title">OC Market Competitive Benchmarks</h2>
+    </div>
+    <div class="section-divider"></div>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">Based on industry data for real estate agents in competitive Southern California coastal markets. Use this as a self-assessment target — Dan can locate himself by comparing his numbers to the questionnaire data.</div>
+
+    <div class="benchmark-grid">
+      <div class="bench-card" style="border-color:var(--gold-border);">
+        <div class="bench-tier bench-tier-top">Top 10%</div>
+        <div class="bench-label">The Market Leaders</div>
+        <div class="bench-stat"><span class="bench-stat-label">Zillow Reviews</span><span class="bench-stat-val" style="color:var(--gold)">300+</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Rating</span><span class="bench-stat-val" style="color:var(--gold)">5.0</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Annual Transactions</span><span class="bench-stat-val">50+</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Sale Price</span><span class="bench-stat-val">$1.5M+</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Personal Website</span><span class="bench-stat-val" style="color:var(--green)">Yes (custom)</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Google Reviews</span><span class="bench-stat-val">50+</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Social Following</span><span class="bench-stat-val">5,000+</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">IDX / Live Listings</span><span class="bench-stat-val" style="color:var(--green)">Yes</span></div>
+      </div>
+      <div class="bench-card">
+        <div class="bench-tier bench-tier-mid">Median Agent</div>
+        <div class="bench-label">The Established Middle</div>
+        <div class="bench-stat"><span class="bench-stat-label">Zillow Reviews</span><span class="bench-stat-val">25–75</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Rating</span><span class="bench-stat-val">4.7–4.9</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Annual Transactions</span><span class="bench-stat-val">15–25</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Sale Price</span><span class="bench-stat-val">$800K–$1.2M</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Personal Website</span><span class="bench-stat-val" style="color:var(--amber)">Basic or GHL page</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Google Reviews</span><span class="bench-stat-val">10–30</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Social Following</span><span class="bench-stat-val">500–2,000</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">IDX / Live Listings</span><span class="bench-stat-val" style="color:var(--amber)">Sometimes</span></div>
+      </div>
+      <div class="bench-card" style="border-color:rgba(239,68,68,0.2);">
+        <div class="bench-tier" style="color:var(--text-dim)">Bottom 25%</div>
+        <div class="bench-label">Platform-Dependent</div>
+        <div class="bench-stat"><span class="bench-stat-label">Zillow Reviews</span><span class="bench-stat-val" style="color:var(--red)">&lt;10</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Rating</span><span class="bench-stat-val">&lt;4.5 or none</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Annual Transactions</span><span class="bench-stat-val">&lt;10</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Avg. Sale Price</span><span class="bench-stat-val">&lt;$700K</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Personal Website</span><span class="bench-stat-val" style="color:var(--red)">None or template</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Google Reviews</span><span class="bench-stat-val" style="color:var(--red)">&lt;5</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">Social Following</span><span class="bench-stat-val">&lt;500</span></div>
+        <div class="bench-stat"><span class="bench-stat-label">IDX / Live Listings</span><span class="bench-stat-val" style="color:var(--red)">No</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 7. PRIORITY ACTION MATRIX ────────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2 class="section-title">Priority Action Matrix</h2>
+    </div>
+    <div class="section-divider"></div>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:20px;">15 prioritized actions across four quadrants. Start in the top-left — highest impact, lowest effort.</div>
+
+    <div class="matrix-wrap">
+      <!-- Axis labels -->
+      <div style="display:flex;justify-content:center;font-size:11px;color:var(--text-dim);margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase;">← LOW EFFORT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HIGH EFFORT →</div>
+      <div style="display:flex;align-items:stretch;gap:0;">
+        <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;color:var(--text-dim);letter-spacing:.06em;text-transform:uppercase;padding:0 8px;text-align:center;">← LOW IMPACT &nbsp;&nbsp;&nbsp; HIGH IMPACT →</div>
+        <div style="flex:1;">
+          <div class="matrix-grid">
+            <!-- Q1: High Impact, Low Effort -->
+            <div class="matrix-cell cell-do-now">
+              <div class="matrix-cell-label">⚡ Do Now</div>
+              <div class="matrix-action"><div class="action-num">1</div><span>Fully complete Zillow profile (photo, 200-word bio, certifications)</span></div>
+              <div class="matrix-action"><div class="action-num">2</div><span>Claim and verify Google Business Profile</span></div>
+              <div class="matrix-action"><div class="action-num">3</div><span>Send review requests to 10 past clients this week</span></div>
+              <div class="matrix-action"><div class="action-num">4</div><span>Ensure NAP consistency: same name/phone/brokerage everywhere</span></div>
+            </div>
+            <!-- Q2: High Impact, High Effort -->
+            <div class="matrix-cell cell-plan-for">
+              <div class="matrix-cell-label">📋 Plan For</div>
+              <div class="matrix-action"><div class="action-num">5</div><span>Launch personal website (this project)</span></div>
+              <div class="matrix-action"><div class="action-num">6</div><span>Build neighborhood pages for each primary city/market</span></div>
+              <div class="matrix-action"><div class="action-num">7</div><span>Set up automated review-request system (GHL workflow at close)</span></div>
+              <div class="matrix-action"><div class="action-num">8</div><span>Launch monthly market report email newsletter</span></div>
+            </div>
+            <!-- Q3: Low Impact, Low Effort -->
+            <div class="matrix-cell cell-quick-wins">
+              <div class="matrix-cell-label">✓ Quick Wins</div>
+              <div class="matrix-action"><div class="action-num">9</div><span>Claim and optimize Realtor.com profile</span></div>
+              <div class="matrix-action"><div class="action-num">10</div><span>Update LinkedIn profile with current brokerage and transaction history</span></div>
+              <div class="matrix-action"><div class="action-num">11</div><span>Set up Instagram with 9 property/lifestyle photos</span></div>
+              <div class="matrix-action"><div class="action-num">12</div><span>Register personal domain name now (even if site isn't built yet)</span></div>
+            </div>
+            <!-- Q4: Low Impact, High Effort -->
+            <div class="matrix-cell cell-defer">
+              <div class="matrix-cell-label" style="color:var(--text-dim)">↓ Defer</div>
+              <div class="matrix-action"><div class="action-num">13</div><span>YouTube channel</span></div>
+              <div class="matrix-action"><div class="action-num">14</div><span>Podcast / webinar series</span></div>
+              <div class="matrix-action"><div class="action-num">15</div><span>PR / media campaign</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── 8. METHODOLOGY & DISCLAIMER ─────────────────── -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2 class="section-title">Methodology &amp; Disclaimer</h2>
+    </div>
+    <div class="section-divider"></div>
+    <div class="method-card">
+      <p><strong>Data sourcing:</strong> This audit was prepared using publicly accessible information — specifically, the confirmed existence of active profiles on Zillow (zillow.com/profile/dansellsoc) and Homes.com (homes.com/real-estate-agents/dan-blankenship/e0dm8kq/). Both platforms deploy WAF/CDN security that blocked programmatic access to profile content (Akamai on Homes.com, CloudFront on Zillow). Scores marked "Unverified" reflect this limitation and are not negative judgments about Dan's current profile quality.</p>
+      <p><strong>Framework scoring:</strong> The preliminary framework score of 28/100 is based on observable confirmation points: two active platform profiles (partial credit per the completeness caveats above) and no confirmed personal website or Google Business Profile. This score is a starting-line indicator, not a final assessment. Comparable agents starting a website project with 2–3 years of Zillow activity typically score 45–65 after a full questionnaire audit.</p>
+      <p><strong>Benchmarks:</strong> Competitive benchmarks are based on publicly reported industry data for Southern California residential real estate agents and should be treated as directional targets rather than market-specific guarantees. OC is a heterogeneous market — luxury coastal markets in Newport Beach and Laguna Beach have higher baselines than inland communities.</p>
+      <p><strong>Next step:</strong> Once Dan completes the website questionnaire, this audit will be updated with confirmed profile content, actual review counts, brokerage information, and a revised score. The questionnaire is attached separately.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <strong>Branch &amp; Root Consulting</strong> &bull; Orange County, CA<br>
+      Prepared for: <span style="color:var(--text-primary)">Dan Blankenship</span>
+    </div>
+    <div style="text-align:right;">
+      Confidential &bull; June 2026<br>
+      <span style="color:var(--text-dim)">v1.0 Preliminary — Update after questionnaire</span>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

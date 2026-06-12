@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Discovery Questionnaire — Dan Blankenship | Branch & Root Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #080e1a;
+      --bg-card: #0f1c30;
+      --bg-surface: #162640;
+      --bg-input: #0d1828;
+      --bg-hover: #1d3254;
+      --gold: #c9933a;
+      --gold-light: #e8ac47;
+      --gold-faint: rgba(201,147,58,0.10);
+      --gold-border: rgba(201,147,58,0.25);
+      --text-primary: #e8edf5;
+      --text-muted: #7d8fa1;
+      --text-dim: #4a5a6e;
+      --green: #22c55e;
+      --green-faint: rgba(34,197,94,0.10);
+      --border: rgba(255,255,255,0.07);
+      --focus: rgba(201,147,58,0.4);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ─── PROGRESS BAR ───────────────────────────────────── */
+    .progress-shell {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--bg-surface);
+      z-index: 1000;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #8b6914, var(--gold-light));
+      transition: width .4s ease;
+      width: 0%;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────── */
+    .layout { display: flex; min-height: 100vh; }
+
+    /* ─── SIDEBAR ────────────────────────────────────────── */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border-right: 1px solid var(--gold-border);
+      padding: 32px 0;
+    }
+    .sidebar-brand {
+      padding: 0 20px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .sidebar-brand .label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+    .sidebar-brand .name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; }
+    .sidebar-brand .sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 20px;
+      cursor: pointer;
+      font-size: 12px;
+      color: var(--text-muted);
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .nav-item:hover { background: var(--bg-hover); color: var(--text-primary); }
+    .nav-item.active { background: var(--gold-faint); color: var(--gold); border-right: 2px solid var(--gold); }
+    .nav-num {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; flex-shrink: 0;
+      transition: all .2s;
+    }
+    .nav-item.active .nav-num { background: var(--gold-faint); border-color: var(--gold-border); color: var(--gold); }
+    .nav-item.completed .nav-num { background: var(--green-faint); border-color: rgba(34,197,94,.3); color: var(--green); }
+    .nav-item.completed .nav-num::after { content: '✓'; }
+
+    .sidebar-progress { padding: 20px; margin-top: auto; border-top: 1px solid var(--border); }
+    .sidebar-progress .prog-label { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; display: flex; justify-content: space-between; }
+    .sidebar-progress .prog-track { height: 4px; background: var(--bg-surface); border-radius: 2px; }
+    .sidebar-progress .prog-bar { height: 100%; background: linear-gradient(90deg, #8b6914, var(--gold-light)); border-radius: 2px; transition: width .4s; width: 0%; }
+
+    /* ─── MAIN CONTENT ───────────────────────────────────── */
+    .main-content {
+      flex: 1;
+      padding: 48px 56px 120px;
+      max-width: 780px;
+    }
+
+    .page-header { margin-bottom: 48px; }
+    .page-header .brand-tag { font-size: 11px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
+    .page-header p { color: var(--text-muted); font-size: 14px; line-height: 1.7; max-width: 560px; }
+
+    /* ─── SECTIONS ───────────────────────────────────────── */
+    .q-section {
+      margin-bottom: 56px;
+      scroll-margin-top: 24px;
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .section-badge {
+      width: 38px; height: 38px;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .section-head-text h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; }
+    .section-head-text p { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+    /* ─── QUESTION GROUPS ────────────────────────────────── */
+    .question-group { margin-bottom: 24px; }
+    .q-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .q-hint { font-size: 12px; color: var(--text-dim); margin-bottom: 8px; font-style: italic; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 10px 14px;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px var(--focus);
+    }
+    textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+    select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237d8fa1' fill='none' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+    .inline-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .inline-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+    /* ─── RADIO / CHECKBOX ───────────────────────────────── */
+    .option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .option-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    .option-grid-1 { display: flex; flex-direction: column; gap: 8px; }
+
+    .radio-opt, .check-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .radio-opt:hover, .check-opt:hover { border-color: rgba(201,147,58,0.4); background: var(--bg-surface); }
+    .radio-opt input, .check-opt input { width: 15px; height: 15px; flex-shrink: 0; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+    .radio-opt label, .check-opt label { font-size: 13px; cursor: pointer; line-height: 1.4; }
+    .radio-opt label strong, .check-opt label strong { display: block; color: var(--text-primary); }
+    .radio-opt label span, .check-opt label span { color: var(--text-muted); font-size: 11px; }
+
+    .radio-opt:has(input:checked), .check-opt:has(input:checked) {
+      border-color: var(--gold-border);
+      background: var(--gold-faint);
+    }
+
+    /* ─── CERT GRID ──────────────────────────────────────── */
+    .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .cert-opt {
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all .2s;
+    }
+    .cert-opt:hover { border-color: rgba(201,147,58,0.3); }
+    .cert-opt:has(input:checked) { border-color: var(--gold-border); background: var(--gold-faint); color: var(--gold-light); }
+    .cert-opt input { width: 13px; height: 13px; accent-color: var(--gold); flex-shrink: 0; }
+
+    /* ─── RANGE SLIDER ───────────────────────────────────── */
+    .range-wrap { position: relative; padding: 8px 0; }
+    input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold) var(--pct, 50%), var(--bg-surface) var(--pct, 50%));
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--gold);
+      cursor: pointer;
+      border: 2px solid var(--bg-deep);
+      box-shadow: 0 0 6px rgba(201,147,58,0.5);
+    }
+    .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+    .range-value { text-align: center; font-size: 13px; color: var(--gold); font-weight: 600; margin-top: 4px; }
+
+    /* ─── TEXTAREA COUNTER ───────────────────────────────── */
+    .textarea-wrap { position: relative; }
+    .char-count { position: absolute; bottom: 8px; right: 10px; font-size: 10px; color: var(--text-dim); pointer-events: none; }
+
+    /* ─── COMPETITOR BLOCKS ──────────────────────────────── */
+    .competitor-block {
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .competitor-block .comp-label { font-size: 11px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+    .competitor-block input { margin-top: 0; }
+
+    /* ─── TESTIMONIAL BLOCKS ─────────────────────────────── */
+    .testimonial-block {
+      background: var(--bg-input);
+      border: 1px solid var(--gold-border);
+      border-left: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+    .testimonial-block .test-label { font-size: 11px; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+
+    /* ─── COPY BUTTON SECTION ────────────────────────────── */
+    .copy-section {
+      position: fixed;
+      bottom: 0; left: 240px; right: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--gold-border);
+      padding: 16px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+    }
+    .copy-info { font-size: 12px; color: var(--text-muted); }
+    .copy-info strong { color: var(--text-primary); }
+    .copy-btn {
+      background: var(--gold);
+      color: #080e1a;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all .2s;
+      letter-spacing: .02em;
+    }
+    .copy-btn:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(201,147,58,0.4); }
+    .copy-btn:active { transform: translateY(0); }
+
+    /* ─── TOAST ──────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      right: 32px;
+      background: #22c55e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all .3s;
+      z-index: 200;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    /* ─── SAVE INDICATOR ─────────────────────────────────── */
+    .save-indicator {
+      position: fixed;
+      top: 12px;
+      right: 20px;
+      font-size: 11px;
+      color: var(--text-dim);
+      z-index: 1001;
+      transition: color .3s;
+    }
+    .save-indicator.saving { color: var(--gold); }
+
+    @media (max-width: 840px) {
+      .sidebar { display: none; }
+      .main-content { padding: 32px 24px 100px; }
+      .copy-section { left: 0; padding: 14px 24px; }
+      .inline-grid, .inline-grid-3 { grid-template-columns: 1fr; }
+      .option-grid, .option-grid-3 { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-shell"><div class="progress-fill" id="progressFill"></div></div>
+<div class="save-indicator" id="saveInd">Auto-saved</div>
+<div class="toast" id="toast"></div>
+
+<div class="layout">
+
+  <!-- ─── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="label">Branch &amp; Root Consulting</div>
+      <div class="name">Dan Blankenship</div>
+      <div class="sub">Website Discovery</div>
+    </div>
+
+    <a class="nav-item" href="#s1" onclick="scrollToSection('s1',event)"><span class="nav-num">1</span> About Dan</a>
+    <a class="nav-item" href="#s2" onclick="scrollToSection('s2',event)"><span class="nav-num">2</span> Market &amp; Territory</a>
+    <a class="nav-item" href="#s3" onclick="scrollToSection('s3',event)"><span class="nav-num">3</span> Ideal Client</a>
+    <a class="nav-item" href="#s4" onclick="scrollToSection('s4',event)"><span class="nav-num">4</span> Unique Value Prop</a>
+    <a class="nav-item" href="#s5" onclick="scrollToSection('s5',event)"><span class="nav-num">5</span> Brand &amp; Aesthetic</a>
+    <a class="nav-item" href="#s6" onclick="scrollToSection('s6',event)"><span class="nav-num">6</span> Social Proof</a>
+    <a class="nav-item" href="#s7" onclick="scrollToSection('s7',event)"><span class="nav-num">7</span> Competition</a>
+    <a class="nav-item" href="#s8" onclick="scrollToSection('s8',event)"><span class="nav-num">8</span> Goals &amp; Strategy</a>
+    <a class="nav-item" href="#s9" onclick="scrollToSection('s9',event)"><span class="nav-num">9</span> Technical &amp; Assets</a>
+
+    <div class="sidebar-progress" style="margin-top:24px;">
+      <div class="prog-label"><span>Completion</span><span id="sidebarPct">0%</span></div>
+      <div class="prog-track"><div class="prog-bar" id="sidebarProg"></div></div>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN ─────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <div class="page-header">
+      <div class="brand-tag">Branch &amp; Root Consulting &mdash; Website Discovery</div>
+      <h1>Tell us about you, Dan.</h1>
+      <p>These answers go directly into your website. The more specific you are, the better the site performs — for you and for the clients you want to attract. There are no wrong answers. Spend extra time on Sections 3 and 4. Your answers are auto-saved as you type and can be copied in one click at the bottom.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 1: ABOUT DAN                               -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s1">
+      <div class="section-head">
+        <div class="section-badge">👤</div>
+        <div class="section-head-text">
+          <h2>About Dan</h2>
+          <p>Background, credentials, and professional story</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Full legal name as it should appear on the website</label>
+        <input type="text" id="fullName" placeholder="Dan Blankenship" data-key="fullName">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Brokerage / Office name</label>
+        <input type="text" id="brokerage" placeholder="e.g. Coldwell Banker, Compass, Re/Max…" data-key="brokerage">
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">How many years have you been licensed?</label>
+          <select id="yearsLicensed" data-key="yearsLicensed">
+            <option value="">Select…</option>
+            <option>Less than 1 year</option>
+            <option>1–3 years</option>
+            <option>3–5 years</option>
+            <option>5–10 years</option>
+            <option>10–20 years</option>
+            <option>20+ years</option>
+          </select>
+        </div>
+        <div class="question-group">
+          <label class="q-label">CA DRE License Number (optional)</label>
+          <input type="text" id="licenseNum" placeholder="01XXXXXX" data-key="licenseNum">
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Do you work solo or with a team?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="teamSize" value="Solo — just me" data-key="teamSize"><label><strong>Solo</strong> <span>Just me — full-service agent, single point of contact</span></label></label>
+          <label class="radio-opt"><input type="radio" name="teamSize" value="Small team (2–4 people)" data-key="teamSize"><label><strong>Small team (2–4)</strong> <span>A partner, buyer's agent, or transaction coordinator</span></label></label>
+          <label class="radio-opt"><input type="radio" name="teamSize" value="Larger team (5+)" data-key="teamSize"><label><strong>Larger team (5+)</strong> <span>Full team operation with multiple agents</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Team member names and roles (if applicable)</label>
+        <p class="q-hint">Leave blank if you work solo</p>
+        <textarea id="teamMembers" data-key="teamMembers" placeholder="e.g. Sarah Jones — Buyer's Agent, Mark Wu — Transaction Coordinator"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Professional designations / certifications (check all that apply)</label>
+        <div class="cert-grid">
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="ABR"> ABR</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="CRS"> CRS</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="SRES"> SRES</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="GRI"> GRI</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="CNE"> CNE</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="CNC"> CNC</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="e-PRO"> e-PRO</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="PSA"> PSA</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="SFR"> SFR</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="RENE"> RENE</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="MRP"> MRP</label>
+          <label class="cert-opt"><input type="checkbox" data-key="certs" value="GREEN"> GREEN</label>
+        </div>
+        <input type="text" id="certsOther" data-key="certsOther" placeholder="Other certifications not listed above" style="margin-top:8px;">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Languages spoken (other than English)</label>
+        <input type="text" id="languages" data-key="languages" placeholder="e.g. Spanish, Mandarin, Tagalog">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Awards, rankings, or recognition</label>
+        <p class="q-hint">Top Producer, Five Star Agent, President's Club, MLS rankings, etc.</p>
+        <textarea id="awards" data-key="awards" placeholder="e.g. Top 1% of agents in OC (2022–2025), Five Star Real Estate Agent Award 4 consecutive years…" style="min-height:70px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Tell your story — why did you get into real estate?</label>
+        <p class="q-hint">This becomes your About page anchor. Be honest and specific. The story that sounds most human converts best.</p>
+        <div class="textarea-wrap">
+          <textarea id="story" data-key="story" placeholder="e.g. I grew up in Mission Viejo and watched my parents struggle through a bad agent experience in 2003. I knew there was a better way to do this…" style="min-height:140px;" maxlength="1000" oninput="updateCounter(this,'storyCount')"></textarea>
+          <div class="char-count" id="storyCount">0 / 1000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 2: MARKET & TERRITORY                      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s2">
+      <div class="section-head">
+        <div class="section-badge">🗺️</div>
+        <div class="section-head-text">
+          <h2>Market &amp; Territory</h2>
+          <p>Where you work and what you sell</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Primary market area (cities or neighborhoods)</label>
+        <p class="q-hint">Be specific — these become your SEO keywords and neighborhood pages.</p>
+        <textarea id="primaryMarket" data-key="primaryMarket" placeholder="e.g. Mission Viejo, Rancho Santa Margarita, Ladera Ranch, Aliso Viejo, Lake Forest" style="min-height:60px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Primary ZIP codes served</label>
+        <input type="text" id="primaryZips" data-key="primaryZips" placeholder="e.g. 92691, 92692, 92688, 92694, 92653">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Secondary / occasional markets</label>
+        <input type="text" id="secondaryMarket" data-key="secondaryMarket" placeholder="e.g. Newport Beach, Laguna Niguel, San Clemente — occasional deals only">
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">Typical minimum price point</label>
+          <input type="text" id="priceMin" data-key="priceMin" placeholder="e.g. $600,000">
+        </div>
+        <div class="question-group">
+          <label class="q-label">Typical maximum price point</label>
+          <input type="text" id="priceMax" data-key="priceMax" placeholder="e.g. $2,500,000">
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Property types you handle (check all that apply)</label>
+        <div class="option-grid">
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Single-family homes"><label>Single-family homes</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Condos and townhomes"><label>Condos &amp; townhomes</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Luxury estates ($2M+)"><label>Luxury estates ($2M+)</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="New construction"><label>New construction</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Multi-family (2-4 units)"><label>Multi-family (2–4 units)</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Investment/flip properties"><label>Investment / flip properties</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Land and lots"><label>Land &amp; lots</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="propTypes" value="Vacation/second homes"><label>Vacation / second homes</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Do you serve relocation clients?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="relocation" value="Yes — relocation is a significant part of my business" data-key="relocation"><label><strong>Yes</strong> <span>Relocation is a meaningful part of my business</span></label></label>
+          <label class="radio-opt"><input type="radio" name="relocation" value="Occasionally — but not a focus" data-key="relocation"><label><strong>Occasionally</strong> <span>It comes up but I don't actively pursue it</span></label></label>
+          <label class="radio-opt"><input type="radio" name="relocation" value="No" data-key="relocation"><label><strong>No</strong> <span>I focus on local buyers and sellers</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Neighborhoods you're best known for or most closely associated with</label>
+        <p class="q-hint">Where do you have the most sold signs? What areas do people call you for first?</p>
+        <textarea id="knownNeighborhoods" data-key="knownNeighborhoods" placeholder="e.g. I'm most recognized in the Casta del Sol 55+ community in Mission Viejo and in the Melinda Heights neighborhood of RSM…"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 3: IDEAL CLIENT                            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s3">
+      <div class="section-head">
+        <div class="section-badge">🎯</div>
+        <div class="section-head-text">
+          <h2>Ideal Client</h2>
+          <p>Who you serve best — and who finds you</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Approximate buyer vs. seller split</label>
+        <div class="range-wrap">
+          <input type="range" id="buyerSellerSplit" data-key="buyerSellerSplit" min="0" max="100" value="50" step="5" oninput="updateRange(this,'splitVal','buyerSellerSplit')">
+          <div class="range-labels"><span>100% Buyers</span><span>100% Sellers</span></div>
+          <div class="range-value" id="splitVal">50% Buyers / 50% Sellers</div>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Client types you work with most (check all that apply)</label>
+        <div class="option-grid">
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="First-time buyers"><label>First-time buyers</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Move-up buyers"><label>Move-up buyers</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Downsizers / empty nesters"><label>Downsizers / empty nesters</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Luxury buyers and sellers ($1.5M+)"><label>Luxury ($1.5M+)</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Real estate investors"><label>Real estate investors</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Relocating clients (out-of-area)"><label>Relocating clients</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="Divorce / estate / probate sellers"><label>Divorce / estate / probate</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="clientTypes" value="55+ active adult community buyers"><label>55+ active adult buyers</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Typical age range of your clients</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="ageRange" value="25–35 (millennials entering market)" data-key="ageRange"><label>25–35</label></label>
+          <label class="radio-opt"><input type="radio" name="ageRange" value="35–45 (move-up buyers)" data-key="ageRange"><label>35–45</label></label>
+          <label class="radio-opt"><input type="radio" name="ageRange" value="45–60 (peak earners, downsizing on horizon)" data-key="ageRange"><label>45–60</label></label>
+          <label class="radio-opt"><input type="radio" name="ageRange" value="60+ (retirement, downsizing, estate)" data-key="ageRange"><label>60+</label></label>
+          <label class="radio-opt"><input type="radio" name="ageRange" value="Mixed — no dominant age group" data-key="ageRange"><label>Mixed</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">How do most clients currently find you? (check all that apply)</label>
+        <div class="option-grid">
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Referrals from past clients"><label>Referrals from past clients</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Zillow / online portal leads"><label>Zillow / online leads</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Sphere of influence (friends, family, neighbors)"><label>Sphere of influence</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Open houses"><label>Open houses</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Social media (Instagram, Facebook)"><label>Social media</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Other agent referrals / relocation network"><label>Agent referrals</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Google / personal website"><label>Google / personal website</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="leadSources" value="Direct mail / farming"><label>Direct mail / farming</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">What do clients consistently say about working with you?</label>
+        <p class="q-hint">Think about the exact phrases you hear at the closing table or in reviews. Specific is better than general.</p>
+        <textarea id="clientsSay" data-key="clientsSay" placeholder="e.g. 'You always answered the phone.' / 'We didn't feel like just a transaction.' / 'You made a scary process feel manageable.'" style="min-height:80px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 4: UNIQUE VALUE PROPOSITION                -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s4">
+      <div class="section-head">
+        <div class="section-badge">💡</div>
+        <div class="section-head-text">
+          <h2>Unique Value Proposition</h2>
+          <p>What makes Dan the choice — not just a choice</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">In one sentence, what makes you different from every other agent in your market?</label>
+        <p class="q-hint">Don't say "I'm dedicated to my clients" — every agent says that. What do you actually do differently?</p>
+        <textarea id="uvp" data-key="uvp" placeholder="e.g. I'm the only agent in Mission Viejo who pre-stages every listing with professional furniture before the first photo is taken — at no cost to the seller." style="min-height:70px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">The top 3 reasons a client should choose you over anyone else</label>
+        <input type="text" id="reason1" data-key="reason1" placeholder="Reason #1" style="margin-bottom:8px;">
+        <input type="text" id="reason2" data-key="reason2" placeholder="Reason #2" style="margin-bottom:8px;">
+        <input type="text" id="reason3" data-key="reason3" placeholder="Reason #3">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Describe your signature process or approach</label>
+        <p class="q-hint">What is the actual step-by-step experience of working with you? What do you do at Step 1 that most agents skip?</p>
+        <div class="textarea-wrap">
+          <textarea id="process" data-key="process" placeholder="e.g. Every listing starts with a 90-minute walkthrough where I photograph every room myself, then meet with a staging consultant I've used for 8 years. We price based on the last 90 days of closed comps — not last year's wishful thinking…" style="min-height:120px;" maxlength="800" oninput="updateCounter(this,'processCount')"></textarea>
+          <div class="char-count" id="processCount">0 / 800</div>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">What do you do that most agents in your market simply don't do?</label>
+        <textarea id="uniqueDo" data-key="uniqueDo" placeholder="e.g. I deliver a printed bound market analysis to every seller before we even talk price. I call every buyer's agent before the open house to give them first access. I personally follow up every offer within 2 hours regardless of time…" style="min-height:90px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 5: BRAND & AESTHETIC                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s5">
+      <div class="section-head">
+        <div class="section-badge">🎨</div>
+        <div class="section-head-text">
+          <h2>Brand &amp; Aesthetic</h2>
+          <p>The visual identity and feel of your website</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Do you have an existing logo?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="logo" value="Yes — I'll share the file separately" data-key="logo"><label><strong>Yes</strong> <span>I'll share the file (PNG/SVG/AI) separately</span></label></label>
+          <label class="radio-opt"><input type="radio" name="logo" value="Yes — but I'm open to redesigning it" data-key="logo"><label><strong>Yes, but open to update</strong> <span>I have one but it feels dated or off-brand</span></label></label>
+          <label class="radio-opt"><input type="radio" name="logo" value="No — I need a new one designed" data-key="logo"><label><strong>No</strong> <span>I need a new logo designed as part of this project</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Describe your current logo or branding (if any)</label>
+        <input type="text" id="logoDesc" data-key="logoDesc" placeholder="e.g. Navy blue text, serif font, no icon. Or: my name in gold with a small house graphic.">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Current brand colors (if any)</label>
+        <div class="inline-grid-3">
+          <div>
+            <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px;">Primary</label>
+            <input type="text" id="color1" data-key="color1" placeholder="#1A2B4C or Navy Blue">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px;">Secondary</label>
+            <input type="text" id="color2" data-key="color2" placeholder="#C9933A or Gold">
+          </div>
+          <div>
+            <label style="font-size:11px;color:var(--text-muted);display:block;margin-bottom:4px;">Accent</label>
+            <input type="text" id="color3" data-key="color3" placeholder="Optional">
+          </div>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Design style that best fits your brand</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="designStyle" value="Modern Minimalist — clean, white space, understated luxury" data-key="designStyle"><label><strong>Modern Minimalist</strong> <span>Clean, airy, understated luxury</span></label></label>
+          <label class="radio-opt"><input type="radio" name="designStyle" value="Warm and Approachable — inviting, community-focused, friendly" data-key="designStyle"><label><strong>Warm &amp; Approachable</strong> <span>Inviting, community feel, friendly</span></label></label>
+          <label class="radio-opt"><input type="radio" name="designStyle" value="Bold and Energetic — strong contrast, confident, market-forward" data-key="designStyle"><label><strong>Bold &amp; Energetic</strong> <span>High contrast, confident, market-forward</span></label></label>
+          <label class="radio-opt"><input type="radio" name="designStyle" value="Classic Professional — traditional real estate, timeless, trust-forward" data-key="designStyle"><label><strong>Classic Professional</strong> <span>Timeless, trust-forward, traditional</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">5 words that should describe how your website feels</label>
+        <input type="text" id="brandWords" data-key="brandWords" placeholder="e.g. trustworthy, local, sophisticated, personal, data-driven">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Real estate agent websites you admire (paste URLs)</label>
+        <p class="q-hint">Don't worry about competitors. Think nationally if you like — what feels right visually?</p>
+        <textarea id="sitesLike" data-key="sitesLike" placeholder="e.g. theagencyre.com — love the dark luxury look&#10;compassagent.com — like the neighborhood content structure&#10;https://..." style="min-height:70px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Websites you DON'T want to look like</label>
+        <textarea id="sitesDislike" data-key="sitesDislike" placeholder="e.g. Anything that looks like a stock Keller Williams template — too generic. Avoid the red/white color scheme." style="min-height:60px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 6: SOCIAL PROOF                            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s6">
+      <div class="section-head">
+        <div class="section-badge">⭐</div>
+        <div class="section-head-text">
+          <h2>Social Proof</h2>
+          <p>Numbers and testimonials that build trust instantly</p>
+        </div>
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">Total transactions closed (all-time)</label>
+          <input type="text" id="totalTransactions" data-key="totalTransactions" placeholder="e.g. 180+ transactions">
+        </div>
+        <div class="question-group">
+          <label class="q-label">Transactions closed in last 12 months</label>
+          <input type="text" id="recentTransactions" data-key="recentTransactions" placeholder="e.g. 22 transactions">
+        </div>
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">Average sale price (last 12 months)</label>
+          <input type="text" id="avgSalePrice" data-key="avgSalePrice" placeholder="e.g. $875,000">
+        </div>
+        <div class="question-group">
+          <label class="q-label">Highest sale price you've closed</label>
+          <input type="text" id="highSalePrice" data-key="highSalePrice" placeholder="e.g. $3,200,000">
+        </div>
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">Zillow review count</label>
+          <input type="number" id="zillowReviews" data-key="zillowReviews" placeholder="e.g. 47">
+        </div>
+        <div class="question-group">
+          <label class="q-label">Zillow average rating</label>
+          <select id="zillowRating" data-key="zillowRating">
+            <option value="">Select…</option>
+            <option>5.0</option><option>4.9</option><option>4.8</option><option>4.7</option>
+            <option>4.6</option><option>4.5</option><option>Below 4.5</option><option>No reviews yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="inline-grid">
+        <div class="question-group">
+          <label class="q-label">Google review count</label>
+          <input type="number" id="googleReviews" data-key="googleReviews" placeholder="e.g. 18">
+        </div>
+        <div class="question-group">
+          <label class="q-label">Google average rating</label>
+          <select id="googleRating" data-key="googleRating">
+            <option value="">Select…</option>
+            <option>5.0</option><option>4.9</option><option>4.8</option><option>4.7</option>
+            <option>4.6</option><option>4.5</option><option>Below 4.5</option><option>No reviews yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Your top 3 client testimonials</label>
+        <p class="q-hint">Copy exact quotes from your reviews. Include the client's first name and city if possible.</p>
+        <div class="testimonial-block">
+          <div class="test-label">Testimonial #1</div>
+          <textarea data-key="test1" placeholder="e.g. 'Dan sold our home in 6 days for $42,000 over asking. He knew exactly how to position it and the staging was incredible. I've referred him to three neighbors already.' — Sarah M., Mission Viejo" style="min-height:80px;"></textarea>
+        </div>
+        <div class="testimonial-block">
+          <div class="test-label">Testimonial #2</div>
+          <textarea data-key="test2" placeholder="Paste second testimonial here…" style="min-height:80px;"></textarea>
+        </div>
+        <div class="testimonial-block">
+          <div class="test-label">Testimonial #3</div>
+          <textarea data-key="test3" placeholder="Paste third testimonial here…" style="min-height:80px;"></textarea>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Press mentions or media features (if any)</label>
+        <textarea id="press" data-key="press" placeholder="e.g. Featured in OC Register 'Top Agents of 2024' — March 2024&#10;Quoted in Realtor Magazine on staging strategies — January 2025" style="min-height:60px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 7: COMPETITION                             -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s7">
+      <div class="section-head">
+        <div class="section-badge">🏆</div>
+        <div class="section-head-text">
+          <h2>Competition</h2>
+          <p>Who you're up against and how to outrank them</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Your top 3–5 local competitors (by name)</label>
+        <div class="competitor-block"><div class="comp-label">Competitor 1</div><input type="text" data-key="comp1" placeholder="Agent name, brokerage, or team name"></div>
+        <div class="competitor-block"><div class="comp-label">Competitor 2</div><input type="text" data-key="comp2" placeholder="Agent name, brokerage, or team name"></div>
+        <div class="competitor-block"><div class="comp-label">Competitor 3</div><input type="text" data-key="comp3" placeholder="Agent name, brokerage, or team name"></div>
+        <div class="competitor-block"><div class="comp-label">Competitor 4 (optional)</div><input type="text" data-key="comp4" placeholder="Optional"></div>
+        <div class="competitor-block"><div class="comp-label">Competitor 5 (optional)</div><input type="text" data-key="comp5" placeholder="Optional"></div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">What do their websites do well that you want to match or exceed?</label>
+        <textarea id="compGood" data-key="compGood" placeholder="e.g. Competitor A has beautiful photography and a really clean home search. Competitor B's neighborhood guides are incredibly detailed — each page has school data, walkability scores, median prices…" style="min-height:80px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">What do their websites do poorly that you want to avoid?</label>
+        <textarea id="compBad" data-key="compBad" placeholder="e.g. Everyone's site is slow and feels like a 2015 template. No one is writing fresh content. Most don't have a strong call-to-action — just a generic contact form buried at the bottom…" style="min-height:80px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">The #1 thing you want your website to do better than everyone in your market</label>
+        <textarea id="beatComp" data-key="beatComp" placeholder="e.g. I want to own 'Mission Viejo real estate' on Google. I want someone who lands on my site to feel like they're talking to a real neighbor, not a corporate agent. I want the fastest home search in the market…" style="min-height:80px;"></textarea>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 8: GOALS & LEAD STRATEGY                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s8">
+      <div class="section-head">
+        <div class="section-badge">📈</div>
+        <div class="section-head-text">
+          <h2>Goals &amp; Lead Strategy</h2>
+          <p>What the website needs to do for your business</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Monthly lead target (buyers + sellers combined)</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="leadTarget" value="5–10 leads/month" data-key="leadTarget"><label>5–10 / month</label></label>
+          <label class="radio-opt"><input type="radio" name="leadTarget" value="10–25 leads/month" data-key="leadTarget"><label>10–25 / month</label></label>
+          <label class="radio-opt"><input type="radio" name="leadTarget" value="25–50 leads/month" data-key="leadTarget"><label>25–50 / month</label></label>
+          <label class="radio-opt"><input type="radio" name="leadTarget" value="50+ leads/month" data-key="leadTarget"><label>50+ / month</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Desired lead split (approximate)</label>
+        <div class="range-wrap">
+          <input type="range" id="leadSplit" data-key="leadSplit" min="0" max="100" value="50" step="5" oninput="updateRange(this,'leadSplitVal','leadSplit')">
+          <div class="range-labels"><span>100% Buyer leads</span><span>100% Seller leads</span></div>
+          <div class="range-value" id="leadSplitVal">50% Buyer / 50% Seller</div>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">CRM / database system you use</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="crm" value="GoHighLevel (GHL)" data-key="crm"><label>GoHighLevel (GHL)</label></label>
+          <label class="radio-opt"><input type="radio" name="crm" value="KvCORE" data-key="crm"><label>KvCORE</label></label>
+          <label class="radio-opt"><input type="radio" name="crm" value="Follow Up Boss" data-key="crm"><label>Follow Up Boss</label></label>
+          <label class="radio-opt"><input type="radio" name="crm" value="BoomTown" data-key="crm"><label>BoomTown</label></label>
+          <label class="radio-opt"><input type="radio" name="crm" value="Wise Agent" data-key="crm"><label>Wise Agent</label></label>
+          <label class="radio-opt"><input type="radio" name="crm" value="Spreadsheet / manual" data-key="crm"><label>Spreadsheet / manual</label></label>
+        </div>
+        <input type="text" id="crmOther" data-key="crmOther" placeholder="Other CRM not listed" style="margin-top:8px;">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Do you want live IDX / MLS property listings on the site?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="idx" value="Yes — I already have an IDX provider" data-key="idx"><label><strong>Yes</strong> <span>I have an IDX provider (Showcase, iHomefinder, Homes.com, etc.)</span></label></label>
+          <label class="radio-opt"><input type="radio" name="idx" value="Yes — I need an IDX provider set up" data-key="idx"><label><strong>Yes, but need one set up</strong> <span>Help me choose and integrate one</span></label></label>
+          <label class="radio-opt"><input type="radio" name="idx" value="No — manually added featured listings only" data-key="idx"><label><strong>No</strong> <span>I'll manually add 3–6 featured listings to a static page</span></label></label>
+          <label class="radio-opt"><input type="radio" name="idx" value="Not sure" data-key="idx"><label><strong>Not sure</strong> <span>Help me decide</span></label></label>
+        </div>
+        <input type="text" id="idxProvider" data-key="idxProvider" placeholder="IDX provider name, if known (e.g. Showcase IDX, iHomefinder)" style="margin-top:8px;">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Scheduling / booking tool preference</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="booking" value="Calendly" data-key="booking"><label>Calendly</label></label>
+          <label class="radio-opt"><input type="radio" name="booking" value="Acuity Scheduling" data-key="booking"><label>Acuity Scheduling</label></label>
+          <label class="radio-opt"><input type="radio" name="booking" value="GoHighLevel calendar" data-key="booking"><label>GHL Calendar</label></label>
+          <label class="radio-opt"><input type="radio" name="booking" value="Not sure — help me choose" data-key="booking"><label>Not sure</label></label>
+        </div>
+        <input type="text" id="bookingLink" data-key="bookingLink" placeholder="Calendly / booking link URL (if you already have one)" style="margin-top:8px;">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Additional integrations needed (check all that apply)</label>
+        <div class="option-grid">
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="Live chat widget (e.g. Intercom, Drift)"><label>Live chat widget</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="WhatsApp contact button"><label>WhatsApp button</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="Facebook Pixel for retargeting ads"><label>Facebook Pixel</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="Google Ads remarketing tag"><label>Google Ads tag</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="Email newsletter (Mailchimp, ConvertKit, etc.)"><label>Email newsletter</label></label>
+          <label class="check-opt"><input type="checkbox" data-key="integrations" value="SMS text messaging opt-in"><label>SMS opt-in</label></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SECTION 9: TECHNICAL & ASSETS                      -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="q-section" id="s9">
+      <div class="section-head">
+        <div class="section-badge">⚙️</div>
+        <div class="section-head-text">
+          <h2>Technical &amp; Assets</h2>
+          <p>Domain, photos, timeline, and ongoing needs</p>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Existing domain name (if any)</label>
+        <input type="url" id="domain" data-key="domain" placeholder="e.g. danblankenship.com or dansellsoc.com">
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Professional headshots available?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="headshots" value="Yes — high-res files ready to share" data-key="headshots"><label><strong>Yes</strong> <span>Recent, professional, high-res files ready</span></label></label>
+          <label class="radio-opt"><input type="radio" name="headshots" value="In progress — shoot scheduled" data-key="headshots"><label><strong>In progress</strong> <span>Shoot is scheduled or being arranged</span></label></label>
+          <label class="radio-opt"><input type="radio" name="headshots" value="No — need to arrange a photo shoot" data-key="headshots"><label><strong>No</strong> <span>Need to arrange this before launch</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Lifestyle / property / neighborhood photography available?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="lifestylePhotos" value="Yes — substantial library of OC lifestyle and property photos" data-key="lifestylePhotos"><label><strong>Yes</strong> <span>I have a library of property/lifestyle/neighborhood photos</span></label></label>
+          <label class="radio-opt"><input type="radio" name="lifestylePhotos" value="Partial — some property photos but limited lifestyle" data-key="lifestylePhotos"><label><strong>Partial</strong> <span>Some property shots but limited lifestyle content</span></label></label>
+          <label class="radio-opt"><input type="radio" name="lifestylePhotos" value="No — will use stock photography for launch" data-key="lifestylePhotos"><label><strong>No</strong> <span>Will use licensed stock photography for launch</span></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Video content available?</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="video" value="Yes — I have existing video content" data-key="video"><label>Yes — existing video</label></label>
+          <label class="radio-opt"><input type="radio" name="video" value="Willing to shoot video for the website" data-key="video"><label>Willing to shoot new video</label></label>
+          <label class="radio-opt"><input type="radio" name="video" value="No video for now" data-key="video"><label>No video for now</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Any existing written content you want to use?</label>
+        <p class="q-hint">Bio text, old blog posts, neighborhood descriptions, marketing copy — paste or describe what exists.</p>
+        <textarea id="existingContent" data-key="existingContent" placeholder="e.g. I have a Zillow bio (~200 words), a few Nextdoor posts about the local market, and a seller's guide PDF I made last year…" style="min-height:70px;"></textarea>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Desired launch timeline</label>
+        <div class="option-grid">
+          <label class="radio-opt"><input type="radio" name="timeline" value="ASAP — within 2 weeks" data-key="timeline"><label>ASAP — within 2 weeks</label></label>
+          <label class="radio-opt"><input type="radio" name="timeline" value="Within 1 month" data-key="timeline"><label>Within 1 month</label></label>
+          <label class="radio-opt"><input type="radio" name="timeline" value="2–3 months" data-key="timeline"><label>2–3 months</label></label>
+          <label class="radio-opt"><input type="radio" name="timeline" value="No hard deadline" data-key="timeline"><label>No hard deadline</label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Blog and content after launch — who writes it?</label>
+        <div class="option-grid-1">
+          <label class="radio-opt"><input type="radio" name="contentOwner" value="I'll write it myself" data-key="contentOwner"><label><strong>I'll write it myself</strong> <span>Give me a content calendar template and I'll do it</span></label></label>
+          <label class="radio-opt"><input type="radio" name="contentOwner" value="I need templates and AI assistance" data-key="contentOwner"><label><strong>Templates + AI assist</strong> <span>Give me monthly market report templates I can fill in quickly</span></label></label>
+          <label class="radio-opt"><input type="radio" name="contentOwner" value="I'll hire a content writer or VA" data-key="contentOwner"><label><strong>Hiring a writer</strong> <span>I'll outsource content creation</span></label></label>
+          <label class="radio-opt"><input type="radio" name="contentOwner" value="Not sure yet" data-key="contentOwner"><label><strong>Not sure yet</strong></label></label>
+        </div>
+      </div>
+
+      <div class="question-group">
+        <label class="q-label">Anything else you want us to know?</label>
+        <p class="q-hint">Anything about your market, your past website attempts, your personality, or your clients that would help us build the best possible site for you.</p>
+        <textarea id="anythingElse" data-key="anythingElse" placeholder="Open field — tell us whatever matters…" style="min-height:100px;"></textarea>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- COPY SECTION -->
+<div class="copy-section">
+  <div class="copy-info">
+    <strong>All done?</strong> Click to copy your answers in one formatted block —<br>ready to paste directly into the website build prompt.
+  </div>
+  <button class="copy-btn" id="submitBtn" onclick="submitAnswers()">
+    Submit Questionnaire
+  </button>
+</div>
+
+<script>
+// ─── AUTO-SAVE ──────────────────────────────────────────
+function saveData() {
+  const data = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    if (el.type === 'checkbox') {
+      if (!data[key]) data[key] = [];
+      if (el.checked) data[key].push(el.value);
+    } else if (el.type === 'radio') {
+      if (el.checked) data[key] = el.value;
+    } else {
+      data[key] = el.value;
+    }
+  });
+  localStorage.setItem('danBlankenship_questionnaire', JSON.stringify(data));
+  const ind = document.getElementById('saveInd');
+  ind.textContent = 'Saved ✓';
+  ind.classList.add('saving');
+  setTimeout(() => { ind.textContent = 'Auto-saved'; ind.classList.remove('saving'); }, 1500);
+}
+
+function loadData() {
+  const raw = localStorage.getItem('danBlankenship_questionnaire');
+  if (!raw) return;
+  const data = JSON.parse(raw);
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const val = data[el.dataset.key];
+    if (!val) return;
+    if (el.type === 'checkbox') {
+      el.checked = Array.isArray(val) && val.includes(el.value);
+    } else if (el.type === 'radio') {
+      el.checked = el.value === val;
+    } else {
+      el.value = val;
+    }
+  });
+  updateProgress();
+}
+
+let saveTimer;
+document.addEventListener('input', () => {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveData, 800);
+  updateProgress();
+});
+document.addEventListener('change', () => { saveData(); updateProgress(); });
+
+// ─── PROGRESS ───────────────────────────────────────────
+function updateProgress() {
+  const all = document.querySelectorAll('input[type="text"], textarea, select, input[type="number"], input[type="url"]');
+  let filled = 0;
+  all.forEach(el => { if (el.value && el.value.trim()) filled++; });
+  const pct = Math.round((filled / all.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('sidebarProg').style.width = pct + '%';
+  document.getElementById('sidebarPct').textContent = pct + '%';
+  updateNavActive();
+}
+
+// ─── RANGE SLIDERS ──────────────────────────────────────
+function updateRange(el, valId, key) {
+  const v = parseInt(el.value);
+  el.style.setProperty('--pct', v + '%');
+  const buyPct = 100 - v;
+  document.getElementById(valId).textContent = buyPct + '% Buyers / ' + v + '% Sellers';
+}
+// Init sliders
+document.querySelectorAll('input[type="range"]').forEach(el => {
+  el.style.setProperty('--pct', el.value + '%');
+});
+
+// ─── CHAR COUNTER ────────────────────────────────────────
+function updateCounter(el, countId) {
+  document.getElementById(countId).textContent = el.value.length + ' / ' + el.maxLength;
+}
+
+// ─── NAV ACTIVE ─────────────────────────────────────────
+function scrollToSection(id, e) {
+  e.preventDefault();
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateNavActive() {
+  const sections = document.querySelectorAll('.q-section');
+  const navItems = document.querySelectorAll('.nav-item');
+  let activeIdx = 0;
+  sections.forEach((s, i) => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top <= 200) activeIdx = i;
+  });
+  navItems.forEach((item, i) => {
+    item.classList.toggle('active', i === activeIdx);
+  });
+}
+window.addEventListener('scroll', updateNavActive, { passive: true });
+
+// ─── COPY ALL ANSWERS ────────────────────────────────────
+function collectAnswers() {
+  const sections = document.querySelectorAll('.q-section');
+  const sectionTitles = ['ABOUT DAN','MARKET & TERRITORY','IDEAL CLIENT','UNIQUE VALUE PROPOSITION','BRAND & AESTHETIC','SOCIAL PROOF','COMPETITION','GOALS & LEAD STRATEGY','TECHNICAL & ASSETS'];
+
+  let out = '=== DAN BLANKENSHIP — WEBSITE QUESTIONNAIRE RESPONSES ===\n';
+  out += 'Date: ' + new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}) + '\n';
+  out += '=======================================================\n\n';
+
+  sections.forEach((section, idx) => {
+    out += '--- SECTION ' + (idx+1) + ': ' + sectionTitles[idx] + ' ---\n\n';
+
+    section.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"], textarea, select').forEach(el => {
+      if (!el.value || !el.value.trim()) return;
+      const group = el.closest('.question-group') || el.closest('.competitor-block') || el.closest('.testimonial-block') || el.closest('.textarea-wrap')?.closest('.question-group');
+      const label = group?.querySelector('.q-label, .comp-label, .test-label')?.textContent?.trim() || el.placeholder || el.id;
+      if (label && el.value.trim()) {
+        out += label + '\n' + el.value.trim() + '\n\n';
+      }
+    });
+
+    const radioGroups = {};
+    section.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+      const group = el.closest('.question-group');
+      const label = group?.querySelector('.q-label')?.textContent?.trim() || el.name;
+      radioGroups[label] = el.value;
+    });
+    Object.entries(radioGroups).forEach(([label, val]) => {
+      out += label + '\n' + val + '\n\n';
+    });
+
+    const checkGroups = {};
+    section.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+      const group = el.closest('.question-group');
+      const label = group?.querySelector('.q-label')?.textContent?.trim() || el.dataset.key;
+      if (!checkGroups[label]) checkGroups[label] = [];
+      checkGroups[label].push(el.value);
+    });
+    Object.entries(checkGroups).forEach(([label, vals]) => {
+      out += label + '\n' + vals.join(', ') + '\n\n';
+    });
+
+    section.querySelectorAll('input[type="range"]').forEach(el => {
+      const group = el.closest('.question-group');
+      const label = group?.querySelector('.q-label')?.textContent?.trim() || el.id;
+      const valEl = group?.querySelector('.range-value');
+      if (valEl) out += label + '\n' + valEl.textContent + '\n\n';
+    });
+  });
+
+  out += '=======================================================\n';
+  out += 'END OF QUESTIONNAIRE\n';
+
+  return out;
+}
+
+async function submitAnswers() {
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  const answers = collectAnswers();
+
+  try {
+    const res = await fetch('https://formspree.io/f/xgobnzan', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Dan Blankenship — Website Questionnaire Responses',
+        answers
+      })
+    });
+
+    if (res.ok) {
+      btn.textContent = '✓ Submitted!';
+      btn.style.background = '#22c55e';
+      showToast('Your answers have been sent to Branch & Root. Thank you, Dan!');
+    } else {
+      throw new Error('server error');
+    }
+  } catch (e) {
+    btn.textContent = 'Submit Questionnaire';
+    btn.disabled = false;
+    btn.style.background = '';
+    showToast('Something went wrong — please try again or email your answers directly.');
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// Init on load
+window.addEventListener('load', () => { loadData(); updateProgress(); });
+</script>
+</body>
+</html>
