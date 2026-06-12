@@ -20,3 +20,10 @@ Icon?
 # Local environment overrides
 .env
 .env.local
+
+# Notes / local tooling (not part of the hosted site)
+.obsidian/
+graphify-out/
+CLAUDE_DESIGN_PROMPT.md
+DESIGN_DECISIONS.md
+_COMMUNITY_Pages & Interactions.md

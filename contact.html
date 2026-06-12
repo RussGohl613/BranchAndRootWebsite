@@ -56,6 +56,10 @@
         />
         <meta property="og:image" content="assets/img/og-image.jpg" />
         <link
+            rel="canonical"
+            href="https://branchandrootconsulting.com/contact"
+        />
+        <link
             rel="preload"
             href="assets/fonts/fraunces-variable.woff2"
             as="font"
@@ -73,6 +77,16 @@
         <link rel="stylesheet" href="assets/css/site.css" />
         <!-- Analytics: GA4 + GTM load from the head block above. -->
         <!-- Conversion events fire from thank-you.html (post-submit landing). -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "name": "Book a Free Consultation — Branch and Root Consulting",
+          "url": "https://branchandrootconsulting.com/contact",
+          "description": "Book a free consultation with Branch and Root Consulting to discuss lead generation and customer reactivation for your local service business.",
+          "mainEntity": {"@id": "https://branchandrootconsulting.com/#organization"}
+        }
+        </script>
     </head>
     <body>
   <!-- Google Tag Manager (noscript) -->
@@ -84,7 +98,7 @@
         <header class="site-header">
             <div class="container nav">
                 <a
-                    href="index.html"
+                    href="/"
                     class="brand"
                     aria-label="Branch and Root Consulting — Home"
                 >
@@ -104,25 +118,26 @@
                 <nav aria-label="Primary">
                     <ul class="nav-links">
                         <li>
-                            <a href="services.html" data-nav="services"
+                            <a href="/services" data-nav="services"
                                 >Services</a
                             >
                         </li>
                         <li>
-                            <a href="bundles.html" data-nav="bundles"
+                            <a href="/bundles" data-nav="bundles"
                                 >Bundles</a
                             >
                         </li>
-                        <li><a href="about.html" data-nav="about">About</a></li>
-                        <li><a href="faq.html" data-nav="faq">FAQ</a></li>
+                        <li><a href="/about" data-nav="about">About</a></li>
+                        <li><a href="/faq" data-nav="faq">FAQ</a></li>
+                        <li><a href="/blog" data-nav="blog">Blog</a></li>
                         <li>
-                            <a href="contact.html" data-nav="contact"
+                            <a href="/contact" data-nav="contact"
                                 >Contact</a
                             >
                         </li>
                     </ul>
                 </nav>
-                <a href="contact.html" class="btn btn-primary nav-cta"
+                <a href="/contact" class="btn btn-primary nav-cta"
                     >Book a Free Consultation</a
                 >
                 <button
@@ -161,18 +176,19 @@
             <div class="mobile-panel" id="mobile-panel">
                 <ul>
                     <li>
-                        <a href="services.html" data-nav="services">Services</a>
+                        <a href="/services" data-nav="services">Services</a>
                     </li>
                     <li>
-                        <a href="bundles.html" data-nav="bundles">Bundles</a>
+                        <a href="/bundles" data-nav="bundles">Bundles</a>
                     </li>
-                    <li><a href="about.html" data-nav="about">About</a></li>
-                    <li><a href="faq.html" data-nav="faq">FAQ</a></li>
+                    <li><a href="/about" data-nav="about">About</a></li>
+                    <li><a href="/faq" data-nav="faq">FAQ</a></li>
+                    <li><a href="/blog" data-nav="blog">Blog</a></li>
                     <li>
-                        <a href="contact.html" data-nav="contact">Contact</a>
+                        <a href="/contact" data-nav="contact">Contact</a>
                     </li>
                 </ul>
-                <a href="contact.html" class="btn btn-primary mobile-cta"
+                <a href="/contact" class="btn btn-primary mobile-cta"
                     >Book a Free Consultation</a
                 >
             </div>
@@ -288,11 +304,11 @@
 
                             <p class="form-consent">
                                 By submitting the form above, you agree to our
-                                <a href="terms-of-service.html"
+                                <a href="/terms-of-service"
                                     >Terms of Service</a
                                 >
                                 and
-                                <a href="privacy-policy.html">Privacy Policy</a
+                                <a href="/privacy-policy">Privacy Policy</a
                                 >.
                             </p>
                         </div>
@@ -353,14 +369,10 @@
 
         <footer class="site-footer">
             <div class="container">
-                <p class="footer-tag">
-                    Branching your business out from a
-                    <em>rooted</em> foundation.
-                </p>
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a
-                            href="index.html"
+                            href="/"
                             class="brand"
                             aria-label="Branch and Root Consulting — Home"
                         >
@@ -378,15 +390,20 @@
                                 ></span
                             >
                         </a>
+                        <p class="footer-tag">
+                            Branching your business out from a
+                            <em>rooted</em> foundation.
+                        </p>
                     </div>
                     <div class="footer-col">
                         <h4>Site</h4>
                         <ul>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="bundles.html">Bundles</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/services">Services</a></li>
+                            <li><a href="/bundles">Bundles</a></li>
+                            <li><a href="/about">About</a></li>
+                            <li><a href="/faq">FAQ</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
@@ -409,11 +426,12 @@
                         reserved.</span
                     >
                     <div class="footer-legal">
-                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="/privacy-policy">Privacy Policy</a>
                         <span aria-hidden="true">·</span>
-                        <a href="terms-of-service.html">Terms of Service</a>
+                        <a href="/terms-of-service">Terms of Service</a>
+                        <span aria-hidden="true">·</span>
+                        <a href="/sitemap-page">Sitemap</a>
                     </div>
-                    <span>Built on a rooted foundation.</span>
                 </div>
             </div>
         </footer>

@@ -1,0 +1,57 @@
+# Branch and Root Consulting — robots.txt
+# Standard crawlers: allow everything except internal tool pages
+
+User-agent: *
+Allow: /
+Disallow: /dan-audit
+Disallow: /dan-questions
+Disallow: /mission-auto-pitch
+Disallow: /graphify-out/
+Disallow: /thank-you
+Disallow: /.templates/
+
+# Explicit .html variants (already covered by the prefix rules above; listed for clarity)
+Disallow: /dan-audit.html
+Disallow: /dan-questions.html
+Disallow: /mission-auto-pitch.html
+Disallow: /thank-you.html
+
+# --- AI search and assistant crawlers: explicitly welcome ---
+
+# OpenAI — ChatGPT search
+User-agent: OAI-SearchBot
+Allow: /
+
+# OpenAI — training crawler
+User-agent: GPTBot
+Allow: /
+
+# Anthropic — Claude training
+User-agent: ClaudeBot
+Allow: /
+
+# Anthropic — Claude search
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Google — Gemini / AI training (separate from core Googlebot)
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Amazon / Alexa
+User-agent: Amazonbot
+Allow: /
+
+# Common Crawl (training corpus used by many AI labs)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://branchandrootconsulting.com/sitemap.xml

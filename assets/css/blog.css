@@ -1,0 +1,551 @@
+/* =========================================================================
+   Branch and Root Consulting — Blog styles (hub + posts)
+   Loads AFTER tokens.css and site.css. Reuses site primitives
+   (.container, .section, .eyebrow, .btn, .page-hero, .cta-banner);
+   defines only blog-specific components below.
+
+   Colors come exclusively from tokens.css custom properties. The only
+   literal values are the rgba(247,245,240,…) cream tints used inside the
+   always-forest .post-cta block — the same convention site.css uses for
+   .cta-banner / .section-forest (fixed-brand surfaces that do not flip
+   in dark mode). Everything else cascades through the token flip in
+   tokens.css, with a small prefers-color-scheme block at the end for
+   accent adjustments (moss → moss-light), mirroring site.css.
+   ========================================================================= */
+
+/* ========================================================================
+   HUB — category sections
+   ======================================================================== */
+
+.category-header { margin-bottom: var(--s-5); }
+.category-header h2 {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.65em;
+}
+
+/* Count badge — small-caps pill next to each category heading */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32em 0.9em;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--moss);
+  white-space: nowrap;
+}
+
+/* ----- Post card grid: 1 col mobile / 2 col tablet / 3 col desktop ---- */
+.post-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-3);
+}
+@media (min-width: 700px) {
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-4);
+  }
+}
+@media (min-width: 1080px) {
+  .post-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ----- Post card ------------------------------------------------------ */
+.post-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  background: var(--surface-grad);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elev-1);
+  transition: transform var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+/* Moss hairline that draws across the top on hover — editorial accent */
+.post-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: var(--s-4);
+  right: var(--s-4);
+  height: 2px;
+  background: var(--moss);
+  border-radius: 0 0 2px 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-slow) var(--ease-out);
+}
+.post-card:hover,
+.post-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--elev-2);
+  border-color: var(--line-hair);
+}
+.post-card:hover::after,
+.post-card:focus-within::after { transform: scaleX(1); }
+
+.post-card-title {
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: var(--track-tight);
+}
+.post-card-title a {
+  color: var(--heading);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+/* Stretched link — the whole card is one click target / one tab stop */
+.post-card-title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+}
+.post-card:hover .post-card-title a,
+.post-card:focus-within .post-card-title a { color: var(--moss); }
+
+.post-card-excerpt {
+  flex-grow: 1;
+  max-width: none;
+  color: var(--slate);
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+/* "Read more →" affordance — sits under the stretched link, so it is
+   clickable; aria-hidden in markup keeps card = one accessible link. */
+.post-card-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-top: var(--s-1);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.post-card-more .arrow {
+  font-weight: 400;
+  transition: transform var(--dur) var(--ease);
+}
+.post-card:hover .post-card-more .arrow,
+.post-card:focus-within .post-card-more .arrow { transform: translateX(4px); }
+
+@media (max-width: 480px) {
+  .post-card { padding: var(--s-3); }
+  .post-card::after { left: var(--s-3); right: var(--s-3); }
+}
+
+/* ========================================================================
+   POSTS — breadcrumb
+   ======================================================================== */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6em;
+  margin-bottom: var(--s-4);
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--slate);
+  line-height: 1.7;
+}
+.breadcrumb a {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+.breadcrumb a:hover {
+  color: var(--moss);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.breadcrumb span[aria-hidden] { color: var(--line-hair); }
+.breadcrumb [aria-current="page"] {
+  color: var(--moss);
+  letter-spacing: 0.12em;
+}
+
+/* ========================================================================
+   POSTS — article reading column (≈70ch measure)
+   ======================================================================== */
+.post {
+  width: 100%;
+  max-width: calc(70ch + 2 * var(--s-3));
+  margin-inline: auto;
+  padding-inline: var(--s-3);
+  padding-block: clamp(3rem, 5vw, 4.5rem) clamp(4rem, 8vw, 7rem);
+}
+
+.post-title {
+  font-size: clamp(1.9rem, 1.45rem + 1.7vw, 3rem);
+  line-height: 1.04;
+  margin-bottom: var(--s-3);
+}
+
+.post-meta {
+  display: block;
+  max-width: none;
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line-hair);
+  margin-bottom: var(--s-5);
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* Opening lede — serif, larger; also the Speakable target */
+.post .post-lede {
+  max-width: none;
+  margin-bottom: var(--s-4);
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.28rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--body-fg);
+  font-variation-settings: "opsz" 144;
+}
+
+/* ----- In-article typography ----------------------------------------- */
+.post h2 {
+  font-size: clamp(1.4rem, 1.2rem + 0.7vw, 1.75rem);
+  margin-top: var(--s-6);
+  margin-bottom: var(--s-3);
+}
+.post h2 em { font-style: italic; color: var(--moss); font-weight: 500; }
+.post h3 {
+  font-size: 1.18rem;
+  margin-top: var(--s-4);
+  margin-bottom: var(--s-2);
+}
+.post p {
+  max-width: none;
+  line-height: 1.75;
+}
+.post p + p { margin-top: var(--s-3); }
+
+.post ul,
+.post ol {
+  margin: var(--s-3) 0;
+  padding-left: 1.4rem;
+  display: grid;
+  gap: 0.6rem;
+}
+.post li {
+  line-height: 1.65;
+  padding-left: 0.35rem;
+}
+.post li::marker {
+  color: var(--moss);
+  font-weight: 600;
+}
+
+/* Em note block — editorial aside, e.g. <p class="post-note"><em>…</em></p> */
+.post .post-note,
+.post blockquote {
+  margin: var(--s-4) 0;
+  padding: var(--s-3) var(--s-4);
+  max-width: none;
+  background: var(--surface-2);
+  border-left: 2px solid var(--moss);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.post .post-note em,
+.post blockquote em { color: var(--heading); }
+
+/* ========================================================================
+   POSTS — related articles aside
+   ======================================================================== */
+.related-posts {
+  margin-top: var(--s-6);
+  padding: var(--s-4);
+  background: var(--surface-grad-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+}
+.related-posts h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.related-posts h2::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  flex-shrink: 0;
+}
+.related-posts ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-posts li { border-top: 1px solid var(--line-soft); }
+.related-posts li:first-child { border-top: 0; }
+.related-posts a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2);
+  padding: 0.8rem 0.1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.08rem;
+  letter-spacing: var(--track-tight);
+  color: var(--heading);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+.related-posts a::after {
+  content: "→";
+  font-weight: 400;
+  color: var(--moss);
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease);
+}
+.related-posts a:hover { color: var(--moss); }
+.related-posts a:hover::after { transform: translateX(4px); }
+
+/* ========================================================================
+   POSTS — CTA block (always-forest, mirrors .cta-banner aesthetic)
+   ======================================================================== */
+.post-cta {
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--s-5);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--s-4);
+  background: var(--forest-fixed);
+  color: var(--cream-fixed);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--elev-2);
+}
+.post-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 520px 300px at 50% 100%, rgba(82, 148, 111, 0.24), transparent 60%);
+  pointer-events: none;
+}
+.post-cta > * { position: relative; }
+.post-cta h2 {
+  margin: 0 auto;
+  max-width: 20ch;
+  color: var(--cream-fixed);
+  font-size: clamp(1.45rem, 1.2rem + 0.9vw, 1.9rem);
+}
+.post-cta p {
+  margin: var(--s-3) auto 0;
+  max-width: 48ch;
+  color: rgba(247, 245, 240, 0.88);
+}
+.post-cta .btn { margin-top: var(--s-4); }
+
+/* ========================================================================
+   FEATURED CARDS — category tag + read-time meta row
+   ======================================================================== */
+
+/* Meta row sits above the title; flexbox separates tag left / time right */
+.post-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  flex-wrap: wrap;
+}
+
+/* Category tag — small-caps pill, extends count-badge visual language */
+.post-card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28em 0.8em;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 700;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--moss);
+  white-space: nowrap;
+  /* Sits behind the stretched link overlay but is still visible */
+  position: relative;
+  z-index: 1;
+}
+
+/* Read-time line — muted annotation weight */
+.post-card-readtime {
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--slate-soft);
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================================================
+   COMPACT INDEX — Full Library section
+   ======================================================================== */
+
+/* Two-column layout on desktop via CSS columns; single on mobile */
+.post-index {
+  columns: 1;
+  column-gap: var(--s-6);
+}
+@media (min-width: 780px) {
+  .post-index { columns: 2; }
+}
+
+/* Each category group — avoid breaking across columns */
+.post-index-group {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: var(--s-5);
+}
+.post-index-group:last-child { margin-bottom: 0; }
+
+/* Category heading — h3, small-caps, hairline rule underneath */
+.post-index-category {
+  margin: 0 0 var(--s-2);
+  padding-bottom: 0.65em;
+  border-bottom: 1px solid var(--line-hair);
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+/* List — unstyled, comfortable vertical rhythm */
+.post-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+.post-index-list li {
+  border-bottom: 1px solid var(--line-soft);
+}
+.post-index-list li:first-child {
+  border-top: 1px solid var(--line-soft);
+}
+
+/* Links — plain, hover underline per site conventions */
+.post-index-list a {
+  display: block;
+  padding: 0.7em 0.1em;
+  font-family: var(--font-display);
+  font-size: 1.01rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: var(--track-tight);
+  color: var(--heading);
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+.post-index-list a:hover {
+  color: var(--moss);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.post-index-list a:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+  border-radius: var(--radius);
+}
+
+/* ========================================================================
+   Dark mode — accent adjustments only (tokens flip the rest).
+   Same mechanism as site.css: moss → moss-light, soft borders → line.
+   ======================================================================== */
+@media (prefers-color-scheme: dark) {
+  .count-badge { color: var(--moss-light); border-color: var(--line); }
+
+  /* Featured card meta */
+  .post-card-tag { color: var(--moss-light); border-color: var(--line); }
+  .post-card-readtime { color: var(--slate); }
+
+  /* Compact index */
+  .post-index-category { color: var(--moss-light); border-bottom-color: var(--line); }
+  .post-index-list li { border-bottom-color: var(--line); }
+  .post-index-list li:first-child { border-top-color: var(--line); }
+  .post-index-list a:hover { color: var(--moss-light); }
+  .post-index-list a:focus-visible { outline-color: var(--moss-light); }
+
+  .post-card { border-color: var(--line); }
+  .post-card:hover,
+  .post-card:focus-within { border-color: var(--line-hair); }
+  .post-card::after { background: var(--moss-light); }
+  .post-card:hover .post-card-title a,
+  .post-card:focus-within .post-card-title a { color: var(--moss-light); }
+  .post-card-more { color: var(--moss-light); }
+
+  .breadcrumb a:hover { color: var(--moss-light); }
+  .breadcrumb [aria-current="page"] { color: var(--moss-light); }
+
+  .post h2 em { color: var(--moss-light); }
+  .post li::marker { color: var(--moss-light); }
+  .post .post-note,
+  .post blockquote { border-left-color: var(--moss-light); }
+
+  .related-posts { border-color: var(--line); }
+  .related-posts li { border-top-color: var(--line); }
+  .related-posts h2 { color: var(--moss-light); }
+  .related-posts a:hover { color: var(--moss-light); }
+  .related-posts a::after { color: var(--moss-light); }
+}
+
+/* ========================================================================
+   Reduced motion — site.css already zeroes transition durations globally;
+   also remove the card lift/slide transforms themselves.
+   ======================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .post-card:hover,
+  .post-card:focus-within { transform: none; }
+  .post-card::after { transition: none; }
+  .post-card:hover .post-card-more .arrow,
+  .post-card:focus-within .post-card-more .arrow { transform: none; }
+  .related-posts a:hover::after { transform: none; }
+  .post-index-list a { transition: none; }
+}

@@ -1,0 +1,9 @@
+# Excluded from Vercel deployments — repo-only / local-only material
+.templates/
+.obsidian/
+graphify-out/
+.claude/
+*.md
+.DS_Store
+.gitignore
+.vercelignore

@@ -1,5 +1,6 @@
 {
   "cleanUrls": true,
+  "trailingSlash": false,
   "redirects": [
     { "source": "/packages", "destination": "/bundles", "permanent": true },
     { "source": "/packages.html", "destination": "/bundles", "permanent": true }
