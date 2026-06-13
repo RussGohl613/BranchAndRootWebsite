@@ -3,6 +3,8 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/packages", "destination": "/bundles", "permanent": true },
-    { "source": "/packages.html", "destination": "/bundles", "permanent": true }
+    { "source": "/packages.html", "destination": "/bundles", "permanent": true },
+    { "source": "/blog", "destination": "/guides", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/guides/:path*", "permanent": true }
   ]
 }

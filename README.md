@@ -38,7 +38,7 @@ Website/
 │   ├── css/
 │   │   ├── tokens.css          # Design tokens (colors, type scale, font-face)
 │   │   ├── site.css            # Global component + page styles
-│   │   └── blog.css            # Blog-only styles
+│   │   └── guides.css            # Guides-only styles
 │   ├── js/
 │   │   ├── site.js             # Nav toggle, FAQ accordion, smooth scroll
 │   │   └── lead-form.js        # Form validation + API submission
@@ -54,9 +54,9 @@ Website/
 │       ├── apple-touch-icon.png
 │       ├── revenue-leak-checklist.pdf   # Lead magnet PDF
 │       └── team/               # Team headshot directory
-├── blog/
-│   ├── index.html              # Blog hub — featured 12 posts + compact index; links to /blog/all-guides
-│   ├── all-guides/index.html   # Full 35-post category index at /blog/all-guides
+├── guides/
+│   ├── index.html              # Guides hub — featured 12 posts + compact index; links to /guides/all-guides
+│   ├── all-guides/index.html   # Full 35-post category index at /guides/all-guides
 │   └── {slug}/index.html       # One directory per post (40 posts)
 ├── .templates/
 │   └── blog-post.html          # Master post template with {{TOKEN}} placeholders
@@ -80,24 +80,25 @@ serves at its extension-free URL:
 | `faq.html` | `/faq` |
 | `contact.html` | `/contact` |
 | `book.html` | `/book` |
-| `blog/index.html` | `/blog` |
-| `blog/{slug}/index.html` | `/blog/{slug}` |
+| `guides/index.html` | `/guides` |
+| `guides/{slug}/index.html` | `/guides/{slug}` |
 
-Two permanent redirects are configured:
+Permanent redirects are configured:
 
 - `/packages` → `/bundles`
 - `/packages.html` → `/bundles`
+- `/blog` → `/guides` and `/blog/:path*` → `/guides/:path*` (the guides section was renamed from `/blog` to `/guides`; old links still resolve)
 
 **Hard convention:** every internal link, canonical tag, and sitemap entry must
 use the clean URL (no `.html` extension, no trailing slash). This applies to
-all root pages, the blog hub, every post, and the master template. Deviating
+all root pages, the guides hub, every post, and the master template. Deviating
 breaks canonical deduplication.
 
 ---
 
 ## Page inventory
 
-**Core pages** (in nav order): Services · Bundles · About · FAQ · Blog · Contact.
+**Core pages** (in nav order): Services · Bundles · About · FAQ · Guides · Contact.
 Nav CTA: "Book a Free Consultation" → `/contact`.
 
 **Support pages**: `privacy-policy`, `terms-of-service`, `thank-you`, `404`, `book`.
@@ -105,35 +106,35 @@ Nav CTA: "Book a Free Consultation" → `/contact`.
 **Internal tool pages** (`dan-audit`, `dan-questions`, `mission-auto-pitch`): not
 linked in nav or footer, disallowed in `robots.txt`, absent from `sitemap.xml`.
 
-**Blog**: hub at `/blog` + 40 posts at `/blog/{slug}`.
+**Guides**: hub at `/guides` + 40 posts at `/guides/{slug}`.
 
 ---
 
-## Blog system
+## Guides system
 
 ### Architecture
 
-- Hub: `blog/index.html` — features the top 12 posts (lead feature + 2 secondary + 9-card grid) and a compact index of all 35; links to `/blog/all-guides` for the complete category-organized library.
-- Full library: `blog/all-guides/index.html` — all 35 published guides organized across 7 categories, served at `/blog/all-guides`.
-- Posts: each lives at `blog/{slug}/index.html` (40 posts total).
-- Styles: `assets/css/blog.css` loaded in addition to the global sheets.
+- Hub: `guides/index.html` — features the top 12 posts (lead feature + 2 secondary + 9-card grid) and a compact index of all 35; links to `/guides/all-guides` for the complete category-organized library.
+- Full library: `guides/all-guides/index.html` — all 35 published guides organized across 7 categories, served at `/guides/all-guides`.
+- Posts: each lives at `guides/{slug}/index.html` (40 posts total).
+- Styles: `assets/css/guides.css` loaded in addition to the global sheets.
 - Master template: `.templates/blog-post.html` — contains the full page structure; only the 5 token values change between posts.
 
 ### How to add a post
 
-1. Copy `.templates/blog-post.html` to `blog/new-slug/index.html`.
+1. Copy `.templates/blog-post.html` to `guides/new-slug/index.html`.
 2. Replace the five tokens throughout the file:
    - `{{TITLE}}` — post title (used in `<title>`, `og:title`, JSON-LD, breadcrumb)
    - `{{DESCRIPTION}}` — 150-char meta description
    - `{{SLUG}}` — URL slug (must match the directory name)
    - `{{BODY}}` — article body (600–900 words; open with `<p class="post-lede">` for
      the intro; use `<p class="post-note"><em>…</em></p>` for asides)
-   - `{{RELATED_LINKS}}` — 2–3 `<li><a href="/blog/other-slug">Other Title</a></li>` items
+   - `{{RELATED_LINKS}}` — 2–3 `<li><a href="/guides/other-slug">Other Title</a></li>` items
 3. Remove the instructional comment block at the top of the file.
-4. Add a post card (`<article class="post-card">`) to `blog/index.html` under the
+4. Add a post card (`<article class="post-card">`) to `guides/index.html` under the
    correct category section.
 5. Add a `<url>` entry to `sitemap.xml` using the clean URL
-   (`https://branchandrootconsulting.com/blog/{slug}`).
+   (`https://branchandrootconsulting.com/guides/{slug}`).
 
 The template's `<head>` and JSON-LD blocks are fixed — do not restructure them.
 Each post gets three JSON-LD blocks automatically: `BlogPosting`, `BreadcrumbList`,
@@ -145,7 +146,7 @@ and `WebPage` with `SpeakableSpecification`.
 
 ### Sitemap
 
-`sitemap.xml` contains 47 URLs covering all public pages and all 40 blog posts.
+`sitemap.xml` contains 47 URLs covering all public pages and all 40 guide posts.
 Internal tool pages (`dan-audit`, `dan-questions`, `mission-auto-pitch`),
 `thank-you`, and `/.templates/` are excluded.
 
@@ -162,7 +163,7 @@ Google-Extended · Applebot-Extended · Amazonbot · CCBot
 
 `llms.txt` at the root provides a structured reading guide for AI assistants:
 a one-paragraph description of the business, links to all core pages with
-one-line descriptions, a link to the blog, and contact information.
+one-line descriptions, a link to the guides, and contact information.
 
 ### JSON-LD structured data
 
@@ -176,20 +177,20 @@ Every page carries structured data in `<script type="application/ld+json">` bloc
 | `about` | `AboutPage` with `Organization` + 3 `Person` team members |
 | `faq` | `FAQPage` with all 10 `Question`/`Answer` pairs |
 | `contact` | `ContactPage` |
-| `blog` (hub) | `CollectionPage` + `BreadcrumbList` |
-| Every blog post | `BlogPosting` + `BreadcrumbList` + `WebPage` with `SpeakableSpecification` |
+| `guides` (hub) | `CollectionPage` + `BreadcrumbList` |
+| Every guide post | `BlogPosting` + `BreadcrumbList` + `WebPage` with `SpeakableSpecification` |
 
 ### Canonical tags
 
-`<link rel="canonical">` is present on all 6 core pages, the blog hub, and
-every blog post. All canonical URLs use the clean form (no `.html`).
+`<link rel="canonical">` is present on all 6 core pages, the guides hub, and
+every guide post. All canonical URLs use the clean form (no `.html`).
 
 ---
 
 ## Analytics
 
 GTM container **GTM-N6MLQZFR** and GA4 property **G-D3746FRPDV** are loaded in
-the `<head>` of every page (including blog hub and all 40 post pages, and the
+the `<head>` of every page (including guides hub and all 40 post pages, and the
 master template). The GTM noscript iframe is in every `<body>` immediately after
 the opening tag.
 
@@ -238,7 +239,7 @@ python3 -m http.server 4173
 # visit http://localhost:4173
 ```
 
-**Note:** opening pages via `file://` will not work correctly for blog posts or
+**Note:** opening pages via `file://` will not work correctly for guide posts or
 any page that references absolute asset paths (`/assets/…`). Always use a
 local server.
 
@@ -255,19 +256,19 @@ This applies in HTML, in `sitemap.xml`, and in any new code files.
 ### Nav and footer are duplicated per page
 
 There is no shared templating layer. The nav and footer markup is copied
-verbatim into every root page, the blog hub (`blog/index.html`), all 40 post
+verbatim into every root page, the guides hub (`guides/index.html`), all 40 post
 pages, and the master template (`.templates/blog-post.html`).
 
 **When you change nav or footer, update every copy:**
 - All 14 root `.html` files
-- `blog/index.html`
-- All 40 `blog/{slug}/index.html` files
+- `guides/index.html`
+- All 40 `guides/{slug}/index.html` files
 - `.templates/blog-post.html`
 
 Suggested workflow: edit `index.html` first, then copy-paste the changed block
 into each other file.
 
-Nav order: Services · Bundles · About · FAQ · Blog · Contact + "Book a Free
+Nav order: Services · Bundles · About · FAQ · Guides · Contact + "Book a Free
 Consultation" CTA.
 
 Footer legal row: Privacy Policy · Terms of Service · Sitemap (links to

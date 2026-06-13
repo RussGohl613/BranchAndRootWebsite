@@ -537,7 +537,7 @@ const hit = (p, r) => `cx="${fx(p.x)}" cy="${fx(p.y)}" r="${r}" fill="transparen
   const lg = labelOf.guides;
   out.push(nodeOpen('sg-node--t1 sg-node--guides', 'guides', 'Guides &mdash; Lead Generation Hiring Guide'));
   out.push(circle('sg-circle', G, R_NODE.guides));
-  out.push(`            <a href="/blog" aria-label="Guides &mdash; Lead Generation Hiring Guide">
+  out.push(`            <a href="/guides" aria-label="Guides &mdash; Lead Generation Hiring Guide">
               <circle class="sg-hit" ${hit(G, R_HIT.guides)}/>
             </a>
             <text class="sg-label" x="${fx(lg.P.x)}" y="${fx(lg.P.y)}" dominant-baseline="central" text-anchor="${lg.anchor}">Guides</text>
@@ -583,7 +583,7 @@ for (const p of postMeta) {
   const label = esc(truncate(p.title, POST_LABEL_MAX));
   out.push(nodeOpen('sg-node--post', p.id, esc(p.title), ` data-parent="${p.cat}"`));
   out.push(circle('sg-circle', N, R_NODE.post));
-  out.push(`            <a href="/blog/${p.slug}" aria-label="${esc(p.title)}">
+  out.push(`            <a href="/guides/${p.slug}" aria-label="${esc(p.title)}">
               <circle class="sg-hit" ${hit(N, R_HIT.post)}/>
             </a>
             <text class="sg-label sg-label--post" x="${fx(lg.P.x)}" y="${fx(lg.P.y)}" dominant-baseline="central" text-anchor="${lg.anchor}" transform="rotate(${fx(lg.rot)}, ${fx(lg.P.x)}, ${fx(lg.P.y)})">${label}</text>
