@@ -462,7 +462,7 @@
 }
 .category-jumpnav a:hover,
 .category-jumpnav a:focus-visible { background: var(--moss); color: var(--cream-fixed); }
-.post-index-category { scroll-margin-top: 96px; }
+.post-index-category { scroll-margin-top: var(--nav-h); }
 .post-cta--mid { margin-bottom: var(--s-6); }
 
 /* Hub mid-page conversion band */

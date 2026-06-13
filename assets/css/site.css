@@ -1014,7 +1014,7 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   border: 1px solid var(--line-hair);
   padding: var(--s-5);
   position: sticky;
-  top: 96px;
+  top: var(--nav-h);
   border-radius: 2px;
 }
 .service-meta::before {
