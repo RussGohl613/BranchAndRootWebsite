@@ -29,7 +29,7 @@
             media="(prefers-color-scheme: dark)"
             content="#0F1B14"
         />
-        <title>Book a Consultation — Branch and Root Consulting</title>
+        <title>Contact — Book a Free Consultation — Branch and Root Consulting</title>
         <meta
             name="description"
             content="Book a free 30-minute consultation with the team. We'll walk through your business honestly, identify the gaps, and tell you straight if Branch and Root is the right fit."
@@ -229,7 +229,7 @@
                 <div class="container">
                     <div class="contact-grid">
                         <!-- ===== DISCOVERY FORM (native, POSTs to /api/lead) ===== -->
-                        <div class="ghl-form-embed">
+                        <div class="discovery-form">
                             <h2>
                                 Tell us where the revenue is <em>leaking</em>.
                             </h2>
@@ -258,19 +258,24 @@
                                     aria-hidden="true"
                                 />
 
+                                <p class="form-req-note">Name, email, and phone are required.</p>
+
                                 <div class="lead-field">
-                                    <label for="lf-name">Name</label>
-                                    <input id="lf-name" name="name" type="text" required autocomplete="name" />
+                                    <label for="lf-name">Name <span class="req" aria-hidden="true">*</span></label>
+                                    <input id="lf-name" name="name" type="text" required autocomplete="name" aria-required="true" />
+                                    <span class="lead-field-error" id="lf-name-error" role="alert" aria-live="polite"></span>
                                 </div>
 
                                 <div class="lead-field">
-                                    <label for="lf-email">Email</label>
-                                    <input id="lf-email" name="email" type="email" required autocomplete="email" />
+                                    <label for="lf-email">Email <span class="req" aria-hidden="true">*</span></label>
+                                    <input id="lf-email" name="email" type="email" required autocomplete="email" aria-required="true" />
+                                    <span class="lead-field-error" id="lf-email-error" role="alert" aria-live="polite"></span>
                                 </div>
 
                                 <div class="lead-field">
-                                    <label for="lf-phone">Phone</label>
-                                    <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" />
+                                    <label for="lf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+                                    <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" aria-required="true" />
+                                    <span class="lead-field-error" id="lf-phone-error" role="alert" aria-live="polite"></span>
                                 </div>
 
                                 <div class="lead-field">

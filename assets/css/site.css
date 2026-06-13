@@ -1667,95 +1667,6 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   .contact-grid { grid-template-columns: 7fr 5fr; gap: var(--s-7); align-items: start; }
 }
 
-.contact-form {
-  background: transparent;
-  padding: 0;
-}
-.contact-form > h2 {
-  font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
-  margin-bottom: var(--s-2);
-  border-bottom: 1px solid var(--line-hair);
-  padding-bottom: var(--s-3);
-}
-.contact-form .form-intro {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--slate);
-  margin-bottom: var(--s-5);
-  font-size: 1.05rem;
-}
-.field { margin-bottom: var(--s-3); }
-.field-row {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--s-3);
-}
-@media (min-width: 600px) {
-  .field-row { grid-template-columns: 1fr 1fr; }
-}
-.field label {
-  display: block;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--fs-anno);
-  letter-spacing: var(--track-eyebrow);
-  text-transform: uppercase;
-  color: var(--moss);
-  margin-bottom: var(--s-2);
-}
-.field .req { color: var(--warm); margin-left: 2px; }
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid var(--line-hair);
-  border-radius: 0;
-  padding: 0.6rem 0;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--heading);
-  transition: border-color var(--dur) var(--ease);
-  font-weight: 500;
-}
-.field input::placeholder,
-.field textarea::placeholder {
-  color: var(--slate-soft);
-  font-style: italic;
-  font-weight: 400;
-}
-.field select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--moss) 50%), linear-gradient(135deg, var(--moss) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 12px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 30px; }
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-bottom-color: var(--forest);
-  border-bottom-width: 2px;
-}
-.field textarea { resize: vertical; min-height: 110px; }
-.field .error-msg {
-  display: none;
-  margin-top: 0.45rem;
-  font-size: 0.85rem;
-  color: var(--warm);
-  font-weight: 600;
-  font-family: var(--font-body);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.field.is-invalid input,
-.field.is-invalid select,
-.field.is-invalid textarea { border-bottom-color: var(--warm); }
-.field.is-invalid .error-msg { display: block; }
-.form-footnote {
-  margin-top: var(--s-3);
-  font-family: var(--font-body);
-  font-size: 0.92rem;
-  color: var(--slate);
-  font-style: italic;
-}
-.contact-form > .btn { width: 100%; margin-top: var(--s-4); }
 
 .contact-details {
   background: var(--paper);
@@ -2454,18 +2365,18 @@ main > section + section.bridge {
    the GHL form's own Custom CSS field. We just give the embed a proper
    editorial frame on the parent page: heading band, intro lede, and a
    min-height so height:100% has something to fill on first paint. */
-.ghl-form-embed > h2 {
+.discovery-form > h2 {
   font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.75rem);
   margin-bottom: var(--s-2);
   border-bottom: 1px solid var(--line-hair);
   padding-bottom: var(--s-3);
 }
-.ghl-form-embed > h2 em {
+.discovery-form > h2 em {
   font-style: italic;
   color: var(--moss);
   font-weight: 500;
 }
-.ghl-form-embed > .form-intro {
+.discovery-form > .form-intro {
   font-family: var(--font-display);
   font-style: italic;
   color: var(--slate);
@@ -3134,17 +3045,6 @@ main > section + section.bridge {
   .faq-q .toggle-icon { background: transparent; color: var(--heading); border-color: var(--line); }
   .faq-q[aria-expanded="true"] .toggle-icon { background: var(--moss); border-color: var(--moss); color: var(--cream-soft); }
 
-  /* Contact form */
-  .contact-form > h2 { border-bottom-color: var(--line); }
-  .field label { color: var(--moss-light); }
-  .field input, .field select, .field textarea {
-    border-bottom-color: var(--line);
-    color: var(--heading);
-  }
-  .field input::placeholder, .field textarea::placeholder { color: var(--slate); }
-  .field input:focus, .field select:focus, .field textarea:focus {
-    border-bottom-color: var(--moss-light);
-  }
   .contact-details { background: var(--paper); border-color: var(--line); }
   .contact-details li { border-top-color: var(--line); }
   .contact-details .label { color: var(--moss-light); }
@@ -3174,8 +3074,8 @@ main > section + section.bridge {
   font-weight: 400;
   text-transform: none;
   letter-spacing: 0;
-  color: var(--slate-soft);
-  font-size: 0.72rem;
+  color: var(--slate);
+  font-size: 0.85rem;
 }
 .lead-form input[type="text"],
 .lead-form input[type="email"],
@@ -3202,6 +3102,8 @@ main > section + section.bridge {
 .lead-form [aria-invalid="true"] { border-color: var(--error); }
 .lead-field-error{ display:block; margin-top:0.35rem; font-size:0.8rem; font-weight:600; color:var(--error); min-height:1em; }
 .lead-field-error:empty{ margin-top:0; }
+.lead-field .req { color: var(--error); margin-left: 2px; }
+.form-req-note { margin: 0 0 var(--s-3); font-family: var(--font-body); font-size: 0.85rem; color: var(--slate); }
 .lead-submit { margin-top: var(--s-2); align-self: flex-start; }
 .lead-submit[disabled] { opacity: 0.7; cursor: not-allowed; }
 .lead-success,
