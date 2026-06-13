@@ -130,6 +130,16 @@
 
   // --- Category cluster toggle -------------------------------------------
   const clusters = {};  // cat-id -> { btn, postEls }
+  const hiddenPosts = new Set();
+  const xlinkEdges = allEdgeEls.filter((e) => e.classList.contains('sg-edge--xlink'));
+
+  // Related-article curves disappear when either endpoint's cluster is closed
+  function refreshXlinks() {
+    xlinkEdges.forEach((e) => {
+      const hidden = hiddenPosts.has(e.dataset.from) || hiddenPosts.has(e.dataset.to);
+      e.classList.toggle('sg-cluster-hidden', hidden);
+    });
+  }
 
   svg.querySelectorAll('.sg-node--cat').forEach((catEl) => {
     const catId = catEl.dataset.id;
@@ -145,10 +155,13 @@
       btn.setAttribute('aria-expanded', String(open));
       postEls.forEach((p) => {
         p.classList.toggle('sg-cluster-hidden', !open);
+        if (open) hiddenPosts.delete(p.dataset.id);
+        else hiddenPosts.add(p.dataset.id);
       });
       postEdgeEls.forEach((e) => {
         e.classList.toggle('sg-cluster-hidden', !open);
       });
+      refreshXlinks();
     }
 
     // Start open

@@ -85,7 +85,10 @@
   border-radius: 0 0 2px 2px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform var(--dur-slow) var(--ease-out);
+  /* Fast retract: as the cursor moves across the grid, each card the cursor
+     leaves snaps its line away quickly, so no trail of half-drawn lines
+     lingers — only the card actually under the cursor ever shows the line. */
+  transition: transform 140ms var(--ease);
 }
 .post-card:hover,
 .post-card:focus-within {
@@ -93,8 +96,12 @@
   box-shadow: var(--elev-2);
   border-color: var(--line-hair);
 }
+/* Slow, elegant draw-in — applied only on the hovered/focused card. */
 .post-card:hover::after,
-.post-card:focus-within::after { transform: scaleX(1); }
+.post-card:focus-within::after {
+  transform: scaleX(1);
+  transition: transform var(--dur-slow) var(--ease-out);
+}
 
 .post-card-title {
   font-size: 1.22rem;
@@ -858,11 +865,6 @@
   flex-shrink: 0;
 }
 
-/* ---- Accented post cards: alternating moss top border rhythm --------- */
-.post-card--accented {
-  border-top: 3px solid var(--moss);
-}
-
 /* ---- Grid overflow fix: force grid track to shrink below max-content -- */
 /* post-card-tag is nowrap; without min-width:0 the 1fr track inherits the
    tag's max-content width and overflows at mobile. This matches the
@@ -893,9 +895,6 @@
 
   /* Secondary feature headlines and standfirst cascade through tokens */
   .blog-secondary-feature-headline a:hover { color: var(--moss-light); }
-
-  /* Accented card top border */
-  .post-card--accented { border-top-color: var(--moss-light); }
 
   /* Library link band — hairlines and copy on dark page-bg */
   .blog-library-band-inner {
