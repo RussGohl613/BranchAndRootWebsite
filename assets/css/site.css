@@ -3039,7 +3039,7 @@ main > section + section.bridge {
   }
   .tree-half--roots .team-member .monogram {
     background: var(--moss);
-    color: var(--cream-soft);
+    color: var(--cream-fixed);
   }
   .team-member .role { color: var(--moss-light); }
   .philosophy .col-lede h2 em { color: var(--moss-light); }
@@ -3052,7 +3052,7 @@ main > section + section.bridge {
   .faq-q:hover { color: var(--moss-light); }
   .faq-q .q-num { color: var(--moss-light); }
   .faq-q .toggle-icon { background: transparent; color: var(--heading); border-color: var(--line); }
-  .faq-q[aria-expanded="true"] .toggle-icon { background: var(--moss); border-color: var(--moss); color: var(--cream-soft); }
+  .faq-q[aria-expanded="true"] .toggle-icon { background: var(--moss); border-color: var(--moss); color: var(--cream-fixed); }
 
   .contact-details { background: var(--paper); border-color: var(--line); }
   .contact-details li { border-top-color: var(--line); }
@@ -3061,7 +3061,7 @@ main > section + section.bridge {
   .contact-details .area-note { color: var(--slate); border-top-color: var(--line); }
 
   /* Thank you / 404 */
-  .thank-you-wrap .icon-check { background: var(--moss); color: var(--cream-soft); }
+  .thank-you-wrap .icon-check { background: var(--moss); color: var(--cream-fixed); }
   .notfound .big { color: var(--moss-light); }
   .notfound .big em { color: var(--heading); }
 }
