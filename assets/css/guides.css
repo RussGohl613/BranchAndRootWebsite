@@ -443,6 +443,32 @@
   .post-index { columns: 2; }
 }
 
+/* Category jump-nav pills (all-guides) + anchor offset under sticky nav */
+.category-jumpnav { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-6); }
+.category-jumpnav a {
+  display: inline-block;
+  padding: 0.4em 0.9em;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--moss);
+  background: var(--bone);
+  border: 1px solid var(--line-hair);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.category-jumpnav a:hover,
+.category-jumpnav a:focus-visible { background: var(--moss); color: var(--cream-fixed); }
+.post-index-category { scroll-margin-top: 96px; }
+.post-cta--mid { margin-bottom: var(--s-6); }
+
+/* Hub mid-page conversion band */
+.guides-mid-cta { text-align: center; padding-block: var(--s-7); }
+.guides-mid-cta p { margin: 0 auto var(--s-4); max-width: 48ch; }
+
 /* Each category group — avoid breaking across columns */
 .post-index-group {
   break-inside: avoid;
@@ -551,6 +577,7 @@
 
   /* Compact index */
   .post-index-category { color: var(--moss-light); border-bottom-color: var(--line); }
+  .category-jumpnav a { color: var(--moss-light); border-color: var(--line); background: transparent; }
   .post-index-list li { border-bottom-color: var(--line); }
   .post-index-list li:first-child { border-top-color: var(--line); }
   .post-index-list a:hover { color: var(--moss-light); }
