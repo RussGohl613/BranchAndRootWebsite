@@ -2945,7 +2945,7 @@ main > section + section.bridge {
   .btn-primary:hover {
     background: var(--moss-light);
     border-color: var(--moss-light);
-    color: var(--forest-deep);
+    color: var(--cream-fixed);
   }
   .btn-ghost {
     color: var(--heading);
