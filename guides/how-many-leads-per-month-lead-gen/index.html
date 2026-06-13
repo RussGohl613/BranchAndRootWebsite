@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -24,8 +26,7 @@
   <meta name="description" content="Realistic monthly lead output benchmarks for outbound SDRs, the variables that swing the number, and why qualified appointments beat raw lead count." />
   <link rel="canonical" href="https://branchandrootconsulting.com/guides/how-many-leads-per-month-lead-gen" />
   <!-- TEMPORARILY UNPUBLISHED: remove this meta tag (and restore listings in sitemap.xml, sitemap-page.html, llms.txt, blog hub) once B&R benchmarks are filled in -->
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <meta name="robots" content="noindex, nofollow" />  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="How Many Leads Should a Lead Generation Person Produce per Month?" />
@@ -34,7 +35,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/how-many-leads-per-month-lead-gen" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Realistic monthly lead output benchmarks for outbound SDRs, the variables that swing the number, and why qualified appointments beat raw lead count." />
+<meta name="twitter:title" content="How Many Leads Should a Lead Generation Person Produce per Month?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -43,6 +47,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How Many Leads Should a Lead Generation Person Produce per Month?",
     "description": "Realistic monthly lead output benchmarks for outbound SDRs, the variables that swing the number, and why qualified appointments beat raw lead count.",
     "datePublished": "2026-06-11",
@@ -66,6 +71,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -109,6 +115,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -136,7 +144,7 @@
 
       <p class="post-lede">For local service businesses in the trades, a fully ramped lead gen hire should produce 15&ndash;30 qualified appointments set per month &mdash; because raw contact volume means little if the appointments never show. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> Broader outbound SDR benchmarks run 40&ndash;80 new contacts worked per month for high-ticket, relationship-driven sales and up to 150&ndash;300 per month for transactional, shorter-cycle outreach. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> The right quota for your business depends on deal size, channel, list quality, and whether you are measuring contacts touched, leads generated, or appointments booked &mdash; and most owners cannot answer that last question because nobody ever built the layer that tracks it.</p>
 
-      <h2>Why the range is so wide &mdash; the four variables that drive output</h2>
+      <h2 id="why-the-range-is-so-wide-the-four-variables-that-drive-output">Why the range is so wide &mdash; the four variables that drive output</h2>
       <p>Every lead gen quota is shaped by the same short list of inputs. Understanding them lets you set a number your hire can actually hit.</p>
       <ul>
         <li><strong>Ticket size and sales cycle.</strong> A $300 HVAC tune-up can be booked in a single phone call. A $15,000 whole-home re-pipe involves a site visit, a quote, and follow-up. Higher-ticket services naturally yield fewer monthly bookings but each one is worth more.</li>
@@ -145,7 +153,7 @@
         <li><strong>Definition of "lead."</strong> This is the most common source of quota confusion. A name and number pulled from a directory is not a lead. A person who answered the phone and agreed to a call is a lead. A person who confirmed an appointment is a qualified appointment. Know which of these you are measuring.</li>
       </ul>
 
-      <h2>What does a realistic monthly quota look like for a trades business?</h2>
+      <h2 id="what-does-a-realistic-monthly-quota-look-like-for-a-trades-business">What does a realistic monthly quota look like for a trades business?</h2>
       <p>For an HVAC, plumbing, landscaping, or electrical business operating in a defined local market, a fully ramped outbound specialist running phone and email outreach typically produces somewhere in the range of 20&ndash;40 qualified contacts per month, of which 15&ndash;30 convert to booked appointments. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> These numbers assume a clean list, a defined service area, and a hire who has completed at least 90 days of ramp.</p>
       <p>During the first 60 days, expect those numbers to be 30&ndash;50% lower while your hire is still learning your offer, your geography, and your objection patterns. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> Holding a new hire to full-ramp quota on day 30 is how you lose good people to frustration &mdash; but giving a pass on activity metrics because you have no system to track them is how you fund a slow non-performer for three months before noticing.</p>
       <p>On the high end, a well-resourced specialist with a warm list (past customers, referrals, quote-but-never-closed from your CRM) can sometimes double these ranges. That warm list is worth building deliberately &mdash; the post on <a href="/guides/how-many-leads-is-your-business-losing">how many leads your business is already losing</a> is a useful starting point.</p>
@@ -155,10 +163,10 @@
         <p>When we set up a lead gen program for a trades client, the quota conversation starts with the math chain, not a benchmark borrowed from a different market. We know what the list looks like, what the channel produces, and what the close rate has been &mdash; so the number we hold the program to is grounded in that specific business, tracked automatically, and visible to the owner every week without a manual report.</p>
       </aside>
 
-      <h2>Qualified appointments: the KPI that actually matters</h2>
+      <h2 id="qualified-appointments-the-kpi-that-actually-matters">Qualified appointments: the KPI that actually matters</h2>
       <p>Raw lead count is the most commonly reported number and the least useful one. The metric that connects lead generation to your bottom line is qualified appointments set &mdash; a real person, confirmed for a specific date and time, who meets your minimum criteria for the job. Hold your hire accountable to this number; the <a href="/guides/lead-generation-metrics-to-track">lead generation metrics guide</a> lays out target conversion rates at each step of the chain.</p>
 
-      <h2>How to set a quota you can defend</h2>
+      <h2 id="how-to-set-a-quota-you-can-defend">How to set a quota you can defend</h2>
       <p>Work backwards from your revenue goal rather than picking a number from a benchmark. The logic runs like this:</p>
       <ol>
         <li>What is your average job revenue?</li>
@@ -169,13 +177,13 @@
       </ol>
       <p>That final number is your qualified-appointment quota &mdash; grounded in your actual business, not borrowed from a benchmark built on a different market. Our <a href="/services">lead generation services</a> are built around this same math.</p>
 
-      <h2>What happens when the numbers fall short?</h2>
+      <h2 id="what-happens-when-the-numbers-fall-short">What happens when the numbers fall short?</h2>
       <p>Before cutting a hire loose for missing quota, run through the variable list above. Low output is usually a list problem or a channel-fit problem before it is a people problem &mdash; the same hire on a warm residential list with a tested script will dramatically outperform the same person cold-calling a scraped directory. Without a tracking system, you cannot tell the difference between someone working hard against a broken process and one simply not doing the work.</p>
 
       <p class="post-note"><em>Note: These benchmarks vary by industry, sales cycle, and market. We're updating this article with Orange County-specific data from our client work &mdash; <a href="/contact">reach out directly</a> for numbers relevant to your business.</em></p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/lead-generation-metrics-to-track">Lead Generation Metrics: What Should I Track?</a></li>
           <li><a href="/guides/how-long-to-see-results-from-lead-gen-hire">How Long Does It Take to See Results From a Lead Generation Hire?</a></li>
@@ -183,7 +191,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Find Out What You&rsquo;re Losing</h2>
+        <h3>Find Out What You&rsquo;re Losing</h3>
         <p>Most owners can&rsquo;t see their leaks &mdash; missed calls, slow follow-up, a dormant customer list. Our free diagnosis maps where revenue is walking out the door and what it would take to stop it.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Claim Your Free Diagnosis</a>
       </div>
@@ -213,6 +221,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

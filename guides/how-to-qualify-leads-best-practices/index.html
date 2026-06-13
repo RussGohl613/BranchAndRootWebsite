@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/how-to-qualify-leads-best-practices" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="A practical lead qualification framework for local service businesses: need, urgency, budget fit, service area, decision-maker, plus speed-to-lead scripts." />
+<meta name="twitter:title" content="How to Qualify Leads: Best Practices for Your Business" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How to Qualify Leads: Best Practices for Your Business",
     "description": "A practical lead qualification framework for local service businesses: need, urgency, budget fit, service area, decision-maker, plus speed-to-lead scripts.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -132,10 +141,10 @@
       <h1 class="post-title">How to Qualify Leads: Best Practices for Your Business</h1>
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">To qualify leads well, check five things on every inquiry: real need, urgency, budget fit, service area, and whether you are talking to the decision-maker. Do it fast, because speed-to-lead is the single biggest lever in local services; the first company to get a prospect on the phone usually wins the job before price ever comes up. The framework itself is straightforward — the hard part is that it only works when someone runs it on every single lead, not just when the owner happens to answer the phone.</p>
-      <h2>Why speed-to-lead beats every other tactic</h2>
+      <h2 id="why-speed-to-lead-beats-every-other-tactic">Why speed-to-lead beats every other tactic</h2>
       <p>A homeowner with a failed AC or a flooding water heater calls two or three companies and hires whoever responds first. Years of response-time research point the same direction: the odds of ever reaching a lead fall sharply within the first few minutes and keep collapsing from there.</p>
       <p>Set one standard and enforce it: every inquiry gets a human response within five minutes during business hours. Missed-call text-back covers you when crews are on roofs and under sinks, and the <a href="/guides/best-way-to-contact-leads">right contact channel</a> matters far less than how quickly you use it.</p>
-      <h2>The five-point qualification framework for local services</h2>
+      <h2 id="the-five-point-qualification-framework-for-local-services">The five-point qualification framework for local services</h2>
       <ol>
         <li><strong>Need.</strong> Is this a service you actually provide, at a scope worth rolling a truck for?</li>
         <li><strong>Urgency.</strong> Emergency today, project this month, or someday research? Each one gets a different next step.</li>
@@ -148,7 +157,7 @@
   <span class="field-note-label">From the Field &middot; Branch &amp; Root</span>
   <p>Qualification in our system is not left to memory or mood — it runs on every lead through a defined checklist, enforced at the point of first contact. When a busy owner picks up between jobs, the five points compress into a gut-feel conversation that misses two or three of them. When a dedicated process runs it, nothing gets skipped because nobody was rushing. The framework is the same; what changes is whether it actually happens.</p>
 </aside>
-      <h2>Simple scripts that qualify without interrogating</h2>
+      <h2 id="simple-scripts-that-qualify-without-interrogating">Simple scripts that qualify without interrogating</h2>
       <p>Qualification should sound like helpfulness, not a screening interview. Three conversational lines cover most of the framework:</p>
       <ul>
         <li><strong>Need and urgency:</strong> So I can point you in the right direction, what is going on, and when were you hoping to have it handled?</li>
@@ -156,15 +165,15 @@
         <li><strong>Decision-maker:</strong> Who else weighs in on this? It helps to have everyone there when we walk the job.</li>
       </ul>
       <p>Asked naturally, these read as competence. Prospects expect a professional to ask good questions before quoting.</p>
-      <h2>Keep lead scoring simple: A, B, C</h2>
+      <h2 id="keep-lead-scoring-simple-a-b-c">Keep lead scoring simple: A, B, C</h2>
       <p>You do not need scoring software. Grade every inquiry A, B, or C: an A is urgent, in-area, and budget-fit, so book it now. A B is real but not ready, so put it on a follow-up cadence. A C fails on area, scope, or expectations, so decline politely and refer them elsewhere when you can.</p>
       <p>Log the grade wherever you track inquiries, even if that is a spreadsheet. Consistent grading is what lets you compare lead sources later instead of arguing from anecdotes.</p>
       <p class="post-note"><em>A graceful no still earns referrals. The C lead you treat well often sends you an A lead later.</em></p>
-      <h2>Who should actually do the qualifying?</h2>
+      <h2 id="who-should-actually-do-the-qualifying">Who should actually do the qualifying?</h2>
       <p>Not the owner, at least not forever. You cannot be under a sink and on the phone within five minutes. Train whoever answers your phones on the five-point framework, and remember that generating leads and qualifying them are <a href="/guides/lead-generation-vs-lead-qualification">different jobs</a> that fail in different ways.</p>
       <p>If nobody on the team can own response time, that is the gap to fix first, whether with a dedicated hire or a <a href="/services">done-for-you service</a> that answers, qualifies, and books appointments to your standards. The framework only works when someone runs it on every single lead.</p>
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/lead-generation-problem-vs-sales-problem">Do I Have a Lead Generation Problem or a Sales Problem?</a></li>
           <li><a href="/guides/questions-to-ask-when-hiring-lead-gen">What Questions Should I Ask When Hiring a Lead Gen Specialist?</a></li>
@@ -172,7 +181,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Already Vetted, Already Proven</h2>
+        <h3>Already Vetted, Already Proven</h3>
         <p>You could spend weeks screening candidates &mdash; or work with an Orange County team that builds and runs lead generation for trades businesses every day. Measurable results, references on request.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Meet Branch and Root</a>
       </div>
@@ -202,6 +211,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

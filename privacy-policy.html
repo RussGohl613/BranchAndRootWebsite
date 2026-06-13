@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -29,18 +30,7 @@
   <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <!-- ===== Analytics & Pixels =============================================
-       Uncomment each block and fill in your ID when the account is ready.
-       ==================================================================== -->
-  <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3746FRPDV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3746FRPDV');
-  </script>
-  -->
+  <link rel="canonical" href="https://branchandrootconsulting.com/privacy-policy" />
   <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -79,6 +69,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -110,6 +101,7 @@
           </div>
           <div class="page-hero-aside">
             <span class="annotation">— Last updated</span>
+            <!-- TODO(client): replace "May 2026" with a specific effective date, wrapped in <time datetime="YYYY-MM-DD">. -->
             <p>May 2026</p>
           </div>
         </div>
@@ -123,9 +115,24 @@
 
           <p class="lead">Branch and Root Consulting (&ldquo;Branch &amp; Root,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates the website at <strong>branchandrootconsulting.com</strong> (the &ldquo;Site&rdquo;). This Privacy Policy explains how we collect, use, and protect information when you visit our Site or contact us through it.</p>
 
+          <nav aria-label="On this page">
+            <ol>
+              <li><a href="#information-we-collect">Information We Collect</a></li>
+              <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
+              <li><a href="#analytics-and-tracking-technologies">Analytics and Tracking Technologies</a></li>
+              <li><a href="#how-we-store-and-protect-your-information">How We Store and Protect Your Information</a></li>
+              <li><a href="#information-sharing">Information Sharing</a></li>
+              <li><a href="#your-rights-under-california-law-ccpa">Your Rights Under California Law (CCPA)</a></li>
+              <li><a href="#childrens-privacy">Children's Privacy</a></li>
+              <li><a href="#links-to-third-party-sites">Links to Third-Party Sites</a></li>
+              <li><a href="#changes-to-this-policy">Changes to This Policy</a></li>
+              <li><a href="#contact-us">Contact Us</a></li>
+            </ol>
+          </nav>
+
           <p>We take your privacy seriously and are committed to handling your information responsibly. This policy applies to all visitors and prospective clients who interact with us through this website.</p>
 
-          <h2>1. Information We Collect</h2>
+          <h2 id="information-we-collect">1. Information We Collect</h2>
 
           <h3>Information you provide directly</h3>
           <p>When you submit a consultation request or book an appointment through our Site, we collect:</p>
@@ -151,7 +158,7 @@
           </ul>
           <p>This information is collected through analytics tools (described below) and is used only in aggregate to understand how visitors use our Site. We do not use it to identify individual visitors.</p>
 
-          <h2>2. How We Use Your Information</h2>
+          <h2 id="how-we-use-your-information">2. How We Use Your Information</h2>
           <p>We use the information you provide solely to:</p>
           <ul>
             <li>Respond to your consultation request or confirm your booking</li>
@@ -161,7 +168,7 @@
           </ul>
           <p>We do <strong>not</strong> use your information to send unsolicited marketing emails or add you to automated marketing sequences without your consent. If you submit a consultation request, you may receive one follow-up to confirm or schedule your call — nothing more unless you engage further.</p>
 
-          <h2>3. Analytics and Tracking Technologies</h2>
+          <h2 id="analytics-and-tracking-technologies">3. Analytics and Tracking Technologies</h2>
           <p>We use or plan to use the following third-party analytics and advertising tools on this Site. Where a tool is listed but not yet active, it is noted below.</p>
 
           <h3>Google Analytics 4</h3>
@@ -176,12 +183,12 @@
           <h3>Cookies</h3>
           <p>Our Site may use cookies placed by the third-party tools described above (Google Analytics, Meta Pixel, Google Ads). These are standard analytics and advertising cookies. You can manage or disable cookies through your browser settings. Disabling cookies will not prevent you from using any functionality on our Site.</p>
 
-          <h2>4. How We Store and Protect Your Information</h2>
+          <h2 id="how-we-store-and-protect-your-information">4. How We Store and Protect Your Information</h2>
           <p>Information submitted through our consultation form or booking calendar is stored within our Customer Relationship Management (CRM) system, which is hosted by GoHighLevel. GoHighLevel maintains industry-standard security practices including data encryption at rest and in transit.</p>
           <p>We do not store credit card numbers or payment information on our systems.</p>
           <p>We retain consultation inquiry data for as long as necessary to respond to your request and, if applicable, to maintain our client relationship. You may request deletion of your data at any time (see Section 6).</p>
 
-          <h2>5. Information Sharing</h2>
+          <h2 id="information-sharing">5. Information Sharing</h2>
           <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties.</p>
           <p>We may share your information only in the following limited circumstances:</p>
           <ul>
@@ -190,7 +197,7 @@
             <li><strong>Business transfer:</strong> In the unlikely event that Branch and Root Consulting is acquired or merged with another entity, your information may be transferred as part of that transaction. We would notify you before your information is transferred and becomes subject to a different privacy policy.</li>
           </ul>
 
-          <h2>6. Your Rights Under California Law (CCPA)</h2>
+          <h2 id="your-rights-under-california-law-ccpa">6. Your Rights Under California Law (CCPA)</h2>
           <p>If you are a California resident, the California Consumer Privacy Act (CCPA) gives you specific rights regarding your personal information:</p>
           <ul>
             <li><strong>Right to Know:</strong> You have the right to request that we disclose what personal information we have collected about you, the categories of sources from which it was collected, the business purpose for collecting it, and any third parties with whom it has been shared.</li>
@@ -200,16 +207,16 @@
           </ul>
           <p>To exercise any of these rights, please contact us at the email address listed below. We will respond to verifiable consumer requests within 45 days.</p>
 
-          <h2>7. Children&rsquo;s Privacy</h2>
+          <h2 id="childrens-privacy">7. Children&rsquo;s Privacy</h2>
           <p>Our Site is directed to business owners and is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us immediately and we will delete it.</p>
 
-          <h2>8. Links to Third-Party Sites</h2>
+          <h2 id="links-to-third-party-sites">8. Links to Third-Party Sites</h2>
           <p>Our Site may contain links to third-party websites (such as our email provider or social media profiles). We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies independently.</p>
 
-          <h2>9. Changes to This Policy</h2>
+          <h2 id="changes-to-this-policy">9. Changes to This Policy</h2>
           <p>We may update this Privacy Policy periodically to reflect changes in our practices or applicable law. When we make material changes, we will update the &ldquo;Last updated&rdquo; date at the top of this page. Continued use of our Site after any changes constitutes acceptance of the updated policy.</p>
 
-          <h2>10. Contact Us</h2>
+          <h2 id="contact-us">10. Contact Us</h2>
           <p>If you have any questions about this Privacy Policy, want to exercise your data rights, or have a privacy-related concern, please contact us:</p>
           <p>
             <strong>Branch and Root Consulting</strong><br />
@@ -245,6 +252,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

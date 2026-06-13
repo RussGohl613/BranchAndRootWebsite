@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/how-long-to-see-results-from-lead-gen-hire" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Honest 30/60/90 day ramp timeline for a lead gen hire: month 1 is setup, month 2 is pipeline building, month 3 is when fair judgment begins." />
+<meta name="twitter:title" content="How Long Does It Take to See Results From a Lead Generation Hire?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How Long Does It Take to See Results From a Lead Generation Hire?",
     "description": "Honest 30/60/90 day ramp timeline for a lead gen hire: month 1 is setup, month 2 is pipeline building, month 3 is when fair judgment begins.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -134,7 +143,7 @@
 
       <p class="post-lede">Most lead generation hires do not produce meaningful results until the end of month three. Month one is consumed by setup and learning, month two is pipeline building with limited output, and month three is when you have enough real data to make a fair judgment. The deeper problem is that most owners cannot see where they are in the ramp at all &mdash; because nobody built the measurement layer, so month two looks identical to month one even when it isn&rsquo;t.</p>
 
-      <h2>What the 30/60/90 day ramp actually looks like</h2>
+      <h2 id="what-the-30-60-90-day-ramp-actually-looks-like">What the 30/60/90 day ramp actually looks like</h2>
       <p>The 90-day ramp is a real operational constraint, not a grace period. Each stage has a specific job, and expecting month-three output in month one creates pressure that produces bad shortcuts rather than good leads.</p>
 
       <h3>Month 1: Setup and learning</h3>
@@ -149,7 +158,7 @@
       <p>By the end of month three, your hire has a refined list, tested messaging, and a real understanding of your buyer. This is the first point where output numbers are meaningful for evaluation. If appointments booked are consistently below target by the end of month three, you have either a process problem, a list problem, or a people problem &mdash; and the data from the prior 60 days will tell you which.</p>
       <p>A useful framework: compare the activity metrics (dials, emails sent, conversations had) against the output metrics (appointments set, show rate). High activity with low output means the message or offer needs work. Low activity with low output means the hire needs closer management or replacement.</p>
 
-      <h2>What you are paying for during ramp</h2>
+      <h2 id="what-you-are-paying-for-during-ramp">What you are paying for during ramp</h2>
       <p>Ramp cost is real. If you are paying a full-time hire $45,000&ndash;$55,000 per year in salary and benefits, you are spending roughly $11,000&ndash;$14,000 in the first 90 days before a single dollar of attributable revenue comes back. Add recruiting costs, tool licenses, and your own management time, and the upfront investment is substantial before the position becomes cash-flow positive.</p>
       <p>This is not a reason to avoid the hire &mdash; it is a reason to onboard deliberately. Pros hand a new hire a clean list, a proven script, and CRM access on day one. Most owners hand them a vague territory and a hope &mdash; and then wonder why month one looks like nothing happened. The infrastructure is the job before the job, and whoever does that work is on your clock either way.</p>
       <p>Understanding <a href="/guides/how-many-leads-is-your-business-losing">how many leads your business is already losing</a> from day one lets you see whether the ramp is trending in the right direction, not just whether results have arrived.</p>
@@ -159,7 +168,7 @@
         <p>When we build out a lead gen system for a trades client, there is no 90-day clock to run out. The list is already segmented, the sequences are already tested, and the CRM is already recording every call and response. The owner inherits working infrastructure on day one instead of watching a hire build it from scratch on their dime.</p>
       </aside>
 
-      <h2>How existing infrastructure shortens the curve</h2>
+      <h2 id="how-existing-infrastructure-shortens-the-curve">How existing infrastructure shortens the curve</h2>
       <p>The 90-day ramp assumes your hire is building everything from scratch. Many businesses already have pieces that dramatically compress the timeline:</p>
       <ul>
         <li><strong>A CRM with real data.</strong> Past customers, past quotes, and past inquiries are a warm list your hire can work in week two rather than month two.</li>
@@ -169,7 +178,7 @@
       <p>The gap between a hire starting cold and a hire starting with infrastructure can be as large as four to six weeks of effective ramp time. That gap compounds directly into earlier revenue and lower overall ramp cost.</p>
       <p>This is part of why some owners choose to work with an <a href="/guides/hire-lead-gen-agency-vs-sales-team">agency rather than hire directly</a> &mdash; the systems already exist. Our <a href="/services">lead generation services</a> operate on existing, tested infrastructure, so there is no 90-day clock to run out before the pipeline starts moving.</p>
 
-      <h2>When slow results are a real problem, not a ramp problem</h2>
+      <h2 id="when-slow-results-are-a-real-problem-not-a-ramp-problem">When slow results are a real problem, not a ramp problem</h2>
       <p>Not every slow ramp is normal. These are the signals that indicate a genuine problem rather than a natural learning curve:</p>
       <ul>
         <li>No outreach activity whatsoever by day 15 despite having list access and a script</li>
@@ -180,7 +189,7 @@
       <p>Process problems that show up in month one will not fix themselves by month three. Address them directly rather than waiting for the 90-day window to close. The real question is whether you have the visibility to spot them &mdash; and if you are managing a hire without a dashboard that shows dials, response times, and booked jobs in one place, you probably do not.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/how-many-leads-is-your-business-losing">How Many Leads Does Your Business Lose per Month?</a></li>
           <li><a href="/guides/lead-generation-problem-vs-sales-problem">Do I Have a Lead Generation Problem or a Sales Problem?</a></li>
@@ -188,7 +197,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Find Out What You&rsquo;re Losing</h2>
+        <h3>Find Out What You&rsquo;re Losing</h3>
         <p>Most owners can&rsquo;t see their leaks &mdash; missed calls, slow follow-up, a dormant customer list. Our free diagnosis maps where revenue is walking out the door and what it would take to stop it.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Claim Your Free Diagnosis</a>
       </div>
@@ -218,6 +227,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

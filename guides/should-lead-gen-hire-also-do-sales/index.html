@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/should-lead-gen-hire-also-do-sales" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Why combining prospecting and closing in one role usually degrades both functions, the metrics conflict that causes it, and the narrow cases where hybrid works." />
+<meta name="twitter:title" content="Should My Lead Gen Hire Also Do Sales?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "Should My Lead Gen Hire Also Do Sales?",
     "description": "Why combining prospecting and closing in one role usually degrades both functions, the metrics conflict that causes it, and the narrow cases where hybrid works.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -134,32 +143,32 @@
 
       <p class="post-lede">Combining lead generation and sales in one role usually weakens both functions. Prospecting and closing require different mindsets, different daily routines, and different metrics &mdash; and when one person is responsible for both, the urgency of closing active deals almost always crowds out the discipline of consistent outbound prospecting. The failure mode is context-switching: the hybrid role does not collapse in a visible event &mdash; it quietly defaults to whichever function creates the most immediate pressure, and prospecting loses that contest every time.</p>
 
-      <h2>Why the two functions pull in opposite directions</h2>
+      <h2 id="why-the-two-functions-pull-in-opposite-directions">Why the two functions pull in opposite directions</h2>
       <p>Lead generation is a volume activity built on repetition and patience. The daily work is outreach, follow-up, and qualification &mdash; activities with delayed gratification, because the payoff comes weeks or months after the first contact. It requires a systematic cadence that does not bend easily to interruption.</p>
       <p>Sales, particularly for local service businesses, is an urgency-driven activity. When a warm lead calls back, you pick up. When a customer has questions before booking, you handle them immediately. When a proposal is on the table, you follow up fast. That reactive urgency is exactly what makes a good closer effective.</p>
       <p>The problem is that the same person cannot hold both rhythms at once. When calls are coming in and deals are in play, outbound prospecting stops. It does not slow down &mdash; it stops. The person rationally prioritizes the work that produces near-term revenue, which is closing, over the work that produces future pipeline. Within sixty to ninety days, most hybrid hires are essentially doing sales full-time, and the lead gen function has quietly collapsed.</p>
 
-      <h2>The misaligned metrics problem</h2>
+      <h2 id="the-misaligned-metrics-problem">The misaligned metrics problem</h2>
       <p>Even when an owner genuinely wants both functions covered, the metrics structure almost always tips the balance toward closing. If the person earns commission on booked jobs, they will focus their time on the activities that produce commission &mdash; which is closing, not prospecting. If performance is measured on pipeline added, they may focus on generating low-quality leads that are easy to count but hard to close.</p>
       <p>There is no clean way to incentivize two fundamentally different activities with a single comp plan. Every structure creates a trade-off. A reasonable hybrid comp design might use a small base to stabilize income, a volume metric for outreach activity (calls made, emails sent), and a separate conversion metric for closed revenue &mdash; but even that design requires careful calibration and a manager attentive enough to notice when one metric is being gamed at the expense of the other. Most small service businesses do not have that management bandwidth. The role confusion in a <a href="/guides/lead-generation-vs-sales">lead gen versus sales split</a> is worth understanding before you build the job description.</p>
 
       <aside class="field-note">
-  <span class="field-note-label">From the Field &middot; Branch &amp; Root</span>
+  <span class="field-note-label">From the Field &middot; <a href="/services">Branch &amp; Root</a></span>
   <p>We split generation from closing deliberately: the person running outreach for an OC trades client never fields quote calls, and the owner closing deals never needs to manage a prospecting cadence. Each function gets a specialist&rsquo;s full attention &mdash; the only structure where both actually work.</p>
 </aside>
 
-      <h2>When a hybrid role can actually work</h2>
+      <h2 id="when-a-hybrid-role-can-actually-work">When a hybrid role can actually work</h2>
       <p>There are legitimate cases for combining the functions, and it is worth being honest about them. The most workable hybrid scenario is a local service business with a small, stable target audience where relationships matter more than volume. If you are targeting a defined pool of, say, commercial property managers in a single submarket, the same person can build the relationship through outreach and then convert it without a hard handoff. The audience is small enough that the volume pressure of outbound does not compete with the relational depth of closing.</p>
       <p>A second workable scenario is the early-stage business where the owner has historically done both and is hiring someone to extend their reach, not replace a structured function. In that case, the person is essentially serving as the owner's commercial extension, and the hybrid expectation is understood from day one. The risk is that the business never matures past this model, and the informal hybrid arrangement eventually caps the growth of both functions.</p>
       <p class="post-note"><em>A useful test: if you had to cut one of the two functions for sixty days, which would hurt more? The answer usually reveals which function the hire is actually doing.</em></p>
 
-      <h2>How to structure the role if you must combine them</h2>
+      <h2 id="how-to-structure-the-role-if-you-must-combine-them">How to structure the role if you must combine them</h2>
       <p>If your business stage genuinely requires one person to cover both, protect the prospecting function by treating it as a fixed daily commitment rather than a discretionary activity. Block two to three hours of dedicated outbound time at the start of every day before the person handles any inbound activity. Make those hours non-negotiable, and track the activity metrics as seriously as the closing metrics.</p>
       <p>Set a clear threshold: once active deals in the pipeline exceed a certain number, the outbound commitment adjusts rather than disappears entirely. That keeps some prospecting continuity even during busy closing periods and prevents the complete pipeline starvation that typically follows a hot sales stretch.</p>
       <p>Longer term, the split role is a bridge, not a destination. The businesses that grow past it do so by separating the functions as soon as volume justifies it. See our post on <a href="/guides/hire-lead-gen-agency-vs-sales-team">hiring an agency versus a sales team member</a> for how that transition point typically unfolds. What actually decides this is whether you&rsquo;re still in the bridge phase &mdash; or whether you&rsquo;re holding onto the hybrid arrangement because separating the functions feels complicated, while your pipeline quietly pays the price.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/lead-generation-vs-sales">Lead Generation vs. Sales: What's the Difference?</a></li>
           <li><a href="/guides/hire-lead-gen-agency-vs-sales-team">Should I Hire a Lead Gen Agency or a Sales Team Member?</a></li>
@@ -167,7 +176,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Hire the System, Not the Headache</h2>
+        <h3>Hire the System, Not the Headache</h3>
         <p>Branch and Root gives Orange County service businesses a fully-run lead generation system &mdash; no recruiting, no ramp time, no turnover risk. Put it side by side with your hiring shortlist in one call.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -197,6 +206,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -14,9 +14,27 @@
   }
 
   function setFieldError(form, name, msg) {
-    const el = form.elements.namedItem(name);
-    if (!el) return;
-    el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    const field = form.elements.namedItem(name);
+    if (!field) return;
+    // Find or lazily create the inline error span immediately after the input.
+    const errorId = (field.id || name) + '-error';
+    let span = document.getElementById(errorId);
+    if (!span) {
+      span = document.createElement('span');
+      span.className = 'lead-field-error';
+      span.setAttribute('role', 'alert');
+      span.setAttribute('aria-live', 'polite');
+      span.id = errorId;
+      field.insertAdjacentElement('afterend', span);
+    }
+    span.textContent = msg;
+    if (msg) {
+      field.setAttribute('aria-invalid', 'true');
+      field.setAttribute('aria-describedby', errorId);
+    } else {
+      field.removeAttribute('aria-invalid');
+      field.removeAttribute('aria-describedby');
+    }
   }
 
   function showError(form, name, email, phone, message) {

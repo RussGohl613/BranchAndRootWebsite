@@ -26,6 +26,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -44,7 +46,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/{{SLUG}}" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="{{DESCRIPTION}}" />
+<meta name="twitter:title" content="{{TITLE}}" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -53,6 +58,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "{{TITLE}}",
     "description": "{{DESCRIPTION}}",
     "datePublished": "2026-06-11",
@@ -76,6 +82,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -119,6 +126,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -145,14 +154,14 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       {{BODY}}
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           {{RELATED_LINKS}}
         </ul>
       </aside>
       <!-- CTA: replace with the category-specific CTA block — copy it from any published post in the same category -->
       <div class="post-cta">
-        <h2>Skip the Hiring Process Entirely</h2>
+        <h3>Skip the Hiring Process Entirely</h3>
         <p>Branch and Root provides done-for-you lead generation for local service businesses in Orange County. No recruiting, no training, no management overhead &mdash; just qualified leads.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -182,6 +191,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

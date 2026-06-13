@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
         <meta charset="utf-8" />
@@ -54,7 +55,9 @@
             property="og:description"
             content="No pitch decks. No pressure. A 30-minute honest look at where your business is leaking revenue."
         />
-        <meta property="og:image" content="assets/img/og-image.jpg" />
+        <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
         <link
             rel="canonical"
             href="https://branchandrootconsulting.com/contact"
@@ -137,6 +140,7 @@
                         </li>
                     </ul>
                 </nav>
+                <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
                 <a href="/contact" class="btn btn-primary nav-cta"
                     >Book a Free Consultation</a
                 >
@@ -280,7 +284,7 @@
                                     <textarea id="lf-msg" name="message" rows="4"></textarea>
                                 </div>
 
-                                <button type="submit" class="btn-primary lead-submit">
+                                <button type="submit" class="btn btn-primary lead-submit">
                                     Request my free thirty minutes
                                 </button>
                             </form>
@@ -362,6 +366,7 @@
                         >
                             <i></i>
                         </div>
+                        <p class="annotation">Mission Viejo &middot; Rancho Santa Margarita &middot; Ladera Ranch &middot; Aliso Viejo &middot; San Clemente</p>
                     </div>
                 </div>
             </section>
@@ -404,6 +409,7 @@
                             <li><a href="/faq">FAQ</a></li>
                             <li><a href="/guides">Guides</a></li>
                             <li><a href="/contact">Contact</a></li>
+                            <li><a href="/book">Book a Call</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">

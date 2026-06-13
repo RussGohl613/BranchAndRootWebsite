@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -26,11 +27,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="Branch and Root Consulting" />
-  <meta property="og:description" content="A Orange County team helping local service businesses recover what they've already earned — and grow what comes next." />
+  <meta property="og:description" content="An Orange County team helping local service businesses recover what they've already earned — and grow what comes next." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://branchandrootconsulting.com/" />
-  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <link rel="canonical" href="https://branchandrootconsulting.com/" />
   <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
@@ -116,6 +118,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -147,7 +150,7 @@
         <div class="hero-grid">
           <div>
             <h1>Your business has already <em>earned</em> more revenue than it&rsquo;s collecting.</h1>
-            <p class="hero-lead">We&rsquo;re a Orange County team that rebuilds the revenue infrastructure under your business &mdash; so the leads you&rsquo;ve already paid for stop slipping through the cracks, and the next ones convert before your competitor picks up the phone.</p>
+            <p class="hero-lead">We&rsquo;re an Orange County team that rebuilds the revenue infrastructure under your business &mdash; so the leads you&rsquo;ve already paid for stop slipping through the cracks, and the next ones convert before your competitor picks up the phone.</p>
             <div class="hero-actions">
               <a href="/contact" class="btn btn-cream">Book Your Free Consultation</a>
               <a href="#how-it-works" class="hero-secondary">So, what&rsquo;s the issue? <span class="arrow" aria-hidden="true">↓</span></a>
@@ -160,6 +163,43 @@
         </div>
         <div class="hero-foot">
           <div class="horizon" role="presentation"><i></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HONEST TRUTH ===== -->
+    <section class="section section-cream" id="how-it-works">
+      <div class="container">
+        <div class="editorial-spread">
+          <div class="col-lede">
+            <span class="eyebrow">The Honest Truth</span>
+            <h2>Most local businesses aren&rsquo;t struggling because of a bad product. They&rsquo;re struggling because of a <em class="accent-italic">leaking foundation</em>.</h2>
+          </div>
+          <div class="col-body dropcap">
+            <p>You&rsquo;ve spent years building a reputation in this community. You have past customers who trust you, new inquiries coming in regularly, and a real business that delivers real results.</p>
+            <p>But somewhere between the phone call that went unanswered after hours, the customer list sitting in a spreadsheet from three years ago, and the neighbor who Googled your service category and found your competitor instead &mdash; revenue is quietly walking out the door.</p>
+            <p><strong>That&rsquo;s not a marketing problem. That&rsquo;s an infrastructure problem. And it&rsquo;s fixable.</strong></p>
+          </div>
+        </div>
+
+        <div class="problem-trio">
+          <article class="problem-item">
+            <h3>Slow <em>Response</em></h3>
+            <p>New leads contact you and hear silence. By morning, they&rsquo;ve already called someone else.</p>
+          </article>
+          <article class="problem-item">
+            <h3>Dormant <em>Database</em></h3>
+            <p>Hundreds of past customers who trust you &mdash; untouched, unreached, unmonetized.</p>
+          </article>
+          <article class="problem-item">
+            <h3>Invisible <em>Online</em></h3>
+            <p>When someone in Ladera Ranch searches for what you do, you&rsquo;re not the first name they find.</p>
+          </article>
+        </div>
+
+        <div class="location-stamp">
+          <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
+          <p class="annotation">Mission Viejo &middot; Rancho Santa Margarita &middot; Ladera Ranch &middot; Aliso Viejo &middot; San Clemente</p>
         </div>
       </div>
     </section>
@@ -203,7 +243,7 @@
                 <input id="lm-email" name="email" type="email" required autocomplete="email" />
               </div>
 
-              <button type="submit" class="btn-primary lead-submit">
+              <button type="submit" class="btn btn-primary lead-submit">
                 Send Me the Checklist
               </button>
 
@@ -228,42 +268,6 @@
       </div>
     </section>
 
-    <!-- ===== HONEST TRUTH ===== -->
-    <section class="section section-cream" id="how-it-works">
-      <div class="container">
-        <div class="editorial-spread">
-          <div class="col-lede">
-            <span class="eyebrow">The Honest Truth</span>
-            <h2>Most local businesses aren&rsquo;t struggling because of a bad product. They&rsquo;re struggling because of a <em class="accent-italic">leaking foundation</em>.</h2>
-          </div>
-          <div class="col-body dropcap">
-            <p>You&rsquo;ve spent years building a reputation in this community. You have past customers who trust you, new inquiries coming in regularly, and a real business that delivers real results.</p>
-            <p>But somewhere between the phone call that went unanswered after hours, the customer list sitting in a spreadsheet from three years ago, and the neighbor who Googled your service category and found your competitor instead &mdash; revenue is quietly walking out the door.</p>
-            <p><strong>That&rsquo;s not a marketing problem. That&rsquo;s an infrastructure problem. And it&rsquo;s fixable.</strong></p>
-          </div>
-        </div>
-
-        <div class="problem-trio">
-          <article class="problem-item">
-            <h3>Slow <em>Response</em></h3>
-            <p>New leads contact you and hear silence. By morning, they&rsquo;ve already called someone else.</p>
-          </article>
-          <article class="problem-item">
-            <h3>Dormant <em>Database</em></h3>
-            <p>Hundreds of past customers who trust you &mdash; untouched, unreached, unmonetized.</p>
-          </article>
-          <article class="problem-item">
-            <h3>Invisible <em>Online</em></h3>
-            <p>When someone in Ladera Ranch searches for what you do, you&rsquo;re not the first name they find.</p>
-          </article>
-        </div>
-
-        <div class="location-stamp">
-          <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== SOLUTION BRIDGE ===== -->
     <section class="bridge">
       <div class="gutter-numeral" aria-hidden="true">&amp;</div>
@@ -272,7 +276,7 @@
         <h2>We close both gaps <em>at once</em>.</h2>
         <p>The Foundation Bundle was built specifically for established OC service businesses. It attacks the revenue leak from two directions simultaneously &mdash; recovering what you&rsquo;ve already earned while making sure you never miss what&rsquo;s coming in next.</p>
         <p>No ad spend required to start. No technical headaches on your end. One 45-minute onboarding call, and we build the rest.</p>
-        <a href="/faq" class="btn btn-primary btn-arrow">See How the System Works</a>
+        <a href="/bundles" class="btn btn-primary btn-arrow">See the Foundation Bundle &rarr;</a>
       </div>
     </section>
 
@@ -294,6 +298,27 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== TESTIMONIALS — HIDDEN until real testimonials are supplied (council review / audit P1.5).
+         TODO(client): replace the placeholder cards below with real, attributable testimonials
+         (quote, first name + last initial, business type, South OC city), then remove the comment
+         markers wrapping the section to publish it. Do NOT publish placeholder copy. -->
+    <!--
+    <section class="section section-cream" aria-labelledby="proof-h">
+      <div class="container">
+        <p class="eyebrow">From our neighbors</p>
+        <h2 id="proof-h">What local owners say</h2>
+        <div class="proof-grid">
+          <blockquote class="proof-card"><p>[ Client testimonial pending ]</p>
+            <cite>[ Name ], [ Business ] &middot; [ City ]</cite></blockquote>
+          <blockquote class="proof-card"><p>[ Client testimonial pending ]</p>
+            <cite>[ Name ], [ Business ] &middot; [ City ]</cite></blockquote>
+          <blockquote class="proof-card"><p>[ Client testimonial pending ]</p>
+            <cite>[ Name ], [ Business ] &middot; [ City ]</cite></blockquote>
+        </div>
+      </div>
+    </section>
+    -->
 
     <!-- ===== FINAL CTA ===== -->
     <section class="cta-banner">
@@ -331,6 +356,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -44,6 +44,7 @@
     "name": "All Guides",
     "description": "Every lead generation guide published by Branch and Root Consulting, organized by category: hiring decisions, costs and compensation, finding and vetting talent, lead gen fundamentals, tools and tactics, performance and metrics, and industry strategy.",
     "url": "https://branchandrootconsulting.com/guides/all-guides",
+    "numberOfItems": 35,
     "publisher": {"@id": "https://branchandrootconsulting.com/#organization"}
   }
   </script>
@@ -86,6 +87,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -114,7 +116,7 @@
           <div>
             <span class="eyebrow">The Full Library</span>
             <h1>All Guides</h1>
-            <p class="lead">Thirty-five answers across hiring, costs, tools, metrics, and strategy &mdash; every guide we have published, in one place.</p>
+            <p class="lead">Every guide we have published across hiring, costs, tools, metrics, and strategy &mdash; in one place.</p>
           </div>
           <div class="page-hero-aside">
             <span class="annotation">&mdash; Organized by category</span>
@@ -125,28 +127,20 @@
     </section>
 
     <!-- ===== BREADCRUMB ===== -->
-    <nav class="post-breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb-list">
-          <li><a href="/">Home</a></li>
-          <li aria-hidden="true">&rsaquo;</li>
-          <li><a href="/guides">Guides</a></li>
-          <li aria-hidden="true">&rsaquo;</li>
-          <li aria-current="page">All Guides</li>
-        </ol>
-      </div>
-    </nav>
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/guides">Guides</a> <span aria-hidden="true">›</span> <span aria-current="page">All Guides</span></nav>
+    </div>
 
     <!-- ===== FULL LIBRARY INDEX ===== -->
     <section class="section section-bone" id="full-library" aria-labelledby="library-heading">
       <div class="container">
         <div class="category-header">
           <span class="eyebrow">The Full Library</span>
-          <h2 id="library-heading">All 35 Guides by Category</h2>
+          <h2 id="library-heading">Every Guide by Category</h2>
         </div>
         <div class="post-index">
 
-          <!-- Hiring Decisions (7) -->
+          <!-- Hiring Decisions (9) -->
           <div class="post-index-group">
             <h3 class="post-index-category">Hiring Decisions</h3>
             <ul class="post-index-list">
@@ -234,14 +228,12 @@
       </div>
     </section>
 
-    <!-- ===== CLOSING LINK ===== -->
-    <section class="section section-cream">
-      <div class="container">
-        <p style="text-align:center; margin-block: 0;">
-          <a href="/guides" class="post-card-more">Start with the essentials instead <span class="arrow">&rarr;</span></a>
-        </p>
-      </div>
-    </section>
+    <!-- ===== CLOSING CTA (P2.10) ===== -->
+    <div class="post-cta">
+      <h3>You&rsquo;ve read the playbook. Now let&rsquo;s run it for you.</h3>
+      <p>Branch and Root handles your lead generation end-to-end &mdash; no recruiting, no training, no management overhead. Just qualified leads for your OC service business.</p>
+      <a href="/contact" class="btn btn-cream btn-arrow">Talk to The Roots</a>
+    </div>
 
   </main>
 
@@ -268,6 +260,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/best-way-to-contact-leads" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Phone, text, or email? How each channel performs for local service leads, why a five-minute response beats everything else, and a follow-up sequence to copy." />
+<meta name="twitter:title" content="What’s the Best Way to Contact Leads?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "What’s the Best Way to Contact Leads?",
     "description": "Phone, text, or email? How each channel performs for local service leads, why a five-minute response beats everything else, and a follow-up sequence to copy.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -133,7 +142,7 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">The best way to contact a new lead is a phone call within five minutes of their inquiry, followed immediately by a text if they do not answer, with email as the supporting paper trail. Channel matters, but speed matters more: the odds of reaching a lead drop sharply within the first hour &mdash; even a thirty-minute delay can dramatically cut your contact rate. For local service work &mdash; a burst pipe, a dead AC &mdash; the first company to get a human on the phone usually wins the job. Knowing the five-minute rule is the easy part; staffing it is where most owner-run operations quietly fail.</p>
 
-<h2>Phone, text, or email: how does each channel perform?</h2>
+<h2 id="phone-text-or-email-how-does-each-channel-perform">Phone, text, or email: how does each channel perform?</h2>
 <p>Each channel trades reach for richness, and they perform differently for local services:</p>
 <ul>
 <li><strong>Phone call.</strong> The highest-value touch. A live call lets you qualify the lead, quote an arrival window, and book the visit in one conversation &mdash; and an inbound lead who answers is showing real intent. The catch: answer rates on outbound calls are modest, and unknown numbers often roll to voicemail.</li>
@@ -142,7 +151,7 @@
 </ul>
 <p>For commercial trades &mdash; property managers, general contractors, facilities teams &mdash; LinkedIn can supplement this mix. For homeowners, the three channels above do the work.</p>
 
-<h2>Why speed-to-lead beats channel choice</h2>
+<h2 id="why-speed-to-lead-beats-channel-choice">Why speed-to-lead beats channel choice</h2>
 <p>A homeowner with a failed water heater does not submit one form; they submit three or four. Whoever responds first gets the conversation while intent is at its peak &mdash; and frequently gets the job before the other companies have even seen the inquiry.</p>
 <p>That makes response time the single most important variable in lead handling: more than script, more than channel, more than price. Minutes-versus-hours is not a small edge; it is routinely the difference between a booked estimate and voicemail purgatory. Most shops do not lose leads to a competitor&rsquo;s better marketing &mdash; they lose them to <a href="/guides/how-many-leads-is-your-business-losing">slow and missed responses</a> on inquiries they already paid for.</p>
 
@@ -151,7 +160,7 @@
   <p>Our response system answers new inquiries in seconds &mdash; not because we found a clever app, but because it is staffed software plus people monitoring it during business hours. A tech in a crawlspace at 2 p.m. cannot do that; neither can a voicemail box. The five-minute rule is easy to read about and genuinely hard to staff for, which is why most trades businesses lose leads they already paid to generate.</p>
 </aside>
 
-<h2>A simple multi-touch sequence that works</h2>
+<h2 id="a-simple-multi-touch-sequence-that-works">A simple multi-touch sequence that works</h2>
 <p>One call is not a contact strategy. A workable local-service sequence looks like this:</p>
 <ol>
 <li><strong>Minute 0&ndash;5:</strong> Call. If no answer, leave a short voicemail with your name and company.</li>
@@ -163,14 +172,14 @@
 </ol>
 <p>Persistence works because qualified people are busy, not uninterested. Use the first live conversation to confirm <a href="/guides/qualified-lead-vs-unqualified-lead">the lead is actually qualified</a> before anyone drives to an estimate. The sequence&rsquo;s value is real &mdash; but only if someone runs every step of it, every single day, without skipping the follow-up blocks when the schedule gets busy.</p>
 
-<h2>Texting norms and call windows for local businesses</h2>
+<h2 id="texting-norms-and-call-windows-for-local-businesses">Texting norms and call windows for local businesses</h2>
 <p>Local service buying runs on neighborly trust, so contact people the way a good neighbor would. Call between roughly 8 a.m. and 8 p.m. local time, and keep texts inside the same window. Identify yourself and reference their request in the first sentence &mdash; an unexplained text from an unknown number reads as spam.</p>
 <p>Text people who contacted you first; for anyone else, get permission &mdash; U.S. rules on business texting require consent, and the courtesy matters as much as the law. One question per text, no walls of words, and stop immediately when someone says stop.</p>
 
-<h2>Who answers when you are in the field?</h2>
+<h2 id="who-answers-when-you-are-in-the-field">Who answers when you are in the field?</h2>
 <p>The sequence above is easy to read and brutal to execute, because inquiries arrive while you are elbow-deep in a job. Five-minute response is a staffing question, not a willpower question: someone &mdash; an office hire, an answering setup, or a <a href="/services">done-for-you lead handling service</a> &mdash; has to own the phone during business hours. Settle who that is before spending another dollar generating leads, because the leads you already get are only as good as the speed of the answer. The real constraint here is rarely knowledge &mdash; it is who is staffing the response right now, while you are on the job.</p>
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/qualified-lead-vs-unqualified-lead">What Makes a Qualified Lead vs. an Unqualified Lead?</a></li>
           <li><a href="/guides/what-does-lead-gen-specialist-do-daily">What Does a Lead Generation Specialist Actually Do Day-to-Day?</a></li>
@@ -178,7 +187,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>See These Fundamentals in Action</h2>
+        <h3>See These Fundamentals in Action</h3>
         <p>Branch and Root builds the qualification, follow-up, and response systems this article describes &mdash; done for you and tuned for local service businesses. See how it would work on your pipeline.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -208,6 +217,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

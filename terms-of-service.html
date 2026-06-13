@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -29,6 +30,7 @@
   <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="canonical" href="https://branchandrootconsulting.com/terms-of-service" />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -53,6 +55,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -84,6 +87,7 @@
           </div>
           <div class="page-hero-aside">
             <span class="annotation">— Last updated</span>
+            <!-- TODO(client): replace "May 2026" with a specific effective date, wrapped in <time datetime="YYYY-MM-DD">. -->
             <p>May 2026</p>
           </div>
         </div>
@@ -97,11 +101,35 @@
 
           <p class="lead">These are the ground rules for working with Branch and Root Consulting. We wrote them in plain English wherever the law allows &mdash; because if you can&rsquo;t understand the terms, you can&rsquo;t really agree to them. Where legal language is required, we&rsquo;ve kept it precise but skipped the padding.</p>
 
+          <nav aria-label="On this page">
+            <ol>
+              <li><a href="#who-can-use-the-services">Who Can Use the Services</a></li>
+              <li><a href="#what-we-do">What We Do</a></li>
+              <li><a href="#engagement-onboarding">Engagement &amp; Onboarding</a></li>
+              <li><a href="#fees-billing-payment">Fees, Billing &amp; Payment</a></li>
+              <li><a href="#no-contracts-cancellation">No Contracts &amp; Cancellation</a></li>
+              <li><a href="#your-responsibilities">Your Responsibilities</a></li>
+              <li><a href="#intellectual-property">Intellectual Property</a></li>
+              <li><a href="#confidentiality">Confidentiality</a></li>
+              <li><a href="#results-performance">Results &amp; Performance</a></li>
+              <li><a href="#third-party-platforms-tools">Third-Party Platforms &amp; Tools</a></li>
+              <li><a href="#warranties-disclaimer">Warranties &amp; Disclaimer</a></li>
+              <li><a href="#limitation-of-liability">Limitation of Liability</a></li>
+              <li><a href="#indemnification">Indemnification</a></li>
+              <li><a href="#communication-electronic-records">Communication &amp; Electronic Records</a></li>
+              <li><a href="#dispute-resolution-binding-arbitration">Dispute Resolution &mdash; Binding Arbitration</a></li>
+              <li><a href="#governing-law">Governing Law</a></li>
+              <li><a href="#modifications-to-these-terms">Modifications to These Terms</a></li>
+              <li><a href="#severability-entire-agreement">Severability &amp; Entire Agreement</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ol>
+          </nav>
+
           <p>Branch and Root Consulting (&ldquo;Branch &amp; Root,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is a sole proprietorship based in Orange County, California. These Terms of Service (&ldquo;Terms&rdquo;) govern your use of <strong>branchandrootconsulting.com</strong> (the &ldquo;Site&rdquo;) and any services we provide to you (&ldquo;Services&rdquo;). By using the Site, submitting an inquiry, or engaging us for work, you (&ldquo;you,&rdquo; &ldquo;your,&rdquo; or &ldquo;Client&rdquo;) agree to these Terms.</p>
 
           <p>If you don&rsquo;t agree to any part of these Terms, please don&rsquo;t use the Site or engage our Services. That&rsquo;s the deal.</p>
 
-          <h2>1. Who Can Use the Services</h2>
+          <h2 id="who-can-use-the-services">1. Who Can Use the Services</h2>
           <p>Our Services are designed for established local service businesses operating in Orange County, California. To engage us, you must be:</p>
           <ul>
             <li>At least 18 years old;</li>
@@ -110,7 +138,7 @@
           </ul>
           <p>We reserve the right to decline any engagement, at our discretion, for any lawful reason &mdash; including a determination that we&rsquo;re not the right fit for your business.</p>
 
-          <h2>2. What We Do</h2>
+          <h2 id="what-we-do">2. What We Do</h2>
           <p>Branch &amp; Root provides revenue infrastructure consulting and execution services for local service businesses, including:</p>
           <ul>
             <li>Customer reactivation campaigns built from your existing customer data;</li>
@@ -121,7 +149,7 @@
           </ul>
           <p>The exact scope of any engagement is documented during onboarding and reflected in a written project brief or service-level summary that you&rsquo;ll receive before any billable work begins.</p>
 
-          <h2>3. Engagement &amp; Onboarding</h2>
+          <h2 id="engagement-onboarding">3. Engagement &amp; Onboarding</h2>
           <p>Every engagement begins with a free consultation. After that, if both parties want to proceed:</p>
           <ol>
             <li>We send you a written summary of the proposed scope, deliverables, timeline, and fees.</li>
@@ -131,7 +159,7 @@
           </ol>
           <p>You&rsquo;re free to walk away at any point before the initial invoice is paid &mdash; no obligation, no follow-up sequences, no hard feelings.</p>
 
-          <h2>4. Fees, Billing &amp; Payment</h2>
+          <h2 id="fees-billing-payment">4. Fees, Billing &amp; Payment</h2>
           <p>Our fees fall into two categories:</p>
           <ul>
             <li><strong>One-time setup fees:</strong> Paid upfront, before setup work begins. Setup fees are non-refundable once setup work has commenced (see Section 5).</li>
@@ -140,7 +168,7 @@
           <p>Where applicable, ad spend is paid by you directly to the advertising platform (Google, Meta, etc.). We do not mark up ad spend, take a percentage of ad spend, or hold your ad accounts on our payment methods.</p>
           <p>If a payment fails, we&rsquo;ll notify you and give you five (5) business days to resolve it before pausing the Services. Repeated payment failures may result in termination of the engagement.</p>
 
-          <h2>5. No Contracts &amp; Cancellation</h2>
+          <h2 id="no-contracts-cancellation">5. No Contracts &amp; Cancellation</h2>
           <p>We don&rsquo;t require long-term contracts. There is no annual commitment, no termination fee, and no penalty for ending the engagement at any time, for any reason.</p>
           <p>To cancel:</p>
           <ul>
@@ -151,7 +179,7 @@
           </ul>
           <p>This is what we mean by &ldquo;cancel anytime, no further charges.&rdquo; The system has to earn your monthly business &mdash; not a signature.</p>
 
-          <h2>6. Your Responsibilities</h2>
+          <h2 id="your-responsibilities">6. Your Responsibilities</h2>
           <p>To deliver results, we depend on a few things from you:</p>
           <ul>
             <li><strong>Accurate information:</strong> Customer data, business details, and any credentials you provide must be accurate and lawfully obtained.</li>
@@ -161,12 +189,12 @@
             <li><strong>Account ownership:</strong> Domain names, ad accounts, social media accounts, and CRM data are and remain your property. We are a service provider, not an owner.</li>
           </ul>
 
-          <h2>7. Intellectual Property</h2>
+          <h2 id="intellectual-property">7. Intellectual Property</h2>
           <p><strong>Your property:</strong> Customer lists, business data, brand assets, photography you provide, and any final deliverables prepared specifically for your business (ad creative, web property, content) belong to you upon full payment of related fees.</p>
           <p><strong>Our property:</strong> The underlying systems, automation frameworks, templates, methodologies, internal tools, and know-how that we use to deliver Services are and remain our property. You receive a license to use the outputs of these systems for the duration of your engagement; you do not receive ownership of the systems themselves.</p>
           <p><strong>Site content:</strong> The content of this Site &mdash; including text, graphics, the &ldquo;horizon&rdquo; signature mark, the Branch and Root name and logo, and the editorial design system &mdash; is owned by us and protected by applicable copyright and trademark law. You may not reproduce, distribute, or create derivative works without our prior written permission.</p>
 
-          <h2>8. Confidentiality</h2>
+          <h2 id="confidentiality">8. Confidentiality</h2>
           <p>Information you share with us in the course of an engagement &mdash; including customer data, business financials, competitive positioning, and operational details &mdash; is treated as confidential. We will not disclose this information to any third party except:</p>
           <ul>
             <li>To service providers (such as our CRM platform) strictly as required to deliver the Services;</li>
@@ -175,26 +203,26 @@
           </ul>
           <p>We may publicly reference the fact that you are or were a client (name and category) for portfolio or marketing purposes unless you ask us in writing not to. We will not publish specific financial results, customer data, or proprietary business information without your express written approval.</p>
 
-          <h2>9. Results &amp; Performance</h2>
+          <h2 id="results-performance">9. Results &amp; Performance</h2>
           <p>We work hard to deliver measurable results. We also believe in being honest about what we can and cannot promise.</p>
           <p><strong>What we don&rsquo;t guarantee:</strong> Specific revenue figures, specific booking volumes, specific advertising costs per lead, specific search rankings, or any other particular outcome. The outcome of any marketing or growth system depends on factors outside of our control &mdash; including your offer, your operational capacity to handle inbound demand, market conditions, competitive activity, customer behavior, platform algorithm changes, and seasonality.</p>
           <p><strong>What we do commit to:</strong> Delivering the Services described in the agreed scope, applying our best professional judgment, communicating honestly about what&rsquo;s working and what isn&rsquo;t, and recommending adjustments when the system needs them.</p>
           <p>Any historical performance figures, case studies, or example results referenced on this Site or during a consultation reflect outcomes for specific clients in specific situations and are not a guarantee or projection of your results.</p>
 
-          <h2>10. Third-Party Platforms &amp; Tools</h2>
+          <h2 id="third-party-platforms-tools">10. Third-Party Platforms &amp; Tools</h2>
           <p>Delivering the Services typically requires use of third-party platforms, including (but not limited to) GoHighLevel, Google (Ads, Analytics, Business Profile, Search), Meta (Facebook, Instagram), email-sending platforms, and web hosting providers.</p>
           <p>These platforms have their own terms of service, pricing, and policies. We don&rsquo;t control them. Any account suspensions, policy changes, fee changes, or platform outages caused by these third parties are outside our control, and we are not liable for them. Where reasonably possible, we will help you adapt to such changes within the scope of the engagement.</p>
 
-          <h2>11. Warranties &amp; Disclaimer</h2>
+          <h2 id="warranties-disclaimer">11. Warranties &amp; Disclaimer</h2>
           <p>We perform the Services with reasonable professional care and skill consistent with industry standards for local marketing and growth consulting.</p>
           <p>EXCEPT AS EXPRESSLY STATED IN THESE TERMS, THE SITE AND SERVICES ARE PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE&rdquo; WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SITE OR SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS.</p>
 
-          <h2>12. Limitation of Liability</h2>
+          <h2 id="limitation-of-liability">12. Limitation of Liability</h2>
           <p>TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL BRANCH AND ROOT CONSULTING, ITS PRINCIPALS, OR ITS CONTRACTORS BE LIABLE TO YOU FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES &mdash; INCLUDING LOST PROFITS, LOST REVENUE, LOST BUSINESS OPPORTUNITY, OR LOSS OF DATA &mdash; ARISING OUT OF OR RELATING TO THE SITE, THE SERVICES, OR THESE TERMS, REGARDLESS OF THE THEORY OF LIABILITY AND EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
           <p>OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THE SERVICES SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.</p>
           <p>Some jurisdictions don&rsquo;t allow the exclusion or limitation of certain damages, so portions of the above may not apply to you. Nothing in these Terms is intended to limit any liability that cannot be excluded under applicable law.</p>
 
-          <h2>13. Indemnification</h2>
+          <h2 id="indemnification">13. Indemnification</h2>
           <p>You agree to indemnify, defend, and hold harmless Branch and Root Consulting, its principals, and its contractors from and against any and all third-party claims, damages, liabilities, costs, and expenses (including reasonable attorneys&rsquo; fees) arising out of or relating to:</p>
           <ul>
             <li>Your breach of these Terms;</li>
@@ -203,10 +231,10 @@
             <li>Any marketing, offer, or representation made by your business that is independent of our Services.</li>
           </ul>
 
-          <h2>14. Communication &amp; Electronic Records</h2>
+          <h2 id="communication-electronic-records">14. Communication &amp; Electronic Records</h2>
           <p>By engaging us, you consent to receive communications from us electronically &mdash; including by email, SMS, and any messaging platforms we use to coordinate the engagement. You agree that all agreements, notices, disclosures, and other communications we provide to you electronically satisfy any legal requirement that such communications be in writing.</p>
 
-          <h2>15. Dispute Resolution &mdash; Binding Arbitration</h2>
+          <h2 id="dispute-resolution-binding-arbitration">15. Dispute Resolution &mdash; Binding Arbitration</h2>
           <p>Please read this section carefully. It affects your legal rights.</p>
           <p>Any dispute, claim, or controversy arising out of or relating to these Terms, the Site, or the Services (a &ldquo;Dispute&rdquo;) shall be resolved exclusively through final and binding arbitration, except as set out below.</p>
           <ul>
@@ -220,17 +248,17 @@
           <p><strong>Exceptions:</strong> Either party may bring an action in a court of competent jurisdiction in Orange County, California for: (i) injunctive or other equitable relief to protect intellectual property, confidential information, or to enforce a payment obligation; or (ii) any claim that falls within the jurisdiction of small-claims court.</p>
           <p>If any portion of this Section 15 is found to be unenforceable, the remainder shall remain in effect.</p>
 
-          <h2>16. Governing Law</h2>
+          <h2 id="governing-law">16. Governing Law</h2>
           <p>These Terms and any Dispute shall be governed by and construed in accordance with the laws of the State of California, without regard to its conflict-of-laws principles. To the extent any Dispute is permitted to be brought in court rather than arbitration, the parties consent to the exclusive jurisdiction of the state and federal courts located in Orange County, California.</p>
 
-          <h2>17. Modifications to These Terms</h2>
+          <h2 id="modifications-to-these-terms">17. Modifications to These Terms</h2>
           <p>We may update these Terms from time to time to reflect changes in our Services, our business, or applicable law. When we make material changes, we will update the &ldquo;Last updated&rdquo; date at the top of this page and, for active clients, provide reasonable notice by email. Continued use of the Site or Services after any update constitutes acceptance of the updated Terms.</p>
 
-          <h2>18. Severability &amp; Entire Agreement</h2>
+          <h2 id="severability-entire-agreement">18. Severability &amp; Entire Agreement</h2>
           <p>If any provision of these Terms is found to be unenforceable, the remaining provisions shall continue in full force and effect. The unenforceable provision shall be modified to the minimum extent necessary to make it enforceable while preserving its intent.</p>
           <p>These Terms, together with our <a href="/privacy-policy">Privacy Policy</a> and any written engagement summary or project brief we&rsquo;ve sent you, constitute the entire agreement between you and Branch and Root Consulting regarding the Services and supersede any prior agreements or understandings on the same subject matter.</p>
 
-          <h2>19. Contact</h2>
+          <h2 id="contact">19. Contact</h2>
           <p>Questions about these Terms? Want to give notice under Section 5 or any other section? Reach us at:</p>
           <p>
             <strong>Branch and Root Consulting</strong><br />
@@ -266,6 +294,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

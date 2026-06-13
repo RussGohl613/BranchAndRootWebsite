@@ -1533,6 +1533,18 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   color: var(--cream-fixed);
   font-weight: 700;
 }
+/* Team headshot: matches the monogram avatar footprint. The <img> self-removes via
+   onerror when the file is missing, so the monogram fallback shows until a real photo
+   is added to assets/img/team/. When a photo loads, it hides the monogram below it. */
+.team-member .team-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: var(--s-2);
+}
+.team-member .team-photo + .monogram { display: none; }
 .team-member h3 {
   font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
   margin: 0;
@@ -1613,6 +1625,9 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   font-family: var(--font-body);
   font-weight: 400;
   margin-top: 0.2em;
+  /* Pad hit area to ≥44px while keeping visible circle 32px */
+  padding: 6px;
+  box-sizing: content-box;
 }
 .faq-q[aria-expanded="true"] .toggle-icon {
   transform: rotate(45deg);
@@ -1635,6 +1650,10 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   color: var(--body-fg);
 }
 .faq-a-inner p { max-width: 64ch; font-size: 1.05rem; line-height: 1.7; }
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-a, .faq-a-inner { transition: none; }
+}
 
 /* ========================================================================
    CONTACT — editorial form
@@ -3180,7 +3199,9 @@ main > section + section.bridge {
   border-color: var(--moss);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.18);
 }
-.lead-form [aria-invalid="true"] { border-color: #B8704A; }
+.lead-form [aria-invalid="true"] { border-color: var(--error); }
+.lead-field-error{ display:block; margin-top:0.35rem; font-size:0.8rem; font-weight:600; color:var(--error); min-height:1em; }
+.lead-field-error:empty{ margin-top:0; }
 .lead-submit { margin-top: var(--s-2); align-self: flex-start; }
 .lead-submit[disabled] { opacity: 0.7; cursor: not-allowed; }
 .lead-success,
@@ -3193,3 +3214,67 @@ main > section + section.bridge {
 }
 .lead-success { border-color: var(--moss-light); }
 .lead-error a { color: var(--moss); text-decoration: underline; }
+
+/* ========================================================================
+   PROOF GRID — testimonial cards (P1.5)
+   ======================================================================== */
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+  margin-top: var(--s-4);
+}
+@media (min-width: 640px) {
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 980px) {
+  .proof-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+}
+.proof-card {
+  background: var(--surface-grad-2);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--s-4);
+  box-shadow: var(--elev-1);
+}
+.proof-card p {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--heading);
+  margin-bottom: var(--s-3);
+}
+.proof-card cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-body);
+  font-size: var(--fs-anno);
+  font-weight: 600;
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* ========================================================================
+   PROSE — legal pages (privacy-policy, terms-of-service) (P2.18)
+   ======================================================================== */
+.prose {
+  max-width: var(--max-w-reading);
+}
+.prose h2 {
+  margin-top: var(--s-5);
+  margin-bottom: var(--s-2);
+}
+.prose p {
+  margin-bottom: var(--s-3);
+}
+.prose ul,
+.prose ol {
+  margin-bottom: var(--s-3);
+  padding-left: var(--s-4);
+}
+.prose ul li,
+.prose ol li {
+  margin-bottom: var(--s-1);
+}

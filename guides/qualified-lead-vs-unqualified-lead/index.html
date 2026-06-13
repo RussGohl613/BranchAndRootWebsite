@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/qualified-lead-vs-unqualified-lead" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="A qualified lead has a real need, is in your service area, can afford the work, and is ready to buy. The five criteria local service businesses should check." />
+<meta name="twitter:title" content="What Makes a Qualified Lead vs. an Unqualified Lead?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "What Makes a Qualified Lead vs. an Unqualified Lead?",
     "description": "A qualified lead has a real need, is in your service area, can afford the work, and is ready to buy. The five criteria local service businesses should check.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -133,11 +142,11 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">A qualified lead is a prospect with a real need for your service, an address inside your service area, the budget to pay for the work, a timeline that means they will actually buy, and the authority to say yes. An unqualified lead is missing at least one of those five things. For a local service business, that distinction is the difference between a quote request that becomes a paying job and one that quietly eats an afternoon. The criteria are simple enough to memorize; applying them consistently, on every lead, on the busiest days of the year, is where most owner-run systems quietly break.</p>
 
-<h2>What counts as a qualified lead for a local service business?</h2>
+<h2 id="what-counts-as-a-qualified-lead-for-a-local-service-business">What counts as a qualified lead for a local service business?</h2>
 <p>Strip away the textbook language and a qualified lead is simply someone you could realistically be invoicing in the next few weeks. They have a problem you solve, they can pay for the fix, and nothing structural &mdash; geography, authority, timing &mdash; stands in the way.</p>
 <p>Notice what is not in that definition. A lead is not qualified just because they filled out your form, clicked your ad, or called your office. Contact information starts the conversation; it is not proof the conversation is worth having. That filtering step is its own job, which is why <a href="/guides/lead-generation-vs-lead-qualification">lead generation and lead qualification</a> are two different functions.</p>
 
-<h2>The five criteria that actually matter</h2>
+<h2 id="the-five-criteria-that-actually-matter">The five criteria that actually matter</h2>
 <p>Large companies run elaborate lead-scoring models. A local shop needs five questions, all answerable in one short phone call:</p>
 <ul>
 <li><strong>Need.</strong> Do they have a problem you solve? A dead compressor in July is a need. &ldquo;Just curious what new systems run these days&rdquo; usually is not.</li>
@@ -153,12 +162,12 @@
   <p>For the OC trades businesses we work with, the five criteria above only hold when they are written down and owned by a specific person with a specific response window. Without that, qualification defaults to whoever has a free moment &mdash; which means it happens inconsistently, and the leads that needed a five-minute call get a same-day voicemail at 6 p.m. instead. The distinction between qualified and unqualified is easy to understand; the discipline that enforces it every single day is the part that requires a system.</p>
 </aside>
 
-<h2>Two HVAC quote requests, two very different leads</h2>
+<h2 id="two-hvac-quote-requests-two-very-different-leads">Two HVAC quote requests, two very different leads</h2>
 <p>Two requests land Monday morning. The first is a homeowner in your service area whose AC died over the weekend; she asks how soon you can come out and mentions the family has been setting money aside to replace the unit. Need, area, budget, timing, authority &mdash; five for five. That lead should be on the phone with a human within minutes.</p>
 <p>The second wants &ldquo;your best price on a three-ton system,&rdquo; lives three counties away, has no install date, and is collecting quotes for a relative&rsquo;s rental. Wrong territory, vague timing, no authority, and a buying signal that reads pure price-shopper. Same form, same fields completed &mdash; almost no value.</p>
 <p>Treat those two the same and you end up busy but not booked: full of conversations, short on jobs.</p>
 
-<h2>What should you do with unqualified leads?</h2>
+<h2 id="what-should-you-do-with-unqualified-leads">What should you do with unqualified leads?</h2>
 <p>Not every unqualified lead is worthless; some are just early. Pros sort them instead of deleting them &mdash; and they do it the same day, before the lead&rsquo;s intent cools:</p>
 <ul>
 <li><strong>Wrong timing:</strong> put them in a follow-up sequence and check back when the season turns. How you re-contact them matters &mdash; see <a href="/guides/best-way-to-contact-leads">the best way to contact leads</a>.</li>
@@ -167,11 +176,11 @@
 </ul>
 <p class="post-note"><em>Rule of thumb: a fast disqualification is the second-best outcome a lead can have. Slow maybes are what clog pipelines &mdash; and in owner-run operations, the slow maybes pile up fastest on the days the owner is most stretched.</em></p>
 
-<h2>Who should be doing the qualifying?</h2>
+<h2 id="who-should-be-doing-the-qualifying">Who should be doing the qualifying?</h2>
 <p>The criteria are simple. The discipline is not. Someone has to ask these five questions of every lead, within minutes of arrival, every day &mdash; including the day your installer quits and the day three emergency calls stack up. There is a reason <a href="/guides/how-to-qualify-leads-best-practices">qualification best practices</a> read like an operations manual rather than a sales tip sheet.</p>
 <p>In most small shops, that job defaults to the owner, which means it happens whenever the owner climbs out from under a sink. Some businesses solve it by assigning the role in-house; others hand the filtering layer to a done-for-you <a href="/services">lead generation service</a> so only five-for-five conversations ever reach their phone. Most owners already know the answer; the harder part is acting on it: whether your current setup actually runs the five criteria on every lead, every day, without the owner as the single point of failure.</p>
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/lead-generation-vs-lead-qualification">What’s the Difference Between Lead Generation and Lead Qualification?</a></li>
           <li><a href="/guides/best-way-to-contact-leads">What’s the Best Way to Contact Leads?</a></li>
@@ -179,7 +188,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>See These Fundamentals in Action</h2>
+        <h3>See These Fundamentals in Action</h3>
         <p>Branch and Root builds the qualification, follow-up, and response systems this article describes &mdash; done for you and tuned for local service businesses. See how it would work on your pipeline.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -209,6 +218,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/how-many-leads-is-your-business-losing" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="A leak audit for local service businesses: how to count missed calls, slow form responses, no follow-up, and dormant customers from data you already have." />
+<meta name="twitter:title" content="How Many Leads Does Your Business Lose per Month?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How Many Leads Does Your Business Lose per Month?",
     "description": "A leak audit for local service businesses: how to count missed calls, slow form responses, no follow-up, and dormant customers from data you already have.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -134,7 +143,7 @@
 
       <p class="post-lede">Most local service businesses lose more leads to operational gaps than they ever do to competition. Missed calls, after-hours voicemails that never get returned, web forms that sit unread for days, and a customer list that nobody has contacted in two years are all lead losses &mdash; quiet, invisible, and entirely fixable. The data to measure each one is already sitting in your phone system, your website, and your CRM &mdash; but most owners have never pulled it together in one place, because no one built the system that does that automatically.</p>
 
-      <h2>The four places leads leak out of a service business</h2>
+      <h2 id="the-four-places-leads-leak-out-of-a-service-business">The four places leads leak out of a service business</h2>
       <p>Before you spend a dollar on new lead generation, it is worth knowing how many leads the business is already bleeding. Every leak below can be quantified from data you almost certainly already have.</p>
 
       <h3>Leak 1: Missed and unanswered calls</h3>
@@ -153,7 +162,7 @@
       <p>Every service business accumulates a list of past customers who used the business once and have not been contacted since. For an HVAC company, that might be every customer who had a maintenance visit two years ago and has heard nothing since. For a landscaping company, it might be customers from last spring who were never asked about fall cleanups.</p>
       <p>This list is your highest-value lead source because these people already trust you. Filter your CRM for customers who have not had a job or any contact in the past 12 months. That is your dormant list, and reactivating even a fraction of it costs nothing but a phone call or an email. Our <a href="/services">lead generation and customer reactivation services</a> are built specifically to work this list systematically rather than letting it sit idle.</p>
 
-      <h2>Running a simple leak audit in under an hour</h2>
+      <h2 id="running-a-simple-leak-audit-in-under-an-hour">Running a simple leak audit in under an hour</h2>
       <p>You do not need sophisticated tools to do this. Here is the full audit checklist:</p>
       <ol>
         <li>Pull 30 days of call logs. Count missed calls during business hours and after-hours calls with no same-day return.</li>
@@ -169,11 +178,11 @@
         <p>The leak audit described here is exactly what our free diagnosis does &mdash; we pull the call logs, the form timestamps, the open quotes, and the dormant list and hand you a map of where revenue is walking out the door. Most owners are surprised by the size of at least one number. The diagnosis is free because the audit speaks for itself.</p>
       </aside>
 
-      <h2>What to do with the audit results</h2>
+      <h2 id="what-to-do-with-the-audit-results">What to do with the audit results</h2>
       <p>Each leak has a different fix. Missed calls need better coverage or a faster callback process. After-hours inquiries need a morning response protocol. Open quotes need a follow-up sequence in your CRM. The dormant list needs a reactivation campaign. None of these require a new hire &mdash; they require a defined process and someone accountable for running it. The <a href="/guides/how-long-to-see-results-from-lead-gen-hire">results timeline guide</a> covers what to measure once the fixes are in place. The harder question is whether you can see these numbers right now, today &mdash; or whether you would have to reconstruct last month from memory to answer it.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/how-long-to-see-results-from-lead-gen-hire">How Long Does It Take to See Results From a Lead Generation Hire?</a></li>
           <li><a href="/guides/how-to-qualify-leads-best-practices">How to Qualify Leads: Best Practices for Your Business</a></li>
@@ -181,7 +190,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Find Out What You&rsquo;re Losing</h2>
+        <h3>Find Out What You&rsquo;re Losing</h3>
         <p>Most owners can&rsquo;t see their leaks &mdash; missed calls, slow follow-up, a dormant customer list. Our free diagnosis maps where revenue is walking out the door and what it would take to stop it.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Claim Your Free Diagnosis</a>
       </div>
@@ -211,6 +220,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

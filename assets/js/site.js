@@ -75,6 +75,10 @@ faqItems.forEach((item) => {
   const btn = item.querySelector('.faq-q');
   const panel = item.querySelector('.faq-a');
   if (!btn || !panel) return;
+  // Initial state: hide collapsed panels from assistive tech
+  if (btn.getAttribute('aria-expanded') !== 'true') {
+    panel.setAttribute('hidden', '');
+  }
   btn.addEventListener('click', () => {
     const isOpen = btn.getAttribute('aria-expanded') === 'true';
     // Close every other panel for single-open behaviour
@@ -85,64 +89,28 @@ faqItems.forEach((item) => {
       if (ob && op) {
         ob.setAttribute('aria-expanded', 'false');
         op.style.maxHeight = '0px';
+        op.setAttribute('hidden', '');
       }
     });
     btn.setAttribute('aria-expanded', String(!isOpen));
-    panel.style.maxHeight = isOpen ? '0px' : panel.scrollHeight + 'px';
+    if (isOpen) {
+      panel.style.maxHeight = '0px';
+      panel.setAttribute('hidden', '');
+    } else {
+      panel.removeAttribute('hidden');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
   });
 });
-
-// --- Contact form validation ----------------------------------------------
-const form = document.querySelector('.contact-form');
-if (form) {
-  const fields = form.querySelectorAll('[data-required]');
-  const setError = (field, hasError) => {
-    field.closest('.field')?.classList.toggle('is-invalid', hasError);
-  };
-  const validateField = (field) => {
-    const value = (field.value || '').trim();
-    let valid = value.length > 0;
-    if (valid && field.type === 'email') {
-      valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    }
-    if (valid && field.type === 'tel') {
-      const digits = value.replace(/\D/g, '');
-      valid = digits.length >= 7;
-    }
-    setError(field, !valid);
-    return valid;
-  };
-  fields.forEach((f) => {
-    f.addEventListener('blur', () => validateField(f));
-    f.addEventListener('input', () => {
-      if (f.closest('.field')?.classList.contains('is-invalid')) {
-        validateField(f);
-      }
-    });
-  });
-  form.addEventListener('submit', (e) => {
-    let allValid = true;
-    fields.forEach((f) => {
-      if (!validateField(f)) allValid = false;
-    });
-    if (!allValid) {
-      e.preventDefault();
-      const firstInvalid = form.querySelector('.field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea');
-      firstInvalid?.focus();
-    }
-    // If form action is "#" (placeholder), prevent reload and route to thank-you for demo.
-    if (allValid && form.getAttribute('action') === '#') {
-      e.preventDefault();
-      window.location.href = 'thank-you.html';
-    }
-  });
-}
 
 // --- Active nav link highlight --------------------------------------------
 const path = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('[data-nav]').forEach((link) => {
   if (link.getAttribute('data-nav') === path.replace('.html', '')) {
     link.classList.add('is-active');
+    link.setAttribute('aria-current', 'page');
+  } else {
+    link.removeAttribute('aria-current');
   }
 });
 

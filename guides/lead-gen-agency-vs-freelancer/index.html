@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/lead-gen-agency-vs-freelancer" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Agencies bring systems and continuity; freelancers bring flexibility and lower cost. Here is an honest comparison on reliability, accountability, and when each is right." />
+<meta name="twitter:title" content="Lead Generation Agency vs. Freelancer: Which Is Better?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "Lead Generation Agency vs. Freelancer: Which Is Better?",
     "description": "Agencies bring systems and continuity; freelancers bring flexibility and lower cost. Here is an honest comparison on reliability, accountability, and when each is right.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -133,12 +142,12 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">An agency and a freelancer are not interchangeable options at different price points &mdash; they are structurally different engagements with different risk profiles. An agency brings a system, a team, backup coverage, and institutional accountability. A freelancer brings lower cost, flexibility, and the undivided attention of a single skilled person. For most local service businesses that need a reliable, ongoing pipeline, the agency is the better structural choice. Freelancers are the right call for narrow, well-defined projects or when budget genuinely does not allow for an agency retainer. The distinction that matters most is not cost &mdash; it is what happens to your pipeline when the person running it leaves, and whether a system survives that departure or a relationship does not.</p>
 
-<h2>How do cost and scope compare?</h2>
+<h2 id="how-do-cost-and-scope-compare">How do cost and scope compare?</h2>
 <p>Freelancers are generally cheaper on a monthly basis, often significantly so. A capable lead gen freelancer may charge a few hundred to a couple thousand dollars per month depending on their experience and the scope of work. Agency retainers typically start higher and scale with service scope.</p>
 <p>But cost comparison without scope comparison is misleading. A freelancer working part-time on your account may be doing two to three hours per week of actual outreach. An agency retainer often includes strategy, targeting, copywriting, CRM setup, reporting, and execution &mdash; work that would cost considerably more if you hired each function separately or managed it yourself.</p>
 <p>The more relevant question is not who costs less per month, but which delivers more closed revenue per dollar spent. That requires looking at output, not just invoice.</p>
 
-<h2>What is the real continuity risk with freelancers?</h2>
+<h2 id="what-is-the-real-continuity-risk-with-freelancers">What is the real continuity risk with freelancers?</h2>
 <p>This is the risk that does not appear on a comparison spreadsheet until it happens. Freelancers leave. They get a better client, take a full-time job, get sick, or simply fade out. When they go, they take their process knowledge, their contact history, their CRM notes, and often the relationships they have been building on your behalf.</p>
 <p>If a freelancer has been running your outreach for six months and then disappears, your pipeline does not pause &mdash; it stops. Everything they built lived in their head or their personal tools, not in a system you own. Rebuilding takes months, during which your pipeline is dry.</p>
 <p>This is not a reason to never hire a freelancer. It is a reason to treat continuity as a contractual matter: data belongs to you, CRM access stays with your account, contacts are logged in your system, and there is a documented handoff process. Most freelancers will agree to these terms; the ones who will not are waving a flag you should take seriously. The failure mode is skipping this conversation because the engagement started well and you trusted the relationship &mdash; and then discovering, when they leave, that there is nothing to hand off.</p>
@@ -148,12 +157,12 @@
   <p>Accountability in practice means a few specific things: regular reporting you can read without asking for it, outreach cadences that run whether or not your account manager is in the office, and a handoff process that does not require starting over if the team changes. We run weekly reporting to every client by default, keep all contact data in client-owned CRM accounts, and have internal coverage so that no single person walking out the door pauses a client&rsquo;s pipeline. That structure is what an agency relationship should look like &mdash; not every agency runs it that way, so it is worth asking directly before you sign.</p>
 </aside>
 
-<h2>Where do agencies have a structural advantage?</h2>
+<h2 id="where-do-agencies-have-a-structural-advantage">Where do agencies have a structural advantage?</h2>
 <p>Agencies are built around systems rather than individuals. When a team member turns over inside an agency, the account keeps running because the process, the tooling, the targeting list, and the outreach cadence live in the agency&rsquo;s infrastructure. You may notice a transition, but you do not experience a pipeline drought.</p>
 <p>Agencies also tend to have more specialized expertise at each layer of the process. Strategy, targeting, copy, CRM, and analytics are often handled by people who work those specific functions daily. A single freelancer doing all of it well is genuinely uncommon.</p>
 <p>For a local HVAC, plumbing, or landscaping company that depends on consistent monthly lead volume to fill a crew, that structural reliability matters more than the cost savings from a freelancer arrangement. Pros who have been through a freelancer departure once tend to ask this question before the next engagement: if this person disappeared next month, how long would it take to rebuild? When reviewing <a href="/services">done-for-you lead generation options</a>, the continuity question is worth asking directly: what happens if the person running my account leaves?</p>
 
-<h2>When is a freelancer the right call?</h2>
+<h2 id="when-is-a-freelancer-the-right-call">When is a freelancer the right call?</h2>
 <p>Freelancers make sense in specific situations, and being honest about those is important.</p>
 <ul>
   <li><strong>Narrow, time-bounded projects.</strong> If you need a contact list built, a LinkedIn campaign set up, or a specific outreach sequence written and loaded into your CRM, a freelancer with that skill can do the work cleanly and you part ways when it is done.</li>
@@ -162,7 +171,7 @@
 </ul>
 <p>What freelancers are not well-suited for: being your entire pipeline engine, building systems you need to outlast their tenure, or running autonomously without close oversight from you.</p>
 
-<h2>What should you demand from either option?</h2>
+<h2 id="what-should-you-demand-from-either-option">What should you demand from either option?</h2>
 <p>The minimum requirements are the same regardless of which path you choose. Before any engagement starts, get clarity on these:</p>
 <ul>
   <li>Who owns the data and the CRM &mdash; it must be you, in your account.</li>
@@ -174,7 +183,7 @@
 <p>An agency or freelancer who cannot answer those questions clearly is not ready to own your pipeline. The post on <a href="/guides/red-flags-when-hiring-lead-gen-specialist">red flags to avoid</a> applies equally to both, and <a href="/guides/hire-lead-gen-agency-vs-sales-team">agency vs. in-house hire</a> covers the comparison against bringing someone on staff. Before you decide, be honest about how much bandwidth you have to hold a solo operator accountable month after month &mdash; that answer tells you more about which structure fits than any rate comparison.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/hire-lead-gen-agency-vs-sales-team">Should I Hire a Lead Gen Agency or a Sales Team Member?</a></li>
           <li><a href="/guides/red-flags-when-hiring-lead-gen-specialist">Red Flags to Avoid When Hiring a Lead Generation Specialist</a></li>
@@ -182,7 +191,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Get a Strategy Built for Your Trade</h2>
+        <h3>Get a Strategy Built for Your Trade</h3>
         <p>HVAC, plumbing, electrical, landscaping &mdash; we build lead generation around how your customers actually buy in Orange County. Bring your growth question to a free strategy call.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Strategy Call</a>
       </div>
@@ -212,6 +221,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -27,24 +28,14 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="About — Branch and Root Consulting" />
   <meta property="og:description" content="Built in Orange County by two fathers and two sons. Not parachuted in. We live here." />
-  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <link rel="canonical" href="https://branchandrootconsulting.com/about" />
   <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <!-- ===== Analytics & Pixels =============================================
-       Uncomment each block and fill in your ID when the account is ready.
-       ==================================================================== -->
-  <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3746FRPDV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3746FRPDV');
-  </script>
-  -->
   <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -102,6 +93,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -166,15 +158,19 @@
           <span class="sub">Execution speed.<br/>Modern growth infrastructure.</span>
         </div>
 
+        <!-- TODO(client): add real headshots to assets/img/team/. -->
         <div class="team-grid">
           <article class="team-member">
-            <div class="monogram" aria-hidden="true">RJ</div>
+            <img class="team-photo" src="assets/img/team/russ-jr.jpg" alt="Russ Jr. — Systems Execution Lead" loading="lazy" onerror="this.remove()" />
+            <div class="monogram" aria-hidden="true" title="Russ Jr.">RJ</div>
             <h3>Russ Jr.</h3>
             <p class="role">Systems Execution Lead</p>
             <p>Russ Jr. is the technical architect behind every pipeline, automation, and communication framework Branch &amp; Root deploys. He builds the systems that respond to leads in 90 seconds, organize years of dormant customer data into live revenue, and connect every digital touchpoint a local business has into one unified infrastructure. He&rsquo;s the reason it actually works.</p>
           </article>
           <article class="team-member">
-            <div class="monogram" aria-hidden="true">MJ</div>
+            <img class="team-photo" src="assets/img/team/matthew-jr.jpg" alt="Matthew Jr. — Creative Director &amp; Growth Associate" loading="lazy" onerror="this.remove()" />
+            <!-- TODO(client): confirm full legal names for alt text + schema. -->
+            <div class="monogram" aria-hidden="true" title="Matthew Jr.">MJ</div>
             <h3>Matthew Jr.</h3>
             <p class="role">Creative Director &amp; Growth Associate</p>
             <p>Matthew Jr. is the creative and growth engine of the team. He designs the media assets, ad frameworks, and content systems that put Branch &amp; Root clients in front of OC consumers who are actively looking for their services. He also co-manages client onboarding alongside Matthew Sr. &mdash; bridging the gap between what the client needs to see and what the system is actually doing.</p>
@@ -197,13 +193,15 @@
 
         <div class="team-grid">
           <article class="team-member">
-            <div class="monogram" aria-hidden="true">RS</div>
+            <img class="team-photo" src="assets/img/team/russ-sr.jpg" alt="Russ Sr. — Internal Systems &amp; Financial Manager" loading="lazy" onerror="this.remove()" />
+            <div class="monogram" aria-hidden="true" title="Russ Sr.">RS</div>
             <h3>Russ Sr.</h3>
             <p class="role">Internal Systems &amp; Financial Manager</p>
             <p>Russ is the operational backbone of Branch &amp; Root. With decades of business management and digital marketing experience behind him, he ensures that every client system we build is financially sound, compliance-ready, and built to last. He doesn&rsquo;t operate in front of clients &mdash; he operates beneath everything that makes client results possible.</p>
           </article>
           <article class="team-member">
-            <div class="monogram" aria-hidden="true">MS</div>
+            <img class="team-photo" src="assets/img/team/matthew-sr.jpg" alt="Matthew Sr. — Client Relations &amp; Sales Director" loading="lazy" onerror="this.remove()" />
+            <div class="monogram" aria-hidden="true" title="Matthew Sr.">MS</div>
             <h3>Matthew Sr.</h3>
             <p class="role">Client Relations &amp; Sales Director</p>
             <p>Matthew is the first voice most OC business owners hear from Branch &amp; Root &mdash; and the relationship that carries through the entire partnership. His work is built around one thing: genuinely diagnosing what a business actually needs, building the trust to say so honestly, and making sure every client we take on is one we can deliver for. He doesn&rsquo;t sell. He solves.</p>
@@ -222,12 +220,13 @@
           </div>
           <div class="col-body">
             <p>Every business we work with is in our backyard. We pass your shop on the way to the store. We see your truck on the 5. We hear about you from our neighbors. That kind of proximity changes how we work &mdash; and it&rsquo;s the reason we only take on clients in Orange County.</p>
-            <p class="mt-3">When we say we know this market, we mean it in the most literal way possible. <em>We live in it.</em></p>
+            <p class="mt-3">When we say we know this market, we mean it in the most literal way possible. We live here, we work here, and we know which South OC neighborhoods are growing.</p>
           </div>
         </div>
 
         <div class="location-stamp">
           <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
+          <p class="annotation">Mission Viejo &middot; Rancho Santa Margarita &middot; Ladera Ranch &middot; Aliso Viejo &middot; San Clemente</p>
         </div>
       </div>
     </section>
@@ -264,6 +263,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

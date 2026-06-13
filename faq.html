@@ -14,6 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -27,24 +28,14 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="FAQ — Branch and Root Consulting" />
   <meta property="og:description" content="Honest answers to what OC service business owners ask us most." />
-  <meta property="og:image" content="assets/img/og-image.jpg" />
+  <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <link rel="canonical" href="https://branchandrootconsulting.com/faq" />
   <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="assets/css/tokens.css" />
   <link rel="stylesheet" href="assets/css/site.css" />
-  <!-- ===== Analytics & Pixels =============================================
-       Uncomment each block and fill in your ID when the account is ready.
-       ==================================================================== -->
-  <!-- GA4 — create at analytics.google.com, get your G-XXXXXXXX Measurement ID
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3746FRPDV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3746FRPDV');
-  </script>
-  -->
   <!-- Meta Pixel — create at business.facebook.com/events/manager, get your 15-digit Pixel ID
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -143,6 +134,14 @@
           "@type": "Answer",
           "text": "We work with it. Our custom web property isn't necessarily a replacement — it's a high-conversion lead-capture asset that integrates with your pipeline backend. In many cases it complements an existing site. We'll assess what you have during the onboarding call and give you an honest recommendation."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What does it cost to get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Honestly, it depends on what your business needs — there's no one-size price, and we won't pretend otherwise. The free call is where we map what's actually leaking and what it would take to fix it. No retainer pitch, no pressure."
+        }
       }
     ]
   }
@@ -171,6 +170,7 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -252,12 +252,12 @@
         <div class="faq-list">
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-1">
+            <button type="button" class="faq-q" id="faq-btn-1" aria-expanded="false" aria-controls="faq-1">
               <span class="q-num">Q.01</span>
               <span>How is Branch &amp; Root different from a typical digital marketing agency?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-1" role="region">
+            <div class="faq-a" id="faq-1" role="region" aria-labelledby="faq-btn-1">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -269,12 +269,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-2">
+            <button type="button" class="faq-q" id="faq-btn-2" aria-expanded="false" aria-controls="faq-2">
               <span class="q-num">Q.02</span>
               <span>Do I need to commit to a long-term contract?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-2" role="region">
+            <div class="faq-a" id="faq-2" role="region" aria-labelledby="faq-btn-2">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -286,12 +286,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-3">
+            <button type="button" class="faq-q" id="faq-btn-3" aria-expanded="false" aria-controls="faq-3">
               <span class="q-num">Q.03</span>
               <span>How much of my time does this actually require?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-3" role="region">
+            <div class="faq-a" id="faq-3" role="region" aria-labelledby="faq-btn-3">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -303,12 +303,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-4">
+            <button type="button" class="faq-q" id="faq-btn-4" aria-expanded="false" aria-controls="faq-4">
               <span class="q-num">Q.04</span>
               <span>I&rsquo;ve been burned by digital agencies before. Why is this different?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-4" role="region">
+            <div class="faq-a" id="faq-4" role="region" aria-labelledby="faq-btn-4">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -320,12 +320,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-5">
+            <button type="button" class="faq-q" id="faq-btn-5" aria-expanded="false" aria-controls="faq-5">
               <span class="q-num">Q.05</span>
               <span>What kind of businesses do you work with?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-5" role="region">
+            <div class="faq-a" id="faq-5" role="region" aria-labelledby="faq-btn-5">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -337,12 +337,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-6">
+            <button type="button" class="faq-q" id="faq-btn-6" aria-expanded="false" aria-controls="faq-6">
               <span class="q-num">Q.06</span>
               <span>What do I need to provide to get started?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-6" role="region">
+            <div class="faq-a" id="faq-6" role="region" aria-labelledby="faq-btn-6">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -354,12 +354,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-7">
+            <button type="button" class="faq-q" id="faq-btn-7" aria-expanded="false" aria-controls="faq-7">
               <span class="q-num">Q.07</span>
               <span>How soon will I see results?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-7" role="region">
+            <div class="faq-a" id="faq-7" role="region" aria-labelledby="faq-btn-7">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -371,12 +371,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-8">
+            <button type="button" class="faq-q" id="faq-btn-8" aria-expanded="false" aria-controls="faq-8">
               <span class="q-num">Q.08</span>
               <span>What does the monthly management fee cover?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-8" role="region">
+            <div class="faq-a" id="faq-8" role="region" aria-labelledby="faq-btn-8">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -388,12 +388,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-9">
+            <button type="button" class="faq-q" id="faq-btn-9" aria-expanded="false" aria-controls="faq-9">
               <span class="q-num">Q.09</span>
               <span>Do you work with businesses outside OC?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-9" role="region">
+            <div class="faq-a" id="faq-9" role="region" aria-labelledby="faq-btn-9">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -405,12 +405,12 @@
           </div>
 
           <div class="faq-item">
-            <button type="button" class="faq-q" aria-expanded="false" aria-controls="faq-10">
+            <button type="button" class="faq-q" id="faq-btn-10" aria-expanded="false" aria-controls="faq-10">
               <span class="q-num">Q.10</span>
               <span>What if I already have a website?</span>
               <span class="toggle-icon" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" id="faq-10" role="region">
+            <div class="faq-a" id="faq-10" role="region" aria-labelledby="faq-btn-10">
               <div class="faq-a-inner">
                 <div aria-hidden="true"></div>
                 <div>
@@ -421,10 +421,29 @@
             </div>
           </div>
 
+          <div class="faq-item">
+            <button type="button" class="faq-q" id="faq-btn-11" aria-expanded="false" aria-controls="faq-11">
+              <span class="q-num">Q.11</span>
+              <span>What does it cost to get started?</span>
+              <span class="toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-a" id="faq-11" role="region" aria-labelledby="faq-btn-11">
+              <div class="faq-a-inner">
+                <div aria-hidden="true"></div>
+                <div>
+                  <p>Honestly, it depends on what your business needs &mdash; there&rsquo;s no one-size price, and we won&rsquo;t pretend otherwise. The free call is where we map what&rsquo;s actually leaking and what it would take to fix it. No retainer pitch, no pressure.</p>
+                  <!-- TODO(client): confirm the answer (a "starting from $X" anchor or proposal-based). -->
+                </div>
+                <div aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div class="location-stamp">
           <div class="horizon" style="max-width: 360px;" role="presentation"><i></i></div>
+          <p class="annotation">Mission Viejo &middot; Rancho Santa Margarita &middot; Ladera Ranch &middot; Aliso Viejo &middot; San Clemente</p>
         </div>
       </div>
     </section>
@@ -461,6 +480,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

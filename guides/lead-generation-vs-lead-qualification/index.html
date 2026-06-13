@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/lead-generation-vs-lead-qualification" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Lead generation turns attention into contact info; qualification turns contacts into sales-ready appointments. What each stage covers and who should own it." />
+<meta name="twitter:title" content="What’s the Difference Between Lead Generation and Lead Qualification?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "What’s the Difference Between Lead Generation and Lead Qualification?",
     "description": "Lead generation turns attention into contact info; qualification turns contacts into sales-ready appointments. What each stage covers and who should own it.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -133,7 +142,7 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">Lead generation is the work of turning strangers&rsquo; attention into contact information &mdash; form fills, phone calls, quote requests. Lead qualification is the work of sorting those contacts to find the ones who are actually sales-ready: real need, right area, workable budget, near-term timing. Generation is a volume function; qualification is a filtering function. You need both, because generation without qualification buries your team in noise, and qualification without generation has nothing to sort. When nobody specifically owns the qualification step, it silently does not happen &mdash; and the pipeline keeps filling with names that never become jobs.</p>
 
-<h2>Where each stage sits in the pipeline</h2>
+<h2 id="where-each-stage-sits-in-the-pipeline">Where each stage sits in the pipeline</h2>
 <p>Every customer your business wins passes through the same rough sequence:</p>
 <ol>
 <li><strong>Attention</strong> &mdash; they discover you exist: an ad, a search result, a referral, a truck wrap.</li>
@@ -143,29 +152,29 @@
 </ol>
 <p>The stages look obvious written down. The failures happen in the seams &mdash; almost always between contact and qualified.</p>
 
-<h2>What lead generation does (and does not do)</h2>
+<h2 id="what-lead-generation-does-and-does-not-do">What lead generation does (and does not do)</h2>
 <p>Generation produces raw inquiries: it runs the ads, builds the lists, does the outreach, and captures the contact. Its scoreboard is volume and cost &mdash; how many inquiries came in, at what price each.</p>
 <p>What it cannot tell you is which of this week&rsquo;s forty inquiries is a landscaping client ready to sign a maintenance contract and which is a student doing price research. On the form, the two look identical.</p>
 
 <aside class="field-note">
-  <span class="field-note-label">From the Field &middot; Branch &amp; Root</span>
+  <span class="field-note-label">From the Field &middot; <a href="/services">Branch &amp; Root</a></span>
   <p>In our system, qualification is enforced on every lead by process &mdash; not remembered by a busy human at the end of a long day. Every inquiry passes the same checklist, in the same window, with the same criteria, regardless of how full the schedule is. The failure mode we see most is a shop where qualification &ldquo;happens&rdquo; but only when the owner has a spare moment &mdash; which means it mostly does not happen at all on the days that matter most.</p>
 </aside>
 
-<h2>What lead qualification does (and does not do)</h2>
+<h2 id="what-lead-qualification-does-and-does-not-do">What lead qualification does (and does not do)</h2>
 <p>Qualification is the conversation &mdash; usually a five-minute call or a short text exchange &mdash; that sorts contacts into sales-ready, follow-up-later, and never. The criteria are standard: need, service area, budget, timing, decision authority. The full breakdown is in <a href="/guides/qualified-lead-vs-unqualified-lead">qualified vs. unqualified leads</a>.</p>
 <p>Qualification does not create demand, and it does not close jobs. It protects the most expensive resource you have: the time of whoever runs your estimates. What pros do differently is treat the checklist as non-optional &mdash; every contact gets the same five questions, not just the ones who call during a slow morning.</p>
 
-<h2>Who owns each stage?</h2>
+<h2 id="who-owns-each-stage">Who owns each stage?</h2>
 <p>In a larger company the split is formal: marketing generates, a dedicated qualifier sorts the inquiries, and sales reps close. A twelve-person plumbing company will not staff three separate roles &mdash; but each function still has to be owned by someone specific.</p>
 <p>A workable small-shop split: a marketing channel or agency owns generation; the office manager or a trained CSR owns qualification with a written checklist; the owner or a senior tech owns estimates. Titles do not matter. What matters is that each stage has a name attached, a standard, and a clock &mdash; inquiries answered within minutes, not at 7 p.m. The failure mode is leaving qualification unassigned and assuming it will happen naturally; it will not, especially when the job board is full. Because the two functions feed each other, many agencies package generation and qualification together in <a href="/bundles">service bundles</a> rather than handing a business raw, unsorted contacts.</p>
 
-<h2>What breaks when nobody owns qualification</h2>
+<h2 id="what-breaks-when-nobody-owns-qualification">What breaks when nobody owns qualification</h2>
 <p>This is the most common gap in small service businesses, and it fails quietly. The ads work. The phone rings. The forms come in. And then every contact &mdash; qualified or not &mdash; lands in the same inbox, where the owner triages them after the last job of the day.</p>
 <p>Three predictable things follow. Hot leads cool off, because the homeowner with the burst pipe called three companies and hired the one that answered. The owner starts distrusting the marketing &mdash; &ldquo;these leads are junk&rdquo; &mdash; when the real issue is that nobody is separating junk from gold within the hour. And estimates get scheduled with price-shoppers while real buyers wait, so close rates sag.</p>
 <p>If that pattern sounds familiar, the fix is rarely more leads. It is naming an owner for the qualification step, giving them <a href="/guides/how-to-qualify-leads-best-practices">a simple set of best practices</a>, and holding the response-time standard on the busiest days &mdash; exactly the kind of unglamorous discipline that decides whether a pipeline produces revenue or noise. The real constraint here is rarely the checklist itself &mdash; it is whether your business currently has a person whose job it is to run it on the worst day of the month, not just on slow Tuesdays.</p>
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/qualified-lead-vs-unqualified-lead">What Makes a Qualified Lead vs. an Unqualified Lead?</a></li>
           <li><a href="/guides/lead-generation-vs-sales">Lead Generation vs. Sales: What’s the Difference?</a></li>
@@ -173,7 +182,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>See These Fundamentals in Action</h2>
+        <h3>See These Fundamentals in Action</h3>
         <p>Branch and Root builds the qualification, follow-up, and response systems this article describes &mdash; done for you and tuned for local service businesses. See how it would work on your pipeline.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -203,6 +212,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

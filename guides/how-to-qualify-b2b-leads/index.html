@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/how-to-qualify-b2b-leads" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="B2B qualification goes beyond basic fit: decision authority, budget timing, and current-vendor situation all matter. Here is a practical question set and why slow qualification kills B2B deals." />
+<meta name="twitter:title" content="How to Qualify B2B Leads Effectively" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How to Qualify B2B Leads Effectively",
     "description": "B2B qualification goes beyond basic fit: decision authority, budget timing, and current-vendor situation all matter. Here is a practical question set and why slow qualification kills B2B deals.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -133,12 +142,12 @@
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">Qualifying a B2B lead means confirming four things before you invest significant sales time: the account is the right type of business, you are talking to someone who can actually move the decision, they have a realistic budget and timeline, and their current situation creates a genuine reason to switch or add a vendor. Missing any of those four is not a qualification gap you can close with better selling &mdash; it means the lead was not ready, and continuing to push it wastes time that belongs on accounts that are. The subtler problem is that slow qualification does not announce itself as a pipeline failure &mdash; it looks like a full calendar of conversations right up until close rates tell you otherwise.</p>
 
-<h2>Why B2B qualification is harder than consumer qualification</h2>
+<h2 id="why-b2b-qualification-is-harder-than-consumer-qualification">Why B2B qualification is harder than consumer qualification</h2>
 <p>With a homeowner, qualification is fast: do they need the work, are they in your service area, can they pay, and will they decide soon? Four questions, answered in one conversation.</p>
 <p>A business has layers. The person who returns your call is often not the person who approves the vendor. The budget may exist but not open until Q3. There may be a current vendor under contract. There may be a preferred-vendor list you have to get on before they can even use you. All of these are real qualification factors, and none of them surface unless you ask directly.</p>
 <p>The trap is treating a warm response as a qualified lead. A facilities manager who says &ldquo;yes, send me your information&rdquo; has not committed to anything. That is a live contact, not a qualified opportunity. Confusing the two inflates your pipeline and produces a close rate that looks inexplicably low. Understanding <a href="/guides/qualified-lead-vs-unqualified-lead">what separates a qualified lead from an unqualified one</a> is useful context here &mdash; B2B just adds more layers to the same core framework.</p>
 
-<h2>The four qualification dimensions for B2B</h2>
+<h2 id="the-four-qualification-dimensions-for-b2b">The four qualification dimensions for B2B</h2>
 <p>A practical B2B qualification framework covers four dimensions. You do not need to learn them all in one call, but you should have answers to all four before you invest significant selling time.</p>
 <ol>
   <li><strong>Firmographics and fit.</strong> Does this business actually need what you do, at the scale you serve? For a commercial HVAC or landscaping contractor, this means size of property or portfolio, geographic location, and type of facility. A contact at a building that is outside your service area or below your minimum scope is not a real opportunity regardless of how interested they seem.</li>
@@ -152,7 +161,7 @@
   <p>Every commercial lead we work comes through a qualification pass before it reaches the client. We check scope, geography, decision authority, and vendor situation as a process step &mdash; not because someone remembered to ask, but because it is built into how we hand leads off. An owner who gets a commercial contact from us already knows whether there is a real budget window, whether there is a current vendor to displace, and who needs to sign off. That structure does not happen by instinct. It happens because someone built the question set into the workflow and runs it consistently.</p>
 </aside>
 
-<h2>A practical question set for B2B qualification calls</h2>
+<h2 id="a-practical-question-set-for-b2b-qualification-calls">A practical question set for B2B qualification calls</h2>
 <p>You do not need to run through these as a checklist &mdash; a good qualification conversation weaves them naturally. But each one should be answered before you move a B2B lead into active pipeline.</p>
 <ul>
   <li>&ldquo;Walk me through the properties or facilities you manage &mdash; how many locations, what type?&rdquo; (Firmographic fit and scope.)</li>
@@ -164,13 +173,13 @@
 </ul>
 <p class="post-note"><em>The last question is the most revealing. A buyer who gives you a clear, concrete answer is engaged. A buyer who cannot answer it is still in exploration mode and is not ready for a close. Both are useful to know early.</em></p>
 
-<h2>Why slow qualification kills B2B deals quietly</h2>
+<h2 id="why-slow-qualification-kills-b2b-deals-quietly">Why slow qualification kills B2B deals quietly</h2>
 <p>The failure mode in B2B is not aggressive disqualification &mdash; it is the opposite. People avoid asking direct questions because they fear a &ldquo;no,&rdquo; so they leave leads in the pipeline as &ldquo;potential&rdquo; for months and never learn whether they are real.</p>
 <p>This produces a pipeline that looks full and closes thin. Every quarter the same accounts are still &ldquo;in conversation.&rdquo; No one has learned that two have locked contracts, one decided not to switch, and one&rsquo;s contact left the company six months ago. Pros who run this well set a defined decision point within the first two conversations &mdash; they ask for a clear next step with a date attached, and if the prospect cannot give one, they move it to a future-follow-up category rather than leaving it in active pipeline and wondering why it never closes.</p>
 <p>Clean qualification is respectful of everyone&rsquo;s time. Find out quickly whether an opportunity is real &mdash; and if it is not ready now, whether it will be at a defined future date. That is how you keep the pipeline honest. If B2B qualification feels like too much to manage alongside running jobs, a <a href="/services">done-for-you lead generation service</a> can handle outreach and initial qualification together. And if you want to build the habit yourself, <a href="/guides/how-to-qualify-leads-best-practices">qualification best practices for service businesses</a> has the broader framework. The real question is whether your current pipeline reflects what is actually real, or what you have been optimistic about for three months.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/lead-generation-for-b2b-hiring-guide">Lead Generation for B2B: What&#39;s Different About Hiring?</a></li>
           <li><a href="/guides/how-to-qualify-leads-best-practices">How to Qualify Leads: Best Practices for Your Business</a></li>
@@ -178,7 +187,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Get a Strategy Built for Your Trade</h2>
+        <h3>Get a Strategy Built for Your Trade</h3>
         <p>HVAC, plumbing, electrical, landscaping &mdash; we build lead generation around how your customers actually buy in Orange County. Bring your growth question to a free strategy call.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Strategy Call</a>
       </div>
@@ -208,6 +217,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -295,7 +295,7 @@
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-lg);
 }
-.related-posts h2 {
+.related-posts h3 {
   display: flex;
   align-items: center;
   gap: 0.6em;
@@ -307,7 +307,7 @@
   text-transform: uppercase;
   color: var(--moss);
 }
-.related-posts h2::before {
+.related-posts h3::before {
   content: "";
   display: inline-block;
   width: 28px;
@@ -368,7 +368,7 @@
   pointer-events: none;
 }
 .post-cta > * { position: relative; }
-.post-cta h2 {
+.post-cta h3 {
   margin: 0 auto;
   max-width: 20ch;
   color: var(--cream-fixed);
@@ -574,7 +574,7 @@
 
   .related-posts { border-color: var(--line); }
   .related-posts li { border-top-color: var(--line); }
-  .related-posts h2 { color: var(--moss-light); }
+  .related-posts h3 { color: var(--moss-light); }
   .related-posts a:hover { color: var(--moss-light); }
   .related-posts a::after { color: var(--moss-light); }
 

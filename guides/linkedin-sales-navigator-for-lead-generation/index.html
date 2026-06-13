@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/linkedin-sales-navigator-for-lead-generation" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Practical Sales Navigator setup for local service businesses: lead filters that matter, saved searches, alerts, and the InMail discipline that earns replies." />
+<meta name="twitter:title" content="How to Use LinkedIn Sales Navigator for Lead Generation" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How to Use LinkedIn Sales Navigator for Lead Generation",
     "description": "Practical Sales Navigator setup for local service businesses: lead filters that matter, saved searches, alerts, and the InMail discipline that earns replies.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -132,10 +141,10 @@
       <h1 class="post-title">How to Use LinkedIn Sales Navigator for Lead Generation</h1>
       <p class="post-meta">Branch and Root Consulting · Orange County, CA · Updated June 2026</p>
       <p class="post-lede">LinkedIn Sales Navigator earns its subscription only when you use it deliberately: build tightly scoped lead filters, save those searches so new matches surface automatically, and run low-volume, personalized outreach instead of mass InMail. For a local service business, it is genuinely useful for finding commercial and B2B buyers &mdash; property managers, facilities directors, general contractors &mdash; and nearly useless for residential leads, because homeowners are not searchable by job title. The tool itself is not the hard part; the hard part is the several skilled hours every single week it takes to keep it producing &mdash; which is exactly where owner-run Navigator subscriptions go quiet.</p>
-      <h2>What does Sales Navigator do that free LinkedIn can't?</h2>
+      <h2 id="what-does-sales-navigator-do-that-free-linkedin-can-t">What does Sales Navigator do that free LinkedIn can't?</h2>
       <p>Free LinkedIn caps your monthly searches, hides many third-degree profiles, and forgets your prospecting work the moment you close the tab. Sales Navigator removes the search ceiling and adds the two features that actually matter: granular lead filters, and saved searches that alert you when new people match your criteria.</p>
       <p>Plans typically start around $100 per month per seat, so the tool has to produce real conversations to justify itself. If you have not proven LinkedIn as a channel yet, start with the free approach in our guide to <a href="/guides/how-to-find-leads-on-linkedin">finding leads on LinkedIn without paid tools</a>, and upgrade once you are hitting search limits every week.</p>
-      <h2>Which lead filters actually matter?</h2>
+      <h2 id="which-lead-filters-actually-matter">Which lead filters actually matter?</h2>
       <p>Sales Navigator offers dozens of filters, and most of them are noise for a service company. Five do the heavy lifting:</p>
       <ul>
         <li><strong>Geography:</strong> your metro area or a radius around your service territory. Everything else builds on this.</li>
@@ -145,21 +154,21 @@
         <li><strong>Posted on LinkedIn in the past 30 days:</strong> active users see your message; dormant accounts never will.</li>
       </ul>
       <p>A good search returns a few hundred people, not ten thousand. If your results look like a phone book, tighten title and geography until they look like a call list. Professional operators build these filters once and then leave them almost entirely alone &mdash; the temptation to keep tweaking is how a good search turns into an afternoon of distraction with nothing sent.</p>
-      <h2>How should you use saved searches and alerts?</h2>
+      <h2 id="how-should-you-use-saved-searches-and-alerts">How should you use saved searches and alerts?</h2>
       <p>Saved searches are the compounding feature. Build three to five tight searches &mdash; one per buyer type &mdash; and Sales Navigator will surface new matches every week: people who changed jobs, moved into your territory, or just became active on the platform.</p>
       <p>Job-change alerts deserve special attention. A facilities manager who just landed somewhere new is rethinking vendors in their first few months on the job. Check alerts twice a week and treat each one as a reason to reach out with specific context, not a cold pitch.</p>
       <aside class="field-note">
         <span class="field-note-label">From the Field &middot; Branch &amp; Root</span>
         <p>Running saved searches across multiple client accounts is a daily discipline for our team &mdash; not a weekly chore, a daily one. Every morning someone opens the alerts, reviews new matches, and flags the job-change notifications worth acting on that day. The accounts where that habit slips for even two weeks go noticeably cold; the ones where it holds keep generating fresh conversations. That cadence is the whole product. It&rsquo;s not something you can batch on a Friday afternoon after four service calls.</p>
       </aside>
-      <h2>What does InMail discipline look like?</h2>
+      <h2 id="what-does-inmail-discipline-look-like">What does InMail discipline look like?</h2>
       <p>InMail is rationed for a reason &mdash; core plans include roughly 50 credits a month, and burning them on five-paragraph pitches to strangers is the fastest way to waste the subscription. Connection requests with a short, specific note should be your default; save InMail for high-value prospects who ignored a request or sit outside your network.</p>
       <p>Keep messages to two or three sentences, name the trigger that prompted you, and ask a small question instead of pushing for a meeting. Pros track every send and reply in a CRM so patterns are visible &mdash; without that log, you are making decisions from memory, which is the step where owner-run accounts lose the thread. Results swing heavily on this discipline &mdash; see our guide on <a href="/guides/how-to-find-leads-on-linkedin">how to find leads on LinkedIn</a> before judging your numbers.</p>
-      <h2>Is Sales Navigator worth it for a local service business?</h2>
+      <h2 id="is-sales-navigator-worth-it-for-a-local-service-business">Is Sales Navigator worth it for a local service business?</h2>
       <p>For commercial work, usually yes &mdash; if someone actually runs it. The tool only pays off with weekly attention: refreshing searches, working the alerts, sending a steady drip of personalized messages, and logging every conversation in a CRM so follow-up happens. That is several skilled hours a week, every week, which is exactly where most owner-run efforts stall.</p>
       <p>For residential-only businesses, skip it. A homeowner with a burst pipe is not browsing LinkedIn, and your budget is better spent on inbound visibility. Before committing, the question worth sitting with is not whether Navigator works &mdash; it does &mdash; but whether your schedule actually has room for the weekly hour-count it requires, every week, without slipping. If the answer is uncertain, that uncertainty is the answer. If you want the commercial pipeline without running the tooling yourself, that is precisely what our <a href="/services">lead generation services</a> are built for.</p>
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/how-to-find-leads-on-linkedin">How to Find Leads Using LinkedIn for Your Sales Team</a></li>
           <li><a href="/guides/attract-inbound-leads-vs-outbound-hiring">How to Attract Inbound Leads Instead of Hiring for Outbound</a></li>
@@ -167,7 +176,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Skip the Software Stack</h2>
+        <h3>Skip the Software Stack</h3>
         <p>CRM, sequencing, dialers, tracking &mdash; we bring the entire toolkit and the people who run it. You get the output: qualified leads, booked appointments, and clean reporting.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">See What&rsquo;s Included</a>
       </div>
@@ -197,6 +206,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

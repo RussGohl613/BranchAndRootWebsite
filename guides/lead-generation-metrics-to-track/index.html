@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -24,8 +26,7 @@
   <meta name="description" content="The 9 lead generation KPIs that matter for local service businesses: definitions, why each one counts, and the vanity metrics worth ignoring." />
   <link rel="canonical" href="https://branchandrootconsulting.com/guides/lead-generation-metrics-to-track" />
   <!-- TEMPORARILY UNPUBLISHED: remove this meta tag (and restore listings in sitemap.xml, sitemap-page.html, llms.txt, blog hub) once B&R benchmarks are filled in -->
-  <meta name="robots" content="noindex, nofollow" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <meta name="robots" content="noindex, nofollow" />  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
   <meta property="og:title" content="Lead Generation Metrics: What Should I Track?" />
@@ -34,7 +35,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/lead-generation-metrics-to-track" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="The 9 lead generation KPIs that matter for local service businesses: definitions, why each one counts, and the vanity metrics worth ignoring." />
+<meta name="twitter:title" content="Lead Generation Metrics: What Should I Track?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -43,6 +47,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "Lead Generation Metrics: What Should I Track?",
     "description": "The 9 lead generation KPIs that matter for local service businesses: definitions, why each one counts, and the vanity metrics worth ignoring.",
     "datePublished": "2026-06-11",
@@ -66,6 +71,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -109,6 +115,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -136,7 +144,7 @@
 
       <p class="post-lede">For a local service business, nine metrics cover everything worth measuring in a lead generation program: speed-to-lead, contact rate, qualification rate, appointments set, show rate, cost per qualified lead, lead-to-sale conversion, revenue per lead, and pipeline coverage. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> Track these and you have full visibility from first contact to closed job &mdash; and most owners have none of them, because nobody built the layer that captures each handoff automatically instead of requiring a manual weekly report.</p>
 
-      <h2>The 9 metrics that actually drive decisions</h2>
+      <h2 id="the-9-metrics-that-actually-drive-decisions">The 9 metrics that actually drive decisions</h2>
 
       <p><strong>1. Speed-to-lead.</strong> Time from a lead&rsquo;s first contact to your first response. Industry data consistently shows that leads contacted within five minutes convert at dramatically higher rates than those reached an hour later. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> For inbound calls this is measured in seconds; for form submissions it should be minutes, not hours. Fix this first if contact rate is low.</p>
 
@@ -156,7 +164,7 @@
 
       <p><strong>9. Pipeline coverage.</strong> Total value of active opportunities divided by monthly revenue target. A ratio of 3:1 or higher gives you enough buffer for normal fallout. <!-- PLACEHOLDER: confirm/update with B&R benchmark --> Coverage below 2:1 is a warning sign that pipeline is running thin.</p>
 
-      <h2>The vanity metrics worth ignoring</h2>
+      <h2 id="the-vanity-metrics-worth-ignoring">The vanity metrics worth ignoring</h2>
       <p>Impressions, raw LinkedIn connections, emails sent, and website traffic without conversion data all look like progress and change nothing. Activity volume is not output &mdash; a hire who sends 500 emails per month and books zero appointments is not performing well, and a traffic spike that produces no calls is not a lead gen win.</p>
 
       <aside class="field-note">
@@ -164,13 +172,13 @@
         <p>Our clients see all nine of these metrics on a single dashboard because the system records every call, response time, and booked job automatically. There is no weekly report to pull and no manual entry required &mdash; the owner checks a screen. That is what makes the numbers actionable instead of historical.</p>
       </aside>
 
-      <h2>How to actually build this tracking without a data team</h2>
+      <h2 id="how-to-actually-build-this-tracking-without-a-data-team">How to actually build this tracking without a data team</h2>
       <p>You do not need sophisticated software. A CRM with a lead source field, a call log, and a simple spreadsheet covers most of it. The discipline is in recording data consistently &mdash; every lead tagged with its source, every appointment logged, every closed job linked back to its origin. Our <a href="/services">lead generation services</a> include monthly reporting on these metrics so you always know where the pipeline stands. The real question is whether you can answer any of these nine numbers today without pulling records &mdash; or whether your current program is running blind.</p>
 
       <p class="post-note"><em>Note: These benchmarks vary by industry, sales cycle, and market. We're updating this article with Orange County-specific data from our client work &mdash; <a href="/contact">reach out directly</a> for numbers relevant to your business.</em></p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/what-percentage-of-leads-should-convert">What Percentage of Leads Should Actually Convert to Sales?</a></li>
           <li><a href="/guides/how-many-leads-per-month-lead-gen">How Many Leads Should a Lead Generation Person Produce per Month?</a></li>
@@ -178,7 +186,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Find Out What You&rsquo;re Losing</h2>
+        <h3>Find Out What You&rsquo;re Losing</h3>
         <p>Most owners can&rsquo;t see their leaks &mdash; missed calls, slow follow-up, a dormant customer list. Our free diagnosis maps where revenue is walking out the door and what it would take to stop it.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Claim Your Free Diagnosis</a>
       </div>
@@ -208,6 +216,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

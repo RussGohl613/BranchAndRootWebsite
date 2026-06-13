@@ -43,6 +43,7 @@
   --moss-light:   #52946F;
   --bone:         #FFFFFF;
   --warm:         #B8704A;
+  --error:        #9C5B36;        /* clears 4.5:1 on white and cream */
 
   /* ---- Editorial extensions (additions only) ------------------------- */
   --paper:        #EFEADB;   /* duskier cream for card surfaces on cream page */
@@ -160,6 +161,7 @@
     --slate:      #9BAEAA;
     --slate-soft: #7A8C84;
     --rule:       #52946F;
+    --error:      #E2A07A;        /* clears 4.5:1 on dark surfaces */
 
     --heading:    #F1ECDB;
     --body-fg:    #ECE5D0;

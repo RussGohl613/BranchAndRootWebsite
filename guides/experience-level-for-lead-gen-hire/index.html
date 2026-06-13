@@ -14,6 +14,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
+    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -32,7 +34,10 @@
   <meta property="og:url" content="https://branchandrootconsulting.com/guides/experience-level-for-lead-gen-hire" />
   <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+        <meta name="twitter:description" content="Junior vs. senior lead gen tradeoffs: what 1 year vs. 5 years actually buys, and why industry familiarity often matters more than years on a resume." />
+<meta name="twitter:title" content="How Much Experience Should a Lead Gen Hire Have?" />
+<meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/css/tokens.css" />
   <link rel="stylesheet" href="/assets/css/site.css" />
@@ -41,6 +46,7 @@
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "image": "https://branchandrootconsulting.com/assets/img/og-image.jpg",
     "headline": "How Much Experience Should a Lead Gen Hire Have?",
     "description": "Junior vs. senior lead gen tradeoffs: what 1 year vs. 5 years actually buys, and why industry familiarity often matters more than years on a resume.",
     "datePublished": "2026-06-11",
@@ -64,6 +70,7 @@
     }
   }
   </script>
+  <!-- TODO(client): confirm real publish dates per post; dateModified should update on edits. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -107,6 +114,8 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
+
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -134,26 +143,26 @@
 
       <p class="post-lede">For most local service businesses, one to two years of relevant outbound experience is enough to hire effectively &mdash; provided the candidate has worked in a comparable business environment and can demonstrate a defined process, not just activity. Five or more years buys you faster ramp time, less hand-holding, and a more developed judgment about which leads are worth pursuing, but it comes at a significantly higher cost and often a higher turnover risk once the person outgrows the role. The answer this grid leads many owners to &mdash; but that few say out loud &mdash; is that no in-house hire is the right call if you cannot provide the management, the comp, and the growth path the role demands.</p>
 
-      <h2>What does one year of experience actually buy?</h2>
+      <h2 id="what-does-one-year-of-experience-actually-buy">What does one year of experience actually buy?</h2>
       <p>A candidate with one year in an outbound or SDR role has typically survived the initial rejection curve &mdash; which means they have some psychological durability for the work. They understand the basic mechanics: how to build a list, how to sequence outreach, how to qualify a conversation before passing it. They have logged enough calls and emails to know what works and what does not in at least one context.</p>
       <p>What they have not yet developed is judgment. They tend to follow a script rather than adapt it. They often struggle to recognize a low-quality lead before investing significant follow-up time. They need more direction from you, not less, and the quality of their output will improve noticeably over the first six to twelve months of working specifically in your business category.</p>
       <p>For a local service business with a patient owner and a clear onboarding process, a one-year candidate can be a solid hire at a reasonable cost. The risk is that they leave once they feel confident &mdash; which is often right around the eighteen-month mark, when they have developed enough skill to attract better offers from larger employers.</p>
 
-      <h2>What does five or more years of experience buy?</h2>
+      <h2 id="what-does-five-or-more-years-of-experience-buy">What does five or more years of experience buy?</h2>
       <p>An experienced lead gen professional brings a shorter ramp, better judgment on lead quality, and the ability to operate with minimal supervision. They will notice problems in your outreach approach before you do, suggest fixes, and self-correct when a campaign is underperforming. They do not need a script &mdash; they have internalized the underlying principles and can adapt to your specific buyer.</p>
       <p>The cost is real. Candidates with five or more years of proven outbound experience typically command compensation in the mid-to-upper range of the market, and they are acutely aware of what they are worth. They also have a clearer sense of the growth they want from a role. If you cannot offer advancement, more responsibility, or a clear trajectory over twelve to eighteen months, you are hiring someone who will likely leave before you fully recoup the investment. Our <a href="/guides/lead-generation-as-a-career">overview of lead gen as a career</a> covers why senior candidates have options and use them.</p>
 
-      <h2>Why industry familiarity often beats years on paper</h2>
+      <h2 id="why-industry-familiarity-often-beats-years-on-paper">Why industry familiarity often beats years on paper</h2>
       <p>Here is the dimension most owners underweight in the hiring decision: relevant industry experience. A candidate with two years of outbound work specifically in local home services &mdash; HVAC, plumbing, pest control, or any trade-adjacent business &mdash; will typically outperform a candidate with five years of experience in an unrelated vertical.</p>
       <p>The reason is context. Local service lead generation requires understanding how homeowners make decisions about contractors, what seasonality looks like and how to use it, what objections come up on first contact (price, timing, trust), and how to communicate credibly about the work your crews do. None of that knowledge transfers automatically from B2B tech outreach or e-commerce upselling.</p>
       <p>When you evaluate candidates, probe for this specifically. Ask what industries they have generated leads in, what the average transaction size was, and what the buyer looked like. A candidate who has never spoken to a homeowner about a service call is starting from a larger knowledge gap than the years on their resume suggest.</p>
 
       <aside class="field-note">
-  <span class="field-note-label">From the Field &middot; Branch &amp; Root</span>
+  <span class="field-note-label">From the Field &middot; <a href="/services">Branch &amp; Root</a></span>
   <p>The outreach process we run for OC trades clients draws on accumulated experience across HVAC, plumbing, landscaping, and electrical &mdash; not one person&rsquo;s resume. A single hire brings whatever they encountered at their last employer; that gap shows up in the first campaign, not at the eighteen-month mark.</p>
 </aside>
 
-      <h2>A practical framework: match experience level to your management capacity</h2>
+      <h2 id="a-practical-framework-match-experience-level-to-your-management-capacity">A practical framework: match experience level to your management capacity</h2>
       <p>The right experience level for your hire is partly a function of how much management you can provide. Use this grid as a starting point:</p>
       <ul>
         <li><strong>Owner has time for weekly 1-on-1s, call reviews, and script coaching:</strong> A one-to-two-year candidate can work. Budget for a slower ramp and plan to invest in their development actively.</li>
@@ -163,7 +172,7 @@
       <p>The worst outcome is hiring a junior candidate because the cost is attractive and then not providing the oversight they need to develop. You get inconsistent output, the hire gets frustrated, and within a year you are back at the start. Before choosing either path, the question worth sitting with is whether your situation clears the bar at any tier &mdash; or whether the management capacity, compensation budget, and growth path simply are not there, and the real answer is not which experience level to hire but whether to hire at all.</p>
 
       <aside class="related-posts" aria-label="Related articles">
-        <h2>Related Articles</h2>
+        <h3>Related Articles</h3>
         <ul>
           <li><a href="/guides/what-to-look-for-in-lead-generation-expert">What to Look for When Hiring a Lead Generation Expert</a></li>
           <li><a href="/guides/lead-generation-as-a-career">Is Lead Generation a Good Career Path?</a></li>
@@ -171,7 +180,7 @@
         </ul>
       </aside>
       <div class="post-cta">
-        <h2>Hire the System, Not the Headache</h2>
+        <h3>Hire the System, Not the Headache</h3>
         <p>Branch and Root gives Orange County service businesses a fully-run lead generation system &mdash; no recruiting, no ramp time, no turnover risk. Put it side by side with your hiring shortlist in one call.</p>
         <a href="/contact" class="btn btn-cream btn-arrow">Book a Free Consultation</a>
       </div>
@@ -201,6 +210,7 @@
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/guides">Guides</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/book">Book a Call</a></li>
           </ul>
         </div>
         <div class="footer-col">

@@ -27,3 +27,9 @@ graphify-out/
 CLAUDE_DESIGN_PROMPT.md
 DESIGN_DECISIONS.md
 _COMMUNITY_Pages & Interactions.md
+
+# Audit artifacts (local only — not part of the hosted site)
+AUDIT-FIX-PROMPT.md
+Branch-and-Root-Website-Audit.pdf
+council-report-*.html
+council-transcript-*.md
