@@ -14,7 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    // VERIFY(client): is GA4 also fired by GTM? If yes, remove this to avoid double-counting.
+    // NOTE: GA4 also loads via GTM. If your GTM container has its own GA4 tag for this ID, remove this gtag block to avoid double-counting.
     gtag('config', 'G-D3746FRPDV');
   </script>
   <meta charset="utf-8" />
@@ -23,13 +23,13 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14" />
   <title>Page Not Found — Branch and Root Consulting</title>
   <meta name="robots" content="noindex" />
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
-  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-  <link rel="preload" href="assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/tokens.css" />
-  <link rel="stylesheet" href="assets/css/site.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/source-sans-3-variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/tokens.css" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -41,7 +41,7 @@
   <header class="site-header">
     <div class="container nav">
       <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
-        <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+        <img src="/assets/img/logo-badge.png" alt="" width="40" height="40" />
         <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · OC</span></span>
       </a>
       <nav aria-label="Primary">
@@ -54,7 +54,6 @@
           <li><a href="/contact"  data-nav="contact">Contact</a></li>
         </ul>
       </nav>
-      <!-- DECISION(client): nav CTA currently → /contact (form). Option B = point to /book (live calendar). See audit P1.3. -->
       <a href="/contact" class="btn btn-primary nav-cta">Book a Free Consultation</a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="Open menu">
         <svg class="icon-open"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -88,8 +87,9 @@
             <a href="/contact" class="btn btn-ghost">Book a Consultation</a>
           </div>
           <nav aria-label="More ways to get back on track">
-            <a href="/guides">Browse our guides</a> &middot; <a href="/services">See our services</a>
+            <a href="/guides">Browse our guides</a> &middot; <a href="/services">See our services</a> &middot; <a href="/bundles">Compare bundles</a> &middot; <a href="/faq">Read the FAQ</a>
           </nav>
+          <p class="notfound-help">Still stuck? Email us at <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a> and we&rsquo;ll point you the right way.</p>
         </div>
       </div>
     </section>
@@ -100,7 +100,7 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="/" class="brand" aria-label="Branch and Root Consulting — Home">
-            <img src="assets/img/logo-badge.png" alt="" width="40" height="40" />
+            <img src="/assets/img/logo-badge.png" alt="" width="40" height="40" />
             <span class="brand-text"><span class="brand-name">Branch &amp; Root</span><span class="brand-sub">Consulting · OC</span></span>
           </a>
           <p class="footer-tag">Branching your business out from a <em>rooted</em> foundation.</p>
@@ -137,6 +137,6 @@
     </div>
   </footer>
 
-  <script defer src="assets/js/site.js"></script>
+  <script defer src="/assets/js/site.js"></script>
 </body>
 </html>
