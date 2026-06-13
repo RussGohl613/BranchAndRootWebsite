@@ -1321,6 +1321,13 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   margin-bottom: 0.3rem;
 }
 
+/* Featured package emphasis, price sublabel, services cross-sell outro */
+.package-featured { border-color: var(--moss); box-shadow: var(--elev-2); }
+.price-sublabel { font-weight: 400; font-size: 0.9em; }
+.services-outro { text-align: center; }
+.services-outro .bundle-crosssell { max-width: 58ch; margin: 0 auto var(--s-4); font-size: 1.05rem; color: var(--body-fg); }
+.services-outro .addons-note { margin-top: var(--s-5); }
+
 /* Comparison table — editorial ledger */
 .compare-wrap {
   overflow-x: auto;
