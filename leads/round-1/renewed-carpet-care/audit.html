@@ -1,732 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="robots" content="noindex,nofollow">
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
-<meta charset="UTF-8">
-<title>Renewed Carpet Care — Brand Intelligence Report</title>
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1B4332">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
+<title>Renewed Carpet Care — Brand Intelligence Report</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
 
-  :root {
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. ============================ */
+  :root{
     color-scheme: light dark;
-    --forest: #1B4332;
-    --forest-soft: #2D5F47;
-    --cream: #F7F5F0;
-    --cream-line: #E6E0D4;
-    --ink: #20271F;
-    --muted: #5A6157;
-    --accent: #6F8F71;
-    --rule: #D8D2C4;
-  }
+    --accent:#5BA86C;            /* PER-BRAND accent (fresh sage-green) */
+    --accent-ink:#10231A;        /* text on accent */
+    --slate:#6FB3A8;             /* secondary accent (soft teal) */
 
-  @page {
-    size: Letter;
-    margin: 20mm 16mm 18mm 16mm;
-    @bottom-left {
-      content: "Branch & Root Consulting — Confidential | Renewed Carpet Care";
-      font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
-      font-size: 7.5pt;
-      color: #8A9183;
-      letter-spacing: 0.3px;
-    }
-    @bottom-right {
-      content: "Page " counter(page) " of " counter(pages);
-      font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
-      font-size: 7.5pt;
-      color: #8A9183;
-    }
-  }
+    --page:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9F4;
+    --sidebar-bg:#FFFFFF;
+    --ink:#222824;
+    --muted:#5A655E;
+    --line:#E4DFD4;
 
-  @page :first {
-    margin: 0;
-    @bottom-left { content: ""; }
-    @bottom-right { content: ""; }
-  }
+    --heading:#1B4332;           /* heading TEXT */
+    --brand:#1B4332;             /* rules / lead-in text */
+    --band:#1B4332;              /* table header / voice bands */
+    --band-ink:#FFFFFF;
+    --cover-bg:#1B4332;
 
-  * { box-sizing: border-box; }
-
-  body {
-    font-family: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
-    color: var(--ink);
-    font-size: 10pt;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,42,30,.05), 0 10px 30px -12px rgba(15,42,30,.14);
+    --shadow-sm:0 1px 2px rgba(15,42,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-
-  h1, h2, h3 { font-family: "Bitter", Georgia, "Times New Roman", serif; }
-
-  /* ---------- COVER ---------- */
-  .cover {
-    background: var(--forest);
-    color: var(--cream);
-    height: 279mm;
-    padding: 34mm 22mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    page-break-after: always;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .cover-top { }
-  .brandmark {
-    font-family: "Bitter", Georgia, serif;
-    font-size: 12pt;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #B7C9B5;
-    font-weight: 600;
-  }
-  .brandmark .leaf { color: #8FB58C; }
-  .cover-rule {
-    width: 70px;
-    height: 3px;
-    background: #8FB58C;
-    margin: 18px 0 0 0;
-  }
-  .cover-mid { margin-top: auto; }
-  .cover-kicker {
-    font-family: "Source Sans 3", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 10pt;
-    color: #9CB89A;
-    font-weight: 600;
-    margin-bottom: 14px;
-  }
-  .cover h1 {
-    font-size: 38pt;
-    line-height: 1.08;
-    margin: 0;
-    font-weight: 700;
-    color: #FFFFFF;
-  }
-  .cover h1 .sub {
-    display: block;
-    color: #C9D8C6;
-    font-weight: 400;
-    font-size: 30pt;
-    margin-top: 4px;
-  }
-  .cover-tagline {
-    margin-top: 22px;
-    font-size: 12pt;
-    color: #C9D8C6;
-    max-width: 70%;
-    line-height: 1.5;
-  }
-  .cover-bottom {
-    border-top: 1px solid rgba(255,255,255,0.18);
-    padding-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10pt;
-    color: #AFC4AC;
-    letter-spacing: 0.5px;
-  }
-  .cover-bottom strong { color: #FFFFFF; font-weight: 600; }
-
-  /* ---------- SECTIONS ---------- */
-  .section { page-break-inside: avoid; margin-bottom: 18px; }
-
-  .sec-head {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    border-bottom: 2px solid var(--forest);
-    padding-bottom: 6px;
-    margin: 0 0 12px 0;
-  }
-  .sec-num {
-    font-family: "Bitter", serif;
-    font-size: 12pt;
-    font-weight: 700;
-    color: #FFFFFF;
-    background: var(--forest);
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-    line-height: 1;
-  }
-  .sec-head h2 {
-    font-size: 15pt;
-    color: var(--forest);
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-  }
-
-  p { margin: 0 0 9px 0; }
-  .lede { color: var(--muted); }
-
-  /* callout / cream panels */
-  .panel {
-    background: var(--cream);
-    border: 1px solid var(--cream-line);
-    border-left: 4px solid var(--accent);
-    border-radius: 4px;
-    padding: 12px 16px;
-    margin: 10px 0;
-  }
-  .panel-title {
-    font-family: "Bitter", serif;
-    font-weight: 600;
-    font-size: 10.5pt;
-    color: var(--forest);
-    margin: 0 0 6px 0;
-  }
-
-  ul { margin: 4px 0 9px 0; padding-left: 18px; }
-  li { margin-bottom: 4px; }
-  ul.tight li { margin-bottom: 2px; }
-
-  .label {
-    font-family: "Source Sans 3", sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 8pt;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  /* two-column meta grid for business overview */
-  .meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px 24px;
-    background: var(--cream);
-    border: 1px solid var(--cream-line);
-    border-radius: 4px;
-    padding: 12px 16px;
-    margin-bottom: 10px;
-  }
-  .meta div { font-size: 9.5pt; }
-  .meta .k {
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 7.5pt;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-  }
-  .meta .v { color: var(--ink); }
-
-  /* stat row */
-  .stats {
-    display: flex;
-    gap: 10px;
-    margin: 10px 0;
-  }
-  .stat {
-    flex: 1;
-    background: var(--forest);
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 12px;
-    text-align: center;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .stat .big {
-    font-family: "Bitter", serif;
-    font-size: 19pt;
-    font-weight: 700;
-    line-height: 1;
-    display: block;
-    color: #fff;
-  }
-  .stat .cap {
-    font-size: 7.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: #B7C9B5;
-    margin-top: 4px;
-    display: block;
-  }
-  .stat.alt { background: var(--cream); color: var(--ink); border: 1px solid var(--cream-line); }
-  .stat.alt .big { color: var(--forest); }
-  .stat.alt .cap { color: var(--muted); }
-
-  /* quality meter */
-  .meter {
-    display: inline-flex;
-    gap: 3px;
-    vertical-align: middle;
-    margin-left: 6px;
-  }
-  .pip { width: 11px; height: 11px; border-radius: 2px; background: var(--rule); }
-  .pip.on { background: var(--accent); }
-
-  .grid2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  .box {
-    border: 1px solid var(--cream-line);
-    border-radius: 4px;
-    padding: 11px 14px;
-  }
-  .box h4 {
-    font-family: "Bitter", serif;
-    margin: 0 0 6px 0;
-    font-size: 10.5pt;
-    color: var(--forest);
-  }
-  .box.win { background: #F2F6F1; border-color: #D6E3D4; }
-  .box.gap { background: #FBF6F1; border-color: #EBDFCF; }
-  .check { color: #3D7A52; font-weight: 700; }
-  .ex { color: #B06A3A; font-weight: 700; }
-
-  /* quotes */
-  .quote {
-    border-left: 3px solid var(--accent);
-    padding: 2px 0 2px 12px;
-    margin: 6px 0;
-    font-style: italic;
-    color: #3a4136;
-    font-size: 9.5pt;
-  }
-  .quote .src {
-    display: block;
-    font-style: normal;
-    font-size: 7.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    color: var(--accent);
-    margin-top: 2px;
-    font-weight: 700;
-  }
-  .theme {
-    font-family: "Bitter", serif;
-    font-weight: 600;
-    color: var(--forest);
-    font-size: 10.5pt;
-    margin: 8px 0 1px 0;
-  }
-
-  /* competitor table */
-  table.comp {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 8px 0;
-    font-size: 9pt;
-  }
-  table.comp th {
-    background: var(--forest);
-    color: #fff;
-    text-align: left;
-    padding: 7px 9px;
-    font-family: "Source Sans 3", sans-serif;
-    font-weight: 600;
-    font-size: 8.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  table.comp td {
-    padding: 7px 9px;
-    border-bottom: 1px solid var(--cream-line);
-    vertical-align: top;
-  }
-  table.comp tr:nth-child(even) td { background: var(--cream); }
-  table.comp .name { font-weight: 700; color: var(--forest); }
-
-  .word-chips { margin: 6px 0 10px 0; }
-  .chip {
-    display: inline-block;
-    background: var(--forest);
-    color: #fff;
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-family: "Bitter", serif;
-    font-weight: 600;
-    font-size: 10pt;
-    margin-right: 6px;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .chip.outline {
-    background: transparent;
-    color: var(--forest);
-    border: 1.5px solid var(--accent);
-  }
-
-  /* color swatches */
-  .swatches { display: flex; gap: 10px; margin: 8px 0; }
-  .sw { text-align: center; font-size: 7.5pt; color: var(--muted); }
-  .sw .chip-color {
-    width: 100%;
-    height: 34px;
-    border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.08);
-    margin-bottom: 3px;
-  }
-  .sw-wrap { width: 80px; }
-
-  .reco-banner {
-    background: var(--forest);
-    color: #fff;
-    border-radius: 6px;
-    padding: 14px 18px;
-    margin: 8px 0 12px 0;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  .reco-banner .label { color: #9CB89A; }
-  .reco-banner .tier {
-    font-family: "Bitter", serif;
-    font-size: 17pt;
-    font-weight: 700;
-    margin: 2px 0 0 0;
-    color: #fff;
-  }
-
-  .gapnote {
-    font-size: 8.5pt;
-    color: #9a7a55;
-    background: #FBF6EF;
-    border: 1px dashed #E2D2BB;
-    border-radius: 4px;
-    padding: 8px 12px;
-    margin: 8px 0;
-  }
-  .gapnote strong { color: #8a6a45; }
-
-  .footer-note {
-    margin-top: 16px;
-    padding-top: 10px;
-    border-top: 1px solid var(--rule);
-    font-size: 8pt;
-    color: var(--muted);
-  }
-  small.cite { color: var(--accent); font-size: 8pt; }
-
-  /* ============ THEME TOGGLE BUTTON ============ */
-  .theme-toggle{position:fixed;top:16px;right:16px;z-index:100;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--rule);background:var(--cream);color:var(--forest);cursor:pointer}
-  .theme-toggle:hover{border-color:var(--accent)}
-  .theme-toggle svg{width:18px;height:18px;display:block}
-  .theme-toggle .i-sun{display:none}.theme-toggle .i-moon{display:block}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}}
-  :root[data-theme="dark"] .theme-toggle .i-moon{display:none}:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
-  :root[data-theme="light"] .theme-toggle .i-moon{display:block}:root[data-theme="light"] .theme-toggle .i-sun{display:none}
-  @media print{.theme-toggle{display:none}}
-
-  /* ============ DARK THEME ============ */
-  /* Shared dark overrides — same declarations in the auto and the manual selector */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --forest: #18271D;        /* deepened brand surface for colored panels */
-      --forest-soft: #213A2B;
-      --cream: #16241C;         /* elevated panel/card surface, brand-tinted */
-      --cream-line: #2D4034;    /* hairline borders on dark */
-      --ink: #ECE5D0;           /* primary body text — warm off-white */
-      --muted: #9BAEAA;         /* muted / secondary text */
-      --accent: #8FB58C;        /* brand accent — brightened, AA on dark */
-      --rule: #2D4034;
-    }
-    :root:not([data-theme="light"]) body{background:#0F1B14}
-    /* text selectors that used --forest as a FOREGROUND colour → light brand tint */
-    :root:not([data-theme="light"]) .sec-head h2,
-    :root:not([data-theme="light"]) .panel-title,
-    :root:not([data-theme="light"]) .box h4,
-    :root:not([data-theme="light"]) .theme,
-    :root:not([data-theme="light"]) table.comp .name,
-    :root:not([data-theme="light"]) .stat.alt .big,
-    :root:not([data-theme="light"]) .reco-banner .tier{color:#A9D0A5}
-    :root:not([data-theme="light"]) .chip.outline{color:#A9D0A5;border-color:var(--accent)}
-    :root:not([data-theme="light"]) .sec-head{border-bottom-color:#3A5B45}
-    /* cover hard-coded hexes */
-    :root:not([data-theme="light"]) .cover h1,
-    :root:not([data-theme="light"]) .cover h1 .sub,
-    :root:not([data-theme="light"]) .cover-bottom strong{color:#EAF2E8}
-    :root:not([data-theme="light"]) .cover h1 .sub{color:#C9D8C6}
-    :root:not([data-theme="light"]) .stat .big{color:#fff}
-    /* win/gap callout boxes */
-    :root:not([data-theme="light"]) .box.win{background:#16271C;border-color:#2C4632}
-    :root:not([data-theme="light"]) .box.gap{background:#27211A;border-color:#473A2A}
-    :root:not([data-theme="light"]) .check{color:#7FBE8E}
-    :root:not([data-theme="light"]) .ex{color:#D69A6A}
-    :root:not([data-theme="light"]) .quote{color:#C7D2C4}
-    /* amber gap-note */
-    :root:not([data-theme="light"]) .gapnote{color:#D8B98C;background:#262017;border-color:#4A3B27}
-    :root:not([data-theme="light"]) .gapnote strong{color:#E6CBA0}
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#86CF92; --accent-ink:#0F2117; --slate:#7FC9BE;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
   :root[data-theme="dark"]{
-    --forest: #18271D;
-    --forest-soft: #213A2B;
-    --cream: #16241C;
-    --cream-line: #2D4034;
-    --ink: #ECE5D0;
-    --muted: #9BAEAA;
-    --accent: #8FB58C;
-    --rule: #2D4034;
+    --accent:#86CF92; --accent-ink:#0F2117; --slate:#7FC9BE;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
   }
-  :root[data-theme="dark"] body{background:#0F1B14}
-  :root[data-theme="dark"] .sec-head h2,
-  :root[data-theme="dark"] .panel-title,
-  :root[data-theme="dark"] .box h4,
-  :root[data-theme="dark"] .theme,
-  :root[data-theme="dark"] table.comp .name,
-  :root[data-theme="dark"] .stat.alt .big,
-  :root[data-theme="dark"] .reco-banner .tier{color:#A9D0A5}
-  :root[data-theme="dark"] .chip.outline{color:#A9D0A5;border-color:var(--accent)}
-  :root[data-theme="dark"] .sec-head{border-bottom-color:#3A5B45}
-  :root[data-theme="dark"] .cover h1,
-  :root[data-theme="dark"] .cover h1 .sub,
-  :root[data-theme="dark"] .cover-bottom strong{color:#EAF2E8}
-  :root[data-theme="dark"] .cover h1 .sub{color:#C9D8C6}
-  :root[data-theme="dark"] .stat .big{color:#fff}
-  :root[data-theme="dark"] .box.win{background:#16271C;border-color:#2C4632}
-  :root[data-theme="dark"] .box.gap{background:#27211A;border-color:#473A2A}
-  :root[data-theme="dark"] .check{color:#7FBE8E}
-  :root[data-theme="dark"] .ex{color:#D69A6A}
-  :root[data-theme="dark"] .quote{color:#C7D2C4}
-  :root[data-theme="dark"] .gapnote{color:#D8B98C;background:#262017;border-color:#4A3B27}
-  :root[data-theme="dark"] .gapnote strong{color:#E6CBA0}
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.16;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#DCE6E0;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | Renewed Carpet Care"; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1F2421;--muted:#55605A;--line:#DDE3DF;--heading:#1B4332;--brand:#1B4332;--band:#1B4332;--band-ink:#fff;--cover-bg:#1B4332; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
 </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
 
-<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
-
-<!-- ========== COVER ========== -->
-<div class="cover">
-  <div class="cover-top">
-    <div class="brandmark">Branch <span class="leaf">&amp;</span> Root Consulting</div>
-    <div class="cover-rule"></div>
-  </div>
-  <div class="cover-mid">
-    <div class="cover-kicker">Brand Intelligence Report</div>
-    <h1>Renewed Carpet Care<span class="sub">Brand Intelligence Report</span></h1>
-    <div class="cover-tagline">A strategic audit of digital presence, brand voice, customer sentiment, and competitive position — with a prioritized growth recommendation.</div>
-  </div>
-  <div class="cover-bottom">
-    <div><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026</div>
-    <div>Prepared for Stephen Otis · Rancho Santa Margarita, CA</div>
-  </div>
-</div>
-
-<!-- ========== 1. BUSINESS OVERVIEW ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">1</span><h2>Business Overview</h2></div>
-  <div class="meta">
-    <div><span class="k">Business</span><span class="v">Renewed Carpet Care</span></div>
-    <div><span class="k">Owner</span><span class="v">Stephen Otis (BS Chemistry + MBA)</span></div>
-    <div><span class="k">Niche</span><span class="v">Carpet Cleaning</span></div>
-    <div><span class="k">Years in Operation</span><span class="v">10 years — established 2016</span></div>
-    <div><span class="k">Location</span><span class="v">5 Via Caballo, Rancho Santa Margarita, CA 92688</span></div>
-    <div><span class="k">Contact</span><span class="v">(949) 434-1151 · renewedcarpetcare@gmail.com</span></div>
-  </div>
-  <p>Renewed Carpet Care is an owner-operated, locally owned carpet-cleaning business serving Rancho Santa Margarita, California, founded in 2016 and now in its tenth year of operation under owner Stephen Otis, who brings a BS in Chemistry and an MBA to the work. The company offers a focused residential-cleaning line that includes premium carpet cleaning, area rug cleaning, upholstery cleaning, tile &amp; grout cleaning and sealing, general stain removal, and dedicated pet stain &amp; odor removal — all backed by a 100% satisfaction guarantee and a no-hidden-fees pricing promise.</p>
-</div>
-
-<!-- ========== 2. DIGITAL PRESENCE AUDIT ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">2</span><h2>Digital Presence Audit</h2></div>
-
-  <p class="label">Website</p>
-  <p style="margin-bottom:6px;">
-    <strong>renewedcarpetcare.com</strong> &nbsp;·&nbsp; Platform: Wix &nbsp;·&nbsp; Mobile responsive: Yes
-    &nbsp;·&nbsp; Quality
-    <span class="meter">
-      <span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span>
-    </span> <strong>3 / 5</strong>
-  </p>
-  <div class="grid2">
-    <div class="box win">
-      <h4>What works</h4>
-      <ul class="tight">
-        <li><span class="check">+</span> Clear value headline: "We take care of ALL your Carpet, Upholstery, Area Rugs, Tile &amp; Grout needs!"</li>
-        <li><span class="check">+</span> Strong trust stack — 100% Satisfaction Guarantee, "No Hidden Fees," 10+ years, certified-cleaner claim</li>
-        <li><span class="check">+</span> Mobile responsive and clean, on-brand soft visual feel</li>
-        <li><span class="check">+</span> A direct "Hire Us Now!" call to action is present</li>
-      </ul>
-    </div>
-    <div class="box gap">
-      <h4>What does not</h4>
-      <ul class="tight">
-        <li><span class="ex">–</span> No above-the-fold lead form or email capture — no way to convert a visitor on the spot</li>
-        <li><span class="ex">–</span> No visible CRM or booking integration behind the CTA</li>
-        <li><span class="ex">–</span> "Certified Professional Cleaners" is not tied to a named body (e.g. IICRC)</li>
-        <li><span class="ex">–</span> Single Wix page limits local SEO depth vs. multi-page competitors</li>
-      </ul>
-    </div>
-  </div>
-
-  <p class="label" style="margin-top:12px;">Reviews</p>
-  <div class="stats">
-    <div class="stat">
-      <span class="big">4.9★</span>
-      <span class="cap">Google · 51 reviews</span>
-    </div>
-    <div class="stat">
-      <span class="big">5.0★</span>
-      <span class="cap">Yelp · 74 reviews</span>
-    </div>
-    <div class="stat alt">
-      <span class="big">125</span>
-      <span class="cap">Combined reviews</span>
-    </div>
-  </div>
-  <p><strong>Trend read:</strong> Sentiment is exceptionally strong and consistent across both major platforms — a 4.9 on Google and a perfect 5.0 on Yelp rarely coexist at this review volume without a genuinely reliable service. The clustering of praise around the owner by name and the recurrence of repeat customers signal durable, relationship-driven loyalty rather than a few lucky reviews. The strategic gap is not reputation but <em>activation</em>: this goodwill is not being systematically routed back into repeat bookings or referrals.</p>
-  <div class="gapnote"><strong>Data note:</strong> Google figures were sourced via Birdeye aggregation rather than a live Google Business Profile page, and the Yelp page returned HTTP 403 to direct fetch (count confirmed via search snippets and Yahoo Local). Exact counts should be treated as current-best estimates — <strong>recommend verifying via phone outreach</strong>.</p>
-
-  <p class="label" style="margin-top:6px;">Social Media</p>
-  <ul class="tight">
-    <li><strong>Facebook</strong> — Page exists (facebook.com/RenewedCarpetCareOrangeCounty). Follower count is login-gated and <em>Not found — recommend verifying via phone outreach</em>. A 2025 owner photo post exists, but current posting cadence is unconfirmed.</li>
-    <li><strong>Instagram</strong> — Account exists (@renewedcarpetcareorangecounty). Follower count, post count, and cadence are login-gated: <em>Not found — recommend verifying via phone outreach</em>.</li>
-    <li><strong>Assessment</strong> — Both channels appear effectively dormant or unmeasurable. Social is not currently a meaningful acquisition or reactivation lever; this is an open opportunity, not a current strength.</li>
-  </ul>
-
-  <p class="label" style="margin-top:6px;">Google Business Profile (GBP) Completeness</p>
-  <p>A direct, Google-hosted GBP URL was not located in research, and the GBP category and hours could not be confirmed from a Google-hosted page (review data came via Birdeye). GBP completeness is therefore <strong>unverified</strong>: <em>Not found — recommend verifying via phone outreach</em>. Given the strong underlying review profile, claiming/optimizing and confirming the GBP listing (category, hours, photos, service area) is a high-value, low-effort first step.</p>
-</div>
-
-<!-- ========== 3. BRAND VOICE ANALYSIS ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">3</span><h2>Brand Voice Analysis</h2></div>
-  <p class="label">Three brand-voice words</p>
-  <div class="word-chips">
-    <span class="chip">Caring</span>
-    <span class="chip">Professional</span>
-    <span class="chip">Reliable</span>
-  </div>
-  <p>The tone is friendly, approachable, and trustworthy, carried by an owner-operator personal touch — Stephen is presented as the person who shows up and does the work. The copy leans on care, professionalism, attention to detail, and a satisfaction-backed promise, reading as clean and reassuring rather than salesy or technical. This voice maps directly onto what reviewers independently say about him, which gives the brand a rare alignment between marketing language and lived customer experience.</p>
-  <div class="panel">
-    <p class="panel-title">Verbatim copy samples (source: renewedcarpetcare.com)</p>
-    <div class="quote">"We take care of ALL your Carpet, Upholstery, Area Rugs, Tile &amp; Grout needs!"<span class="src">Website headline</span></div>
-    <div class="quote">"Our mission is to provide exceptional carpet cleaning services that exceed our customers' expectations."<span class="src">Website mission statement</span></div>
-    <div class="quote">"100% Satisfaction Guarantee. No Hidden Fees. We can REMOVE most stains."<span class="src">Website trust copy</span></div>
-  </div>
-</div>
-
-<!-- ========== 4. CUSTOMER INTELLIGENCE ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">4</span><h2>Customer Intelligence</h2></div>
-  <p class="lede">The strongest, most repeated themes across Google and Yelp reviews. Quoted phrases reflect recurring reviewer language captured in research; exact wording should be confirmed against live listings before public reuse.</p>
-
-  <p class="theme">1. Stephen, by name — professional and personable</p>
-  <p style="margin-bottom:4px;">The owner is named repeatedly and praised for his professionalism and personal involvement, making him the brand's single biggest asset.</p>
-  <div class="quote">Reviewers consistently single out <em>"Stephen"</em> by name and describe him as <em>professional</em> and easy to work with.<span class="src">Recurring theme — Google &amp; Yelp</span></div>
-
-  <p class="theme">2. Punctual and communicative</p>
-  <p style="margin-bottom:4px;">Customers highlight that he is on time and communicates his arrival window — a reliability signal that underpins the "Reliable" brand word.</p>
-  <div class="quote">Repeated praise for being <em>punctual / on time</em> and for <em>communicating the arrival window</em> in advance.<span class="src">Recurring theme — Google &amp; Yelp</span></div>
-
-  <p class="theme">3. Removes tough, set-in stains</p>
-  <p style="margin-bottom:4px;">Reviews specifically credit results on difficult stains — pet urine, coffee, and stains left by prior homeowners — validating the pet-odor specialty.</p>
-  <div class="quote">Customers report he <em>removed tough stains including pet urine, coffee, and prior-owner stains</em>.<span class="src">Recurring theme — Google &amp; Yelp</span></div>
-
-  <div class="panel">
-    <p class="panel-title">Recurring friction points</p>
-    <p style="margin:0;">No recurring complaints or friction themes surfaced in the available review research — sentiment is uniformly positive, and pricing is praised as competitive/fair with no hidden fees. Because individual negative reviews were not directly readable (Yelp returned a 403 to direct fetch), a definitive "zero complaints" claim cannot be made: any isolated criticism is <strong>Not found — recommend verifying via phone outreach</strong> and a direct read of live listings.</p>
-  </div>
-</div>
-
-<!-- ========== 5. COMPETITIVE LANDSCAPE ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">5</span><h2>Competitive Landscape</h2></div>
-  <table class="comp">
-    <thead>
-      <tr>
-        <th style="width:22%;">Competitor</th>
-        <th style="width:11%;">Site /5</th>
-        <th style="width:15%;">Reviews</th>
-        <th style="width:52%;">Key differentiator</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="name">RSM Carpet &amp; Tile Cleaning</td>
-        <td>4</td>
-        <td>Not published</td>
-        <td>26+ years in business with IICRC/CRI-certified crews, a BBB "A" rating, and a published 30-Day Guarantee ("if stains return, so do we, at no additional cost") — formal certifications and a written re-clean warranty Renewed does not display.</td>
-      </tr>
-      <tr>
-        <td class="name">Done Rite Stone, Tile &amp; Carpet Care</td>
-        <td>4</td>
-        <td>~60 reviews</td>
-        <td>Dedicated standalone site (adonerite.com) with multi-city service pages (RSM, Irvine) and a specialized natural-stone polishing/refinishing line (marble, travertine, countertops, showers) — higher-margin restoration capability and a broader local-SEO footprint.</td>
-      </tr>
-      <tr>
-        <td class="name">Colorburst Carpet Care</td>
-        <td>3</td>
-        <td>~63 reviews · 5.0★</td>
-        <td>Owner-operated since 1990 (35+ years) with deep multigenerational loyalty (clients of 20+ years) and soap-free, pet/child-safe truck-mounted steam cleaning as an explicit selling point — a far longer local track record and a clearly articulated kid/pet-safe process.</td>
-      </tr>
-    </tbody>
-  </table>
-  <p><strong>Where Renewed leads vs. lags.</strong> Renewed Carpet Care <em>leads on demonstrated sentiment</em>: its 5.0 Yelp (74) and 4.9 Google (51) profile, anchored by an owner praised by name, is the most credible reputation signal among this set — RSM publishes no review counts, and Done Rite shows no star rating, while only Colorburst matches the 5.0 quality bar. Renewed <em>lags on credentialed proof and digital infrastructure</em>: competitors counter with formal IICRC/CRI certifications, a BBB "A" rating, and a <em>written</em> 30-day re-clean warranty (RSM); a multi-page, multi-city website and a higher-margin stone-restoration line (Done Rite); and a 35-year track record with an explicit pet/child-safe process (Colorburst). The takeaway: Renewed has earned the trust its rivals advertise but has not yet <em>packaged</em> it — formalizing the guarantee in writing, naming the certifying body, and converting its single Wix page into a conversion-ready presence would close the gap fastest.</p>
-</div>
-
-<!-- ========== 6. LANDING PAGE STRATEGY ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">6</span><h2>Landing Page Strategy</h2></div>
-  <div class="panel">
-    <p class="panel-title">Recommended Hero Headline</p>
-    <p style="font-family:'Bitter',serif; font-size:13pt; color:var(--forest); margin:0 0 8px 0; line-height:1.25;">"Rancho Santa Margarita's Trusted Carpet &amp; Tile Specialist — Owner-Operated, 5-Star Rated"</p>
-    <p style="margin:0; color:var(--muted); font-size:9.5pt;"><strong>Subheadline:</strong> Stephen personally cleans every home — premium carpet, upholstery, area rug, and tile &amp; grout care backed by a 100% satisfaction guarantee and no hidden fees.</p>
-  </div>
-
-  <div class="grid2" style="margin-top:4px;">
-    <div>
-      <p class="label">Primary CTA</p>
-      <p style="margin-bottom:10px;"><span class="chip">Book Your Cleaning Today</span></p>
-      <p class="label">Above-the-fold trust signals</p>
-      <ul class="tight">
-        <li>5.0★ on Yelp (74 reviews) &amp; 4.9★ on Google (51 reviews)</li>
-        <li>100% Satisfaction Guarantee</li>
-        <li>Owner-operated since 2016 — always work directly with Stephen</li>
-        <li>Pet stain &amp; odor specialist (pet urine, coffee, set-in stains)</li>
-        <li>No hidden fees, transparent pricing</li>
-        <li>Environmentally friendly, certified professional cleaning</li>
-      </ul>
-    </div>
-    <div>
-      <p class="label">Color Direction</p>
-      <p style="font-size:9.5pt; margin-bottom:4px;">Fresh sage-green and cream with soft teal accents — clean, calm, and approachable, matching the brand's existing soft feel and signaling a healthy, residue-free home.</p>
-      <div class="swatches">
-        <div class="sw sw-wrap"><div class="chip-color" style="background:#8FB58C;"></div>Sage Green</div>
-        <div class="sw sw-wrap"><div class="chip-color" style="background:#F7F5F0;"></div>Cream</div>
-        <div class="sw sw-wrap"><div class="chip-color" style="background:#6FB3A8;"></div>Soft Teal</div>
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
       </div>
-      <p class="label" style="margin-top:8px;">Typography</p>
-      <p style="font-size:9.5pt; margin:0;">Soft, friendly, and clean. Recommended pairing: <strong>Quicksand</strong> for headings and <strong>Mulish</strong> for body — rounded, approachable letterforms that reinforce the calm, residue-free promise.</p>
-    </div>
-  </div>
-</div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">Renewed Carpet Care</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">Customer Reactivation Engine</div>
+      </div>
+    </aside>
 
-<!-- ========== 7. BRANCH & ROOT RECOMMENDATION ========== -->
-<div class="section">
-  <div class="sec-head"><span class="sec-num">7</span><h2>Branch &amp; Root Recommendation</h2></div>
-  <div class="reco-banner">
-    <span class="label">Recommended Service Tier</span>
-    <p class="tier">Customer Reactivation Engine</p>
-  </div>
-  <p><strong>Why this tier.</strong> Reviews repeatedly show repeat customers calling Stephen back and recommending him, and the owner-operated model since 2016 has built a loyal base of satisfied clients. That proven goodwill is currently leaking value: there is no visible CRM, no email capture, and no above-the-fold lead form on the Wix site, so a happy customer from last year has no automated nudge to rebook. A Customer Reactivation Engine — automated reminder and reactivation sequences timed to each household's cleaning cycle — converts that existing loyalty into scheduled return cleanings. It is the highest-leverage gap because the hardest part (earning trust) is already done; only the systematic re-engagement layer is missing.</p>
-  <div class="panel">
-    <p class="panel-title">Estimated revenue opportunity</p>
-    <p style="margin:0;">With 5,000+ clients served and a guaranteed-quality reputation, reactivating even a conservative 5% of the lapsed base into one additional annual cleaning at a typical residential ticket (~$200) represents on the order of <strong>$50,000+ in recurring annual revenue</strong> from work the business is already trusted to do — at near-zero acquisition cost. <small class="cite">(Modeled from the website's own "5,000+ clients" claim, which is a marketing figure not independently verified; <strong>recommend confirming the active customer list size via phone outreach</strong>.)</small></p>
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>Renewed Carpet Care</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Carpet Cleaning &nbsp;·&nbsp; Rancho Santa Margarita, CA</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">10 yrs</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">4.9&#9733;</div><div class="lbl">Google (51 reviews)</div></div>
+        <div class="stat"><div class="num">5.0&#9733;</div><div class="lbl">Yelp (74 reviews)</div></div>
+        <div class="stat"><div class="num">3 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>Renewed Carpet Care</strong> is an owner-operated, locally owned carpet-cleaning business serving Rancho Santa Margarita, California, founded in 2016 and now in its tenth year of operation under owner <strong>Stephen Otis</strong>, who brings a BS in Chemistry and an MBA to the work. Operating from 5 Via Caballo, Rancho Santa Margarita, CA 92688 and reachable at (949) 434-1151 &middot; renewedcarpetcare@gmail.com, the company offers a focused residential-cleaning line that includes premium carpet cleaning, area rug cleaning, upholstery cleaning, tile &amp; grout cleaning and sealing, general stain removal, and dedicated pet stain &amp; odor removal &mdash; all backed by a 100% satisfaction guarantee and a no-hidden-fees pricing promise.</p>
+      </section>
+
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; renewedcarpetcare.com &nbsp;·&nbsp; Quality 3 / 5 &nbsp;·&nbsp; Wix &middot; Mobile responsive: Yes</h3>
+          <p class="kv">The site opens with the value headline <em>&ldquo;We take care of ALL your Carpet, Upholstery, Area Rugs, Tile &amp; Grout needs!&rdquo;</em> on a clean, on-brand soft visual feel, and a direct <b>&ldquo;Hire Us Now!&rdquo;</b> call to action is present &mdash; but it leans on a single Wix page with no above-the-fold lead form.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Clear value headline: &ldquo;We take care of ALL your Carpet, Upholstery, Area Rugs, Tile &amp; Grout needs!&rdquo;</li>
+                <li>Strong trust stack &mdash; 100% Satisfaction Guarantee, &ldquo;No Hidden Fees,&rdquo; 10+ years, certified-cleaner claim</li>
+                <li>Mobile responsive and clean, on-brand soft visual feel</li>
+                <li>A direct &ldquo;Hire Us Now!&rdquo; call to action is present</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>No above-the-fold lead form or email capture &mdash; no way to convert a visitor on the spot</li>
+                <li>No visible CRM or booking integration behind the CTA</li>
+                <li>&ldquo;Certified Professional Cleaners&rdquo; is not tied to a named body (e.g. IICRC)</li>
+                <li>Single Wix page limits local SEO depth vs. multi-page competitors</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &mdash; Reputation is the Standout Asset</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Read</th></tr>
+              <tr><td>Google</td><td class="center">51</td><td class="center"><span class="stars">4.9 &#9733;</span></td><td>The highest-intent discovery surface; near-perfect rating sourced via Birdeye aggregation rather than a confirmed live profile.</td></tr>
+              <tr><td>Yelp</td><td class="center">74</td><td class="center"><span class="stars">5.0 &#9733;</span></td><td>A perfect rating at meaningful volume; count confirmed via search snippets and Yahoo Local after the live page returned HTTP 403.</td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> Sentiment is exceptionally strong and consistent across both major platforms &mdash; a 4.9 on Google and a perfect 5.0 on Yelp rarely coexist at this review volume without a genuinely reliable service. The clustering of praise around the owner by name and the recurrence of repeat customers signal durable, relationship-driven loyalty rather than a few lucky reviews. The strategic gap is not reputation but <em>activation</em>: this goodwill is not being systematically routed back into repeat bookings or referrals.</p>
+          <p class="gapnote">Data note: Google figures were sourced via Birdeye aggregation rather than a live Google Business Profile page, and the Yelp page returned HTTP 403 to direct fetch (count confirmed via search snippets and Yahoo Local). Exact counts should be treated as current-best estimates &mdash; recommend verifying via phone outreach.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><b>Facebook</b> &mdash; Page exists (facebook.com/RenewedCarpetCareOrangeCounty). Follower count is login-gated and <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span> A 2025 owner photo post exists, but current posting cadence is unconfirmed.</li>
+              <li><b>Instagram</b> &mdash; Account exists (@renewedcarpetcareorangecounty). Follower count, post count, and cadence are login-gated: <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></li>
+            </ul>
+            <p class="gapnote">Both channels appear effectively dormant or unmeasurable. Social is not currently a meaningful acquisition or reactivation lever; this is an open opportunity, not a current strength.</p>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv">A direct, Google-hosted GBP URL was not located in research, and the GBP category and hours could not be confirmed from a Google-hosted page (review data came via Birdeye). GBP completeness is therefore <b>unverified</b>: <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></p>
+            <p class="gapnote">Given the strong underlying review profile, claiming/optimizing and confirming the GBP listing (category, hours, photos, service area) is a high-value, low-effort first step.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Caring</div><div class="s">Personal &amp; attentive</div></div>
+          <div class="vw"><div class="w">Professional</div><div class="s">Clean &amp; reassuring</div></div>
+          <div class="vw"><div class="w">Reliable</div><div class="s">On time, every time</div></div>
+        </div>
+        <p>The tone is friendly, approachable, and trustworthy, carried by an owner-operator personal touch &mdash; Stephen is presented as the person who shows up and does the work. The copy leans on care, professionalism, attention to detail, and a satisfaction-backed promise, reading as clean and reassuring rather than salesy or technical. This voice maps directly onto what reviewers independently say about him, which gives the brand a rare alignment between marketing language and lived customer experience.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: renewedcarpetcare.com)</span></h3>
+          <blockquote>&ldquo;We take care of ALL your Carpet, Upholstery, Area Rugs, Tile &amp; Grout needs!&rdquo;<span class="who">Website headline</span></blockquote>
+          <blockquote>&ldquo;Our mission is to provide exceptional carpet cleaning services that exceed our customers&rsquo; expectations.&rdquo;<span class="who">Website mission statement</span></blockquote>
+          <blockquote>&ldquo;100% Satisfaction Guarantee. No Hidden Fees. We can REMOVE most stains.&rdquo;<span class="who">Website trust copy</span></blockquote>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">The strongest, most repeated themes across Google and Yelp reviews. Quoted phrases reflect recurring reviewer language captured in research; exact wording should be confirmed against live listings before public reuse.</p>
+        <div class="panel slate">
+          <h3>1 &nbsp;·&nbsp; Stephen, by name &mdash; professional and personable</h3>
+          <p class="kv">The owner is named repeatedly and praised for his professionalism and personal involvement, making him the brand&rsquo;s single biggest asset.</p>
+          <blockquote>Reviewers consistently single out <em>&ldquo;Stephen&rdquo;</em> by name and describe him as <em>professional</em> and easy to work with.<span class="who">Recurring theme — Google &amp; Yelp</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; Punctual and communicative</h3>
+          <p class="kv">Customers highlight that he is on time and communicates his arrival window &mdash; a reliability signal that underpins the &ldquo;Reliable&rdquo; brand word.</p>
+          <blockquote>Repeated praise for being <em>punctual / on time</em> and for <em>communicating the arrival window</em> in advance.<span class="who">Recurring theme — Google &amp; Yelp</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Removes tough, set-in stains</h3>
+          <p class="kv">Reviews specifically credit results on difficult stains &mdash; pet urine, coffee, and stains left by prior homeowners &mdash; validating the pet-odor specialty.</p>
+          <blockquote>Customers report he <em>removed tough stains including pet urine, coffee, and prior-owner stains</em>.<span class="who">Recurring theme — Google &amp; Yelp</span></blockquote>
+        </div>
+        <div class="panel gaps">
+          <h3>Recurring friction points</h3>
+          <p class="kv" style="margin-bottom:0;">No recurring complaints or friction themes surfaced in the available review research &mdash; sentiment is uniformly positive, and pricing is praised as competitive/fair with no hidden fees. Because individual negative reviews were not directly readable (Yelp returned a 403 to direct fetch), a definitive &ldquo;zero complaints&rdquo; claim cannot be made: any isolated criticism is <span class="flag">Not found &mdash; recommend verifying via phone outreach</span> and a direct read of live listings.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Site /5</th><th class="center">Reviews</th><th>Key differentiator</th></tr>
+            <tr><td><b>RSM Carpet &amp; Tile Cleaning</b></td><td class="center">4</td><td class="center">Not published</td><td>26+ years in business with IICRC/CRI-certified crews, a BBB &ldquo;A&rdquo; rating, and a published 30-Day Guarantee (&ldquo;if stains return, so do we, at no additional cost&rdquo;) &mdash; formal certifications and a written re-clean warranty Renewed does not display.</td></tr>
+            <tr><td><b>Done Rite Stone, Tile &amp; Carpet Care</b></td><td class="center">4</td><td class="center">~60 reviews</td><td>Dedicated standalone site (adonerite.com) with multi-city service pages (RSM, Irvine) and a specialized natural-stone polishing/refinishing line (marble, travertine, countertops, showers) &mdash; higher-margin restoration capability and a broader local-SEO footprint.</td></tr>
+            <tr><td><b>Colorburst Carpet Care</b></td><td class="center">3</td><td class="center">~63 reviews · 5.0&#9733;</td><td>Owner-operated since 1990 (35+ years) with deep multigenerational loyalty (clients of 20+ years) and soap-free, pet/child-safe truck-mounted steam cleaning as an explicit selling point &mdash; a far longer local track record and a clearly articulated kid/pet-safe process.</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Where Renewed leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads:</b> Renewed Carpet Care <i>leads on demonstrated sentiment</i>: its 5.0 Yelp (74) and 4.9 Google (51) profile, anchored by an owner praised by name, is the most credible reputation signal among this set &mdash; RSM publishes no review counts, and Done Rite shows no star rating, while only Colorburst matches the 5.0 quality bar.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags:</b> Renewed <i>lags on credentialed proof and digital infrastructure</i>: competitors counter with formal IICRC/CRI certifications, a BBB &ldquo;A&rdquo; rating, and a <em>written</em> 30-day re-clean warranty (RSM); a multi-page, multi-city website and a higher-margin stone-restoration line (Done Rite); and a 35-year track record with an explicit pet/child-safe process (Colorburst). The takeaway: Renewed has earned the trust its rivals advertise but has not yet <em>packaged</em> it &mdash; formalizing the guarantee in writing, naming the certifying body, and converting its single Wix page into a conversion-ready presence would close the gap fastest.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;Rancho Santa Margarita&rsquo;s Trusted Carpet &amp; Tile Specialist &mdash; Owner-Operated, 5-Star Rated&rdquo;</p>
+          <p class="kv"><b>Sub-headline:</b> Stephen personally cleans every home &mdash; premium carpet, upholstery, area rug, and tile &amp; grout care backed by a 100% satisfaction guarantee and no hidden fees.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span class="pill">Book Your Cleaning Today</span></p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Above-the-fold trust signals</p>
+            <ul>
+              <li>5.0&#9733; on Yelp (74 reviews) &amp; 4.9&#9733; on Google (51 reviews)</li>
+              <li>100% Satisfaction Guarantee</li>
+              <li>Owner-operated since 2016 &mdash; always work directly with Stephen</li>
+              <li>Pet stain &amp; odor specialist (pet urine, coffee, set-in stains)</li>
+              <li>No hidden fees, transparent pricing</li>
+              <li>Environmentally friendly, certified professional cleaning</li>
+            </ul>
+          </div>
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Fresh sage-green and cream with soft teal accents</b> &mdash; clean, calm, and approachable, matching the brand&rsquo;s existing soft feel and signaling a healthy, residue-free home.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#8FB58C;"></div><div class="cap">Sage Green<br>#8FB58C</div></div>
+              <div class="sw"><div class="chip" style="background:#6FB3A8;"></div><div class="cap">Soft Teal<br>#6FB3A8</div></div>
+              <div class="sw"><div class="chip" style="background:#F7F5F0;border-bottom:1px solid var(--line);"></div><div class="cap">Cream<br>#F7F5F0</div></div>
+            </div>
+            <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> Soft, friendly, and clean. Recommended pairing: <i>Quicksand</i> for headings and <i>Mulish</i> for body &mdash; rounded, approachable letterforms that reinforce the calm, residue-free promise.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">Customer Reactivation Engine</div>
+        </div>
+        <p><strong>Why this tier.</strong> Reviews repeatedly show repeat customers calling Stephen back and recommending him, and the owner-operated model since 2016 has built a loyal base of satisfied clients. That proven goodwill is currently leaking value: there is no visible CRM, no email capture, and no above-the-fold lead form on the Wix site, so a happy customer from last year has no automated nudge to rebook. A Customer Reactivation Engine &mdash; automated reminder and reactivation sequences timed to each household&rsquo;s cleaning cycle &mdash; converts that existing loyalty into scheduled return cleanings. It is the highest-leverage gap because the hardest part (earning trust) is already done; only the systematic re-engagement layer is missing.</p>
+        <div class="panel forest">
+          <h3>Estimated revenue opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">With 5,000+ clients served and a guaranteed-quality reputation, reactivating even a conservative 5% of the lapsed base into one additional annual cleaning at a typical residential ticket (~$200) represents on the order of <b>$50,000+ in recurring annual revenue</b> from work the business is already trusted to do &mdash; at near-zero acquisition cost. <span class="gapnote">(Modeled from the website&rsquo;s own &ldquo;5,000+ clients&rdquo; claim, which is a marketing figure not independently verified; recommend confirming the active customer list size via phone outreach.)</span></p>
+        </div>
+      </section>
+
+      <footer class="rep-foot"><strong>Report basis &amp; data gaps.</strong> All findings trace to Branch &amp; Root&rsquo;s June 2026 research file for Renewed Carpet Care. Items not independently verifiable and flagged above: Facebook/Instagram follower counts and posting cadence (login-gated); a Google-hosted GBP URL, category, and hours (review data via Birdeye aggregation); a direct read of the Yelp page (HTTP 403); the certifying body behind the &ldquo;Certified Professional Cleaners&rdquo; claim; and the lifetime &ldquo;20,000 clean homes / 5,000+ clients&rdquo; figures (website marketing claims). Recommended next step: a brief verification call with Stephen Otis to confirm social metrics, GBP status, certification details, and active customer-list size before campaign build-out. &nbsp;·&nbsp; Renewed Carpet Care &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
   </div>
 
-  <div class="footer-note">
-    <strong>Report basis &amp; data gaps.</strong> All findings trace to Branch &amp; Root's June 2026 research file for Renewed Carpet Care. Items not independently verifiable and flagged above: Facebook/Instagram follower counts and posting cadence (login-gated); a Google-hosted GBP URL, category, and hours (review data via Birdeye aggregation); a direct read of the Yelp page (HTTP 403); the certifying body behind the "Certified Professional Cleaners" claim; and the lifetime "20,000 clean homes / 5,000+ clients" figures (website marketing claims). Recommended next step: a brief verification call with Stephen Otis to confirm social metrics, GBP status, certification details, and active customer-list size before campaign build-out.
-  </div>
-</div>
-
-<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
-
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
 </body>
 </html>

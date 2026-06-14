@@ -4,922 +4,433 @@
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1B4332">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
 <title>Di Rock General Contracting &amp; Roofing — Brand Intelligence Report</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
 
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. ============================ */
   :root{
     color-scheme: light dark;
-    --forest:#1B4332;
-    --forest-deep:#143728;
-    --cream:#F7F5F0;
-    --clay:#B5653F;
-    --slate:#3A4149;
-    --ink:#23292E;
-    --muted:#5C6670;
-    --line:#D9D3C7;
-    --line-soft:#E7E2D7;
-  }
+    --accent:#B5653F;            /* PER-BRAND accent (sunset clay / terracotta) */
+    --accent-ink:#FFFFFF;        /* text on accent */
+    --slate:#3A4149;             /* secondary accent (slate roofline gray) */
 
-  @page{
-    size:Letter;
-    margin:21mm 17mm 19mm 17mm;
-    @top-left{
-      content:"BRANCH \0026  ROOT CONSULTING";
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7.5pt;
-      letter-spacing:1.6px;
-      font-weight:700;
-      color:#1B4332;
-    }
-    @top-right{
-      content:"Brand Intelligence Report — Round 01";
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7.5pt;
-      letter-spacing:0.5px;
-      color:#5C6670;
-    }
-    @bottom-left{
-      content:"Branch \0026  Root Consulting — Confidential | Di Rock General Contracting \0026  Roofing";
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7pt;
-      color:#5C6670;
-    }
-    @bottom-right{
-      content:"Page " counter(page) " of " counter(pages);
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7pt;
-      color:#5C6670;
-    }
-  }
+    --page:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9F4;
+    --sidebar-bg:#FFFFFF;
+    --ink:#222824;
+    --muted:#5A655E;
+    --line:#E4DFD4;
 
-  *{box-sizing:border-box;}
+    --heading:#1B4332;           /* heading TEXT */
+    --brand:#1B4332;             /* rules / lead-in text */
+    --band:#1B4332;              /* table header / voice bands */
+    --band-ink:#FFFFFF;
+    --cover-bg:#1B4332;
 
-  html,body{margin:0;padding:0;}
-
-  body{
-    font-family:'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
-    font-size:9.6pt;
-    line-height:1.5;
-    color:var(--ink);
-    hyphens:none;
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,42,30,.05), 0 10px 30px -12px rgba(15,42,30,.14);
+    --shadow-sm:0 1px 2px rgba(15,42,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-
-  h1,h2,h3,h4{font-family:'Bitter', Georgia, 'Times New Roman', serif;margin:0;}
-
-  p{margin:0 0 7pt 0;}
-
-  a{color:var(--forest);text-decoration:none;}
-
-  strong{color:var(--ink);font-weight:700;}
-
-  /* ---------- TITLE BLOCK ---------- */
-  .cover{
-    border-top:5px solid var(--forest);
-    border-bottom:1.5px solid var(--line);
-    padding:14pt 0 13pt 0;
-    margin-bottom:14pt;
-  }
-  .cover .eyebrow{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:8pt;
-    font-weight:700;
-    letter-spacing:2.4px;
-    text-transform:uppercase;
-    color:var(--clay);
-    margin-bottom:8pt;
-  }
-  .cover h1{
-    font-size:24pt;
-    line-height:1.1;
-    font-weight:700;
-    color:var(--forest);
-    letter-spacing:-0.3px;
-    margin-bottom:9pt;
-  }
-  .cover .meta{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:9pt;
-    color:var(--muted);
-    display:flex;
-    gap:9pt;
-    align-items:center;
-    flex-wrap:wrap;
-  }
-  .cover .meta .pill{
-    background:var(--forest);
-    color:#fff;
-    border-radius:3px;
-    padding:2.5pt 8pt;
-    font-weight:600;
-    font-size:8pt;
-    letter-spacing:0.4px;
-  }
-  .cover .meta .sep{color:var(--line);}
-
-  .snapshot{
-    display:flex;
-    gap:0;
-    margin:11pt 0 2pt 0;
-    border:1px solid var(--line);
-    border-radius:4px;
-    overflow:hidden;
-  }
-  .snapshot .cell{
-    flex:1;
-    padding:8pt 9pt 7pt 9pt;
-    border-right:1px solid var(--line-soft);
-  }
-  .snapshot .cell:last-child{border-right:none;}
-  .snapshot .k{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:6.8pt;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
-    color:var(--muted);
-    font-weight:700;
-    margin-bottom:2.5pt;
-  }
-  .snapshot .v{
-    font-family:'Bitter', Georgia, serif;
-    font-size:11.5pt;
-    font-weight:700;
-    color:var(--forest);
-    line-height:1.05;
-  }
-  .snapshot .v small{font-size:7.5pt;color:var(--muted);font-weight:400;font-family:'Source Sans 3',Arial,sans-serif;display:block;margin-top:1.5pt;}
-
-  /* ---------- SECTION ---------- */
-  section{margin-top:13pt;}
-  section.break{break-before:page;margin-top:2pt;}
-
-  .sec-head{
-    display:flex;
-    align-items:center;
-    gap:8pt;
-    border-bottom:2px solid var(--forest);
-    padding-bottom:4pt;
-    margin-bottom:8pt;
-  }
-  .sec-head .num{
-    font-family:'Bitter', Georgia, serif;
-    font-weight:700;
-    font-size:10pt;
-    color:#fff;
-    background:var(--forest);
-    width:19pt;height:19pt;
-    border-radius:3px;
-    display:flex;align-items:center;justify-content:center;
-    flex:0 0 auto;
-  }
-  .sec-head h2{
-    font-size:13pt;
-    font-weight:700;
-    color:var(--forest);
-    letter-spacing:-0.2px;
-  }
-
-  /* ---------- CALLOUT PANEL ---------- */
-  .panel{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-left:3px solid var(--clay);
-    border-radius:3px;
-    padding:9pt 11pt 8pt 11pt;
-    margin:8pt 0;
-  }
-  .panel.forest{border-left-color:var(--forest);}
-  .panel h4{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:7.4pt;
-    letter-spacing:1.3px;
-    text-transform:uppercase;
-    color:var(--clay);
-    font-weight:700;
-    margin-bottom:5pt;
-  }
-  .panel.forest h4{color:var(--forest);}
-
-  /* ---------- LISTS ---------- */
-  ul.clean{margin:3pt 0 7pt 0;padding-left:0;list-style:none;}
-  ul.clean li{
-    position:relative;
-    padding-left:13pt;
-    margin-bottom:3.5pt;
-    line-height:1.42;
-  }
-  ul.clean li::before{
-    content:"";
-    position:absolute;
-    left:1pt;top:4.5pt;
-    width:4.5pt;height:4.5pt;
-    background:var(--clay);
-    border-radius:1px;
-    transform:rotate(45deg);
-  }
-  ul.clean.forest li::before{background:var(--forest);}
-
-  .twocol{display:flex;gap:13pt;}
-  .twocol > div{flex:1;}
-
-  .label{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:7.2pt;
-    letter-spacing:1.2px;
-    text-transform:uppercase;
-    color:var(--muted);
-    font-weight:700;
-    margin-bottom:3pt;
-  }
-
-  .works h4, .gaps h4{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:8pt;
-    letter-spacing:0.4px;
-    font-weight:700;
-    margin-bottom:4pt;
-    display:flex;align-items:center;gap:5pt;
-  }
-  .works h4{color:#2E6B4F;}
-  .gaps h4{color:var(--clay);}
-  .tick{font-weight:700;}
-
-  /* ---------- META TABLE ---------- */
-  table.kv{width:100%;border-collapse:collapse;margin:2pt 0 6pt 0;}
-  table.kv td{
-    padding:3pt 8pt 3pt 0;
-    vertical-align:top;
-    border-bottom:1px solid var(--line-soft);
-    font-size:9pt;
-  }
-  table.kv td.k{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-weight:700;
-    color:var(--muted);
-    width:30%;
-    font-size:8pt;
-    letter-spacing:0.3px;
-    text-transform:uppercase;
-  }
-  table.kv tr:last-child td{border-bottom:none;}
-
-  /* ---------- REVIEW SCOREBOARD ---------- */
-  .scores{display:flex;gap:9pt;margin:6pt 0 7pt 0;}
-  .score{
-    flex:1;
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:7pt 9pt 6pt 9pt;
-    background:#fff;
-  }
-  .score .src{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:7.4pt;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    color:var(--muted);
-    font-weight:700;
-    margin-bottom:3pt;
-  }
-  .score .big{
-    font-family:'Bitter', Georgia, serif;
-    font-size:17pt;
-    font-weight:700;
-    color:var(--forest);
-    line-height:1;
-  }
-  .score .big.empty{color:var(--clay);font-size:11pt;}
-  .score .sub{font-size:7.6pt;color:var(--muted);margin-top:2.5pt;line-height:1.3;}
-  .stars{color:var(--clay);font-size:9pt;letter-spacing:0.5px;}
-
-  /* ---------- QUOTES ---------- */
-  .quote{
-    margin:0 0 6pt 0;
-    padding:5pt 0 5pt 11pt;
-    border-left:2.5px solid var(--clay);
-  }
-  .quote .q{font-style:italic;color:var(--slate);line-height:1.4;font-size:9pt;}
-  .quote .src{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:7.4pt;
-    color:var(--muted);
-    margin-top:2.5pt;
-    font-weight:600;
-    letter-spacing:0.3px;
-  }
-
-  /* ---------- COMPETITOR TABLE ---------- */
-  table.comp{width:100%;border-collapse:collapse;margin:4pt 0 7pt 0;font-size:8.6pt;}
-  table.comp th{
-    background:var(--forest);
-    color:#fff;
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:7.4pt;
-    letter-spacing:0.6px;
-    text-transform:uppercase;
-    text-align:left;
-    padding:5pt 7pt;
-    font-weight:700;
-  }
-  table.comp td{
-    padding:5pt 7pt;
-    border-bottom:1px solid var(--line-soft);
-    vertical-align:top;
-    line-height:1.36;
-  }
-  table.comp tr:nth-child(even) td{background:var(--cream);}
-  table.comp .name{font-family:'Bitter',Georgia,serif;font-weight:700;color:var(--forest);font-size:9pt;}
-  table.comp .ctr{text-align:center;white-space:nowrap;}
-  table.comp .metric{font-family:'Bitter',Georgia,serif;font-weight:700;font-size:9.5pt;color:var(--slate);}
-  .qbar{
-    display:inline-block;
-    font-family:'Source Sans 3',Arial,sans-serif;
-    font-weight:700;font-size:8pt;
-    color:var(--forest);
-  }
-
-  /* ---------- LANDING PAGE STRATEGY ---------- */
-  .hero-mock{
-    background:var(--forest);
-    color:var(--cream);
-    border-radius:5px;
-    padding:13pt 15pt 14pt 15pt;
-    margin:7pt 0 9pt 0;
-  }
-  .hero-mock .eyebrow{
-    font-family:'Source Sans 3',Arial,sans-serif;
-    font-size:7pt;letter-spacing:1.8px;text-transform:uppercase;
-    color:#A8C5B5;font-weight:700;margin-bottom:6pt;
-  }
-  .hero-mock h3{
-    font-size:17pt;line-height:1.12;color:#fff;font-weight:700;
-    margin-bottom:7pt;letter-spacing:-0.3px;
-  }
-  .hero-mock p.sub{color:#D9E4DD;font-size:8.8pt;line-height:1.45;margin-bottom:9pt;}
-  .hero-mock .cta{
-    display:inline-block;
-    background:var(--clay);
-    color:#fff;
-    font-family:'Source Sans 3',Arial,sans-serif;
-    font-weight:700;font-size:9.5pt;
-    padding:6pt 16pt;border-radius:3px;letter-spacing:0.4px;
-  }
-
-  .swatches{display:flex;gap:7pt;margin:5pt 0 3pt 0;flex-wrap:wrap;}
-  .sw{
-    border:1px solid var(--line);
-    border-radius:3px;
-    overflow:hidden;
-    width:78pt;
-  }
-  .sw .chip{height:24pt;}
-  .sw .info{padding:3pt 5pt 4pt 5pt;}
-  .sw .nm{font-family:'Source Sans 3',Arial,sans-serif;font-size:7.2pt;font-weight:700;color:var(--ink);}
-  .sw .hex{font-family:'Source Sans 3',Arial,sans-serif;font-size:6.8pt;color:var(--muted);letter-spacing:0.3px;}
-
-  .typo-row{display:flex;gap:13pt;margin-top:5pt;}
-  .typo-row > div{flex:1;border:1px solid var(--line);border-radius:3px;padding:7pt 9pt;background:#fff;}
-  .typo-row .tname{font-size:13pt;color:var(--forest);margin-bottom:1pt;}
-  .typo-row .trole{font-family:'Source Sans 3',Arial,sans-serif;font-size:7.4pt;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:3pt;}
-  .typo-row .tsample{font-size:8.4pt;color:var(--slate);line-height:1.35;}
-
-  /* ---------- RECOMMENDATION ---------- */
-  .rec-banner{
-    background:linear-gradient(180deg,var(--forest) 0%, var(--forest-deep) 100%);
-    color:#fff;
-    border-radius:5px;
-    padding:12pt 15pt;
-    margin:5pt 0 9pt 0;
-  }
-  .rec-banner .lab{
-    font-family:'Source Sans 3',Arial,sans-serif;
-    font-size:7.2pt;letter-spacing:2px;text-transform:uppercase;
-    color:#A8C5B5;font-weight:700;margin-bottom:5pt;
-  }
-  .rec-banner .tier{font-family:'Bitter',Georgia,serif;font-size:16pt;font-weight:700;color:#fff;line-height:1.1;}
-  .rec-banner .tagline{color:#D9E4DD;font-size:8.6pt;margin-top:4pt;}
-
-  .rev-box{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-left:3px solid var(--clay);
-    border-radius:3px;
-    padding:8pt 11pt;
-    margin-top:8pt;
-  }
-  .rev-box .lab{
-    font-family:'Source Sans 3',Arial,sans-serif;
-    font-size:7.4pt;letter-spacing:1.3px;text-transform:uppercase;
-    color:var(--clay);font-weight:700;margin-bottom:4pt;
-  }
-
-  .note{font-size:7.8pt;color:var(--muted);font-style:italic;margin-top:4pt;line-height:1.4;}
-  .gapflag{color:var(--clay);font-weight:600;font-style:italic;}
-
-  .footer-rule{border-top:1.5px solid var(--line);margin-top:14pt;padding-top:7pt;}
-  .footer-rule p{font-size:7.6pt;color:var(--muted);line-height:1.45;margin:0;}
-
-  /* ---- Theme toggle (screen only; hidden in print) ---- */
-  .theme-toggle{
-    position:fixed; top:14px; right:14px; z-index:100;
-    display:inline-flex; align-items:center; justify-content:center;
-    width:38px; height:38px; border-radius:8px;
-    border:1px solid var(--line); background:var(--cream); color:var(--forest);
-    cursor:pointer; transition:background .15s ease, border-color .15s ease, transform .12s ease;
-  }
-  .theme-toggle:hover{ border-color:var(--clay); transform:translateY(-1px); }
-  .theme-toggle svg{ width:18px; height:18px; display:block; }
-  .theme-toggle .i-sun{ display:none; }
-  .theme-toggle .i-moon{ display:block; }
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
-  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;} :root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
-  :root[data-theme="light"] .theme-toggle .i-moon{display:block;} :root[data-theme="light"] .theme-toggle .i-sun{display:none;}
-  @media print{ .theme-toggle{ display:none; } }
-
-  /* ===================================================================
-     DARK MODE — forest-green ground (this report's dominant chrome),
-     sunset-clay + slate accents kept recognizable. Same declarations in
-     both selectors so auto (prefers-color-scheme) + manual match. The
-     light :root above is untouched. Print stays light — these screen
-     blocks don't affect @page output.
-     Forest doubles as a dark band/surface AND as heading TEXT: the token
-     is set to a dark surface here, and the forest-as-TEXT selectors are
-     re-pointed to a light green below. Clay (accent) is brightened so it
-     stays recognizable and clears AA both as text and as borders.
-     =================================================================== */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --forest:      #16241C;  /* dark brand band / surface (was #1B4332) */
-      --forest-deep: #0F1B14;  /* deepest band (rec-banner gradient floor) */
-      --cream:       #E7ECE3;  /* now = light text on dark bands */
-      --clay:        #D2A578;  /* sunset clay, brightened — text + borders */
-      --slate:       #AEB8C2;  /* light slate for body/quote/metric text */
-      --ink:         #E7ECE3;  /* body text */
-      --muted:       #9FB0A6;  /* muted text */
-      --line:        #2C3A32;  /* hairlines */
-      --line-soft:   #283A30;  /* softer hairlines */
-    }
-    :root:not([data-theme="light"]) body{ background:#0F1B14; }
-    /* surfaces that used a light fill (--cream / #fff) -> dark surfaces */
-    :root:not([data-theme="light"]) .panel,
-    :root:not([data-theme="light"]) .rev-box{ background:#16241C; }
-    :root:not([data-theme="light"]) .score,
-    :root:not([data-theme="light"]) .typo-row > div{ background:#1A2A21; }
-    :root:not([data-theme="light"]) table.comp tr:nth-child(even) td{ background:#16241C; }
-    /* selectors that used --forest as TEXT -> legible light green */
-    :root:not([data-theme="light"]) a,
-    :root:not([data-theme="light"]) .cover h1,
-    :root:not([data-theme="light"]) .sec-head h2,
-    :root:not([data-theme="light"]) .snapshot .v,
-    :root:not([data-theme="light"]) .panel.forest h4,
-    :root:not([data-theme="light"]) .score .big,
-    :root:not([data-theme="light"]) table.comp .name,
-    :root:not([data-theme="light"]) .qbar,
-    :root:not([data-theme="light"]) .typo-row .tname{ color:#7FB89B; }
-    /* the GBP "None found" score is a deliberate gap flag — keep it clay */
-    :root:not([data-theme="light"]) .score .big.empty{ color:var(--clay); }
-    /* brightened clay CTA fill needs dark text to clear AA on dark */
-    :root:not([data-theme="light"]) .hero-mock .cta{ color:#16241C; }
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#E0925F; --accent-ink:#21130B; --slate:#9DB4CC;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
   :root[data-theme="dark"]{
-    --forest:      #16241C;
-    --forest-deep: #0F1B14;
-    --cream:       #E7ECE3;
-    --clay:        #D2A578;
-    --slate:       #AEB8C2;
-    --ink:         #E7ECE3;
-    --muted:       #9FB0A6;
-    --line:        #2C3A32;
-    --line-soft:   #283A30;
+    --accent:#E0925F; --accent-ink:#21130B; --slate:#9DB4CC;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
   }
-  :root[data-theme="dark"] body{ background:#0F1B14; }
-  :root[data-theme="dark"] .panel,
-  :root[data-theme="dark"] .rev-box{ background:#16241C; }
-  :root[data-theme="dark"] .score,
-  :root[data-theme="dark"] .typo-row > div{ background:#1A2A21; }
-  :root[data-theme="dark"] table.comp tr:nth-child(even) td{ background:#16241C; }
-  :root[data-theme="dark"] a,
-  :root[data-theme="dark"] .cover h1,
-  :root[data-theme="dark"] .sec-head h2,
-  :root[data-theme="dark"] .snapshot .v,
-  :root[data-theme="dark"] .panel.forest h4,
-  :root[data-theme="dark"] .score .big,
-  :root[data-theme="dark"] table.comp .name,
-  :root[data-theme="dark"] .qbar,
-  :root[data-theme="dark"] .typo-row .tname{ color:#7FB89B; }
-  :root[data-theme="dark"] .score .big.empty{ color:var(--clay); }
-  :root[data-theme="dark"] .hero-mock .cta{ color:#16241C; }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.16;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#DCE6E0;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | Di Rock General Contracting & Roofing"; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1F2421;--muted:#55605A;--line:#DDE3DF;--heading:#1B4332;--brand:#1B4332;--band:#1B4332;--band-ink:#fff;--cover-bg:#1B4332;--accent:#B5653F;--accent-ink:#fff;--slate:#3A4149; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
 </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
 
-  <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">Di Rock GC &amp; Roofing</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">Website + SEO / AEO + Meta Ads</div>
+      </div>
+    </aside>
 
-  <!-- ===================== COVER ===================== -->
-  <div class="cover">
-    <div class="eyebrow">Brand Intelligence Report</div>
-    <h1>Di Rock General Contracting &amp; Roofing<br>Brand Intelligence Report</h1>
-    <div class="meta">
-      <span class="pill">Branch &amp; Root Consulting</span>
-      <span class="sep">|</span>
-      <span>Round 01</span>
-      <span class="sep">|</span>
-      <span>June 2026</span>
-      <span class="sep">|</span>
-      <span>Roofing &middot; Rancho Santa Margarita, CA</span>
-    </div>
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>Di Rock General Contracting &amp; Roofing</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Roofing &amp; General Contracting &nbsp;·&nbsp; Rancho Santa Margarita, CA</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">15 yrs</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">5.0&#9733;</div><div class="lbl">Yelp (14 reviews)</div></div>
+        <div class="stat"><div class="num">4.9&#9733;</div><div class="lbl">Angi / HomeAdvisor</div></div>
+        <div class="stat"><div class="num">3 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>Di Rock General Contracting &amp; Roofing</strong> is a family-owned roofing and general contracting firm based at 28562 Oso Pkwy, Ste D206, Rancho Santa Margarita, CA 92688, owned and operated by <strong>Mark Di Rocco</strong> (legal name Mark Gregory Di Rocco) and reachable at <strong>(949) 545-1976</strong>. The company has been in operation for <strong>15 years (since 2009)</strong> and serves South Orange County homeowners across a full roofing line &mdash; including roof installation, replacement &amp; repair; roof inspection &amp; ongoing maintenance; storm-damage roof repair &amp; leak detection; tile, metal &amp; shingle roofing; flat roofing (TPO / EPDM / built-up); gutter installation &amp; cleaning; skylight replacement &amp; installation; and roof cleaning / power washing.</p>
+        <p class="gapnote">No business email address was published on the website or in any directory. <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></p>
+      </section>
+
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; dirockgc.com &nbsp;·&nbsp; Quality 3 / 5 &nbsp;·&nbsp; WordPress / Elementor</h3>
+          <p class="kv">The site is <b>functional and on-brand, but conversion-thin</b>. It opens with the headline <em>&ldquo;Roofing Service From Industry Pros in Rancho Santa Margarita CA&rdquo;</em> on a mobile-responsive WordPress (Elementor) build, but its primary CTA &mdash; <em>&ldquo;Book Now&rdquo;</em> &mdash; routes to a third-party Jobber booking link rather than an on-site lead form.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Clear local positioning for Rancho Santa Margarita and South OC</li>
+                <li>Strong trust stack: CSLB License #943051 (B + C39), bonded &amp; insured</li>
+                <li>Owner-forward About story &mdash; Mark named, third-generation builder family</li>
+                <li>Deep service-area pages (Coto de Caza, Talega, Shady Canyon, Newport Coast, Monarch Beach, Mission Viejo, Emerald Bay, Covenant Hills)</li>
+                <li>Mobile-responsive build</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>No above-the-fold lead form &mdash; CTA routes to third-party Jobber booking</li>
+                <li>No email-capture mechanism on the site</li>
+                <li>No blog or AEO / answer-engine content for organic discovery</li>
+                <li>Reviews not surfaced on-site despite a 5.0 Yelp / 4.9 Angi reputation</li>
+                <li>Single-page depth vs. competitors&rsquo; large landing-page libraries</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &mdash; Elite Sentiment, Thin Volume</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Read</th></tr>
+              <tr><td>Google</td><td class="center">&mdash;</td><td class="center"><span class="flag">None found</span></td><td>No GBP rating or review count surfaced in search.</td></tr>
+              <tr><td>Yelp</td><td class="center">14</td><td class="center"><span class="stars">5.0 &#9733;</span></td><td>14 reviews (most recent figure); page returned HTTP 403 to automated fetch.</td></tr>
+              <tr><td>Angi / HomeAdvisor</td><td class="center">&mdash;</td><td class="center"><span class="stars">4.9 &#9733;</span></td><td>A+ / highly-recommend sentiment.</td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> Sentiment is uniformly excellent &mdash; every reviewed platform sits at or near a perfect score, and Yelp has climbed steadily across snapshots (9 &rarr; 11 &rarr; 14 reviews, all 5.0 stars), signaling slow-but-positive momentum and zero reputational risk. The constraint is <b>volume and channel coverage</b>, not quality: review counts remain in the low teens while competitors carry 54&ndash;150+, and there is no Google review presence to anchor map-pack visibility.</p>
+          <p class="gapnote">Data note: Yelp count varies by snapshot (9 &rarr; 11 &rarr; 14) and the live page returns HTTP 403 to automated fetch; 14 is the latest search figure but was <span class="flag">not confirmed by directly loading the page &mdash; recommend verifying via phone outreach.</span></p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><b>Instagram</b> &mdash; @dirockgc, recorded as active; follower &amp; post counts not retrievable (JS-gated profile). <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></li>
+              <li><b>Facebook</b> &mdash; linked URL is a photo-album set, not a clean page; follower count and last-post date not retrievable. <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv"><b>No GBP could be located or verified.</b> No profile URL, star rating, or review count surfaced in search. A live profile may exist but was not confirmed. <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></p>
+            <p class="gapnote">This is the single highest-impact local-SEO gap.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Trustworthy</div><div class="s">Stakes his name on the work</div></div>
+          <div class="vw"><div class="w">Straightforward</div><div class="s">The quote is the price</div></div>
+          <div class="vw"><div class="w">Craftsman-proud</div><div class="s">Third-generation heritage</div></div>
+        </div>
+        <p>The tone is grounded, trustworthy, owner-forward and family-rooted. Di Rock speaks like a craftsman who stakes his name on the work &mdash; straightforward about pricing, proud of a third-generation building heritage, and confident without being salesy. The voice is local and neighborly, oriented to South Orange County homeowners who want an honest roofer they can trust on their property.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: dirockgc.com)</span></h3>
+          <blockquote>&ldquo;Roofing Service From Industry Pros in Rancho Santa Margarita CA&rdquo;<span class="who">Website homepage headline (dirockgc.com)</span></blockquote>
+          <blockquote>&ldquo;Locally owned, family-operated business with 15+ years experience in Orange County&rdquo;<span class="who">Website body copy</span></blockquote>
+          <blockquote>&ldquo;Mark Di Rocco&rsquo;s grandparents &mdash; Charles Gangi, a predominant builder in Southern California, and George Di Rocco, a masonry craftsman &mdash; instilled professional standards that Mark incorporated into founding Di Rock General Contracting &amp; Roofing&rdquo;<span class="who">Website About page</span></blockquote>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Across Yelp (5.0), Angi (4.9) and HomeAdvisor, the praise is remarkably consistent and clusters on the owner himself, pricing honesty, and clean execution. The three dominant themes:</p>
+        <div class="panel slate">
+          <h3>1 &nbsp;·&nbsp; The owner is on the job</h3>
+          <blockquote>Customers repeatedly note that <em>Mark personally shows up, gives the bid, and works the job</em> &mdash; a rare, high-trust signal in the roofing trade.<span class="who">Theme — recurring across Yelp &amp; Angi reviews</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; Honest, upfront pricing</h3>
+          <blockquote>Reviewers emphasize <em>straightforward pricing &mdash; the quote is what it costs</em> &mdash; and that his bids frequently beat competing roofers.<span class="who">Theme — recurring across Yelp &amp; Angi reviews</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Thorough, neat work &amp; clear communication</h3>
+          <blockquote>Customers cite <em>punctual, on-time</em> service, <em>thorough, neat work with good cleanup</em>, and <em>clear communication</em> on scheduling and progress.<span class="who">Theme — recurring across Yelp &amp; Angi reviews</span></blockquote>
+        </div>
+        <div class="panel gaps">
+          <h3>Recurring friction points</h3>
+          <p class="kv">None surfaced in the research. Every reviewed platform sits at or near a perfect rating with no negative themes recorded; reviewers consistently describe the company as professional, kind, and helpful. The only customer-facing limitations are <em>structural rather than service-related</em> &mdash; no Google review channel to read or contribute to, and verbatim review text was not individually captured because the live Yelp page returns HTTP 403 to automated fetch. <span class="flag">Full review text not retrieved &mdash; recommend verifying via phone outreach.</span></p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Site /5</th><th class="center">Reviews</th><th class="center">Rating</th><th>Key differentiator</th></tr>
+            <tr><td><b>Pacific Roofing Systems</b></td><td class="center">5</td><td class="center">54</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>Polished, SEO-heavy multi-page site with dozens of city landing pages, BBB A+ accreditation, a Velux skylight specialty and a public reviews page &mdash; a far more developed digital/credibility footprint (Newport Beach / Dana Point).</td></tr>
+            <tr><td><b>South County Roofing</b></td><td class="center">4</td><td class="center">150+</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>Markets 150+ five-star reviews across Google Maps and Yelp with a BBB A+ rating and a deep library of location/service landing pages &mdash; review volume and local-SEO depth that dwarf Di Rock&rsquo;s handful of Yelp reviews.</td></tr>
+            <tr><td><b>Monarch Roofing</b></td><td class="center">4</td><td class="center">72</td><td class="center"><span class="stars">4.5&#9733;</span></td><td>GAF-Certified contractor offering manufacturer lifetime / 50-year warranties plus structured financing (GoGreen; 5/7/10-year payment calculator) &mdash; warranty-backed credentials and financing Di Rock does not advertise (Orange, CA).</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Where Di Rock leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads on trust and craft.</b> Di Rock&rsquo;s rating quality is best-in-class &mdash; a perfect 5.0 on Yelp and 4.9 on Angi &mdash; and its owner-on-every-job, honest-pricing story is a more authentic, differentiated narrative than the competitors&rsquo; volume-and-warranty messaging.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags on digital scale.</b> Pacific (54), Monarch (72) and South County (150+) all carry far heavier review counts, BBB accreditation, and large local-SEO landing-page libraries, and Monarch adds warranty + financing hooks Di Rock doesn&rsquo;t surface. Most critically, Di Rock has <b>no confirmed Google review presence</b>, so it is effectively invisible in the map pack where these competitors compete daily. The reputation is elite; the distribution is not.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;Rancho Santa Margarita&rsquo;s Trusted Roofer &mdash; 15 Years, Mark on Every Job&rdquo;</p>
+          <p class="kv"><b>Sub-headline:</b> Family-owned, fully licensed (CSLB #943051) and insured. Straightforward bids, neat work, and an owner who shows up &mdash; from tile and shingle to flat TPO and gutters across South Orange County.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span class="pill">GET A FREE ESTIMATE</span> &mdash; paired with an above-the-fold lead form to capture demand directly, replacing the current off-site &ldquo;Book Now&rdquo; Jobber-only routing.</p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Above-the-fold trust signals</p>
+            <ul>
+              <li>Angi 4.9 / 5 rating and 5.0-star Yelp reviews</li>
+              <li>Owner Mark Di Rocco named and on every job &mdash; third-generation builder family</li>
+              <li>CSLB License #943051 (B + C39) &mdash; bonded &amp; insured</li>
+              <li>15 years serving RSM, Coto de Caza, Talega, Mission Viejo and surrounding South OC</li>
+              <li>Honest, upfront pricing &mdash; the quote is the price (echoed across reviews)</li>
+            </ul>
+          </div>
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Slate roofline gray + sunset clay</b> on bright white &mdash; sturdy, premium and architectural, signaling a craftsman roofer rather than a discount operator. Charcoal / stone gray anchors structure; a warm clay CTA color drives contrast and conversions.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#3A4149;"></div><div class="cap">Slate roofline gray<br>#3A4149</div></div>
+              <div class="sw"><div class="chip" style="background:#5C6670;"></div><div class="cap">Stone gray<br>#5C6670</div></div>
+              <div class="sw"><div class="chip" style="background:#B5653F;"></div><div class="cap">Sunset clay<br>#B5653F</div></div>
+              <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="cap">Bright white<br>#FFFFFF</div></div>
+            </div>
+            <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> <i>Zilla Slab</i> for headlines (a sturdy slab serif &mdash; architectural weight that reads as dependable and craftsman-built) paired with <i>Mukta</i> for body (a clean, grounded humanist sans, highly legible on mobile).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">Website + SEO / AEO + Meta Ads</div>
+        </div>
+        <p><strong>Why this tier.</strong> Di Rock already has the two hardest assets to build &mdash; a functional, owner-forward WordPress / Elementor site and a genuinely elite reputation (4.9 Angi / 5.0 Yelp). What it lacks is everything that turns that reputation into inbound volume:</p>
+        <ul>
+          <li>No above-the-fold lead form and no email capture &mdash; demand leaks to an off-site Jobber link</li>
+          <li>No blog / AEO content to win organic and answer-engine discovery</li>
+          <li>No confirmed Google Business Profile &mdash; invisible in the local map pack</li>
+          <li>No paid traffic, while competitors (South County 150+, Pacific 54, Monarch 72) win on review volume and local-SEO depth</li>
+        </ul>
+        <p>A combined <strong>Website + SEO/AEO + Meta Ads</strong> engagement is the highest-leverage path: fix conversion on the site, claim and build the GBP, publish AEO content to close the local-SEO gap, and layer Meta Ads targeting RSM homeowners to drive immediate volume against a 5-star reputation that already closes.</p>
+        <div class="panel forest">
+          <h3>Estimated revenue opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">A claimed Google Business Profile plus an above-the-fold lead form and Meta Ads targeting RSM homeowners could realistically convert this 5.0-star reputation into an additional <b>4&ndash;8 qualified roofing leads per month</b> &mdash; at typical South-OC re-roof tickets, that represents a <b>five-to-low-six-figure annual revenue lift</b> from demand the brand is currently failing to capture.</p>
+        </div>
+        <p class="gapnote" style="margin-top:14px;"><b>Data gaps noted in this report</b> (all flagged inline as &ldquo;Not found &mdash; recommend verifying via phone outreach&rdquo;): business email address; Google Business Profile existence, rating and review count; exact live Yelp count (snapshots ranged 9&rarr;11&rarr;14, all 5.0); Facebook and Instagram follower counts and posting cadence; and individual verbatim review text (live Yelp returns HTTP 403). No review counts, ratings, or quotes in this report were fabricated; every claim traces to the Round 01 research record.</p>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;·&nbsp; Di Rock General Contracting &amp; Roofing &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
   </div>
 
-  <div class="snapshot">
-    <div class="cell">
-      <div class="k">Reputation</div>
-      <div class="v">5.0 &#9733;<small>Yelp (14) &middot; Angi 4.9</small></div>
-    </div>
-    <div class="cell">
-      <div class="k">Tenure</div>
-      <div class="v">15 yrs<small>Since 2009</small></div>
-    </div>
-    <div class="cell">
-      <div class="k">Website</div>
-      <div class="v">3 / 5<small>WordPress / Elementor</small></div>
-    </div>
-    <div class="cell">
-      <div class="k">Google Reviews</div>
-      <div class="v" style="color:var(--clay);">None found<small>GBP unverified</small></div>
-    </div>
-    <div class="cell">
-      <div class="k">B&amp;R Fit</div>
-      <div class="v">Tier 3<small>Web + SEO/AEO + Ads</small></div>
-    </div>
-  </div>
-
-  <!-- ===================== 1. BUSINESS OVERVIEW ===================== -->
-  <section>
-    <div class="sec-head">
-      <div class="num">1</div>
-      <h2>Business Overview</h2>
-    </div>
-    <p><strong>Di Rock General Contracting &amp; Roofing</strong> is a family-owned roofing and general contracting firm
-    based at 28562 Oso Pkwy, Ste D206, Rancho Santa Margarita, CA 92688, owned and operated by
-    <strong>Mark Di Rocco</strong> (legal name Mark Gregory Di Rocco) and reachable at <strong>(949) 545-1976</strong>.
-    The company has been in operation for <strong>15 years (since 2009)</strong> and serves South Orange County
-    homeowners across a full roofing line — including:</p>
-    <div class="twocol">
-      <div>
-        <ul class="clean">
-          <li>Roof installation, replacement &amp; repair</li>
-          <li>Roof inspection &amp; ongoing maintenance</li>
-          <li>Storm-damage roof repair &amp; leak detection</li>
-          <li>Tile, metal &amp; shingle roofing</li>
-        </ul>
-      </div>
-      <div>
-        <ul class="clean">
-          <li>Flat roofing — TPO / EPDM / built-up</li>
-          <li>Gutter installation &amp; cleaning</li>
-          <li>Skylight replacement &amp; installation</li>
-          <li>Roof cleaning / power washing</li>
-        </ul>
-      </div>
-    </div>
-    <p class="note">No business email address was published on the website or in any directory.
-    <span class="gapflag">Not found — recommend verifying via phone outreach.</span></p>
-  </section>
-
-  <!-- ===================== 2. DIGITAL PRESENCE AUDIT ===================== -->
-  <section>
-    <div class="sec-head">
-      <div class="num">2</div>
-      <h2>Digital Presence Audit</h2>
-    </div>
-
-    <div class="label">Website</div>
-    <table class="kv">
-      <tr><td class="k">URL</td><td>https://dirockgc.com/</td></tr>
-      <tr><td class="k">Quality Score</td><td><strong>3 / 5</strong> &mdash; functional and on-brand, but conversion-thin</td></tr>
-      <tr><td class="k">Platform</td><td>WordPress (Elementor builder; Jobber booking integration)</td></tr>
-      <tr><td class="k">Headline</td><td>&ldquo;Roofing Service From Industry Pros in Rancho Santa Margarita CA&rdquo;</td></tr>
-      <tr><td class="k">Primary CTA</td><td>&ldquo;Book Now&rdquo; (Jobber booking link) &middot; Mobile-responsive: Yes</td></tr>
-    </table>
-
-    <div class="twocol">
-      <div class="works">
-        <h4><span class="tick">&#10003;</span> What works</h4>
-        <ul class="clean forest">
-          <li>Clear local positioning for Rancho Santa Margarita and South OC</li>
-          <li>Strong trust stack: CSLB License #943051 (B + C39), bonded &amp; insured</li>
-          <li>Owner-forward About story — Mark named, third-generation builder family</li>
-          <li>Deep service-area pages (Coto de Caza, Talega, Shady Canyon, Newport Coast, Monarch Beach, Mission Viejo, Emerald Bay, Covenant Hills)</li>
-          <li>Mobile-responsive build</li>
-        </ul>
-      </div>
-      <div class="gaps">
-        <h4><span class="tick">&#10007;</span> What does not</h4>
-        <ul class="clean">
-          <li>No above-the-fold lead form &mdash; CTA routes to third-party Jobber booking</li>
-          <li>No email-capture mechanism on the site</li>
-          <li>No blog or AEO / answer-engine content for organic discovery</li>
-          <li>Reviews not surfaced on-site despite a 5.0 Yelp / 4.9 Angi reputation</li>
-          <li>Single-page depth vs. competitors' large landing-page libraries</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="label" style="margin-top:4pt;">Reviews</div>
-    <div class="scores">
-      <div class="score">
-        <div class="src">Google</div>
-        <div class="big empty">None found</div>
-        <div class="sub">No GBP rating or review count surfaced in search.</div>
-      </div>
-      <div class="score">
-        <div class="src">Yelp</div>
-        <div class="big">5.0 <span class="stars">&#9733;</span></div>
-        <div class="sub">14 reviews (most recent figure)</div>
-      </div>
-      <div class="score">
-        <div class="src">Angi / HomeAdvisor</div>
-        <div class="big">4.9 <span class="stars">&#9733;</span></div>
-        <div class="sub">A+ / highly-recommend sentiment</div>
-      </div>
-    </div>
-    <p><strong>Trend read:</strong> Sentiment is uniformly excellent &mdash; every reviewed platform sits at or near a
-    perfect score, and Yelp has climbed steadily across snapshots (9 &rarr; 11 &rarr; 14 reviews, all 5.0 stars), signaling
-    slow-but-positive momentum and zero reputational risk. The constraint is <strong>volume and channel coverage</strong>,
-    not quality: review counts remain in the low teens while competitors carry 54&ndash;150+, and there is no Google review
-    presence to anchor map-pack visibility.</p>
-    <p class="note">Yelp count varies by snapshot (9 &rarr; 11 &rarr; 14) and the live page returns HTTP 403 to automated fetch;
-    14 is the latest search figure but was <span class="gapflag">not confirmed by directly loading the page — recommend verifying via phone outreach.</span></p>
-
-    <div class="twocol" style="margin-top:2pt;">
-      <div>
-        <div class="label">Social Channels</div>
-        <ul class="clean">
-          <li><strong>Instagram</strong> &mdash; @dirockgc, recorded as active; follower &amp; post counts not retrievable (JS-gated profile). <span class="gapflag">Not found — recommend verifying via phone outreach.</span></li>
-          <li><strong>Facebook</strong> &mdash; linked URL is a photo-album set, not a clean page; follower count and last-post date not retrievable. <span class="gapflag">Not found — recommend verifying via phone outreach.</span></li>
-        </ul>
-      </div>
-      <div>
-        <div class="label">Google Business Profile</div>
-        <div class="panel" style="margin-top:3pt;">
-          <p style="margin:0;"><strong>No GBP could be located or verified.</strong> No profile URL, star rating, or review
-          count surfaced in search. A live profile may exist but was not confirmed. <span class="gapflag">Not found — recommend verifying via phone outreach.</span> This is the single
-          highest-impact local-SEO gap.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 3. BRAND VOICE ===================== -->
-  <section class="break">
-    <div class="sec-head">
-      <div class="num">3</div>
-      <h2>Brand Voice Analysis</h2>
-    </div>
-
-    <div class="swatches" style="margin-bottom:7pt;">
-      <div class="sw" style="width:auto;flex:1;">
-        <div class="chip" style="background:var(--forest);"></div>
-        <div class="info"><div class="nm">Trustworthy</div><div class="hex">Stakes his name on the work</div></div>
-      </div>
-      <div class="sw" style="width:auto;flex:1;">
-        <div class="chip" style="background:var(--clay);"></div>
-        <div class="info"><div class="nm">Straightforward</div><div class="hex">The quote is the price</div></div>
-      </div>
-      <div class="sw" style="width:auto;flex:1;">
-        <div class="chip" style="background:var(--slate);"></div>
-        <div class="info"><div class="nm">Craftsman-proud</div><div class="hex">Third-generation heritage</div></div>
-      </div>
-    </div>
-
-    <p><strong>Tone.</strong> Grounded, trustworthy, owner-forward and family-rooted. Di Rock speaks like a craftsman who
-    stakes his name on the work &mdash; straightforward about pricing, proud of a third-generation building heritage, and
-    confident without being salesy. The voice is local and neighborly, oriented to South Orange County homeowners who want
-    an honest roofer they can trust on their property.</p>
-
-    <div class="panel forest">
-      <h4>Verbatim Copy Samples</h4>
-      <div class="quote" style="border-left-color:var(--forest);">
-        <div class="q">&ldquo;Roofing Service From Industry Pros in Rancho Santa Margarita CA&rdquo;</div>
-        <div class="src">SOURCE — Website homepage headline (dirockgc.com)</div>
-      </div>
-      <div class="quote" style="border-left-color:var(--forest);">
-        <div class="q">&ldquo;Locally owned, family-operated business with 15+ years experience in Orange County&rdquo;</div>
-        <div class="src">SOURCE — Website body copy</div>
-      </div>
-      <div class="quote" style="border-left-color:var(--forest);margin-bottom:0;">
-        <div class="q">&ldquo;Mark Di Rocco's grandparents — Charles Gangi, a predominant builder in Southern California, and George
-        Di Rocco, a masonry craftsman — instilled professional standards that Mark incorporated into founding Di Rock
-        General Contracting &amp; Roofing&rdquo;</div>
-        <div class="src">SOURCE — Website About page</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 4. CUSTOMER INTELLIGENCE ===================== -->
-  <section>
-    <div class="sec-head">
-      <div class="num">4</div>
-      <h2>Customer Intelligence</h2>
-    </div>
-    <p>Across Yelp (5.0), Angi (4.9) and HomeAdvisor, the praise is remarkably consistent and clusters on the owner himself,
-    pricing honesty, and clean execution. The three dominant themes:</p>
-
-    <div class="panel">
-      <h4>Top Praise Theme 1 — The owner is on the job</h4>
-      <p style="margin:0 0 3pt 0;">Customers repeatedly note that <strong>Mark personally shows up, gives the bid, and works the
-      job</strong> &mdash; a rare, high-trust signal in the roofing trade.</p>
-      <div class="quote" style="margin-bottom:0;">
-        <div class="q">&ldquo;Owner Mark personally shows up, gives the bid, and is on the job.&rdquo;</div>
-        <div class="src">THEME — Recurring across Yelp &amp; Angi reviews</div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h4>Top Praise Theme 2 — Honest, upfront pricing</h4>
-      <p style="margin:0 0 3pt 0;">Reviewers emphasize <strong>straightforward pricing — the quote is what it costs</strong> —
-      and that his bids frequently beat competing roofers.</p>
-      <div class="quote" style="margin-bottom:0;">
-        <div class="q">&ldquo;Honest / straightforward pricing — the quote is what it costs&rdquo; &middot; &ldquo;Bids beat competing roofers' quotes.&rdquo;</div>
-        <div class="src">THEME — Recurring across Yelp &amp; Angi reviews</div>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h4>Top Praise Theme 3 — Thorough, neat work &amp; clear communication</h4>
-      <p style="margin:0 0 3pt 0;">Customers cite <strong>punctual, on-time</strong> service, <strong>thorough, neat work with
-      good cleanup</strong>, and <strong>clear communication</strong> on scheduling and progress.</p>
-      <div class="quote" style="margin-bottom:0;">
-        <div class="q">&ldquo;Thorough, neat work with good cleanup&rdquo; &middot; &ldquo;Clear communication on scheduling and project progress.&rdquo;</div>
-        <div class="src">THEME — Recurring across Yelp &amp; Angi reviews</div>
-      </div>
-    </div>
-
-    <p style="margin-top:7pt;"><strong>Recurring friction points.</strong> None surfaced in the research. Every reviewed
-    platform sits at or near a perfect rating with no negative themes recorded; reviewers consistently describe the company as
-    professional, kind, and helpful. The only customer-facing limitations are <em>structural rather than service-related</em> —
-    no Google review channel to read or contribute to, and verbatim review text was not individually captured because the live
-    Yelp page returns HTTP 403 to automated fetch. <span class="gapflag">Full review text not retrieved — recommend verifying via phone outreach.</span></p>
-  </section>
-
-  <!-- ===================== 5. COMPETITIVE LANDSCAPE ===================== -->
-  <section class="break">
-    <div class="sec-head">
-      <div class="num">5</div>
-      <h2>Competitive Landscape</h2>
-    </div>
-
-    <table class="comp">
-      <thead>
-        <tr>
-          <th style="width:21%;">Competitor</th>
-          <th class="ctr" style="width:12%;">Site /5</th>
-          <th class="ctr" style="width:15%;">Reviews</th>
-          <th>Key Differentiator</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="name">Pacific Roofing Systems</td>
-          <td class="ctr"><span class="qbar">5 / 5</span></td>
-          <td class="ctr"><span class="metric">54</span><br><span class="stars">5.0&#9733;</span></td>
-          <td>Polished, SEO-heavy multi-page site with dozens of city landing pages, BBB A+ accreditation, a Velux skylight specialty and a public reviews page &mdash; a far more developed digital/credibility footprint (Newport Beach / Dana Point).</td>
-        </tr>
-        <tr>
-          <td class="name">South County Roofing</td>
-          <td class="ctr"><span class="qbar">4 / 5</span></td>
-          <td class="ctr"><span class="metric">150+</span><br><span class="stars">5.0&#9733;</span></td>
-          <td>Markets 150+ five-star reviews across Google Maps and Yelp with a BBB A+ rating and a deep library of location/service landing pages &mdash; review volume and local-SEO depth that dwarf Di Rock's handful of Yelp reviews.</td>
-        </tr>
-        <tr>
-          <td class="name">Monarch Roofing</td>
-          <td class="ctr"><span class="qbar">4 / 5</span></td>
-          <td class="ctr"><span class="metric">72</span><br><span class="stars">4.5&#9733;</span></td>
-          <td>GAF-Certified contractor offering manufacturer lifetime / 50-year warranties plus structured financing (GoGreen; 5/7/10-year payment calculator) &mdash; warranty-backed credentials and financing Di Rock does not advertise (Orange, CA).</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="panel forest">
-      <h4>Where Di Rock Leads vs. Lags</h4>
-      <p style="margin:0;"><strong>Leads on trust and craft.</strong> Di Rock's rating quality is best-in-class &mdash; a perfect
-      5.0 on Yelp and 4.9 on Angi &mdash; and its owner-on-every-job, honest-pricing story is a more authentic, differentiated
-      narrative than the competitors' volume-and-warranty messaging. Where it <strong>lags is purely digital scale</strong>:
-      Pacific (54), Monarch (72) and South County (150+) all carry far heavier review counts, BBB accreditation, and large
-      local-SEO landing-page libraries, and Monarch adds warranty + financing hooks Di Rock doesn't surface. Most critically,
-      Di Rock has <strong>no confirmed Google review presence</strong>, so it is effectively invisible in the map pack where these
-      competitors compete daily. The reputation is elite; the distribution is not.</p>
-    </div>
-  </section>
-
-  <!-- ===================== 6. LANDING PAGE STRATEGY ===================== -->
-  <section>
-    <div class="sec-head">
-      <div class="num">6</div>
-      <h2>Landing Page Strategy</h2>
-    </div>
-
-    <div class="hero-mock">
-      <div class="eyebrow">Recommended Hero &mdash; Above the Fold</div>
-      <h3>Rancho Santa Margarita's Trusted Roofer — 15 Years, Mark on Every Job</h3>
-      <p class="sub">Family-owned, fully licensed (CSLB #943051) and insured. Straightforward bids, neat work, and an owner
-      who shows up — from tile and shingle to flat TPO and gutters across South Orange County.</p>
-      <span class="cta">Get a Free Estimate &rarr;</span>
-    </div>
-
-    <div class="twocol">
-      <div>
-        <div class="label">Above-the-Fold Trust Signals</div>
-        <ul class="clean forest">
-          <li>Angi 4.9 / 5 rating and 5.0-star Yelp reviews</li>
-          <li>Owner Mark Di Rocco named and on every job — third-generation builder family</li>
-          <li>CSLB License #943051 (B + C39) — bonded &amp; insured</li>
-          <li>15 years serving RSM, Coto de Caza, Talega, Mission Viejo and surrounding South OC</li>
-          <li>Honest, upfront pricing — the quote is the price (echoed across reviews)</li>
-        </ul>
-      </div>
-      <div>
-        <div class="label">Primary CTA</div>
-        <div class="panel" style="margin-top:3pt;margin-bottom:6pt;">
-          <p style="margin:0;"><strong>&ldquo;Get a Free Estimate&rdquo;</strong> &mdash; paired with an above-the-fold lead
-          form to capture demand directly, replacing the current off-site &ldquo;Book Now&rdquo; Jobber-only routing.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="label" style="margin-top:3pt;">Color Direction — Slate Roofline Gray + Sunset Clay</div>
-    <p style="margin-bottom:4pt;">Slate roofline gray paired with sunset-clay accents on bright white &mdash; sturdy, premium and
-    architectural, signaling a craftsman roofer rather than a discount operator. Charcoal / stone gray anchors structure; a warm
-    clay CTA color drives contrast and conversions.</p>
-    <div class="swatches">
-      <div class="sw"><div class="chip" style="background:#3A4149;"></div><div class="info"><div class="nm">Slate Roofline Gray</div><div class="hex">Structure</div></div></div>
-      <div class="sw"><div class="chip" style="background:#5C6670;"></div><div class="info"><div class="nm">Stone Gray</div><div class="hex">Secondary</div></div></div>
-      <div class="sw"><div class="chip" style="background:#B5653F;"></div><div class="info"><div class="nm">Sunset Clay</div><div class="hex">CTA / accent</div></div></div>
-      <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="info"><div class="nm">Bright White</div><div class="hex">Canvas</div></div></div>
-    </div>
-
-    <div class="label" style="margin-top:7pt;">Typography Direction — Sturdy &middot; Grounded &middot; Dependable</div>
-    <div class="typo-row">
-      <div>
-        <div class="trole">Headings — Zilla Slab</div>
-        <div class="tname" style="font-family:'Bitter',Georgia,serif;">Zilla Slab</div>
-        <div class="tsample">A sturdy slab serif for headlines and the owner's name &mdash; architectural weight that reads
-        as dependable and craftsman-built. (Rendered here in the report's serif.)</div>
-      </div>
-      <div>
-        <div class="trole">Body — Mukta</div>
-        <div class="tname" style="font-family:'Source Sans 3',Arial,sans-serif;font-weight:700;">Mukta</div>
-        <div class="tsample">A clean, grounded humanist sans for body copy, service lists and forms &mdash; highly legible on
-        mobile. (Rendered here in the report's sans.)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== 7. BRANCH & ROOT RECOMMENDATION ===================== -->
-  <section class="break">
-    <div class="sec-head">
-      <div class="num">7</div>
-      <h2>Branch &amp; Root Recommendation</h2>
-    </div>
-
-    <div class="rec-banner">
-      <div class="lab">Recommended Service Tier</div>
-      <div class="tier">Website + SEO / AEO + Meta Ads</div>
-      <div class="tagline">Convert an elite reputation into a measurable lead pipeline.</div>
-    </div>
-
-    <p><strong>Why this tier.</strong> Di Rock already has the two hardest assets to build &mdash; a functional, owner-forward
-    WordPress / Elementor site and a genuinely elite reputation (4.9 Angi / 5.0 Yelp). What it lacks is everything that turns
-    that reputation into inbound volume:</p>
-    <ul class="clean forest">
-      <li>No above-the-fold lead form and no email capture &mdash; demand leaks to an off-site Jobber link</li>
-      <li>No blog / AEO content to win organic and answer-engine discovery</li>
-      <li>No confirmed Google Business Profile &mdash; invisible in the local map pack</li>
-      <li>No paid traffic, while competitors (South County 150+, Pacific 54, Monarch 72) win on review volume and local-SEO depth</li>
-    </ul>
-    <p style="margin-bottom:2pt;">A combined <strong>Website + SEO/AEO + Meta Ads</strong> engagement is the highest-leverage path:
-    fix conversion on the site, claim and build the GBP, publish AEO content to close the local-SEO gap, and layer Meta Ads
-    targeting RSM homeowners to drive immediate volume against a 5-star reputation that already closes.</p>
-
-    <div class="rev-box">
-      <div class="lab">Estimated Revenue Opportunity</div>
-      <p style="margin:0;">A claimed Google Business Profile plus an above-the-fold lead form and Meta Ads targeting RSM
-      homeowners could realistically convert this 5.0-star reputation into an additional <strong>4&ndash;8 qualified roofing
-      leads per month</strong> &mdash; at typical South-OC re-roof tickets, that represents a <strong>five-to-low-six-figure
-      annual revenue lift</strong> from demand the brand is currently failing to capture.</p>
-    </div>
-
-    <div class="footer-rule">
-      <p><strong>Data gaps noted in this report</strong> (all flagged inline as &ldquo;Not found — recommend verifying via phone
-      outreach&rdquo;): business email address; Google Business Profile existence, rating and review count; exact live Yelp count
-      (snapshots ranged 9&rarr;11&rarr;14, all 5.0); Facebook and Instagram follower counts and posting cadence; and individual
-      verbatim review text (live Yelp returns HTTP 403). No review counts, ratings, or quotes in this report were fabricated;
-      every claim traces to the Round 01 research record.</p>
-    </div>
-  </section>
-
-<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
 </body>
 </html>

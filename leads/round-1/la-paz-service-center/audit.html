@@ -4,692 +4,451 @@
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFFFFF">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1A14">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1B4332">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
 <title>La Paz Service Center — Brand Intelligence Report</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. ============================ */
   :root{
     color-scheme: light dark;
-    --page:#FFFFFF;
-    --forest:#1B4332;
-    --forest-soft:#2D5A45;
-    --cream:#F7F5F0;
-    --ink:#22272E;
-    --muted:#5A6470;
-    --line:#D9D4C7;
-    --accent:#9A3B2E; /* signal red, muted for print */
-    --panel-border:#C9C2B2;
-  }
+    --accent:#9A3B2E;            /* PER-BRAND accent (signal red) */
+    --accent-ink:#FFFFFF;        /* text on accent */
+    --slate:#3A3F45;             /* secondary accent (steel graphite) */
 
-  @page{
-    size:Letter;
-    margin:18mm 16mm 20mm 16mm;
-    @bottom-left{
-      content:"Branch & Root Consulting — Confidential | La Paz Service Center";
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7.5pt;
-      color:#7A8089;
-    }
-    @bottom-right{
-      content:"Page " counter(page) " of " counter(pages);
-      font-family:'Source Sans 3', Arial, sans-serif;
-      font-size:7.5pt;
-      color:#7A8089;
-    }
-  }
+    --page:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9F4;
+    --sidebar-bg:#FFFFFF;
+    --ink:#222824;
+    --muted:#5A655E;
+    --line:#E4DFD4;
 
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    font-family:'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
-    color:var(--ink);
-    font-size:10pt;
-    line-height:1.5;
-  }
+    --heading:#1B4332;           /* heading TEXT */
+    --brand:#1B4332;             /* rules / lead-in text */
+    --band:#1B4332;              /* table header / voice bands */
+    --band-ink:#FFFFFF;
+    --cover-bg:#1B4332;
 
-  /* ---------- Title block ---------- */
-  .cover{
-    background:var(--forest);
-    color:var(--cream);
-    padding:22px 24px;
-    border-radius:4px;
-    margin-bottom:20px;
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,42,30,.05), 0 10px 30px -12px rgba(15,42,30,.14);
+    --shadow-sm:0 1px 2px rgba(15,42,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  .cover .eyebrow{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-size:8.5pt;
-    letter-spacing:2.4px;
-    text-transform:uppercase;
-    color:#BFD8C9;
-    margin:0 0 8px 0;
-    font-weight:600;
-  }
-  .cover h1{
-    font-family:'Bitter', Georgia, 'Times New Roman', serif;
-    font-weight:700;
-    font-size:24pt;
-    line-height:1.12;
-    margin:0 0 10px 0;
-    color:#FFFFFF;
-  }
-  .cover .subtitle{
-    font-size:9.5pt;
-    color:#D7E4DC;
-    border-top:1px solid rgba(247,245,240,0.25);
-    padding-top:9px;
-    margin-top:4px;
-    display:flex;
-    justify-content:space-between;
-    gap:12px;
-  }
-  .cover .subtitle strong{color:#FFFFFF; font-weight:600;}
-
-  /* ---------- Section headers ---------- */
-  section{margin-bottom:16px;}
-  h2.section{
-    font-family:'Bitter', Georgia, serif;
-    font-weight:600;
-    font-size:13pt;
-    color:var(--forest);
-    margin:0 0 9px 0;
-    padding:6px 0 6px 12px;
-    border-left:5px solid var(--forest);
-    background:linear-gradient(90deg, rgba(27,67,50,0.08), rgba(27,67,50,0));
-    break-after:avoid;
-  }
-  h2.section .num{
-    display:inline-block;
-    color:var(--accent);
-    font-weight:700;
-    margin-right:8px;
-  }
-  h3.sub{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-weight:700;
-    font-size:9.5pt;
-    text-transform:uppercase;
-    letter-spacing:0.6px;
-    color:var(--forest-soft);
-    margin:12px 0 5px 0;
-  }
-
-  p{margin:0 0 8px 0;}
-  .lead{font-size:10pt;}
-
-  ul{margin:4px 0 8px 0; padding-left:18px;}
-  li{margin:0 0 3px 0;}
-  li::marker{color:var(--forest-soft);}
-
-  strong{color:var(--ink);}
-  .em{color:var(--accent); font-weight:600;}
-
-  /* ---------- Cream callout panels ---------- */
-  .panel{
-    background:var(--cream);
-    border:1px solid var(--panel-border);
-    border-radius:4px;
-    padding:11px 14px;
-    margin:8px 0;
-    break-inside:avoid;
-  }
-  .panel.tight{padding:9px 13px;}
-  .panel-title{
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-weight:700;
-    font-size:8.5pt;
-    letter-spacing:0.8px;
-    text-transform:uppercase;
-    color:var(--forest);
-    margin:0 0 6px 0;
-  }
-
-  /* ---------- Fact grid (overview) ---------- */
-  .factgrid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:6px 18px;
-    margin:0;
-  }
-  .factgrid .row{
-    display:flex;
-    gap:8px;
-    border-bottom:1px dotted var(--line);
-    padding-bottom:3px;
-    font-size:9pt;
-  }
-  .factgrid .k{
-    color:var(--muted);
-    font-weight:600;
-    min-width:74px;
-  }
-  .factgrid .v{color:var(--ink);}
-
-  /* ---------- Metric chips ---------- */
-  .metrics{
-    display:flex;
-    gap:10px;
-    margin:8px 0;
-  }
-  .metric{
-    flex:1;
-    border:1px solid var(--panel-border);
-    border-radius:4px;
-    padding:9px 11px;
-    background:#FFFFFF;
-    text-align:center;
-  }
-  .metric .big{
-    font-family:'Bitter', Georgia, serif;
-    font-weight:700;
-    font-size:17pt;
-    color:var(--forest);
-    line-height:1;
-  }
-  .metric .lbl{
-    font-size:7.6pt;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-    color:var(--muted);
-    margin-top:4px;
-  }
-  .metric.warn .big{color:var(--accent); font-size:11pt; padding-top:4px;}
-
-  /* ---------- Two-col layout ---------- */
-  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-
-  /* ---------- Tables ---------- */
-  table{width:100%; border-collapse:collapse; margin:6px 0 8px 0; font-size:9pt;}
-  th{
-    background:var(--forest);
-    color:var(--cream);
-    text-align:left;
-    padding:6px 8px;
-    font-family:'Source Sans 3', Arial, sans-serif;
-    font-weight:600;
-    font-size:8.2pt;
-    text-transform:uppercase;
-    letter-spacing:0.4px;
-  }
-  td{
-    padding:6px 8px;
-    border-bottom:1px solid var(--line);
-    vertical-align:top;
-  }
-  tr:nth-child(even) td{background:var(--cream);}
-  td .cname{font-weight:700; color:var(--forest);}
-  .stars{color:var(--accent); font-weight:700; white-space:nowrap;}
-
-  /* ---------- Quote / verbatim ---------- */
-  .quote{
-    border-left:3px solid var(--forest-soft);
-    padding:2px 0 2px 11px;
-    margin:5px 0;
-    font-style:italic;
-    color:#3A4048;
-    font-size:9.2pt;
-  }
-  .quote .src{
-    display:block;
-    font-style:normal;
-    font-size:7.8pt;
-    color:var(--muted);
-    margin-top:2px;
-  }
-
-  /* ---------- Flags ---------- */
-  .gap{
-    background:#FBF3EF;
-    border:1px solid #E4C8BF;
-    border-left:4px solid var(--accent);
-    border-radius:3px;
-    padding:7px 11px;
-    margin:7px 0;
-    font-size:8.7pt;
-    color:#5C4038;
-  }
-  .gap b{color:var(--accent);}
-
-  /* ---------- Recommendation hero ---------- */
-  .rec{
-    background:var(--forest);
-    color:var(--cream);
-    border-radius:5px;
-    padding:14px 16px;
-    margin:8px 0;
-  }
-  .rec .tier-label{
-    font-size:8pt; letter-spacing:1.6px; text-transform:uppercase; color:#BFD8C9; margin:0 0 3px 0; font-weight:600;
-  }
-  .rec .tier{
-    font-family:'Bitter', Georgia, serif; font-weight:700; font-size:16pt; color:#FFFFFF; margin:0 0 7px 0; line-height:1.1;
-  }
-  .rec p{color:#E2ECE6; margin-bottom:6px;}
-  .rec .rev{
-    border-top:1px solid rgba(247,245,240,0.25);
-    margin-top:8px; padding-top:8px; font-size:9pt; color:#FFFFFF;
-  }
-  .rec .rev b{color:#F4D58D;}
-
-  /* swatches */
-  .swatches{display:flex; gap:7px; margin:6px 0 2px 0; flex-wrap:wrap;}
-  .sw{display:flex; align-items:center; gap:6px; font-size:8pt; color:var(--muted);}
-  .chip{width:15px; height:15px; border-radius:3px; border:1px solid rgba(0,0,0,0.15);}
-
-  .footnote{font-size:7.8pt; color:var(--muted); margin-top:3px;}
-  .keep{break-inside:avoid;}
-
-  /* ---- Theme toggle (screen only; hidden in print) ---- */
-  .theme-toggle{
-    position:fixed; top:14px; right:14px; z-index:100;
-    display:inline-flex; align-items:center; justify-content:center;
-    width:38px; height:38px; border-radius:10px;
-    border:1px solid var(--panel-border); background:var(--cream); color:var(--forest);
-    cursor:pointer; transition:background .15s ease, border-color .15s ease, transform .12s ease;
-  }
-  .theme-toggle:hover{ border-color: var(--accent); transform: translateY(-1px); }
-  .theme-toggle svg{ width:18px; height:18px; display:block; }
-  .theme-toggle .i-sun{ display:none; }
-  .theme-toggle .i-moon{ display:block; }
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
-  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;} :root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
-  :root[data-theme="light"] .theme-toggle .i-moon{display:block;} :root[data-theme="light"] .theme-toggle .i-sun{display:none;}
-  @media print{ .theme-toggle{ display:none; } }
-
-  /* ===================================================================
-     DARK MODE — forest-green ground (shared report chrome), this brand's
-     steel-graphite + signal-red accents kept recognizable and brightened
-     to clear AA on dark. Same declarations in both selectors so auto +
-     manual match. Light :root is untouched; print stays light.
-     =================================================================== */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --page:        #0F1B14;  /* page ground */
-      --forest:      #16241C;  /* dark brand band/surface (was #1B4332) */
-      --forest-soft: #7FB89B;  /* bright green for sub-head text */
-      --cream:       #ECE5D0;  /* now = light text on dark bands */
-      --ink:         #ECE5D0;  /* body text */
-      --muted:       #A2ADA4;  /* muted text */
-      --line:        #2A4032;  /* hairlines */
-      --accent:      #E5705F;  /* signal red, brightened for AA on dark */
-      --panel-border:#2A4032;  /* panel/metric borders */
-    }
-    :root:not([data-theme="light"]) body{ background:var(--page); }
-    /* surfaces that used cream/white fills -> dark surfaces */
-    :root:not([data-theme="light"]) .panel{ background:#16241C; }
-    :root:not([data-theme="light"]) .panel.tight{ background:#16241C; }
-    :root:not([data-theme="light"]) .metric{ background:#1A2A21; }
-    :root:not([data-theme="light"]) tr:nth-child(even) td{ background:#1A2A21; }
-    /* selectors that used --forest as TEXT -> legible light green */
-    :root:not([data-theme="light"]) h2.section{ color:#9FD3B8; background:linear-gradient(90deg, rgba(127,184,155,0.12), rgba(127,184,155,0)); }
-    :root:not([data-theme="light"]) .metric .big{ color:#9FD3B8; }
-    :root:not([data-theme="light"]) td .cname{ color:#9FD3B8; }
-    :root:not([data-theme="light"]) .panel-title{ color:#9FD3B8; }
-    :root:not([data-theme="light"]) .hero-headline{ color:#9FD3B8 !important; }
-    /* warm-tinted light-mode flag panels -> dark equivalents */
-    :root:not([data-theme="light"]) .gap{ background:#27211A; border-color:#4A3B2A; border-left-color:var(--accent); color:#E4D7CB; }
-    :root:not([data-theme="light"]) .quote{ color:#C7D2C4; }
-    :root:not([data-theme="light"]) .rec .rev b{ color:#F4D58D; }
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#E5705F; --accent-ink:#2A0F0A; --slate:#9FB0BE;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
   :root[data-theme="dark"]{
-    --page:        #0F1B14;
-    --forest:      #16241C;
-    --forest-soft: #7FB89B;
-    --cream:       #ECE5D0;
-    --ink:         #ECE5D0;
-    --muted:       #A2ADA4;
-    --line:        #2A4032;
-    --accent:      #E5705F;
-    --panel-border:#2A4032;
+    --accent:#E5705F; --accent-ink:#2A0F0A; --slate:#9FB0BE;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
   }
-  :root[data-theme="dark"] body{ background:var(--page); }
-  :root[data-theme="dark"] .panel{ background:#16241C; }
-  :root[data-theme="dark"] .panel.tight{ background:#16241C; }
-  :root[data-theme="dark"] .metric{ background:#1A2A21; }
-  :root[data-theme="dark"] tr:nth-child(even) td{ background:#1A2A21; }
-  :root[data-theme="dark"] h2.section{ color:#9FD3B8; background:linear-gradient(90deg, rgba(127,184,155,0.12), rgba(127,184,155,0)); }
-  :root[data-theme="dark"] .metric .big{ color:#9FD3B8; }
-  :root[data-theme="dark"] td .cname{ color:#9FD3B8; }
-  :root[data-theme="dark"] .panel-title{ color:#9FD3B8; }
-  :root[data-theme="dark"] .hero-headline{ color:#9FD3B8 !important; }
-  :root[data-theme="dark"] .gap{ background:#27211A; border-color:#4A3B2A; border-left-color:var(--accent); color:#E4D7CB; }
-  :root[data-theme="dark"] .quote{ color:#C7D2C4; }
-  :root[data-theme="dark"] .rec .rev b{ color:#F4D58D; }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.16;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#DCE6E0;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | La Paz Service Center"; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1F2421;--muted:#55605A;--line:#DDE3DF;--heading:#1B4332;--brand:#1B4332;--band:#1B4332;--band-ink:#fff;--cover-bg:#1B4332; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
 </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
 
-  <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">La Paz Service Center</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">Customer Reactivation Engine</div>
+      </div>
+    </aside>
 
-  <!-- ============ TITLE ============ -->
-  <div class="cover">
-    <p class="eyebrow">Brand Intelligence Report</p>
-    <h1>La Paz Service Center — Brand Intelligence Report</h1>
-    <div class="subtitle">
-      <span><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026</span>
-      <span>Auto Repair / Auto Body &middot; Aliso Viejo, CA</span>
-    </div>
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>La Paz Service Center</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Auto Repair / Auto Body &nbsp;·&nbsp; Aliso Viejo, CA</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">41 yrs</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">4.9&#9733;</div><div class="lbl">Google (207 reviews)</div></div>
+        <div class="stat"><div class="num">93</div><div class="lbl">Yelp Reviews</div></div>
+        <div class="stat"><div class="num">3 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>La Paz Service Center</strong> is a family-owned, full-service auto repair shop in Aliso Viejo, California, owned by <strong>Steve Benson</strong> and operating from 27812 Aliso Creek Rd #E-120, Aliso Viejo, CA 92656 (phone <strong>(949)&nbsp;362-8955</strong>). The shop has served the community for <strong>41 years, since 1985</strong>, and its ASE &amp; Factory Trained Master Technicians service foreign, domestic, European, and hybrid vehicles. Its core services span:</p>
+        <div class="grid2">
+          <ul>
+            <li>Full-service auto repair (foreign, domestic, European, hybrid)</li>
+            <li>Oil changes</li>
+            <li>Brakes &amp; brake repair</li>
+            <li>Heating &amp; air conditioning</li>
+            <li>Check engine light diagnostics</li>
+          </ul>
+          <ul>
+            <li>Mufflers &amp; exhaust</li>
+            <li>Belts &amp; hoses</li>
+            <li>Engine repair</li>
+            <li>Pre-purchase inspection</li>
+          </ul>
+        </div>
+        <p class="gapnote">Niche of record is &ldquo;Auto Repair / Auto Body,&rdquo; though the shop currently markets mechanical / auto-repair services only; in-house collision/body-work scope is unconfirmed &mdash; recommend verifying via phone outreach.</p>
+      </section>
+
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; lapazservicecenter.com &nbsp;·&nbsp; Quality 3 / 5 &nbsp;·&nbsp; Mitchell1 SocialCRM (WordPress-based template)</h3>
+          <p class="kv">The site is <b>mobile-responsive</b> with a clear &ldquo;Schedule Appointment&rdquo; CTA, but it runs on a generic CRM template with little brand differentiation and routes its CTA to a contact form rather than a real online calendar.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Mobile-responsive with a clear &ldquo;Schedule Appointment&rdquo; CTA</li>
+                <li>Strong trust stack: ASE &amp; Factory Master Tech logos, 24mo/24k warranty, BBB A+, BAR reg. ARD279966</li>
+                <li>&ldquo;Serving Aliso Viejo since 1985&rdquo; anchors decades of credibility</li>
+                <li>Core services clearly listed (brakes, oil, A/C, exhaust, diagnostics)</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>Generic CRM template &mdash; little brand differentiation, dated feel</li>
+                <li>No real online booking; CTA is a contact form, not a calendar</li>
+                <li>No public email address &mdash; contact form only</li>
+                <li>No reactivation / reminder capture; loyalty equity not surfaced</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &mdash; Reputation is the Standout Asset</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Read</th></tr>
+              <tr><td>Google</td><td class="center">207</td><td class="center"><span class="stars">4.9 &#9733;</span></td><td>Largest, highest-intent review base; volume climbing from a prior Birdeye snapshot of 169 &mdash; an active, current profile.</td></tr>
+              <tr><td>Yelp</td><td class="center">93</td><td class="center"><span class="flag">Rating N/A</span></td><td>Meaningful secondary footprint; the 93 reviews are real, but the star average could not be fetched (HTTP 403).</td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> review volume is climbing &mdash; a prior Birdeye snapshot in the database listed 169 Google reviews, while the current Birdeye reading shows 207 at 4.9 stars, indicating active, ongoing review accumulation rather than a stale profile. The public reputation is excellent: a 4.9-star Google rating across 207 reviews signals consistent, high-quality service and reflects La Paz&rsquo;s decades of goodwill. On Yelp, 93 reviews exist, a meaningful secondary footprint.</p>
+          <p class="gapnote">Yelp star rating &mdash; <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span> Yelp blocked automated fetch (403); only the review count (93) surfaced, not the star average. The 93 Yelp reviews are real &mdash; this is a missing rating, not an absence of reviews. Exact Google count not directly verified on Google Maps: the 207 figure is the current Birdeye reading (more current than the database&rsquo;s prior 169); the precise live Google Maps count was not confirmed at source &mdash; recommend verifying.</p>
+          <p class="gapnote">Additional signal (not a public figure): La Paz&rsquo;s private CRM survey platform (SureCritic) shows 1,335 verified post-service reviews at 5.0 stars / 95 NPS &mdash; strong internal validation, excluded from the public review counts above.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><b>Facebook</b> &mdash; page exists (facebook.com/La-Paz-Service-Center-102773253123249) but appears largely inactive. Follower count &amp; last-post date <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span> The page is JavaScript-rendered and returned no data to automated fetch; the page exists at the URL on file but activity could not be confirmed.</li>
+              <li><b>Instagram</b> &mdash; no Instagram account was found for the business.</li>
+            </ul>
+            <p class="gapnote">There is no active, growing social channel driving demand today.</p>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv">Core GBP fields are clearly populated &mdash; name, address, phone, category, and an active 4.9-star / 207-review stream are all present and current &mdash; which is the foundation of the shop&rsquo;s strong local visibility. However, full GBP completeness was not independently audited this pass (hours, photos, posts, Q&amp;A, attributes, and booking link were not verified at source). <span class="flag">Not found &mdash; recommend verifying via phone outreach,</span> particularly the booking link and hours, given competitors are winning on online booking and Saturday availability.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Honest</div><div class="s">No-pressure integrity</div></div>
+          <div class="vw"><div class="w">Established</div><div class="s">41 years, family shop</div></div>
+          <div class="vw"><div class="w">Dependable</div><div class="s">Expert &amp; reassuring</div></div>
+        </div>
+        <p>La Paz speaks like an <strong>honest, no-pressure neighborhood mechanic</strong> &mdash; a trusted family shop that has earned multigenerational loyalty since 1985. The tone emphasizes expertise, integrity, and fair pricing, treating customers like people rather than transactions. It is professional and reassuring without being corporate or salesy. These three brand-voice words are drawn both from the shop&rsquo;s own copy and from the integrity-and-loyalty themes that dominate its reviews.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: lapazservicecenter.com)</span></h3>
+          <blockquote>&ldquo;Premier Automotive Service in Aliso Viejo and surrounding communities!&rdquo;<span class="who">— Website headline</span></blockquote>
+          <blockquote>&ldquo;Serving Aliso Viejo &amp; Surrounding Communities since 1985&rdquo;<span class="who">— Website tagline</span></blockquote>
+          <blockquote>&ldquo;ASE &amp; Factory Trained Master Technicians&rdquo;<span class="who">— Website trust line</span></blockquote>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Across Google and Yelp, three praise themes recur most strongly. (Themes are synthesized from the research pass; individual verbatim review quotes were not captured this pass &mdash; see note below.)</p>
+        <div class="panel slate">
+          <h3>1 &nbsp;·&nbsp; Honesty &amp; integrity</h3>
+          <blockquote>Customers repeatedly highlight <em>no unnecessary upsells</em> and straight-talk diagnosis &mdash; the single most-cited reason for trust and repeat business.<span class="who">Recurring theme — Google / Yelp reviews</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; Fair, transparent pricing</h3>
+          <blockquote>Reviewers consistently contrast La Paz&rsquo;s <em>fair, transparent pricing</em> favorably against dealership quotes.<span class="who">Recurring theme — Google / Yelp reviews</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Fast, same-day, quality service</h3>
+          <blockquote>Praise centers on <em>fast, same-day, quality service</em> &mdash; accurate diagnosis delivered politely and punctually.<span class="who">Recurring theme — Google / Yelp reviews</span></blockquote>
+        </div>
+        <div class="grid2">
+          <div class="panel">
+            <h3>Other strong signals</h3>
+            <ul>
+              <li><b>Named staff praised individually</b> &mdash; Steve, Chris, and Eric are called out by name, a rare loyalty signal.</li>
+              <li><b>Decades-long relationships</b> &mdash; reviewers cite 20&ndash;35 years as customers.</li>
+            </ul>
+          </div>
+          <div class="panel gaps">
+            <h3>Recurring friction points</h3>
+            <p class="kv" style="margin-bottom:0;">No recurring friction or complaint themes surfaced in the public review data reviewed for this report &mdash; sentiment is strongly and consistently positive. The practical gaps are operational rather than reputational: <b>no online booking, no Saturday/early hours, and no after-hours convenience</b> (detailed in Section 5), which represent lost convenience rather than service dissatisfaction.</p>
+          </div>
+        </div>
+        <p class="gapnote">Verbatim customer quotes &mdash; <span class="flag">Not found &mdash; recommend verifying via phone outreach / direct review pull.</span> The research pass captured praise <em>themes</em> but did not record exact quotable review text; quotes were intentionally not fabricated. Pull 3&ndash;4 verbatim Google reviews before publishing customer-facing testimonial copy.</p>
+      </section>
+
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Site /5</th><th class="center">Reviews</th><th class="center">Rating</th><th>Key differentiator vs. La Paz</th></tr>
+            <tr><td><b>Super Service of Aliso Viejo</b><br><span class="gapnote">(formerly Aliso Foreign Car)</span></td><td class="center">5</td><td class="center">3,333</td><td class="center"><span class="stars">4.8&#9733;</span></td><td>3-Year/36,000-mile nationwide warranty plus loaner cars, shuttle, financing, and online booking on a polished Tekmetric platform &mdash; La Paz offers only a 24mo/24k warranty and no loaners/shuttle/financing.</td></tr>
+            <tr><td><b>Aliso Viejo Auto Service</b><br><span class="gapnote">(next door — 27802 Aliso Creek Rd)</span></td><td class="center">4</td><td class="center">171</td><td class="center"><span class="stars">4.9&#9733;</span></td><td>Modern site with real online appointment booking, a $40 referral reward program, and before/after-hours drop-off &amp; pickup &mdash; La Paz has no booking, referral program, or after-hours options.</td></tr>
+            <tr><td><b>Aliso Niguel Auto Care</b></td><td class="center">4</td><td class="center">170</td><td class="center"><span class="stars">4.9&#9733;</span></td><td>Online appointment booking and extended Mon&ndash;Sat 7am&ndash;5pm hours (open Saturdays + earlier weekday start) &mdash; La Paz is Mon&ndash;Fri 8am&ndash;5pm and closed weekends, ceding Saturday and early-morning demand.</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Where La Paz leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads:</b> on the metrics that signal trust, La Paz is at the front of the pack &mdash; its 4.9-star rating matches or beats every competitor (Super Service sits at 4.8), and its 41-year, family-owned history with named, long-tenured technicians is a relationship moat none of the others can claim as deeply.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags:</b> on <i>convenience and conversion infrastructure.</i> Every competitor offers real online booking; La Paz does not. Super Service out-scales it dramatically on review volume (3,333 vs. 207) and out-features it on warranty length, loaners, shuttle, and financing, while Aliso Viejo Auto Service (literally next door) and Aliso Niguel Auto Care win on referral incentives, after-hours drop-off, and Saturday/early-morning hours. La Paz&rsquo;s reputation is elite; its <i>booking, hours, and retention systems</i> are where it is quietly ceding ground.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;South Orange County&rsquo;s Trusted Auto Shop Since 1985 &mdash; Honest Expertise, Real Relationships&rdquo;</p>
+          <p class="kv"><b>Sub-headline:</b> Family-owned in Aliso Viejo for 41 years. ASE &amp; Factory Master Technicians servicing foreign, domestic, European &amp; hybrid vehicles &mdash; backed by a 24-month / 24,000-mile warranty.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span class="pill">BOOK AN APPOINTMENT</span> &nbsp;<span class="gapnote">Must resolve to real online scheduling &mdash; the single biggest conversion gap vs. competitors.</span></p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Above-the-fold trust signals</p>
+            <ul>
+              <li>4.9-star Google rating (200+ reviews)</li>
+              <li>Family-owned &amp; operating since 1985 (41 years)</li>
+              <li>ASE &amp; Factory Trained Master Technicians</li>
+              <li>24-Month / 24,000-Mile Warranty</li>
+              <li>BBB A+ Accredited</li>
+              <li>Named team (Steve, Chris, Eric) reviewers know by name</li>
+            </ul>
+          </div>
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Steel graphite + signal red</b> &mdash; an industrial-trust automotive palette. A steel-graphite / navy base conveys decades of stability, with a signal-red accent reserved for CTAs. Conveys industrial credibility without feeling dated.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#3A3F45;"></div><div class="cap">Steel graphite<br>#3A3F45</div></div>
+              <div class="sw"><div class="chip" style="background:#1F2A3C;"></div><div class="cap">Navy<br>#1F2A3C</div></div>
+              <div class="sw"><div class="chip" style="background:#C2362B;"></div><div class="cap">Signal red<br>#C2362B</div></div>
+              <div class="sw"><div class="chip" style="background:#F4F4F2;border-bottom:1px solid var(--line);"></div><div class="cap">Off-white<br>#F4F4F2</div></div>
+            </div>
+            <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> <i>Archivo</i> for headlines (grotesque weight reads sturdy and industrial) paired with <i>Source Sans 3</i> for body (clean, highly legible). Personality: sturdy, professional, established.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">Customer Reactivation Engine</div>
+        </div>
+        <p>La Paz has built 41 years of multigenerational customers with named-staff loyalty &mdash; yet there is <strong>zero visible reactivation, reminder, or after-hours system</strong> in place. A reactivation campaign converts that deep goodwill into scheduled return visits, capturing service intervals (oil, brakes, inspections) that currently rely on customers remembering on their own.</p>
+        <p>The timing is pointed: competitors are now winning on <strong>online booking and Saturday hours</strong>, so a system that proactively pulls existing customers back &mdash; paired with real scheduling &mdash; defends the base while the reputation advantage is still intact.</p>
+        <div class="panel forest">
+          <h3>Estimated revenue opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">Reactivating even a modest share of La Paz&rsquo;s lapsed multigenerational base into one additional scheduled service visit per year would conservatively add tens of thousands of dollars in annual repair revenue &mdash; recapturing demand the shop has already earned but is not currently prompting.</p>
+        </div>
+        <p class="gapnote">Recommendation seeded from <code>research.br_recommendation</code>. Revenue figure is a directional estimate, not a quote; validate against the shop&rsquo;s actual customer-count and average-ticket data &mdash; recommend verifying via phone outreach.</p>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;·&nbsp; La Paz Service Center &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
   </div>
 
-  <!-- ============ 1. OVERVIEW ============ -->
-  <section class="keep">
-    <h2 class="section"><span class="num">1</span>Business Overview</h2>
-    <p class="lead">
-      <strong>La Paz Service Center</strong> is a family-owned, full-service auto repair shop in Aliso Viejo, California,
-      owned by <strong>Steve Benson</strong> and operating from 27812 Aliso Creek Rd #E-120, Aliso Viejo, CA 92656
-      (phone <strong>(949)&nbsp;362-8955</strong>). The shop has served the community for <strong>41 years, since 1985</strong>,
-      and its ASE &amp; Factory Trained Master Technicians service foreign, domestic, European, and hybrid vehicles. Its core
-      services span:
-    </p>
-    <div class="panel tight">
-      <div class="cols2">
-        <ul style="margin-bottom:0;">
-          <li>Full-service auto repair (foreign, domestic, European, hybrid)</li>
-          <li>Oil changes</li>
-          <li>Brakes &amp; brake repair</li>
-          <li>Heating &amp; air conditioning</li>
-          <li>Check engine light diagnostics</li>
-        </ul>
-        <ul style="margin-bottom:0;">
-          <li>Mufflers &amp; exhaust</li>
-          <li>Belts &amp; hoses</li>
-          <li>Engine repair</li>
-          <li>Pre-purchase inspection</li>
-        </ul>
-      </div>
-    </div>
-    <p class="footnote">
-      Niche of record is "Auto Repair / Auto Body," though the shop currently markets mechanical / auto-repair services only;
-      in-house collision/body-work scope is unconfirmed — recommend verifying via phone outreach.
-    </p>
-  </section>
-
-  <!-- ============ 2. DIGITAL PRESENCE ============ -->
-  <section>
-    <h2 class="section"><span class="num">2</span>Digital Presence Audit</h2>
-
-    <h3 class="sub">Website</h3>
-    <div class="factgrid">
-      <div class="row"><span class="k">URL</span><span class="v">https://lapazservicecenter.com/</span></div>
-      <div class="row"><span class="k">Quality</span><span class="v"><strong>3 / 5</strong></span></div>
-      <div class="row"><span class="k">Platform</span><span class="v">Mitchell1 SocialCRM (WordPress-based template)</span></div>
-      <div class="row"><span class="k">Mobile</span><span class="v">Responsive</span></div>
-    </div>
-    <div class="cols2">
-      <div class="panel tight">
-        <div class="panel-title">What works</div>
-        <ul style="margin-bottom:0;">
-          <li>Mobile-responsive with a clear "Schedule Appointment" CTA</li>
-          <li>Strong trust stack: ASE &amp; Factory Master Tech logos, 24mo/24k warranty, BBB A+, BAR reg. ARD279966</li>
-          <li>"Serving Aliso Viejo since 1985" anchors decades of credibility</li>
-          <li>Core services clearly listed (brakes, oil, A/C, exhaust, diagnostics)</li>
-        </ul>
-      </div>
-      <div class="panel tight">
-        <div class="panel-title">What does not</div>
-        <ul style="margin-bottom:0;">
-          <li>Generic CRM template — little brand differentiation, dated feel</li>
-          <li>No real online booking; CTA is a contact form, not a calendar</li>
-          <li>No public email address — contact form only</li>
-          <li>No reactivation / reminder capture; loyalty equity not surfaced</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="sub">Reviews</h3>
-    <div class="metrics">
-      <div class="metric">
-        <div class="big">4.9&#9733;</div>
-        <div class="lbl">Google rating</div>
-      </div>
-      <div class="metric">
-        <div class="big">207</div>
-        <div class="lbl">Google reviews</div>
-      </div>
-      <div class="metric warn">
-        <div class="big">Rating N/A</div>
-        <div class="lbl">Yelp &middot; 93 reviews</div>
-      </div>
-    </div>
-    <p>
-      The public reputation is excellent: a <strong>4.9-star Google rating across 207 reviews</strong> signals consistent,
-      high-quality service and reflects La Paz's decades of goodwill. <strong>Trend read:</strong> review volume is climbing —
-      a prior Birdeye snapshot in the database listed 169 Google reviews, while the current Birdeye reading shows 207 at 4.9
-      stars, indicating active, ongoing review accumulation rather than a stale profile. On Yelp, <strong>93 reviews exist</strong>,
-      a meaningful secondary footprint.
-    </p>
-    <div class="gap">
-      <b>Yelp star rating — Not found — recommend verifying via phone outreach.</b> Yelp blocked automated fetch (403);
-      only the review count (93) surfaced, not the star average. The 93 Yelp reviews are real — this is a missing rating,
-      not an absence of reviews.
-    </div>
-    <div class="gap">
-      <b>Exact Google count not directly verified on Google Maps.</b> The 207 figure is the current Birdeye reading (more
-      current than the database's prior 169); the precise live Google Maps count was not confirmed at source — recommend verifying.
-    </div>
-    <p class="footnote">
-      Additional signal (not a public figure): La Paz's private CRM survey platform (SureCritic) shows 1,335 verified
-      post-service reviews at 5.0 stars / 95 NPS — strong internal validation, excluded from the public review counts above.
-    </p>
-
-    <h3 class="sub">Social Media</h3>
-    <p>
-      Social presence is minimal. A <strong>Facebook page exists</strong>
-      (facebook.com/La-Paz-Service-Center-102773253123249) but appears largely inactive, and <strong>no Instagram account</strong>
-      was found for the business. There is no active, growing social channel driving demand today.
-    </p>
-    <div class="gap">
-      <b>Facebook follower count &amp; last-post date — Not found — recommend verifying via phone outreach.</b>
-      The page is JavaScript-rendered and returned no data to automated fetch; the page exists at the URL on file but
-      activity could not be confirmed.
-    </div>
-
-    <h3 class="sub">Google Business Profile (GBP) Completeness</h3>
-    <p>
-      Core GBP fields are clearly populated — <strong>name, address, phone, category, and an active 4.9-star / 207-review
-      stream</strong> are all present and current — which is the foundation of the shop's strong local visibility. However,
-      <strong>full GBP completeness was not independently audited this pass</strong> (hours, photos, posts, Q&amp;A, attributes,
-      and booking link were not verified at source). <em>Not found — recommend verifying via phone outreach</em>, particularly
-      the booking link and hours, given competitors are winning on online booking and Saturday availability.
-    </p>
-  </section>
-
-  <!-- ============ 3. BRAND VOICE ============ -->
-  <section>
-    <h2 class="section"><span class="num">3</span>Brand Voice Analysis</h2>
-    <div class="metrics">
-      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Honest</div><div class="lbl">Brand word</div></div>
-      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Established</div><div class="lbl">Brand word</div></div>
-      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Dependable</div><div class="lbl">Brand word</div></div>
-    </div>
-    <p>
-      La Paz speaks like an <strong>honest, no-pressure neighborhood mechanic</strong> — a trusted family shop that has earned
-      multigenerational loyalty since 1985. The tone emphasizes expertise, integrity, and fair pricing, treating customers like
-      people rather than transactions. It is professional and reassuring without being corporate or salesy. These three
-      brand-voice words are drawn both from the shop's own copy and from the integrity-and-loyalty themes that dominate its reviews.
-    </p>
-    <div class="panel">
-      <div class="panel-title">Verbatim copy samples (source: lapazservicecenter.com)</div>
-      <div class="quote">"Premier Automotive Service in Aliso Viejo and surrounding communities!"<span class="src">— Website headline</span></div>
-      <div class="quote">"Serving Aliso Viejo &amp; Surrounding Communities since 1985"<span class="src">— Website tagline</span></div>
-      <div class="quote">"ASE &amp; Factory Trained Master Technicians"<span class="src">— Website trust line</span></div>
-    </div>
-  </section>
-
-  <!-- ============ 4. CUSTOMER INTELLIGENCE ============ -->
-  <section>
-    <h2 class="section"><span class="num">4</span>Customer Intelligence</h2>
-    <p>
-      Across Google and Yelp, three praise themes recur most strongly. (Themes are synthesized from the research pass;
-      individual verbatim review quotes were not captured this pass — see note below.)
-    </p>
-
-    <div class="panel tight keep">
-      <div class="panel-title">Top praise theme 1 — Honesty &amp; integrity</div>
-      <p style="margin-bottom:0;">Customers repeatedly highlight <span class="em">no unnecessary upsells</span> and straight-talk diagnosis — the single most-cited reason for trust and repeat business.</p>
-    </div>
-    <div class="panel tight keep">
-      <div class="panel-title">Top praise theme 2 — Fair, transparent pricing</div>
-      <p style="margin-bottom:0;">Reviewers consistently contrast La Paz's <span class="em">fair, transparent pricing</span> favorably against dealership quotes.</p>
-    </div>
-    <div class="panel tight keep">
-      <div class="panel-title">Top praise theme 3 — Fast, same-day, quality service</div>
-      <p style="margin-bottom:0;">Praise centers on <span class="em">fast, same-day, quality service</span> — accurate diagnosis delivered politely and punctually.</p>
-    </div>
-
-    <h3 class="sub">Other strong signals</h3>
-    <ul>
-      <li><strong>Named staff praised individually</strong> — Steve, Chris, and Eric are called out by name, a rare loyalty signal.</li>
-      <li><strong>Decades-long relationships</strong> — reviewers cite 20–35 years as customers.</li>
-    </ul>
-
-    <h3 class="sub">Recurring friction points</h3>
-    <p>
-      No recurring friction or complaint themes surfaced in the public review data reviewed for this report — sentiment is
-      strongly and consistently positive. The practical gaps are operational rather than reputational: <strong>no online
-      booking, no Saturday/early hours, and no after-hours convenience</strong> (detailed in Section 5), which represent lost
-      convenience rather than service dissatisfaction.
-    </p>
-    <div class="gap">
-      <b>Verbatim customer quotes — Not found — recommend verifying via phone outreach / direct review pull.</b>
-      The research pass captured praise <em>themes</em> but did not record exact quotable review text; quotes were intentionally
-      not fabricated. Pull 3–4 verbatim Google reviews before publishing customer-facing testimonial copy.
-    </div>
-  </section>
-
-  <!-- ============ 5. COMPETITIVE LANDSCAPE ============ -->
-  <section>
-    <h2 class="section"><span class="num">5</span>Competitive Landscape</h2>
-    <table>
-      <thead>
-        <tr>
-          <th style="width:24%;">Competitor</th>
-          <th style="width:9%;">Site /5</th>
-          <th style="width:13%;">Reviews</th>
-          <th>Key differentiator vs. La Paz</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span class="cname">Super Service of Aliso Viejo</span><br><span class="footnote">(formerly Aliso Foreign Car)</span></td>
-          <td><strong>5</strong></td>
-          <td><span class="stars">4.8&#9733;</span><br>3,333</td>
-          <td>3-Year/36,000-mile nationwide warranty plus loaner cars, shuttle, financing, and online booking on a polished Tekmetric platform — La Paz offers only a 24mo/24k warranty and no loaners/shuttle/financing.</td>
-        </tr>
-        <tr>
-          <td><span class="cname">Aliso Viejo Auto Service</span><br><span class="footnote">(next door — 27802 Aliso Creek Rd)</span></td>
-          <td><strong>4</strong></td>
-          <td><span class="stars">4.9&#9733;</span><br>171</td>
-          <td>Modern site with real online appointment booking, a $40 referral reward program, and before/after-hours drop-off &amp; pickup — La Paz has no booking, referral program, or after-hours options.</td>
-        </tr>
-        <tr>
-          <td><span class="cname">Aliso Niguel Auto Care</span></td>
-          <td><strong>4</strong></td>
-          <td><span class="stars">4.9&#9733;</span><br>170</td>
-          <td>Online appointment booking and extended Mon–Sat 7am–5pm hours (open Saturdays + earlier weekday start) — La Paz is Mon–Fri 8am–5pm and closed weekends, ceding Saturday and early-morning demand.</td>
-        </tr>
-      </tbody>
-    </table>
-    <p>
-      <strong>Where La Paz leads:</strong> on the metrics that signal trust, La Paz is at the front of the pack — its
-      <strong>4.9-star rating</strong> matches or beats every competitor (Super Service sits at 4.8), and its 41-year,
-      family-owned history with named, long-tenured technicians is a relationship moat none of the others can claim as deeply.
-      <strong>Where La Paz lags:</strong> on <em>convenience and conversion infrastructure</em>. Every competitor offers real
-      online booking; La Paz does not. Super Service out-scales it dramatically on review volume (3,333 vs. 207) and out-features
-      it on warranty length, loaners, shuttle, and financing, while Aliso Viejo Auto Service (literally next door) and Aliso
-      Niguel Auto Care win on referral incentives, after-hours drop-off, and Saturday/early-morning hours. La Paz's reputation
-      is elite; its <em>booking, hours, and retention systems</em> are where it is quietly ceding ground.
-    </p>
-  </section>
-
-  <!-- ============ 6. LANDING PAGE STRATEGY ============ -->
-  <section>
-    <h2 class="section"><span class="num">6</span>Landing Page Strategy</h2>
-    <div class="panel">
-      <div class="panel-title">Recommended hero headline</div>
-      <p class="hero-headline" style="font-family:'Bitter',Georgia,serif; font-size:13pt; color:var(--forest); font-weight:600; margin-bottom:6px; line-height:1.2;">
-        "South Orange County's Trusted Auto Shop Since 1985 — Honest Expertise, Real Relationships"
-      </p>
-      <div class="panel-title" style="margin-top:4px;">Supporting subheadline</div>
-      <p style="margin-bottom:0;">
-        Family-owned in Aliso Viejo for 41 years. ASE &amp; Factory Master Technicians servicing foreign, domestic, European &amp;
-        hybrid vehicles — backed by a 24-month / 24,000-mile warranty.
-      </p>
-    </div>
-
-    <div class="cols2">
-      <div>
-        <h3 class="sub">Primary CTA</h3>
-        <p style="margin-bottom:4px;">
-          <span style="display:inline-block; background:var(--accent); color:#fff; font-weight:700; padding:6px 16px; border-radius:4px; font-size:10.5pt;">Book an Appointment</span>
-        </p>
-        <p class="footnote">Must resolve to real online scheduling — the single biggest conversion gap vs. competitors.</p>
-      </div>
-      <div>
-        <h3 class="sub">Above-the-fold trust signals</h3>
-        <ul style="margin-bottom:0;">
-          <li>4.9-star Google rating (200+ reviews)</li>
-          <li>Family-owned &amp; operating since 1985 (41 years)</li>
-          <li>ASE &amp; Factory Trained Master Technicians</li>
-          <li>24-Month / 24,000-Mile Warranty</li>
-          <li>BBB A+ Accredited</li>
-          <li>Named team (Steve, Chris, Eric) reviewers know by name</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="sub">Color &amp; typography direction</h3>
-    <div class="panel tight">
-      <p style="margin-bottom:6px;">
-        <strong>Palette: Steel graphite + signal red</strong> — an industrial-trust automotive palette. A steel-graphite / navy
-        base conveys decades of stability, with a signal-red accent reserved for CTAs. Conveys industrial credibility without
-        feeling dated.
-      </p>
-      <div class="swatches">
-        <span class="sw"><span class="chip" style="background:#3A3F45;"></span> Steel graphite (base)</span>
-        <span class="sw"><span class="chip" style="background:#1F2A3C;"></span> Navy (depth)</span>
-        <span class="sw"><span class="chip" style="background:#C2362B;"></span> Signal red (CTA)</span>
-        <span class="sw"><span class="chip" style="background:#F4F4F2; border-color:#ccc;"></span> Off-white (canvas)</span>
-      </div>
-      <p style="margin:8px 0 0 0;">
-        <strong>Typography: Archivo (headings) + Source Sans 3 (body).</strong> Personality words: <em>Sturdy, Professional,
-        Established</em> — Archivo's grotesque weight reads sturdy and industrial for headlines, while Source Sans 3 keeps body
-        copy clean and highly legible.
-      </p>
-    </div>
-  </section>
-
-  <!-- ============ 7. B&R RECOMMENDATION ============ -->
-  <section class="keep">
-    <h2 class="section"><span class="num">7</span>Branch &amp; Root Recommendation</h2>
-    <div class="rec">
-      <p class="tier-label">Recommended Service Tier</p>
-      <p class="tier">Customer Reactivation Engine</p>
-      <p>
-        La Paz has built 41 years of multigenerational customers with named-staff loyalty — yet there is
-        <strong style="color:#fff;">zero visible reactivation, reminder, or after-hours system</strong> in place. A reactivation
-        campaign converts that deep goodwill into scheduled return visits, capturing service intervals (oil, brakes, inspections)
-        that currently rely on customers remembering on their own.
-      </p>
-      <p>
-        The timing is pointed: competitors are now winning on <strong style="color:#fff;">online booking and Saturday hours</strong>,
-        so a system that proactively pulls existing customers back — paired with real scheduling — defends the base while the
-        reputation advantage is still intact.
-      </p>
-      <p class="rev">
-        <b>Revenue opportunity:</b> reactivating even a modest share of La Paz's lapsed multigenerational base into one additional
-        scheduled service visit per year would conservatively add tens of thousands of dollars in annual repair revenue —
-        recapturing demand the shop has already earned but is not currently prompting.
-      </p>
-    </div>
-    <p class="footnote">
-      Recommendation seeded from <code>research.br_recommendation</code>. Revenue figure is a directional estimate, not a quote;
-      validate against the shop's actual customer-count and average-ticket data — recommend verifying via phone outreach.
-    </p>
-  </section>
-
-<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
 </body>
 </html>

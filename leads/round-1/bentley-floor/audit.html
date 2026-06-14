@@ -4,499 +4,420 @@
 <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
 <meta name="robots" content="noindex,nofollow">
 <meta charset="utf-8">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1B4332">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
 <title>Bentley Floor — Brand Intelligence Report</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. ============================ */
   :root{
     color-scheme: light dark;
-    --forest:#1B4332;
-    --forest-soft:#2D5A45;
-    --cream:#F7F5F0;
-    --ink:#22281F;
-    --muted:#55605A;
-    --line:#D9D4C8;
-    --accent:#7A5230;
-    --walnut:#5C3A21;
-  }
+    --accent:#7A5230;            /* PER-BRAND accent (warm walnut/gold) */
+    --accent-ink:#FFFFFF;        /* text on accent */
+    --slate:#3E5C76;             /* secondary accent (bone is near-neutral; template slate kept) */
 
-  @page{
-    size:Letter;
-    margin:20mm 16mm 22mm 16mm;
-    @top-left{
-      content:"Bentley Floor — Brand Intelligence Report";
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:8pt;
-      color:#1B4332;
-      letter-spacing:.3px;
-    }
-    @top-right{
-      content:"Branch & Root Consulting";
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:8pt;
-      color:#7A5230;
-      letter-spacing:.3px;
-    }
-    @bottom-left{
-      content:"Branch & Root Consulting — Confidential | Bentley Floor";
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:7.5pt;
-      color:#55605A;
-    }
-    @bottom-right{
-      content:"Page " counter(page) " of " counter(pages);
-      font-family:Georgia,"Times New Roman",serif;
-      font-size:7.5pt;
-      color:#55605A;
-    }
-  }
+    --page:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9F4;
+    --sidebar-bg:#FFFFFF;
+    --ink:#222824;
+    --muted:#5A655E;
+    --line:#E4DFD4;
 
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    font-size:9.6pt;
-    line-height:1.55;
-  }
-  h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;}
+    --heading:#1B4332;           /* heading TEXT */
+    --brand:#1B4332;             /* rules / lead-in text */
+    --band:#1B4332;              /* table header / voice bands */
+    --band-ink:#FFFFFF;
+    --cover-bg:#1B4332;
 
-  /* ---------- Title block ---------- */
-  .cover{
-    border-top:6px solid var(--forest);
-    border-bottom:1px solid var(--line);
-    padding:14pt 0 16pt;
-    margin-bottom:14pt;
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,42,30,.05), 0 10px 30px -12px rgba(15,42,30,.14);
+    --shadow-sm:0 1px 2px rgba(15,42,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  .eyebrow{
-    font-size:8pt;
-    letter-spacing:2.4px;
-    text-transform:uppercase;
-    color:var(--accent);
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-    margin:0 0 6pt;
-  }
-  h1{
-    font-size:25pt;
-    line-height:1.05;
-    color:var(--forest);
-    margin:0 0 8pt;
-    font-weight:700;
-    letter-spacing:.2px;
-  }
-  .subtitle{
-    font-size:9.5pt;
-    color:var(--muted);
-    font-family:Georgia,"Times New Roman",serif;
-    font-style:italic;
-    margin:0;
-  }
-  .cover-meta{
-    margin-top:12pt;
-    display:flex;
-    gap:0;
-    border-top:1px solid var(--line);
-    padding-top:10pt;
-  }
-  .cover-meta div{
-    flex:1;
-    padding-right:10pt;
-    border-right:1px solid var(--line);
-    margin-right:10pt;
-  }
-  .cover-meta div:last-child{border-right:none;margin-right:0;padding-right:0;}
-  .cover-meta .k{
-    font-size:7pt;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin:0 0 2pt;
-  }
-  .cover-meta .v{font-size:9pt;color:var(--ink);margin:0;font-family:Georgia,serif;}
-
-  /* ---------- Section headers ---------- */
-  section{margin:0 0 11pt;}
-  .sec-head{
-    background:var(--forest);
-    color:var(--cream);
-    padding:5pt 9pt;
-    border-radius:3px;
-    display:flex;
-    align-items:baseline;
-    margin:0 0 8pt;
-  }
-  .sec-num{
-    font-family:Georgia,serif;
-    font-size:11pt;
-    font-weight:700;
-    margin-right:8pt;
-    color:#C9B89A;
-  }
-  .sec-title{
-    font-family:Georgia,serif;
-    font-size:11.5pt;
-    font-weight:700;
-    letter-spacing:.3px;
-    margin:0;
-  }
-  h3{
-    font-size:9.5pt;
-    color:var(--forest);
-    margin:9pt 0 3pt;
-    font-weight:700;
-    letter-spacing:.2px;
-  }
-  p{margin:0 0 6pt;}
-  .lead{font-size:9.7pt;}
-
-  /* ---------- Callout panels ---------- */
-  .panel{
-    background:var(--cream);
-    border:1px solid var(--line);
-    border-left:3px solid var(--accent);
-    border-radius:3px;
-    padding:8pt 11pt;
-    margin:7pt 0;
-  }
-  .panel.forest{border-left-color:var(--forest);}
-  .panel h3{margin-top:0;}
-
-  ul{margin:3pt 0 6pt;padding-left:15pt;}
-  li{margin:0 0 2.5pt;}
-  .tight li{margin-bottom:1.5pt;}
-
-  .two-col{display:flex;gap:11pt;}
-  .two-col > div{flex:1;}
-
-  .gap{
-    color:var(--accent);
-    font-style:italic;
-    font-family:Georgia,serif;
-  }
-
-  /* ---------- Metric strip ---------- */
-  .metrics{display:flex;gap:8pt;margin:7pt 0;}
-  .metric{
-    flex:1;
-    background:#fff;
-    border:1px solid var(--line);
-    border-top:3px solid var(--forest);
-    border-radius:3px;
-    padding:7pt 8pt;
-    text-align:center;
-  }
-  .metric .big{font-family:Georgia,serif;font-size:16pt;color:var(--forest);font-weight:700;line-height:1;}
-  .metric .lbl{font-size:6.8pt;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin-top:3pt;}
-  .metric .sub{font-size:7.4pt;color:var(--accent);margin-top:2pt;}
-
-  /* ---------- Tables ---------- */
-  table{width:100%;border-collapse:collapse;margin:6pt 0;font-size:8.7pt;}
-  th{
-    background:var(--forest);
-    color:var(--cream);
-    text-align:left;
-    padding:5pt 7pt;
-    font-family:Georgia,serif;
-    font-size:8pt;
-    letter-spacing:.3px;
-    font-weight:700;
-  }
-  td{padding:5pt 7pt;border-bottom:1px solid var(--line);vertical-align:top;}
-  tr:nth-child(even) td{background:var(--cream);}
-  .star{color:var(--accent);font-weight:700;white-space:nowrap;}
-
-  .quote{
-    font-family:Georgia,serif;
-    font-style:italic;
-    color:var(--walnut);
-    border-left:2px solid var(--accent);
-    padding-left:8pt;
-    margin:2pt 0 4pt;
-    font-size:8.9pt;
-  }
-  .src{font-style:normal;font-size:7.4pt;color:var(--muted);letter-spacing:.3px;}
-
-  .badge{
-    display:inline-block;
-    background:var(--forest);
-    color:var(--cream);
-    font-size:7pt;
-    letter-spacing:1px;
-    text-transform:uppercase;
-    padding:2pt 7pt;
-    border-radius:10px;
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
-  .badge.warm{background:var(--accent);}
-
-  .kv{display:flex;flex-wrap:wrap;margin:3pt 0;}
-  .kv div{width:50%;padding:1.5pt 0;font-size:8.8pt;}
-  .kv .k{color:var(--muted);}
-
-  .avoid-break{page-break-inside:avoid;}
-  .verdict{
-    background:var(--forest);
-    color:var(--cream);
-    border-radius:3px;
-    padding:9pt 11pt;
-    margin-top:7pt;
-  }
-  .verdict h3{color:#C9B89A;margin-top:0;}
-  .verdict p{margin-bottom:0;}
-  small.note{font-size:7.6pt;color:var(--muted);}
-
-  /* ---- Theme toggle (screen only; hidden in print) ---- */
-  .theme-toggle{
-    position:fixed;top:14px;right:14px;z-index:100;
-    display:inline-flex;align-items:center;justify-content:center;
-    width:38px;height:38px;border-radius:8px;
-    border:1px solid var(--line);background:var(--cream);color:var(--forest);
-    cursor:pointer;transition:background .15s ease,border-color .15s ease,transform .12s ease;
-  }
-  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
-  .theme-toggle svg{width:18px;height:18px;display:block;}
-  .theme-toggle .i-sun{display:none;}
-  .theme-toggle .i-moon{display:block;}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
-  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;} :root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
-  :root[data-theme="light"] .theme-toggle .i-moon{display:block;} :root[data-theme="light"] .theme-toggle .i-sun{display:none;}
-  @media print{ .theme-toggle{ display:none; } }
-
-  /* ===================================================================
-     DARK MODE — forest-green ground (this report's dominant chrome),
-     warm walnut/tan accent kept recognizable. Same declarations in both
-     selectors so auto (prefers-color-scheme) + manual ([data-theme="dark"])
-     match. Light :root above is untouched. Print stays light (these screen
-     blocks don't affect @page output). --cream doubles as a light fill AND
-     as light text on forest bands: kept here as the light FOREGROUND, with
-     the surfaces that used it as a fill re-pointed to dark surfaces.
-     =================================================================== */
-  @media (prefers-color-scheme:dark){
-    :root:not([data-theme="light"]){
-      --forest:      #16241C;  /* dark brand band/surface (was #1B4332) */
-      --forest-soft: #7FB89B;  /* bright green for lead-in text */
-      --cream:       #E7ECE3;  /* now = light text on dark bands */
-      --ink:         #E7ECE3;  /* body text */
-      --muted:       #9FB0A6;  /* muted text */
-      --line:        #2C3A32;  /* hairlines */
-      --accent:      #D2A578;  /* warm tan, brightened (was #7A5230) */
-      --walnut:      #C9A98C;  /* warm walnut text, brightened (was #5C3A21) */
-    }
-    :root:not([data-theme="light"]) body{ background:#0F1B14; }
-    /* surfaces that used --cream / #fff as a light fill -> dark surfaces */
-    :root:not([data-theme="light"]) .metric{ background:#1A2A21; }
-    :root:not([data-theme="light"]) .panel{ background:#16241C; }
-    :root:not([data-theme="light"]) tr:nth-child(even) td{ background:#1A2A21; }
-    /* selectors that used --forest as TEXT -> legible light green */
-    :root:not([data-theme="light"]) h1,
-    :root:not([data-theme="light"]) h3,
-    :root:not([data-theme="light"]) .metric .big{ color:#8FC2A8; }
-    /* bright tan badge needs deep text for AA (light cream fails on tan) */
-    :root:not([data-theme="light"]) .badge.warm{ color:#0F1B14; }
-  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#D2A578; --accent-ink:#10231A; --slate:#8FB4D6;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
   :root[data-theme="dark"]{
-    --forest:      #16241C;
-    --forest-soft: #7FB89B;
-    --cream:       #E7ECE3;
-    --ink:         #E7ECE3;
-    --muted:       #9FB0A6;
-    --line:        #2C3A32;
-    --accent:      #D2A578;
-    --walnut:      #C9A98C;
+    --accent:#D2A578; --accent-ink:#10231A; --slate:#8FB4D6;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
   }
-  :root[data-theme="dark"] body{ background:#0F1B14; }
-  :root[data-theme="dark"] .metric{ background:#1A2A21; }
-  :root[data-theme="dark"] .panel{ background:#16241C; }
-  :root[data-theme="dark"] tr:nth-child(even) td{ background:#1A2A21; }
-  :root[data-theme="dark"] h1,
-  :root[data-theme="dark"] h3,
-  :root[data-theme="dark"] .metric .big{ color:#8FC2A8; }
-  :root[data-theme="dark"] .badge.warm{ color:#0F1B14; }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.16;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#DCE6E0;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | Bentley Floor"; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1F2421;--muted:#55605A;--line:#DDE3DF;--heading:#1B4332;--brand:#1B4332;--band:#1B4332;--band-ink:#fff;--cover-bg:#1B4332; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
 </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
 
-<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">Bentley Floor</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">Customer Reactivation Engine</div>
+      </div>
+    </aside>
 
-<div class="cover">
-  <p class="eyebrow">Brand Intelligence Report</p>
-  <h1>Bentley Floor</h1>
-  <p class="subtitle">Branch &amp; Root Consulting &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026</p>
-  <div class="cover-meta">
-    <div>
-      <p class="k">Business</p>
-      <p class="v">Flooring &amp; Remodel Showroom</p>
-    </div>
-    <div>
-      <p class="k">Market</p>
-      <p class="v">Rancho Santa Margarita, CA</p>
-    </div>
-    <div>
-      <p class="k">Prepared For</p>
-      <p class="v">Ali &amp; Daniel, Owners</p>
-    </div>
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>Bentley Floor</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Flooring &amp; Remodel Showroom &nbsp;·&nbsp; Rancho Santa Margarita, CA &nbsp;·&nbsp; Prepared for Ali &amp; Daniel, Owners</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">13 yrs</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">4.7&#9733;</div><div class="lbl">Google (28 reviews)</div></div>
+        <div class="stat"><div class="num">4.5&#9733;</div><div class="lbl">Yelp (274 reviews)</div></div>
+        <div class="stat"><div class="num">3 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>Bentley Floor</strong> is a family-owned, full-service flooring and home-remodeling showroom co-founded by <strong>Ali</strong> (with co-founder <strong>Daniel</strong>) and operating in Rancho Santa Margarita, California since 2013 &mdash; 13 years in business. Working from a single showroom at 22411 Antonio Pkwy #C140 (phone (949) 709-1111), the company positions itself as the area&rsquo;s established neighborhood name for hardwood and full-home remodeling. Its services span hardwood flooring; laminate and vinyl plank; carpeting; natural stone; porcelain and vinyl tile; custom area rugs; kitchen and bathroom remodeling; cabinet sales and installation (custom and premade); and countertop installation &mdash; an end-to-end offering that lets a homeowner source flooring through full kitchen-and-bath renovation under one roof.</p>
+      </section>
+
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; bentleyfloor.com &nbsp;·&nbsp; Quality 3 / 5 &nbsp;·&nbsp; Custom PHP / Apache (no CMS)</h3>
+          <p class="kv">The site at <b>https://www.bentleyfloor.com/</b> scores <b>3 / 5</b>. It runs on a custom PHP stack on Apache (.php pages, PHPSESSID cookie) with no CMS such as WordPress, Wix, or Squarespace detected &mdash; effectively a hand-built, static brochure site.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Mobile-responsive layout</li>
+                <li>Clear local positioning headline: &ldquo;Rancho Santa Margarita&rsquo;s Number One Name in Hardwood Flooring&rdquo;</li>
+                <li>Active conversion offer &mdash; free in-home consultation / &ldquo;Request A Quote&rdquo;</li>
+                <li>Credible trust signals: in business since 2013, family-owned and operated, full service line listed</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>Static brochure architecture &mdash; no per-service landing pages or lead-capture system</li>
+                <li>No Google Maps embed and no schema markup detected (weakens local SEO)</li>
+                <li>No published email address anywhere on the site</li>
+                <li>No CSLB license number or &ldquo;Licensed &amp; Insured&rdquo; statement, despite advertising remodeling, cabinets, and countertops</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &amp; Reputation &mdash; Depth is the Standout Asset</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Read</th></tr>
+              <tr><td>Google</td><td class="center">28</td><td class="center"><span class="stars">4.7 &#9733;</span></td><td>Strong rating; sourced from a Birdeye aggregate rather than a verified live profile.</td></tr>
+              <tr><td>Yelp</td><td class="center">274</td><td class="center"><span class="stars">4.5 &#9733;</span></td><td>Substantial, hard-to-replicate body of social proof &mdash; the deepest review base in the competitive set.</td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> the standout signal is depth on Yelp &mdash; 274 reviews at 4.5 stars is a substantial, hard-to-replicate body of social proof that outweighs every direct competitor on volume, and it points to a large, repeat-and-referral customer base accumulated over 13 years. The two platforms reinforce rather than contradict each other (both comfortably in the 4.5&ndash;4.7 band), so the reputation is stable and an asset to lead with.</p>
+          <p class="gapnote">Note: Google figures are sourced from a Birdeye aggregate and the live Yelp average could not be independently re-confirmed (anonymous fetch returned HTTP 403); both are <span class="flag">recommend verifying via phone outreach</span> before they are quoted in marketing.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Media</h3>
+            <p class="kv">Both primary channels exist but appear dormant. A Facebook page (facebook.com/pages/Bentley-Floor/606751652698944) and an Instagram account (instagram.com/bentleyfloor/) are live, but follower counts and last-post dates could not be retrieved &mdash; both profiles are login-walled to anonymous fetch, and the recorded follower figure for each is 0. <b>Active channels: none confirmed.</b> Follower counts, posting cadence, and content themes are <span class="flag">Not found &mdash; recommend verifying via phone outreach</span>.</p>
+            <p class="gapnote">Practically, social is not currently a contributing acquisition channel.</p>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv">A direct Google Business Profile URL was not located; the Google review data is drawn from a third-party aggregate rather than the live profile. The profile is therefore <b>unverified for completeness</b> &mdash; its current review count, star average, photos, hours, and category accuracy are <span class="flag">Not found &mdash; recommend verifying via phone outreach</span>.</p>
+            <p class="gapnote">Given the absence of map embed and schema on the website, confirming and fully optimizing the GBP is a near-term priority.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Trusted</div><div class="s">Established neighborhood name</div></div>
+          <div class="vw"><div class="w">Craftsmanship-driven</div><div class="s">Proud of the work</div></div>
+          <div class="vw"><div class="w">Local</div><div class="s">Rooted in RSM</div></div>
+        </div>
+        <p>The brand voice is warm, family-owned, and craftsmanship-forward, rooted firmly in its Rancho Santa Margarita community. It presents Bentley Floor as the established, trusted neighborhood showroom, leaning on personal owner involvement (Ali), integrity, and end-to-end expertise delivered from a single location. The register is confident but approachable &mdash; proud of the work, never corporate or hard-selling.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: bentleyfloor.com)</span></h3>
+          <blockquote>&ldquo;Rancho Santa Margarita&rsquo;s Number One Name in Hardwood Flooring&rdquo;<span class="who">Website homepage headline</span></blockquote>
+          <blockquote>&ldquo;Rancho Santa Margarita&rsquo;s Trusted Remodel &amp; Flooring Store&rdquo;<span class="who">Website positioning copy</span></blockquote>
+          <blockquote>&ldquo;We truly appreciate all of our customers and strive to be the best at what we do every day.&rdquo;<span class="who">Website (About / customer-appreciation copy)</span></blockquote>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Review themes cluster tightly around value, quality, and the owner&rsquo;s personal presence. The three strongest praise themes:</p>
+        <div class="panel forest">
+          <h3>1 &nbsp;·&nbsp; Fair, competitive pricing &amp; on-budget delivery</h3>
+          <blockquote>Customers consistently cite &ldquo;fair and competitive pricing&rdquo; and projects completed &ldquo;on time and on budget.&rdquo;<span class="who">Recurring theme across Google &amp; Yelp reviews</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; High-quality workmanship &amp; materials</h3>
+          <blockquote>Reviewers repeatedly praise &ldquo;high-quality workmanship and materials&rdquo; and a wide material selection spanning flooring through full remodeling.<span class="who">Recurring theme across Google &amp; Yelp reviews</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Owner Ali is personally available &amp; responsive</h3>
+          <blockquote>A standout theme: owner &ldquo;Ali personally available and responsive throughout the project,&rdquo; with a &ldquo;professional, friendly, and thorough team.&rdquo;<span class="who">Recurring theme across Google &amp; Yelp reviews</span></blockquote>
+        </div>
+        <p class="gapnote">Quotes above paraphrase the recurring review themes captured in research; individual verbatim customer quotes were not preserved in the source data and are <span class="flag">Not found &mdash; recommend verifying via phone outreach or a live review pull</span>.</p>
+        <div class="panel gaps">
+          <h3>Recurring friction points</h3>
+          <p class="kv">There is no pattern of recurring complaints &mdash; the negative signal is a single isolated case: <b>one customer reported being &ldquo;ghosted&rdquo; after a project was agreed.</b> While not systemic, it maps directly to the broader operational gap this report identifies: no published email and no visible follow-up/CRM system to keep communication consistent once a job is in motion.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Site /5</th><th class="center">Reviews</th><th class="center">Rating</th><th>Key differentiator</th></tr>
+            <tr><td><b>Monteros Hardwood Flooring</b></td><td class="center">3</td><td class="center">118</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>HomeAdvisor &ldquo;Approved&rdquo; Super Service Award winner with a deep hardwood install/refinish specialty (since 2005) &mdash; third-party award credentials Bentley does not display.</td></tr>
+            <tr><td><b>DM Flooring</b></td><td class="center">4</td><td class="center">22</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>Modern multi-page site with dedicated per-service pages and a ~10-minute inquiry response time &mdash; a responsiveness and lead-capture edge over Bentley&rsquo;s static site.</td></tr>
+            <tr><td><b>Walsh Floors &amp; Windows</b></td><td class="center">3</td><td class="center">18</td><td class="center"><span class="stars">4.0&#9733;</span></td><td>60-year heritage (since 1964) plus a bundled window-installation line &mdash; longevity and cross-sell breadth Bentley (2013, flooring/remodel only) lacks.</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Where Bentley leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads:</b> Bentley Floor dominates on <i>review volume and breadth of service</i>. Its 274 Yelp reviews dwarf every competitor&rsquo;s count (118, 22, 18), making its social proof the deepest in the set &mdash; and its all-under-one-roof model (flooring + kitchen &amp; bath remodel + cabinets + countertops) is broader than the specialist hardwood shops it competes against.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags:</b> two soft spots stand out. First, <i>credentials and conversion mechanics</i> &mdash; competitors hold visible third-party awards (Monteros) and run faster, multi-page, lead-capturing websites (DM Flooring) while Bentley shows no displayed award, no license number, and a static brochure site. Second, <i>on paper star average</i> &mdash; rivals post 5.0 ratings against Bentley&rsquo;s 4.5&ndash;4.7, though Bentley earns those marks across vastly more reviews, which is the more durable signal. The strategic takeaway: Bentley&rsquo;s reputation is its moat; the gap is the digital infrastructure to surface and convert it.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;South OC&rsquo;s Trusted Flooring &amp; Remodel Showroom &mdash; Serving Rancho Santa Margarita Since 2013&rdquo;</p>
+          <p class="kv" style="margin-bottom:0;"><b>Sub-headline:</b> Hardwood, tile, stone, carpet, and full kitchen &amp; bath remodeling &mdash; owner-involved craftsmanship, fair pricing, and a free in-home consultation.</p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Primary CTA</p>
+            <p><span class="pill">GET A FREE ESTIMATE</span></p>
+            <p class="lead-in">Above-the-fold trust signals</p>
+            <ul>
+              <li>274 Yelp reviews (4.5&#9733;) plus strong Google reviews</li>
+              <li>Family-owned &amp; owner-operated since 2013 (Ali, in construction since 2005)</li>
+              <li>Free in-home consultation</li>
+              <li>Praised for fair pricing, on-time / on-budget delivery, and quality workmanship</li>
+              <li>Full-service showroom: flooring + kitchen &amp; bath + cabinets + countertops under one roof</li>
+            </ul>
+          </div>
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Warm walnut + bone/cream</b> on a clean background for a refined, premium feel that mirrors the wood-flooring brand &mdash; a deep warm-brown primary on a clean cream background, with a single confident accent reserved for CTAs. Personality: refined, premium, editorial.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#7A5230;"></div><div class="cap">Walnut<br>#7A5230</div></div>
+              <div class="sw"><div class="chip" style="background:#5C3A21;"></div><div class="cap">Deep walnut<br>#5C3A21</div></div>
+              <div class="sw"><div class="chip" style="background:#F7F5F0;border-bottom:1px solid var(--line);"></div><div class="cap">Bone<br>#F7F5F0</div></div>
+            </div>
+            <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> <i>Marcellus</i> for headlines (elegant, editorial serif) paired with <i>Figtree</i> for body (clean, modern sans).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">Customer Reactivation Engine</div>
+        </div>
+        <p>Thirteen years of repeat-heavy showroom traffic and 270+ Yelp reviews represent a large, loyal past-client base &mdash; but there is no visible system to re-engage it. With no published email, no GBP-linked CRM, and a static brochure site, prior flooring and remodel customers have no structured path back to a second project or a referral. A Customer Reactivation Engine builds that missing layer: it captures and organizes the past-client list, opens an email/SMS channel, and runs systematic re-engagement and referral sequences &mdash; converting a reputation that is already best-in-class on volume into recurring revenue. It also directly addresses the lone friction point in the reviews (the &ldquo;ghosted&rdquo; customer) by putting consistent, automated follow-up behind every job.</p>
+        <div class="panel forest">
+          <h3>Estimated revenue opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">Reactivating even a modest share of a 13-year, 270+ review client base &mdash; at flooring/remodel ticket sizes that routinely run several thousand to tens of thousands of dollars per project &mdash; can reasonably surface multiple five-figure repeat-and-referral jobs per year that the current static, channel-less setup leaves on the table.</p>
+        </div>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;·&nbsp; Bentley Floor &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
   </div>
-</div>
 
-<!-- 1. BUSINESS OVERVIEW -->
-<section class="avoid-break">
-  <div class="sec-head"><span class="sec-num">1</span><span class="sec-title">Business Overview</span></div>
-  <p class="lead">Bentley Floor is a family-owned, full-service flooring and home-remodeling showroom co-founded by Ali (with co-founder Daniel) and operating in Rancho Santa Margarita, California since 2013 — 13 years in business. Working from a single showroom at 22411 Antonio Pkwy #C140 (phone (949) 709-1111), the company positions itself as the area's established neighborhood name for hardwood and full-home remodeling. Its services span hardwood flooring; laminate and vinyl plank; carpeting; natural stone; porcelain and vinyl tile; custom area rugs; kitchen and bathroom remodeling; cabinet sales and installation (custom and premade); and countertop installation — an end-to-end offering that lets a homeowner source flooring through full kitchen-and-bath renovation under one roof.</p>
-</section>
-
-<!-- 2. DIGITAL PRESENCE AUDIT -->
-<section>
-  <div class="sec-head"><span class="sec-num">2</span><span class="sec-title">Digital Presence Audit</span></div>
-
-  <div class="metrics">
-    <div class="metric"><div class="big">3<span style="font-size:9pt;color:var(--muted)">/5</span></div><div class="lbl">Website Quality</div><div class="sub">Static brochure site</div></div>
-    <div class="metric"><div class="big">4.7</div><div class="lbl">Google Stars</div><div class="sub">28 reviews</div></div>
-    <div class="metric"><div class="big">4.5</div><div class="lbl">Yelp Stars</div><div class="sub">274 reviews</div></div>
-    <div class="metric"><div class="big">0</div><div class="lbl">Social Following</div><div class="sub">Dormant channels</div></div>
-  </div>
-
-  <h3>Website</h3>
-  <p>The site at <strong>https://www.bentleyfloor.com/</strong> scores <strong>3 / 5</strong>. It runs on a custom PHP stack on Apache (.php pages, PHPSESSID cookie) with no CMS such as WordPress, Wix, or Squarespace detected — effectively a hand-built, static brochure site.</p>
-  <div class="two-col">
-    <div class="panel forest">
-      <h3>What works</h3>
-      <ul class="tight">
-        <li>Mobile-responsive layout</li>
-        <li>Clear local positioning headline: "Rancho Santa Margarita's Number One Name in Hardwood Flooring"</li>
-        <li>Active conversion offer — free in-home consultation / "Request A Quote"</li>
-        <li>Credible trust signals: in business since 2013, family-owned and operated, full service line listed</li>
-      </ul>
-    </div>
-    <div class="panel">
-      <h3>What does not</h3>
-      <ul class="tight">
-        <li>Static brochure architecture — no per-service landing pages or lead-capture system</li>
-        <li>No Google Maps embed and no schema markup detected (weakens local SEO)</li>
-        <li>No published email address anywhere on the site</li>
-        <li>No CSLB license number or "Licensed &amp; Insured" statement, despite advertising remodeling, cabinets, and countertops</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>Reviews &amp; reputation</h3>
-  <p>Sentiment is strong and consistent across platforms: <span class="star">Google 4.7&#9733;</span> across 28 reviews and <span class="star">Yelp 4.5&#9733;</span> across 274 reviews. <strong>Trend read:</strong> the standout signal is depth on Yelp — 274 reviews at 4.5 stars is a substantial, hard-to-replicate body of social proof that outweighs every direct competitor on volume, and it points to a large, repeat-and-referral customer base accumulated over 13 years. The two platforms reinforce rather than contradict each other (both comfortably in the 4.5–4.7 band), so the reputation is stable and an asset to lead with. <small class="note">Note: Google figures are sourced from a Birdeye aggregate and the live Yelp average could not be independently re-confirmed (anonymous fetch returned HTTP 403); both are <span class="gap">recommend verifying via phone outreach</span> before they are quoted in marketing.</small></p>
-
-  <h3>Social media</h3>
-  <p>Both primary channels exist but appear dormant. A Facebook page (facebook.com/pages/Bentley-Floor/606751652698944) and an Instagram account (instagram.com/bentleyfloor/) are live, but follower counts and last-post dates could not be retrieved — both profiles are login-walled to anonymous fetch, and the recorded follower figure for each is 0. <strong>Active channels: none confirmed.</strong> Follower counts, posting cadence, and content themes are <span class="gap">Not found — recommend verifying via phone outreach</span>. Practically, social is not currently a contributing acquisition channel.</p>
-
-  <h3>Google Business Profile completeness</h3>
-  <p>A direct Google Business Profile URL was not located; the Google review data is drawn from a third-party aggregate rather than the live profile. The profile is therefore <strong>unverified for completeness</strong> — its current review count, star average, photos, hours, and category accuracy are <span class="gap">Not found — recommend verifying via phone outreach</span>. Given the absence of map embed and schema on the website, confirming and fully optimizing the GBP is a near-term priority.</p>
-</section>
-
-<!-- 3. BRAND VOICE ANALYSIS -->
-<section>
-  <div class="sec-head"><span class="sec-num">3</span><span class="sec-title">Brand Voice Analysis</span></div>
-  <p style="margin-bottom:5pt;">
-    <span class="badge">Trusted</span>&nbsp;
-    <span class="badge warm">Craftsmanship-driven</span>&nbsp;
-    <span class="badge">Local</span>
-  </p>
-  <p>The brand voice is warm, family-owned, and craftsmanship-forward, rooted firmly in its Rancho Santa Margarita community. It presents Bentley Floor as the established, trusted neighborhood showroom, leaning on personal owner involvement (Ali), integrity, and end-to-end expertise delivered from a single location. The register is confident but approachable — proud of the work, never corporate or hard-selling.</p>
-  <div class="panel">
-    <p class="quote">"Rancho Santa Margarita's Number One Name in Hardwood Flooring"<br><span class="src">— Website homepage headline</span></p>
-    <p class="quote">"Rancho Santa Margarita's Trusted Remodel &amp; Flooring Store"<br><span class="src">— Website positioning copy</span></p>
-    <p class="quote">"We truly appreciate all of our customers and strive to be the best at what we do every day."<br><span class="src">— Website (About / customer-appreciation copy)</span></p>
-  </div>
-</section>
-
-<!-- 4. CUSTOMER INTELLIGENCE -->
-<section>
-  <div class="sec-head"><span class="sec-num">4</span><span class="sec-title">Customer Intelligence</span></div>
-  <p>Review themes cluster tightly around value, quality, and the owner's personal presence. The three strongest praise themes:</p>
-  <div class="panel forest">
-    <h3>1 &nbsp;Fair, competitive pricing &amp; on-budget delivery</h3>
-    <p class="quote">Customers consistently cite "fair and competitive pricing" and projects completed "on time and on budget."<span class="src"> — recurring theme across Google &amp; Yelp reviews</span></p>
-    <h3>2 &nbsp;High-quality workmanship &amp; materials</h3>
-    <p class="quote">Reviewers repeatedly praise "high-quality workmanship and materials" and a wide material selection spanning flooring through full remodeling.<span class="src"> — recurring theme across Google &amp; Yelp reviews</span></p>
-    <h3>3 &nbsp;Owner Ali is personally available &amp; responsive</h3>
-    <p class="quote">A standout theme: owner "Ali personally available and responsive throughout the project," with a "professional, friendly, and thorough team."<span class="src"> — recurring theme across Google &amp; Yelp reviews</span></p>
-  </div>
-  <p><small class="note">Quotes above paraphrase the recurring review themes captured in research; individual verbatim customer quotes were not preserved in the source data and are <span class="gap">Not found — recommend verifying via phone outreach or a live review pull</span>.</small></p>
-  <h3>Recurring friction points</h3>
-  <p>There is no pattern of recurring complaints — the negative signal is a single isolated case: <strong>one customer reported being "ghosted" after a project was agreed.</strong> While not systemic, it maps directly to the broader operational gap this report identifies: no published email and no visible follow-up/CRM system to keep communication consistent once a job is in motion.</p>
-</section>
-
-<!-- 5. COMPETITIVE LANDSCAPE -->
-<section>
-  <div class="sec-head"><span class="sec-num">5</span><span class="sec-title">Competitive Landscape</span></div>
-  <table>
-    <thead>
-      <tr><th style="width:26%">Competitor</th><th style="width:11%">Site /5</th><th style="width:16%">Reviews</th><th>Key differentiator</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Monteros Hardwood Flooring</strong></td>
-        <td>3 / 5</td>
-        <td><span class="star">5.0&#9733;</span> · 118</td>
-        <td>HomeAdvisor "Approved" Super Service Award winner with a deep hardwood install/refinish specialty (since 2005) — third-party award credentials Bentley does not display.</td>
-      </tr>
-      <tr>
-        <td><strong>DM Flooring</strong></td>
-        <td>4 / 5</td>
-        <td><span class="star">5.0&#9733;</span> · 22</td>
-        <td>Modern multi-page site with dedicated per-service pages and a ~10-minute inquiry response time — a responsiveness and lead-capture edge over Bentley's static site.</td>
-      </tr>
-      <tr>
-        <td><strong>Walsh Floors &amp; Windows</strong></td>
-        <td>3 / 5</td>
-        <td><span class="star">4.0&#9733;</span> · 18</td>
-        <td>60-year heritage (since 1964) plus a bundled window-installation line — longevity and cross-sell breadth Bentley (2013, flooring/remodel only) lacks.</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="panel">
-    <h3>Where Bentley leads vs. lags</h3>
-    <p><strong>Leads:</strong> Bentley Floor dominates on <em>review volume and breadth of service</em>. Its 274 Yelp reviews dwarf every competitor's count (118, 22, 18), making its social proof the deepest in the set — and its all-under-one-roof model (flooring + kitchen &amp; bath remodel + cabinets + countertops) is broader than the specialist hardwood shops it competes against. <strong>Lags:</strong> two soft spots stand out. First, <em>credentials and conversion mechanics</em> — competitors hold visible third-party awards (Monteros) and run faster, multi-page, lead-capturing websites (DM Flooring) while Bentley shows no displayed award, no license number, and a static brochure site. Second, <em>on paper star average</em> — rivals post 5.0 ratings against Bentley's 4.5–4.7, though Bentley earns those marks across vastly more reviews, which is the more durable signal. The strategic takeaway: Bentley's reputation is its moat; the gap is the digital infrastructure to surface and convert it.</p>
-  </div>
-</section>
-
-<!-- 6. LANDING PAGE STRATEGY -->
-<section>
-  <div class="sec-head"><span class="sec-num">6</span><span class="sec-title">Landing Page Strategy</span></div>
-  <div class="panel forest avoid-break">
-    <h3>Recommended hero headline</h3>
-    <p class="serif" style="font-size:12pt;color:var(--forest);font-style:italic;margin-bottom:5pt;">"South OC's Trusted Flooring &amp; Remodel Showroom — Serving Rancho Santa Margarita Since 2013"</p>
-    <p style="margin-bottom:0;"><strong>Subheadline:</strong> Hardwood, tile, stone, carpet, and full kitchen &amp; bath remodeling — owner-involved craftsmanship, fair pricing, and a free in-home consultation.</p>
-  </div>
-
-  <div class="two-col">
-    <div>
-      <h3>Primary CTA</h3>
-      <p><span class="badge warm">Get a Free Estimate</span></p>
-      <h3>Above-the-fold trust signals</h3>
-      <ul class="tight">
-        <li>274 Yelp reviews (4.5&#9733;) plus strong Google reviews</li>
-        <li>Family-owned &amp; owner-operated since 2013 (Ali, in construction since 2005)</li>
-        <li>Free in-home consultation</li>
-        <li>Praised for fair pricing, on-time / on-budget delivery, and quality workmanship</li>
-        <li>Full-service showroom: flooring + kitchen &amp; bath + cabinets + countertops under one roof</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Color direction</h3>
-      <p>Warm walnut and bone/cream tones for a refined, premium feel that mirrors the wood-flooring brand — a deep warm-brown primary on a clean cream background, with a single confident accent reserved for CTAs.</p>
-      <h3>Typography direction</h3>
-      <p>Refined · Premium · Editorial.</p>
-      <ul class="tight">
-        <li><strong>Headlines:</strong> Marcellus (elegant, editorial serif)</li>
-        <li><strong>Body:</strong> Figtree (clean, modern sans)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 7. BRANCH & ROOT RECOMMENDATION -->
-<section class="avoid-break">
-  <div class="sec-head"><span class="sec-num">7</span><span class="sec-title">Branch &amp; Root Recommendation</span></div>
-  <p><strong>Recommended tier:</strong> <span class="badge">Customer Reactivation Engine</span></p>
-  <p>Thirteen years of repeat-heavy showroom traffic and 270+ Yelp reviews represent a large, loyal past-client base — but there is no visible system to re-engage it. With no published email, no GBP-linked CRM, and a static brochure site, prior flooring and remodel customers have no structured path back to a second project or a referral. A Customer Reactivation Engine builds that missing layer: it captures and organizes the past-client list, opens an email/SMS channel, and runs systematic re-engagement and referral sequences — converting a reputation that is already best-in-class on volume into recurring revenue. It also directly addresses the lone friction point in the reviews (the "ghosted" customer) by putting consistent, automated follow-up behind every job.</p>
-  <div class="verdict">
-    <h3>Estimated revenue opportunity</h3>
-    <p>Reactivating even a modest share of a 13-year, 270+ review client base — at flooring/remodel ticket sizes that routinely run several thousand to tens of thousands of dollars per project — can reasonably surface multiple five-figure repeat-and-referral jobs per year that the current static, channel-less setup leaves on the table.</p>
-  </div>
-</section>
-
-<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
 </body>
 </html>
