@@ -74,8 +74,8 @@
     --teal:         oklch(0.650 0.085 192);   /* soft teal accent */
     --teal-deep:    oklch(0.500 0.078 196);
     --ink:          oklch(0.310 0.028 158);   /* primary text — tinted near-black, not #000 */
-    --ink-soft:     oklch(0.460 0.030 158);   /* secondary text */
-    --ink-mute:     oklch(0.560 0.024 158);   /* muted / fine print */
+    --ink-soft:     oklch(0.430 0.028 158);   /* secondary text — strengthened to ≥4.5:1 on cream-deep */
+    --ink-mute:     oklch(0.450 0.022 158);   /* muted / fine print — strengthened to ≥4.5:1 on paper */
     --line:         oklch(0.890 0.022 150);   /* hairline borders */
     --gold:         oklch(0.800 0.115 86);    /* star fill */
     --cta:          oklch(0.600 0.140 150);   /* action green */
@@ -181,17 +181,13 @@
     mask:radial-gradient(ellipse 80% 90% at 50% 50%, black 30%, transparent 100%);
   }
   .hero .wrap{position:relative;z-index:1;max-width:880px}
-  .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
-  .pill{
-    display:inline-flex;align-items:center;gap:.4rem;background:var(--paper);
-    border:1px solid var(--line);border-radius:999px;padding:.42rem .85rem;
-    font-size:.82rem;font-weight:600;color:var(--ink-soft);box-shadow:var(--shadow-sm);
-  }
+  .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.4rem 1.5rem;justify-content:center;align-items:center;margin-bottom:1.35rem;font-size:.9rem;font-weight:600;color:var(--ink-soft)}
+  .pill{display:inline-flex;align-items:center;gap:.4rem}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--cta)}
   .pill .stars{color:var(--gold);letter-spacing:1px}
   .hero h1{
-    font-size:clamp(2.05rem,5.6vw,3.55rem);font-weight:700;color:var(--ink);
-    margin:0 auto .9rem;max-width:16ch;
+    font-size:clamp(1.7rem,3.7vw,2.45rem);font-weight:700;color:var(--ink);
+    margin:0 auto .9rem;max-width:22ch;line-height:1.18;
   }
   .hero h1 em{font-style:normal;color:var(--sage-600);display:inline-block}
   .hero-sub{font-size:clamp(1.05rem,2.3vw,1.22rem);color:var(--ink-soft);max-width:54ch;margin:0 auto 2rem}
@@ -279,7 +275,7 @@
   .ba-cap{margin:10px 2px 0;font-size:13.5px;color:var(--ink-soft)}
 
   .svc-body{padding:1.35rem 1.4rem 1.5rem}
-  .svc-num{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.85rem;color:var(--sage-400)}
+  .svc-num{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.85rem;color:var(--sage-700)}
   .svc-card h3{font-size:1.24rem;color:var(--ink);margin:.15rem 0 .45rem}
   .svc-card p{font-size:.97rem;line-height:1.55}
 
@@ -342,7 +338,7 @@
   .quote .qstars{color:var(--gold);letter-spacing:1.5px;font-size:.95rem}
   .quote p{color:var(--ink);font-size:.97rem;line-height:1.55}
   .quote footer{display:flex;align-items:center;gap:.6rem;margin-top:auto}
-  .quote .qa{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--sage-100);color:var(--sage-700);font-family:'Quicksand',sans-serif;font-weight:700;font-size:.9rem}
+  .quote .qa{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--sage-100);color:var(--sage-800);font-family:'Quicksand',sans-serif;font-weight:700;font-size:.9rem}
   .quote .qn{font-family:'Quicksand',sans-serif;font-weight:600;color:var(--ink);font-size:.92rem;line-height:1.2}
   .quote .qm{font-size:.78rem;color:var(--ink-mute)}
 
@@ -498,6 +494,11 @@
     :root:not([data-theme="light"]) .mobile-bar{background:oklch(0.170 0.018 158 / 0.95);box-shadow:0 -6px 20px oklch(0 0 0 / 0.40)}
     :root:not([data-theme="light"]) .hero::after{opacity:.10}
     :root:not([data-theme="light"]) .trust-band{background:linear-gradient(160deg,oklch(0.250 0.040 158),oklch(0.205 0.034 159))}
+    /* Trust band: --cream flips dark in dark mode but band stays dark → force stays-light */
+    :root:not([data-theme="light"]) .trust-band .rating-num,
+    :root:not([data-theme="light"]) .trust-headline h2,
+    :root:not([data-theme="light"]) .trust-item b,
+    :root:not([data-theme="light"]) .owner-line p b{color:oklch(0.985 0.012 120)}
     :root:not([data-theme="light"]) .marquee{-webkit-mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent);mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent)}
     :root:not([data-theme="light"]) .map-wrap iframe{filter:saturate(.9) brightness(.82) contrast(1.05)}
   }
@@ -532,14 +533,19 @@
   :root[data-theme="dark"] .mobile-bar{background:oklch(0.170 0.018 158 / 0.95);box-shadow:0 -6px 20px oklch(0 0 0 / 0.40)}
   :root[data-theme="dark"] .hero::after{opacity:.10}
   :root[data-theme="dark"] .trust-band{background:linear-gradient(160deg,oklch(0.250 0.040 158),oklch(0.205 0.034 159))}
+  /* Trust band: --cream flips dark in dark mode but band stays dark → force stays-light */
+  :root[data-theme="dark"] .trust-band .rating-num,
+  :root[data-theme="dark"] .trust-headline h2,
+  :root[data-theme="dark"] .trust-item b,
+  :root[data-theme="dark"] .owner-line p b{color:oklch(0.985 0.012 120)}
   :root[data-theme="dark"] .marquee{-webkit-mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent);mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent)}
   :root[data-theme="dark"] .map-wrap iframe{filter:saturate(.9) brightness(.82) contrast(1.05)}
 
   /* ============ GALLERY SECTION ============ */
   .gallery-section{padding:clamp(3.4rem,7vw,5.6rem) 0;background:var(--cream-deep)}
   .gallery-section .section-head{text-align:center;max-width:640px;margin:0 auto clamp(2rem,4vw,2.8rem)}
-  .gallery-section .section-cta{display:block;margin:.9rem auto 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:1rem;color:var(--cta);text-decoration:underline;text-underline-offset:3px;text-align:center}
-  .gallery-section .section-cta:hover{color:var(--cta-deep)}
+  .gallery-section .section-cta{display:block;margin:.9rem auto 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:1rem;color:var(--sage-700);text-decoration:underline;text-underline-offset:3px;text-align:center}
+  .gallery-section .section-cta:hover{color:var(--sage-800)}
   .ba-grid{display:grid;grid-template-columns:1fr;gap:2rem}
   @media(min-width:768px){.ba-grid{grid-template-columns:repeat(3,1fr);gap:1.8rem}}
 

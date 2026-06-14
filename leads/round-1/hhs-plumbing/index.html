@@ -77,7 +77,7 @@
     --blue-tint:  oklch(0.94 0.03 242);    /* pale blue wash */
 
     --copper:     oklch(0.64 0.13 52);     /* warm copper accent */
-    --copper-deep:oklch(0.50 0.115 48);    /* copper for text on light */
+    --copper-deep:oklch(0.43 0.115 48);    /* copper for text on light — darkened to ≥4.5:1 on near-white */
     --copper-tint:oklch(0.95 0.035 60);    /* pale copper wash */
 
     --star:       oklch(0.72 0.155 70);    /* warm gold-copper star */
@@ -105,14 +105,15 @@
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
 
   /* ---------- Top utility bar ---------- */
+  /* Always dark band — hardcode near-white so text stays readable in dark mode */
   .topbar{
     background:var(--blue-700);
-    color:var(--paper);
+    color:oklch(0.97 0.006 240);
     font-size:0.82rem;
     letter-spacing:0.01em;
   }
   .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:40px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
-  .topbar strong{font-weight:600;color:var(--paper)}
+  .topbar strong{font-weight:600;color:oklch(0.97 0.006 240)}
   .topbar .lic{opacity:.82}
   .topbar a{font-weight:600;display:inline-flex;align-items:center;gap:7px}
   .topbar a .dot{width:7px;height:7px;border-radius:50%;background:var(--copper);box-shadow:0 0 0 3px oklch(0.64 0.13 52 / .3)}
@@ -174,15 +175,15 @@
     opacity:0.5;
   }
   .hero-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;position:relative;z-index:1}
+  /* Flat inline eyebrow row — no pill/badge background */
   .eyebrow{
     display:inline-flex;align-items:center;gap:9px;
-    background:var(--copper-tint);color:var(--copper-deep);
+    color:var(--copper-deep);
     font-weight:600;font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;
-    padding:7px 14px;border-radius:999px;margin-bottom:20px;
-    border:1px solid oklch(0.64 0.13 52 / .25);
+    margin-bottom:20px;
   }
   .eyebrow .pin{width:8px;height:8px;border-radius:50%;background:var(--copper)}
-  .hero h1{font-size:clamp(2.05rem,6vw,3.5rem);color:var(--ink);margin-bottom:18px}
+  .hero h1{font-size:clamp(1.7rem,3.7vw,2.45rem);max-width:22ch;color:var(--ink);margin-bottom:18px}
   .hero h1 .accent{color:var(--blue)}
   .hero .sub{font-size:clamp(1.04rem,2.4vw,1.22rem);color:var(--ink-soft);max-width:38ch;margin-bottom:26px;font-weight:400}
   .hero .sub b{color:var(--ink);font-weight:600}
@@ -209,11 +210,12 @@
   .hero-proof b{color:var(--ink);font-weight:700}
 
   /* Hero visual panel — pure CSS, no stock imagery */
+  /* Always a dark panel in both modes — hardcode near-white so inherited text never goes dark */
   .hero-card{
     background:var(--blue-deep);
     border-radius:22px;
     padding:30px;
-    color:var(--paper);
+    color:oklch(0.97 0.006 240);
     position:relative;overflow:hidden;
     box-shadow:var(--shadow-soft);
   }
@@ -223,7 +225,9 @@
     padding:8px 14px;border-radius:999px;font-size:0.8rem;font-weight:600;letter-spacing:.03em;margin-bottom:22px;
   }
   .hero-card .badge-since b{font-family:'Epilogue';font-size:0.95rem;color:var(--copper)}
-  .hero-card h3{font-family:'Epilogue';font-weight:700;font-size:1.35rem;line-height:1.2;margin-bottom:18px;letter-spacing:-0.01em;color:var(--paper)}
+  /* hero-card is always a dark panel (blue-deep in light; overridden to dark in dark mode) —
+     text inside must stay near-white in both modes; --paper goes dark in dark mode */
+  .hero-card h3{font-family:'Epilogue';font-weight:700;font-size:1.35rem;line-height:1.2;margin-bottom:18px;letter-spacing:-0.01em;color:oklch(0.97 0.006 240)}
   .hc-list{list-style:none;display:grid;gap:13px;position:relative;z-index:2}
   .hc-list li{display:flex;align-items:flex-start;gap:12px;font-size:0.98rem;line-height:1.4}
   .hc-list .ck{
@@ -231,7 +235,7 @@
     background:oklch(0.55 0.12 155 / .22);border:1px solid oklch(0.72 0.12 155 / .6);
     display:flex;align-items:center;justify-content:center;color:oklch(0.85 0.14 155);font-size:0.8rem;font-weight:800;margin-top:1px;
   }
-  .hc-list li b{color:var(--paper);font-weight:600}
+  .hc-list li b{color:oklch(0.97 0.006 240);font-weight:600}
   .hc-list li span{color:oklch(0.86 0.02 240)}
   .hero-card .owner{
     margin-top:22px;padding-top:18px;border-top:1px solid oklch(1 0 0 / .14);
@@ -244,12 +248,14 @@
     display:flex;align-items:center;justify-content:center;
   }
   .hero-card .owner p{font-size:0.9rem;line-height:1.35;color:oklch(0.88 0.02 240)}
-  .hero-card .owner b{color:var(--paper);font-weight:600;display:block;font-size:0.98rem}
+  .hero-card .owner b{color:oklch(0.97 0.006 240);font-weight:600;display:block;font-size:0.98rem}
 
   /* ---------- Trust strip ---------- */
-  .strip{background:var(--blue-700);color:var(--paper);padding:18px 0}
+  /* Always dark band — hardcode near-white base color for both modes */
+  .strip{background:var(--blue-700);color:oklch(0.97 0.006 240);padding:18px 0}
   .strip .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 8px;text-align:center}
-  .strip .it b{display:block;font-family:'Epilogue';font-weight:800;font-size:1.55rem;color:var(--copper);line-height:1}
+  /* Stat numbers: near-white on the dark navy strip — stays light in both modes (≥9:1) */
+  .strip .it b{display:block;font-family:'Epilogue';font-weight:800;font-size:1.55rem;color:oklch(0.97 0.006 240);line-height:1}
   .strip .it span{display:block;font-size:0.78rem;color:oklch(0.84 0.02 240);margin-top:5px;font-weight:500;letter-spacing:.01em}
 
   /* ---------- Section shells ---------- */
@@ -274,7 +280,8 @@
     flex:none;font-family:'Epilogue';font-weight:800;font-size:1.05rem;
     width:42px;height:42px;border-radius:11px;
     display:flex;align-items:center;justify-content:center;
-    background:var(--blue-deep);color:var(--paper);
+    /* Dark bg in both modes (blue-deep light / overridden dark) — hardcode near-white text */
+    background:var(--blue-deep);color:oklch(0.97 0.006 240);
     letter-spacing:0;
   }
   .svc:nth-child(4n+2) .num{background:var(--copper);color:oklch(0.20 0.05 40)}
@@ -333,17 +340,20 @@
   .area-info .row a:hover{color:var(--copper-deep)}
 
   /* ---------- Contact / lead form ---------- */
-  #contact{background:var(--blue-700);color:var(--paper)}
+  /* Always dark band — hardcode near-white base color so it stays readable in dark mode */
+  #contact{background:var(--blue-700);color:oklch(0.97 0.006 240)}
   .contact-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:start}
   #contact .sec-tag{color:var(--copper)}
   #contact .sec-tag::before{background:var(--copper)}
-  #contact h2{color:var(--paper);font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:14px}
+  /* h2 must stay near-white in BOTH modes — --paper goes dark in dark mode on this always-dark band */
+  #contact h2{color:oklch(0.97 0.006 240);font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:14px}
   #contact .lede{color:oklch(0.86 0.02 240);font-size:1.08rem;margin-bottom:26px;max-width:42ch}
   .contact-points{display:grid;gap:14px;margin-bottom:8px}
   .cp{display:flex;gap:14px;align-items:flex-start}
   .cp .ck{flex:none;width:26px;height:26px;border-radius:50%;background:oklch(0.55 0.12 155 / .25);border:1px solid oklch(0.72 0.12 155 / .55);color:oklch(0.85 0.14 155);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.82rem;margin-top:2px}
   .cp p{color:oklch(0.88 0.02 240);font-size:0.98rem}
-  .cp p b{color:var(--paper);font-weight:600}
+  /* Bold emphasis inside contact copy — hardcode near-white so it stays readable in dark mode on the dark band */
+  .cp p b{color:oklch(0.97 0.006 240);font-weight:600}
   .call-big{
     margin-top:24px;display:inline-flex;align-items:center;gap:14px;
     background:oklch(1 0 0 / .07);border:1px solid oklch(1 0 0 / .16);
@@ -351,7 +361,8 @@
   }
   .call-big .ic{width:46px;height:46px;border-radius:11px;background:var(--copper);color:oklch(0.20 0.05 40);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex:none}
   .call-big small{display:block;font-size:0.76rem;letter-spacing:.04em;text-transform:uppercase;color:oklch(0.82 0.02 240);font-weight:600}
-  .call-big a{font-family:'Epilogue';font-weight:800;font-size:1.5rem;color:var(--paper);line-height:1}
+  /* Phone link must stay near-white on the always-dark contact band in both modes */
+  .call-big a{font-family:'Epilogue';font-weight:800;font-size:1.5rem;color:oklch(0.97 0.006 240);line-height:1}
 
   .form-card{background:var(--paper);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-soft)}
   .form-card h3{font-family:'Epilogue';font-weight:800;font-size:1.3rem;color:var(--ink);margin-bottom:6px}
@@ -381,16 +392,17 @@
   /* ---------- Footer ---------- */
   footer.site{background:oklch(0.22 0.04 250);color:oklch(0.82 0.02 240);padding:52px 0 26px;font-size:0.95rem}
   .foot-grid{display:grid;grid-template-columns:1fr;gap:30px;margin-bottom:34px}
-  .foot-brand .brand b{color:var(--paper)}
+  /* Footer is always dark — hardcode near-white so text never goes dark in dark mode */
+  .foot-brand .brand b{color:oklch(0.97 0.006 240)}
   .foot-brand .brand b span{color:var(--copper)}
   .foot-brand .brand small{color:oklch(0.7 0.02 240)}
   .foot-brand p{margin-top:16px;max-width:34ch;color:oklch(0.78 0.02 240);line-height:1.55}
   .foot-col h4{font-family:'Epilogue';font-weight:700;font-size:0.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--copper);margin-bottom:15px}
   .foot-col ul{list-style:none;display:grid;gap:10px}
   .foot-col li{color:oklch(0.8 0.02 240);line-height:1.4}
-  .foot-col a:hover{color:var(--paper)}
+  .foot-col a:hover{color:oklch(0.97 0.006 240)}
   .foot-col .lbl{display:block;font-size:0.74rem;text-transform:uppercase;letter-spacing:.04em;color:oklch(0.62 0.02 240);font-weight:600;margin-bottom:2px}
-  .foot-col .val{color:var(--paper);font-weight:600;font-size:1rem}
+  .foot-col .val{color:oklch(0.97 0.006 240);font-weight:600;font-size:1rem}
   .foot-bar{border-top:1px solid oklch(1 0 0 / .1);padding-top:22px;display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;justify-content:space-between}
   .foot-bar .copy{color:oklch(0.72 0.02 240);font-size:0.88rem}
   .foot-bar .lic{color:oklch(0.62 0.02 240);font-size:0.82rem}
@@ -413,7 +425,7 @@
     padding:14px 8px;border-radius:12px;
   }
   .mobile-cta .m-call{background:var(--copper);color:oklch(0.18 0.05 40);box-shadow:0 2px 0 var(--copper-deep)}
-  .mobile-cta .m-quote{background:var(--blue-deep);color:var(--paper);box-shadow:0 2px 0 var(--blue-700)}
+  .mobile-cta .m-quote{background:var(--blue-deep);color:oklch(0.97 0.006 240);box-shadow:0 2px 0 var(--blue-700)}
   .mobile-cta a .ico{font-size:1.1rem;line-height:1}
   body{padding-bottom:78px}
 
@@ -427,8 +439,8 @@
     .strip .wrap{grid-template-columns:repeat(4,1fr);gap:8px}
     .strip .it b{font-size:1.85rem}
     .svc-grid{grid-template-columns:1fr 1fr}
-    .svc:nth-child(4n+2) .num{background:var(--blue-deep);color:var(--paper)}
-    .svc:nth-child(odd) .num{background:var(--blue-deep)}
+    .svc:nth-child(4n+2) .num{background:var(--blue-deep);color:oklch(0.97 0.006 240)}
+    .svc:nth-child(odd) .num{background:var(--blue-deep);color:oklch(0.97 0.006 240)}
     .svc:nth-child(3n+2) .num{background:var(--copper);color:oklch(0.20 0.05 40)}
     .trust-grid{grid-template-columns:1.15fr 0.85fr;gap:34px}
     .area-grid{grid-template-columns:1.1fr 0.9fr}
@@ -495,6 +507,9 @@
     :root:not([data-theme="light"]) .field textarea:focus{box-shadow:0 0 0 4px oklch(0.70 0.105 248 / .22)}
     :root:not([data-theme="light"]) .field input::placeholder,
     :root:not([data-theme="light"]) .field textarea::placeholder{color:oklch(0.62 0.022 240)}
+    /* Review platform badge pills + town pills: --blue-deep on --blue-tint fails in dark (~3.6:1) — boost to near-white */
+    :root:not([data-theme="light"]) .rscore .src span,
+    :root:not([data-theme="light"]) .area-card .towns span{color:oklch(0.88 0.022 240);background:oklch(0.30 0.04 248);border-color:oklch(0.38 0.04 248)}
   }
   :root[data-theme="dark"]{
     --ink:        oklch(0.93 0.014 240);
@@ -526,6 +541,9 @@
   :root[data-theme="dark"] .field textarea:focus{box-shadow:0 0 0 4px oklch(0.70 0.105 248 / .22)}
   :root[data-theme="dark"] .field input::placeholder,
   :root[data-theme="dark"] .field textarea::placeholder{color:oklch(0.62 0.022 240)}
+  /* Review platform badge pills + town pills: --blue-deep on --blue-tint fails in dark (~3.6:1) — boost to near-white */
+  :root[data-theme="dark"] .rscore .src span,
+  :root[data-theme="dark"] .area-card .towns span{color:oklch(0.88 0.022 240);background:oklch(0.30 0.04 248);border-color:oklch(0.38 0.04 248)}
 
   /* Hero grid texture — reduce opacity in dark mode */
   @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero::after{opacity:.25}}

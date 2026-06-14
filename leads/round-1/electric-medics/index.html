@@ -76,11 +76,14 @@
     --line:      oklch(89% 0.012 255);
     --ink:       oklch(26% 0.04 255);    /* body text on light */
     --ink-soft:  oklch(44% 0.03 255);
-    --ink-mute:  oklch(56% 0.022 255);
+    --ink-mute:  oklch(53% 0.022 255);  /* darkened from 56% → ≥4.5:1 on paper */
 
     --on-navy:        oklch(96% 0.008 255);
     --on-navy-soft:   oklch(82% 0.018 255);
     --on-navy-mute:   oklch(70% 0.022 255);
+
+    /* Amber used as TEXT on light (paper) backgrounds — darkened to ≥4.5:1 */
+    --amber-ink:      oklch(52% 0.145 64);
 
     --rail-w: 248px;
     --maxw: 1080px;
@@ -271,6 +274,7 @@
   }
   .hero .wrap { position: relative; }
 
+  /* hero eyebrow — flat inline row, no pill/border/bg (ref: renewed-carpet-care) */
   .eyebrow {
     display: inline-flex; align-items: center; gap: 9px;
     font-size: 0.74rem;
@@ -278,16 +282,13 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--amber-400);
-    padding: 8px 14px;
-    border: 1px solid color-mix(in oklch, var(--amber-500) 40%, transparent);
-    border-radius: 100px;
     margin-bottom: 26px;
   }
-  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber-500); }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--amber-500); flex: 0 0 7px; }
 
   .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.3rem);
-    max-width: 18ch;
+    font-size: clamp(1.7rem, 3.7vw, 2.45rem);
+    max-width: 22ch;
     margin-bottom: 22px;
   }
   .hero h1 .spark { color: var(--amber-500); }
@@ -327,7 +328,7 @@
   .sec-kicker {
     display: inline-block;
     font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--amber-600);
+    text-transform: uppercase; color: var(--amber-ink);
     margin-bottom: 14px;
   }
   .sec-head h2 { font-size: clamp(1.9rem, 3.6vw, 2.9rem); color: var(--navy-900); margin-bottom: 14px; }
@@ -355,7 +356,7 @@
     font-family: 'Chivo', sans-serif;
     font-weight: 900;
     font-size: 1.05rem;
-    color: var(--amber-600);
+    color: var(--amber-ink);
     flex: 0 0 auto;
     min-width: 2.4ch;
     padding-top: 2px;
@@ -442,7 +443,7 @@
   /* ===== CONTACT ===== */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
   .contact-info h2 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); color: var(--navy-900); margin-bottom: 16px; }
-  .contact-info h2 .spark { color: var(--amber-600); }
+  .contact-info h2 .spark { color: var(--amber-ink); }
   .contact-info > p { color: var(--ink-soft); font-size: 1.06rem; margin-bottom: 28px; max-width: 46ch; }
 
   .ci-list { display: flex; flex-direction: column; gap: 18px; margin-bottom: 30px; }
@@ -687,6 +688,9 @@
       --amber-500: oklch(80% 0.150 72);   /* primary spark, AA on dark */
       --amber-400: oklch(86% 0.120 78);
 
+      /* amber on dark surfaces — bright, full AA */
+      --amber-ink: oklch(80% 0.150 72);
+
       --paper:     oklch(17% 0.030 255);  /* elevated surface / cards */
       --paper-2:   oklch(21% 0.034 255);  /* secondary surface / strips */
       --line:      oklch(32% 0.030 255);  /* hairlines */
@@ -707,7 +711,7 @@
     :root:not([data-theme="light"]) .contact-info h2,
     :root:not([data-theme="light"]) .ci-row .val { color: var(--ink); }
     /* keep the amber "spark" emphasis spans amber, not off-white */
-    :root:not([data-theme="light"]) .contact-info h2 .spark { color: var(--amber-500); }
+    :root:not([data-theme="light"]) .contact-info h2 .spark { color: var(--amber-ink); }
     /* hero gradient deepened so it reads against the navy-black page */
     :root:not([data-theme="light"]) .hero {
       background: radial-gradient(120% 90% at 100% 0%, oklch(22% 0.042 255) 0%, oklch(15% 0.026 255) 58%);
@@ -723,6 +727,9 @@
     --amber-600: oklch(80% 0.150 74);
     --amber-500: oklch(80% 0.150 72);
     --amber-400: oklch(86% 0.120 78);
+
+    /* amber on dark surfaces — bright, full AA */
+    --amber-ink: oklch(80% 0.150 72);
 
     --paper:     oklch(17% 0.030 255);
     --paper-2:   oklch(21% 0.034 255);
@@ -741,7 +748,7 @@
   :root[data-theme="dark"] .area-label,
   :root[data-theme="dark"] .contact-info h2,
   :root[data-theme="dark"] .ci-row .val { color: var(--ink); }
-  :root[data-theme="dark"] .contact-info h2 .spark { color: var(--amber-500); }
+  :root[data-theme="dark"] .contact-info h2 .spark { color: var(--amber-ink); }
   :root[data-theme="dark"] .hero {
     background: radial-gradient(120% 90% at 100% 0%, oklch(22% 0.042 255) 0%, oklch(15% 0.026 255) 58%);
   }

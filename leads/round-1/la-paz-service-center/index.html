@@ -168,7 +168,13 @@
 
   .hero-inner{position:relative;z-index:2;padding:54px 0 66px;display:grid;gap:38px;grid-template-columns:1fr}
   .hero-copy{max-width:660px}
-  .hero h1{font-weight:900;font-size:clamp(2.15rem,7.2vw,4.05rem);margin:18px 0 0;text-wrap:balance}
+  /* flat hero badge row (rating + credentials) */
+  .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.35rem 1.4rem;align-items:center;margin-bottom:1.1rem;font-size:.9rem;font-weight:600;color:var(--steel-300)}
+  .hero-badges .pill{display:inline-flex;align-items:center;gap:.38rem}
+  .hero-badges .pill .stars{color:var(--gold);letter-spacing:1px}
+  .hero-badges .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--steel-300);flex:none}
+
+  .hero h1{font-weight:900;font-size:clamp(1.7rem,3.7vw,2.45rem);margin:18px 0 0;text-wrap:balance}
   .hero h1 .hl{color:#fff;position:relative;white-space:nowrap}
   .hero h1 em{font-style:normal;color:var(--red);display:inline}
   .hero .since{
@@ -235,7 +241,8 @@
   }
   .svc:hover .no{background:var(--red)}
   .svc h3{font-weight:700;font-size:1.22rem;color:var(--ink);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  .svc h3 .tag{font-family:"Source Sans 3";font-size:0.66rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--red);background:var(--red-tint);padding:3px 9px;border-radius:100px;border:1px solid oklch(0.85 0.06 27)}
+  /* tag text darkened to pass 4.5:1 on --red-tint (light mode: 0.575 → 5.74:1) */
+  .svc h3 .tag{font-family:"Source Sans 3";font-size:0.66rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:oklch(0.50 0.205 27);background:var(--red-tint);padding:3px 9px;border-radius:100px;border:1px solid oklch(0.85 0.06 27)}
   .svc p{margin-top:7px;color:var(--steel-700);font-size:1rem;line-height:1.5;max-width:62ch}
 
   /* vehicle types strip */
@@ -245,6 +252,13 @@
   .veh h4 .dot{width:9px;height:9px;background:var(--gold);border-radius:2px;transform:rotate(45deg)}
   .veh ul{display:flex;flex-wrap:wrap;gap:9px;list-style:none}
   .veh li{font-family:"Archivo";font-weight:700;font-size:0.82rem;letter-spacing:0.03em;color:var(--steel-300);border:1px solid var(--line-dk);padding:7px 14px;border-radius:100px}
+
+  /* eyebrow on dark-bg sections (light mode): red(0.575) on steel-900(0.27) → 3.11 fails;
+     brighten to oklch(0.70 0.18 27) → 5.21:1 on trust, 5.04:1 on hero */
+  .trust .eyebrow,
+  .hero .eyebrow{color:oklch(0.70 0.18 27)}
+  .trust .eyebrow::before,
+  .hero .eyebrow::before{background:oklch(0.70 0.18 27)}
 
   /* ---------- Trust ---------- */
   .trust{background:var(--steel-900);color:#fff;position:relative;overflow:hidden}
@@ -341,9 +355,11 @@
   .foot-col a:hover{color:#fff}
   .foot-col a.big{font-family:"Archivo";font-weight:800;color:#fff;font-size:1.25rem;letter-spacing:-0.01em;margin-bottom:4px}
   .foot-bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;padding:20px 0 30px}
-  .foot-bar small{color:var(--steel-500);font-size:0.82rem}
-  .foot-bar .pwr{color:var(--steel-700);font-size:0.78rem;letter-spacing:0.04em}
-  .foot-bar .pwr b{color:var(--steel-500);font-weight:700}
+  /* light mode: steel-500(0.58) on ink bg → 4.05 fails; raise to 0.66 → 5.57:1 */
+  .foot-bar small{color:oklch(0.66 0.022 255);font-size:0.82rem}
+  /* light mode: steel-700(0.42) on ink bg → 2.05 fails; use steel-300 level → 9.27:1 */
+  .foot-bar .pwr{color:var(--steel-300);font-size:0.78rem;letter-spacing:0.04em}
+  .foot-bar .pwr b{color:oklch(0.66 0.022 255);font-weight:700}
 
   /* ---------- Sticky mobile CTA ---------- */
   .mobilebar{
@@ -455,11 +471,23 @@
     :root:not([data-theme="light"]) .badge,
     :root:not([data-theme="light"]) .qcard,
     :root:not([data-theme="light"]) .info-row .ic{background:oklch(0.295 0.026 256)}
-    :root:not([data-theme="light"]) .svc h3 .tag{border-color:oklch(0.45 0.10 27)}
+    /* tag: dark red-tint bg oklch(0.30,0.05,27); raise text to 0.72 → 5.19:1 */
+    :root:not([data-theme="light"]) .svc h3 .tag{color:oklch(0.72 0.175 27);border-color:oklch(0.45 0.10 27)}
     :root:not([data-theme="light"]) .map-frame iframe{filter:grayscale(0.25) contrast(1.04) brightness(0.88)}
     :root:not([data-theme="light"]) .icn-d{stroke:oklch(0.22 0.018 256)}
     :root:not([data-theme="light"]) .btn-dark{background:oklch(0.31 0.026 256)}
     :root:not([data-theme="light"]) .btn-dark:hover{background:oklch(0.36 0.028 256)}
+    /* form label: steel-800(0.31) on paper-card(0.255) → 1.2:1 FAIL; fix → 7.88:1 */
+    :root:not([data-theme="light"]) .field label{color:oklch(0.78 0.016 256)}
+    /* eyebrow on dark sections: dark --red=0.66 → 4.68:1 passes; reset light-mode override */
+    :root:not([data-theme="light"]) .trust .eyebrow,
+    :root:not([data-theme="light"]) .hero .eyebrow{color:var(--red)}
+    :root:not([data-theme="light"]) .trust .eyebrow::before,
+    :root:not([data-theme="light"]) .hero .eyebrow::before{background:var(--red)}
+    /* footer bar: restore dark values over light-mode hardcoded colours */
+    :root:not([data-theme="light"]) .foot-bar small{color:var(--steel-500)}
+    :root:not([data-theme="light"]) .foot-bar .pwr{color:var(--steel-700)}
+    :root:not([data-theme="light"]) .foot-bar .pwr b{color:var(--steel-500)}
   }
 
   :root[data-theme="dark"]{
@@ -491,11 +519,19 @@
   :root[data-theme="dark"] .badge,
   :root[data-theme="dark"] .qcard,
   :root[data-theme="dark"] .info-row .ic{background:oklch(0.295 0.026 256)}
-  :root[data-theme="dark"] .svc h3 .tag{border-color:oklch(0.45 0.10 27)}
+  :root[data-theme="dark"] .svc h3 .tag{color:oklch(0.72 0.175 27);border-color:oklch(0.45 0.10 27)}
   :root[data-theme="dark"] .map-frame iframe{filter:grayscale(0.25) contrast(1.04) brightness(0.88)}
   :root[data-theme="dark"] .icn-d{stroke:oklch(0.22 0.018 256)}
   :root[data-theme="dark"] .btn-dark{background:oklch(0.31 0.026 256)}
   :root[data-theme="dark"] .btn-dark:hover{background:oklch(0.36 0.028 256)}
+  :root[data-theme="dark"] .field label{color:oklch(0.78 0.016 256)}
+  :root[data-theme="dark"] .trust .eyebrow,
+  :root[data-theme="dark"] .hero .eyebrow{color:var(--red)}
+  :root[data-theme="dark"] .trust .eyebrow::before,
+  :root[data-theme="dark"] .hero .eyebrow::before{background:var(--red)}
+  :root[data-theme="dark"] .foot-bar small{color:var(--steel-500)}
+  :root[data-theme="dark"] .foot-bar .pwr{color:var(--steel-700)}
+  :root[data-theme="dark"] .foot-bar .pwr b{color:var(--steel-500)}
 </style>
 </head>
 <body>
@@ -535,6 +571,11 @@
     <div class="wrap hero-inner">
       <div class="hero-copy">
         <span class="eyebrow">Family-Owned Auto Repair &amp; Body</span>
+        <div class="hero-badges">
+          <span class="pill"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 on Google</span>
+          <span class="pill"><span class="dot"></span> BBB A+ Accredited</span>
+          <span class="pill"><span class="dot"></span> Est. 1985</span>
+        </div>
         <h1>South Orange County&rsquo;s <em>Trusted</em> Auto Shop Since 1985 &mdash; <span class="hl">Honest Expertise,</span> Real Relationships</h1>
         <span class="since">41 Years In Aliso Viejo</span>
         <p class="sub">A neighborhood shop that earned multigenerational loyalty the honest way &mdash; <b>no upsells, fair pricing, accurate diagnosis.</b> ASE &amp; Factory Master Technicians service foreign, domestic, European &amp; hybrid vehicles, backed by a 24-month / 24,000-mile warranty.</p>

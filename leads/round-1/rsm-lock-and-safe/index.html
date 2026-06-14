@@ -74,6 +74,7 @@
     --secure-600: #235a50;
     --secure-500: #2f7166;
     --brass:      #b08323;  /* brass accent */
+    --brass-700:  #7a5810;  /* darkened brass for AA on light brass-50 bg */
     --brass-600:  #946c18;
     --brass-200:  #e8d29a;
     --brass-50:   #f6eed9;
@@ -103,6 +104,7 @@
       --secure-600: #2a6357;
       --secure-500: #398374;
       --brass:      #d8a73e;   /* brightened brass accent, AA on dark */
+      --brass-700:  #c49030;   /* dark-mode brass-700 (lighter than light-mode, since bg is dark) */
       --brass-600:  #b5862a;
       --brass-200:  #ecd6a4;
       --brass-50:   #2a2415;   /* dark warm tint for brass-bg chips */
@@ -124,6 +126,7 @@
     --secure-600: #2a6357;
     --secure-500: #398374;
     --brass:      #d8a73e;
+    --brass-700:  #c49030;
     --brass-600:  #b5862a;
     --brass-200:  #ecd6a4;
     --brass-50:   #2a2415;
@@ -147,6 +150,27 @@
     :root:not([data-theme="light"]) form.lead{ box-shadow:0 2px 18px rgba(0,0,0,.45); }
     /* Hero texture: tone down slightly on dark backgrounds */
     :root:not([data-theme="light"]) .hero::after{ opacity:.55; }
+    /* --- WCAG AA fixes: resolve --secure (dark green) used as text color on dark bg --- */
+    /* headings and display numbers that use color:var(--secure) */
+    :root:not([data-theme="light"]) h1.hero-h,
+    :root:not([data-theme="light"]) .sec-head h2,
+    :root:not([data-theme="light"]) .story-copy h2,
+    :root:not([data-theme="light"]) .thanks h3{ color:var(--ink); }
+    :root:not([data-theme="light"]) .hero-meta .mi .num{ color:var(--brass-200); }
+    :root:not([data-theme="light"]) .story-card .quote{ color:var(--ink); }
+    :root:not([data-theme="light"]) form.lead .fh{ color:var(--ink); }
+    /* btn-ghost: secure color on dark page bg = near-invisible */
+    :root:not([data-theme="light"]) .btn-ghost{ color:var(--ink); border-color:var(--line); }
+    :root:not([data-theme="light"]) .btn-ghost:hover{ background:var(--secure-700); color:var(--on-secure); border-color:var(--secure-600); }
+    /* svc-tags .t: secure-600 (#2a6357) on paper-2 (#142420) = 2.32 → fix to ink-soft */
+    :root:not([data-theme="light"]) .svc-tags .t{ color:var(--ink-soft); border-color:var(--line); }
+    :root:not([data-theme="light"]) .svc-tags .t.acc{ color:var(--brass-200); border-color:var(--brass-50); }
+    /* nav hover: secure-600 on dark page = 2.58 → fix to ink */
+    :root:not([data-theme="light"]) nav.main a:hover{ color:var(--ink); }
+    /* tstat .stars: brass (#d8a73e) on secure-700 (#1d4f47) = 4.21 → use brass-200 */
+    :root:not([data-theme="light"]) .tstat .stars{ color:var(--brass-200); }
+    /* hero-h .yr span: inherits from h1 → stays brass-600 which in dark = #b5862a on paper dark */
+    :root:not([data-theme="light"]) h1.hero-h .yr{ color:var(--brass-200); }
   }
   :root[data-theme="dark"] header.site{ background:rgba(14,25,22,.92); }
   :root[data-theme="dark"] footer.site{ background:#0b1411; }
@@ -156,6 +180,21 @@
   :root[data-theme="dark"] .field textarea::placeholder{ color:#73837e; }
   :root[data-theme="dark"] form.lead{ box-shadow:0 2px 18px rgba(0,0,0,.45); }
   :root[data-theme="dark"] .hero::after{ opacity:.55; }
+  /* --- WCAG AA fixes (data-theme="dark" mirror) --- */
+  :root[data-theme="dark"] h1.hero-h,
+  :root[data-theme="dark"] .sec-head h2,
+  :root[data-theme="dark"] .story-copy h2,
+  :root[data-theme="dark"] .thanks h3{ color:var(--ink); }
+  :root[data-theme="dark"] .hero-meta .mi .num{ color:var(--brass-200); }
+  :root[data-theme="dark"] .story-card .quote{ color:var(--ink); }
+  :root[data-theme="dark"] form.lead .fh{ color:var(--ink); }
+  :root[data-theme="dark"] .btn-ghost{ color:var(--ink); border-color:var(--line); }
+  :root[data-theme="dark"] .btn-ghost:hover{ background:var(--secure-700); color:var(--on-secure); border-color:var(--secure-600); }
+  :root[data-theme="dark"] .svc-tags .t{ color:var(--ink-soft); border-color:var(--line); }
+  :root[data-theme="dark"] .svc-tags .t.acc{ color:var(--brass-200); border-color:var(--brass-50); }
+  :root[data-theme="dark"] nav.main a:hover{ color:var(--ink); }
+  :root[data-theme="dark"] .tstat .stars{ color:var(--brass-200); }
+  :root[data-theme="dark"] h1.hero-h .yr{ color:var(--brass-200); }
 
   /* ---------- Theme toggle button ---------- */
   .theme-toggle{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:var(--paper-2); color:var(--secure); cursor:pointer; transition:background .15s ease, border-color .15s ease; }
@@ -287,15 +326,16 @@
     mask:linear-gradient(180deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.5) 55%, transparent 100%);
   }
   .hero .wrap{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; padding-top:54px; padding-bottom:58px; }
+  /* Hero eyebrow: flat inline row — no pill chrome (ref renewed-carpet-care) */
   .eyebrow{
     display:inline-flex; align-items:center; gap:9px;
     font-family:'Rubik',sans-serif; font-weight:600; font-size:12.5px; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--brass-600);
-    background:var(--brass-50); border:1px solid var(--brass-200);
-    padding:7px 13px; border-radius:999px; margin-bottom:20px;
+    color:var(--brass-700);
+    margin-bottom:20px;
   }
-  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--brass); }
-  h1.hero-h{ font-size:clamp(33px,5vw,52px); font-weight:800; color:var(--secure); letter-spacing:-.02em; }
+  .eyebrow .dot{ width:7px; height:7px; border-radius:50%; background:var(--brass); flex:none; }
+  /* Right-sized hero headline: was clamp(33px,5vw,52px) — capped at 52px which dominated fold */
+  h1.hero-h{ font-size:clamp(1.7rem,3.7vw,2.45rem); font-weight:800; color:var(--secure); letter-spacing:-.02em; max-width:22ch; }
   h1.hero-h .yr{ color:var(--brass-600); }
   .hero p.sub{ font-size:18.5px; color:var(--ink-soft); margin:20px 0 0; max-width:36ch; }
   .hero-cta{ display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
@@ -368,7 +408,8 @@
   .svc-body p{ margin:0; font-size:14.5px; color:var(--ink-soft); line-height:1.5; }
   .svc-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:34px; padding-top:30px; border-top:1px solid var(--line); }
   .svc-tags .t{ font-size:13.5px; font-weight:600; color:var(--secure-600); background:var(--paper-2); border:1px solid var(--line); padding:8px 14px; border-radius:999px; }
-  .svc-tags .t.acc{ color:var(--brass-600); background:var(--brass-50); border-color:var(--brass-200); }
+  /* .t.acc: brass-600(#946c18) on brass-50(#f6eed9) = 4.11 FAILS — use brass-700(#7a5810) = 5.62 */
+  .svc-tags .t.acc{ color:var(--brass-700); background:var(--brass-50); border-color:var(--brass-200); }
   @media (max-width:768px){ .check-grid{ grid-template-columns:1fr; gap:0; } }
 
   /* ---------- Trust ---------- */
@@ -381,7 +422,9 @@
   .tstat{ background:var(--secure-700); border:1px solid var(--secure-600); border-radius:var(--radius); padding:24px 22px; }
   .tstat .big{ font-family:'Rubik',sans-serif; font-weight:800; font-size:38px; color:var(--brass-200); line-height:1; }
   .tstat .lab{ margin-top:9px; font-size:14px; color:var(--on-secure-mut); line-height:1.35; }
-  .tstat .stars{ color:var(--brass); font-size:18px; letter-spacing:2px; }
+  /* .tstat .stars: --brass on --secure-700 = 3.15 in light, 4.21 in dark — both fail AA.
+     Use --brass-200 instead: 7.27 light, 6.51 dark. */
+  .tstat .stars{ color:var(--brass-200); font-size:18px; letter-spacing:2px; }
   .tstat .src{ font-size:11.5px; color:var(--on-secure-mut); margin-top:7px; text-transform:uppercase; letter-spacing:.06em; }
 
   .trust-points{ display:grid; grid-template-columns:1fr 1fr; gap:14px 36px; }
@@ -474,7 +517,8 @@
   footer .fcall:hover{ color:#fff; }
   .f-bottom{ border-top:1px solid rgba(244,241,230,.12); margin-top:40px; padding-top:22px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; align-items:center; }
   .f-bottom p{ margin:0; font-size:13px; color:var(--on-secure-mut); }
-  .f-bottom .powered{ font-size:12.5px; color:#7d857f; }
+  /* #7d857f on footer-light bg (#15201d) = 4.40 FAIL — lighten to #8e9890 = 5.61 both modes */
+  .f-bottom .powered{ font-size:12.5px; color:#8e9890; }
   @media (max-width:768px){ footer.site .wrap{ grid-template-columns:1fr 1fr; } footer .f-brand{ grid-column:1 / -1; } }
 
   /* ============ FLOATING BRAND SWITCH (landing → audit) ============ */

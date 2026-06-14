@@ -59,6 +59,7 @@
     --clay-deep:   oklch(0.495 0.128 42);   /* pressed / hover */
     --clay-tint:   oklch(0.955 0.022 55);   /* warm cream wash */
     --clay-line:   oklch(0.90 0.040 55);    /* soft clay border */
+    --contact-bg:  oklch(0.955 0.022 55);   /* contact band bg — light mode = clay-tint cream */
 
     --slate-900:   oklch(0.255 0.018 250);  /* deepest roofline */
     --slate-800:   oklch(0.315 0.018 250);  /* hero base */
@@ -165,13 +166,17 @@
   .eyebrow{
     display:inline-flex;align-items:center;gap:10px;
     font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--clay-line);background:oklch(0.585 0.135 45 / 0.16);
-    border:1px solid oklch(0.585 0.135 45 / 0.40);
-    padding:7px 15px;border-radius:40px;margin-bottom:22px;
+    color:var(--clay-line);
+    margin-bottom:22px;
   }
   .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none;}
-  .hero h1{font-size:clamp(2.35rem,7vw,4.05rem);font-weight:700;margin-bottom:20px;}
-  .hero h1 .clay{color:oklch(0.74 0.115 50);}
+  /* hero rating/proof — flat inline row (no pill bg/border) */
+  .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center;margin-bottom:1.2rem;font-size:.9rem;font-weight:600;color:var(--slate-300);}
+  .hero-badges .pill{display:inline-flex;align-items:center;gap:.4rem;}
+  .hero-badges .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);flex:none;}
+  .hero-badges .pill .stars{color:oklch(0.87 0.095 58);letter-spacing:1px;}
+  .hero h1{font-size:clamp(1.7rem,3.7vw,2.45rem);font-weight:700;margin-bottom:20px;max-width:22ch;}
+  .hero h1 .clay{color:oklch(0.82 0.120 50);} /* brightened: ~4.6:1 on slate-800 hero bg, both modes */
   .hero .sub{font-size:1.13rem;color:var(--slate-300);max-width:36em;margin-bottom:30px;line-height:1.62;}
   .hero .sub strong{color:var(--stone-50);font-weight:600;}
   .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
@@ -258,7 +263,7 @@
   .trust .sec-head p{color:var(--slate-300);}
   .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:oklch(0.985 0.006 70 / 0.12);border-radius:10px;overflow:hidden;margin-bottom:46px;}
   .stat{background:var(--slate-800);padding:28px 20px;text-align:center;}
-  .stat .big{font-family:"Zilla Slab",serif;font-weight:700;font-size:2.5rem;color:oklch(0.80 0.115 55);line-height:1;}
+  .stat .big{font-family:"Zilla Slab",serif;font-weight:700;font-size:2.5rem;color:oklch(0.87 0.095 58);line-height:1;} /* brightened to ~4.5:1 on slate-800 in light; ~5.1:1 dark */
   .stat .lbl{font-size:.86rem;color:var(--slate-300);margin-top:8px;font-weight:500;letter-spacing:.02em;}
   .stat .stars{display:block;margin-top:6px;}
 
@@ -271,7 +276,7 @@
   .cred .ic{
     width:46px;height:46px;flex:none;border-radius:8px;
     background:oklch(0.585 0.135 45 / 0.18);border:1px solid oklch(0.585 0.135 45 / 0.40);
-    display:flex;align-items:center;justify-content:center;color:oklch(0.80 0.115 55);
+    display:flex;align-items:center;justify-content:center;color:oklch(0.87 0.095 58);
   }
   .cred .ic svg{width:23px;height:23px;}
   .cred h3{font-size:1.1rem;color:var(--stone-50);margin-bottom:4px;font-weight:600;}
@@ -306,7 +311,7 @@
   .map-frame iframe{width:100%;height:320px;border:0;display:block;}
 
   /* ---------- contact ---------- */
-  .contact{background:var(--clay-tint);position:relative;}
+  .contact{background:var(--contact-bg);position:relative;}
   .contact-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:start;}
   .contact h2{font-size:clamp(1.9rem,4.4vw,2.7rem);color:var(--slate-900);margin-bottom:14px;}
   .contact .lead{color:var(--ink-soft);font-size:1.08rem;margin-bottom:26px;}
@@ -386,7 +391,7 @@
 
   /* ---------- floating controls (landing) ---------- */
   .br-switch,.br-portal-foot{text-decoration:none;}
-  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-family:"Mukta",sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--stone-50);color:var(--ink);border:1px solid var(--hairline);font-weight:600;font-size:14px;}
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-family:"Mukta",sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:oklch(0.96 0.006 70);color:oklch(0.22 0.016 250);border:1px solid oklch(0.88 0.009 66);font-weight:600;font-size:14px;}
   .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
   .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--clay);color:#1a1a1a;flex:0 0 auto;}
   @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
@@ -408,7 +413,7 @@
     display:inline-flex;align-items:center;gap:9px;font-family:"Zilla Slab",serif;
     font-weight:700;font-size:1.2rem;color:var(--stone-50);
   }
-  .foot-call:hover{color:oklch(0.80 0.115 55);}
+  .foot-call:hover{color:oklch(0.87 0.095 58);}
   .foot-bottom{display:flex;flex-direction:column;gap:8px;padding-top:22px;font-size:.82rem;color:var(--slate-500);}
   .foot-bottom .pwr{color:var(--slate-500);}
   .foot-bottom .pwr b{color:var(--slate-300);font-weight:600;}
@@ -486,6 +491,7 @@
       --clay-deep:   oklch(0.630 0.130 46);   /* hover / clay-as-text on dark */
       --clay-tint:   oklch(0.255 0.030 45);   /* warm dark wash (was cream) */
       --clay-line:   oklch(0.620 0.090 50);   /* recognizable clay border / accent text */
+      --contact-bg:  oklch(0.185 0.018 250);  /* contact band — dark mode: near-slate, stays dark */
 
       --slate-900:   oklch(0.155 0.012 250);  /* deepest band / footer ground */
       --slate-800:   oklch(0.205 0.013 250);  /* hero base / card surface */
@@ -529,12 +535,18 @@
     :root:not([data-theme="light"]) .mobile-cta .mc-quote,
     :root:not([data-theme="light"]) .svc:hover .n,
     :root:not([data-theme="light"]) .owner .avt{color:oklch(0.165 0.012 250);}
+    /* contact band dark-mode: band is near-slate; ensure all cp text stays light */
+    :root:not([data-theme="light"]) .contact .cp a,
+    :root:not([data-theme="light"]) .contact .cp span{color:var(--slate-300);}
+    :root:not([data-theme="light"]) .contact .lead{color:var(--slate-300);}
+    :root:not([data-theme="light"]) .contact .kicker{color:var(--clay-line);}
   }
   :root[data-theme="dark"]{
     --clay:        oklch(0.700 0.135 48);
     --clay-deep:   oklch(0.630 0.130 46);
     --clay-tint:   oklch(0.255 0.030 45);
     --clay-line:   oklch(0.620 0.090 50);
+    --contact-bg:  oklch(0.185 0.018 250);  /* contact band — dark mode: near-slate, stays dark */
 
     --slate-900:   oklch(0.155 0.012 250);
     --slate-800:   oklch(0.205 0.013 250);
@@ -572,6 +584,11 @@
   :root[data-theme="dark"] .mobile-cta .mc-quote,
   :root[data-theme="dark"] .svc:hover .n,
   :root[data-theme="dark"] .owner .avt{color:oklch(0.165 0.012 250);}
+  /* contact band dark-mode: band is near-slate; ensure all cp text stays light */
+  :root[data-theme="dark"] .contact .cp a,
+  :root[data-theme="dark"] .contact .cp span{color:var(--slate-300);}
+  :root[data-theme="dark"] .contact .lead{color:var(--slate-300);}
+  :root[data-theme="dark"] .contact .kicker{color:var(--clay-line);}
 </style>
 </head>
 <body>
@@ -608,6 +625,11 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow"><span class="dot"></span>Family-owned in Rancho Santa Margarita</span>
+        <div class="hero-badges">
+          <span class="pill"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Yelp</span>
+          <span class="pill"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 on Angi</span>
+          <span class="pill"><span class="dot"></span> CSLB #943051</span>
+        </div>
         <h1>Rancho Santa Margarita's Trusted Roofer — <span class="clay">15 Years, Mark on Every Job</span></h1>
         <p class="sub">Family-owned, fully licensed and insured. You get a <strong>straightforward bid</strong>, neat work, and an owner who actually shows up — from tile and shingle to flat TPO and gutters across South Orange County.</p>
         <div class="hero-cta">
@@ -618,8 +640,7 @@
           </a>
         </div>
         <div class="hero-proof">
-          <span class="proof-item"><span class="stars" aria-hidden="true">★★★★★</span> <b>5.0</b> on Yelp <span aria-hidden="true">·</span> 4.9 on Angi</span>
-          <span class="proof-item"><b>CSLB #943051</b> · Bonded &amp; Insured</span>
+          <span class="proof-item"><b>Bonded &amp; Insured</b></span>
           <span class="proof-item">Serving South OC since <b>2009</b></span>
         </div>
       </div>
@@ -744,7 +765,7 @@
       <div class="stat-row">
         <div class="stat">
           <span class="big">5.0</span>
-          <span class="stars" aria-hidden="true" style="color:oklch(0.80 0.115 55);letter-spacing:2px;">★★★★★</span>
+          <span class="stars" aria-hidden="true" style="color:oklch(0.87 0.095 58);letter-spacing:2px;">★★★★★</span>
           <span class="lbl">Yelp rating · 14 reviews</span>
         </div>
         <div class="stat">

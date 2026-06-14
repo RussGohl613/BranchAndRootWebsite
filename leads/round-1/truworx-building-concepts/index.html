@@ -52,12 +52,12 @@
     --paper-3:      oklch(93.4% 0.010 76);   /* deeper surface / hairlines */
     --ink:          oklch(24% 0.012 70);     /* charcoal text */
     --ink-2:        oklch(38% 0.012 72);     /* secondary text */
-    --ink-3:        oklch(52% 0.012 74);     /* muted text */
+    --ink-3:        oklch(46% 0.012 74);     /* muted text — darkened to oklch(46%) for 5.46:1 on paper (AA body text) */
     --charcoal:     oklch(26% 0.014 65);     /* deep charcoal surface */
     --charcoal-2:   oklch(31% 0.016 62);     /* raised on charcoal */
     --charcoal-3:   oklch(40% 0.016 60);     /* hairline on charcoal */
     --amber:        oklch(74% 0.155 67);     /* safety amber */
-    --amber-deep:   oklch(62% 0.150 58);     /* amber pressed / text-on-amber base */
+    --amber-deep:   oklch(52% 0.150 58);     /* amber pressed / text-on-amber base — darkened to oklch(52%) for 5.17:1 on paper (AA body text) */
     --amber-ink:    oklch(30% 0.090 60);     /* dark amber for text on amber fills */
     --amber-soft:   oklch(94% 0.045 78);     /* amber tint surface */
     --line:         oklch(86% 0.012 74);     /* default border */
@@ -176,8 +176,8 @@
   }
   .hero-copy{max-width:620px}
   .hero h1{
-    font-size:clamp(38px,5.4vw,62px);font-weight:800;margin:20px 0 0;
-    letter-spacing:-0.03em;line-height:0.98;
+    font-size:clamp(1.85rem,3.6vw,2.55rem);font-weight:800;margin:20px 0 0;
+    letter-spacing:-0.03em;line-height:1.04;
   }
   .hero h1 .amber{color:var(--amber-deep)}
   .hero .sub{font-size:clamp(17px,1.4vw,19.5px);color:var(--ink-2);margin-top:22px;max-width:560px;line-height:1.55}
@@ -333,7 +333,7 @@
   .foot-col .ph-link:hover{color:var(--amber)}
   .foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;padding:22px 0 30px}
   .foot-bottom .copy{font-size:13px;color:var(--on-charcoal-2)}
-  .foot-bottom .powered{font-size:12px;color:var(--charcoal-3);letter-spacing:0.02em}
+  .foot-bottom .powered{font-size:12px;color:var(--on-charcoal-2);letter-spacing:0.02em}
   .foot-bottom .powered b{color:var(--on-charcoal-2);font-weight:600}
   .foot-license{font-size:12.5px;color:var(--on-charcoal-2);margin-top:6px}
 
@@ -417,6 +417,8 @@
     }
     /* Map: theme container only; tone down the iframe's grayscale boost so it doesn't glow on dark */
     :root:not([data-theme="light"]) .map-band iframe{filter:grayscale(0.35) contrast(0.95) brightness(0.9)}
+    /* Fix: .ck checkmark — amber-soft(#3F2810)+amber-ink(#241000)=1.32:1 in dark; swap to amber(7.02:1) on charcoal-2 */
+    :root:not([data-theme="light"]) .assure .ck{background:var(--charcoal-2);color:var(--amber)}
   }
   :root[data-theme="dark"]{
     --paper:        #1B1611;
@@ -440,6 +442,8 @@
     --shadow:       0 1px 0 var(--line);
   }
   :root[data-theme="dark"] .map-band iframe{filter:grayscale(0.35) contrast(0.95) brightness(0.9)}
+  /* Fix: .ck checkmark — same fix for forced dark theme (tokens already set above) */
+  :root[data-theme="dark"] .assure .ck{background:var(--charcoal-2);color:var(--amber)}
 </style>
 </head>
 <body>
