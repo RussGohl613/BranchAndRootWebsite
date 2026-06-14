@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
+<title>B&amp;R — Page Not Found (Private)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light dark;
+  --page-bg:#F7F5F0;--surface:#FFFFFF;--surface-2:#EFEADB;--header-bg:rgba(247,245,240,.88);
+  --heading:#1B4332;--body:#1F1B16;--muted:#4A5568;--line:#D9D2C2;
+  --accent:#2D6A4F;--accent-2:#1B4332;--warm:#B8704A;
+  --shadow:0 6px 24px rgba(15,42,30,.08),0 2px 4px rgba(15,42,30,.04);
+  --radius:12px;
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.82);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#52946F;--accent-2:#52946F;--warm:#E2A07A;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}}
+:root[data-theme="dark"]{--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.82);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#52946F;--accent-2:#52946F;--warm:#E2A07A;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body);background:var(--page-bg);color:var(--body);line-height:1.55;min-height:100vh;display:flex;flex-direction:column;transition:background .3s ease,color .3s ease;}
+
+/* ---- Header chrome (matches the portal) ---- */
+.top{position:sticky;top:0;z-index:10;background:var(--header-bg);backdrop-filter:saturate(1.1) blur(8px);-webkit-backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line);}
+.top-inner{max-width:1040px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.1}
+.brand{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:18px;letter-spacing:.2px}
+.brand-sub{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:12px}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .2s,transform .04s;}
+.theme-toggle:hover{border-color:var(--accent)}
+.theme-toggle:active{transform:translateY(1px)}
+.theme-toggle svg{width:18px;height:18px;display:block}
+.theme-toggle .i-sun{display:none}.theme-toggle .i-moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+:root[data-theme="light"] .theme-toggle .i-moon{display:block}:root[data-theme="light"] .theme-toggle .i-sun{display:none}
+
+/* ---- 404 content ---- */
+.nf{flex:1;max-width:720px;margin:0 auto;padding:clamp(3rem,7vw,6rem) 22px;text-align:center}
+.nf .big{font-family:var(--font-display);font-size:clamp(3.5rem,1.5rem + 5vw,5.5rem);color:var(--accent-2);font-weight:700;line-height:1;letter-spacing:-.05em;font-variation-settings:"opsz" 144;margin:0}
+.nf .big em{font-style:italic;color:var(--accent);font-weight:500}
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-top:1rem}
+.eyebrow::before{content:"";display:inline-block;width:28px;height:1px;background:currentColor;flex-shrink:0}
+.nf h1{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:clamp(1.5rem,1.2rem + 1.4vw,2.1rem);max-width:22ch;margin:.5rem auto 0;letter-spacing:-.01em;line-height:1.15}
+.nf .lead{color:var(--muted);margin:1rem auto 0;max-width:54ch;font-size:16.5px;line-height:1.55}
+.horizon{position:relative;height:16px;width:280px;max-width:78%;margin:2rem auto;display:block}
+.horizon::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:var(--line)}
+.horizon::after{content:"";position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:7px;height:7px;background:var(--accent);border-radius:50%}
+.horizon i{position:absolute;top:4px;left:50%;transform:translateX(-50%);width:1px;height:12px;background:var(--accent);display:block}
+.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:1.75rem}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:15px;padding:11px 20px;border-radius:10px;transition:background .2s,transform .04s,border-color .2s}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-2)}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent)}
+.btn.ghost:hover{background:var(--surface-2)}
+.nf .help{margin-top:1.5rem;font-size:13.5px;color:var(--muted)}
+.nf .help a{color:var(--accent);text-decoration:none;font-weight:600}
+.nf .help a:hover{text-decoration:underline}
+
+/* ---- Footer (matches the portal) ---- */
+.foot-wrap{max-width:1040px;margin:0 auto;padding:0 22px 40px}
+footer.foot{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px;text-align:center}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner"><div class="brand-wrap"><span class="brand">Branch &amp; Root</span><span class="brand-sub">Lead Previews · Private</span></div><div class="top-actions"><button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button></div></div></header>
+
+<main class="nf">
+  <div class="big" aria-hidden="true"><em>4</em>0<em>4</em></div>
+  <span class="eyebrow">Page Not Found</span>
+  <h1>This preview took a wrong turn off the 5.</h1>
+  <p class="lead">The page you&rsquo;re after doesn&rsquo;t exist &mdash; or the link has moved. Every preview here is private, so it&rsquo;s worth double-checking the link you were sent.</p>
+  <div class="horizon" role="presentation"><i></i></div>
+  <div class="actions">
+    <a href="https://branchandrootconsulting.com" class="btn primary">Back to Branch &amp; Root</a>
+    <a href="https://branchandrootconsulting.com/contact" class="btn ghost">Book a Free Consultation</a>
+  </div>
+  <p class="help">Think this is a mistake? Email <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a> and we&rsquo;ll resend your preview link.</p>
+</main>
+
+<div class="foot-wrap"><footer class="foot">Branch &amp; Root Consulting — leads.branchandrootconsulting.com</footer></div>
+
+<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+</body>
+</html>
