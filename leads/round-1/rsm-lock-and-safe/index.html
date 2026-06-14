@@ -145,6 +145,8 @@
     :root:not([data-theme="light"]) .field input::placeholder,
     :root:not([data-theme="light"]) .field textarea::placeholder{ color:#73837e; }
     :root:not([data-theme="light"]) form.lead{ box-shadow:0 2px 18px rgba(0,0,0,.45); }
+    /* Hero texture: tone down slightly on dark backgrounds */
+    :root:not([data-theme="light"]) .hero::after{ opacity:.55; }
   }
   :root[data-theme="dark"] header.site{ background:rgba(14,25,22,.92); }
   :root[data-theme="dark"] footer.site{ background:#0b1411; }
@@ -153,6 +155,7 @@
   :root[data-theme="dark"] .field input::placeholder,
   :root[data-theme="dark"] .field textarea::placeholder{ color:#73837e; }
   :root[data-theme="dark"] form.lead{ box-shadow:0 2px 18px rgba(0,0,0,.45); }
+  :root[data-theme="dark"] .hero::after{ opacity:.55; }
 
   /* ---------- Theme toggle button ---------- */
   .theme-toggle{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:var(--paper-2); color:var(--secure); cursor:pointer; transition:background .15s ease, border-color .15s ease; }
@@ -240,7 +243,49 @@
   @media (max-width:768px){ nav.main .nav-links{ display:none; } .brand-text small{ display:none; } }
 
   /* ---------- Hero ---------- */
-  .hero{ background:linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%); border-bottom:1px solid var(--line); }
+  /* Brushed-metal texture: fine horizontal striations (brushed steel feel) + diagonal micro-lines
+     (grain direction shift) + a faint diagonal keyway-slot accent, in brass/steel tones at low
+     opacity, masked so the texture fades toward the bottom. AA in both modes. */
+  .hero{
+    background:linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:
+      /* diagonal micro-grain — subtle steel grain direction */
+      repeating-linear-gradient(
+        -12deg,
+        rgba(176,131,35,.028) 0px,
+        rgba(176,131,35,.028) 1px,
+        transparent 1px,
+        transparent 5px
+      ),
+      /* fine horizontal striations — brushed metal "grain" */
+      repeating-linear-gradient(
+        0deg,
+        rgba(21,32,29,.032) 0px,
+        rgba(21,32,29,.032) 1px,
+        transparent 1px,
+        transparent 4px
+      ),
+      /* keyway/lock accent: a tight vertical slot motif at low opacity */
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        transparent 44px,
+        rgba(176,131,35,.045) 44px,
+        rgba(176,131,35,.045) 45px
+      );
+    /* fade: strong center, transparent at bottom */
+    -webkit-mask:linear-gradient(180deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.5) 55%, transparent 100%);
+    mask:linear-gradient(180deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.5) 55%, transparent 100%);
+  }
   .hero .wrap{ display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:center; padding-top:54px; padding-bottom:58px; }
   .eyebrow{
     display:inline-flex; align-items:center; gap:9px;
@@ -431,6 +476,17 @@
   .f-bottom p{ margin:0; font-size:13px; color:var(--on-secure-mut); }
   .f-bottom .powered{ font-size:12.5px; color:#7d857f; }
   @media (max-width:768px){ footer.site .wrap{ grid-template-columns:1fr 1fr; } footer .f-brand{ grid-column:1 / -1; } }
+
+  /* ============ FLOATING BRAND SWITCH (landing → audit) ============ */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Rubik',sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--brass);color:#1a1a1a;flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ============ FOOTER PORTAL LINK ============ */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
 
   /* ---------- Sticky mobile CTA bar ---------- */
   .mcta{
@@ -766,7 +822,7 @@
         </div>
         <div class="field">
           <label for="lf-phone">Phone number</label>
-          <input id="lf-phone" name="email" type="tel" autocomplete="tel" placeholder="(949) 555-0123" required>
+          <input id="lf-phone" name="phone" type="tel" autocomplete="tel" placeholder="(949) 555-0123" required>
         </div>
         <div class="field">
           <label for="lf-msg">What do you need?</label>
@@ -824,6 +880,7 @@
 
   <div class="wrap">
     <div class="f-bottom">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <p>&copy; 2026 RSM Lock &amp; Safe. All rights reserved.</p>
       <p class="powered">Powered by Branch &amp; Root</p>
     </div>
@@ -868,5 +925,9 @@
   })();
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<a class="br-switch" href="/round-1/rsm-lock-and-safe/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 </body>
 </html>

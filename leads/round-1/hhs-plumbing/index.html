@@ -162,12 +162,18 @@
   .nav-call .ph{font-size:1.05rem;line-height:1}
 
   /* ---------- Hero ---------- */
-  .hero{position:relative;overflow:hidden;background:
-     radial-gradient(120% 95% at 88% -10%, var(--blue-tint) 0%, transparent 55%),
-     var(--paper);
-     padding:46px 0 30px;
+  .hero{position:relative;overflow:hidden;background:var(--paper);padding:46px 0 30px}
+  /* Pipe-grid texture: fine repeating lines in copper/blue palette, masked to center, low opacity */
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background:
+      repeating-linear-gradient(0deg, var(--copper-tint) 0 1px, transparent 1px 36px),
+      repeating-linear-gradient(90deg, var(--blue-tint) 0 1px, transparent 1px 36px);
+    -webkit-mask:radial-gradient(ellipse 90% 100% at 50% 0%, black 10%, transparent 90%);
+    mask:radial-gradient(ellipse 90% 100% at 50% 0%, black 10%, transparent 90%);
+    opacity:0.5;
   }
-  .hero-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;position:relative;z-index:1}
   .eyebrow{
     display:inline-flex;align-items:center;gap:9px;
     background:var(--copper-tint);color:var(--copper-deep);
@@ -210,10 +216,6 @@
     color:var(--paper);
     position:relative;overflow:hidden;
     box-shadow:var(--shadow-soft);
-  }
-  .hero-card::after{
-    content:"";position:absolute;right:-60px;bottom:-60px;width:230px;height:230px;border-radius:50%;
-    background:radial-gradient(circle at 30% 30%, oklch(0.64 0.13 52 / .55), transparent 70%);
   }
   .hero-card .badge-since{
     display:inline-flex;align-items:baseline;gap:8px;
@@ -483,9 +485,7 @@
     }
     :root:not([data-theme="light"]) body{background:oklch(0.150 0.024 250)}
     :root:not([data-theme="light"]) header.site{background:oklch(0.205 0.028 250 / .92)}
-    :root:not([data-theme="light"]) .hero{background:
-      radial-gradient(120% 95% at 88% -10%, oklch(0.26 0.045 246) 0%, transparent 55%),
-      oklch(0.150 0.024 250)}
+    :root:not([data-theme="light"]) .hero{background:oklch(0.150 0.024 250)}
     :root:not([data-theme="light"]) .hero-card,
     :root:not([data-theme="light"]) .svc .num,
     :root:not([data-theme="light"]) .svc:nth-child(odd) .num{background:oklch(0.255 0.045 250)}
@@ -516,9 +516,7 @@
   }
   :root[data-theme="dark"] body{background:oklch(0.150 0.024 250)}
   :root[data-theme="dark"] header.site{background:oklch(0.205 0.028 250 / .92)}
-  :root[data-theme="dark"] .hero{background:
-    radial-gradient(120% 95% at 88% -10%, oklch(0.26 0.045 246) 0%, transparent 55%),
-    oklch(0.150 0.024 250)}
+  :root[data-theme="dark"] .hero{background:oklch(0.150 0.024 250)}
   :root[data-theme="dark"] .hero-card,
   :root[data-theme="dark"] .svc .num,
   :root[data-theme="dark"] .svc:nth-child(odd) .num{background:oklch(0.255 0.045 250)}
@@ -528,6 +526,21 @@
   :root[data-theme="dark"] .field textarea:focus{box-shadow:0 0 0 4px oklch(0.70 0.105 248 / .22)}
   :root[data-theme="dark"] .field input::placeholder,
   :root[data-theme="dark"] .field textarea::placeholder{color:oklch(0.62 0.022 240)}
+
+  /* Hero grid texture — reduce opacity in dark mode */
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero::after{opacity:.25}}
+  :root[data-theme="dark"] .hero::after{opacity:.25}
+
+  /* ============ FLOATING BRAND SWITCH (landing → audit) ============ */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Epilogue',sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--copper);color:#1a1a1a;flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ============ FOOTER PORTAL LINK ============ */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
 </style>
 </head>
 <body>
@@ -841,6 +854,7 @@
     </div>
 
     <div class="foot-bar">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">&#8592; Return to Portal</a>
       <span class="copy">&copy; 2026 HHS Plumbing. All rights reserved.</span>
       <span class="lic">CSLB License #1029667 · C-36 Plumbing · Bonded &amp; Insured</span>
       <span class="powered">Powered by <b>Branch &amp; Root</b></span>
@@ -877,6 +891,11 @@
   })();
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<a class="br-switch" href="/round-1/hhs-plumbing/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 </body>
 </html>

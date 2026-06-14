@@ -143,6 +143,33 @@
 
   /* ---------- Hero ---------- */
   .hero{position:relative;overflow:hidden;background:var(--paper)}
+  /* Blueprint grid texture: fine crosshatch in amber/charcoal at low opacity, masked to fade toward edges */
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:
+      repeating-linear-gradient(0deg, color-mix(in oklab,var(--amber) 18%,transparent) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, color-mix(in oklab,var(--amber) 18%,transparent) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(0deg, color-mix(in oklab,var(--charcoal) 10%,transparent) 0 1px, transparent 1px 12px),
+      repeating-linear-gradient(90deg, color-mix(in oklab,var(--charcoal) 10%,transparent) 0 1px, transparent 1px 12px);
+    opacity:.55;
+    -webkit-mask:radial-gradient(ellipse 85% 80% at 70% 50%, black 20%, transparent 90%);
+    mask:radial-gradient(ellipse 85% 80% at 70% 50%, black 20%, transparent 90%);
+    z-index:0;
+  }
+  /* Diagonal measurement-line accent */
+  .hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(
+      -28deg,
+      color-mix(in oklab,var(--amber) 12%,transparent) 0 1px,
+      transparent 1px 54px
+    );
+    opacity:.35;
+    -webkit-mask:radial-gradient(ellipse 60% 70% at 65% 45%, black 10%, transparent 75%);
+    mask:radial-gradient(ellipse 60% 70% at 65% 45%, black 10%, transparent 75%);
+    z-index:0;
+  }
+  .hero .wrap{position:relative;z-index:1}
   .hero .wrap{padding-top:clamp(40px,6vw,76px);padding-bottom:0}
   .hero-grid{
     display:grid;grid-template-columns:1.08fr 0.92fr;gap:clamp(28px,4vw,60px);align-items:center;
@@ -343,6 +370,18 @@
   @media(max-width:430px){.creds{grid-template-columns:1fr}}
 
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;transition:none !important}}
+
+  /* ---------- Floating brand switch (landing → audit) ---------- */
+  .br-switch,.br-portal{position:fixed;bottom:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:var(--font-body);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s}
+  .br-switch{right:16px;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--amber);color:#1a1a1a;flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ---------- Footer portal link ---------- */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
 
   /* ---------- Theme toggle button ---------- */
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line-strong);background:var(--paper-2);color:var(--ink);cursor:pointer;transition:border-color .15s ease, background .15s ease, color .15s ease;flex:none}
@@ -664,7 +703,7 @@
               </div>
               <div class="field">
                 <label for="f-phone">Phone number</label>
-                <input id="f-phone" type="tel" name="email" placeholder="(949) 555-0123" autocomplete="tel" required>
+                <input id="f-phone" type="tel" name="phone" placeholder="(949) 555-0123" autocomplete="tel" required>
               </div>
               <div class="field">
                 <label for="f-msg">What are you planning?</label>
@@ -730,6 +769,7 @@
     </div>
 
     <div class="foot-bottom">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <span class="copy">© 2026 Truworx Building Concepts, Inc. All rights reserved.</span>
       <span class="powered">Powered by <b>Branch &amp; Root</b></span>
     </div>
@@ -764,6 +804,11 @@
 </script>
 
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<a class="br-switch" href="/round-1/truworx-building-concepts/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 </body>
 </html>

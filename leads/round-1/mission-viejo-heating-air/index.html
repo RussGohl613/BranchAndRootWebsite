@@ -163,10 +163,7 @@
   .hero{position:relative;background:var(--hero-bg);color:#fff;overflow:hidden;text-align:center;
     padding:64px 0 96px;}
   .hero::before{content:"";position:absolute;inset:0;z-index:0;
-    background:
-      radial-gradient(120% 90% at 18% 8%, oklch(0.45 0.088 206 / 0.55) 0%, transparent 55%),
-      radial-gradient(120% 95% at 88% 18%, oklch(0.555 0.158 40 / 0.42) 0%, transparent 52%),
-      linear-gradient(180deg, var(--hero-bg) 0%, var(--hero-bg2) 100%);}
+    background:linear-gradient(180deg, var(--hero-bg) 0%, var(--hero-bg2) 100%);}
   .hero-grid-lines{position:absolute;inset:0;z-index:0;opacity:0.5;
     background-image:linear-gradient(var(--hero-line) 1px,transparent 1px),linear-gradient(90deg,var(--hero-line) 1px,transparent 1px);
     background-size:54px 54px;
@@ -363,6 +360,31 @@
     border-top:1px solid var(--hero-line);}
   .mobcta .btn{padding:15px 10px;font-size:15.5px;border-radius:var(--r-md);}
 
+  /* ---------- In-page nav ---------- */
+  .nav-links{display:none;align-items:center;gap:.1rem;list-style:none;margin:0;padding:0;}
+  .nav-links a{font-family:'Onest',sans-serif;font-weight:600;font-size:.875rem;color:oklch(0.85 0.025 205);padding:.35rem .65rem;border-radius:8px;transition:color .15s ease,background-color .15s ease;}
+  .nav-links a:hover{color:#fff;background:oklch(1 0 0 / 0.12);}
+  @media(min-width:900px){.nav-links{display:flex;}}
+
+  /* ---------- Floating toggle + portal foot ---------- */
+  .br-switch,.br-portal{position:fixed;bottom:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Be Vietnam Pro',sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s}
+  .br-switch{right:16px;padding:9px 15px 9px 9px;background:oklch(0.215 0.022 214);color:oklch(0.95 0.012 210);border:1px solid oklch(0.32 0.022 212);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--ember);color:#1a1a1a;flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
+
+  /* ---------- Placeholder dark-mode fix ---------- */
+  @media(prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .field input::placeholder,
+    :root:not([data-theme="light"]) .field textarea::placeholder{color:var(--ink-mute);}
+  }
+  :root[data-theme="dark"] .field input::placeholder,
+  :root[data-theme="dark"] .field textarea::placeholder{color:var(--ink-mute);}
+
   /* ---------- Responsive ---------- */
   @media (max-width:768px){
     body{font-size:16px;}
@@ -520,6 +542,14 @@
         <small>Family-owned HVAC &middot; Orange County</small>
       </span>
     </a>
+    <nav aria-label="Page sections">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#trust">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
     <div class="topbar-cta">
       <div class="topbar-phone-wrap">
         <small>Same-day service line</small>
@@ -845,7 +875,7 @@
             </div>
             <div class="field">
               <label for="f-phone">Phone number</label>
-              <input type="tel" id="f-phone" name="email" autocomplete="tel" placeholder="(949) 555-0123" required />
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(949) 555-0123" required />
             </div>
             <div class="field">
               <label for="f-msg">How can we help?</label>
@@ -899,6 +929,7 @@
     </div>
 
     <div class="foot-bottom">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">&#8592; Return to Portal</a>
       <small>&copy; 2026 Mission Viejo Heating &amp; Air &middot; CSLB License #959466 &middot; Bonded &amp; Insured</small>
       <span class="pwr">Powered by <b>Branch &amp; Root</b></span>
     </div>
@@ -934,6 +965,11 @@
 </script>
 
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<a class="br-switch" href="/round-1/mission-viejo-heating-air/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 </body>
 </html>

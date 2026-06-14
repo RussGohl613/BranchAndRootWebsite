@@ -257,7 +257,7 @@
     overflow: hidden;
     border-bottom: 3px solid var(--amber-500);
   }
-  /* faint spark grid */
+  /* faint spark grid — edge-faded, no radial blob */
   .hero::before {
     content: "";
     position: absolute; inset: 0;
@@ -265,8 +265,8 @@
       linear-gradient(color-mix(in oklch, var(--on-navy) 4%, transparent) 1px, transparent 1px),
       linear-gradient(90deg, color-mix(in oklch, var(--on-navy) 4%, transparent) 1px, transparent 1px);
     background-size: 46px 46px;
-    -webkit-mask-image: radial-gradient(120% 80% at 90% 10%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
-    mask-image: radial-gradient(120% 80% at 90% 10%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+    -webkit-mask-image: linear-gradient(to bottom left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0) 100%);
     pointer-events: none;
   }
   .hero .wrap { position: relative; }
@@ -638,6 +638,17 @@
     * { scroll-behavior: auto; transition: none !important; }
   }
 
+  /* ===== FLOATING BRAND SWITCH (landing → audit) ===== */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Hanken Grotesk',sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--navy-800);color:var(--on-navy);border:1px solid color-mix(in oklch,var(--on-navy) 22%,transparent);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--amber-500);color:var(--navy-900);flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ===== FOOTER PORTAL LINK ===== */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
+
   /* ===== THEME TOGGLE (sticky in rail, near phone CTA) ===== */
   .theme-toggle {
     display: inline-flex; align-items: center; justify-content: center;
@@ -743,13 +754,13 @@
   <!-- ===== LEFT RAIL NAV ===== -->
   <header class="rail">
     <div>
-      <div class="brand">
+      <a class="brand" href="#top" aria-label="Electric Medics — back to top">
         <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
         <div>
           <div class="brand-name">Electric<br><span>Medics</span></div>
           <div class="brand-tag">Mission Viejo, CA</div>
         </div>
-      </div>
+      </a>
 
       <nav class="rail-nav" aria-label="Primary">
         <a href="#services">Services</a>
@@ -775,7 +786,7 @@
   </header>
 
   <!-- ===== MAIN ===== -->
-  <main class="main">
+  <main class="main" id="top">
 
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
@@ -1018,7 +1029,7 @@
                 </div>
                 <div class="field">
                   <label for="f-phone">Phone</label>
-                  <input type="tel" id="f-phone" name="email" placeholder="(949) 000-0000" autocomplete="tel" required />
+                  <input type="tel" id="f-phone" name="phone" placeholder="(949) 000-0000" autocomplete="tel" required />
                 </div>
                 <div class="field">
                   <label for="f-msg">How can we help?</label>
@@ -1046,13 +1057,13 @@
       <div class="wrap">
         <div class="foot-grid">
           <div class="foot-brand">
-            <div class="brand">
+            <a class="brand" href="#top" aria-label="Electric Medics — back to top">
               <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
               <div>
                 <div class="brand-name" style="color:var(--on-navy);">Electric <span>Medics</span></div>
                 <div class="brand-tag">Mission Viejo, CA</div>
               </div>
-            </div>
+            </a>
             <p>Family-run residential electricians serving South Orange County since 1995. We diagnose it, fix it, and don't leave until you're satisfied.</p>
           </div>
 
@@ -1073,6 +1084,7 @@
         </div>
 
         <div class="foot-bottom">
+          <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
           <span>© 2026 Electric Medics. All rights reserved.</span>
           <span class="pwr">Powered by <b>Branch &amp; Root</b></span>
         </div>
@@ -1119,5 +1131,10 @@
   })();
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<a class="br-switch" href="/round-1/electric-medics/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 </body>
 </html>

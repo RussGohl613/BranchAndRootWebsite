@@ -88,6 +88,8 @@
     --r-sm: 10px; --r-md: 16px; --r-lg: 24px; --r-xl: 34px;
     --maxw: 1140px;
     --ease: cubic-bezier(.22,.61,.36,1);
+    --grain-fine:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    --grain-soft:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
@@ -135,12 +137,17 @@
 
   :focus-visible{outline:3px solid var(--teal-deep);outline-offset:3px;border-radius:6px}
 
-  /* ============ HEADER ============ */
+  /* ============ HEADER + IN-PAGE NAV ============ */
   .site-header{
     position:sticky;top:0;z-index:50;background:oklch(0.985 0.012 120 / 0.88);
     border-bottom:1px solid var(--line);
   }
   .site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  /* In-page nav links */
+  .nav-links{display:none;align-items:center;gap:.15rem;list-style:none}
+  .nav-links a{font-family:'Quicksand',sans-serif;font-weight:600;font-size:.9rem;color:var(--ink-soft);padding:.35rem .65rem;border-radius:8px;transition:color .18s,background-color .18s}
+  .nav-links a:hover{color:var(--ink);background:var(--sage-50)}
+  @media(min-width:960px){.nav-links{display:flex}}
   .brand{display:flex;align-items:center;gap:.7rem}
   .brand-mark{
     width:42px;height:42px;border-radius:12px;flex:none;position:relative;
@@ -166,9 +173,12 @@
   }
   .hero::after{
     content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
-    width:140%;height:100%;pointer-events:none;opacity:.5;
-    background:radial-gradient(40% 60% at 18% 30%, var(--sage-50), transparent 60%),
-              radial-gradient(38% 55% at 84% 20%, oklch(0.93 0.05 192), transparent 60%);
+    width:140%;height:100%;pointer-events:none;opacity:.22;
+    background:
+      repeating-linear-gradient(0deg, var(--sage-200) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, var(--sage-200) 0 1px, transparent 1px 48px);
+    -webkit-mask:radial-gradient(ellipse 80% 90% at 50% 50%, black 30%, transparent 100%);
+    mask:radial-gradient(ellipse 80% 90% at 50% 50%, black 30%, transparent 100%);
   }
   .hero .wrap{position:relative;z-index:1;max-width:880px}
   .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.5rem}
@@ -206,51 +216,67 @@
   }
   .svc-card:hover{box-shadow:var(--shadow-lg);border-color:var(--sage-200);transform:translateY(-3px)}
 
-  /* CSS before/after visual — pure CSS textures, no images */
+  /* ============ SERVICE CARD TEXTURE BANNERS (decorative, non-interactive) ============ */
   .ba{
     position:relative;height:178px;overflow:hidden;
     border-bottom:1px solid var(--line);isolation:isolate;
   }
-  .ba .half{position:absolute;inset:0;width:50%}
-  .ba .before{
-    left:0;
-    background:
-      repeating-linear-gradient(115deg, oklch(0.62 0.02 70) 0 3px, oklch(0.58 0.025 66) 3px 7px),
-      radial-gradient(circle at 30% 60%, oklch(0.40 0.03 50 / 0.55), transparent 38%),
-      radial-gradient(circle at 68% 30%, oklch(0.45 0.035 45 / 0.45), transparent 30%),
-      oklch(0.60 0.02 68);
-  }
-  .ba .before::after{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 80%, oklch(0.30 0.04 40 / 0.5), transparent 45%);
-    mix-blend-mode:multiply;
-  }
-  .ba .after{
-    right:0;left:auto;
+  /* Decorative texture for all 6 service cards — clean "after" style, no fake slider */
+  .ba-svc{
+    position:absolute;inset:0;
     background:
       repeating-linear-gradient(115deg, var(--sage-100) 0 3px, var(--sage-50) 3px 7px),
       linear-gradient(160deg, oklch(0.94 0.035 152), oklch(0.90 0.05 154));
   }
-  .ba .after::before{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(120deg, oklch(1 0 0 / 0.55) 0%, transparent 22%, transparent 78%, oklch(1 0 0 / 0.3) 100%);
+  .ba-svc::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(120deg, oklch(1 0 0 / 0.45) 0%, transparent 25%, transparent 75%, oklch(1 0 0 / 0.18) 100%);
   }
-  /* diagonal seam + slider knob */
-  .ba .seam{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--paper);transform:skewX(-9deg);z-index:3;box-shadow:0 0 0 1px var(--line)}
-  .ba .knob{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;
-    width:42px;height:42px;border-radius:50%;background:var(--paper);box-shadow:var(--shadow-md);
-    display:grid;place-items:center;border:1px solid var(--line);
+  /* card 2 — area rug: warm jewel-tone woven */
+  .ba-svc-rug{
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.08) 0 2px, transparent 2px 14px),
+      repeating-linear-gradient(0deg,  rgba(255,255,255,.08) 0 2px, transparent 2px 14px),
+      linear-gradient(145deg, oklch(0.58 0.10 24), oklch(0.50 0.09 28) 40%, oklch(0.46 0.08 200) 100%);
   }
-  .ba .knob span{position:absolute;top:50%;width:7px;height:7px;border-top:2.5px solid var(--sage-600);border-right:2.5px solid var(--sage-600)}
-  .ba .knob .l{left:8px;transform:translateY(-50%) rotate(-135deg)}
-  .ba .knob .r{right:8px;transform:translateY(-50%) rotate(45deg)}
-  .ba .tag{
-    position:absolute;bottom:12px;z-index:3;font-family:'Quicksand',sans-serif;font-weight:700;
-    font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .6rem;border-radius:999px;
+  /* card 3 — upholstery: soft fabric weave */
+  .ba-svc-fabric{
+    background:
+      repeating-linear-gradient(135deg, rgba(255,255,255,.09) 0 1.5px, transparent 1.5px 6px),
+      linear-gradient(160deg, oklch(0.82 0.045 200), oklch(0.72 0.055 205));
   }
-  .ba .tag-b{left:12px;background:oklch(0.30 0.03 50 / 0.72);color:oklch(0.96 0.01 70)}
-  .ba .tag-a{right:12px;background:oklch(0.45 0.08 157 / 0.92);color:var(--cream)}
+  /* card 4 — tile: grid lines */
+  .ba-svc-tile{
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.45) 0 1px, transparent 1px 2px, transparent 48px, rgba(0,0,0,.12) 49px 50px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.45) 0 1px, transparent 1px 2px, transparent 48px, rgba(0,0,0,.12) 49px 50px),
+      linear-gradient(135deg, #e7ebee, #cfd6da);
+  }
+  /* card 5 — stain removal: clean carpet */
+  .ba-svc-stain{
+    background:
+      repeating-linear-gradient(115deg, var(--sage-100) 0 2px, var(--sage-50) 2px 5px),
+      linear-gradient(170deg, oklch(0.94 0.030 152), oklch(0.88 0.048 154));
+  }
+  /* card 6 — pet/odor: fresh neutral */
+  .ba-svc-pet{
+    background:
+      repeating-linear-gradient(115deg, oklch(0.91 0.025 160) 0 2px, oklch(0.96 0.015 155) 2px 5px),
+      linear-gradient(160deg, oklch(0.92 0.030 155), oklch(0.86 0.046 157));
+  }
+
+  /* ============ FUNCTIONAL BEFORE/AFTER SLIDER (gallery section) ============ */
+  .ba-slider{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r-md);border:1px solid var(--line);isolation:isolate;box-shadow:0 6px 20px rgba(20,30,25,.12)}
+  .ba-pane{position:absolute;inset:0}
+  .ba-pane::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 110% at 50% 30%,transparent 55%,rgba(0,0,0,.20))}
+  .ba-before{clip-path:inset(0 calc(100% - var(--pos,55%)) 0 0)}
+  .ba-line{position:absolute;top:0;bottom:0;left:var(--pos,55%);width:2px;background:rgba(255,255,255,.95);transform:translateX(-1px);box-shadow:0 0 0 1px rgba(0,0,0,.22);z-index:4;pointer-events:none}
+  .ba-grip{position:absolute;top:50%;left:var(--pos,55%);transform:translate(-50%,-50%);z-index:5;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.96);color:#1a1a1a;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 10px rgba(0,0,0,.32);pointer-events:none}
+  .ba-tag{position:absolute;bottom:12px;z-index:4;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(15,15,15,.62);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);pointer-events:none}
+  .ba-tag-b{left:12px}.ba-tag-a{right:12px}
+  .ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:6}
+  .ba-slider:focus-within .ba-line{box-shadow:0 0 0 2px var(--cta),0 0 0 4px rgba(255,255,255,.55)}
+  .ba-cap{margin:10px 2px 0;font-size:13.5px;color:var(--ink-soft)}
 
   .svc-body{padding:1.35rem 1.4rem 1.5rem}
   .svc-num{font-family:'Quicksand',sans-serif;font-weight:700;font-size:.85rem;color:var(--sage-400)}
@@ -470,10 +496,7 @@
     :root:not([data-theme="light"]) .brand-mark::before{background:oklch(0.985 0.012 120 / 0.92)}
     :root:not([data-theme="light"]) .brand-mark::after{border-color:oklch(0.985 0.012 120 / 0.85);border-top:none}
     :root:not([data-theme="light"]) .mobile-bar{background:oklch(0.170 0.018 158 / 0.95);box-shadow:0 -6px 20px oklch(0 0 0 / 0.40)}
-    :root:not([data-theme="light"]) .hero::after{background:radial-gradient(40% 60% at 18% 30%, var(--sage-50), transparent 60%),radial-gradient(38% 55% at 84% 20%, oklch(0.30 0.05 192), transparent 60%)}
-    :root:not([data-theme="light"]) .ba .before{background:repeating-linear-gradient(115deg, oklch(0.42 0.02 70) 0 3px, oklch(0.38 0.025 66) 3px 7px),radial-gradient(circle at 30% 60%, oklch(0.26 0.03 50 / 0.55), transparent 38%),radial-gradient(circle at 68% 30%, oklch(0.30 0.035 45 / 0.45), transparent 30%),oklch(0.40 0.02 68)}
-    :root:not([data-theme="light"]) .ba .after::before{background:linear-gradient(120deg, oklch(1 0 0 / 0.14) 0%, transparent 22%, transparent 78%, oklch(1 0 0 / 0.08) 100%)}
-    :root:not([data-theme="light"]) .ba .tag-b{background:oklch(0.20 0.03 50 / 0.78);color:oklch(0.90 0.01 70)}
+    :root:not([data-theme="light"]) .hero::after{opacity:.10}
     :root:not([data-theme="light"]) .trust-band{background:linear-gradient(160deg,oklch(0.250 0.040 158),oklch(0.205 0.034 159))}
     :root:not([data-theme="light"]) .marquee{-webkit-mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent);mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent)}
     :root:not([data-theme="light"]) .map-wrap iframe{filter:saturate(.9) brightness(.82) contrast(1.05)}
@@ -507,13 +530,41 @@
   :root[data-theme="dark"] .brand-mark::before{background:oklch(0.985 0.012 120 / 0.92)}
   :root[data-theme="dark"] .brand-mark::after{border-color:oklch(0.985 0.012 120 / 0.85);border-top:none}
   :root[data-theme="dark"] .mobile-bar{background:oklch(0.170 0.018 158 / 0.95);box-shadow:0 -6px 20px oklch(0 0 0 / 0.40)}
-  :root[data-theme="dark"] .hero::after{background:radial-gradient(40% 60% at 18% 30%, var(--sage-50), transparent 60%),radial-gradient(38% 55% at 84% 20%, oklch(0.30 0.05 192), transparent 60%)}
-  :root[data-theme="dark"] .ba .before{background:repeating-linear-gradient(115deg, oklch(0.42 0.02 70) 0 3px, oklch(0.38 0.025 66) 3px 7px),radial-gradient(circle at 30% 60%, oklch(0.26 0.03 50 / 0.55), transparent 38%),radial-gradient(circle at 68% 30%, oklch(0.30 0.035 45 / 0.45), transparent 30%),oklch(0.40 0.02 68)}
-  :root[data-theme="dark"] .ba .after::before{background:linear-gradient(120deg, oklch(1 0 0 / 0.14) 0%, transparent 22%, transparent 78%, oklch(1 0 0 / 0.08) 100%)}
-  :root[data-theme="dark"] .ba .tag-b{background:oklch(0.20 0.03 50 / 0.78);color:oklch(0.90 0.01 70)}
+  :root[data-theme="dark"] .hero::after{opacity:.10}
   :root[data-theme="dark"] .trust-band{background:linear-gradient(160deg,oklch(0.250 0.040 158),oklch(0.205 0.034 159))}
   :root[data-theme="dark"] .marquee{-webkit-mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent);mask:linear-gradient(90deg,transparent,oklch(0 0 0) 7%,oklch(0 0 0) 93%,transparent)}
   :root[data-theme="dark"] .map-wrap iframe{filter:saturate(.9) brightness(.82) contrast(1.05)}
+
+  /* ============ GALLERY SECTION ============ */
+  .gallery-section{padding:clamp(3.4rem,7vw,5.6rem) 0;background:var(--cream-deep)}
+  .gallery-section .section-head{text-align:center;max-width:640px;margin:0 auto clamp(2rem,4vw,2.8rem)}
+  .gallery-section .section-cta{display:block;margin:.9rem auto 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:1rem;color:var(--cta);text-decoration:underline;text-underline-offset:3px;text-align:center}
+  .gallery-section .section-cta:hover{color:var(--cta-deep)}
+  .ba-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+  @media(min-width:768px){.ba-grid{grid-template-columns:repeat(3,1fr);gap:1.8rem}}
+
+  /* Carpet textures */
+  .tx-carpet-after{background-image:var(--grain-fine),repeating-linear-gradient(6deg,rgba(255,255,255,.05) 0 1.5px,rgba(70,52,34,.05) 1.5px 3px),radial-gradient(120% 85% at 50% 6%,rgba(255,255,255,.30),transparent 50%),radial-gradient(140% 130% at 50% -25%,#efe8da,#ddd1bd 60%,#cdc0a8 100%);background-size:150px 150px,5px 5px,cover,cover;background-blend-mode:overlay,normal,screen,normal}
+  .tx-carpet-before{background-image:var(--grain-soft),var(--grain-fine),radial-gradient(55% 38% at 40% 66%,rgba(38,28,16,.66),transparent 60%),radial-gradient(34% 26% at 72% 42%,rgba(30,22,12,.55),transparent 62%),radial-gradient(120% 60% at 50% 108%,rgba(24,17,9,.6),transparent 72%),repeating-linear-gradient(6deg,rgba(255,255,255,.03) 0 1.5px,rgba(0,0,0,.05) 1.5px 3px),radial-gradient(140% 130% at 50% -25%,#c4b69e,#ac9e85 60%,#9b8d73 100%);background-size:230px 230px,150px 150px,cover,cover,cover,5px 5px,cover;background-blend-mode:overlay,overlay,multiply,multiply,multiply,normal,normal;filter:saturate(.85) contrast(.96)}
+
+  /* Area rug textures — warm jewel-tone woven */
+  .tx-area-rug-after{background-image:var(--grain-fine),repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 2px,transparent 2px 14px),repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 2px,transparent 2px 14px),radial-gradient(110% 90% at 50% 10%,rgba(255,255,255,.22),transparent 55%),linear-gradient(145deg,oklch(0.58 0.10 24),oklch(0.50 0.09 28) 40%,oklch(0.46 0.08 200) 100%);background-size:120px 120px,14px 100%,100% 14px,cover,cover;background-blend-mode:overlay,normal,normal,screen,normal}
+  .tx-area-rug-before{background-image:var(--grain-soft),var(--grain-fine),radial-gradient(45% 35% at 35% 60%,rgba(20,10,5,.62),transparent 58%),radial-gradient(38% 28% at 68% 38%,rgba(18,8,4,.50),transparent 60%),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px),repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 2px,transparent 2px 14px),linear-gradient(145deg,oklch(0.40 0.06 24),oklch(0.35 0.055 28) 40%,oklch(0.32 0.05 200) 100%);background-size:200px 200px,120px 120px,cover,cover,14px 100%,100% 14px,cover;background-blend-mode:overlay,overlay,multiply,multiply,normal,normal,normal;filter:saturate(.75) brightness(.92)}
+
+  /* Tile & grout textures */
+  .tx-tile-after{background-image:var(--grain-fine),repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 2px,transparent 48px,rgba(0,0,0,.18) 49px 50px),repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 1px,transparent 1px 2px,transparent 48px,rgba(0,0,0,.18) 49px 50px),linear-gradient(135deg,#e7ebee,#cfd6da);background-size:120px 120px,50px 50px,50px 50px,cover;background-blend-mode:soft-light,normal,normal,normal}
+  .tx-tile-before{background-image:var(--grain-soft),radial-gradient(40% 30% at 32% 44%,rgba(70,60,28,.5),transparent 60%),radial-gradient(30% 22% at 66% 64%,rgba(60,52,24,.45),transparent 62%),repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 1px,transparent 1px 2px,transparent 47px,rgba(40,34,14,.7) 48px 50px),repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 1px,transparent 1px 2px,transparent 47px,rgba(40,34,14,.7) 48px 50px),linear-gradient(135deg,#bdbfae,#a7a994);background-size:200px 200px,cover,cover,50px 50px,50px 50px,cover;background-blend-mode:overlay,multiply,multiply,normal,normal,normal;filter:saturate(.8) brightness(.96)}
+
+  /* ============ FLOATING BRAND SWITCH (landing → audit) ============ */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Quicksand',sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--cta);color:#1a1a1a;flex:0 0 auto}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ============ FOOTER PORTAL LINK ============ */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
 </style>
 </head>
 <body>
@@ -525,6 +576,14 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">Renewed <span>Carpet Care</span></span>
     </a>
+    <nav aria-label="Page sections">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#trust">Why Stephen</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
     <a class="header-phone" href="tel:+19494341151">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       (949) 434-1151
@@ -574,11 +633,8 @@
       <div class="svc-grid">
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: a soiled carpet on the left transformed into a fresh, clean carpet on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Clean, refreshed carpet after professional cleaning.">
+            <div class="ba-svc"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">01</span>
@@ -588,11 +644,8 @@
         </article>
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: a dull, soiled area rug on the left restored to vibrant clean fibers on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Vibrant area rug with colors restored after professional cleaning.">
+            <div class="ba-svc ba-svc-rug"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">02</span>
@@ -602,11 +655,8 @@
         </article>
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: a stained upholstered sofa on the left refreshed to clean fabric on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Fresh, clean upholstery fabric after professional cleaning.">
+            <div class="ba-svc ba-svc-fabric"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">03</span>
@@ -616,11 +666,8 @@
         </article>
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: grimy tile and dark grout on the left cleaned and sealed bright on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Bright, sealed tile and grout after professional cleaning.">
+            <div class="ba-svc ba-svc-tile"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">04</span>
@@ -630,11 +677,8 @@
         </article>
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: a stubborn coffee stain on the left fully removed on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Clean carpet with stubborn stains fully removed.">
+            <div class="ba-svc ba-svc-stain"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">05</span>
@@ -644,11 +688,8 @@
         </article>
 
         <article class="svc-card">
-          <div class="ba" role="img" aria-label="Before and after: a pet accident stain and odor on the left neutralized to a clean carpet on the right.">
-            <div class="half before"></div><div class="half after"></div>
-            <div class="seam" aria-hidden="true"></div>
-            <div class="knob" aria-hidden="true"><span class="l"></span><span class="r"></span></div>
-            <span class="tag tag-b">Before</span><span class="tag tag-a">After</span>
+          <div class="ba" role="img" aria-label="Fresh, odor-free carpet after pet stain and odor removal.">
+            <div class="ba-svc ba-svc-pet"></div>
           </div>
           <div class="svc-body">
             <span class="svc-num">06</span>
@@ -656,6 +697,60 @@
             <p>Tough pet urine and odors eliminated at the source — a home that smells truly fresh, not masked.</p>
           </div>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEFORE/AFTER GALLERY ============ -->
+  <section class="gallery-section" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Real Results</span>
+        <h2>See the difference a careful clean makes.</h2>
+        <p>Drag the slider on each photo to reveal what Stephen's chemistry-backed process actually does — surface by surface.</p>
+        <a class="section-cta" href="#contact">Book your free cleaning today →</a>
+      </div>
+      <div class="ba-grid">
+
+        <figure style="margin:0">
+          <div class="ba-slider" style="--pos:52%">
+            <div class="ba-pane tx-carpet-after"></div>
+            <div class="ba-pane ba-before tx-carpet-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare: carpet before and after professional cleaning">
+          </div>
+          <figcaption class="ba-cap">Ground-in dirt and set-in stains lifted clean — your carpet soft and bright again.</figcaption>
+        </figure>
+
+        <figure style="margin:0">
+          <div class="ba-slider" style="--pos:52%">
+            <div class="ba-pane tx-area-rug-after"></div>
+            <div class="ba-pane ba-before tx-area-rug-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare: area rug before and after professional cleaning">
+          </div>
+          <figcaption class="ba-cap">Rich colors and fine fibers restored — gentle, fiber-safe care that brings your favorite rug back to life.</figcaption>
+        </figure>
+
+        <figure style="margin:0">
+          <div class="ba-slider" style="--pos:52%">
+            <div class="ba-pane tx-tile-after"></div>
+            <div class="ba-pane ba-before tx-tile-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare: tile and grout before and after professional cleaning">
+          </div>
+          <figcaption class="ba-cap">Dingy grout scrubbed and sealed — tile that finally looks the way it did when it was new.</figcaption>
+        </figure>
 
       </div>
     </div>
@@ -829,7 +924,7 @@
               </div>
               <div class="field">
                 <label for="email">Phone <span style="font-weight:400;color:var(--ink-mute)">(best number to reach you)</span></label>
-                <input type="tel" id="email" name="email" placeholder="(949) 555-0123" autocomplete="tel" required>
+                <input type="tel" id="email" name="phone" placeholder="(949) 555-0123" autocomplete="tel" required>
               </div>
               <div class="field">
                 <label for="message">What needs cleaning?</label>
@@ -902,6 +997,7 @@
     </div>
 
     <div class="foot-bottom">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <span class="copy">© 2026 Renewed Carpet Care. All rights reserved.</span>
       <span class="powered">Powered by <b>Branch &amp; Root</b></span>
     </div>
@@ -935,6 +1031,13 @@
 </script>
 
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<script>document.querySelectorAll('.ba-slider').forEach(function(b){var r=b.querySelector('.ba-range');function s(){b.style.setProperty('--pos',r.value+'%')}r.addEventListener('input',s);s();});</script>
+
+<a class="br-switch" href="/round-1/renewed-carpet-care/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 </body>
 </html>

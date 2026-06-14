@@ -90,6 +90,10 @@
     --gold:        oklch(0.720 0.110 70);   /* stars */
     --maxw: 1180px;
     --r: 3px;
+    /* Noise grain vars for before/after gallery */
+    --grain-fine:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    --grain-soft:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    --grain-wood:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.012 0.5' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -508,6 +512,51 @@
     *{transition:none !important;scroll-behavior:auto !important;}
   }
 
+  /* ============ FLOATING BRAND SWITCH (landing → audit) ============ */
+  /* Vars mapped: --paper=elevated card bg, --ink=body text, --bone-3=border, --accent=primary accent, Figtree=body font */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:'Figtree',system-ui,sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--bone-3);font-weight:600;font-size:14px}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22)}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#1a1a1a;flex:0 0 auto}
+  /* Mobile: lift above the sticky CTA bar (~58px + border ≈ 60px) */
+  @media(max-width:768px){.br-switch{bottom:calc(74px + env(safe-area-inset-bottom,0));right:12px}}
+  @media print{.br-switch{display:none}}
+
+  /* ============ FOOTER PORTAL LINK ============ */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
+  .br-portal-foot:hover{opacity:1}
+
+  /* ============ BEFORE/AFTER GALLERY SECTION ============ */
+  .gallery{background:var(--bone-2);border-top:1px solid var(--bone-3);}
+  .ba-grid{display:grid;grid-template-columns:1fr;gap:2rem;}
+  @media(min-width:768px){.ba-grid{grid-template-columns:repeat(3,1fr);gap:1.6rem;}}
+
+  /* Mechanism */
+  .ba{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:var(--r,14px);border:1px solid var(--bone-3);isolation:isolate;box-shadow:0 6px 20px rgba(20,30,25,.12)}
+  .ba-pane{position:absolute;inset:0}
+  .ba-pane::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 110% at 50% 30%,transparent 55%,rgba(0,0,0,.20))}
+  .ba-before{clip-path:inset(0 calc(100% - var(--pos,55%)) 0 0)}
+  .ba-line{position:absolute;top:0;bottom:0;left:var(--pos,55%);width:2px;background:rgba(255,255,255,.95);transform:translateX(-1px);box-shadow:0 0 0 1px rgba(0,0,0,.22);z-index:4;pointer-events:none}
+  .ba-grip{position:absolute;top:50%;left:var(--pos,55%);transform:translate(-50%,-50%);z-index:5;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.96);color:#1a1a1a;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 10px rgba(0,0,0,.32);pointer-events:none}
+  .ba-tag{position:absolute;bottom:12px;z-index:4;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(15,15,15,.62);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);pointer-events:none}
+  .ba-tag-b{left:12px}.ba-tag-a{right:12px}
+  .ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:6}
+  .ba:focus-within .ba-line{box-shadow:0 0 0 2px var(--accent),0 0 0 4px rgba(255,255,255,.55)}
+  .ba-cap{margin:10px 2px 0;font-size:13.5px;color:var(--ink-soft)}
+
+  /* HARDWOOD texture (tx-wood) */
+  .tx-wood-after{background-image:linear-gradient(100deg,rgba(255,255,255,.34),transparent 26%),var(--grain-wood),repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 1px,transparent 1px 3px,transparent 44px,rgba(0,0,0,.30) 45px 47px),repeating-linear-gradient(90deg,#a06c36 0 47px,#8a5a2b 47px 47px),linear-gradient(90deg,#9b6733,#86592c);background-size:cover,300px 150px,47px 100%,47px 100%,cover;background-blend-mode:screen,soft-light,normal,normal,normal}
+  .tx-wood-before{background-image:repeating-linear-gradient(72deg,rgba(255,255,255,.07) 0 1px,transparent 1px 11px),var(--grain-wood),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 3px,transparent 44px,rgba(0,0,0,.34) 45px 47px),linear-gradient(90deg,#7e6444,#5f4a30);background-size:cover,300px 150px,47px 100%,cover;background-blend-mode:overlay,soft-light,normal,normal;filter:saturate(.55) brightness(.9)}
+
+  /* PORCELAIN / STONE TILE texture (tx-tile) */
+  .tx-tile-after{background-image:var(--grain-fine),repeating-linear-gradient(0deg,rgba(255,255,255,.5) 0 1px,transparent 1px 2px,transparent 48px,rgba(0,0,0,.18) 49px 50px),repeating-linear-gradient(90deg,rgba(255,255,255,.5) 0 1px,transparent 1px 2px,transparent 48px,rgba(0,0,0,.18) 49px 50px),linear-gradient(135deg,#e7ebee,#cfd6da);background-size:120px 120px,50px 50px,50px 50px,cover;background-blend-mode:soft-light,normal,normal,normal}
+  .tx-tile-before{background-image:var(--grain-soft),radial-gradient(40% 30% at 32% 44%,rgba(70,60,28,.5),transparent 60%),radial-gradient(30% 22% at 66% 64%,rgba(60,52,24,.45),transparent 62%),repeating-linear-gradient(0deg,rgba(255,255,255,.12) 0 1px,transparent 1px 2px,transparent 47px,rgba(40,34,14,.7) 48px 50px),repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 1px,transparent 1px 2px,transparent 47px,rgba(40,34,14,.7) 48px 50px),linear-gradient(135deg,#bdbfae,#a7a994);background-size:200px 200px,cover,cover,50px 50px,50px 50px,cover;background-blend-mode:overlay,multiply,multiply,normal,normal,normal;filter:saturate(.8) brightness(.96)}
+
+  /* NATURAL STONE — travertine/marble (tx-stone, derived per spec pattern) */
+  /* AFTER: mottled light limestone/travertine slab — warm cream base, soft grain overlay, faint diagonal veining */
+  .tx-stone-after{background-image:var(--grain-soft),linear-gradient(118deg,rgba(255,255,255,.22) 0%,transparent 38%,rgba(210,195,168,.18) 62%,transparent 80%),repeating-linear-gradient(138deg,transparent 0,transparent 48px,rgba(160,140,110,.09) 48px,rgba(160,140,110,.09) 49px),linear-gradient(160deg,#e8e3d8 0%,#ddd4c4 40%,#d6cdbb 70%,#cec5b0 100%);background-size:220px 220px,cover,100px 100px,cover;background-blend-mode:soft-light,normal,normal,normal}
+  /* BEFORE: duller slab with faint surface cracks + desaturated tint */
+  .tx-stone-before{background-image:var(--grain-soft),linear-gradient(72deg,rgba(0,0,0,.12) 0,transparent 2px,transparent 36px,rgba(0,0,0,.08) 36px,rgba(0,0,0,.08) 37px,transparent 37px),linear-gradient(154deg,rgba(0,0,0,.10) 0,transparent 1.5px,transparent 22px,rgba(0,0,0,.07) 22px,rgba(0,0,0,.07) 23px,transparent 23px),repeating-linear-gradient(138deg,transparent 0,transparent 48px,rgba(120,105,82,.12) 48px,rgba(120,105,82,.12) 49px),linear-gradient(160deg,#cfc9bb 0%,#c2b9a8 40%,#b8af9d 70%,#b0a892 100%);background-size:220px 220px,cover,cover,100px 100px,cover;background-blend-mode:soft-light,normal,normal,normal,normal;filter:saturate(.8) brightness(.92)}
+
   /* ============ THEME TOGGLE BUTTON ============ */
   .theme-toggle{
     display:inline-flex;align-items:center;justify-content:center;
@@ -867,6 +916,62 @@
     </div>
   </section>
 
+  <!-- ============ BEFORE / AFTER GALLERY ============ -->
+  <section class="gallery" id="gallery" aria-label="Before and after transformations">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">See the Transformation</span>
+        <h2>See the difference — <a href="#contact" style="color:var(--accent-deep);text-decoration:underline;text-underline-offset:4px;">get your free estimate →</a></h2>
+        <p>From worn hardwood to stained tile, Bentley Floor brings new life to every surface. Drag each slider to see the before and after.</p>
+      </div>
+      <div class="ba-grid">
+
+        <!-- 1: Hardwood refinish -->
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-wood-after"></div>
+            <div class="ba-pane ba-before tx-wood-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare before and after hardwood floor refinishing">
+          </div>
+          <figcaption class="ba-cap">Hardwood refinished to its original warmth — deep grain, no scratches, built to last another generation.</figcaption>
+        </figure>
+
+        <!-- 2: Porcelain / stone floor tile -->
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-tile-after"></div>
+            <div class="ba-pane ba-before tx-tile-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare before and after porcelain tile floor installation">
+          </div>
+          <figcaption class="ba-cap">Porcelain tile set with clean, precise grout lines — a kitchen or bath floor that looks sharp and stays that way.</figcaption>
+        </figure>
+
+        <!-- 3: Natural stone — travertine / marble -->
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-stone-after"></div>
+            <div class="ba-pane ba-before tx-stone-before"></div>
+            <div class="ba-line"></div>
+            <div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span>
+            <span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare before and after natural stone travertine floor installation">
+          </div>
+          <figcaption class="ba-cap">Travertine and marble selected and set to bring lasting character underfoot — the timeless look that only natural stone delivers.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ WHY / OWNER STORY ============ -->
   <section class="why" id="story" aria-label="Our story">
     <div class="wrap">
@@ -991,7 +1096,7 @@
               </div>
               <div class="field">
                 <label for="lf-phone">Phone</label>
-                <input id="lf-phone" type="tel" name="email" autocomplete="tel" placeholder="(949) 000-0000" required />
+                <input id="lf-phone" type="tel" name="phone" autocomplete="tel" placeholder="(949) 000-0000" required />
               </div>
               <div class="field">
                 <label for="lf-msg">What are you planning?</label>
@@ -1043,6 +1148,7 @@
       </div>
     </div>
     <div class="foot-bar">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <span>© 2026 Bentley Floor. All rights reserved.</span>
       <span class="pw">Powered by Branch &amp; Root</span>
     </div>
@@ -1083,6 +1189,12 @@
   })();
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+
+<a class="br-switch" href="/round-1/bentley-floor/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
+<script>document.querySelectorAll('.ba').forEach(function(b){var r=b.querySelector('.ba-range');function s(){b.style.setProperty('--pos',r.value+'%')}r.addEventListener('input',s);s();});</script>
 
 </body>
 </html>

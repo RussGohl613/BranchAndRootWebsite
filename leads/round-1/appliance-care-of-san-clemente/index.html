@@ -122,6 +122,12 @@
   }
   .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 22px;max-width:var(--maxw);margin:0 auto;}
   .brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+
+  /* ---------- In-page nav ---------- */
+  .nav-links{display:none;align-items:center;gap:.1rem;list-style:none;margin:0;padding:0;}
+  .nav-links a{font-family:"Karla",sans-serif;font-weight:700;font-size:.88rem;color:var(--ink-soft);padding:.3rem .6rem;border-radius:8px;text-decoration:none;transition:color .15s,background-color .15s;}
+  .nav-links a:hover{color:var(--ink);background:var(--sand-soft);}
+  @media(min-width:960px){.nav-links{display:flex;}}
   .brand-mark{
     width:42px;height:42px;border-radius:10px;flex:none;position:relative;
     background:var(--slate-deep);overflow:hidden;border:1px solid var(--slate-900);
@@ -139,11 +145,14 @@
 
   /* ---------- Hero ---------- */
   .hero{position:relative;background:var(--slate-deep);color:var(--on-dark);overflow:hidden;}
-  .hero::before{content:"";position:absolute;inset:0;
+  /* Subtle geometric mesh replaces radial blob washes — no orbs */
+  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 88% -10%, oklch(0.34 0.07 248) 0%, transparent 55%),
-      radial-gradient(90% 80% at -5% 110%, oklch(0.30 0.06 250) 0%, transparent 60%);
-    pointer-events:none;}
+      repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 52px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 52px),
+      linear-gradient(145deg, oklch(0.30 0.065 248) 0%, oklch(0.24 0.055 248) 50%, oklch(0.20 0.045 252) 100%);
+    -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
+    mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
   .wave{position:absolute;left:0;right:0;bottom:-1px;height:64px;width:100%;display:block;}
   .hero-grid{position:relative;display:grid;grid-template-columns:1.18fr .82fr;gap:54px;align-items:center;padding:64px 0 92px;}
   .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);margin-bottom:20px;}
@@ -321,6 +330,17 @@
     .foot-bar{justify-content:flex-start;}
   }
 
+  /* ---------- Floating brand-report toggle (landing → audit) ---------- */
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:"Karla",sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--paper);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:14px;}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--sand-strong);color:#1a1a1a;flex:0 0 auto;}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
+  @media print{.br-switch{display:none;}}
+
+  /* ---------- Footer portal link ---------- */
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s;}
+  .br-portal-foot:hover{opacity:1;}
+
   /* ---------- Theme toggle button ---------- */
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--paper);color:var(--slate-900);cursor:pointer;transition:background .15s ease,border-color .15s ease,transform .12s ease;flex:none;}
   .theme-toggle:hover{background:var(--sand-soft);border-color:var(--sand);transform:translateY(-1px);}
@@ -359,8 +379,11 @@
     }
     :root:not([data-theme="light"]) body{background:oklch(0.160 0.028 248);}
     :root:not([data-theme="light"]) .hero::before{background:
-      radial-gradient(120% 90% at 88% -10%, oklch(0.26 0.055 248) 0%, transparent 55%),
-      radial-gradient(90% 80% at -5% 110%, oklch(0.23 0.050 250) 0%, transparent 60%);}
+      repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
+      linear-gradient(145deg, oklch(0.22 0.050 248) 0%, oklch(0.17 0.040 250) 50%, oklch(0.14 0.032 252) 100%);
+    -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
+    mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
     :root:not([data-theme="light"]) .wave path{fill:oklch(0.190 0.028 248);}
     :root:not([data-theme="light"]) .trustcard{box-shadow:0 24px 60px rgba(0,0,0,.55);}
     :root:not([data-theme="light"]) .formcard{box-shadow:0 18px 48px rgba(0,0,0,.50);}
@@ -393,8 +416,11 @@
   }
   :root[data-theme="dark"] body{background:oklch(0.160 0.028 248);}
   :root[data-theme="dark"] .hero::before{background:
-    radial-gradient(120% 90% at 88% -10%, oklch(0.26 0.055 248) 0%, transparent 55%),
-    radial-gradient(90% 80% at -5% 110%, oklch(0.23 0.050 250) 0%, transparent 60%);}
+    repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
+    linear-gradient(145deg, oklch(0.22 0.050 248) 0%, oklch(0.17 0.040 250) 50%, oklch(0.14 0.032 252) 100%);
+  -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
+  mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
   :root[data-theme="dark"] .wave path{fill:oklch(0.190 0.028 248);}
   :root[data-theme="dark"] .trustcard{box-shadow:0 24px 60px rgba(0,0,0,.55);}
   :root[data-theme="dark"] .formcard{box-shadow:0 18px 48px rgba(0,0,0,.50);}
@@ -419,6 +445,14 @@
         <span class="brand-sub">of San Clemente</span>
       </span>
     </a>
+    <nav aria-label="Page sections">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
     <div class="topbar-cta">
       <a class="topbar-phone" href="tel:+19494921225">
         <span class="num"><span class="k">Call the shop</span><br>(949) 492-1225</span>
@@ -536,7 +570,7 @@
   </section>
 
   <!-- ===== Value / Why us ===== -->
-  <section class="value" aria-labelledby="val-h">
+  <section class="value" id="why-us" aria-labelledby="val-h">
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">Why neighbors call us back</span>
@@ -564,7 +598,7 @@
   </section>
 
   <!-- ===== Proof / Reviews ===== -->
-  <section class="proof" aria-labelledby="rev-h">
+  <section class="proof" id="reviews" aria-labelledby="rev-h">
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">In their own words</span>
@@ -632,7 +666,7 @@
               </div>
               <div class="field">
                 <label for="f-phone">Phone number</label>
-                <input type="tel" id="f-phone" name="email" autocomplete="tel" placeholder="(949) 000-0000" required />
+                <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(949) 000-0000" required />
               </div>
               <div class="field">
                 <label for="f-msg">What's the appliance &amp; the problem?</label>
@@ -689,6 +723,7 @@
       </div>
     </div>
     <div class="foot-bar">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <span class="cpy">© 2026 Appliance Care of San Clemente. All rights reserved.</span>
       <span class="pwr">Powered by Branch &amp; Root</span>
     </div>
@@ -700,6 +735,11 @@
   <a class="btn btn-primary" href="tel:+19494921225">Call now</a>
   <a class="btn btn-solid" href="#contact">Get a quote</a>
 </nav>
+
+<a class="br-switch" href="/round-1/appliance-care-of-san-clemente/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 <script>
   // On mobile, the primary hero CTA dials; on desktop it scrolls to the form.

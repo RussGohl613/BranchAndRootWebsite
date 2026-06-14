@@ -78,6 +78,8 @@
     --radius: 6px;
     --maxw: 1140px;
     --shadow-card: 0 1px 2px oklch(0.30 0.02 250 / 0.06), 0 6px 22px oklch(0.30 0.02 250 / 0.07);
+    --grain-fine:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    --grain-soft:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.4' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -156,8 +158,8 @@
   .hero::before{
     content:"";position:absolute;inset:0;z-index:0;
     background:
-      radial-gradient(120% 90% at 82% 8%, oklch(0.40 0.016 248 / 0.85) 0%, transparent 55%),
-      repeating-linear-gradient(135deg, oklch(0.985 0.006 70 / 0.018) 0 2px, transparent 2px 26px);
+      repeating-linear-gradient(135deg, oklch(0.985 0.006 70 / 0.032) 0 1px, transparent 1px 26px),
+      repeating-linear-gradient(45deg, oklch(0.985 0.006 70 / 0.018) 0 1px, transparent 1px 52px);
   }
   .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:38px;align-items:center;}
   .eyebrow{
@@ -349,6 +351,49 @@
   .form-success h3{font-size:1.5rem;color:var(--slate-900);margin-bottom:8px;}
   .form-success p{color:var(--ink-soft);font-size:1.02rem;}
   .form-success .ph{margin-top:16px;font-family:"Zilla Slab",serif;font-size:1.2rem;color:var(--clay-deep);font-weight:700;}
+
+  /* ---------- before/after gallery ---------- */
+  .gallery{background:var(--stone-100);padding:74px 0;}
+  .gallery .sec-head{text-align:center;margin-left:auto;margin-right:auto;}
+  .gallery .sec-head h2{color:var(--slate-900);}
+  .gallery .sec-head a.ga-cta{display:inline-block;margin-top:6px;color:var(--clay-deep);font-weight:700;font-size:1.02rem;border-bottom:2px solid var(--clay-line);text-decoration:none;}
+  .gallery .sec-head a.ga-cta:hover{border-color:var(--clay);}
+  .ba-grid{display:grid;grid-template-columns:1fr;gap:1.8rem;}
+  @media(min-width:768px){.ba-grid{grid-template-columns:repeat(3,1fr);gap:1.6rem;}}
+  .ba{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:var(--radius,14px);border:1px solid var(--hairline);isolation:isolate;box-shadow:0 6px 20px rgba(20,30,25,.12);}
+  .ba-pane{position:absolute;inset:0;}
+  .ba-pane::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 110% at 50% 30%,transparent 55%,rgba(0,0,0,.20));}
+  .ba-before{clip-path:inset(0 calc(100% - var(--pos,55%)) 0 0);}
+  .ba-line{position:absolute;top:0;bottom:0;left:var(--pos,55%);width:2px;background:rgba(255,255,255,.95);transform:translateX(-1px);box-shadow:0 0 0 1px rgba(0,0,0,.22);z-index:4;pointer-events:none;}
+  .ba-grip{position:absolute;top:50%;left:var(--pos,55%);transform:translate(-50%,-50%);z-index:5;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.96);color:#1a1a1a;display:grid;place-items:center;font-size:16px;box-shadow:0 2px 10px rgba(0,0,0,.32);pointer-events:none;}
+  .ba-tag{position:absolute;bottom:12px;z-index:4;padding:4px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(15,15,15,.62);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);pointer-events:none;}
+  .ba-tag-b{left:12px;}.ba-tag-a{right:12px;}
+  .ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:6;}
+  .ba:focus-within .ba-line{box-shadow:0 0 0 2px var(--clay),0 0 0 4px rgba(255,255,255,.55);}
+  .ba-cap{margin:10px 2px 0;font-size:13.5px;color:var(--ink-soft);}
+
+  /* texture — asphalt/architectural shingle */
+  .tx-roof-after{background-image:var(--grain-fine),repeating-linear-gradient(90deg,rgba(0,0,0,.22) 0 1px,transparent 1px 46px),repeating-linear-gradient(180deg,rgba(255,255,255,.14) 0 1px,transparent 1px 4px,rgba(0,0,0,.05) 14px,rgba(0,0,0,.30) 19px 21px),linear-gradient(180deg,#525d68,#3c454e);background-size:90px 90px,46px 100%,100% 21px,cover;background-blend-mode:overlay,normal,normal,normal;}
+  .tx-roof-before{background-image:var(--grain-soft),radial-gradient(26% 16% at 60% 38%,rgba(104,124,78,.6),transparent 60%),radial-gradient(18% 12% at 26% 68%,rgba(92,112,70,.55),transparent 60%),radial-gradient(14% 9% at 78% 76%,rgba(110,120,90,.4),transparent 62%),repeating-linear-gradient(90deg,rgba(0,0,0,.26) 0 1px,transparent 1px 46px),repeating-linear-gradient(180deg,rgba(255,255,255,.08) 0 1px,transparent 1px 4px,rgba(0,0,0,.34) 19px 21px),linear-gradient(180deg,#6f747d,#565b63);background-size:200px 200px,cover,cover,cover,46px 100%,100% 21px,cover;background-blend-mode:overlay,multiply,multiply,multiply,normal,normal,normal;filter:saturate(.78) brightness(.95);}
+
+  /* texture — terracotta barrel-tile */
+  .tx-tile-roof-after{background-image:var(--grain-fine),repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 2px,transparent 2px 28px,rgba(0,0,0,.18) 28px 30px),radial-gradient(100% 38% at 50% 15%,rgba(255,200,150,.32),transparent 100%),linear-gradient(180deg,#b5653f,#9a4f2f);background-size:90px 90px,100% 30px,cover,cover;background-blend-mode:overlay,normal,screen,normal;}
+  .tx-tile-roof-before{background-image:var(--grain-soft),radial-gradient(30% 20% at 42% 55%,rgba(80,110,60,.6),transparent 60%),radial-gradient(22% 14% at 68% 30%,rgba(70,100,55,.5),transparent 60%),radial-gradient(18% 12% at 25% 75%,rgba(60,90,48,.45),transparent 62%),repeating-linear-gradient(0deg,rgba(0,0,0,.32) 0 2px,transparent 2px 28px,rgba(0,0,0,.22) 28px 30px),linear-gradient(180deg,#8c4e30,#6e3b22);background-size:200px 200px,cover,cover,cover,100% 30px,cover;background-blend-mode:overlay,multiply,multiply,multiply,normal,normal;filter:saturate(.70) brightness(.88);}
+
+  /* texture — flat/TPO membrane */
+  .tx-flat-roof-after{background-image:var(--grain-fine),repeating-linear-gradient(180deg,rgba(255,255,255,.22) 0 1px,transparent 1px 79px,rgba(0,0,0,.14) 79px 81px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 120px),linear-gradient(160deg,#d4d8d6,#c5c9c7 50%,#bfc3c1);background-size:150px 150px,100% 81px,120px 100%,cover;background-blend-mode:overlay,normal,normal,normal;}
+  .tx-flat-roof-before{background-image:var(--grain-soft),radial-gradient(55% 38% at 38% 62%,rgba(40,55,80,.65),transparent 58%),radial-gradient(40% 28% at 72% 38%,rgba(35,50,75,.55),transparent 60%),repeating-linear-gradient(175deg,rgba(200,215,225,.18) 0 1px,transparent 1px 38px),repeating-linear-gradient(180deg,rgba(255,255,255,.12) 0 1px,transparent 1px 79px,rgba(0,0,0,.18) 79px 81px),linear-gradient(160deg,#a8acaa,#959998 50%,#8e9290);background-size:220px 220px,cover,cover,38px 100%,100% 81px,cover;background-blend-mode:overlay,multiply,multiply,normal,normal,normal;filter:saturate(.72) brightness(.92);}
+
+  /* ---------- floating controls (landing) ---------- */
+  .br-switch,.br-portal-foot{text-decoration:none;}
+  .br-switch{position:fixed;bottom:16px;right:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-family:"Mukta",sans-serif;box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:9px 15px 9px 9px;background:var(--stone-50);color:var(--ink);border:1px solid var(--hairline);font-weight:600;font-size:14px;}
+  .br-switch:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-switch-ic{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--clay);color:#1a1a1a;flex:0 0 auto;}
+  @media(max-width:768px){.br-switch{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
+  @media print{.br-switch{display:none;}}
+
+  .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s;}
+  .br-portal-foot:hover{opacity:1;}
 
   /* ---------- footer ---------- */
   footer.site{background:var(--slate-900);color:var(--slate-300);padding:54px 0 30px;}
@@ -637,6 +682,53 @@
     </div>
   </section>
 
+  <!-- ============ BEFORE/AFTER GALLERY ============ -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="kicker">Real Results</span>
+        <h2>See the difference — <a class="ga-cta" href="#contact">get your free estimate →</a></h2>
+        <p>Drag the slider on each panel to reveal what a proper Di Rock roof looks like versus what Mark's crew fixes. Straightforward work, honest results.</p>
+      </div>
+      <div class="ba-grid">
+
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-roof-after"></div>
+            <div class="ba-pane ba-before tx-roof-before"></div>
+            <div class="ba-line"></div><div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span><span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare asphalt shingle roof before and after replacement by Di Rock">
+          </div>
+          <figcaption class="ba-cap">Worn architectural shingles replaced — granule loss, dark streaks, and curling edges gone. A clean, watertight roof with no surprises on the bill.</figcaption>
+        </figure>
+
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-tile-roof-after"></div>
+            <div class="ba-pane ba-before tx-tile-roof-before"></div>
+            <div class="ba-line"></div><div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span><span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare terracotta tile roof before and after repair by Di Rock">
+          </div>
+          <figcaption class="ba-cap">Cracked, moss-covered terracotta tiles repaired and reset. Mark matches the clay color and reseals every course — the roof you paid for, back to full strength.</figcaption>
+        </figure>
+
+        <figure class="ba-wrap" style="margin:0">
+          <div class="ba" style="--pos:52%">
+            <div class="ba-pane tx-flat-roof-after"></div>
+            <div class="ba-pane ba-before tx-flat-roof-before"></div>
+            <div class="ba-line"></div><div class="ba-grip">⇆</div>
+            <span class="ba-tag ba-tag-b">Before</span><span class="ba-tag ba-tag-a">After</span>
+            <input class="ba-range" type="range" min="0" max="100" value="52" aria-label="Drag to compare flat TPO roof before and after installation by Di Rock">
+          </div>
+          <figcaption class="ba-cap">Ponding water and weathered seams replaced with a fresh TPO membrane — flat roofs stay dry when every seam is sealed right the first time.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ============ TRUST ============ -->
   <section class="trust" id="trust">
     <div class="roofline" style="margin-top:-74px;margin-bottom:74px;" aria-hidden="true">
@@ -764,7 +856,7 @@
             </div>
             <div class="field">
               <label for="f-phone">Phone</label>
-              <input type="tel" id="f-phone" name="email" autocomplete="tel" placeholder="(949) 555-0123" required>
+              <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(949) 555-0123" required>
             </div>
             <div class="field">
               <label for="f-msg">What does your roof need?</label>
@@ -823,6 +915,7 @@
       </div>
     </div>
     <div class="foot-bottom">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal">← Return to Portal</a>
       <span>© 2026 Di Rock General Contracting &amp; Roofing. CSLB #943051. All rights reserved.</span>
       <span class="pwr">Powered by <b>Branch &amp; Root</b></span>
     </div>
@@ -840,6 +933,13 @@
     Get a Quote
   </a>
 </nav>
+
+<script>document.querySelectorAll('.ba').forEach(function(b){var r=b.querySelector('.ba-range');function s(){b.style.setProperty('--pos',r.value+'%')}r.addEventListener('input',s);s();});</script>
+
+<a class="br-switch" href="/round-1/di-rock-roofing/audit" aria-label="View the brand report for this business">
+  <span class="br-switch-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+  <span>View Brand Report</span>
+</a>
 
 <script>
   (function(){
