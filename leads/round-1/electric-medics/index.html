@@ -115,24 +115,23 @@
 
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
-  /* ===== LAYOUT: LEFT RAIL + MAIN ===== */
-  .shell { display: flex; min-height: 100vh; }
+  /* ===== LAYOUT: TOP BAR + MAIN ===== */
+  .shell { display: block; }
 
   .rail {
-    width: var(--rail-w);
-    flex: 0 0 var(--rail-w);
-    background: var(--navy-900);
-    color: var(--on-navy);
     position: sticky;
     top: 0;
-    height: 100vh;
+    z-index: 100;
+    background: var(--navy-900);
+    color: var(--on-navy);
     display: flex;
-    flex-direction: column;
-    padding: 32px 26px;
-    border-right: 1px solid color-mix(in oklch, var(--amber-500) 18%, transparent);
+    align-items: center;
+    gap: 28px;
+    padding: 14px 28px;
+    border-bottom: 1px solid color-mix(in oklch, var(--amber-500) 18%, transparent);
   }
 
-  .brand { display: flex; align-items: center; gap: 13px; margin-bottom: 8px; }
+  .brand { display: flex; align-items: center; gap: 13px; }
   .brand-mark {
     width: 46px; height: 46px; flex: 0 0 46px;
     border-radius: 12px;
@@ -162,53 +161,39 @@
     margin-top: 3px;
   }
 
-  .rail-nav { margin-top: 38px; display: flex; flex-direction: column; gap: 2px; }
+  .rail-nav { margin-left: auto; display: flex; flex-direction: row; align-items: center; gap: 4px; }
   .rail-nav a {
     font-size: 0.82rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--on-navy-soft);
-    padding: 11px 12px;
+    padding: 9px 12px;
     border-radius: 8px;
-    border-left: 2px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: background .15s, color .15s, border-color .15s;
     font-weight: 600;
   }
   .rail-nav a:hover, .rail-nav a:focus-visible {
     background: color-mix(in oklch, var(--amber-500) 12%, transparent);
     color: var(--on-navy);
-    border-left-color: var(--amber-500);
+    border-bottom-color: var(--amber-500);
     outline: none;
   }
 
-  .rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
-  .rail-phone {
-    display: block;
-    font-family: 'Chivo', sans-serif;
+  /* "Get a quote" rendered as the bar's CTA pill */
+  .rail-nav a.nav-cta {
+    background: var(--amber-500);
+    color: var(--navy-900);
     font-weight: 800;
-    font-size: 1.22rem;
-    color: var(--on-navy);
-    letter-spacing: -0.01em;
+    border-bottom-color: transparent;
   }
-  .rail-phone small {
-    display: block;
-    font-family: 'Hanken Grotesk', sans-serif;
-    font-weight: 500;
-    font-size: 0.7rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--amber-400);
-    margin-bottom: 4px;
-  }
-  .rail-lic {
-    font-size: 0.72rem;
-    color: var(--on-navy-mute);
-    line-height: 1.5;
-    padding-top: 14px;
-    border-top: 1px solid color-mix(in oklch, var(--on-navy) 14%, transparent);
+  .rail-nav a.nav-cta:hover, .rail-nav a.nav-cta:focus-visible {
+    background: var(--amber-400);
+    color: var(--navy-900);
+    border-bottom-color: transparent;
   }
 
-  .main { flex: 1 1 auto; min-width: 0; }
+  .main { min-width: 0; }
 
   /* ===== BUTTONS ===== */
   .btn {
@@ -322,7 +307,8 @@
   .stars-inline { color: var(--amber-500); letter-spacing: 2px; font-size: 1.1rem; }
 
   /* ===== SECTION SCAFFOLD ===== */
-  section { scroll-margin-top: 12px; }
+  section { scroll-margin-top: 76px; }
+  .main, #top { scroll-margin-top: 76px; }
   .pad { padding: 84px 0; }
   .sec-head { margin-bottom: 48px; max-width: 60ch; }
   .sec-kicker {
@@ -600,19 +586,14 @@
 
   /* ===== RESPONSIVE — single breakpoint ===== */
   @media (max-width: 768px) {
-    .shell { display: block; }
     .rail {
-      width: 100%; flex: none; height: auto;
-      position: static;
-      flex-direction: row; align-items: center; justify-content: space-between;
-      padding: 16px 20px;
-      border-right: none;
+      gap: 16px;
+      justify-content: space-between;
+      padding: 12px 20px;
       border-bottom: 2px solid var(--amber-500);
     }
-    .rail-nav, .rail-foot { display: none; }
-    .brand { margin-bottom: 0; }
+    .rail-nav { display: none; }
     .brand-mark { width: 40px; height: 40px; flex-basis: 40px; }
-    .theme-toggle { margin-top: 0; align-self: center; }
 
     .wrap { padding: 0 20px; }
     .pad { padding: 56px 0; }
@@ -650,7 +631,7 @@
   .br-portal-foot{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px;text-decoration:none;color:inherit;opacity:.8;border:1px solid currentColor;border-radius:8px;padding:6px 11px;transition:opacity .2s}
   .br-portal-foot:hover{opacity:1}
 
-  /* ===== THEME TOGGLE (sticky in rail, near phone CTA) ===== */
+  /* ===== THEME TOGGLE (in top bar) ===== */
   .theme-toggle {
     display: inline-flex; align-items: center; justify-content: center;
     width: 38px; height: 38px; border-radius: 10px;
@@ -658,7 +639,6 @@
     background: var(--navy-800);
     color: var(--amber-400);
     cursor: pointer; flex: 0 0 38px;
-    margin-top: 16px; align-self: flex-start;
     transition: background .15s, border-color .15s, transform .12s ease;
   }
   .theme-toggle:hover { border-color: var(--amber-500); transform: translateY(-1px); }
@@ -758,36 +738,22 @@
 <body>
 <div class="shell">
 
-  <!-- ===== LEFT RAIL NAV ===== -->
+  <!-- ===== TOP HEADING BAR ===== -->
   <header class="rail">
-    <div>
-      <a class="brand" href="#top" aria-label="Electric Medics — back to top">
-        <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
-        <div>
-          <div class="brand-name">Electric<br><span>Medics</span></div>
-          <div class="brand-tag">Mission Viejo, CA</div>
-        </div>
-      </a>
+    <a class="brand" href="#top" aria-label="Electric Medics — back to top">
+      <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
+      <div>
+        <div class="brand-name">Electric <span>Medics</span></div>
+        <div class="brand-tag">Mission Viejo, CA</div>
+      </div>
+    </a>
 
-      <nav class="rail-nav" aria-label="Primary">
-        <a href="#services">Services</a>
-        <a href="#trust">Why us</a>
-        <a href="#area">Service area</a>
-        <a href="#contact">Get a quote</a>
-      </nav>
-    </div>
-
-    <div class="rail-foot">
-      <a class="rail-phone" href="tel:+19494629200">
-        <small>Call · 24/7 emergency</small>
-        (949) 462-9200
-      </a>
-      <p class="rail-lic">
-        CSLB License C-10 729017<br>
-        Licensed · Bonded · Insured<br>
-        Family-run since 1995
-      </p>
-    </div>
+    <nav class="rail-nav" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#trust">Why us</a>
+      <a href="#area">Service area</a>
+      <a href="#contact" class="nav-cta">Get a quote</a>
+    </nav>
 
     <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
   </header>
