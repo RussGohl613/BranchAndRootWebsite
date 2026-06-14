@@ -6,5 +6,12 @@
     { "source": "/packages.html", "destination": "/bundles", "permanent": true },
     { "source": "/blog", "destination": "/guides", "permanent": true },
     { "source": "/blog/:path*", "destination": "/guides/:path*", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "leads.branchandrootconsulting.com" }],
+      "destination": "/leads/:path*"
+    }
   ]
 }

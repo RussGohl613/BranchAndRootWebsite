@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>Truworx Building Concepts, Inc. — Brand Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+  :root {
+    --forest: #1B4332;
+    --forest-deep: #122e22;
+    --cream: #F7F5F0;
+    --ink: #26302b;
+    --muted: #5d6660;
+    --amber: #C8801F;
+    --line: #d9d6cd;
+  }
+
+  @page {
+    size: Letter;
+    margin: 20mm 16mm 20mm 16mm;
+    @bottom-left {
+      content: "Branch & Root Consulting — Confidential | Truworx Building Concepts, Inc.";
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 7.5pt;
+      color: #6f776f;
+    }
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 7.5pt;
+      color: #6f776f;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  h1, h2, h3 { font-family: 'Bitter', Georgia, 'Times New Roman', serif; }
+
+  /* ---------- Title block ---------- */
+  .cover {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 26px 26px 22px 26px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+  }
+  .cover .kicker {
+    font-size: 8.5pt;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: #bcd0c4;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+  .cover h1 {
+    margin: 0;
+    font-size: 23pt;
+    line-height: 1.12;
+    font-weight: 700;
+    color: #ffffff;
+  }
+  .cover .subtitle {
+    margin: 14px 0 0 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(247,245,240,0.28);
+    font-size: 10pt;
+    color: #d8e4dc;
+    letter-spacing: 0.3px;
+  }
+  .cover .amber-rule {
+    height: 3px;
+    width: 56px;
+    background: var(--amber);
+    border-radius: 2px;
+    margin: 16px 0 0 0;
+  }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 16px; }
+
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-bottom: 2px solid var(--forest);
+    padding-bottom: 5px;
+    margin: 0 0 10px 0;
+  }
+  .sec-num {
+    background: var(--forest);
+    color: var(--cream);
+    font-family: 'Bitter', serif;
+    font-weight: 700;
+    font-size: 10pt;
+    width: 21px;
+    height: 21px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+  .sec-head h2 {
+    margin: 0;
+    font-size: 13.5pt;
+    color: var(--forest);
+    font-weight: 700;
+  }
+
+  p { margin: 0 0 8px 0; }
+  .lead { margin-bottom: 9px; }
+
+  ul { margin: 4px 0 8px 0; padding-left: 17px; }
+  li { margin-bottom: 3px; }
+
+  strong { color: var(--forest-deep); }
+
+  /* ---------- Callout panels ---------- */
+  .panel {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--forest);
+    border-radius: 5px;
+    padding: 11px 14px;
+    margin: 9px 0;
+  }
+  .panel.amber { border-left-color: var(--amber); }
+  .panel h3 {
+    margin: 0 0 6px 0;
+    font-size: 10pt;
+    color: var(--forest);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .panel.amber h3 { color: #a5681a; }
+
+  /* ---------- Two-column ---------- */
+  .cols { display: flex; gap: 12px; }
+  .col { flex: 1; }
+
+  /* ---------- Mini stat row ---------- */
+  .stats {
+    display: flex;
+    gap: 8px;
+    margin: 4px 0 10px 0;
+  }
+  .stat {
+    flex: 1;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 8px 9px;
+    text-align: center;
+  }
+  .stat .num {
+    font-family: 'Bitter', serif;
+    font-weight: 700;
+    font-size: 16pt;
+    color: var(--forest);
+    line-height: 1;
+  }
+  .stat .num.warn { color: var(--amber); }
+  .stat .lab {
+    font-size: 7.4pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ---------- Quality meter ---------- */
+  .meter {
+    display: inline-flex;
+    gap: 3px;
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+  .pip {
+    width: 13px; height: 9px;
+    border-radius: 2px;
+    background: #d7d3ca;
+  }
+  .pip.on { background: var(--forest); }
+  .pip.on.amber { background: var(--amber); }
+
+  /* ---------- Tables ---------- */
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 8px 0; font-size: 9pt; }
+  thead th {
+    background: var(--forest);
+    color: var(--cream);
+    text-align: left;
+    padding: 6px 9px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 8.4pt;
+    letter-spacing: 0.4px;
+  }
+  tbody td {
+    padding: 6px 9px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  tbody tr:nth-child(even) { background: #faf9f5; }
+  .comp-name { font-weight: 700; color: var(--forest-deep); }
+
+  /* ---------- Quotes ---------- */
+  .quote {
+    font-style: italic;
+    color: var(--forest-deep);
+  }
+  .src {
+    font-style: normal;
+    font-size: 8pt;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+  }
+  .copy-sample {
+    border-left: 2px solid var(--amber);
+    padding: 2px 0 2px 11px;
+    margin: 7px 0;
+  }
+  .copy-sample .txt { font-style: italic; color: var(--forest-deep); }
+
+  /* ---------- Gap flag ---------- */
+  .gap {
+    color: #9a5b13;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  /* ---------- Swatch row ---------- */
+  .swatches { display: flex; gap: 9px; margin: 8px 0; }
+  .sw { text-align: center; flex: 1; }
+  .sw .chip {
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.12);
+    margin-bottom: 4px;
+  }
+  .sw .hex { font-size: 7.6pt; color: var(--muted); letter-spacing: 0.4px; }
+  .sw .nm { font-size: 8pt; font-weight: 600; color: var(--forest-deep); }
+
+  .no-break { break-inside: avoid; }
+  .tag {
+    display: inline-block;
+    background: var(--forest);
+    color: var(--cream);
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-right: 5px;
+    letter-spacing: 0.4px;
+  }
+  .tag.amber { background: var(--amber); }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <p class="kicker">Brand Intelligence Report</p>
+    <h1>Truworx Building Concepts, Inc.</h1>
+    <div class="amber-rule"></div>
+    <p class="subtitle">Branch &amp; Root Consulting &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026</p>
+  </div>
+
+  <!-- 1. BUSINESS OVERVIEW -->
+  <section class="no-break">
+    <div class="sec-head"><span class="sec-num">1</span><h2>Business Overview</h2></div>
+    <p class="lead"><strong>Truworx Building Concepts, Inc.</strong> is a family-run general contracting and remodeling firm based in Aliso Viejo, California, at 38 Pamplona, Aliso Viejo, CA 92656, reachable at (949) 473-4000. The company is led by <strong>Troy Davies Ruesch</strong> (RMO / CEO / President), with family members Tavin James Ruesch and Jade Colin Ruesch listed as officers. Truworx markets <strong>"25 years of experience,"</strong> though the corporation was registered 11/20/2018 and its CSLB license #1057918 was issued 9/9/2019 — making the legal entity roughly seven years old, so the 25-year figure most likely reflects the owner's personal industry experience rather than the company's age. Its service line spans kitchen remodeling, bathroom remodeling, home additions, stone work installation, floor refinishing, stucco &amp; drywall repair, outdoor living / patio enclosures, and whole-home remodeling and renovation.</p>
+  </section>
+
+  <!-- 2. DIGITAL PRESENCE AUDIT -->
+  <section>
+    <div class="sec-head"><span class="sec-num">2</span><h2>Digital Presence Audit</h2></div>
+
+    <div class="stats">
+      <div class="stat"><div class="num warn">2<span style="font-size:9pt;">/5</span></div><div class="lab">Website Quality</div></div>
+      <div class="stat"><div class="num warn">0</div><div class="lab">Google Reviews</div></div>
+      <div class="stat"><div class="num warn">0</div><div class="lab">Yelp Reviews</div></div>
+      <div class="stat"><div class="num warn">0</div><div class="lab">Social Followers</div></div>
+    </div>
+
+    <p style="margin-bottom:4px;"><strong>Website</strong> &nbsp;
+      <span class="meter">
+        <span class="pip on amber"></span><span class="pip on amber"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span>
+      </span>
+      <span style="font-size:8.5pt; color:var(--muted);">&nbsp;Quality 2/5</span>
+    </p>
+    <p>The primary site is <strong>alisoviejogeneralcontractor.com</strong>, built on a template / microsite builder (a directory-style local-business site generator); a secondary site, truworxbuild.com, runs WordPress with the Colibri theme. The homepage headline reads "Welcome to Truworx Building Concepts."</p>
+    <div class="cols">
+      <div class="col">
+        <div class="panel">
+          <h3>What Works</h3>
+          <ul>
+            <li>Mobile-responsive layout</li>
+            <li>Clear service list (kitchen, bath, additions, stone work, floor refinishing, stucco &amp; drywall)</li>
+            <li>Trust framing present: "25 years of experience" and a quality-at-an-affordable-price guarantee</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="panel amber">
+          <h3>What Does Not</h3>
+          <ul>
+            <li>No above-the-fold lead form — phone-only contact (CTA is "Contact Truworx Building Concepts today")</li>
+            <li>Generic template build; no project gallery or before/after proof</li>
+            <li>Two competing domains dilute SEO authority and brand focus</li>
+            <li>No e-mail capture path anywhere on the site</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:6px; margin-bottom:4px;"><strong>Reviews &amp; Reputation Trend</strong></p>
+    <p>Public ratings are effectively non-existent: <strong>Google 0 reviews / 0 stars</strong> and <strong>Yelp 0 reviews / 0 stars</strong> as captured. A Yelp listing does exist (31 photos, updated April 2026) but returns HTTP 403, and a HomeAdvisor profile carries positive review quotes — yet neither exposed a scrapable verified count. The trend read: Truworx earns genuine praise off-platform (BBB, HomeAdvisor word-of-mouth) but captures almost none of it where buyers actually search, leaving a near-invisible public reputation despite real satisfied customers. <span class="gap">Exact Google, Yelp, and HomeAdvisor counts: Not found — recommend verifying via phone outreach.</span></p>
+
+    <div class="cols">
+      <div class="col">
+        <p style="margin-bottom:4px;"><strong>Social Channels</strong></p>
+        <ul>
+          <li><strong>Facebook</strong> — page live (TruworxBuildingConceptsIncCA) but "Not yet rated (0 Reviews)"; follower count and last-post date login-gated. <span class="gap">Not found — recommend verifying via phone outreach.</span></li>
+          <li><strong>Instagram</strong> — profile exists (truworxbuildingconceptsinc); followers, post count, and cadence could not be retrieved. <span class="gap">Not found — recommend verifying via phone outreach.</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <p style="margin-bottom:4px;"><strong>Google Business Profile (GBP)</strong></p>
+        <p style="margin-bottom:0;">The GBP URL resolves, but no public star rating or review count could be confirmed (genuine count appears to be 0 or very low). Profile completeness is therefore <strong>unverified and likely under-built</strong> — a high-priority claim-and-optimize target. <span class="gap">Exact GBP fields: Not found — recommend verifying via phone outreach.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BRAND VOICE ANALYSIS -->
+  <section>
+    <div class="sec-head"><span class="sec-num">3</span><h2>Brand Voice Analysis</h2></div>
+    <p style="margin-bottom:7px;">
+      <span class="tag">Honest</span>
+      <span class="tag">Craftsman</span>
+      <span class="tag">Dependable</span>
+    </p>
+    <p>The voice is plain-spoken, honest, and craftsmanship-forward. Truworx leans on the literal "true work" meaning of its name — trustworthy, no-nonsense, and family-operated — and communicates as a hands-on builder who values truthful, straightforward answers and quality over salesmanship. The result reads premium-but-approachable rather than corporate.</p>
+
+    <p style="margin-bottom:3px;"><strong>Verbatim copy samples</strong> <span class="src">(source: Truworx website / homepage copy)</span></p>
+    <div class="copy-sample"><span class="txt">"Welcome to Truworx Building Concepts"</span></div>
+    <div class="copy-sample"><span class="txt">"25 years of experience guaranteeing high-quality work at an affordable price"</span></div>
+    <div class="copy-sample"><span class="txt">"We guarantee you high-quality work at an affordable price"</span></div>
+  </section>
+
+  <!-- 4. CUSTOMER INTELLIGENCE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">4</span><h2>Customer Intelligence</h2></div>
+    <p class="lead">With no public Google or Yelp reviews to mine, the customer signal comes from BBB and HomeAdvisor feedback. Three praise themes recur:</p>
+    <div class="panel no-break">
+      <h3>Top 3 Praise Themes</h3>
+      <ul>
+        <li><strong>Exceptional workmanship</strong> — one BBB reviewer called the completed remodel <span class="quote">"a work of art."</span> <span class="src">(BBB)</span></li>
+        <li><strong>Honest, clear communication</strong> — customers cite <span class="quote">"truthful, straightforward answers"</span> and strong communication throughout the job.</li>
+        <li><strong>Detail-oriented, clean &amp; on-time delivery</strong> — described as thorough, finishing on schedule, keeping <span class="quote">"clean and respectful job sites,"</span> and being <span class="quote">"a pleasure to work with."</span> <span class="src">(HomeAdvisor)</span></li>
+      </ul>
+    </div>
+    <p><strong>Recurring friction points:</strong> None surfaced in the available feedback — the sentiment captured is uniformly positive. The genuine "friction" is structural rather than service-related: praise lives on low-traffic platforms while the high-intent channels (Google, Yelp) sit empty, so prospective customers never see the proof that existing clients describe. <span class="gap">No negative-review corpus was available to analyze — Not found — recommend verifying via phone outreach.</span></p>
+  </section>
+
+  <!-- 5. COMPETITIVE LANDSCAPE -->
+  <section>
+    <div class="sec-head"><span class="sec-num">5</span><h2>Competitive Landscape</h2></div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:20%;">Competitor</th>
+          <th style="width:12%;">Site Quality</th>
+          <th style="width:16%;">Reviews</th>
+          <th style="width:52%;">Key Differentiator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="comp-name">Tixan Construction</td>
+          <td>5 / 5</td>
+          <td>229 Yelp&nbsp;·&nbsp;~4.9★*</td>
+          <td>Polished, SEO-rich WordPress site with dozens of city- and service-specific landing pages (Aliso Viejo, Mission Viejo, Newport Beach, ADUs, kitchen, structural) plus 218 project photos — a deep, content-driven presence Truworx completely lacks.</td>
+        </tr>
+        <tr>
+          <td class="comp-name">James Remodeling Inc.</td>
+          <td>4 / 5</td>
+          <td>99 Yelp&nbsp;·&nbsp;~4.9★*</td>
+          <td>Established kitchen/bath specialist with a physical Mission Viejo showroom, BBB A+ accreditation since 2019, 428 photos, and a BuildZoom score of 116 (top 2% in CA) — a far stronger public review footprint.</td>
+        </tr>
+        <tr>
+          <td class="comp-name">Supreme Remodeling Inc.</td>
+          <td>4 / 5</td>
+          <td>0 Yelp**&nbsp;·&nbsp;4.8★ Angi</td>
+          <td>Runs a dedicated Aliso Viejo landing-page funnel offering free, no-obligation estimates and rates highly across aggregators (Angi 4.8, Houzz 4.7) — an active lead-capture / estimate-request flow Truworx's phone-only site does not offer.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:7.6pt; color:var(--muted); margin-top:-2px; margin-bottom:8px;">*Star averages estimated from "Best 10" placements; exact figures unconfirmed (Yelp returned HTTP 403). **Supreme Yelp count unconfirmed and set to 0; aggregator stars shown (LA/Van Nuys-based, serving Aliso Viejo remotely).</p>
+
+    <div class="panel amber">
+      <h3>Where Truworx Leads vs. Lags</h3>
+      <p style="margin-bottom:0;">Truworx <strong>lags badly on visibility</strong>: every named competitor outpaces it on website depth (sites rated 4–5/5 vs. Truworx's 2/5) and on review volume (Tixan 229, James 99) against Truworx's effectively zero public reviews and no lead-capture funnel. Where Truworx <strong>leads is on raw credibility and craft</strong> — a family-run operation marketing 25 years of experience, BBB-grade goodwill, and uniformly glowing (if low-volume) feedback that calls its work "a work of art." The gap is not quality; it is exposure. Competitors win the click and the lead form before Truworx is ever considered, which means modest investment in web presence and review capture could close most of the distance quickly.</p>
+    </div>
+  </section>
+
+  <!-- 6. LANDING PAGE STRATEGY -->
+  <section>
+    <div class="sec-head"><span class="sec-num">6</span><h2>Landing Page Strategy</h2></div>
+
+    <div class="panel no-break">
+      <h3>Recommended Hero</h3>
+      <p style="font-family:'Bitter',serif; font-size:13pt; font-weight:700; color:var(--forest); margin-bottom:5px; line-height:1.2;">"Aliso Viejo's Trusted Remodeling &amp; Home-Addition Contractor — 25 Years of True Craftsmanship"</p>
+      <p style="margin-bottom:8px; color:var(--muted);">Subheadline: <em>Family-owned and BBB A+ accredited. Kitchens, baths, additions, and outdoor living — built honestly, done right, finished clean.</em></p>
+      <p style="margin-bottom:0;">Primary CTA: <span class="tag amber" style="font-size:9pt;">Get a Free Estimate</span> &nbsp;(replacing the current phone-only "Contact us today")</p>
+    </div>
+
+    <div class="cols">
+      <div class="col">
+        <p style="margin-bottom:4px;"><strong>Above-the-Fold Trust Signals</strong></p>
+        <ul style="margin-top:0;">
+          <li>BBB A+ Accredited (since 2022)</li>
+          <li>Licensed &amp; Insured — CSLB #1057918 (Class B General Building Contractor)</li>
+          <li>Family-owned &amp; operated (the Ruesch family)</li>
+          <li>25 years of remodeling experience</li>
+          <li>$15,000 bonded</li>
+          <li>HomeAdvisor reviews: "a work of art," "thorough," "clean," "a pleasure to work with"</li>
+          <li>Real project gallery / before-and-after photos</li>
+        </ul>
+      </div>
+      <div class="col">
+        <p style="margin-bottom:4px;"><strong>Color &amp; Typography Direction</strong></p>
+        <p style="margin-bottom:6px;">Direction: <strong>Charcoal + safety amber</strong> — a clean white base with charcoal accents and a warm safety-amber highlight reserved for CTAs. A grounded, <strong>solid-builder</strong> palette that reads premium without feeling corporate (font personality: sturdy, honest, confident).</p>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#2b2f33;"></div><div class="nm">Charcoal</div><div class="hex">#2B2F33</div></div>
+          <div class="sw"><div class="chip" style="background:#ffffff;"></div><div class="nm">White Base</div><div class="hex">#FFFFFF</div></div>
+          <div class="sw"><div class="chip" style="background:#C8801F;"></div><div class="nm">Safety Amber</div><div class="hex">#C8801F</div></div>
+        </div>
+        <p style="margin-bottom:0;">Typography: <strong>Bricolage Grotesque</strong> for headlines paired with <strong>Public Sans</strong> for body — a sturdy, confident, plain-honest pairing that mirrors the brand voice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. BRANCH & ROOT RECOMMENDATION -->
+  <section class="no-break">
+    <div class="sec-head"><span class="sec-num">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+    <div class="panel" style="border-left-color:var(--amber); background:#fbf6ee;">
+      <h3 style="color:#a5681a;">Recommended Tier — The Foundation Bundle</h3>
+      <p>A 25-year, BBB A+ family contractor is wasting strong credibility on a phone-only template site with no lead form and a near-invisible review profile. The highest-leverage first move is a <strong>website rebuild paired with an Instant Responder</strong> — together they capture the inbound demand Truworx already earns through reputation and word-of-mouth, converting calls and form fills that today simply leak away. This is precisely the gap <strong>The Foundation Bundle</strong> is built to close: a credible, conversion-ready site plus immediate lead follow-up.</p>
+      <p style="margin-bottom:0;"><strong>Revenue opportunity:</strong> With competitors capturing 99–229 reviews and active estimate funnels while Truworx sits near zero, recovering even a handful of the inbound leads its reputation already generates — at typical remodeling / home-addition ticket sizes — could plausibly add tens of thousands of dollars in newly converted project revenue per year. <span class="src" style="display:block; margin-top:5px;">Figure is an illustrative opportunity estimate, not a verified projection; actual lead volume and close rates should be confirmed via phone outreach.</span></p>
+    </div>
+  </section>
+
+</body>
+</html>

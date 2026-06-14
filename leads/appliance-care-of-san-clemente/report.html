@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>Appliance Care of San Clemente — Brand Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+  :root {
+    --forest: #1B4332;
+    --forest-soft: #2D5A45;
+    --cream: #F7F5F0;
+    --ink: #1F2421;
+    --muted: #55605A;
+    --line: #DDE3DF;
+    --accent: #B8845A; /* warm sand */
+    --slate: #3E5C76;  /* coastal slate-blue */
+  }
+
+  @page {
+    size: Letter;
+    margin: 20mm 16mm 22mm 16mm;
+    @bottom-left {
+      content: "Branch & Root Consulting — Confidential | Appliance Care of San Clemente";
+      font-family: "Source Sans 3", Arial, sans-serif;
+      font-size: 7.5pt;
+      color: #6B756F;
+    }
+    @bottom-right {
+      content: "Page " counter(page) " of " counter(pages);
+      font-family: "Source Sans 3", Arial, sans-serif;
+      font-size: 7.5pt;
+      color: #6B756F;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: "Source Sans 3", Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3 { font-family: "Bitter", Georgia, "Times New Roman", serif; }
+
+  /* ---- Cover / Title ---- */
+  .cover {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 30px 32px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .cover .eyebrow {
+    font-family: "Source Sans 3", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-size: 8pt;
+    font-weight: 600;
+    color: #C9D6CE;
+    margin: 0 0 10px 0;
+  }
+  .cover h1 {
+    font-size: 23pt;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0 0 14px 0;
+    color: #FFFFFF;
+  }
+  .cover .meta {
+    font-size: 9.5pt;
+    color: #DCE6E0;
+    border-top: 1px solid rgba(247,245,240,0.22);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .cover .meta strong { color: #FFFFFF; }
+
+  .snapshot {
+    display: flex;
+    gap: 10px;
+    margin: 0 0 22px 0;
+  }
+  .stat {
+    flex: 1;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .stat .num {
+    font-family: "Bitter", Georgia, serif;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.1;
+  }
+  .stat .lbl {
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--muted);
+    margin-top: 3px;
+  }
+
+  /* ---- Sections ---- */
+  section { margin-bottom: 18px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    border-bottom: 2px solid var(--forest);
+    padding-bottom: 5px;
+    margin-bottom: 11px;
+    break-after: avoid;
+  }
+  .sec-head .n {
+    font-family: "Bitter", serif;
+    font-weight: 700;
+    background: var(--forest);
+    color: var(--cream);
+    font-size: 9.5pt;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 22px;
+  }
+  .sec-head h2 {
+    font-size: 13.5pt;
+    font-weight: 700;
+    color: var(--forest);
+    margin: 0;
+  }
+
+  p { margin: 0 0 9px 0; }
+  .lead-in { font-weight: 600; color: var(--forest-soft); }
+
+  ul { margin: 4px 0 9px 0; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+
+  /* ---- Callout panels ---- */
+  .panel {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--accent);
+    border-radius: 3px;
+    padding: 11px 14px;
+    margin: 10px 0;
+  }
+  .panel.slate { border-left-color: var(--slate); }
+  .panel.forest { border-left-color: var(--forest); }
+  .panel h3 {
+    font-size: 10.5pt;
+    color: var(--forest);
+    margin: 0 0 6px 0;
+  }
+
+  .grid2 { display: flex; gap: 12px; }
+  .grid2 > div { flex: 1; }
+
+  .works h3, .gaps h3 { font-size: 10pt; margin: 0 0 5px 0; }
+  .works h3 { color: var(--forest); }
+  .gaps h3 { color: var(--accent); }
+
+  /* ---- Tables ---- */
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 9pt; }
+  th {
+    background: var(--forest);
+    color: var(--cream);
+    text-align: left;
+    padding: 6px 9px;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 600;
+    font-size: 8.5pt;
+  }
+  td { padding: 6px 9px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #FBFAF7; }
+  td.center, th.center { text-align: center; }
+
+  .stars { color: var(--accent); font-weight: 700; white-space: nowrap; }
+
+  /* ---- Quotes ---- */
+  blockquote {
+    margin: 7px 0;
+    padding: 4px 0 4px 13px;
+    border-left: 3px solid var(--slate);
+    color: var(--ink);
+    font-style: italic;
+    font-size: 9.5pt;
+  }
+  blockquote .who { display: block; font-style: normal; font-size: 8pt; color: var(--muted); margin-top: 2px; }
+
+  .voice-words { display: flex; gap: 8px; margin: 4px 0 10px 0; }
+  .vw {
+    flex: 1;
+    text-align: center;
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 3px;
+    padding: 9px 4px;
+  }
+  .vw .w { font-family: "Bitter", serif; font-weight: 700; font-size: 12pt; }
+  .vw .s { font-size: 7pt; text-transform: uppercase; letter-spacing: 1px; color: #C9D6CE; margin-top: 2px; }
+
+  .gapnote {
+    font-size: 8.5pt;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .flag {
+    color: #8A5A2B;
+    font-style: italic;
+  }
+
+  .swatches { display: flex; gap: 8px; margin: 8px 0; }
+  .sw { flex: 1; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+  .sw .chip { height: 34px; }
+  .sw .cap { font-size: 7.5pt; padding: 4px 5px; color: var(--muted); }
+
+  .tier-banner {
+    background: var(--forest);
+    color: #fff;
+    border-radius: 4px;
+    padding: 13px 16px;
+    margin: 4px 0 10px 0;
+  }
+  .tier-banner .k { font-size: 7.5pt; text-transform: uppercase; letter-spacing: 1.5px; color: #C9D6CE; }
+  .tier-banner .v { font-family: "Bitter", serif; font-size: 15pt; font-weight: 700; color: #fff; }
+
+  .kv { font-size: 9.5pt; }
+  .kv b { color: var(--forest-soft); }
+
+  .avoid-break { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+  <div class="cover">
+    <p class="eyebrow">Brand Intelligence Report</p>
+    <h1>Appliance Care of San Clemente</h1>
+    <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Appliance Repair &nbsp;·&nbsp; San Clemente, CA</div>
+  </div>
+
+  <div class="snapshot">
+    <div class="stat"><div class="num">33 yrs</div><div class="lbl">In Operation</div></div>
+    <div class="stat"><div class="num">5.0&#9733;</div><div class="lbl">Yelp (97 reviews)</div></div>
+    <div class="stat"><div class="num">5.0&#9733;</div><div class="lbl">Google (17 reviews)</div></div>
+    <div class="stat"><div class="num">2 / 5</div><div class="lbl">Website Quality</div></div>
+  </div>
+
+  <!-- 1 -->
+  <section class="avoid-break">
+    <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+    <p><strong>Appliance Care of San Clemente</strong> is a family-owned appliance-repair business serving San Clemente, California, owned and operated by <strong>Rob Flowers</strong> alongside his son and co-technician <strong>Dane Flowers</strong>. Operating from 112 E Ave Ramona, San Clemente, CA 92672 and reachable at (949) 492-1225, the company has been in business for 33 years (since 1993). Its service line covers washer &amp; dryer repair, refrigerator repair, oven &amp; stove repair, dishwasher repair, ice maker repair, and coin-operated machine repair. The team services major brands including Whirlpool, Maytag, GE, Speed Queen, Amana, Roper, Hotpoint, and KitchenAid, and explicitly does <em>not</em> service LG or Samsung.</p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+    <div class="panel forest avoid-break">
+      <h3>Website &mdash; sanclementedryerrepair.com &nbsp;·&nbsp; Quality 2 / 5 &nbsp;·&nbsp; GoDaddy Website Builder</h3>
+      <p class="kv" style="margin-bottom:6px;">The site opens with the headline <em>&ldquo;Welcome to Appliance Care of San Clemente&rdquo;</em> and lists all six service categories, but it is <b>not mobile-responsive</b> and leans on a phone-call button as its only conversion path.</p>
+      <div class="grid2">
+        <div class="works">
+          <h3>What works</h3>
+          <ul>
+            <li>Clear local identity and full service list (washers/dryers, refrigerators, ovens/stoves, dishwashers, ice makers, coin-op)</li>
+            <li>Strong trust signals on-page: family-owned since 1993, Rob 30+ years, Dane 19+ years, "thousands of successful repairs"</li>
+            <li>Serviced-brands list sets clear expectations (incl. the LG/Samsung exclusion)</li>
+          </ul>
+        </div>
+        <div class="gaps">
+          <h3>What does not</h3>
+          <ul>
+            <li>No dedicated "Schedule" CTA above the fold &mdash; only a phone-call button</li>
+            <li>Not mobile-responsive (fails the majority of repair searches, which are mobile)</li>
+            <li>No lead-capture form, no SEO/service-area pages</li>
+            <li>No CSLB license number, insurance status, or warranty language &mdash; <span class="flag">Not found; recommend verifying via phone outreach</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel slate avoid-break">
+      <h3>Reviews &mdash; Reputation is the Standout Asset</h3>
+      <table>
+        <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Read</th></tr>
+        <tr><td>Yelp</td><td class="center">97</td><td class="center"><span class="stars">5.0 &#9733;</span></td><td>Largest review base; page noted "Updated April 2026" &mdash; an active, current listing.</td></tr>
+        <tr><td>Google</td><td class="center">17</td><td class="center"><span class="stars">5.0 &#9733;</span></td><td>Perfect rating but thin volume relative to a 33-year tenure &mdash; clear upside in review generation.</td></tr>
+      </table>
+      <p class="kv"><b>Trend read:</b> A flawless 5.0 across both platforms and 114 combined reviews is exceptional and signals durable customer loyalty. Yelp carries the weight (97) and shows recent activity, while Google &mdash; the highest-intent discovery surface &mdash; sits at just 17. The gap is the opportunity: the business clearly earns 5-star outcomes but is under-collecting reviews where new customers search most.</p>
+      <p class="gapnote">Data note: Yelp's 5.0 average is inferred from search snippets and aggregated sentiment (the live page returned HTTP 403); the Google count/rating was sourced via Birdeye aggregation rather than a verified live profile. Treat both as high-confidence but unverified &mdash; recommend confirming via phone outreach.</p>
+    </div>
+
+    <div class="grid2 avoid-break">
+      <div class="panel" style="margin-right:0;">
+        <h3>Social Channels</h3>
+        <ul>
+          <li><b>Facebook</b> &mdash; page is live (facebook.com/SanClementeAppliance). Follower count and most-recent-post date <span class="flag">Not found &mdash; content is JavaScript-rendered; recommend verifying via phone outreach.</span></li>
+          <li><b>Instagram</b> &mdash; no presence found for this business.</li>
+        </ul>
+        <p class="gapnote">Social is effectively dormant as a marketing channel today.</p>
+      </div>
+      <div class="panel" style="margin-left:0;">
+        <h3>Google Business Profile Completeness</h3>
+        <p class="kv">No standalone, verified Google Business Profile URL was located; the 17 reviews / 5.0 rating came through Birdeye aggregation, not a confirmed live GBP. <span class="flag">GBP status Not found &mdash; recommend verifying (and claiming/optimizing) via phone outreach.</span></p>
+        <p class="gapnote">A 33-year, 5-star business without a confirmed GBP is leaving its most valuable local-search asset on the table.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+    <div class="voice-words">
+      <div class="vw"><div class="w">Trustworthy</div><div class="s">Honest &amp; transparent</div></div>
+      <div class="vw"><div class="w">Neighborly</div><div class="s">Hyper-local &amp; warm</div></div>
+      <div class="vw"><div class="w">Established</div><div class="s">33 years, father &amp; son</div></div>
+    </div>
+    <p>The voice is friendly, humble, and hyper-local &mdash; a small-town father-and-son operation that longtime San Clemente residents already know and trust. It emphasizes honesty, fair pricing, and decades of hands-on experience over slick marketing. The tone is warm, neighborly, and dependable rather than corporate or salesy.</p>
+    <div class="panel avoid-break">
+      <h3>Verbatim copy samples (source: company website, sanclementedryerrepair.com)</h3>
+      <blockquote>&ldquo;Welcome to Appliance Care of San Clemente&rdquo;</blockquote>
+      <blockquote>&ldquo;Family Owned and operated since 1993&rdquo;</blockquote>
+      <blockquote>&ldquo;30+ Years of experience in the Appliance Repair industry&rdquo;</blockquote>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+    <p class="lead-in">Top three praise themes, drawn from recurring review sentiment across Yelp and Google:</p>
+    <div class="panel slate avoid-break">
+      <h3>1 &nbsp;·&nbsp; Honest &amp; transparent about the problem and the price</h3>
+      <blockquote>Customers repeatedly describe technicians who <em>show, clearly explain what is wrong</em>, and are upfront about cost &mdash; the single most-cited theme.<span class="who">Recurring theme — Yelp / Google reviews</span></blockquote>
+      <h3 style="margin-top:8px;">2 &nbsp;·&nbsp; Prompt, timely service and quick response</h3>
+      <blockquote>Reviewers consistently note <em>fast response and prompt, timely service</em> when an appliance goes down.<span class="who">Recurring theme — Yelp / Google reviews</span></blockquote>
+      <h3 style="margin-top:8px;">3 &nbsp;·&nbsp; Fair pricing &mdash; repair over costly replacement</h3>
+      <blockquote>The team is praised for <em>recommending a fair-priced repair instead of an expensive replacement</em>, alongside a beloved father-son dynamic (Rob and Dane are named repeatedly) and workmanship that leaves appliances <em>working like new again</em>.<span class="who">Recurring theme — Yelp / Google reviews</span></blockquote>
+    </div>
+    <p class="gapnote">Quotes above paraphrase the aggregated review themes captured in research; verbatim individual-reviewer text was not extractable from the blocked Yelp page (HTTP 403). No fabricated quotes are presented.</p>
+    <div class="panel gaps avoid-break">
+      <h3>Recurring friction points</h3>
+      <p class="kv">No recurring customer complaints surfaced in the research &mdash; sentiment is uniformly positive (5.0 across both platforms). The friction is operational, not reputational: customers who would happily refer have no easy place to do so (no review-generation prompt, dormant social, unconfirmed GBP), and the LG/Samsung exclusion means a share of search demand cannot be served.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+    <table>
+      <tr>
+        <th>Competitor</th>
+        <th class="center">Site /5</th>
+        <th class="center">Reviews</th>
+        <th class="center">Rating</th>
+        <th>Key differentiator</th>
+      </tr>
+      <tr>
+        <td><b>ASAP Appliance Service</b></td>
+        <td class="center">3</td>
+        <td class="center">89</td>
+        <td class="center"><span class="stars">5.0&#9733;</span></td>
+        <td>Factory-trained master tech (45+ yrs), displays a state license (#A 40237) &amp; insurance, and offers a written 90-day parts-and-labor guarantee.</td>
+      </tr>
+      <tr>
+        <td><b>More Than a Fix</b></td>
+        <td class="center">4</td>
+        <td class="center">29</td>
+        <td class="center"><span class="stars">5.0&#9733;</span></td>
+        <td>Modern, conversion-optimized site on a CRM platform: above-the-fold lead form, callback guarantee, published warranty, and 13 service-area SEO pages.</td>
+      </tr>
+      <tr>
+        <td><b>Royal Star Appliance Services</b></td>
+        <td class="center">4</td>
+        <td class="center">90</td>
+        <td class="center"><span class="stars">5.0&#9733;</span></td>
+        <td>Same-day service, background-checked factory-trained techs, upfront flat-rate pricing, OEM parts, and a 90-day parts &amp; labor warranty promoted site-wide.</td>
+      </tr>
+    </table>
+    <div class="panel avoid-break">
+      <h3>Where Appliance Care leads &mdash; and where it lags</h3>
+      <p class="kv"><b>Leads:</b> On the metrics that matter most to a homeowner, Appliance Care is at or above the field &mdash; a perfect 5.0 rating, the deepest review base in the set (97 Yelp reviews vs. 89/29/90), and an authentic, hard-to-copy 33-year father-and-son story rooted in San Clemente. Trust and tenure are its moat.</p>
+      <p class="kv" style="margin-bottom:0;"><b>Lags:</b> Every competitor out-executes it on <i>conversion infrastructure and proof</i>. Each rival markets a license/insurance and/or a written 90-day warranty; two run modern lead-capturing websites (quality 4) with forms, callback guarantees, and service-area SEO pages, while Appliance Care's GoDaddy site scores 2/5, has no lead form, no SEO pages, and is not mobile-responsive. The reputation is best-in-class; the digital storefront that should be capturing it is the weakest in the group.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+    <div class="panel slate avoid-break">
+      <h3>Recommended Hero</h3>
+      <p class="kv" style="margin-bottom:4px;"><b>Headline:</b> &ldquo;San Clemente&rsquo;s Father &amp; Son Appliance Team &mdash; Trusted Since 1993&rdquo;</p>
+      <p class="kv" style="margin-bottom:4px;"><b>Sub-headline:</b> Honest, fast repairs on washers, dryers, refrigerators, ovens and more &mdash; from the local family San Clemente has counted on for three decades.</p>
+      <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span style="background:var(--accent);color:#fff;padding:2px 10px;border-radius:3px;font-weight:700;">CALL TO SCHEDULE A REPAIR</span></p>
+    </div>
+
+    <div class="grid2 avoid-break">
+      <div style="flex:1;">
+        <p class="lead-in" style="margin-bottom:4px;">Above-the-fold trust signals</p>
+        <ul>
+          <li>33 years serving San Clemente (since 1993)</li>
+          <li>5.0 stars across 97 Yelp reviews</li>
+          <li>Father-and-son owner-operators, Rob &amp; Dane</li>
+          <li>Same-day / next-day service available</li>
+          <li>Repairs that save you the cost of replacement</li>
+          <li>Local &mdash; also serves Dana Point, San Juan Capistrano, Talega &amp; south OC</li>
+        </ul>
+      </div>
+      <div style="flex:1;">
+        <p class="lead-in" style="margin-bottom:4px;">Color &amp; typography direction</p>
+        <p class="kv" style="margin-bottom:6px;"><b>Coastal slate-blue + warm sand</b> on white &mdash; dependable and established, mirroring San Clemente&rsquo;s beach-town identity. Personality: approachable, sturdy, coastal.</p>
+        <div class="swatches">
+          <div class="sw"><div class="chip" style="background:#3E5C76;"></div><div class="cap">Slate-blue<br>#3E5C76</div></div>
+          <div class="sw"><div class="chip" style="background:#B8845A;"></div><div class="cap">Warm sand<br>#B8845A</div></div>
+          <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="cap">White<br>#FFFFFF</div></div>
+        </div>
+        <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> <i>Bitter</i> for headlines (sturdy, established) paired with <i>Karla</i> for body (approachable, clean).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+    <div class="tier-banner avoid-break">
+      <div class="k">Recommended Service Tier</div>
+      <div class="v">The Full-Stack Growth System</div>
+    </div>
+    <p>A 33-year father-son operation with a 5.0-star reputation (97 Yelp reviews) is being held back by a score-2 GoDaddy site with no lead form, no SEO/AEO, and no confirmed Google Business Profile presence. The reputation is already best-in-class &mdash; what is missing is the infrastructure to capture and compound it. The Full-Stack Growth System is the right fit because it addresses all three gaps at once:</p>
+    <ul>
+      <li><b>Full website rebuild</b> &mdash; mobile-responsive, with an above-the-fold lead form and the "CALL TO SCHEDULE" CTA, replacing the 2/5 GoDaddy site that trails every competitor.</li>
+      <li><b>Local SEO / AEO + Google Business Profile</b> &mdash; claim and optimize the GBP, add service-area pages, and close the discovery gap where higher-intent customers search.</li>
+      <li><b>Reputation &amp; reactivation system</b> &mdash; turn three decades of loyal customers and 5-star reviews into review velocity, repeat bookings, and referrals.</li>
+    </ul>
+    <div class="panel forest avoid-break">
+      <h3>Estimated revenue opportunity</h3>
+      <p class="kv" style="margin-bottom:0;">Converting even a fraction of 33 years of loyal, 5-star customers into a reactivation and repeat-booking flow &mdash; while a mobile, lead-capturing site and a claimed Google Business Profile bring in new local demand the current setup is missing &mdash; represents a meaningful five-figure annual revenue lift for a single owner-operator team, the highest-leverage investment available to this business.</p>
+    </div>
+  </section>
+
+</body>
+</html>

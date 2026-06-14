@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>La Paz Service Center — Brand Intelligence Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332;
+    --forest-soft:#2D5A45;
+    --cream:#F7F5F0;
+    --ink:#22272E;
+    --muted:#5A6470;
+    --line:#D9D4C7;
+    --accent:#9A3B2E; /* signal red, muted for print */
+    --panel-border:#C9C2B2;
+  }
+
+  @page{
+    size:Letter;
+    margin:18mm 16mm 20mm 16mm;
+    @bottom-left{
+      content:"Branch & Root Consulting — Confidential | La Paz Service Center";
+      font-family:'Source Sans 3', Arial, sans-serif;
+      font-size:7.5pt;
+      color:#7A8089;
+    }
+    @bottom-right{
+      content:"Page " counter(page) " of " counter(pages);
+      font-family:'Source Sans 3', Arial, sans-serif;
+      font-size:7.5pt;
+      color:#7A8089;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink);
+    font-size:10pt;
+    line-height:1.5;
+  }
+
+  /* ---------- Title block ---------- */
+  .cover{
+    background:var(--forest);
+    color:var(--cream);
+    padding:22px 24px;
+    border-radius:4px;
+    margin-bottom:20px;
+  }
+  .cover .eyebrow{
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-size:8.5pt;
+    letter-spacing:2.4px;
+    text-transform:uppercase;
+    color:#BFD8C9;
+    margin:0 0 8px 0;
+    font-weight:600;
+  }
+  .cover h1{
+    font-family:'Bitter', Georgia, 'Times New Roman', serif;
+    font-weight:700;
+    font-size:24pt;
+    line-height:1.12;
+    margin:0 0 10px 0;
+    color:#FFFFFF;
+  }
+  .cover .subtitle{
+    font-size:9.5pt;
+    color:#D7E4DC;
+    border-top:1px solid rgba(247,245,240,0.25);
+    padding-top:9px;
+    margin-top:4px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .cover .subtitle strong{color:#FFFFFF; font-weight:600;}
+
+  /* ---------- Section headers ---------- */
+  section{margin-bottom:16px;}
+  h2.section{
+    font-family:'Bitter', Georgia, serif;
+    font-weight:600;
+    font-size:13pt;
+    color:var(--forest);
+    margin:0 0 9px 0;
+    padding:6px 0 6px 12px;
+    border-left:5px solid var(--forest);
+    background:linear-gradient(90deg, rgba(27,67,50,0.08), rgba(27,67,50,0));
+    break-after:avoid;
+  }
+  h2.section .num{
+    display:inline-block;
+    color:var(--accent);
+    font-weight:700;
+    margin-right:8px;
+  }
+  h3.sub{
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-weight:700;
+    font-size:9.5pt;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+    color:var(--forest-soft);
+    margin:12px 0 5px 0;
+  }
+
+  p{margin:0 0 8px 0;}
+  .lead{font-size:10pt;}
+
+  ul{margin:4px 0 8px 0; padding-left:18px;}
+  li{margin:0 0 3px 0;}
+  li::marker{color:var(--forest-soft);}
+
+  strong{color:var(--ink);}
+  .em{color:var(--accent); font-weight:600;}
+
+  /* ---------- Cream callout panels ---------- */
+  .panel{
+    background:var(--cream);
+    border:1px solid var(--panel-border);
+    border-radius:4px;
+    padding:11px 14px;
+    margin:8px 0;
+    break-inside:avoid;
+  }
+  .panel.tight{padding:9px 13px;}
+  .panel-title{
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-weight:700;
+    font-size:8.5pt;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:var(--forest);
+    margin:0 0 6px 0;
+  }
+
+  /* ---------- Fact grid (overview) ---------- */
+  .factgrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px 18px;
+    margin:0;
+  }
+  .factgrid .row{
+    display:flex;
+    gap:8px;
+    border-bottom:1px dotted var(--line);
+    padding-bottom:3px;
+    font-size:9pt;
+  }
+  .factgrid .k{
+    color:var(--muted);
+    font-weight:600;
+    min-width:74px;
+  }
+  .factgrid .v{color:var(--ink);}
+
+  /* ---------- Metric chips ---------- */
+  .metrics{
+    display:flex;
+    gap:10px;
+    margin:8px 0;
+  }
+  .metric{
+    flex:1;
+    border:1px solid var(--panel-border);
+    border-radius:4px;
+    padding:9px 11px;
+    background:#FFFFFF;
+    text-align:center;
+  }
+  .metric .big{
+    font-family:'Bitter', Georgia, serif;
+    font-weight:700;
+    font-size:17pt;
+    color:var(--forest);
+    line-height:1;
+  }
+  .metric .lbl{
+    font-size:7.6pt;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:var(--muted);
+    margin-top:4px;
+  }
+  .metric.warn .big{color:var(--accent); font-size:11pt; padding-top:4px;}
+
+  /* ---------- Two-col layout ---------- */
+  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+
+  /* ---------- Tables ---------- */
+  table{width:100%; border-collapse:collapse; margin:6px 0 8px 0; font-size:9pt;}
+  th{
+    background:var(--forest);
+    color:var(--cream);
+    text-align:left;
+    padding:6px 8px;
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-weight:600;
+    font-size:8.2pt;
+    text-transform:uppercase;
+    letter-spacing:0.4px;
+  }
+  td{
+    padding:6px 8px;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  tr:nth-child(even) td{background:var(--cream);}
+  td .cname{font-weight:700; color:var(--forest);}
+  .stars{color:var(--accent); font-weight:700; white-space:nowrap;}
+
+  /* ---------- Quote / verbatim ---------- */
+  .quote{
+    border-left:3px solid var(--forest-soft);
+    padding:2px 0 2px 11px;
+    margin:5px 0;
+    font-style:italic;
+    color:#3A4048;
+    font-size:9.2pt;
+  }
+  .quote .src{
+    display:block;
+    font-style:normal;
+    font-size:7.8pt;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  /* ---------- Flags ---------- */
+  .gap{
+    background:#FBF3EF;
+    border:1px solid #E4C8BF;
+    border-left:4px solid var(--accent);
+    border-radius:3px;
+    padding:7px 11px;
+    margin:7px 0;
+    font-size:8.7pt;
+    color:#5C4038;
+  }
+  .gap b{color:var(--accent);}
+
+  /* ---------- Recommendation hero ---------- */
+  .rec{
+    background:var(--forest);
+    color:var(--cream);
+    border-radius:5px;
+    padding:14px 16px;
+    margin:8px 0;
+  }
+  .rec .tier-label{
+    font-size:8pt; letter-spacing:1.6px; text-transform:uppercase; color:#BFD8C9; margin:0 0 3px 0; font-weight:600;
+  }
+  .rec .tier{
+    font-family:'Bitter', Georgia, serif; font-weight:700; font-size:16pt; color:#FFFFFF; margin:0 0 7px 0; line-height:1.1;
+  }
+  .rec p{color:#E2ECE6; margin-bottom:6px;}
+  .rec .rev{
+    border-top:1px solid rgba(247,245,240,0.25);
+    margin-top:8px; padding-top:8px; font-size:9pt; color:#FFFFFF;
+  }
+  .rec .rev b{color:#F4D58D;}
+
+  /* swatches */
+  .swatches{display:flex; gap:7px; margin:6px 0 2px 0; flex-wrap:wrap;}
+  .sw{display:flex; align-items:center; gap:6px; font-size:8pt; color:var(--muted);}
+  .chip{width:15px; height:15px; border-radius:3px; border:1px solid rgba(0,0,0,0.15);}
+
+  .footnote{font-size:7.8pt; color:var(--muted); margin-top:3px;}
+  .keep{break-inside:avoid;}
+</style>
+</head>
+<body>
+
+  <!-- ============ TITLE ============ -->
+  <div class="cover">
+    <p class="eyebrow">Brand Intelligence Report</p>
+    <h1>La Paz Service Center — Brand Intelligence Report</h1>
+    <div class="subtitle">
+      <span><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026</span>
+      <span>Auto Repair / Auto Body &middot; Aliso Viejo, CA</span>
+    </div>
+  </div>
+
+  <!-- ============ 1. OVERVIEW ============ -->
+  <section class="keep">
+    <h2 class="section"><span class="num">1</span>Business Overview</h2>
+    <p class="lead">
+      <strong>La Paz Service Center</strong> is a family-owned, full-service auto repair shop in Aliso Viejo, California,
+      owned by <strong>Steve Benson</strong> and operating from 27812 Aliso Creek Rd #E-120, Aliso Viejo, CA 92656
+      (phone <strong>(949)&nbsp;362-8955</strong>). The shop has served the community for <strong>41 years, since 1985</strong>,
+      and its ASE &amp; Factory Trained Master Technicians service foreign, domestic, European, and hybrid vehicles. Its core
+      services span:
+    </p>
+    <div class="panel tight">
+      <div class="cols2">
+        <ul style="margin-bottom:0;">
+          <li>Full-service auto repair (foreign, domestic, European, hybrid)</li>
+          <li>Oil changes</li>
+          <li>Brakes &amp; brake repair</li>
+          <li>Heating &amp; air conditioning</li>
+          <li>Check engine light diagnostics</li>
+        </ul>
+        <ul style="margin-bottom:0;">
+          <li>Mufflers &amp; exhaust</li>
+          <li>Belts &amp; hoses</li>
+          <li>Engine repair</li>
+          <li>Pre-purchase inspection</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footnote">
+      Niche of record is "Auto Repair / Auto Body," though the shop currently markets mechanical / auto-repair services only;
+      in-house collision/body-work scope is unconfirmed — recommend verifying via phone outreach.
+    </p>
+  </section>
+
+  <!-- ============ 2. DIGITAL PRESENCE ============ -->
+  <section>
+    <h2 class="section"><span class="num">2</span>Digital Presence Audit</h2>
+
+    <h3 class="sub">Website</h3>
+    <div class="factgrid">
+      <div class="row"><span class="k">URL</span><span class="v">https://lapazservicecenter.com/</span></div>
+      <div class="row"><span class="k">Quality</span><span class="v"><strong>3 / 5</strong></span></div>
+      <div class="row"><span class="k">Platform</span><span class="v">Mitchell1 SocialCRM (WordPress-based template)</span></div>
+      <div class="row"><span class="k">Mobile</span><span class="v">Responsive</span></div>
+    </div>
+    <div class="cols2">
+      <div class="panel tight">
+        <div class="panel-title">What works</div>
+        <ul style="margin-bottom:0;">
+          <li>Mobile-responsive with a clear "Schedule Appointment" CTA</li>
+          <li>Strong trust stack: ASE &amp; Factory Master Tech logos, 24mo/24k warranty, BBB A+, BAR reg. ARD279966</li>
+          <li>"Serving Aliso Viejo since 1985" anchors decades of credibility</li>
+          <li>Core services clearly listed (brakes, oil, A/C, exhaust, diagnostics)</li>
+        </ul>
+      </div>
+      <div class="panel tight">
+        <div class="panel-title">What does not</div>
+        <ul style="margin-bottom:0;">
+          <li>Generic CRM template — little brand differentiation, dated feel</li>
+          <li>No real online booking; CTA is a contact form, not a calendar</li>
+          <li>No public email address — contact form only</li>
+          <li>No reactivation / reminder capture; loyalty equity not surfaced</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Reviews</h3>
+    <div class="metrics">
+      <div class="metric">
+        <div class="big">4.9&#9733;</div>
+        <div class="lbl">Google rating</div>
+      </div>
+      <div class="metric">
+        <div class="big">207</div>
+        <div class="lbl">Google reviews</div>
+      </div>
+      <div class="metric warn">
+        <div class="big">Rating N/A</div>
+        <div class="lbl">Yelp &middot; 93 reviews</div>
+      </div>
+    </div>
+    <p>
+      The public reputation is excellent: a <strong>4.9-star Google rating across 207 reviews</strong> signals consistent,
+      high-quality service and reflects La Paz's decades of goodwill. <strong>Trend read:</strong> review volume is climbing —
+      a prior Birdeye snapshot in the database listed 169 Google reviews, while the current Birdeye reading shows 207 at 4.9
+      stars, indicating active, ongoing review accumulation rather than a stale profile. On Yelp, <strong>93 reviews exist</strong>,
+      a meaningful secondary footprint.
+    </p>
+    <div class="gap">
+      <b>Yelp star rating — Not found — recommend verifying via phone outreach.</b> Yelp blocked automated fetch (403);
+      only the review count (93) surfaced, not the star average. The 93 Yelp reviews are real — this is a missing rating,
+      not an absence of reviews.
+    </div>
+    <div class="gap">
+      <b>Exact Google count not directly verified on Google Maps.</b> The 207 figure is the current Birdeye reading (more
+      current than the database's prior 169); the precise live Google Maps count was not confirmed at source — recommend verifying.
+    </div>
+    <p class="footnote">
+      Additional signal (not a public figure): La Paz's private CRM survey platform (SureCritic) shows 1,335 verified
+      post-service reviews at 5.0 stars / 95 NPS — strong internal validation, excluded from the public review counts above.
+    </p>
+
+    <h3 class="sub">Social Media</h3>
+    <p>
+      Social presence is minimal. A <strong>Facebook page exists</strong>
+      (facebook.com/La-Paz-Service-Center-102773253123249) but appears largely inactive, and <strong>no Instagram account</strong>
+      was found for the business. There is no active, growing social channel driving demand today.
+    </p>
+    <div class="gap">
+      <b>Facebook follower count &amp; last-post date — Not found — recommend verifying via phone outreach.</b>
+      The page is JavaScript-rendered and returned no data to automated fetch; the page exists at the URL on file but
+      activity could not be confirmed.
+    </div>
+
+    <h3 class="sub">Google Business Profile (GBP) Completeness</h3>
+    <p>
+      Core GBP fields are clearly populated — <strong>name, address, phone, category, and an active 4.9-star / 207-review
+      stream</strong> are all present and current — which is the foundation of the shop's strong local visibility. However,
+      <strong>full GBP completeness was not independently audited this pass</strong> (hours, photos, posts, Q&amp;A, attributes,
+      and booking link were not verified at source). <em>Not found — recommend verifying via phone outreach</em>, particularly
+      the booking link and hours, given competitors are winning on online booking and Saturday availability.
+    </p>
+  </section>
+
+  <!-- ============ 3. BRAND VOICE ============ -->
+  <section>
+    <h2 class="section"><span class="num">3</span>Brand Voice Analysis</h2>
+    <div class="metrics">
+      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Honest</div><div class="lbl">Brand word</div></div>
+      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Established</div><div class="lbl">Brand word</div></div>
+      <div class="metric"><div class="big" style="font-size:13pt;padding-top:3px;">Dependable</div><div class="lbl">Brand word</div></div>
+    </div>
+    <p>
+      La Paz speaks like an <strong>honest, no-pressure neighborhood mechanic</strong> — a trusted family shop that has earned
+      multigenerational loyalty since 1985. The tone emphasizes expertise, integrity, and fair pricing, treating customers like
+      people rather than transactions. It is professional and reassuring without being corporate or salesy. These three
+      brand-voice words are drawn both from the shop's own copy and from the integrity-and-loyalty themes that dominate its reviews.
+    </p>
+    <div class="panel">
+      <div class="panel-title">Verbatim copy samples (source: lapazservicecenter.com)</div>
+      <div class="quote">"Premier Automotive Service in Aliso Viejo and surrounding communities!"<span class="src">— Website headline</span></div>
+      <div class="quote">"Serving Aliso Viejo &amp; Surrounding Communities since 1985"<span class="src">— Website tagline</span></div>
+      <div class="quote">"ASE &amp; Factory Trained Master Technicians"<span class="src">— Website trust line</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. CUSTOMER INTELLIGENCE ============ -->
+  <section>
+    <h2 class="section"><span class="num">4</span>Customer Intelligence</h2>
+    <p>
+      Across Google and Yelp, three praise themes recur most strongly. (Themes are synthesized from the research pass;
+      individual verbatim review quotes were not captured this pass — see note below.)
+    </p>
+
+    <div class="panel tight keep">
+      <div class="panel-title">Top praise theme 1 — Honesty &amp; integrity</div>
+      <p style="margin-bottom:0;">Customers repeatedly highlight <span class="em">no unnecessary upsells</span> and straight-talk diagnosis — the single most-cited reason for trust and repeat business.</p>
+    </div>
+    <div class="panel tight keep">
+      <div class="panel-title">Top praise theme 2 — Fair, transparent pricing</div>
+      <p style="margin-bottom:0;">Reviewers consistently contrast La Paz's <span class="em">fair, transparent pricing</span> favorably against dealership quotes.</p>
+    </div>
+    <div class="panel tight keep">
+      <div class="panel-title">Top praise theme 3 — Fast, same-day, quality service</div>
+      <p style="margin-bottom:0;">Praise centers on <span class="em">fast, same-day, quality service</span> — accurate diagnosis delivered politely and punctually.</p>
+    </div>
+
+    <h3 class="sub">Other strong signals</h3>
+    <ul>
+      <li><strong>Named staff praised individually</strong> — Steve, Chris, and Eric are called out by name, a rare loyalty signal.</li>
+      <li><strong>Decades-long relationships</strong> — reviewers cite 20–35 years as customers.</li>
+    </ul>
+
+    <h3 class="sub">Recurring friction points</h3>
+    <p>
+      No recurring friction or complaint themes surfaced in the public review data reviewed for this report — sentiment is
+      strongly and consistently positive. The practical gaps are operational rather than reputational: <strong>no online
+      booking, no Saturday/early hours, and no after-hours convenience</strong> (detailed in Section 5), which represent lost
+      convenience rather than service dissatisfaction.
+    </p>
+    <div class="gap">
+      <b>Verbatim customer quotes — Not found — recommend verifying via phone outreach / direct review pull.</b>
+      The research pass captured praise <em>themes</em> but did not record exact quotable review text; quotes were intentionally
+      not fabricated. Pull 3–4 verbatim Google reviews before publishing customer-facing testimonial copy.
+    </div>
+  </section>
+
+  <!-- ============ 5. COMPETITIVE LANDSCAPE ============ -->
+  <section>
+    <h2 class="section"><span class="num">5</span>Competitive Landscape</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:24%;">Competitor</th>
+          <th style="width:9%;">Site /5</th>
+          <th style="width:13%;">Reviews</th>
+          <th>Key differentiator vs. La Paz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cname">Super Service of Aliso Viejo</span><br><span class="footnote">(formerly Aliso Foreign Car)</span></td>
+          <td><strong>5</strong></td>
+          <td><span class="stars">4.8&#9733;</span><br>3,333</td>
+          <td>3-Year/36,000-mile nationwide warranty plus loaner cars, shuttle, financing, and online booking on a polished Tekmetric platform — La Paz offers only a 24mo/24k warranty and no loaners/shuttle/financing.</td>
+        </tr>
+        <tr>
+          <td><span class="cname">Aliso Viejo Auto Service</span><br><span class="footnote">(next door — 27802 Aliso Creek Rd)</span></td>
+          <td><strong>4</strong></td>
+          <td><span class="stars">4.9&#9733;</span><br>171</td>
+          <td>Modern site with real online appointment booking, a $40 referral reward program, and before/after-hours drop-off &amp; pickup — La Paz has no booking, referral program, or after-hours options.</td>
+        </tr>
+        <tr>
+          <td><span class="cname">Aliso Niguel Auto Care</span></td>
+          <td><strong>4</strong></td>
+          <td><span class="stars">4.9&#9733;</span><br>170</td>
+          <td>Online appointment booking and extended Mon–Sat 7am–5pm hours (open Saturdays + earlier weekday start) — La Paz is Mon–Fri 8am–5pm and closed weekends, ceding Saturday and early-morning demand.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <strong>Where La Paz leads:</strong> on the metrics that signal trust, La Paz is at the front of the pack — its
+      <strong>4.9-star rating</strong> matches or beats every competitor (Super Service sits at 4.8), and its 41-year,
+      family-owned history with named, long-tenured technicians is a relationship moat none of the others can claim as deeply.
+      <strong>Where La Paz lags:</strong> on <em>convenience and conversion infrastructure</em>. Every competitor offers real
+      online booking; La Paz does not. Super Service out-scales it dramatically on review volume (3,333 vs. 207) and out-features
+      it on warranty length, loaners, shuttle, and financing, while Aliso Viejo Auto Service (literally next door) and Aliso
+      Niguel Auto Care win on referral incentives, after-hours drop-off, and Saturday/early-morning hours. La Paz's reputation
+      is elite; its <em>booking, hours, and retention systems</em> are where it is quietly ceding ground.
+    </p>
+  </section>
+
+  <!-- ============ 6. LANDING PAGE STRATEGY ============ -->
+  <section>
+    <h2 class="section"><span class="num">6</span>Landing Page Strategy</h2>
+    <div class="panel">
+      <div class="panel-title">Recommended hero headline</div>
+      <p style="font-family:'Bitter',Georgia,serif; font-size:13pt; color:var(--forest); font-weight:600; margin-bottom:6px; line-height:1.2;">
+        "South Orange County's Trusted Auto Shop Since 1985 — Honest Expertise, Real Relationships"
+      </p>
+      <div class="panel-title" style="margin-top:4px;">Supporting subheadline</div>
+      <p style="margin-bottom:0;">
+        Family-owned in Aliso Viejo for 41 years. ASE &amp; Factory Master Technicians servicing foreign, domestic, European &amp;
+        hybrid vehicles — backed by a 24-month / 24,000-mile warranty.
+      </p>
+    </div>
+
+    <div class="cols2">
+      <div>
+        <h3 class="sub">Primary CTA</h3>
+        <p style="margin-bottom:4px;">
+          <span style="display:inline-block; background:var(--accent); color:#fff; font-weight:700; padding:6px 16px; border-radius:4px; font-size:10.5pt;">Book an Appointment</span>
+        </p>
+        <p class="footnote">Must resolve to real online scheduling — the single biggest conversion gap vs. competitors.</p>
+      </div>
+      <div>
+        <h3 class="sub">Above-the-fold trust signals</h3>
+        <ul style="margin-bottom:0;">
+          <li>4.9-star Google rating (200+ reviews)</li>
+          <li>Family-owned &amp; operating since 1985 (41 years)</li>
+          <li>ASE &amp; Factory Trained Master Technicians</li>
+          <li>24-Month / 24,000-Mile Warranty</li>
+          <li>BBB A+ Accredited</li>
+          <li>Named team (Steve, Chris, Eric) reviewers know by name</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="sub">Color &amp; typography direction</h3>
+    <div class="panel tight">
+      <p style="margin-bottom:6px;">
+        <strong>Palette: Steel graphite + signal red</strong> — an industrial-trust automotive palette. A steel-graphite / navy
+        base conveys decades of stability, with a signal-red accent reserved for CTAs. Conveys industrial credibility without
+        feeling dated.
+      </p>
+      <div class="swatches">
+        <span class="sw"><span class="chip" style="background:#3A3F45;"></span> Steel graphite (base)</span>
+        <span class="sw"><span class="chip" style="background:#1F2A3C;"></span> Navy (depth)</span>
+        <span class="sw"><span class="chip" style="background:#C2362B;"></span> Signal red (CTA)</span>
+        <span class="sw"><span class="chip" style="background:#F4F4F2; border-color:#ccc;"></span> Off-white (canvas)</span>
+      </div>
+      <p style="margin:8px 0 0 0;">
+        <strong>Typography: Archivo (headings) + Source Sans 3 (body).</strong> Personality words: <em>Sturdy, Professional,
+        Established</em> — Archivo's grotesque weight reads sturdy and industrial for headlines, while Source Sans 3 keeps body
+        copy clean and highly legible.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 7. B&R RECOMMENDATION ============ -->
+  <section class="keep">
+    <h2 class="section"><span class="num">7</span>Branch &amp; Root Recommendation</h2>
+    <div class="rec">
+      <p class="tier-label">Recommended Service Tier</p>
+      <p class="tier">Customer Reactivation Engine</p>
+      <p>
+        La Paz has built 41 years of multigenerational customers with named-staff loyalty — yet there is
+        <strong style="color:#fff;">zero visible reactivation, reminder, or after-hours system</strong> in place. A reactivation
+        campaign converts that deep goodwill into scheduled return visits, capturing service intervals (oil, brakes, inspections)
+        that currently rely on customers remembering on their own.
+      </p>
+      <p>
+        The timing is pointed: competitors are now winning on <strong style="color:#fff;">online booking and Saturday hours</strong>,
+        so a system that proactively pulls existing customers back — paired with real scheduling — defends the base while the
+        reputation advantage is still intact.
+      </p>
+      <p class="rev">
+        <b>Revenue opportunity:</b> reactivating even a modest share of La Paz's lapsed multigenerational base into one additional
+        scheduled service visit per year would conservatively add tens of thousands of dollars in annual repair revenue —
+        recapturing demand the shop has already earned but is not currently prompting.
+      </p>
+    </div>
+    <p class="footnote">
+      Recommendation seeded from <code>research.br_recommendation</code>. Revenue figure is a directional estimate, not a quote;
+      validate against the shop's actual customer-count and average-ticket data — recommend verifying via phone outreach.
+    </p>
+  </section>
+
+</body>
+</html>

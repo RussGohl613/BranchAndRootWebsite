@@ -1,0 +1,5 @@
+# leads.branchandrootconsulting.com — private preview subdomain.
+# Served as this subdomain's robots.txt via the host rewrite in vercel.json.
+# The whole subdomain is unlisted: block all crawlers.
+User-agent: *
+Disallow: /

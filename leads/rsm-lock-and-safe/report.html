@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<title>RSM Lock &amp; Safe — Brand Intelligence Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1B4332;
+    --forest-deep:#143026;
+    --cream:#F7F5F0;
+    --brass:#B08D57;
+    --ink:#262321;
+    --muted:#5b5650;
+    --line:#e4e0d8;
+    --green-pill:#2c6e49;
+    --red-flag:#9a3b2e;
+  }
+
+  @page{
+    size:Letter;
+    margin:18mm 16mm 20mm 16mm;
+    @bottom-left{
+      content:"Branch & Root Consulting — Confidential | RSM Lock & Safe";
+      font-family:'Source Sans 3', Arial, sans-serif;
+      font-size:7.6pt;
+      color:#7c766e;
+    }
+    @bottom-right{
+      content:"Page " counter(page) " of " counter(pages);
+      font-family:'Source Sans 3', Arial, sans-serif;
+      font-size:7.6pt;
+      color:#7c766e;
+    }
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{
+    font-family:'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+    color:var(--ink);
+    font-size:10pt;
+    line-height:1.5;
+    margin:0;
+  }
+  h1,h2,h3,h4{font-family:'Bitter', Georgia, 'Times New Roman', serif;}
+
+  /* ---------- Title block ---------- */
+  .cover{
+    background:var(--forest);
+    color:var(--cream);
+    padding:26px 28px 22px 28px;
+    border-radius:6px;
+    margin-bottom:18px;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .cover .kicker{
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-size:8.5pt;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--brass);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .cover h1{
+    font-size:25pt;
+    line-height:1.08;
+    margin:0 0 10px 0;
+    font-weight:700;
+    color:#ffffff;
+  }
+  .cover .subtitle{
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-size:10pt;
+    color:#d9e3da;
+    border-top:1px solid rgba(176,141,87,.45);
+    padding-top:10px;
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .cover .subtitle .brand{font-weight:600; color:#f0eee8;}
+
+  /* ---------- Section headers ---------- */
+  .section{margin-bottom:15px;}
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-bottom:2px solid var(--forest);
+    padding-bottom:5px;
+    margin:0 0 9px 0;
+  }
+  .section-head .num{
+    background:var(--forest);
+    color:var(--cream);
+    font-family:'Bitter', Georgia, serif;
+    font-weight:700;
+    font-size:10pt;
+    width:20px;height:20px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:0 0 auto;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .section-head h2{
+    font-size:13.5pt;
+    margin:0;
+    color:var(--forest);
+    font-weight:700;
+    letter-spacing:.01em;
+  }
+  p{margin:0 0 7px 0;}
+  .lead{margin-bottom:8px;}
+
+  /* ---------- Callout panels ---------- */
+  .panel{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-left:4px solid var(--brass);
+    border-radius:4px;
+    padding:10px 13px;
+    margin:8px 0;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .panel.green{border-left-color:var(--forest);}
+  .panel h4{
+    margin:0 0 5px 0;
+    font-size:9.5pt;
+    color:var(--forest);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+  }
+
+  ul{margin:4px 0 8px 0; padding-left:18px;}
+  li{margin-bottom:3px;}
+  ul.tight li{margin-bottom:1.5px;}
+  b,strong{color:var(--forest-deep);}
+
+  /* ---------- Fact grid ---------- */
+  .factgrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:5px 16px;
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:10px 13px;
+    margin:8px 0;
+    font-size:9.3pt;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .factgrid .row{display:flex; gap:6px; border-bottom:1px dotted #ddd8cf; padding-bottom:3px;}
+  .factgrid .k{color:var(--muted); font-weight:600; min-width:74px;}
+  .factgrid .v{color:var(--ink);}
+
+  /* ---------- Two column ---------- */
+  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .subcard{
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:9px 11px;
+  }
+  .subcard h4{
+    margin:0 0 5px 0; font-size:10pt; color:var(--forest); font-weight:700;
+  }
+  .works{color:var(--green-pill); font-weight:700;}
+  .breaks{color:var(--red-flag); font-weight:700;}
+
+  /* ---------- Metric chips ---------- */
+  .metrics{display:flex; gap:9px; margin:8px 0;}
+  .metric{
+    flex:1;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:8px 10px;
+    text-align:center;
+    background:#fff;
+  }
+  .metric .big{font-family:'Bitter', Georgia, serif; font-size:17pt; font-weight:700; color:var(--forest); line-height:1;}
+  .metric .lab{font-size:7.8pt; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin-top:3px;}
+  .metric.flag .big{color:var(--red-flag);}
+
+  /* ---------- Tags ---------- */
+  .voicewords{display:flex; gap:8px; margin:8px 0 10px 0;}
+  .vw{
+    background:var(--forest);
+    color:var(--cream);
+    border-radius:20px;
+    padding:5px 16px;
+    font-family:'Bitter', Georgia, serif;
+    font-weight:600;
+    font-size:11pt;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+
+  blockquote{
+    margin:5px 0;
+    padding:5px 12px;
+    border-left:3px solid var(--brass);
+    background:var(--cream);
+    font-style:italic;
+    color:#3f3b36;
+    font-size:9.4pt;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  blockquote .src{display:block; font-style:normal; font-size:8pt; color:var(--muted); margin-top:2px; letter-spacing:.03em;}
+
+  /* ---------- Competitor table ---------- */
+  table.comp{width:100%; border-collapse:collapse; margin:8px 0; font-size:9pt;}
+  table.comp th{
+    background:var(--forest);
+    color:var(--cream);
+    text-align:left;
+    padding:6px 9px;
+    font-family:'Source Sans 3', Arial, sans-serif;
+    font-weight:600;
+    font-size:8.5pt;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  table.comp td{padding:6px 9px; border-bottom:1px solid var(--line); vertical-align:top;}
+  table.comp tr:nth-child(even) td{background:#faf9f5;}
+  table.comp .nm{font-weight:700; color:var(--forest-deep);}
+  table.comp tr.self td{background:#eef3ee; border-top:2px solid var(--forest);}
+  table.comp tr.self .nm{color:var(--forest);}
+
+  .note{
+    font-size:8.6pt;
+    color:var(--red-flag);
+    font-style:italic;
+  }
+  .gapbox{
+    background:#fbf3f1;
+    border:1px solid #e7cfc9;
+    border-left:4px solid var(--red-flag);
+    border-radius:4px;
+    padding:8px 12px;
+    margin:8px 0;
+    font-size:8.8pt;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .gapbox h4{margin:0 0 4px 0; color:var(--red-flag); font-size:9pt; text-transform:uppercase; letter-spacing:.07em;}
+  .gapbox ul{margin:3px 0 0 0;}
+
+  .reco-banner{
+    background:var(--forest);
+    color:var(--cream);
+    border-radius:6px;
+    padding:13px 16px;
+    margin:8px 0 10px 0;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .reco-banner .tier-lab{font-size:8pt; letter-spacing:.18em; text-transform:uppercase; color:var(--brass); font-weight:700;}
+  .reco-banner .tier{font-family:'Bitter', Georgia, serif; font-size:19pt; font-weight:700; color:#fff; margin-top:2px;}
+
+  .swatches{display:flex; gap:8px; margin:7px 0;}
+  .sw{flex:1; border:1px solid var(--line); border-radius:4px; overflow:hidden; font-size:8pt;}
+  .sw .chip{height:30px;}
+  .sw .meta{padding:4px 6px; background:#fff;}
+  .sw .meta .nm{font-weight:700; color:var(--ink); display:block;}
+  .sw .meta .hex{color:var(--muted); font-family:'Source Sans 3', monospace;}
+
+  .avoid-break{break-inside:avoid; page-break-inside:avoid;}
+  .keep-with{break-before:auto;}
+</style>
+</head>
+<body>
+
+<!-- ============ TITLE ============ -->
+<div class="cover">
+  <div class="kicker">Brand Intelligence Report</div>
+  <h1>RSM Lock &amp; Safe</h1>
+  <div class="subtitle">
+    <span class="brand">Branch &amp; Root Consulting</span>
+    <span>Round 01&nbsp;&nbsp;|&nbsp;&nbsp;June 2026</span>
+  </div>
+</div>
+
+<!-- ============ 1. BUSINESS OVERVIEW ============ -->
+<div class="section avoid-break">
+  <div class="section-head"><span class="num">1</span><h2>Business Overview</h2></div>
+  <p class="lead">RSM Lock &amp; Safe is an owner-operated locksmith based in Rancho Santa Margarita, California, run by <b>Bob Slama (Robert Slama)</b> from <b>14 San Ricardo, Rancho Santa Margarita, CA 92688</b> and reachable at <b>(949) 589-1957</b>. The business has operated for <b>38 years (since 1987)</b>, giving it one of the longest local track records in its market. Its service line covers both residential and commercial work — deadbolt installation, lock rekeying, keyless-entry deadbolts, door repair, mailbox locks, panic bars, sliding-door locks, and residential and commercial lockouts.</p>
+  <div class="factgrid">
+    <div class="row"><span class="k">Owner</span><span class="v">Bob Slama (Robert Slama)</span></div>
+    <div class="row"><span class="k">Niche</span><span class="v">Locksmith</span></div>
+    <div class="row"><span class="k">Location</span><span class="v">Rancho Santa Margarita, CA 92688</span></div>
+    <div class="row"><span class="k">Phone</span><span class="v">(949) 589-1957</span></div>
+    <div class="row"><span class="k">In operation</span><span class="v">38 years (since 1987)</span></div>
+    <div class="row"><span class="k">Email</span><span class="v">Not found — recommend verifying via phone outreach</span></div>
+  </div>
+</div>
+
+<!-- ============ 2. DIGITAL PRESENCE AUDIT ============ -->
+<div class="section">
+  <div class="section-head"><span class="num">2</span><h2>Digital Presence Audit</h2></div>
+
+  <div class="metrics avoid-break">
+    <div class="metric"><div class="big">2<span style="font-size:10pt;color:var(--muted);">/5</span></div><div class="lab">Website Quality</div></div>
+    <div class="metric flag"><div class="big">0</div><div class="lab">Google Reviews</div></div>
+    <div class="metric"><div class="big">4.5<span style="font-size:10pt;color:var(--muted);">★</span></div><div class="lab">Yelp (62 reviews)</div></div>
+    <div class="metric flag"><div class="big">0</div><div class="lab">Social Followers</div></div>
+  </div>
+
+  <div class="cols2 avoid-break">
+    <div class="subcard">
+      <h4>Website</h4>
+      <p style="font-size:9.2pt; margin-bottom:5px;"><b>URL:</b> rsmlockandsafe.com&nbsp;·&nbsp;<b>Platform:</b> GoDaddy Website Builder&nbsp;·&nbsp;<b>Quality:</b> 2/5&nbsp;·&nbsp;Mobile-responsive: yes.</p>
+      <p style="font-size:9.2pt; margin-bottom:3px;"><span class="works">What works:</span> It loads, renders on mobile, and carries one reassurance-oriented headline — <i>"Secure Your Peace of Mind"</i> — with a "Contact Us" call-to-action.</p>
+      <p style="font-size:9.2pt; margin-bottom:0;"><span class="breaks">What does not:</span> It is effectively a contentless single-pager. The research recorded <b>no services listed</b> and <b>no trust signals</b> on the page — no license number, no review proof, and no published email or address copy to convert a 38-year reputation into booked work.</p>
+    </div>
+    <div class="subcard">
+      <h4>Reviews &amp; Trend</h4>
+      <p style="font-size:9.2pt; margin-bottom:3px;"><b>Yelp:</b> 4.5★ across <b>62 reviews</b> — a deep, credible base for a single-operator local trade. Angi/HomeAdvisor shows 5.0 (per research notes).</p>
+      <p style="font-size:9.2pt; margin-bottom:3px;"><b>Google:</b> 0 reviews / no verified star rating.</p>
+      <p style="font-size:9.2pt; margin-bottom:0;"><b>Trend read:</b> Sentiment is strongly positive and durable — reviewers describe a repeat "go-to" relationship — but the footprint is concentrated on Yelp. With zero Google presence, the brand is nearly invisible on the platform most lockout searchers use first, capping new-customer discovery despite excellent ratings.</p>
+    </div>
+  </div>
+
+  <div class="cols2 avoid-break">
+    <div class="subcard">
+      <h4>Social Channels</h4>
+      <ul class="tight" style="font-size:9.2pt; margin-bottom:0;">
+        <li><b>Facebook:</b> A page exists (facebook.com/100069300975257) but follower count and last-post date are <span class="breaks">unconfirmed</span> — the page is JS-only and returned HTTP 403 on fetch. <span class="note">Not found — recommend verifying via phone outreach.</span></li>
+        <li><b>Instagram:</b> None found — no account located for the business.</li>
+        <li><b>Net:</b> No active, measurable social channel. Effectively zero social reach today.</li>
+      </ul>
+    </div>
+    <div class="subcard">
+      <h4>Google Business Profile (GBP)</h4>
+      <p style="font-size:9.2pt; margin-bottom:3px;">GBP completeness could not be confirmed: <b>no GBP URL was located</b> and no Google star rating or review count was verifiable (database row also shows [NOT FOUND]).</p>
+      <p style="font-size:9.2pt; margin-bottom:0;" class="note">Not found — recommend verifying via phone outreach (claim/confirm the Google Business Profile; this is the single highest-leverage discovery fix).</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 3. BRAND VOICE ANALYSIS ============ -->
+<div class="section avoid-break">
+  <div class="section-head"><span class="num">3</span><h2>Brand Voice Analysis</h2></div>
+  <div class="voicewords">
+    <span class="vw">Trustworthy</span>
+    <span class="vw">Established</span>
+    <span class="vw">Reassuring</span>
+  </div>
+  <p>The voice is that of an established, no-frills, community-rooted local tradesman. The brand leans on decades of local trust and word-of-mouth rather than polished marketing, so its written presence is sparse and functional. The single tagline it does own — <i>"Secure Your Peace of Mind"</i> — is reassurance-oriented (safety, dependability), but beyond it the brand carries almost no written voice or content online.</p>
+  <div class="panel">
+    <h4>Verbatim copy samples (source: rsmlockandsafe.com)</h4>
+    <blockquote>"Secure Your Peace of Mind"<span class="src">— Website headline, rsmlockandsafe.com</span></blockquote>
+    <blockquote>"Drop us a line"<span class="src">— Website contact prompt, rsmlockandsafe.com</span></blockquote>
+    <blockquote>"Sign up for our email list for updates, promotions, and more"<span class="src">— Website email-signup copy, rsmlockandsafe.com</span></blockquote>
+  </div>
+</div>
+
+<!-- ============ 4. CUSTOMER INTELLIGENCE ============ -->
+<div class="section avoid-break">
+  <div class="section-head"><span class="num">4</span><h2>Customer Intelligence</h2></div>
+  <p class="lead">The three themes most consistently surfaced across reviews (Yelp, 4.5★/62):</p>
+  <div class="panel green">
+    <h4>Top praise theme 1 — Fast response time</h4>
+    <p style="margin:0; font-size:9.4pt;">Reviewers repeatedly cite rapid arrival, with on-site response noted within roughly 10 minutes. This speed is the brand's signature operational strength.</p>
+  </div>
+  <div class="panel green">
+    <h4>Top praise theme 2 — Reliable long-term "go-to" locksmith</h4>
+    <p style="margin:0; font-size:9.4pt;">Customers describe RSM Lock &amp; Safe as their reliable, repeat "go-to" locksmith — a relationship business built on returning customers, not one-off calls.</p>
+  </div>
+  <div class="panel green">
+    <h4>Top praise theme 3 — Owner Bob Slama personally provides service</h4>
+    <p style="margin:0; font-size:9.4pt;">Reviews emphasize that owner Bob Slama personally does the work (sometimes alongside his son), and read him as professional, knowledgeable, and trustworthy — a named-local-owner advantage over call-center dispatch competitors.</p>
+  </div>
+  <div class="gapbox">
+    <h4>Recurring friction point</h4>
+    <p style="margin:0;">The one recurring concern noted across reviews is <b>variable trip / service-call fees</b> — occasional surprise at the cost of the call-out. Transparent, upfront pricing on the website would defuse this directly.</p>
+    <p style="margin:4px 0 0 0;" class="note">Note on quotes: the Yelp business page could not be fetched directly (HTTP 403); themes above were synthesized from search snippets and the Yahoo Local listing, so no individual reviewer quotations are reproduced verbatim. Recommend a full Yelp read to pull exact testimonials for the new site.</p>
+  </div>
+</div>
+
+<!-- ============ 5. COMPETITIVE LANDSCAPE ============ -->
+<div class="section">
+  <div class="section-head"><span class="num">5</span><h2>Competitive Landscape</h2></div>
+  <table class="comp avoid-break">
+    <thead>
+      <tr><th style="width:20%">Competitor</th><th style="width:9%">Site /5</th><th style="width:14%">Reviews</th><th>Key differentiator</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nm">Ben'z Locksmith</td>
+        <td>4</td>
+        <td>5.0★ · 346</td>
+        <td>24/7 emergency service plus full automotive / car-key service (cuts and programs replacement keys on the spot) across all of Orange County — RSM offers neither after-hours nor auto locksmithing.</td>
+      </tr>
+      <tr>
+        <td class="nm">Leonard Lock and Key</td>
+        <td>2</td>
+        <td>~4.5★ · ~100</td>
+        <td>Advertises 24-hour emergency service, open 7 days 7am–10pm, and prominently displays a license number ("Licensed and Bonded since 1994 #LCO178") — RSM is weekdays-only with no license/availability badge.</td>
+      </tr>
+      <tr>
+        <td class="nm">RSM Lake Locksmith</td>
+        <td>3</td>
+        <td>Not confirmed</td>
+        <td>Open 24 hours every day; covers commercial, residential, AUTO, and safe/vault work — and competes head-on for the "RSM locksmith" search term with round-the-clock and automotive coverage RSM lacks.</td>
+      </tr>
+      <tr class="self">
+        <td class="nm">RSM Lock &amp; Safe</td>
+        <td>2</td>
+        <td>4.5★ · 62 (Yelp)</td>
+        <td>38-year owner-operated local incumbent; fast (~10-min) response; residential + commercial. Weekday-only hours, no auto service, no Google presence, no license badge displayed.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:9.4pt;"><b>Where RSM leads vs. lags.</b> RSM Lock &amp; Safe leads on the things that are hardest to fake: a genuinely <b>38-year local track record</b>, a named owner-operator (Bob Slama) who personally does the work, a strong <b>4.5★ Yelp base across 62 reviews</b>, and a fast-response reputation — credibility a newer competitor cannot buy. Where it lags is entirely fixable presentation and coverage: it trails Ben'z badly on review <i>volume</i> (62 vs. 346) and Google visibility (0 vs. an active profile), and it is structurally narrower — <b>weekday-only hours, no 24/7 or after-hours coverage, and no automotive/car-key service</b>, all of which Ben'z, Leonard, and RSM Lake advertise. It also displays <b>no license/"Licensed &amp; Bonded" badge</b>, while Leonard makes its license a headline. The strategic read: RSM is the trusted incumbent that is simply under-marketed — competitors are winning on availability claims and discoverability, not on reputation.</p>
+  <p class="note" style="margin-top:2px;">Data note: exact Yelp stars/counts for Leonard Lock and Key and RSM Lake Locksmith were not numerically confirmed in source snippets (Leonard ≈100 reviews; RSM Lake count/stars not verified). Whether RSM Lock &amp; Safe offers any after-hours service is unconfirmed — Not found, recommend verifying via phone outreach.</p>
+</div>
+
+<!-- ============ 6. LANDING PAGE STRATEGY ============ -->
+<div class="section">
+  <div class="section-head"><span class="num">6</span><h2>Landing Page Strategy</h2></div>
+  <div class="reco-banner avoid-break">
+    <div class="tier-lab">Recommended Hero Headline</div>
+    <div class="tier" style="font-size:16pt; line-height:1.15;">"RSM's Original Locksmith — Trusted Since 1987"</div>
+    <p style="margin:7px 0 0 0; color:#d9e3da; font-size:9.4pt;">Subheadline: <i>Owner-operated by Bob Slama, a Rancho Santa Margarita local serving the community for nearly four decades. Rekeys, deadbolts, lockouts, and door hardware done right the first time.</i></p>
+    <p style="margin:8px 0 0 0; font-size:10pt;"><span style="background:var(--brass); color:#23201c; font-weight:700; padding:4px 14px; border-radius:4px; -webkit-print-color-adjust:exact; print-color-adjust:exact;">Primary CTA: &nbsp;Request Service Now</span></p>
+  </div>
+
+  <div class="cols2 avoid-break">
+    <div class="subcard">
+      <h4>Above-the-fold trust signals</h4>
+      <ul class="tight" style="font-size:9.2pt; margin-bottom:0;">
+        <li>Established 1987 — nearly 40 years serving RSM</li>
+        <li>Owner-operated by named local resident Bob Slama</li>
+        <li>62 Yelp reviews at 4.5★ (and 5.0 on Angi/HomeAdvisor)</li>
+        <li>Fast on-site response (reviews cite arrival within ~10 minutes)</li>
+        <li>Local RSM business — not a national call-center dispatch</li>
+        <li>Residential <i>and</i> commercial locksmith services</li>
+        <li><i>Add once owner confirms:</i> locksmith license #, "Licensed &amp; Bonded," and a service guarantee — currently missing and a competitive gap vs. Leonard / Ben'z.</li>
+      </ul>
+    </div>
+    <div class="subcard">
+      <h4>Color &amp; Typography Direction</h4>
+      <p style="font-size:9.2pt; margin-bottom:5px;"><b>Palette:</b> Brass + deep secure-blue (forest/secure green and charcoal on white) — precise / secure; an established, security-forward, community-trust look.</p>
+      <div class="swatches">
+        <div class="sw"><div class="chip" style="background:#1B4332;"></div><div class="meta"><span class="nm">Secure Green</span><span class="hex">#1B4332</span></div></div>
+        <div class="sw"><div class="chip" style="background:#2b2f36;"></div><div class="meta"><span class="nm">Charcoal</span><span class="hex">#2B2F36</span></div></div>
+        <div class="sw"><div class="chip" style="background:#B08D57;"></div><div class="meta"><span class="nm">Brass</span><span class="hex">#B08D57</span></div></div>
+      </div>
+      <p style="font-size:9.2pt; margin-bottom:0;"><b>Type:</b> <b>Rubik</b> (headings) + <b>Asap</b> (body) — font personality: <i>Solid, Trustworthy, Local</i>. Geometric-but-warm sans pairing that reads dependable rather than corporate.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 7. BRANCH & ROOT RECOMMENDATION ============ -->
+<div class="section">
+  <div class="section-head"><span class="num">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+  <div class="reco-banner avoid-break">
+    <div class="tier-lab">Recommended Service Tier</div>
+    <div class="tier">The Foundation Bundle</div>
+    <p style="margin:6px 0 0 0; color:#d9e3da; font-size:9.6pt;">Website rebuild + Instant Responder</p>
+  </div>
+  <p style="font-size:9.6pt;"><b>Why this tier.</b> The current site is a contentless GoDaddy single-pager — no services, no phone, no address, no real CTA, and no trust signals — sitting on top of a credibly verified <b>38-year local brand with a 4.5★ / 62-review Yelp base</b>. That is a strong reputation trapped behind a weak storefront. The Foundation Bundle fixes exactly that gap: a proper website rebuild (services, trust signals, a license badge once confirmed, click-to-call) plus an <b>Instant Responder</b> to capture the lockout demand currently bleeding to 24/7 competitors like Ben'z (346 reviews). It converts an established, word-of-mouth reputation into discoverable, bookable jobs without asking Bob to change how he runs the trade.</p>
+  <div class="panel green avoid-break">
+    <h4>Estimated revenue opportunity</h4>
+    <p style="margin:0; font-size:9.6pt;">Recovering even a handful of jobs per month that today go to 24/7 competitors — by making RSM discoverable on Google and instantly responsive to after-hours lockout inquiries — would, at typical locksmith ticket values, return the Foundation Bundle's cost within the first one to two months and compound from there as the rebuilt site lifts conversion on its existing 4.5★ reputation.</p>
+  </div>
+  <div class="gapbox avoid-break">
+    <h4>Data gaps that limited this report (verify via phone outreach)</h4>
+    <ul class="tight" style="margin-bottom:0;">
+      <li><b>Google Business Profile:</b> no GBP URL, star rating, or review count could be verified (DB row [NOT FOUND]) — Not found, recommend verifying via phone outreach.</li>
+      <li><b>Facebook:</b> page exists but followers / last-post / offers unretrievable (JS-only, HTTP 403). <b>Instagram:</b> none found.</li>
+      <li><b>Email address:</b> none published anywhere — Not found, recommend verifying via phone outreach.</li>
+      <li><b>License / "Licensed &amp; Bonded" / guarantees:</b> none displayed on site or directories — confirm a CSLB/locksmith license # to add as a trust signal.</li>
+      <li><b>Yelp:</b> page returned HTTP 403; themes synthesized from snippets, so no verbatim reviewer quotes were reproduced.</li>
+      <li><b>After-hours / 24-7 coverage:</b> unconfirmed (all sources list Mon–Fri 8–5) — Not found, recommend verifying via phone outreach.</li>
+      <li><b>Competitor ratings:</b> exact Yelp stars/counts for Leonard Lock and Key and RSM Lake Locksmith not numerically confirmed.</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

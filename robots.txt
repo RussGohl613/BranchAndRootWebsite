@@ -9,6 +9,7 @@ Disallow: /mission-auto-pitch
 Disallow: /graphify-out/
 Disallow: /thank-you
 Disallow: /.templates/
+Disallow: /leads/
 
 # Explicit .html variants (already covered by the prefix rules above; listed for clarity)
 Disallow: /dan-audit.html
