@@ -3189,3 +3189,32 @@ main > section + section.bridge {
 .prose ol li {
   margin-bottom: var(--s-1);
 }
+
+/* ========================================================================
+   Privacy: California notice banner, opt-out switch, status, footer icon
+   (CCPA/CPRA opt-out UI — paired with assets/js/privacy-consent.js)
+   ======================================================================== */
+.br-privacy-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--surface,#FFFDF8);border-top:1px solid var(--line,rgba(27,67,50,.15));box-shadow:0 -8px 30px rgba(15,42,30,.12);transform:translateY(110%);transition:transform .28s cubic-bezier(.4,0,.2,1);}
+.br-privacy-banner.is-in{transform:translateY(0);}
+.br-privacy-banner.is-hiding{transform:translateY(110%);}
+.br-pb-inner{max-width:var(--max-w,1200px);margin:0 auto;padding:1rem 1.25rem;display:flex;gap:1.25rem;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+.br-pb-text{margin:0;font-size:.9rem;line-height:1.5;color:var(--body-fg,#2B2B2B);max-width:72ch;}
+.br-pb-text a{color:var(--forest,#1B4332);text-decoration:underline;text-underline-offset:3px;}
+.br-pb-actions{display:flex;gap:.6rem;flex-shrink:0;}
+.br-pb-btn{font-size:.9rem;padding:.55rem 1.1rem;min-width:9.5rem;}
+@media (max-width:640px){.br-pb-actions{width:100%;}.br-pb-btn{flex:1;min-width:0;}}
+@media (prefers-color-scheme:dark){.br-privacy-banner{background:var(--surface,#14241B);border-top-color:rgba(255,255,255,.12);}.br-pb-text{color:var(--body-fg,#E8E6E0);}.br-pb-text a{color:var(--moss,#7FB69A);}}
+.br-optout-card{background:var(--surface-2,rgba(27,67,50,.04));border:1px solid var(--line,rgba(27,67,50,.15));border-radius:14px;padding:1.5rem;margin:1.5rem 0;}
+.br-optout-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.br-optout-name{font-weight:600;color:var(--heading,#1B4332);}
+.br-optout-status{margin:.75rem 0 0;font-size:.9rem;line-height:1.5;color:var(--muted,#5B6B63);}
+.br-switch{display:inline-flex;align-items:center;gap:.6rem;background:none;border:0;cursor:pointer;padding:.25rem;font:inherit;}
+.br-switch:focus-visible{outline:2px solid var(--moss,#52946F);outline-offset:3px;border-radius:8px;}
+.br-switch[disabled]{cursor:not-allowed;opacity:.65;}
+.br-switch-track{width:52px;height:30px;border-radius:999px;background:var(--line,#C9CFCB);position:relative;transition:background .2s ease;flex:none;}
+.br-switch.is-on .br-switch-track{background:var(--accent,#2D6A4F);}
+.br-switch-thumb{position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .2s ease;}
+.br-switch.is-on .br-switch-thumb{transform:translateX(22px);}
+.br-switch-state{font-size:.85rem;font-weight:600;color:var(--muted,#5B6B63);min-width:2.4em;text-align:left;}
+.footer-legal .br-ca-privacy{display:inline-flex;align-items:center;gap:.4rem;}
+.footer-legal .br-ca-icon{display:inline-block;width:30px;height:14px;vertical-align:middle;flex:none;}

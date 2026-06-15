@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Consent Mode v2 default: runs before GTM; honors CCPA opt-out + GPC -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",(function(){var g=navigator.globalPrivacyControl===true,s=null;try{s=localStorage.getItem("br_privacy_optout");}catch(e){}var a=g||s==="1"?"denied":"granted";return{ad_storage:a,ad_user_data:a,ad_personalization:a,analytics_storage:"granted",security_storage:"granted",wait_for_update:500};})());</script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -37,7 +39,7 @@
     "@type": "WebPage",
     "name": "Privacy Policy — Branch and Root Consulting",
     "url": "https://branchandrootconsulting.com/privacy-policy",
-    "dateModified": "2026-05-21",
+    "dateModified": "2026-06-14",
     "isPartOf": {"@id": "https://branchandrootconsulting.com/#organization"}
   }
   </script>
@@ -96,7 +98,7 @@
           </div>
           <div class="page-hero-aside">
             <span class="annotation">— Last updated</span>
-            <p><time datetime="2026-05-21">May 21, 2026</time></p>
+            <p><time datetime="2026-06-14">June 14, 2026</time></p>
           </div>
         </div>
       </div>
@@ -107,117 +109,138 @@
       <div class="container">
         <div class="prose" style="max-width: var(--max-w-reading); margin: 0 auto;">
 
-          <p class="lead">Branch and Root Consulting (&ldquo;Branch &amp; Root,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates the website at <strong>branchandrootconsulting.com</strong> (the &ldquo;Site&rdquo;). This Privacy Policy explains how we collect, use, and protect information when you visit our Site or contact us through it.</p>
+          <p class="lead">Branch and Root Consulting (&ldquo;Branch &amp; Root,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) operates the website at <strong>branchandrootconsulting.com</strong> (the &ldquo;Site&rdquo;). This Privacy Policy explains what personal information we collect, why, who we share it with, how long we keep it, and the rights you have &mdash; with a focus on the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA).</p>
 
           <nav aria-label="On this page">
             <ol>
-              <li><a href="#information-we-collect">Information We Collect</a></li>
-              <li><a href="#how-we-use-your-information">How We Use Your Information</a></li>
-              <li><a href="#analytics-and-tracking-technologies">Analytics and Tracking Technologies</a></li>
-              <li><a href="#how-we-store-and-protect-your-information">How We Store and Protect Your Information</a></li>
-              <li><a href="#information-sharing">Information Sharing</a></li>
-              <li><a href="#your-rights-under-california-law-ccpa">Your Rights Under California Law (CCPA)</a></li>
-              <li><a href="#childrens-privacy">Children's Privacy</a></li>
-              <li><a href="#links-to-third-party-sites">Links to Third-Party Sites</a></li>
-              <li><a href="#changes-to-this-policy">Changes to This Policy</a></li>
+              <li><a href="#information-we-collect">Information We Collect (Notice at Collection)</a></li>
+              <li><a href="#sources">Where the Information Comes From</a></li>
+              <li><a href="#how-we-use-your-information">How and Why We Use It</a></li>
+              <li><a href="#analytics-and-tracking-technologies">Analytics, Cookies &amp; Tracking</a></li>
+              <li><a href="#information-sharing">How We Share It &mdash; &ldquo;Sale&rdquo; and &ldquo;Sharing&rdquo;</a></li>
+              <li><a href="#retention">How Long We Keep It</a></li>
+              <li><a href="#how-we-store-and-protect-your-information">How We Protect It</a></li>
+              <li><a href="#your-rights-under-california-law-ccpa">Your California Privacy Rights</a></li>
+              <li><a href="#how-to-submit">How to Submit a Request</a></li>
+              <li><a href="#gpc">Global Privacy Control &amp; Opt-Out Signals</a></li>
+              <li><a href="#childrens-privacy">Children and Minors Under 16</a></li>
+              <li><a href="#links-to-third-party-sites">Links to Other Sites</a></li>
+              <li><a href="#changes-to-this-policy">Changes &amp; Annual Review</a></li>
               <li><a href="#contact-us">Contact Us</a></li>
             </ol>
           </nav>
 
-          <p>We take your privacy seriously and are committed to handling your information responsibly. This policy applies to all visitors and prospective clients who interact with us through this website.</p>
+          <div class="prose-callout" style="border:1px solid var(--line,rgba(27,67,50,.15));border-radius:12px;padding:1rem 1.25rem;margin:1.5rem 0;background:var(--surface-2,rgba(27,67,50,.04));">
+            <p style="margin:0;"><strong>The short version.</strong> We collect the contact details you give us through our forms and booking calendar, plus basic analytics about how the Site is used. We use this to reply to you and run the Site. <strong>We do not sell your personal information for money.</strong> We use Google Analytics, and if/when our advertising pixels are switched on, some ad-related activity may count as &ldquo;sharing&rdquo; under California law &mdash; you can turn that off any time on our <a href="/your-privacy-choices">Your Privacy Choices</a> page, and we honor the Global Privacy Control signal automatically.</p>
+          </div>
 
-          <h2 id="information-we-collect">1. Information We Collect</h2>
-
-          <h3>Information you provide directly</h3>
-          <p>When you submit a consultation request or book an appointment through our Site, we collect:</p>
+          <h2 id="information-we-collect">1. Information We Collect (Notice at Collection)</h2>
+          <p>You can browse the Site without giving us any personal information. We only collect what you choose to provide, plus a limited amount of technical data. In the last 12 months we collect, or may collect, the following <strong>categories of personal information</strong> (the category names come from the CCPA, Cal. Civ. Code &sect; 1798.140):</p>
           <ul>
-            <li>Full name</li>
-            <li>Business name</li>
-            <li>Phone number</li>
-            <li>Email address</li>
-            <li>City and service area</li>
-            <li>Industry or business type</li>
-            <li>Optional: how you heard about us, and a description of your current business challenge</li>
+            <li><strong>Identifiers</strong> &mdash; your name, email address, phone number, and IP address.</li>
+            <li><strong>Customer records</strong> (Cal. Civ. Code &sect; 1798.80(e)) &mdash; contact details you submit, such as your business name and phone number.</li>
+            <li><strong>Commercial information</strong> &mdash; the services you ask about and notes you include about your business.</li>
+            <li><strong>Internet or network activity</strong> &mdash; pages viewed, time on page, referring URL, and similar analytics data.</li>
+            <li><strong>Geolocation data</strong> &mdash; only coarse, city-level location inferred from your IP address. We do not collect precise geolocation.</li>
+            <li><strong>Professional or employment information</strong> &mdash; your business type or industry, if you tell us.</li>
+            <li><strong>Inferences</strong> &mdash; basic, aggregate inferences (for example, which pages tend to lead to inquiries). We do not build individual advertising profiles.</li>
           </ul>
-          <p>You are not required to provide any information to browse our Site. The above information is only collected when you voluntarily submit it through our consultation request form or booking calendar.</p>
+          <p><strong>Sensitive personal information.</strong> We do <strong>not</strong> collect &ldquo;sensitive personal information&rdquo; as defined by the CPRA (Cal. Civ. Code &sect; 1798.140(ae)) &mdash; we don&rsquo;t ask for your Social Security number, driver&rsquo;s license, financial-account login, precise location, or any health, biometric, racial, religious, or similar data. Because we don&rsquo;t collect it, the right to limit its use (see Section 8) does not apply in practice.</p>
+          <p>We do not store credit-card or payment information on our systems.</p>
 
-          <h3>Information collected automatically</h3>
-          <p>Like most websites, our Site may collect certain technical information automatically when you visit, including:</p>
+          <h2 id="sources">2. Where the Information Comes From</h2>
           <ul>
-            <li>IP address (anonymized)</li>
-            <li>Browser type and version</li>
-            <li>Device type</li>
-            <li>Pages visited and time spent on pages</li>
-            <li>Referring URL (the page that linked you to our Site)</li>
-          </ul>
-          <p>This information is collected through analytics tools (described below) and is used only in aggregate to understand how visitors use our Site. We do not use it to identify individual visitors.</p>
-
-          <h2 id="how-we-use-your-information">2. How We Use Your Information</h2>
-          <p>We use the information you provide solely to:</p>
-          <ul>
-            <li>Respond to your consultation request or confirm your booking</li>
-            <li>Schedule and conduct your free consultation call</li>
-            <li>Follow up with you about our services if you have expressed interest</li>
-            <li>Maintain our internal client relationship records (CRM) if you become a client</li>
-          </ul>
-          <p>We do <strong>not</strong> use your information to send unsolicited marketing emails or add you to automated marketing sequences without your consent. If you submit a consultation request, you may receive one follow-up to confirm or schedule your call — nothing more unless you engage further.</p>
-
-          <h2 id="analytics-and-tracking-technologies">3. Analytics and Tracking Technologies</h2>
-          <p>We use or plan to use the following third-party analytics and advertising tools on this Site. Where a tool is listed but not yet active, it is noted below.</p>
-
-          <h3>Google Analytics 4</h3>
-          <p>We use Google Analytics 4 (&ldquo;GA4&rdquo;) to understand how visitors navigate our Site in aggregate. GA4 collects anonymized data about page views, session duration, and general traffic sources. It does not collect personally identifiable information unless you submit a form. You can opt out of GA4 tracking by using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
-
-          <h3>Meta Pixel (Facebook/Instagram)</h3>
-          <p>We use or plan to use the Meta Pixel to measure the effectiveness of advertising campaigns run on Facebook and Instagram. The Meta Pixel records certain page actions (such as viewing a page or submitting a form) and may set cookies on your browser. You can manage your ad preferences through <a href="https://www.facebook.com/ads/preferences" target="_blank" rel="noopener">Facebook&rsquo;s Ad Preferences</a> or opt out of interest-based advertising at <a href="https://optout.aboutads.info" target="_blank" rel="noopener">aboutads.info</a>.</p>
-
-          <h3>Google Ads</h3>
-          <p>We may use Google Ads conversion tracking to measure whether a consultation booking results from a Google Ads campaign. This involves a tag that fires on our booking confirmation page and reports an anonymized conversion event to Google. No personally identifiable information is shared with Google through this tag.</p>
-
-          <h3>Cookies</h3>
-          <p>Our Site may use cookies placed by the third-party tools described above (Google Analytics, Meta Pixel, Google Ads). These are standard analytics and advertising cookies. You can manage or disable cookies through your browser settings. Disabling cookies will not prevent you from using any functionality on our Site.</p>
-
-          <h2 id="how-we-store-and-protect-your-information">4. How We Store and Protect Your Information</h2>
-          <p>Information submitted through our consultation form or booking calendar is stored within our Customer Relationship Management (CRM) system, which is hosted by GoHighLevel. GoHighLevel maintains industry-standard security practices including data encryption at rest and in transit.</p>
-          <p>We do not store credit card numbers or payment information on our systems.</p>
-          <p>We retain consultation inquiry data for as long as necessary to respond to your request and, if applicable, to maintain our client relationship. You may request deletion of your data at any time (see Section 6).</p>
-
-          <h2 id="information-sharing">5. Information Sharing</h2>
-          <p>We do <strong>not</strong> sell, rent, or trade your personal information to third parties.</p>
-          <p>We may share your information only in the following limited circumstances:</p>
-          <ul>
-            <li><strong>Service providers:</strong> We use GoHighLevel as our CRM and scheduling platform. Your submitted information is stored and processed within their platform. GoHighLevel operates under its own privacy policy and does not sell data to advertisers.</li>
-            <li><strong>Legal requirements:</strong> We may disclose information if required to do so by law or in response to a valid legal request.</li>
-            <li><strong>Business transfer:</strong> In the unlikely event that Branch and Root Consulting is acquired or merged with another entity, your information may be transferred as part of that transaction. We would notify you before your information is transferred and becomes subject to a different privacy policy.</li>
+            <li><strong>Directly from you</strong> &mdash; when you fill out a form, download our checklist, book a call, or email us.</li>
+            <li><strong>Automatically</strong> &mdash; through cookies and analytics tools when you use the Site (see Section 4).</li>
+            <li><strong>From our service providers</strong> &mdash; our CRM and scheduling platform record the details of requests you submit.</li>
           </ul>
 
-          <h2 id="your-rights-under-california-law-ccpa">6. Your Rights Under California Law (CCPA)</h2>
-          <p>If you are a California resident, the California Consumer Privacy Act (CCPA) gives you specific rights regarding your personal information:</p>
+          <h2 id="how-we-use-your-information">3. How and Why We Use It</h2>
+          <p>We use your information for these business and commercial purposes:</p>
           <ul>
-            <li><strong>Right to Know:</strong> You have the right to request that we disclose what personal information we have collected about you, the categories of sources from which it was collected, the business purpose for collecting it, and any third parties with whom it has been shared.</li>
-            <li><strong>Right to Delete:</strong> You have the right to request that we delete any personal information we have collected about you, subject to certain exceptions.</li>
-            <li><strong>Right to Non-Discrimination:</strong> We will not discriminate against you for exercising any of your CCPA rights. We will not deny you services, charge you different prices, or provide a different level of service because you exercised your privacy rights.</li>
-            <li><strong>Right to Opt Out of Sale:</strong> We do not sell your personal information. There is nothing to opt out of.</li>
+            <li>Respond to your request and schedule or confirm your consultation.</li>
+            <li>Follow up about our services if you&rsquo;ve expressed interest.</li>
+            <li>Keep our internal client-relationship records (CRM) if you become a client.</li>
+            <li>Operate, secure, and improve the Site &mdash; including spam prevention (our forms use a hidden anti-spam field).</li>
+            <li>Measure how the Site performs through analytics, and &mdash; only if those features are switched on &mdash; advertising measurement.</li>
+            <li>Comply with the law and enforce our terms.</li>
           </ul>
-          <p>To exercise any of these rights, please contact us at the email address listed below. We will respond to verifiable consumer requests within 45 days.</p>
+          <p>We do <strong>not</strong> add you to automated marketing sequences without your consent. If you submit a request, you may receive one follow-up to schedule your call &mdash; nothing more unless you engage further.</p>
 
-          <h2 id="childrens-privacy">7. Children&rsquo;s Privacy</h2>
-          <p>Our Site is directed to business owners and is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, please contact us immediately and we will delete it.</p>
+          <h2 id="analytics-and-tracking-technologies">4. Analytics, Cookies &amp; Tracking</h2>
+          <p>We use or may use the tools below. Cookies are small files stored by your browser; you can manage or block them in your browser settings, and doing so will not break the Site.</p>
 
-          <h2 id="links-to-third-party-sites">8. Links to Third-Party Sites</h2>
-          <p>Our Site may contain links to third-party websites (such as our email provider or social media profiles). We are not responsible for the privacy practices of those sites and encourage you to review their privacy policies independently.</p>
+          <h3>Google Analytics 4 (active)</h3>
+          <p>We use Google Analytics 4 to understand, in aggregate, how visitors navigate the Site. We have configured it as an analytics service provider and do not use it to build cross-site advertising profiles. You can also install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
 
-          <h2 id="changes-to-this-policy">9. Changes to This Policy</h2>
-          <p>We may update this Privacy Policy periodically to reflect changes in our practices or applicable law. When we make material changes, we will update the &ldquo;Last updated&rdquo; date at the top of this page. Continued use of our Site after any changes constitutes acceptance of the updated policy.</p>
+          <h3>Google Ads &amp; Meta Pixel (not currently active)</h3>
+          <p>The Site is built to support Google Ads conversion tracking and the Meta (Facebook/Instagram) Pixel, but these are <strong>not running today</strong>. If we turn them on, they may set advertising cookies and share limited activity data with Google or Meta to measure ads &mdash; activity that can count as &ldquo;sharing&rdquo; under California law. <strong>These tags are already wired to respect your opt-out choice and the Global Privacy Control signal before they ever fire</strong>, and we use Google Consent Mode so they stay off for anyone who has opted out. You can set your preference now on <a href="/your-privacy-choices">Your Privacy Choices</a>.</p>
 
-          <h2 id="contact-us">10. Contact Us</h2>
-          <p>If you have any questions about this Privacy Policy, want to exercise your data rights, or have a privacy-related concern, please contact us:</p>
+          <h3>Booking &amp; maps</h3>
+          <p>Our booking page loads a scheduling widget from our CRM (GoHighLevel), and some pages may embed a Google Map. These load from third-party servers, which receive your IP address as a normal part of delivering the content.</p>
+
+          <h2 id="information-sharing">5. How We Share It &mdash; &ldquo;Sale&rdquo; and &ldquo;Sharing&rdquo;</h2>
+          <p><strong>We do not sell your personal information for money</strong>, and we have not done so in the last 12 months.</p>
+          <p>Under the CPRA, &ldquo;<strong>sharing</strong>&rdquo; has a special meaning: disclosing personal information to a third party for <em>cross-context behavioral advertising</em> (targeted ads that follow you across other sites), even when no money changes hands. We do not share your information this way today. If we activate the advertising tools described in Section 4, that activity could be considered &ldquo;sharing&rdquo; &mdash; and you can opt out at any time on <a href="/your-privacy-choices">Your Privacy Choices</a>; we also honor your browser&rsquo;s Global Privacy Control signal.</p>
+          <p>We disclose information to others only in these limited ways:</p>
+          <ul>
+            <li><strong>Service providers</strong> who process data on our behalf under contract &mdash; our CRM and scheduling platform (GoHighLevel), our website host (Vercel), and Google Analytics. They may use the data only to provide their service to us, not for their own purposes.</li>
+            <li><strong>Advertising partners</strong> (Google, Meta) &mdash; <em>only if and when</em> the tools in Section 4 are turned on, and subject to your opt-out.</li>
+            <li><strong>Legal and safety</strong> &mdash; when required by law or a valid legal request, or to protect our rights.</li>
+            <li><strong>Business transfer</strong> &mdash; if the business is sold or merged, with notice to you before your information becomes subject to a different policy.</li>
+          </ul>
+
+          <h2 id="retention">6. How Long We Keep It</h2>
+          <p>We keep personal information only as long as we need it for the purposes above, then delete or de-identify it:</p>
+          <ul>
+            <li><strong>Inquiry and CRM records</strong> (name, email, phone, messages) &mdash; while we&rsquo;re in contact and for up to <strong>24 months</strong> after our last interaction, unless you ask us to delete it sooner or you become a client (in which case we keep records for the life of the engagement plus any period the law requires).</li>
+            <li><strong>Analytics data</strong> &mdash; retained according to our Google Analytics retention setting (no longer than 14 months at the event level).</li>
+            <li><strong>Privacy-request records</strong> &mdash; kept for <strong>24 months</strong> as required by the CCPA regulations (Cal. Code Regs. tit. 11, &sect; 7101).</li>
+          </ul>
+
+          <h2 id="how-we-store-and-protect-your-information">7. How We Protect It</h2>
+          <p>Information you submit is stored in our CRM, hosted by GoHighLevel, which maintains industry-standard security including encryption in transit and at rest. The Site is served over HTTPS. No method of transmission or storage is 100% secure, but we take reasonable steps to protect your information.</p>
+
+          <h2 id="your-rights-under-california-law-ccpa">8. Your California Privacy Rights</h2>
+          <p>If you are a California resident, the CCPA (as amended by the CPRA) gives you the following rights. We will not discriminate or retaliate against you for using them.</p>
+          <ul>
+            <li><strong>Right to know / access</strong> &mdash; ask what personal information we&rsquo;ve collected about you, where it came from, why, and who we shared it with, and get a copy.</li>
+            <li><strong>Right to delete</strong> &mdash; ask us to delete the information we collected from you (with limited legal exceptions).</li>
+            <li><strong>Right to correct</strong> (Cal. Civ. Code &sect; 1798.106) &mdash; ask us to fix inaccurate information.</li>
+            <li><strong>Right to opt out of sale or sharing</strong> &mdash; tell us not to &ldquo;sell&rdquo; or &ldquo;share&rdquo; your information. We don&rsquo;t sell it, and you can switch off ad-related sharing on <a href="/your-privacy-choices">Your Privacy Choices</a>.</li>
+            <li><strong>Right to limit use of sensitive personal information</strong> (Cal. Civ. Code &sect; 1798.121) &mdash; we don&rsquo;t collect sensitive personal information, so there is nothing to limit; the right is listed here for completeness.</li>
+            <li><strong>Right to non-discrimination / no retaliation</strong> &mdash; we won&rsquo;t deny you service, charge you more, or give you a lower level of service for exercising these rights.</li>
+          </ul>
+          <p>You may use an authorized agent to submit a request for you; we&rsquo;ll ask for proof that you gave them permission, and we may still ask you to verify your own identity.</p>
+
+          <h2 id="how-to-submit">9. How to Submit a Request</h2>
+          <p>You can submit a privacy request in two ways:</p>
+          <ul>
+            <li><strong>Online:</strong> use the request form on our <a href="/your-privacy-choices">Your Privacy Choices</a> page.</li>
+            <li><strong>Email:</strong> write to <a href="mailto:sales@branchandrootconsulting.com?subject=Privacy%20Request">sales@branchandrootconsulting.com</a> with &ldquo;Privacy Request&rdquo; in the subject line.</li>
+          </ul>
+          <p><strong>How we handle it.</strong> To protect your information, we verify your identity &mdash; usually by confirming details (such as your email or phone) against what we already have on file. We acknowledge your request within <strong>10 business days</strong> and respond within <strong>45 days</strong>. If we need more time, we may extend once by another <strong>45 days</strong> and will tell you why (Cal. Civ. Code &sect; 1798.130).</p>
+
+          <h2 id="gpc">10. Global Privacy Control &amp; Opt-Out Signals</h2>
+          <p>We honor opt-out preference signals, including the <a href="https://globalprivacycontrol.org" target="_blank" rel="noopener">Global Privacy Control</a> (GPC). If your browser or a browser extension sends a GPC signal, we automatically treat it as a request to opt out of the sale or sharing of your personal information for that browser &mdash; you don&rsquo;t need to do anything else. You can confirm your current setting on <a href="/your-privacy-choices">Your Privacy Choices</a>.</p>
+
+          <h2 id="childrens-privacy">11. Children and Minors Under 16</h2>
+          <p>Our Site is meant for business owners and is not directed to children. We do not knowingly collect personal information from anyone under 16, and we do not sell or share the personal information of minors. If you believe a child has given us information, contact us and we will delete it.</p>
+
+          <h2 id="links-to-third-party-sites">12. Links to Other Sites</h2>
+          <p>Our Site may link to third-party websites (such as our social media profiles). We are not responsible for their privacy practices, and we encourage you to read their policies.</p>
+
+          <h2 id="changes-to-this-policy">13. Changes &amp; Annual Review</h2>
+          <p>We review this Privacy Policy at least once every 12 months and update it when our practices or the law change. When we make material changes, we&rsquo;ll update the &ldquo;Last updated&rdquo; date at the top of this page. Your continued use of the Site after a change means you accept the updated policy.</p>
+
+          <h2 id="contact-us">14. Contact Us</h2>
+          <p>Questions about this policy or your privacy? Reach us at:</p>
           <p>
             <strong>Branch and Root Consulting</strong><br />
             Orange County, California<br />
             <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a>
           </p>
-          <p>We will respond to all privacy inquiries within 5 business days.</p>
+          <p>For privacy requests, see <a href="#how-to-submit">How to Submit a Request</a> above &mdash; we acknowledge requests within 10 business days and respond within 45 days.</p>
 
           <div class="horizon" role="presentation" style="margin-top: var(--s-6);"><i></i></div>
 
@@ -263,6 +286,8 @@
           <span aria-hidden="true">·</span>
           <a href="/terms-of-service">Terms of Service</a>
           <span aria-hidden="true">·</span>
+          <a href="/your-privacy-choices" class="br-ca-privacy"><svg class="br-ca-icon" viewBox="0 0 30 14" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><rect width="30" height="14" rx="7" fill="#1A1A1A"/><rect x="0.5" y="0.5" width="29" height="13" rx="6.5" fill="#0066FF"/><path d="M15 1 H7 a6 6 0 0 0 0 12 H15 Z" fill="#FFFFFF"/><circle cx="7" cy="7" r="3.4" fill="#0066FF"/><path d="M5.9 5.9 L8.1 8.1 M8.1 5.9 L5.9 8.1" stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"/><circle cx="23" cy="7" r="3.4" fill="#FFFFFF"/><path d="M21.6 7.1 L22.6 8.1 L24.5 6" stroke="#0066FF" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Your Privacy Choices</a>
+          <span aria-hidden="true">·</span>
           <a href="/sitemap-page">Sitemap</a>
         </div>
       </div>
@@ -270,5 +295,6 @@
   </footer>
 
   <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/privacy-consent.js"></script>
 </body>
 </html>

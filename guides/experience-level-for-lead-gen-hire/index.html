@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Consent Mode v2 default: runs before GTM; honors CCPA opt-out + GPC -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",(function(){var g=navigator.globalPrivacyControl===true,s=null;try{s=localStorage.getItem("br_privacy_optout");}catch(e){}var a=g||s==="1"?"denied":"granted";return{ad_storage:a,ad_user_data:a,ad_personalization:a,analytics_storage:"granted",security_storage:"granted",wait_for_update:500};})());</script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -225,6 +227,8 @@
           <span aria-hidden="true">·</span>
           <a href="/terms-of-service">Terms of Service</a>
           <span aria-hidden="true">·</span>
+          <a href="/your-privacy-choices" class="br-ca-privacy"><svg class="br-ca-icon" viewBox="0 0 30 14" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><rect width="30" height="14" rx="7" fill="#1A1A1A"/><rect x="0.5" y="0.5" width="29" height="13" rx="6.5" fill="#0066FF"/><path d="M15 1 H7 a6 6 0 0 0 0 12 H15 Z" fill="#FFFFFF"/><circle cx="7" cy="7" r="3.4" fill="#0066FF"/><path d="M5.9 5.9 L8.1 8.1 M8.1 5.9 L5.9 8.1" stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"/><circle cx="23" cy="7" r="3.4" fill="#FFFFFF"/><path d="M21.6 7.1 L22.6 8.1 L24.5 6" stroke="#0066FF" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Your Privacy Choices</a>
+          <span aria-hidden="true">·</span>
           <a href="/sitemap-page">Sitemap</a>
         </div>
       </div>
@@ -232,5 +236,6 @@
   </footer>
 
   <script defer src="/assets/js/site.js"></script>
+  <script defer src="/assets/js/privacy-consent.js"></script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- Consent Mode v2 default: runs before GTM; honors CCPA opt-out + GPC -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("consent","default",(function(){var g=navigator.globalPrivacyControl===true,s=null;try{s=localStorage.getItem("br_privacy_optout");}catch(e){}var a=g||s==="1"?"denied":"granted";return{ad_storage:a,ad_user_data:a,ad_personalization:a,analytics_storage:"granted",security_storage:"granted",wait_for_update:500};})());</script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -48,6 +50,10 @@
     (function(){
       var id = (window.__BR_CONV && window.__BR_CONV.metaPixelId) || '';
       if (!id || /^META_/i.test(id)) return; // placeholder → skip entirely
+      // Privacy gate: honor GPC + stored opt-out before loading the pixel at all.
+      var gpc = (navigator.globalPrivacyControl === true), optout = null;
+      try { optout = localStorage.getItem('br_privacy_optout'); } catch (e) {}
+      if (gpc || optout === '1') return; // opted out / GPC → never load fbevents.js
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
       n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -159,6 +165,8 @@
           <span aria-hidden="true">·</span>
           <a href="/terms-of-service">Terms of Service</a>
           <span aria-hidden="true">·</span>
+          <a href="/your-privacy-choices" class="br-ca-privacy"><svg class="br-ca-icon" viewBox="0 0 30 14" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false"><rect width="30" height="14" rx="7" fill="#1A1A1A"/><rect x="0.5" y="0.5" width="29" height="13" rx="6.5" fill="#0066FF"/><path d="M15 1 H7 a6 6 0 0 0 0 12 H15 Z" fill="#FFFFFF"/><circle cx="7" cy="7" r="3.4" fill="#0066FF"/><path d="M5.9 5.9 L8.1 8.1 M8.1 5.9 L5.9 8.1" stroke="#FFFFFF" stroke-width="0.9" stroke-linecap="round"/><circle cx="23" cy="7" r="3.4" fill="#FFFFFF"/><path d="M21.6 7.1 L22.6 8.1 L24.5 6" stroke="#0066FF" stroke-width="0.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Your Privacy Choices</a>
+          <span aria-hidden="true">·</span>
           <a href="/sitemap-page">Sitemap</a>
         </div>
       </div>
@@ -166,6 +174,7 @@
   </footer>
 
   <script defer src="/assets/js/site.js"></script>
+  <script defer src="/assets/js/privacy-consent.js"></script>
   <script>
     // ===== Conversion tracking config ====================================
     // Set these once the accounts are live and the conversion events will
@@ -186,7 +195,11 @@
       var lead = document.getElementById('ty-lead');
       var ga4Ready = typeof window.gtag === 'function';
       var fbReady  = typeof window.fbq === 'function';
-      var adsReady = !!(conv.googleAdsId && conv.googleAdsLabel
+      // Ad-tech kill switch: respect opt-out / GPC even after __BR_CONV is set.
+      var canAds = (window.BRPrivacy ? window.BRPrivacy.canTrackAds()
+                    : !(navigator.globalPrivacyControl === true ||
+                        (function(){try{return localStorage.getItem('br_privacy_optout')==='1';}catch(e){return false;}})()));
+      var adsReady = canAds && !!(conv.googleAdsId && conv.googleAdsLabel
                         && !/^AW-CONVERSION_/i.test(conv.googleAdsId));
 
       function copy(eyebrowText, headingText, leadText){
@@ -204,7 +217,7 @@
         if (ga4Ready) window.gtag('event', 'lead_form_submit', {
           event_category: 'lead', event_label: 'discovery_form'
         });
-        if (fbReady)  window.fbq('track', 'Lead', { content_name: 'discovery_form' });
+        if (fbReady && canAds) window.fbq('track', 'Lead', { content_name: 'discovery_form' });
       } else if (source === 'magnet') {
         copy(
           "Checklist Sent",
@@ -216,7 +229,7 @@
         if (ga4Ready) window.gtag('event', 'lead_magnet_download', {
           event_category: 'lead', event_label: 'revenue_leak_checklist'
         });
-        if (fbReady)  window.fbq('track', 'Lead', { content_name: 'revenue_leak_checklist' });
+        if (fbReady && canAds) window.fbq('track', 'Lead', { content_name: 'revenue_leak_checklist' });
       } else {
         // Default branch — calendar booking confirmation lands here.
         copy(
@@ -227,7 +240,7 @@
         if (ga4Ready) window.gtag('event', 'booking_confirmed', {
           event_category: 'lead', event_label: 'calendar_booking'
         });
-        if (fbReady)  window.fbq('track', 'Schedule');
+        if (fbReady && canAds) window.fbq('track', 'Schedule');
         if (ga4Ready && adsReady) window.gtag('event', 'conversion', {
           send_to: conv.googleAdsId + '/' + conv.googleAdsLabel,
           event_category: 'lead',

@@ -31,10 +31,10 @@
             media="(prefers-color-scheme: dark)"
             content="#0F1B14"
         />
-        <title>Contact — Book a Free Consultation — Branch and Root Consulting</title>
+        <title>Your Privacy Choices — Branch and Root Consulting</title>
         <meta
             name="description"
-            content="Book a free 30-minute consultation with the team. We'll walk through your business honestly, identify the gaps, and tell you straight if Branch and Root is the right fit."
+            content="Opt out of the sale or sharing of your personal information for advertising, exercise your California privacy rights, or submit a privacy request."
         />
         <link
             rel="icon"
@@ -49,20 +49,9 @@
             href="assets/img/favicon-16.png"
         />
         <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-        <meta
-            property="og:title"
-            content="Book a Consultation — Branch and Root Consulting"
-        />
-        <meta
-            property="og:description"
-            content="No pitch decks. No pressure. A 30-minute honest look at where your business is leaking revenue."
-        />
-        <meta property="og:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://branchandrootconsulting.com/assets/img/og-image.jpg" />
         <link
             rel="canonical"
-            href="https://branchandrootconsulting.com/contact"
+            href="https://branchandrootconsulting.com/your-privacy-choices"
         />
         <link
             rel="preload"
@@ -80,18 +69,6 @@
         />
         <link rel="stylesheet" href="assets/css/tokens.css" />
         <link rel="stylesheet" href="assets/css/site.css" />
-        <!-- Analytics: GA4 + GTM load from the head block above. -->
-        <!-- Conversion events fire from thank-you.html (post-submit landing). -->
-        <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "Book a Free Consultation — Branch and Root Consulting",
-          "url": "https://branchandrootconsulting.com/contact",
-          "description": "Book a free consultation with Branch and Root Consulting to discuss lead generation and customer reactivation for your local service business.",
-          "mainEntity": {"@id": "https://branchandrootconsulting.com/#organization"}
-        }
-        </script>
     </head>
     <body>
   <!-- Google Tag Manager (noscript) -->
@@ -200,175 +177,76 @@
         </header>
 
         <main id="main">
-            <!-- ===== PAGE HERO ===== -->
             <section class="page-hero">
-                <div class="container">
-                    <div class="page-hero-grid">
-                        <div>
-                            <span class="eyebrow">Book a Consultation</span>
-                            <h1>
-                                Let&rsquo;s take 30 minutes and look at your
-                                business <em>honestly</em>.
-                            </h1>
-                        </div>
-                        <div class="page-hero-aside">
-                            <span class="annotation"
-                                >— A note on how this goes</span
-                            >
-                            <p>
-                                No pitch decks. No pressure. The team will walk
-                                through your current situation, show you where
-                                the gaps are, and tell you straight whether
-                                Branch &amp; Root is the right fit &mdash; and
-                                if so, exactly what we&rsquo;d do about it.
-                            </p>
-                        </div>
-                    </div>
+              <div class="container">
+                <div class="page-hero-grid">
+                  <div>
+                    <span class="eyebrow">Privacy</span>
+                    <h1>Your Privacy <em>Choices</em></h1>
+                  </div>
+                  <div class="page-hero-aside">
+                    <span class="annotation">— What this page does</span>
+                    <p>Turn off advertising-related sharing, or send us a privacy request. Your choice is saved on this device.</p>
+                  </div>
                 </div>
+              </div>
             </section>
-
             <section class="section section-cream">
-                <div class="container">
-                    <div class="contact-grid">
-                        <!-- ===== DISCOVERY FORM (native, POSTs to /api/lead) ===== -->
-                        <div class="discovery-form">
-                            <h2>
-                                Tell us where the revenue is <em>leaking</em>.
-                            </h2>
-                            <p class="form-intro">
-                                A few quick details and the team will reach out
-                                inside one business day to lock in your free
-                                thirty minutes. No drip sequences. No spam
-                                &mdash; just a real conversation between
-                                neighbors.
-                            </p>
-
-                            <form
-                                class="lead-form"
-                                data-lead-form
-                                data-source="discovery"
-                                data-tag="form-discovery"
-                                data-require-phone="true"
-                                novalidate
-                            >
-                                <input
-                                    type="text"
-                                    name="company_website"
-                                    tabindex="-1"
-                                    autocomplete="off"
-                                    style="position:absolute;left:-9999px"
-                                    aria-hidden="true"
-                                />
-
-                                <p class="form-req-note">Name, email, and phone are required.</p>
-
-                                <div class="lead-field">
-                                    <label for="lf-name">Name <span class="req" aria-hidden="true">*</span></label>
-                                    <input id="lf-name" name="name" type="text" required autocomplete="name" aria-required="true" />
-                                    <span class="lead-field-error" id="lf-name-error" role="alert" aria-live="polite"></span>
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-email">Email <span class="req" aria-hidden="true">*</span></label>
-                                    <input id="lf-email" name="email" type="email" required autocomplete="email" aria-required="true" />
-                                    <span class="lead-field-error" id="lf-email-error" role="alert" aria-live="polite"></span>
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-                                    <input id="lf-phone" name="phone" type="tel" required autocomplete="tel" aria-required="true" />
-                                    <span class="lead-field-error" id="lf-phone-error" role="alert" aria-live="polite"></span>
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-biz">Business type <span class="lead-optional">(optional)</span></label>
-                                    <input id="lf-biz" name="business_type" type="text" autocomplete="organization" />
-                                </div>
-
-                                <div class="lead-field">
-                                    <label for="lf-msg">Where&rsquo;s the leak? <span class="lead-optional">(optional)</span></label>
-                                    <textarea id="lf-msg" name="message" rows="4"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary lead-submit">
-                                    Request my free thirty minutes
-                                </button>
-                            </form>
-
-                            <div class="lead-success" data-success hidden>
-                                <p>
-                                    Got it. Check your inbox in the next minute
-                                    &mdash; you&rsquo;ll get a booking link to
-                                    pick a time that works for you.
-                                </p>
-                            </div>
-
-                            <div class="lead-error" data-error hidden>
-                                <p>
-                                    Something went sideways on our end. The fastest
-                                    way to reach us is to
-                                    <a href="mailto:sales@branchandrootconsulting.com">email us directly</a>
-                                    &mdash; we&rsquo;ll respond within one business day.
-                                </p>
-                            </div>
-
-                            <p class="form-consent">
-                                We collect your name, email, and phone only to respond to this request. By submitting, you agree to our <a href="/terms-of-service">Terms of Service</a> and <a href="/privacy-policy">Privacy Policy</a>. See your <a href="/your-privacy-choices">Privacy Choices</a>.
-                            </p>
-                        </div>
-
-                        <!-- ===== CONTACT DETAILS ===== -->
-                        <aside
-                            class="contact-details"
-                            aria-label="Contact information"
-                        >
-                            <span class="eyebrow">Or Reach Us Directly</span>
-                            <ul>
-                                <li>
-                                    <div>
-                                        <span class="label">Service Area</span>
-                                        Orange County, California
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label">Email</span>
-                                        <a
-                                            href="mailto:sales@branchandrootconsulting.com"
-                                            >sales@branchandrootconsulting.com</a
-                                        >
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label">Hours</span>
-                                        Monday&ndash;Friday, 9am&ndash;6pm PST
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="label"
-                                            >Primary Contact</span
-                                        >
-                                        Matthew Sr., Client Relations &amp;
-                                        Sales Director
-                                    </div>
-                                </li>
-                            </ul>
-                        </aside>
+              <div class="container">
+                <div class="prose" style="max-width: var(--max-w-reading, 70ch); margin: 0 auto;">
+                  <h2>Opt out of the sale or sharing of your personal information</h2>
+                  <p>We don't sell your information for money. But like many websites, we use advertising and analytics tools (Google Analytics, and — if enabled — Google Ads and the Meta Pixel) that can share limited device and activity data to measure ads. Under California law, that activity may count as a "sale" or "share." Use the switch below to turn it off for this browser. We also automatically honor the Global Privacy Control (GPC) browser signal.</p>
+                  <div class="br-optout-card">
+                    <div class="br-optout-row">
+                      <span id="br-optout-label" class="br-optout-name">Share my data for advertising</span>
+                      <button type="button" id="br-optout-toggle" class="br-switch" role="switch" aria-checked="true" aria-labelledby="br-optout-label">
+                        <span class="br-switch-track"><span class="br-switch-thumb"></span></span>
+                        <span class="br-switch-state" aria-hidden="true">On</span>
+                      </button>
                     </div>
-
-                    <div class="location-stamp">
-                        <div
-                            class="horizon"
-                            style="max-width: 360px"
-                            role="presentation"
-                        >
-                            <i></i>
-                        </div>
-                        <p class="annotation">Mission Viejo &middot; Rancho Santa Margarita &middot; Ladera Ranch &middot; Aliso Viejo &middot; San Clemente</p>
+                    <p class="br-optout-status" id="br-optout-status" role="status" aria-live="polite">Checking your current setting…</p>
+                  </div>
+                  <h2 id="dsr">Make a privacy request</h2>
+                  <p>California residents can ask us to disclose, correct, or delete the personal information we hold, or to limit its use. Submit the form below and we'll verify your identity and respond within the time the law requires (within 45 days, with one possible 45-day extension). You can also email <a href="mailto:sales@branchandrootconsulting.com?subject=Privacy%20Request">sales@branchandrootconsulting.com</a>.</p>
+                  <form class="lead-form" id="br-dsr-form" novalidate>
+                    <input type="text" name="company_website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+                    <div class="lead-field">
+                      <label for="dsr-name">Name <span class="req" aria-hidden="true">*</span></label>
+                      <input id="dsr-name" name="name" type="text" required autocomplete="name" aria-required="true" />
                     </div>
+                    <div class="lead-field">
+                      <label for="dsr-email">Email <span class="req" aria-hidden="true">*</span></label>
+                      <input id="dsr-email" name="email" type="email" required autocomplete="email" aria-required="true" />
+                    </div>
+                    <div class="lead-field">
+                      <label for="dsr-phone">Phone <span class="lead-optional">(helps us verify)</span></label>
+                      <input id="dsr-phone" name="phone" type="tel" autocomplete="tel" />
+                    </div>
+                    <div class="lead-field">
+                      <label for="dsr-type">Request type</label>
+                      <select id="dsr-type" name="request_type">
+                        <option value="know">Know what you've collected about me</option>
+                        <option value="delete">Delete my information</option>
+                        <option value="correct">Correct my information</option>
+                        <option value="optout">Opt out of sale/share</option>
+                        <option value="limit">Limit use of sensitive information</option>
+                      </select>
+                    </div>
+                    <div class="lead-field">
+                      <label for="dsr-msg">Details <span class="lead-optional">(optional)</span></label>
+                      <textarea id="dsr-msg" name="message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary lead-submit">Submit privacy request</button>
+                  </form>
+                  <div class="lead-success" data-success hidden>
+                    <p>Got it — your request is logged. We'll email you to verify your identity, then process it. No reply within a few days? Write to <a href="mailto:sales@branchandrootconsulting.com">sales@branchandrootconsulting.com</a>.</p>
+                  </div>
+                  <div class="lead-error" data-error hidden>
+                    <p>Something went wrong submitting that. Please email your request to <a href="mailto:sales@branchandrootconsulting.com?subject=Privacy%20Request">sales@branchandrootconsulting.com</a> instead.</p>
+                  </div>
+                  <div class="horizon" role="presentation" style="margin-top: var(--s-6, 3rem);"><i></i></div>
                 </div>
+              </div>
             </section>
         </main>
 
@@ -446,6 +324,84 @@
 
         <script defer src="assets/js/site.js"></script>
         <script defer src="assets/js/privacy-consent.js"></script>
-        <script defer src="assets/js/lead-form.js"></script>
+        <script>
+  // Wire the opt-out toggle + live status to window.BRPrivacy
+  document.addEventListener('DOMContentLoaded', function () {
+    var toggle = document.getElementById('br-optout-toggle');
+    var status = document.getElementById('br-optout-status');
+    var stateLbl = toggle ? toggle.querySelector('.br-switch-state') : null;
+    function render(st) {
+      var sharingOn = !st.optedOut;               // switch ON = sharing allowed
+      toggle.setAttribute('aria-checked', String(sharingOn));
+      toggle.classList.toggle('is-on', sharingOn);
+      if (stateLbl) stateLbl.textContent = sharingOn ? 'On' : 'Off';
+      if (st.source === 'gpc') {
+        toggle.disabled = true;
+        status.textContent = 'You are opted out automatically because your browser is sending a Global Privacy Control signal. We are honoring it; you cannot turn sharing back on here while that signal is active.';
+      } else if (st.optedOut) {
+        status.textContent = 'You are opted out of advertising-related sharing on this browser.';
+      } else {
+        status.textContent = 'Advertising-related sharing is currently allowed on this browser. Use the switch to opt out.';
+      }
+    }
+    if (window.BRPrivacy) {
+      render(window.BRPrivacy.getState());
+      window.BRPrivacy.onChange(render);
+      toggle.addEventListener('click', function () {
+        if (toggle.disabled) return;
+        var st = window.BRPrivacy.getState();
+        if (st.optedOut) window.BRPrivacy.optIn(); else window.BRPrivacy.optOut();
+      });
+    } else {
+      status.textContent = 'Privacy controls could not load. Email sales@branchandrootconsulting.com to opt out.';
+    }
+  });
+</script>
+        <script>
+  // DSR submit: reuse the existing /api/lead endpoint, tagged as a privacy request
+  (function () {
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var form = document.getElementById('br-dsr-form');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.elements.namedItem('company_website').value) return; // honeypot
+      var name = (form.elements.namedItem('name').value || '').trim();
+      var email = (form.elements.namedItem('email').value || '').trim();
+      var phone = (form.elements.namedItem('phone').value || '').trim();
+      var type = form.elements.namedItem('request_type').value;
+      var message = (form.elements.namedItem('message').value || '').trim();
+      if (name.length < 2 || !EMAIL_RE.test(email)) { form.reportValidity(); return; }
+      var i = name.indexOf(' ');
+      var firstName = i === -1 ? name : name.slice(0, i);
+      var lastName = i === -1 ? '' : name.slice(i + 1);
+      var payload = {
+        firstName: firstName, lastName: lastName, email: email, phone: phone,
+        source: 'privacy-request',
+        tags: ['privacy-request', 'dsr-' + type],
+        customFields: {
+          lead_source: 'Website — Privacy Request',
+          message: 'DSR (' + type + '): ' + (message || '(no details provided)')
+        }
+      };
+      var btn = form.querySelector('[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('upstream');
+        form.style.display = 'none';
+        var ok = form.parentNode.querySelector('[data-success]');
+        if (ok) { ok.hidden = false; ok.style.display = ''; }
+      }).catch(function () {
+        var err = form.parentNode.querySelector('[data-error]');
+        if (err) { err.hidden = false; err.style.display = ''; }
+        if (btn) { btn.disabled = false; btn.textContent = 'Submit privacy request'; }
+      });
+    });
+  })();
+</script>
     </body>
 </html>
