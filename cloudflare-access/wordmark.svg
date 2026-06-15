@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" role="img" aria-label="Branch & Root Consulting">
+  <title>Branch &amp; Root Consulting</title>
+  <style>
+    .main { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-weight: 600; font-size: 46px; }
+    .amp  { font-style: italic; }
+    .sub  { font-family: 'Source Sans 3', 'Segoe UI', Helvetica, Arial, sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 5px; }
+  </style>
+  <!-- Moss accent, echoing the login card's top border -->
+  <rect x="156" y="16" width="48" height="4" rx="2" fill="#2D6A4F"/>
+  <text class="main" x="180" y="64" text-anchor="middle" fill="#1B4332">Branch <tspan class="amp" fill="#2D6A4F">&amp;</tspan> Root</text>
+  <text class="sub" x="182.5" y="93" text-anchor="middle" fill="#4A5568">CONSULTING</text>
+</svg>

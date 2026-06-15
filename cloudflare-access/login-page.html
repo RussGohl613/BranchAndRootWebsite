@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1B4332">
+  <meta name="description" content="Secure team sign-in for the Branch &amp; Root Consulting leads portal.">
+  <title>Sign in · Branch &amp; Root Consulting</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1F1B16;
+      /* Deep-forest base + CSS-built texture: soft moss glow up top, depth at the
+         bottom, and a faint diagonal grain. No images, no gradients on text. */
+      background-color: #1B4332;
+      background-image:
+        radial-gradient(125% 110% at 50% -10%, rgba(45, 106, 79, 0.28), rgba(27, 67, 50, 0) 55%),
+        radial-gradient(120% 120% at 50% 118%, rgba(8, 24, 17, 0.55), rgba(27, 67, 50, 0) 60%),
+        repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 8px);
+    }
+
+    main.card {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      background: #F7F5F0;
+      border-radius: 16px;
+      padding: clamp(2rem, 6vw, 3rem) clamp(1.5rem, 5vw, 2.5rem) 1.75rem;
+      text-align: center;
+      overflow: hidden;
+      /* Shadow crafted to read against the dark forest field, not the default soft drop. */
+      box-shadow:
+        0 32px 64px -24px rgba(4, 16, 11, 0.70),
+        0 12px 26px -16px rgba(4, 16, 11, 0.55),
+        0 0 0 1px rgba(15, 42, 30, 0.05);
+      animation: rise 0.3s ease-out both;
+    }
+
+    /* Clean Moss-green top accent, clipped to the card radius. */
+    main.card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: #2D6A4F;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Wordmark — Fraunces display serif + tracked Source Sans 3 label. */
+    .wordmark { margin: 0; line-height: 1; }
+    .wm-main {
+      display: block;
+      font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-size: clamp(1.7rem, 1.2rem + 2.4vw, 2.15rem);
+      letter-spacing: -0.01em;
+      line-height: 1.08;
+      color: #1B4332;
+    }
+    .wm-amp { font-style: italic; color: #2D6A4F; }
+    .wm-sub {
+      display: block;
+      margin-top: 0.7rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      text-indent: 0.34em; /* optical re-centering for the tracking */
+      color: #4A5568;
+    }
+
+    .context {
+      margin: 1.5rem auto 0;
+      max-width: 30ch;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: #4A5568;
+    }
+
+    .rule {
+      width: 64px;
+      height: 1px;
+      margin: 1.75rem auto;
+      border: 0;
+      background: rgba(27, 67, 50, 0.15);
+    }
+
+    /* Sign-in affordance. Cloudflare's native Access login page does NOT inject a
+       form here (see cloudflare-access/README.md) — this branded control is the
+       graceful fallback, and works as a real entry point when this page is hosted:
+       it sends the visitor to the gated leads portal, which triggers Access. */
+    #cf-identity { margin: 0; }
+    .signin-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.95rem 1.25rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+      color: #F7F5F0;
+      background: #1B4332;
+      border-radius: 11px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px -10px rgba(27, 67, 50, 0.7);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .signin-btn:hover { background: #2D6A4F; transform: translateY(-1px); }
+    .signin-btn:active { transform: translateY(0); }
+    .signin-btn:focus-visible { outline: 3px solid #2D6A4F; outline-offset: 3px; }
+    .signin-btn svg { flex: none; transition: transform 0.2s ease; }
+    .signin-btn:hover svg { transform: translateX(3px); }
+
+    .footer {
+      margin: 2rem 0 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(27, 67, 50, 0.10);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+      color: #4A5568;
+    }
+
+    @media (max-width: 380px) {
+      .wm-sub { letter-spacing: 0.26em; text-indent: 0.26em; }
+      .context { font-size: 0.95rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      main.card { animation: none; }
+      .signin-btn, .signin-btn svg { transition: none; }
+      .signin-btn:hover { transform: none; }
+      .signin-btn:hover svg { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1 class="wordmark">
+      <span class="wm-main">Branch <span class="wm-amp">&amp;</span> Root</span>
+      <span class="wm-sub">Consulting</span>
+    </h1>
+
+    <p class="context">Team access to the leads portal. Sign in to continue.</p>
+
+    <hr class="rule">
+
+    <!-- Cloudflare placeholder kept per spec (appears exactly once). Cloudflare's
+         native login page won't populate it; the fallback below keeps the card whole. -->
+    <div id="cf-identity">
+      <a class="signin-btn" href="https://leads.branchandrootconsulting.com" rel="noopener">
+        <span>Sign in to continue</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"></path>
+          <path d="M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+    </div>
+
+    <p class="footer">Branch &amp; Root Consulting · branchandrootconsulting.com</p>
+  </main>
+</body>
+</html>
