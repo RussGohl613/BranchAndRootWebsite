@@ -3,6 +3,8 @@
 .obsidian/
 graphify-out/
 .claude/
+docs/
+cloudflare-access/
 *.md
 .DS_Store
 .gitignore
