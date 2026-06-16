@@ -295,22 +295,43 @@ with the project root set to `leads/`, so its pages are **fully self-contained**
 leads/
 ├── index.html            # Portal home — index of preview "rounds"
 ├── round-1/
-│   ├── index.html        # Round 01 index — 10 prospect previews
+│   ├── index.html        # Round 01 index — 10 previews × 4 links each
 │   └── {company}/
-│       ├── index.html    # Prospect-facing demo landing page
-│       └── audit.html    # Internal brand-audit report for that prospect
+│       ├── index.html         # Prospect-facing demo landing page
+│       ├── audit.html         # Internal brand-audit report (login-gated)
+│       ├── mini-audit.html    # Lead-facing digital-health scorecard (print-friendly, public)
+│       ├── mini-audit.md      # Markdown source of the mini-audit (gitignored)
+│       └── questionnaire.html # Discovery questionnaire — submits to Formspree (public)
 ├── 404.html              # Branded 404 (served natively)
 ├── robots.txt            # Disallow: / — the whole subdomain is unlisted
 ├── vercel.json           # cleanUrls, trailingSlash:false
-└── .claude/launch.json   # Dev server (python3 -m http.server 4188)
+└── .claude/              # Dev-only (gitignored): launch.json + preview-serve.js (clean-URL server :4178)
 ```
 
 The subdomain is **unlisted and noindexed**: `leads/robots.txt` blocks all
 crawlers, the root site's `robots.txt` disallows `/leads/`, and it is excluded
 from `sitemap.xml`. Round 01 contains 10 personalized previews for Orange County
-service businesses; each prospect gets a public-facing **demo** plus an internal
-**audit** report. When a leads site goes live, its (currently commented-out)
-privacy notice is uncommented and the form is pointed at Formspree.
+service businesses. Each prospect gets **four self-contained pages**: a
+public-facing **demo** landing page, an internal **brand audit**, a lead-facing
+**mini-audit** scorecard, and a **discovery questionnaire**.
+
+- **Page switcher** — a floating bottom-right control (collapsed to an up-arrow,
+  expands on hover/tap) links the four pages on every page type.
+- **Return to Portal** — a back-arrow pill (label expands on hover) on the demo
+  (footer, blended) and audit only; the mini-audit and questionnaire intentionally
+  omit it. All internal/portal links are **root-relative** so they resolve in both
+  local preview and production.
+- **Questionnaire** — posts to a shared Formspree form ("Round-01 Lead
+  Questionnaires", notifications → rmgohl@branchandrootconsulting.com), tagged with
+  a hidden `business` field, and auto-populated with factual data from that
+  prospect's audit. Light + dark themed; every field marked required or optional;
+  a question counts complete only when its boxes hold real (non-whitespace) data.
+- **Access** — Cloudflare Access gates the whole subdomain behind login **except**
+  the mini-audit and questionnaire paths, which are public (Access *Bypass*) so a
+  lead owner can open theirs via a direct link with no login. The Bypass app uses
+  wildcard paths (`*/mini-audit*`, `*/questionnaire*`) so every future round works
+  under the one app — no new Access app per round. Setup steps live in the
+  internal `cloudflare-lead-access-public-guide.html`.
 
 > **Note:** these previews are demonstration/spec work and use placeholder or
 > client-specific content — they are independent of the main marketing site's
@@ -354,15 +375,18 @@ Both fonts are `<link rel="preload">`-ed in every page head.
 
 ## Local development
 
-Any static file server works. The `.claude/launch.json` config runs the main
-site on port 4173; the leads subdomain has its own config on port 4188:
+Any static file server works for the main site (`.claude/launch.json` runs it on
+port 4173). The **leads** subdomain relies on Vercel clean URLs (extensionless
+`/round-1/<slug>/mini-audit`), so it needs a clean-URL-aware server:
+`leads/.claude/preview-serve.js` (a tiny Node static server) serves it on port
+4178 — plain `python3 -m http.server` will 404 those links.
 
 ```bash
 # main site
-python3 -m http.server 4173    # → http://localhost:4173
+python3 -m http.server 4173          # → http://localhost:4173
 
-# leads subdomain (from the leads/ directory)
-python3 -m http.server 4188    # → http://localhost:4188
+# leads subdomain (clean URLs; from the leads/ directory)
+node .claude/preview-serve.js 4178   # → http://localhost:4178
 ```
 
 **Note:** opening pages via `file://` will not work correctly for guide posts or

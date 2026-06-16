@@ -36,3 +36,7 @@ council-transcript-*.md
 
 # Stray data files — never part of the deployed site
 *.xlsx
+
+# Build / tooling artifacts (never committed)
+node_modules/
+.vercel/
