@@ -91,9 +91,10 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
   body{
     margin:0;
+    overflow-x:clip;
     font-family:"Barlow",system-ui,-apple-system,sans-serif;
     color:var(--ink);
     background:var(--paper);
@@ -191,10 +192,14 @@
     .hero{background:var(--slate-deep) url('/round-1/mission-auto-center/media/hero-poster.jpg') center/cover no-repeat;}
   }
   @media(max-width:768px){
-    .hero{min-height:0;}
-    /* on mobile the video is center-cropped, so let content span full width again */
-    .hero-inner{padding:42px 22px 52px;justify-content:stretch;}
+    .hero{min-height:clamp(440px,72vh,600px);}
+    /* re-aim the 16:9 footage so the car (left of frame) stays visible on a tall phone crop */
+    .hero-bg{object-position:25% center;}
+    /* bottom-anchor the copy so the car shows above it, and span full width again */
+    .hero-inner{padding:42px 22px 52px;justify-content:stretch;align-items:flex-end;}
     .hero-copy{max-width:none;margin-left:0;}
+    /* bottom-weighted wash so white text stays WCAG-AA over the footage on mobile */
+    .hero-scrim{background:linear-gradient(0deg, rgba(10,10,12,.82) 0%, rgba(10,10,12,.35) 45%, rgba(10,10,12,.15) 100%);}
     /* direct click-to-call surfaced under the CTA on mobile */
     .hero-call{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-family:"Barlow Condensed",sans-serif;font-weight:800;
       font-size:1.5rem;color:#fff;text-decoration:none;text-shadow:0 1px 10px rgba(0,0,0,.5);}
@@ -611,7 +616,7 @@
 
   <!-- ===== Hero (cinematic video) ===== -->
   <section class="hero" aria-labelledby="hero-h">
-    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="/round-1/mission-auto-center/media/hero-poster.jpg" aria-hidden="true">
+    <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/mission-auto-center/media/hero-poster.jpg" aria-hidden="true">
       <source src="/round-1/mission-auto-center/media/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
@@ -1061,5 +1066,10 @@
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>
+(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}
+v.addEventListener('loadeddata',go);go();
+['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();
+</script>
 </body>
 </html>

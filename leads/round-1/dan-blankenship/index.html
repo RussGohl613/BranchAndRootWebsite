@@ -92,8 +92,8 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
+  body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;}
   h1,h2,h3,.display{font-family:var(--fh);font-weight:700;line-height:1.14;letter-spacing:-0.01em;color:var(--ink);margin:0;}
   a{color:inherit;}
   img{max-width:100%;display:block;}
@@ -421,7 +421,7 @@
 
   <!-- ===== Hero — cinematic video ===== -->
   <section class="hero" aria-labelledby="hero-h">
-    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
+    <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
       <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
     </video>
     <div class="hero-scrim"></div>
@@ -805,5 +805,10 @@
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>
+(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}
+v.addEventListener('loadeddata',go);go();
+['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();
+</script>
 </body>
 </html>
