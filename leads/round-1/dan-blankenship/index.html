@@ -150,10 +150,12 @@
       linear-gradient(180deg, rgba(7,11,20,.40) 0%, transparent 26%, transparent 70%, rgba(6,10,18,.55) 100%);}
   .hero-inner{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
   .hero-content{max-width:600px;padding:64px 0;}
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;}
+  /* Eyebrow reads white/cream over the bright golden footage (gold blended in); a short gold rule + dot keep the accent without hurting legibility */
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:#FFF7E8;margin-bottom:18px;text-shadow:0 1px 10px rgba(0,0,0,.55);}
   .hero-eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light));display:inline-block;}
   .hero h1{font-size:clamp(2.3rem,5vw,3.9rem);color:#fff;font-weight:600;line-height:1.07;letter-spacing:-0.02em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.5);}
-  .hero h1 .accent{font-style:italic;color:var(--gold-light);font-weight:500;}
+  /* Accent words sit on the brightest part of the video — add a shadow so the gold stays readable */
+  .hero h1 .accent{font-style:italic;color:var(--gold-light);font-weight:500;text-shadow:0 2px 22px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5);}
   .hero-sub{font-size:clamp(1.02rem,1.6vw,1.18rem);color:#EAEDF3;margin:20px 0 0;max-width:50ch;line-height:1.6;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,.55);}
   .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
   .hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18);}
@@ -184,8 +186,8 @@
   .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,84px);align-items:center;}
   .about-figure{position:relative;}
   .about-frame{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:var(--shadow-lg);}
-  .about-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92;}
-  .about-frame .frame-grad{position:absolute;inset:0;background:linear-gradient(160deg, rgba(8,12,22,.05) 0%, rgba(8,12,22,.55) 100%);}
+  .about-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+  .about-frame .frame-grad{position:absolute;inset:0;background:linear-gradient(to top, rgba(8,12,22,.62) 0%, rgba(8,12,22,0) 36%);}
   .about-frame .frame-cap{position:absolute;left:22px;bottom:20px;right:22px;z-index:2;color:#EfEbe2;font-family:var(--fh);font-style:italic;font-size:1.02rem;line-height:1.4;text-shadow:0 1px 14px rgba(0,0,0,.5);}
   .about-frame::after{content:"";position:absolute;inset:0;border:1px solid var(--gold-border);border-radius:var(--radius);pointer-events:none;}
   /* floating monogram badge overlapping the frame */
@@ -459,11 +461,9 @@
       <div class="about-grid">
         <div class="about-figure">
           <div class="about-frame">
-            <video autoplay muted loop playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
-              <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
-            </video>
+            <img src="/round-1/dan-blankenship/media/dan-portrait.jpg" alt="Dan Blankenship, South Orange County real estate agent" width="802" height="1100">
             <div class="frame-grad" aria-hidden="true"></div>
-            <p class="frame-cap">Golden hour over the hills of South Orange County — the market Dan knows by heart.</p>
+            <p class="frame-cap">Dan Blankenship · South Orange County</p>
           </div>
           <div class="about-badge" aria-hidden="true">
             <span class="dia"><b>DB</b></span>
