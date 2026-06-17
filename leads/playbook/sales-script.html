@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
+<title>Sales Script — Cold → Warm → Closing | Branch &amp; Root</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light dark;
+  --page-bg:#F7F5F0;--surface:#FFFFFF;--surface-2:#EFEADB;--header-bg:rgba(247,245,240,.9);
+  --heading:#1B4332;--body:#1F1B16;--muted:#4A5568;--line:#D9D2C2;
+  --accent:#2D6A4F;--accent-2:#1B4332;--warm:#B8704A;--warm-line:#8A3E1E;--warm-soft:#B8704A1f;
+  --shadow:0 6px 24px rgba(15,42,30,.08),0 2px 4px rgba(15,42,30,.04);
+  --radius:14px;
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --brsw-surface:var(--surface);--brsw-ink:var(--heading);--brsw-line:var(--line);--brsw-accent:var(--accent);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.85);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#7FB89B;--accent-2:#7FB89B;--warm:#E2A07A;--warm-line:#E2A07A;--warm-soft:#E2A07A26;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}}
+:root[data-theme="dark"]{--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.85);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#7FB89B;--accent-2:#7FB89B;--warm:#E2A07A;--warm-line:#E2A07A;--warm-soft:#E2A07A26;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:var(--font-body);background:var(--page-bg);color:var(--body);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:var(--accent)}
+/* header */
+.top{position:sticky;top:0;z-index:40;background:var(--header-bg);backdrop-filter:saturate(1.1) blur(8px);-webkit-backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1180px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:16px}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.1;margin-right:auto;text-decoration:none}
+.brand-wrap:hover .brand{color:var(--accent)}
+.brand{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:18px}
+.brand-sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 11px;min-width:210px}
+.search:focus-within{border-color:var(--accent)}
+.search svg{width:15px;height:15px;color:var(--muted);flex:0 0 auto}
+.search input{border:none;background:transparent;color:var(--body);font-family:var(--font-body);font-size:14px;width:100%;outline:none}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .2s,transform .04s}
+.iconbtn:hover{border-color:var(--accent)}
+.iconbtn:active{transform:translateY(1px)}
+.iconbtn svg{width:18px;height:18px;display:block}
+.theme-toggle .i-sun{display:none}.theme-toggle .i-moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+:root[data-theme="light"] .theme-toggle .i-moon{display:block}:root[data-theme="light"] .theme-toggle .i-sun{display:none}
+/* banner */
+.banner{max-width:1180px;margin:0 auto;padding:0 22px}
+.banner-in{margin-top:16px;background:var(--warm-soft);border:2px solid var(--warm-line);border-radius:10px;color:var(--body);padding:9px 13px;font-size:12.5px;font-weight:600}
+.banner-in b{color:var(--warm)}
+/* layout */
+.layout{max-width:1180px;margin:0 auto;padding:14px 22px 90px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;align-items:start}
+.toc{position:sticky;top:74px;align-self:start;font-size:13.5px}
+.toc .toc-h{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:6px 0 8px}
+.toc-group{margin-bottom:1px}
+.toc-row{display:flex;align-items:stretch;gap:2px}
+.toc-row .toc-link{flex:1;display:block;padding:6px 9px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700;font-size:13.5px;border-left:2px solid transparent}
+.toc-row .toc-link:hover{background:var(--surface);color:var(--heading)}
+.toc-row .toc-link.active{background:var(--surface);color:var(--heading);border-left-color:var(--accent)}
+.toc-caret{flex:0 0 auto;width:26px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--muted);cursor:pointer;border-radius:8px}
+.toc-caret:hover{color:var(--heading);background:var(--surface)}
+.toc-caret:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.toc-caret svg{width:12px;height:12px;transition:transform .18s}
+.toc-group.open .toc-caret svg{transform:rotate(90deg)}
+.toc-sub{display:none;flex-direction:column;margin:1px 0 5px 14px;padding-left:0}
+.toc-group.open .toc-sub{display:flex}
+.toc-sub a{padding:4px 9px 4px 11px;border-radius:0 6px 6px 0;text-decoration:none;color:var(--muted);font-size:12.6px;font-weight:600;border-left:2px solid var(--line)}
+.toc-sub a:hover{background:var(--surface);color:var(--heading);border-left-color:var(--muted)}
+.toc-sub a.active{color:var(--heading);font-weight:700;background:var(--surface);border-left-color:var(--accent)}
+.main{min-width:0}
+.hero h1{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:clamp(28px,2vw+20px,38px);margin:6px 0 6px;letter-spacing:-.01em}
+.hero .lede{color:var(--body);font-size:17px;margin:0 0 4px;max-width:62ch}
+.hero .tag{font-family:var(--font-display);font-style:italic;color:var(--accent);font-size:15px;margin:8px 0 0}
+.sec{margin-top:42px;scroll-margin-top:84px}
+.eyebrow{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px}
+.sec h2{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:25px;margin:0 0 4px;letter-spacing:-.01em}
+.sec .sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin-bottom:16px}
+.main [id]{scroll-margin-top:84px}
+.card h3{font-family:var(--font-display);font-size:18px;color:var(--heading);margin:0 0 8px}
+.card h4{font-size:14px;color:var(--heading);margin:16px 0 7px;letter-spacing:.01em}
+.card p{margin:0 0 10px}
+.card ul{margin:0 0 10px;padding-left:20px}.card li{margin:4px 0}
+.lead-in{color:var(--muted);font-size:14.5px;margin:0 0 14px;max-width:70ch}
+/* angle cards */
+.hook .hook-lead{font-weight:700;color:var(--heading);font-size:14.5px;margin:0 0 7px;line-height:1.4}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.hook{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+.hook .k{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:6px;padding:2px 8px;margin-bottom:7px}
+:root[data-theme="dark"] .hook .k{color:#0F1B14}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hook .k{color:#0F1B14}}
+.hook h4{margin:0 0 5px;font-size:15px;color:var(--heading)}
+.hook p{margin:0 0 8px;font-size:13.5px;color:var(--body)}
+.hook .when{font-size:12.5px;color:var(--muted);font-style:italic}
+/* goal callout */
+.goal{display:flex;gap:11px;align-items:flex-start;background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:12px 15px;margin-bottom:18px;font-size:14px}
+.goal .gl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);flex:0 0 auto;padding-top:1px}
+/* tabs */
+.tabs{margin:6px 0 0}
+.tablist{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{appearance:none;border:1px solid transparent;border-bottom:none;background:transparent;color:var(--muted);font-family:var(--font-body);font-weight:700;font-size:14px;padding:9px 15px;border-radius:10px 10px 0 0;cursor:pointer;margin-bottom:-1px}
+.tab:hover{color:var(--heading)}
+.tab[aria-selected="true"]{color:var(--heading);background:var(--surface);border-color:var(--line)}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.panel[hidden]{display:none}
+/* script blocks */
+.script{position:relative;background:var(--surface-2);border:1px solid var(--line);border-left:4px solid var(--warm-line);border-radius:11px;padding:14px 16px 14px;margin:10px 0 14px}
+.script .stag{display:block;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--warm);margin-bottom:6px;padding-right:84px}
+.script .stxt{font-size:15px;line-height:1.62;color:var(--body)}
+.script .stxt em{color:var(--muted)}
+.copy{position:absolute;top:11px;right:11px;display:inline-flex;align-items:center;gap:5px;background:var(--surface);border:1px solid var(--line);color:var(--accent);font-family:var(--font-body);font-weight:700;font-size:12px;padding:5px 9px;border-radius:8px;cursor:pointer;transition:border-color .15s}
+.copy:hover{border-color:var(--accent)}
+.copy svg{width:13px;height:13px}
+.copy.ok{color:#fff;background:var(--accent);border-color:var(--accent)}
+:root[data-theme="dark"] .copy.ok{color:#0F1B14}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .copy.ok{color:#0F1B14}}
+/* question bank */
+.qbank{list-style:none;padding:0;margin:0}
+.qbank li{position:relative;padding:8px 0 8px 26px;border-bottom:1px solid var(--line);font-size:14.5px}
+.qbank li:last-child{border-bottom:none}
+.qbank li::before{content:"";position:absolute;left:4px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.qbank li .why{display:block;font-size:12.5px;color:var(--muted);font-style:italic;margin-top:2px}
+/* accordion */
+details.acc{background:var(--surface);border:1px solid var(--line);border-radius:11px;margin-bottom:9px;overflow:hidden}
+details.acc[open]{border-color:var(--accent)}
+details.acc>summary{list-style:none;cursor:pointer;padding:13px 16px;font-weight:700;color:var(--heading);font-size:15px;display:flex;align-items:center;gap:10px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .obj{flex:1}
+details.acc>summary .chev{flex:0 0 auto;width:16px;height:16px;color:var(--muted);transition:transform .2s}
+details.acc[open]>summary .chev{transform:rotate(180deg)}
+details.acc .acc-body{padding:0 16px 15px}
+.objbadge{font-size:11px;font-weight:700;color:var(--warm);background:var(--warm-soft);border-radius:5px;padding:2px 7px;margin-right:4px;letter-spacing:.03em}
+/* table */
+.tbl-wrap{overflow-x:auto;margin:4px 0 14px}
+table.t{border-collapse:collapse;width:100%;font-size:13.8px;min-width:440px}
+table.t th,table.t td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t thead th{background:var(--surface-2);color:var(--heading);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+table.t tbody tr:hover{background:var(--surface-2)}
+table.t td b{color:var(--heading)}
+/* notes */
+.note{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:11px 14px;font-size:13.8px;margin:4px 0 14px}
+.warn{background:var(--warm-soft);border:2px solid var(--warm-line);border-radius:10px;padding:6px 13px;margin:0 0 9px}
+.warn .wt{font-weight:700;color:var(--warm)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:6px 0 10px}
+.steps li{position:relative;padding:5px 0 5px 34px;font-size:14px;min-height:26px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:4px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center}
+:root[data-theme="dark"] .steps li::before{color:#0F1B14}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .steps li::before{color:#0F1B14}}
+.pill{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 10px;margin:0 5px 5px 0}
+.noresults{display:none;color:var(--muted);font-style:italic;padding:30px 0}
+/* page switcher */
+.br-nav{position:fixed;right:16px;bottom:16px;z-index:1000}
+.br-nav-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.18);transition:transform .14s,border-color .2s}
+.br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px)}
+.br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px}
+.br-nav-chev{width:18px;height:18px;transition:transform .2s}
+.br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:196px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.24);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s,transform .16s,visibility .16s}
+.br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none}
+.br-nav:hover .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg)}
+.br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6}
+.br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent)}
+.br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent}
+.br-nav-list a{opacity:.84}
+.br-nav-list a:hover{opacity:1;background:var(--brsw-line)}
+.br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1}
+.br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default}
+.br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);border:1px solid var(--brsw-line)}
+.br-nav-list .cur .ic{border-color:var(--brsw-accent)}
+.br-nav-list svg{width:14px;height:14px}
+/* footer */
+.foot{max-width:1180px;margin:0 auto;padding:24px 22px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line)}
+.foot .ft{font-family:var(--font-display);font-style:italic;color:var(--accent)}
+/* responsive */
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:0}
+  .toc{display:none}
+  .search{min-width:0;width:150px}
+  .brand-sub{display:none}
+}
+@media (max-width:560px){
+  .top-inner{flex-wrap:wrap}
+  .search{order:3;width:100%;min-width:0}
+}
+/* print */
+@media print{
+  .top,.br-nav,.toc,.copy,.banner,.noresults{display:none!important}
+  .layout{display:block;padding:0;max-width:none}
+  body{background:#fff;color:#000;font-size:11.5pt}
+  :root{--page-bg:#fff;--surface:#fff;--surface-2:#f4f2ec;--heading:#1B4332;--body:#1a1a1a;--muted:#444;--line:#cfc8b8;--accent:#1B4332;--warm:#9a5a36;--warm-line:#8a3e1e}
+  .card,.hook,.script,details.acc{box-shadow:none;break-inside:avoid}
+  .panel[hidden]{display:block!important}
+  details.acc{border-color:#cfc8b8!important}
+  .sec{margin-top:24px}
+  a{color:#1B4332;text-decoration:none}
+  @page{margin:14mm}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="top-inner">
+    <a class="brand-wrap" href="#top" aria-label="Back to top"><span class="brand">Branch &amp; Root</span><span class="brand-sub">Sales Playbook · Internal</span></a>
+    <div class="top-actions">
+      <label class="search" aria-label="Search this playbook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="search" id="q" placeholder="Search scripts, objections…" autocomplete="off">
+      </label>
+      <button class="iconbtn" id="printBtn" type="button" aria-label="Print or save as PDF" title="Print / Save PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path></svg></button>
+      <button class="iconbtn theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="banner"><div class="banner-in"><b>Internal use only.</b> For the Branch &amp; Root sales team. Do not distribute to prospects or clients.</div></div>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="On this page">
+    <div class="toc-h">On this page</div>
+    <div class="toc-group open" data-sec="use">
+      <div class="toc-row"><a class="toc-link" href="#use">How to use</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#use-funnel">The funnel</a><a href="#use-hooks">Hooks</a><a href="#use-waysin">The three ways in</a><a href="#use-voice">Voice</a></div>
+    </div>
+    <div class="toc-group open" data-sec="cold">
+      <div class="toc-row"><a class="toc-link" href="#cold">1 · Cold</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#cold-channels" data-tab="tab-walk">Walk-in</a><a href="#cold-channels" data-tab="tab-call">Cold call</a><a href="#cold-channels" data-tab="tab-vid">Cold video</a><a href="#cold-channels" data-tab="tab-sms">Cold text</a><a href="#cold-channels" data-tab="tab-email">Cold email</a><a href="#cold-channels" data-tab="tab-dm">Cold DM</a></div>
+    </div>
+    <div class="toc-group open" data-sec="warm">
+      <div class="toc-row"><a class="toc-link" href="#warm">2 · Warm</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#warm-discovery">Discovery</a><a href="#warm-offer">Offer presentation</a><a href="#warm-objections">Objection handling</a></div>
+    </div>
+    <div class="toc-group open" data-sec="close">
+      <div class="toc-row"><a class="toc-link" href="#close">3 · Closing</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#close-onboard">Onboarding close</a><a href="#close-anchors">Pricing anchors</a><a href="#close-escalation">Tier escalation</a><a href="#close-guardrails">Guardrails</a><a href="#close-followup">Follow-up cadence</a></div>
+    </div>
+    <div class="toc-group open" data-sec="qr">
+      <div class="toc-row"><a class="toc-link" href="#qr">Quick reference</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#qr-hooks">Ways in</a><a href="#qr-pricing">Pricing</a><a href="#qr-objections">Objections</a><a href="#qr-funnel">Funnel</a></div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="hero">
+      <h1>Sales Script</h1>
+      <p class="lede">Cold → Warm → Closing — the Branch &amp; Root field playbook. Read this start to finish and you can walk into any South OC service business and sell.</p>
+      <p class="tag">Grounded in strategy. Automated for growth.</p>
+    </div>
+
+    <!-- ============ HOW TO USE ============ -->
+    <section class="sec" id="use">
+      <div class="eyebrow">Start here</div>
+      <h2>How to use this playbook</h2>
+      <p class="sub">Every conversation moves through three stages. Know which stage you're in, and run the play for that stage.</p>
+
+      <div class="card f" id="use-funnel">
+        <h3>The funnel</h3>
+        <p class="lead-in">You are never "pitching." You are running a diagnostic that ends in a prescription. The three stages map to how much the prospect has engaged.</p>
+        <div class="cols">
+          <div class="hook"><span class="k" style="background:var(--warm)">COLD</span><h4>Earn the conversation</h4><p>First touch — walk-in, call, video, text, email, or DM. Goal: a pattern interrupt that earns a few minutes or a booked call.</p></div>
+          <div class="hook"><span class="k">WARM</span><h4>Diagnose &amp; present</h4><p>They're engaged. Run discovery, surface the leak, present the right offer, and handle objections.</p></div>
+          <div class="hook"><span class="k" style="background:var(--accent-2)">CLOSING</span><h4>Lock it in</h4><p>Pick the onboarding date, anchor the price, set the follow-up. Leave with a committed next step.</p></div>
+        </div>
+      </div>
+
+      <div class="card f" id="use-hooks">
+        <h3>Hooks — earn the first 30 seconds</h3>
+        <p class="lead-in">A hook isn't about their problems yet — that comes later, in the pitch. The hook's only job is to stop the hang-up and earn you 30 to 45 seconds. Joke a little, ask about their day, or just be honest about what this is — anything that doesn't put them or us down. The second they say yes, pivot into a way in (below).</p>
+        <ul>
+          <li><b>Keep it brief.</b> Humor complements the value — it doesn't replace it.</li>
+          <li><b>Read the room.</b> If they're serious, drop the joke and go professional fast.</li>
+          <li><b>Avoid risky topics.</b> Never politics, religion, or anything personal.</li>
+          <li><b>Be authentic.</b> Forced humor trips the fake-detector — only use a line that feels like Branch &amp; Root.</li>
+        </ul>
+        <div class="script"><span class="stag">Best for: cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [name] — full honesty, this is a cold call. I know, nobody's favorite. Give me 30 seconds, and if it's a waste of your time you can hang up on me and I'll have earned it. Fair?"</p></div>
+        <div class="script"><span class="stag">Best for: cold call / walk-in</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [name] — I'm going to do the rare thing and admit I'm interrupting you on purpose. One useful thing, about 30 seconds, then you tell me if I keep going. Okay?"</p></div>
+        <div class="script"><span class="stag">Best for: cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [name], this is [Your Name] from Branch &amp; Root — and I'm not gonna lie, this is a cold call. But I promise to deliver something useful before your screensaver kicks in. Sound fair?"</p></div>
+        <div class="script"><span class="stag">Best for: cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [name] — I'll save us both the mystery: yes, this is a sales call. Upside is I'm local, I'm quick, and I only need 30 seconds to earn the next two minutes. Deal?"</p></div>
+        <div class="script"><span class="stag">Best for: cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [name] — honestly, cold calls aren't my favorite either. I only make them when I think it's genuinely worth someone's time. Can I have 30 seconds to show this is one of those?"</p></div>
+        <div class="script"><span class="stag">Best for: cold call / walk-in</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [name] — we're a small South OC team, two families actually, and I'd rather be upfront than slick. Mind giving me 30 seconds to make my case?"</p></div>
+        <div class="script"><span class="stag">Best for: walk-in / cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey — I'm [Your Name] with Branch &amp; Root, local, right down the road. Honest question before I take a second of your time: what's the busiest stretch of your week? I'd rather not be the guy who shows up mid-rush."</p></div>
+        <div class="script"><span class="stag">Best for: walk-in / cold call</span><button class="copy" type="button">Copy</button><p class="stxt">"Before I get into why I called, [name] — I'm genuinely curious: what got you into [trade] in the first place? I ask just about everyone, and the answer always beats my pitch."</p></div>
+        <div class="script"><span class="stag">Best for: text / DM</span><button class="copy" type="button">Copy</button><p class="stxt">"DON'T IGNORE THIS! Just kidding! Do whatever you want. We just want to learn more about how we can make you more money."</p></div>
+        <div class="script"><span class="stag">Best for: text / DM</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [name] — cold text, I know. Quick and human: small local team in South OC, and I think we could actually help. Worth 20 seconds?"</p></div>
+      </div>
+
+      <div class="card f" id="use-waysin">
+        <h3>The three ways in</h3>
+        <p class="lead-in">Once a hook earns their attention, the way in is the angle you actually diagnose — a different door into the business conversation. Rotate through at least two per conversation; never all three, it reads like a checklist. Pick the one that matches what the prospect just told you.</p>
+        <div class="cols">
+          <div class="hook"><span class="k">WAY IN A</span><h4>Database Health Check</h4><p>"We run a complimentary analysis of your existing customer records to find dormant revenue sitting idle. Most businesses we work with are sitting on $15,000 to $40,000 in untouched reactivation value."</p><span class="when">Use when: 2+ years of customers, slow season, an old list.</span></div>
+          <div class="hook"><span class="k">WAY IN B</span><h4>Search &amp; Voice Visibility Scan</h4><p>"We do a live scan of how your business shows up across every major search and answer platform in your zip codes. If a new customer in Mission Viejo or RSM asks for what you do, we show you exactly what they see — and where you're invisible."</p><span class="when">Use when: competition or being hard to find comes up.</span></div>
+          <div class="hook"><span class="k">WAY IN C</span><h4>Local Multi-Generational Team</h4><p>"Branch &amp; Root is a two-generation local team. The dads handle the operational structure. The sons run the growth side. We're not a remote agency — we live here, we know these zip codes."</p><span class="when">Use when: they're skeptical of remote or impersonal agencies.</span></div>
+        </div>
+      </div>
+
+      <div class="card f" id="use-voice">
+        <h3>Voice — how we sound in the field</h3>
+        <ul>
+          <li><b>Warm but bold.</b> You're not asking for their business — you're showing them what they're leaving on the table.</li>
+          <li><b>Local and specific.</b> Use their city, their zip codes, their competitors' category. Never generic.</li>
+          <li><b>Diagnose, don't pitch.</b> Ask first. Let the gap become visible before you offer the bridge.</li>
+          <li><b>Plain language.</b> Frame the work as "operational infrastructure," never tools or jargon. No hype words (unlock, supercharge, 10x, game-changer, limited spots). No exclamation points — let the calm carry the confidence.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ COLD ============ -->
+    <section class="sec" id="cold">
+      <div class="eyebrow">Stage 1</div>
+      <h2>Cold — earn the conversation</h2>
+      <p class="sub">You have no relationship yet. The only goal is a pattern interrupt that buys you a diagnostic conversation or a booked call. Open with a local observation or a complimentary check — never "do you have a minute?"</p>
+      <div class="goal f"><span class="gl">Goal</span><span>A booked 15-minute call, a complimentary scan/health-check request, or a committed next step. You are not closing here — you are earning the next conversation.</span></div>
+
+      <div class="tabs" id="cold-channels" data-tabs>
+        <div class="tablist" role="tablist" aria-label="Cold outreach channel">
+          <button class="tab" role="tab" id="tab-walk" aria-controls="p-walk" aria-selected="true">In-person walk-in</button>
+          <button class="tab" role="tab" id="tab-call" aria-controls="p-call" aria-selected="false">Cold call</button>
+          <button class="tab" role="tab" id="tab-vid" aria-controls="p-vid" aria-selected="false">Cold video audit</button>
+          <button class="tab" role="tab" id="tab-sms" aria-controls="p-sms" aria-selected="false">Cold text (SMS)</button>
+          <button class="tab" role="tab" id="tab-email" aria-controls="p-email" aria-selected="false">Cold email</button>
+          <button class="tab" role="tab" id="tab-dm" aria-controls="p-dm" aria-selected="false">Cold DM</button>
+        </div>
+
+        <div class="panel" id="p-walk" role="tabpanel" aria-labelledby="tab-walk">
+          <div class="card f">
+            <h3>Walk-in · the opener</h3>
+            <p class="lead-in">Walk in during a mid-morning lull. Make eye contact with whoever is up front. Smile. Lead with a complimentary check anchored in their business — not a sales line.</p>
+            <div class="script"><span class="stag">Pattern interrupt — say this</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey — I noticed you've been operating here a while. I do a quick complimentary database health check for established local businesses in the area. Takes about three minutes. You'd be surprised what's sitting dormant in your records." <em>(Pause. Let them respond.)</em></p></div>
+          </div>
+          <div class="card f">
+            <h3>Walk-in · the diagnostic sequence</h3>
+            <p class="lead-in">Once they engage, move into light diagnosis. These are curiosity questions, not an interrogation — each one exposes a gap you're about to fill.</p>
+            <ul class="qbank">
+              <li>"How long have you been here in South OC?"<span class="why">Establishes tenure and how deep their database goes.</span></li>
+              <li>"When a new inquiry comes in after hours, what happens to it?"<span class="why">Exposes the response gap (Service 2).</span></li>
+              <li>"When's the last time you reached back out to customers you haven't seen in six to twelve months?"<span class="why">Exposes dormant revenue (Service 1).</span></li>
+              <li>"Do you have a good sense of how you show up when someone searches for what you do in Ladera Ranch or Mission Viejo right now?"<span class="why">Pivot to Way in B.</span></li>
+            </ul>
+            <div class="note">After two or three questions, transition. Don't rush — let the gap become visible, then offer the bridge. Hand off to <a href="#warm">Stage 2 · Warm</a> to present.</div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-call" role="tabpanel" aria-labelledby="tab-call" hidden>
+          <div class="card f">
+            <h3>Cold call · the opener</h3>
+            <div class="warn"><span class="wt">Read this first.</span> Cold calling is fine for <b>our own</b> prospecting. It is <b>not</b> a service we sell — "no cold calling for clients" stays on the Hard-NO list. Keep it consultative: a complimentary check, not a pitch.</div>
+            <p class="lead-in">Lead with a quick, specific, complimentary offer. Say who you are and that you're local in the first breath. Get to the point — owners are busy.</p>
+            <div class="script"><span class="stag">Opener — say this</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi, is this [Owner]? — [Your Name] with Branch &amp; Root here in South OC. I'll be quick. We run a complimentary database health check for established [trade] shops in [city], and most owners are surprised how much past-customer revenue is sitting dormant. No pitch — can I run yours and send you what we find?" <em>(Pause. Let them talk.)</em></p></div>
+            <div class="script"><span class="stag">If they engage — one diagnostic</span><button class="copy" type="button">Copy</button><p class="stxt">"Quick one — when a new inquiry comes in after hours, what happens to it right now?" <em>(Listen, then offer the scan or a 15-minute call.)</em></p></div>
+            <div class="script"><span class="stag">Voicemail — they won't always pick up</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [Owner], [Your Name] with Branch &amp; Root here in South OC. We help local [trade] shops recover dormant past customers and respond to new leads in 90 seconds. I'll text you a quick free scan of your numbers — no pitch. Talk soon."</p></div>
+          </div>
+        </div>
+        <div class="panel" id="p-vid" role="tabpanel" aria-labelledby="tab-vid" hidden>
+          <div class="card f">
+            <h3>Cold video audit · pre-send</h3>
+            <p class="lead-in">A cold video audit is a 90–120 second personalized screen-share sent by email, text, or DM. Before recording, research the business: pull their Google Business Profile, search their category in their city, test their name on Siri and Google voice search. Build the video around what you actually find.</p>
+          </div>
+          <div class="card f">
+            <h3>Cold video audit · the 90-second script</h3>
+            <p class="lead-in">Three beats: open with local specificity, show one real gap, close with a low-friction ask.</p>
+            <div class="script"><span class="stag">Open — first 15 seconds</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [Name] — I'm [Your Name] with Branch &amp; Root Consulting here in South OC. I'm doing complimentary visibility scans for established local service businesses in [their city]. I pulled yours up and there are two things I want to show you that are costing you money right now. This takes about 90 seconds."</p></div>
+            <div class="script"><span class="stag">Beat — show the gap (Way in B + Way in A)</span><button class="copy" type="button">Copy</button><p class="stxt">"Here's what a customer sees when they search for [their service] in [their zip] — and here's where you're not showing up. And based on how long you've been operating, you likely have hundreds of past customers who've gone quiet. Most businesses in your category are sitting on $15K to $40K in dormant revenue they don't know about."</p></div>
+            <div class="script"><span class="stag">Close — the ask (no pitch)</span><button class="copy" type="button">Copy</button><p class="stxt">"I'd love to do a quick 15-minute walk-through this week — no obligation, just the full picture. Reply to this and we'll get it on the calendar."</p></div>
+            <div class="script"><span class="stag">Follow-up text after sending</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [Name] — just sent you a quick 90-second video on your search visibility. Short and to the point. Let me know if you'd like me to run the full scan — it's free and I'll have it back to you in 48 hours."</p></div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-sms" role="tabpanel" aria-labelledby="tab-sms" hidden>
+          <div class="card f">
+            <h3>Cold text (SMS) · keep it short</h3>
+            <p class="lead-in">One or two sentences. Say who you are, anchor local, make one low-friction ask. No link in the first text. Never more than two follow-ups.</p>
+            <div class="script"><span class="stag">First text</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [Name] — [Your Name] with Branch &amp; Root here in South OC. We run a free database health check for established [trade] shops — most are sitting on $15K–$40K in dormant past-customer revenue. Want me to run yours? No pitch."</p></div>
+            <div class="script"><span class="stag">Follow-up (48 hours, if no reply)</span><button class="copy" type="button">Copy</button><p class="stxt">"No worries if now's not the time, [Name]. The scan is free and takes us 48 hours — just say the word and I'll send it over."</p></div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-email" role="tabpanel" aria-labelledby="tab-email" hidden>
+          <div class="card f">
+            <h3>Cold email · subject + short body</h3>
+            <p class="lead-in">The subject earns the open; the body earns the reply. Keep it scannable — a few short lines and one ask. No attachments on a cold send.</p>
+            <div class="script"><span class="stag">Subject line (pick one)</span><button class="copy" type="button">Copy</button><p class="stxt">[City] [trade] — the revenue hiding in your old customer list · or · Quick free scan for [Business Name]</p></div>
+            <div class="script"><span class="stag">Body</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [Name] — I'm [Your Name] with Branch &amp; Root Consulting, a local team here in South OC. Two things quietly cost established [trade] shops money: dormant past customers, and new leads that don't get a fast response. We run a complimentary check on both and show you exactly what's leaking — it takes about 48 hours, and there's no pitch attached. Want me to run it for [Business Name]? Reply here and I'll get started."</p></div>
+            <div class="script"><span class="stag">Follow-up (3–4 days, if no reply)</span><button class="copy" type="button">Copy</button><p class="stxt">"Hi [Name] — circling back on the free scan for [Business Name]. Still happy to run it whenever the timing works. Just reply and I'll send the results."</p></div>
+          </div>
+        </div>
+
+        <div class="panel" id="p-dm" role="tabpanel" aria-labelledby="tab-dm" hidden>
+          <div class="card f">
+            <h3>Cold DM (Instagram / Facebook) · casual, specific</h3>
+            <p class="lead-in">Match the platform's tone — friendly and human, not corporate. Reference something real about their page or a recent post, then make one soft ask.</p>
+            <div class="script"><span class="stag">Opening DM</span><button class="copy" type="button">Copy</button><p class="stxt">"Hey [Name] — saw [Business Name] come up for [trade] in [city]. We're a local South OC team that helps shops recover dormant past customers and respond to new leads in 90 seconds. Mind if I send a quick free scan of how you show up vs other [city] shops? No pitch."</p></div>
+            <div class="script"><span class="stag">Follow-up DM</span><button class="copy" type="button">Copy</button><p class="stxt">"All good if you're slammed, [Name] — the scan's free and quick whenever you want it. Just say the word."</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WARM ============ -->
+    <section class="sec" id="warm">
+      <div class="eyebrow">Stage 2</div>
+      <h2>Warm — diagnose &amp; present</h2>
+      <p class="sub">They've agreed to talk. Run real discovery, then present the right offer in their own words. Listen for the signals before you prescribe.</p>
+      <div class="goal f"><span class="gl">Goal</span><span>Two or more confirmed gaps, then a clear recommendation the prospect agrees fits. You're building the case — the close comes next.</span></div>
+
+      <div class="card f" id="warm-discovery">
+        <h3>Discovery — the question bank</h3>
+        <p class="lead-in">Open scheduled calls with curiosity, not an agenda: "Before I show you anything — what's the one operational or revenue challenge that keeps coming back, no matter what you try?" Then dig in.</p>
+        <ul class="qbank">
+          <li>"How are you handling new inquiries that come in after your team's hours?"<span class="why">Speed-to-lead gap → Instant Responder.</span></li>
+          <li>"When did you last run any outreach to customers you haven't seen in over a year?"<span class="why">Dormant database → Reactivation.</span></li>
+          <li>"If I searched for [their service] in [their main zip] right now, would you be confident in what I'd find?"<span class="why">Visibility gap → Local Growth Engine. Offer to run it live (Way in B).</span></li>
+          <li>"How much of your business is repeat customers versus brand-new?"<span class="why">Reveals whether the leak is retention or acquisition.</span></li>
+          <li>"Where do you want to be in 12–18 months — more capacity filled, more locations, a specific area you want to own?"<span class="why">Ambition signal → escalation to Full Engine.</span></li>
+        </ul>
+        <div class="note">Listen for: after-hours lead loss, a dormant database, weak or inconsistent online presence, heavy reliance on referrals with no follow-up. When you hear two or more, you have your opening.</div>
+      </div>
+
+      <div class="card f" id="warm-offer">
+        <h3>Present the offer — bundle or single service</h3>
+        <p class="lead-in">Decide on the spot which way to go, then use the matching script. The two bundles and the three individual services are below side by side.</p>
+        <div class="warn"><span class="wt">Decision guide.</span> Start at <b>The Foundation</b> for most established businesses. Escalate to <b>The Full Engine</b> when you hear two or more ambition signals. Sell a <b>single service</b> when they have just one clear gap or a smaller budget and want a low-commitment entry.</div>
+
+        <div class="tabs" data-tabs>
+          <div class="tablist" role="tablist" aria-label="Offer to present">
+            <button class="tab" role="tab" id="tab-found" aria-controls="p-found" aria-selected="true">The Foundation</button>
+            <button class="tab" role="tab" id="tab-full" aria-controls="p-full" aria-selected="false">The Full Engine</button>
+            <button class="tab" role="tab" id="tab-single" aria-controls="p-single" aria-selected="false">Single services</button>
+          </div>
+
+          <div class="panel" id="p-found" role="tabpanel" aria-labelledby="tab-found">
+            <p><b>The Foundation</b> — Service 1 (Customer Reactivation Engine) + Service 2 (Instant Responder System) + a lead-capture page. <b>$2,500 setup + $697/mo flat.</b> No contracts, no ad spend. Most popular starting point.</p>
+            <div class="script"><span class="stag">Present it as one system</span><button class="copy" type="button">Copy</button><p class="stxt">"Based on what you're describing, you're in a really common spot for established businesses here — you've built something real, but revenue is quietly leaking in two places. The first is your existing customer list. The second is your response window to new inquiries. We put together a bundled system that closes both at once, without adding work for you or your team. Service 1 re-engages your dormant database in the first 30 days — no ad spend, customers who already trust you. Service 2 responds to every new lead within 90 seconds, day or night. Together they recover what you've already earned and stop you from losing what's new. That's the Foundation — $2,500 to build, $697 a month flat after that."</p></div>
+            <div class="note">ROI anchor: most Foundation clients recover the full setup cost within the first reactivation campaign — often inside 30 to 45 days.</div>
+          </div>
+
+          <div class="panel" id="p-full" role="tabpanel" aria-labelledby="tab-full" hidden>
+            <p><b>The Full Engine</b> — Foundation + Service 3 (Local Growth Engine: custom website + SEO/AEO + Facebook &amp; Instagram ads). <b>$3,500 automation setup + a website project fee quoted per engagement, then $1,497–$1,997/mo.</b> Ad budget is paid directly to Meta by the client.</p>
+            <div class="script"><span class="stag">Present it as market ownership</span><button class="copy" type="button">Copy</button><p class="stxt">"What you're describing is exactly the profile we built the Full Engine for. The Foundation plugs the leaks — recovers your database and captures every inbound lead. The Full Engine builds the moat on top of it: a conversion-built website, visibility across Google and AI answer tools, and managed Facebook and Instagram ads that bring in a predictable flow of new local customers. The dads keep the operational systems sound, the sons run the growth at full speed, and you get both for one flat monthly number. Setup is $3,500 plus the website build, then $1,497 to $1,997 a month depending on what's active."</p></div>
+            <div class="warn"><span class="wt">Qualify before you promise ads.</span> The Meta ads piece needs a minimum of <b>$1,500/mo in client ad spend</b> to work — below that, the algorithm can't optimize. This is a service-agreement rule. If they can't commit that spend, sell the website + SEO/AEO and the Foundation, and add ads later.</div>
+          </div>
+
+          <div class="panel" id="p-single" role="tabpanel" aria-labelledby="tab-single" hidden>
+            <h4>Service 1 — Customer Reactivation Engine · $1,500 setup + (% of revenue or a flat $500 bonus)</h4>
+            <div class="script"><span class="stag">Pitch</span><button class="copy" type="button">Copy</button><p class="stxt">"We take your past customers, old estimates, and unconverted leads, clean and segment the list, and run personalized text and email that reads like it came from you. When someone responds or books, you get a live notification. You don't touch the system — you just take the calls. Setup is $1,500, and we work on a performance model after that. First bookings usually land within 72 hours of launch."</p></div>
+            <h4>Service 2 — Instant Responder System · $2,000 setup + $497–$997/mo</h4>
+            <div class="script"><span class="stag">Pitch</span><button class="copy" type="button">Copy</button><p class="stxt">"The moment a new lead comes in from anywhere — Google, your website, social, a text — our system responds within 90 seconds, then follows up for five days automatically if they go quiet. Every message lands in one inbox, and we build a lead-capture page that feeds it. You never lose a lead to silence again. Setup is $2,000, management runs $497 to $997 a month by volume."</p></div>
+            <h4>Service 3 — Local Growth Engine · website quoted per engagement + monthly retainers</h4>
+            <div class="script"><span class="stag">Pitch</span><button class="copy" type="button">Copy</button><p class="stxt">"This is the outward growth layer — a custom conversion-built website, stronger visibility in Google and AI answer tools like ChatGPT and Perplexity, and managed Facebook and Instagram ads. The website is a fixed project fee we quote for your build; SEO/AEO and ads are monthly retainers. Ad budget is paid directly to Meta by you. Website goes live in three to five weeks; search and ads produce measurable results in 60 to 90 days."</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card f" id="warm-objections">
+        <h3>Objection handling</h3>
+        <p class="lead-in">You will hear these five every time. Tap to open the response. Acknowledge, reframe, return to the diagnostic — never argue.</p>
+
+        <details class="acc f"><summary><span class="objbadge">1</span><span class="obj">"Let me talk to my spouse first."</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></summary>
+          <div class="acc-body"><div class="script"><span class="stag">Response</span><button class="copy" type="button">Copy</button><p class="stxt">"Absolutely — that's exactly the right call for a real business decision. Here's what I'd ask you to share with them: the cost of not fixing this. Every month you wait, customers in your database are calling someone else because they didn't hear from you, and after-hours inquiries are gone by morning. Let me put together a one-page summary of what we found and what it would cost — so when you sit down together, you're looking at real numbers, not a concept. Would a quick 15-minute call with both of you later this week help?"</p></div></div>
+        </details>
+
+        <details class="acc f"><summary><span class="objbadge">2</span><span class="obj">"I don't have time for this right now."</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></summary>
+          <div class="acc-body"><div class="script"><span class="stag">Response</span><button class="copy" type="button">Copy</button><p class="stxt">"That's exactly why we built it this way. Your total time is one short onboarding call — we handle everything else. We're not asking you to run a campaign, we're asking you to let us run it for you. The time cost of doing nothing is the part that keeps compounding. If now isn't right, when is — I want to catch you before your peak season hits."</p></div></div>
+        </details>
+
+        <details class="acc f"><summary><span class="objbadge">3</span><span class="obj">"We already have a local web guy."</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></summary>
+          <div class="acc-body"><div class="script"><span class="stag">Response</span><button class="copy" type="button">Copy</button><p class="stxt">"That's great, and we're not here to replace a relationship you trust. Most web folks build the front end — the site itself. What we build is the communication infrastructure behind it: database reactivation, 90-second lead response, automated follow-up. Different lane entirely. Can I ask — does your web guy also handle the reactivation and the inbound response side? If he does, great. If not, that's the piece we fill."</p></div></div>
+        </details>
+
+        <details class="acc f"><summary><span class="objbadge">4</span><span class="obj">"We tried digital ads before and got burned."</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></summary>
+          <div class="acc-body"><div class="script"><span class="stag">Response</span><button class="copy" type="button">Copy</button><p class="stxt">"Fair concern — and most businesses got burned because someone sold them ads without building the infrastructure to convert the traffic. The Foundation has zero ads. We start by fixing the foundation — recovering existing customers and making sure new leads get captured and answered. If you ever want paid traffic later, the system is already built to handle it. That experience is actually a reason to start here, not a reason to avoid us."</p></div></div>
+        </details>
+
+        <details class="acc f"><summary><span class="objbadge">5</span><span class="obj">"We get all our business from word-of-mouth."</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></summary>
+          <div class="acc-body"><div class="script"><span class="stag">Response</span><button class="copy" type="button">Copy</button><p class="stxt">"Word-of-mouth is the best foundation you can have — it means your customers love you. Here's the risk most word-of-mouth businesses don't see: referrals still Google you before they call. If your online presence is thin or your response time is slow, you're losing a share of those warm referrals before they ever reach you. We're not replacing your word-of-mouth — we're making sure it converts."</p></div></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="sec" id="close">
+      <div class="eyebrow">Stage 3</div>
+      <h2>Closing — lock it in</h2>
+      <p class="sub">The value is established. Now make the next step frictionless, anchor the price, and never leave without a committed action.</p>
+      <div class="goal f"><span class="gl">Goal</span><span>An onboarding call booked on the calendar, the intake form sent, and a follow-up scheduled — before you leave the room or end the call.</span></div>
+
+      <div class="card f" id="close-onboard">
+        <h3>The frictionless onboarding close</h3>
+        <div class="script"><span class="stag">Close — say this</span><button class="copy" type="button">Copy</button><p class="stxt">"Here's how easy this is to start. We do one short onboarding call — you, me, and our ops lead. We collect your existing customer data and your basic business info, and from there we build everything. You don't touch it. Your first reactivation campaign goes out within two weeks. Setup is $2,500 one time, and $697 a month after that — flat, no surprises. I've got Tuesday at 10 or Thursday at 2 for the onboarding call. Which works better?"</p></div>
+        <ul>
+          <li>Offer two specific scheduling windows on the spot. Don't ask "when works" — give a choice between two times.</li>
+          <li>Have the onboarding intake form ready on your phone, or a printed one-pager to hand over.</li>
+          <li>Do not leave without a committed next step: a call booked, a follow-up scheduled, or a one-pager left with your direct number circled.</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="close-anchors">
+        <h3>Pricing-confidence anchors</h3>
+        <p class="lead-in">When price comes up — and it will — reframe it as a deposit on revenue, not a cost.</p>
+        <ul>
+          <li><b>Foundation setup ($2,500):</b> "Most clients recover this in the first reactivation campaign. It's not a cost — it's a deposit on revenue you've already earned."</li>
+          <li><b>Foundation monthly ($697):</b> "Less than one lost lead per week. That's what this prevents."</li>
+          <li><b>Full Engine setup ($3,500 + website):</b> "This is the infrastructure build for a growth company. You're not buying a service — you're building an asset."</li>
+          <li><b>Full Engine monthly ($1,497–$1,997):</b> "For a business your size, that's the overhead of a half-time marketing employee — with none of the management burden."</li>
+          <li><b>If they hesitate on price:</b> "Let me ask you this — if we recover $20,000 in dormant customer revenue in the first 30 days, has this paid for itself?" <em>(Pause.)</em></li>
+        </ul>
+      </div>
+
+      <div class="card f" id="close-escalation">
+        <h3>Tier escalation — when to move up to the Full Engine</h3>
+        <p class="lead-in">Start every prospect at the Foundation. Escalate only when you hear <b>two or more</b> of these ambition signals — otherwise the Full Engine feels oversized and they disengage.</p>
+        <div>
+          <span class="pill">"I want to grow into [another area]"</span>
+          <span class="pill">"I have more capacity than I'm filling"</span>
+          <span class="pill">"I've wanted to do more marketing but don't know where to start"</span>
+          <span class="pill">"My competitor seems to be everywhere lately"</span>
+          <span class="pill">"I want to step back from day-to-day eventually"</span>
+          <span class="pill">"We've been stable but I want to actually scale"</span>
+        </div>
+      </div>
+
+      <div class="card f" id="close-guardrails">
+        <h3>Guardrails — the hard "no" list</h3>
+        <p class="lead-in">When a prospect asks for something on this list, don't improvise a workaround. Acknowledge, redirect, and return to what the system does deliver. Selling outside these lines creates delivery failures.</p>
+        <ul>
+          <li><b>No manual social community management.</b> "Our content system is automated and engineered for lead generation — we don't manually manage feeds or reply to comments. That's a different category."</li>
+          <li><b>No traditional cold calling — as a service.</b> We don't run manual outbound telemarketing <em>for clients</em>; say "our outreach model is digital-first and data-driven." (Our own sales team may cold-call prospects — see the Cold stage. That's separate from what we sell.)</li>
+          <li><b>No isolated web builds.</b> "Every site we build is wired into the lead-capture and follow-up pipeline by design. A standalone site without that infrastructure isn't something we offer."</li>
+          <li><b>No fabricated proof.</b> We never publish invented review counts, ratings, or credentials. Verify real numbers before anything goes live.</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="close-followup">
+        <h3>Follow-up cadence</h3>
+        <ul class="steps">
+          <li><b>Within 2 hours:</b> send the calendar invite and a warm recap email confirming the onboarding date and what to bring (customer-list export or CRM access).</li>
+          <li><b>At 48 hours:</b> one sentence — "Any questions on the form? I want to make sure we hit your busy season ready to go."</li>
+          <li><b>Day 5 (if no response):</b> "[Name] — I don't want this to fall through the cracks. Can we confirm the onboarding call this week?"</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ QUICK REFERENCE ============ -->
+    <section class="sec" id="qr">
+      <div class="eyebrow">Cheat sheet</div>
+      <h2>Quick reference card</h2>
+      <p class="sub">The whole playbook on one screen. Print this (top-right printer icon) and carry it.</p>
+
+      <div class="card f" id="qr-hooks">
+        <h3>Ways in — rotation</h3>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Way in</th><th>Use when</th></tr></thead>
+          <tbody>
+            <tr><td><b>A · Database Health Check</b></td><td>Established business, 2+ years of customers, a slow season.</td></tr>
+            <tr><td><b>B · Search &amp; Voice Visibility Scan</b></td><td>Growth-focused, or unaware of how they show up online.</td></tr>
+            <tr><td><b>C · Local Multi-Gen Team</b></td><td>Values community and relationships; skeptical of remote agencies.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card f" id="qr-pricing">
+        <h3>Pricing at a glance</h3>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Offer</th><th>Setup</th><th>Monthly</th></tr></thead>
+          <tbody>
+            <tr><td><b>Customer Reactivation Engine</b> (S1)</td><td>$1,500</td><td>% of revenue or $500 bonus</td></tr>
+            <tr><td><b>Instant Responder System</b> (S2)</td><td>$2,000</td><td>$497–$997</td></tr>
+            <tr><td><b>Local Growth Engine</b> (S3)</td><td>Website quoted per engagement</td><td>SEO/AEO + Meta retainers</td></tr>
+            <tr><td><b>The Foundation</b> (S1+S2)</td><td>$2,500</td><td>$697 flat</td></tr>
+            <tr><td><b>The Full Engine</b> (S1+S2+S3)</td><td>$3,500 + website</td><td>$1,497–$1,997</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Meta ads require a <b>$1,500/mo client ad-spend minimum</b> to onboard. Ad budget is paid directly to Meta by the client.</div>
+      </div>
+
+      <div class="card f" id="qr-objections">
+        <h3>Objections — one line each</h3>
+        <ul>
+          <li><b>Spouse:</b> "Let me send you the data so the conversation at home is specific, not conceptual."</li>
+          <li><b>No time:</b> "Once we build it, you're not involved. The system runs. You take the calls."</li>
+          <li><b>Web guy:</b> "We work in a different layer — the back-end communication and follow-up. He does the front end. We're additive."</li>
+          <li><b>Ad burnout:</b> "This isn't ads. And if ads are ever part of the plan, you approve every dollar before it moves."</li>
+          <li><b>Word-of-mouth:</b> "We make word-of-mouth proactive, and we catch the referrals who Google you before they call."</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="qr-funnel">
+        <h3>The funnel at a glance</h3>
+        <ul class="steps">
+          <li><b>Cold</b> — pattern interrupt (walk-in, call, video, text, email, or DM). Rotate two ways in. Goal: a booked call.</li>
+          <li><b>Warm</b> — diagnose, surface two gaps, present Foundation-first (escalate on 2+ ambition signals), handle the five objections.</li>
+          <li><b>Closing</b> — frictionless onboarding close, anchor the price, book the date, set the follow-up.</li>
+        </ul>
+      </div>
+    </section>
+
+    <p class="noresults" id="noresults">No matches. Clear the search to see the full playbook.</p>
+  </main>
+</div>
+
+<footer class="foot">
+  <p class="ft">Branching your business out from a rooted foundation.</p>
+  <p>Branch &amp; Root Consulting · Internal sales reference · leads.branchandrootconsulting.com</p>
+</footer>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Playbook</span>
+    <a href="/" aria-label="Lead preview portal home">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Portal</span>
+    </a>
+    <a href="/playbook/local-growth" aria-label="Local Growth company playbook">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Local Growth</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Sales Script</span>
+    </span>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  /* theme */
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return root.getAttribute("data-theme")||sys();}
+  var tb=document.querySelector(".theme-toggle");
+  if(tb)tb.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});
+
+  /* brand wordmark → scroll to top (sticky header makes #top a no-op, so do it in JS) */
+  var brand=document.querySelector(".brand-wrap");
+  if(brand)brand.addEventListener("click",function(e){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});if(history.replaceState)history.replaceState(null,"",location.pathname+location.search);});
+
+  /* tabs */
+  document.querySelectorAll("[data-tabs]").forEach(function(group){
+    var tabs=Array.prototype.slice.call(group.querySelectorAll(".tab"));
+    tabs.forEach(function(tab,i){
+      tab.addEventListener("click",function(){select(i);});
+      tab.addEventListener("keydown",function(e){
+        if(e.key==="ArrowRight"||e.key==="ArrowLeft"){
+          e.preventDefault();
+          var n=(i+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length;
+          tabs[n].focus();select(n);
+        }
+      });
+    });
+    function select(i){
+      tabs.forEach(function(t,j){
+        var sel=j===i;t.setAttribute("aria-selected",sel?"true":"false");t.tabIndex=sel?0:-1;
+        var panel=document.getElementById(t.getAttribute("aria-controls"));
+        if(panel)panel.hidden=!sel;
+      });
+    }
+    select(tabs.findIndex(function(t){return t.getAttribute("aria-selected")==="true";})||0);
+  });
+
+  /* copy buttons */
+  document.querySelectorAll(".copy").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var block=btn.closest(".script");
+      var txt=block?block.querySelector(".stxt"):null;
+      if(!txt)return;
+      var s=txt.textContent.replace(/\s+/g," ").trim();
+      var done=function(){var o=btn.textContent;btn.textContent="Copied";btn.classList.add("ok");setTimeout(function(){btn.textContent="Copy";btn.classList.remove("ok");},1400);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(s).then(done).catch(fallback);}else{fallback();}
+      function fallback(){var ta=document.createElement("textarea");ta.value=s;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}document.body.removeChild(ta);done();}
+    });
+  });
+
+  /* search filter */
+  var q=document.getElementById("q");
+  var units=Array.prototype.slice.call(document.querySelectorAll(".f"));
+  var secs=Array.prototype.slice.call(document.querySelectorAll(".sec"));
+  var noresults=document.getElementById("noresults");
+  if(q)q.addEventListener("input",function(){
+    var term=q.value.trim().toLowerCase();
+    var anyVisible=false;
+    units.forEach(function(u){
+      var match=!term||u.textContent.toLowerCase().indexOf(term)>-1;
+      u.style.display=match?"":"none";
+      if(match)anyVisible=true;
+    });
+    secs.forEach(function(s){
+      var fs=s.querySelectorAll(".f");
+      if(!fs.length)return;
+      var vis=Array.prototype.some.call(fs,function(u){return u.style.display!=="none";});
+      s.style.display=(!term||vis)?"":"none";
+    });
+    noresults.style.display=(term&&!anyVisible)?"block":"none";
+  });
+
+  /* nav: collapse toggles */
+  document.querySelectorAll(".toc-caret").forEach(function(btn){
+    btn.addEventListener("click",function(){var g=btn.closest(".toc-group");var open=g.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");});
+  });
+  /* nav: sub-links that activate a tab (cold channels) */
+  document.querySelectorAll('.toc-sub a[data-tab]').forEach(function(a){
+    a.addEventListener("click",function(){var tab=document.getElementById(a.getAttribute("data-tab"));if(tab)tab.click();});
+  });
+  /* TOC active section + sub-item highlight + auto-expand */
+  var secLinks={};document.querySelectorAll(".toc-link").forEach(function(a){secLinks[a.getAttribute("href").slice(1)]=a;});
+  var groups={};document.querySelectorAll(".toc-group").forEach(function(g){groups[g.getAttribute("data-sec")]=g;});
+  var subScroll={};document.querySelectorAll(".toc-sub a").forEach(function(a){if(!a.hasAttribute("data-tab"))subScroll[a.getAttribute("href").slice(1)]=a;});
+  var activeSec=null;
+  function clearSubScroll(){for(var k in subScroll)subScroll[k].classList.remove("active");}
+  function syncColdSub(){var cold=document.querySelectorAll(".toc-sub a[data-tab]");if(activeSec&&activeSec!=="cold"){cold.forEach(function(a){a.classList.remove("active");});return;}cold.forEach(function(a){var tab=document.getElementById(a.getAttribute("data-tab"));a.classList.toggle("active",!!(tab&&tab.getAttribute("aria-selected")==="true"));});}
+  document.addEventListener("click",syncColdSub);
+  var clist=document.querySelector("#cold-channels .tablist");if(clist)clist.addEventListener("keyup",syncColdSub);
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          activeSec=en.target.id;
+          for(var k in secLinks)secLinks[k].classList.remove("active");
+          var a=secLinks[activeSec];if(a)a.classList.add("active");
+          var g=groups[activeSec];if(g){g.classList.add("open");var c=g.querySelector(".toc-caret");if(c)c.setAttribute("aria-expanded","true");}
+          syncColdSub();
+        }
+      });
+    },{rootMargin:"-80px 0px -70% 0px"});
+    secs.forEach(function(s){io.observe(s);});
+    var subTargets=Object.keys(subScroll).map(function(id){return document.getElementById(id);}).filter(Boolean);
+    if(subTargets.length){
+      var subIO=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){clearSubScroll();var a=subScroll[en.target.id];if(a)a.classList.add("active");}});
+      },{rootMargin:"-86px 0px -72% 0px"});
+      subTargets.forEach(function(t){subIO.observe(t);});
+    }
+  }
+  syncColdSub();
+
+  /* page switcher toggle */
+  var nav=document.querySelector(".br-nav");
+  if(nav){var t=nav.querySelector(".br-nav-toggle");
+    t.addEventListener("click",function(e){e.stopPropagation();nav.classList.toggle("open");});
+    document.addEventListener("click",function(e){if(!nav.contains(e.target))nav.classList.remove("open");});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")nav.classList.remove("open");});
+  }
+
+  /* print: expand everything */
+  var printBtn=document.getElementById("printBtn");
+  if(printBtn)printBtn.addEventListener("click",function(){window.print();});
+  window.addEventListener("beforeprint",function(){
+    document.querySelectorAll("details.acc").forEach(function(d){d.dataset._o=d.open?"1":"";d.open=true;});
+    document.querySelectorAll(".panel").forEach(function(p){p.dataset._h=p.hidden?"1":"";p.hidden=false;});
+  });
+  window.addEventListener("afterprint",function(){
+    document.querySelectorAll("details.acc").forEach(function(d){d.open=d.dataset._o==="1";});
+    document.querySelectorAll(".panel").forEach(function(p){p.hidden=p.dataset._h==="1";});
+  });
+})();
+</script>
+</body>
+</html>

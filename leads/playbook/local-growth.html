@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F5F0">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
+<title>Local Growth — Who We Are &amp; Where We're Growing | Branch &amp; Root</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light dark;
+  --page-bg:#F7F5F0;--surface:#FFFFFF;--surface-2:#EFEADB;--header-bg:rgba(247,245,240,.9);
+  --heading:#1B4332;--body:#1F1B16;--muted:#4A5568;--line:#D9D2C2;
+  --accent:#2D6A4F;--accent-2:#1B4332;--warm:#B8704A;--warm-line:#8A3E1E;--warm-soft:#B8704A1f;
+  --shadow:0 6px 24px rgba(15,42,30,.08),0 2px 4px rgba(15,42,30,.04);
+  --radius:14px;
+  --font-display:'Fraunces',Georgia,'Times New Roman',serif;
+  --font-body:'Source Sans 3',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --brsw-surface:var(--surface);--brsw-ink:var(--heading);--brsw-line:var(--line);--brsw-accent:var(--accent);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.85);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#7FB89B;--accent-2:#7FB89B;--warm:#E2A07A;--warm-line:#E2A07A;--warm-soft:#E2A07A26;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}}
+:root[data-theme="dark"]{--page-bg:#0F1B14;--surface:#1A2D22;--surface-2:#142319;--header-bg:rgba(15,27,20,.85);--heading:#F1ECDB;--body:#ECE5D0;--muted:#9BAEAA;--line:#2A4032;--accent:#7FB89B;--accent-2:#7FB89B;--warm:#E2A07A;--warm-line:#E2A07A;--warm-soft:#E2A07A26;--shadow:0 10px 28px rgba(0,0,0,.45),0 2px 6px rgba(0,0,0,.35);}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:var(--font-body);background:var(--page-bg);color:var(--body);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:var(--accent)}
+.top{position:sticky;top:0;z-index:40;background:var(--header-bg);backdrop-filter:saturate(1.1) blur(8px);-webkit-backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1180px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:16px}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.1;margin-right:auto;text-decoration:none}
+.brand-wrap:hover .brand{color:var(--accent)}
+.brand{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:18px}
+.brand-sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 11px;min-width:210px}
+.search:focus-within{border-color:var(--accent)}
+.search svg{width:15px;height:15px;color:var(--muted);flex:0 0 auto}
+.search input{border:none;background:transparent;color:var(--body);font-family:var(--font-body);font-size:14px;width:100%;outline:none}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .2s,transform .04s}
+.iconbtn:hover{border-color:var(--accent)}
+.iconbtn:active{transform:translateY(1px)}
+.iconbtn svg{width:18px;height:18px;display:block}
+.theme-toggle .i-sun{display:none}.theme-toggle .i-moon{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+:root[data-theme="light"] .theme-toggle .i-moon{display:block}:root[data-theme="light"] .theme-toggle .i-sun{display:none}
+.banner{max-width:1180px;margin:0 auto;padding:0 22px}
+.banner-in{margin-top:16px;background:var(--warm-soft);border:2px solid var(--warm-line);border-radius:10px;color:var(--body);padding:9px 13px;font-size:12.5px;font-weight:600}
+.banner-in b{color:var(--warm)}
+.layout{max-width:1180px;margin:0 auto;padding:14px 22px 90px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:34px;align-items:start}
+.toc{position:sticky;top:74px;align-self:start;font-size:13.5px}
+.toc .toc-h{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:6px 0 8px}
+.toc-group{margin-bottom:1px}
+.toc-row{display:flex;align-items:stretch;gap:2px}
+.toc-row .toc-link{flex:1;display:block;padding:6px 9px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:700;font-size:13.5px;border-left:2px solid transparent}
+.toc-row .toc-link:hover{background:var(--surface);color:var(--heading)}
+.toc-row .toc-link.active{background:var(--surface);color:var(--heading);border-left-color:var(--accent)}
+.toc-caret{flex:0 0 auto;width:26px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--muted);cursor:pointer;border-radius:8px}
+.toc-caret:hover{color:var(--heading);background:var(--surface)}
+.toc-caret:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.toc-caret svg{width:12px;height:12px;transition:transform .18s}
+.toc-group.open .toc-caret svg{transform:rotate(90deg)}
+.toc-sub{display:none;flex-direction:column;margin:1px 0 5px 14px;padding-left:0}
+.toc-group.open .toc-sub{display:flex}
+.toc-sub a{padding:4px 9px 4px 11px;border-radius:0 6px 6px 0;text-decoration:none;color:var(--muted);font-size:12.6px;font-weight:600;border-left:2px solid var(--line)}
+.toc-sub a:hover{background:var(--surface);color:var(--heading);border-left-color:var(--muted)}
+.toc-sub a.active{color:var(--heading);font-weight:700;background:var(--surface);border-left-color:var(--accent)}
+.main{min-width:0}
+.hero h1{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:clamp(28px,2vw+20px,38px);margin:6px 0 6px;letter-spacing:-.01em}
+.hero .lede{color:var(--body);font-size:17px;margin:0 0 4px;max-width:64ch}
+.hero .tag{font-family:var(--font-display);font-style:italic;color:var(--accent);font-size:15px;margin:8px 0 0}
+.sec{margin-top:42px;scroll-margin-top:84px}
+.eyebrow{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:4px}
+.sec h2{font-family:var(--font-display);font-weight:700;color:var(--heading);font-size:25px;margin:0 0 4px;letter-spacing:-.01em}
+.sec .sub{color:var(--muted);font-size:14.5px;margin:0 0 18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);margin-bottom:16px}
+.main [id]{scroll-margin-top:84px}
+.card h3{font-family:var(--font-display);font-size:18px;color:var(--heading);margin:0 0 8px}
+.card h4{font-size:14px;color:var(--heading);margin:16px 0 7px}
+.card p{margin:0 0 10px}
+.card ul{margin:0 0 10px;padding-left:20px}.card li{margin:4px 0}
+.lead-in{color:var(--muted);font-size:14.5px;margin:0 0 14px;max-width:72ch}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.hook{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:12px;padding:15px 16px;box-shadow:var(--shadow)}
+.hook .k{display:inline-block;font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.08em;color:#fff;background:var(--accent);border-radius:6px;padding:2px 8px;margin-bottom:7px}
+:root[data-theme="dark"] .hook .k{color:#0F1B14}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hook .k{color:#0F1B14}}
+.hook h4{margin:0 0 5px;font-size:15px;color:var(--heading)}
+.hook p{margin:0 0 6px;font-size:13.5px;color:var(--body)}
+.hook .when{font-size:12.5px;color:var(--muted);font-style:italic}
+.tbl-wrap{overflow-x:auto;margin:4px 0 14px}
+table.t{border-collapse:collapse;width:100%;font-size:13.8px;min-width:440px}
+table.t th,table.t td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.t thead th{background:var(--surface-2);color:var(--heading);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+table.t tbody tr:hover{background:var(--surface-2)}
+table.t td b{color:var(--heading)}
+.note{background:var(--surface-2);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:11px 14px;font-size:13.8px;margin:4px 0 14px}
+.warn{background:var(--warm-soft);border:2px solid var(--warm-line);border-radius:10px;padding:6px 13px;margin:0 0 9px}
+.warn .wt{font-weight:700;color:var(--warm)}
+.pill{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 10px;margin:0 5px 6px 0}
+.noresults{display:none;color:var(--muted);font-style:italic;padding:30px 0}
+/* page-specific: team + roots/branches + timeline */
+.grp{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:6px 0 10px;display:flex;align-items:center;gap:8px}
+.grp .gd{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.person h4{margin:0;font-family:var(--font-display);font-size:16px;color:var(--heading)}
+.person .role{font-size:12.5px;color:var(--accent);font-weight:700;margin:3px 0 7px}
+.person p{margin:0;font-size:13.5px;color:var(--body)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.duo .hook{border-left:4px solid var(--warm-line)}
+.tl{position:relative;margin:8px 0 4px;padding-left:26px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.ph{position:relative;padding:0 0 18px}
+.ph:last-child{padding-bottom:0}
+.ph::before{content:"";position:absolute;left:-23px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.ph.done::before{background:var(--accent)}
+.ph .pn{font-weight:700;color:var(--heading);font-size:15px}
+.ph .pn .marker{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:5px;padding:1px 7px;margin-left:8px;vertical-align:middle}
+.ph .pn .m-now{background:var(--accent);color:#fff}
+.ph .pn .m-next{background:var(--warm-soft);color:var(--warm);border:1px solid var(--warm)}
+:root[data-theme="dark"] .ph .pn .m-now{color:#0F1B14}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ph .pn .m-now{color:#0F1B14}}
+.ph .pd{font-size:13.8px;color:var(--muted);margin-top:2px}
+.br-nav{position:fixed;right:16px;bottom:16px;z-index:1000}
+.br-nav-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.18);transition:transform .14s,border-color .2s}
+.br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px)}
+.br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px}
+.br-nav-chev{width:18px;height:18px;transition:transform .2s}
+.br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:196px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.24);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s,transform .16s,visibility .16s}
+.br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none}
+.br-nav:hover .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg)}
+.br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6}
+.br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent)}
+.br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent}
+.br-nav-list a{opacity:.84}
+.br-nav-list a:hover{opacity:1;background:var(--brsw-line)}
+.br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1}
+.br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default}
+.br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);border:1px solid var(--brsw-line)}
+.br-nav-list .cur .ic{border-color:var(--brsw-accent)}
+.br-nav-list svg{width:14px;height:14px}
+.foot{max-width:1180px;margin:0 auto;padding:24px 22px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line)}
+.foot .ft{font-family:var(--font-display);font-style:italic;color:var(--accent)}
+@media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}.toc{display:none}.search{min-width:0;width:150px}.brand-sub{display:none}}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+@media (max-width:560px){.top-inner{flex-wrap:wrap}.search{order:3;width:100%;min-width:0}}
+@media print{
+  .top,.br-nav,.toc,.banner,.noresults{display:none!important}
+  .layout{display:block;padding:0;max-width:none}
+  body{background:#fff;color:#000;font-size:11.5pt}
+  :root{--page-bg:#fff;--surface:#fff;--surface-2:#f4f2ec;--heading:#1B4332;--body:#1a1a1a;--muted:#444;--line:#cfc8b8;--accent:#1B4332;--warm:#9a5a36;--warm-line:#8a3e1e}
+  .card,.hook{box-shadow:none;break-inside:avoid}
+  .sec{margin-top:24px}
+  a{color:#1B4332;text-decoration:none}
+  @page{margin:14mm}
+}
+</style>
+</head>
+<body>
+<header class="top" id="top">
+  <div class="top-inner">
+    <a class="brand-wrap" href="#top" aria-label="Back to top"><span class="brand">Branch &amp; Root</span><span class="brand-sub">Company Playbook · Internal</span></a>
+    <div class="top-actions">
+      <label class="search" aria-label="Search this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+        <input type="search" id="q" placeholder="Search this page…" autocomplete="off">
+      </label>
+      <button class="iconbtn" id="printBtn" type="button" aria-label="Print or save as PDF" title="Print / Save PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"></path></svg></button>
+      <button class="iconbtn theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="banner"><div class="banner-in"><b>Internal use only.</b> The Branch &amp; Root company playbook — who we are and where we're growing. Not for prospects or clients.</div></div>
+
+<div class="layout">
+  <nav class="toc" id="toc" aria-label="On this page">
+    <div class="toc-h">On this page</div>
+    <div class="toc-group open" data-sec="identity">
+      <div class="toc-row"><a class="toc-link" href="#identity">Identity</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#id-truth">Who we are</a><a href="#id-roots">Roots &amp; Branches</a></div>
+    </div>
+    <div class="toc-group open" data-sec="team">
+      <div class="toc-row"><a class="toc-link" href="#team">The team</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#team-about">Who we are as a team</a><a href="#team-roots">The Roots</a><a href="#team-branches">The Branches</a></div>
+    </div>
+    <div class="toc-group open" data-sec="sell">
+      <div class="toc-row"><a class="toc-link" href="#sell">What we sell</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#sell">Services</a><a href="#sell-pricing">Pricing</a></div>
+    </div>
+    <div class="toc-group open" data-sec="serve">
+      <div class="toc-row"><a class="toc-link" href="#serve">Who we serve</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#serve-icp">Ideal client</a><a href="#serve-market">South OC market</a></div>
+    </div>
+    <div class="toc-group open" data-sec="win">
+      <div class="toc-row"><a class="toc-link" href="#win">How we win</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#win-diff">Differentiators</a><a href="#win-philosophy">Philosophy</a><a href="#win-voice">Brand voice</a><a href="#win-hardno">Hard NO list</a></div>
+    </div>
+    <div class="toc-group open" data-sec="targets">
+      <div class="toc-row"><a class="toc-link" href="#targets">Operating targets</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#targets-lead">Lead-gen targets</a></div>
+    </div>
+    <div class="toc-group open" data-sec="roadmap">
+      <div class="toc-row"><a class="toc-link" href="#roadmap">The roadmap</a><button class="toc-caret" type="button" aria-label="Toggle subsections" aria-expanded="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+      <div class="toc-sub"><a href="#road-current">Current state</a><a href="#road-phases">Phased plan</a><a href="#road-channels">Channel expansion</a><a href="#road-milestones">Milestones</a></div>
+    </div>
+  </nav>
+
+  <main class="main">
+    <div class="hero">
+      <h1>Local Growth</h1>
+      <p class="lede">Branch &amp; Root — who we are, and where we're growing. The company playbook for the team: what we believe, what we sell, who we serve, and the road ahead.</p>
+      <p class="tag">Branching your business out from a rooted foundation.</p>
+    </div>
+
+    <!-- IDENTITY -->
+    <section class="sec" id="identity">
+      <div class="eyebrow">Identity</div>
+      <h2>Who we are</h2>
+      <p class="sub">A multi-generational local growth firm built in South Orange County. Not a remote agency — a team that lives in these zip codes.</p>
+
+      <div class="card f" id="id-truth">
+        <h3>The one-line truth</h3>
+        <p>Local service businesses aren't failing because they lack a great product. They're failing because their operational communication infrastructure is leaking. We find the leak and hand them the fix.</p>
+        <h4>Taglines</h4>
+        <p>"Branching your business out from a rooted foundation." · "Grounded in strategy. Automated for growth."</p>
+        <h4>The vibe</h4>
+        <p>Clean, trusted, organic, premium, realistic. We bridge multi-generational business experience with hyper-efficient modern operations. Home base: South OC — Mission Viejo, Rancho Santa Margarita, Ladera Ranch, Aliso Viejo, San Clemente, and the surrounding zip codes.</p>
+      </div>
+
+      <div class="card f" id="id-roots">
+        <h3>Roots &amp; Branches</h3>
+        <p class="lead-in">The name is the model. The roots keep you standing. The branches are how you grow.</p>
+        <div class="duo">
+          <div class="hook"><span class="k" style="background:var(--accent-2)">THE ROOTS</span><h4>The dads — structure</h4><p>Structural framework, financial integrity, decades of real-world operations, relational trust. The part that never breaks.</p></div>
+          <div class="hook"><span class="k">THE BRANCHES</span><h4>The sons — execution</h4><p>Execution speed, modern workflow automation, digital media systems, growth infrastructure. The part that moves fast.</p></div>
+        </div>
+        <div class="note">We're the only kind of team in South OC that can anchor a business operationally and scale it aggressively at the same time. The system runs a closed revenue loop: <b>Recover</b> past customers → <b>Capture</b> new ones instantly → <b>Convert</b> with a credible presence.</div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="sec" id="team">
+      <div class="eyebrow">The team</div>
+      <h2>Two families. Four people.</h2>
+      <p class="sub">Two father-son pairs, all from South OC. Matthew Sr. is the primary external contact for prospect conversations and diagnostic calls.</p>
+
+      <div class="card f" id="team-about">
+        <h3>Who we are as a team</h3>
+        <p>Branch &amp; Root was founded by two father-son pairs, all from South Orange County. We work exclusively with owner-operated local service businesses in our own backyard — not national chains, not VC-backed franchises. Real local family businesses, served by a real local family team.</p>
+        <p>Our philosophy is the name itself. The dads are the roots: structure, financial integrity, and decades of real-world operations. The sons are the branches: execution speed, automation, and modern growth systems. We bridge time-tested business principles with modern technology so owners can reactivate hidden revenue, capture every lead, and grow predictably — without losing the human touch.</p>
+        <p>One belief holds it together: <b>the roots keep you standing, and the branches are how you grow.</b> We're not a faceless agency you email and never hear back from. We live in these zip codes, we answer the phone, and we treat every client's business like it shares our name.</p>
+      </div>
+
+      <p class="grp" id="team-roots"><span class="gd"></span>The Roots — structural foundation</p>
+      <div class="cols">
+        <div class="hook person f"><h4>Russ Sr.</h4><div class="role">Internal Systems &amp; Financial Manager</div><p>Cashflow logistics, compliance, internal structure. Decades of business management and digital marketing. Operates beneath client work, not in front of it.</p></div>
+        <div class="hook person f"><h4>Matthew Sr.</h4><div class="role">Client Relations &amp; Sales Director</div><p>The primary external contact. Diagnoses the owner's real problem, builds trust, protects client fit. He doesn't sell — he solves.</p></div>
+      </div>
+
+      <p class="grp" id="team-branches" style="margin-top:18px"><span class="gd"></span>The Branches — execution &amp; growth</p>
+      <div class="cols">
+        <div class="hook person f"><h4>Russ Jr.</h4><div class="role">Systems Execution Lead</div><p>The technical engine. Builds the pipelines, automations, and communication infrastructure — the systems that respond in 90 seconds and turn dormant data into live revenue.</p></div>
+        <div class="hook person f"><h4>Matthew Jr.</h4><div class="role">Creative Director &amp; Growth Associate</div><p>Media assets, ad layouts, content systems. Co-manages onboarding with Matthew Sr.</p></div>
+      </div>
+    </section>
+
+    <!-- WHAT WE SELL -->
+    <section class="sec" id="sell">
+      <div class="eyebrow">What we sell</div>
+      <h2>Three services. Two bundles.</h2>
+      <p class="sub">A quick reference on the offer. For the field scripts and the pitch, see the <a href="/playbook/sales-script">Sales Script</a>.</p>
+
+      <div class="cols">
+        <div class="hook f"><span class="k">SERVICE 1</span><h4>Customer Reactivation Engine</h4><p>Turn cold/historical lead data into booked jobs. Clean and centralize the past-customer list, deploy personalized text + email sequences with an offer, route hot replies to the owner. Bookings within 72 hours of launch.</p><span class="when">7–14 days to launch · $1,500 setup + % of revenue or a $500 bonus</span></div>
+        <div class="hook f"><span class="k">SERVICE 2</span><h4>Instant Responder System</h4><p>Speed-to-lead across every channel. Unify Google, ads, website forms, and DMs into one pipeline; respond in 90 seconds, 24/7; follow up for five days; plus a lead-capture page. 0% missed inbound.</p><span class="when">14–21 days to live · $2,000 setup + $497–$997/mo</span></div>
+        <div class="hook f"><span class="k">SERVICE 3</span><h4>Local Growth Engine</h4><p>Outward growth. A custom conversion-built website, visibility in Google and AI answer tools (ChatGPT, Perplexity), and managed Facebook &amp; Instagram ads. Internal name: Website, SEO/AEO &amp; Meta Ads.</p><span class="when">Website 3–5 wks; ads/SEO 60–90 days · website quoted + monthly retainers</span></div>
+      </div>
+
+      <div class="card f" id="sell-pricing" style="margin-top:16px">
+        <h3>Pricing at a glance</h3>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Offer</th><th>What's in it</th><th>Setup</th><th>Monthly</th></tr></thead>
+          <tbody>
+            <tr><td><b>The Foundation</b></td><td>S1 + S2 + lead-capture page</td><td>$2,500</td><td>$697 flat</td></tr>
+            <tr><td><b>The Full Engine</b></td><td>S1 + S2 + S3</td><td>$3,500 + website project fee</td><td>$1,497–$1,997</td></tr>
+            <tr><td>Reactivation Engine</td><td>S1 alone</td><td>$1,500</td><td>% of rev or $500 bonus</td></tr>
+            <tr><td>Instant Responder</td><td>S2 alone</td><td>$2,000</td><td>$497–$997</td></tr>
+            <tr><td>Local Growth Engine</td><td>S3 alone</td><td>Website quoted</td><td>SEO/AEO + Meta retainers</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">The Foundation is the most popular starting point and packages S1 + S2 for about $1,000 less than buying them separately. Full Engine internal name: the Full-Stack Growth System. Meta ads require a $1,500/mo client ad-spend minimum; ad budget is paid directly to Meta by the client. No contracts.</div>
+      </div>
+    </section>
+
+    <!-- WHO WE SERVE -->
+    <section class="sec" id="serve">
+      <div class="eyebrow">Who we serve</div>
+      <h2>The ideal client &amp; the South OC market</h2>
+      <p class="sub">Owner-operated local service businesses in Orange County. Local on purpose.</p>
+
+      <div class="card f" id="serve-icp">
+        <h3>Ideal Customer Profile</h3>
+        <div class="tbl-wrap"><table class="t">
+          <tbody>
+            <tr><td><b>Business type</b></td><td>Owner-operated local/regional service businesses with a real offer but weak or absent digital presence</td></tr>
+            <tr><td><b>Revenue</b></td><td>$250K–$2M annually</td></tr>
+            <tr><td><b>Decision maker</b></td><td>Owner or founder — not a marketing department</td></tr>
+            <tr><td><b>Pain points</b></td><td>Not showing up in search, no lead pipeline, ad spend with no strategy, an outdated or poorly converting website, slow/after-hours follow-up</td></tr>
+            <tr><td><b>Verticals</b></td><td>Plumbers, HVAC, electricians, auto shops, dental, salons, pest control, landscapers, general contractors, painters, roofers, and similar</td></tr>
+            <tr><td><b>Bad fit</b></td><td>Enterprise companies, clients wanting full in-house embedding, price-hagglers who undervalue marketing</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card f" id="serve-market">
+        <h3>The South OC market — three buyer rails</h3>
+        <p class="lead-in">South OC is a high-trust, high-expectation market. Affluent homeowners run their decisions on three rails. Build every conversation and campaign around them.</p>
+        <div class="cols">
+          <div class="hook"><h4>Social-proof density</h4><p>Neighbors, Nextdoor, HOA referrals, and Google reviews carry outsized weight.</p></div>
+          <div class="hook"><h4>Speed-to-response</h4><p>Affluent homeowners don't wait. A four-hour response window loses the job.</p></div>
+          <div class="hook"><h4>Credential credibility</h4><p>Licensing, insurance, and photos of real local jobs close more than any discount.</p></div>
+        </div>
+        <h4>Where we work (and what sells there)</h4>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>City</th><th>Median HHI</th><th>Top service demand</th></tr></thead>
+          <tbody>
+            <tr><td>Irvine</td><td>~$120K</td><td>HVAC, Landscaping, Cleaning</td></tr>
+            <tr><td>Mission Viejo</td><td>~$115K</td><td>HVAC, Plumbing, Landscaping</td></tr>
+            <tr><td>Rancho Santa Margarita</td><td>~$130K</td><td>HVAC, Landscaping, Pool</td></tr>
+            <tr><td>Laguna Niguel</td><td>~$118K</td><td>HVAC, Roofing, Pool Service</td></tr>
+            <tr><td>Aliso Viejo</td><td>~$108K</td><td>HVAC, Plumbing, Pest Control</td></tr>
+            <tr><td>San Clemente</td><td>~$95K</td><td>Landscaping, Roofing, HVAC</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- HOW WE WIN -->
+    <section class="sec" id="win">
+      <div class="eyebrow">How we win</div>
+      <h2>What makes us different</h2>
+      <p class="sub">The edge, the voice, and the lines we don't cross.</p>
+
+      <div class="card f" id="win-diff">
+        <h3>Key differentiators</h3>
+        <ul>
+          <li><b>Multi-generational local team.</b> Real people in South OC, not a remote agency.</li>
+          <li><b>Two-direction revenue attack.</b> Recover past customers and capture new ones at the same time.</li>
+          <li><b>Foundation-first.</b> Fix the infrastructure before spending a dollar on ads.</li>
+          <li><b>Speed-to-lead obsession.</b> A 90-second automated response as a core promise.</li>
+          <li><b>Closed revenue loop.</b> Reactivation + inbound + growth = a self-sustaining pipeline.</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="win-philosophy">
+        <h3>The philosophy — problem-centric marketing</h3>
+        <p>Name the problem before you sell the solution. The problem is the hook; the solution is the reason to call.</p>
+        <p class="lead-in" style="margin:0">Generic: "We fix AC units. Call us today." · Problem-centric: "If your AC is blowing warm air and it's 90° in Aliso Viejo — here's what's wrong, and how fast we fix it." The second earns the click because it proves relevance before asking for trust.</p>
+      </div>
+
+      <div class="card f" id="win-voice">
+        <h3>Brand voice</h3>
+        <p class="lead-in">Authoritative and direct, warm and conversational, premium, locally grounded. An extended hand, not a pitch.</p>
+        <ul>
+          <li>Frame technology as <b>operational infrastructure</b> — never tools or jargon.</li>
+          <li>No hype words: unlock, supercharge, 10x, game-changer, limited spots.</li>
+          <li>No high-pressure closing or fake urgency. No exclamation points — em-dashes carry the rhythm.</li>
+          <li>Local on purpose — name the place. Test: would Matthew Sr. say this to a neighbor at the coffee shop?</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="win-hardno">
+        <h3>The hard "no" list</h3>
+        <p class="lead-in">What we never do. These protect delivery quality and the team from scope creep.</p>
+        <ul>
+          <li><b>No manual social community management</b> — no live video crews, manual grid aesthetics, or manual comment response. Content is programmatic and built for lead generation.</li>
+          <li><b>No traditional cold calling</b> — prospecting is digital infrastructure, direct messaging, and programmatic campaigns.</li>
+          <li><b>No isolated web architecture</b> — every build links natively to the communication pipeline. No standalone sites.</li>
+          <li><b>No fabricated proof</b> — never publish invented review counts, ratings, or credentials. Verify real numbers first.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- OPERATING TARGETS -->
+    <section class="sec" id="targets">
+      <div class="eyebrow">What good looks like</div>
+      <h2>Operating targets</h2>
+      <p class="sub">The numbers we run on. Use them to set client expectations and to judge whether a campaign is healthy.</p>
+
+      <div class="card f" id="targets-lead">
+        <h3>Lead-gen targets</h3>
+        <div class="tbl-wrap"><table class="t">
+          <thead><tr><th>Metric</th><th>Low-budget target</th><th>Healthy target</th></tr></thead>
+          <tbody>
+            <tr><td>Cost per lead — HVAC / Plumbing</td><td>&lt; $45</td><td><b>&lt; $25</b></td></tr>
+            <tr><td>Cost per lead — Landscaping / Pest</td><td>&lt; $35</td><td><b>&lt; $18</b></td></tr>
+            <tr><td>Google LSA cost per lead</td><td>&lt; $30</td><td><b>&lt; $18</b></td></tr>
+            <tr><td>Lead-to-booked job rate</td><td>&gt; 30%</td><td><b>&gt; 50%</b></td></tr>
+            <tr><td>Response time (client SLA)</td><td>&lt; 30 min</td><td><b>&lt; 5 min</b></td></tr>
+          </tbody>
+        </table></div>
+        <div class="note">Market benchmarks for expectation-setting (2026): cost per click $0.50–$3.50 · CPM $7–$25 · cost per lead for service businesses $25–$150+ depending on vertical.</div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="sec" id="roadmap">
+      <div class="eyebrow">Where we're growing</div>
+      <h2>The roadmap</h2>
+      <p class="sub">What Branch &amp; Root looks like as it grows — from the first client to owning the South OC local-service market.</p>
+
+      <div class="card f" id="road-current">
+        <h3>Current state — June 2026</h3>
+        <ul>
+          <li><b>Live:</b> branchandrootconsulting.com on Vercel — services, bundles, FAQ, a 40-post SEO guides library, the 7-Point Revenue Leak Checklist lead magnet, GoHighLevel lead capture, GA4 + a consent layer, and the private leads-preview subdomain.</li>
+          <li><b>First client:</b> Everlasting Renovations (South OC general contractor + painting). First Meta ad campaign is build-ready.</li>
+          <li><b>In motion:</b> the Branch &amp; Root Instagram account and organic content, Canva creative, and the Meta Pixel integration.</li>
+        </ul>
+      </div>
+
+      <div class="card f" id="road-phases">
+        <h3>The phased plan</h3>
+        <p class="lead-in">How we take a client — and the agency — from tracking to total territory coverage.</p>
+        <div class="tl">
+          <div class="ph done"><div class="pn">Phase 1 · Tracking &amp; Foundation</div><div class="pd">Pixel, Conversions API, GTM, call tracking, UTMs. Nothing runs until the measurement is clean.</div></div>
+          <div class="ph done"><div class="pn">Phase 2 · Meta Ads <span class="marker m-now">Active now</span></div><div class="pd">Problem-first creative, the 3-2-2 cold structure, lead forms vs. landing pages, South OC seasonal triggers. Our active paid channel today.</div></div>
+          <div class="ph"><div class="pn">Phase 3 · Google Ads + LSA <span class="marker m-next">Next</span></div><div class="pd">Local Services Ads first (the "Google Screened" badge, pay-per-lead), then Search. Roadmap — not yet in the live service menu.</div></div>
+          <div class="ph"><div class="pn">Phase 4 · Optimization &amp; Scaling</div><div class="pd">Kill / keep / scale framework, budget reallocation, creative refresh, monthly reporting.</div></div>
+          <div class="ph"><div class="pn">Phase 5 · Scale the stack</div><div class="pd">Grow the toolstack and team capacity as the client base grows.</div></div>
+        </div>
+      </div>
+
+      <div class="card f" id="road-channels">
+        <h3>Channel expansion</h3>
+        <p class="lead-in">How the service menu grows beyond today's Meta-first offer.</p>
+        <div>
+          <span class="pill">Google Ads + LSA (Phase 3)</span>
+          <span class="pill">Reddit — under evaluation</span>
+          <span class="pill">Nextdoor — under evaluation</span>
+        </div>
+        <div class="note">Today's live paid channel is Meta (Facebook &amp; Instagram). Google Ads/LSA is the next addition. Reddit and Nextdoor are being evaluated as ways to reach ideal local clients — decision guides are drafted.</div>
+      </div>
+
+      <div class="card f" id="road-milestones">
+        <h3>Milestones &amp; the team as it grows</h3>
+        <div class="tl">
+          <div class="ph done"><div class="pn">First client <span class="marker m-now">Here now</span></div><div class="pd">Everlasting Renovations — prove the model end to end, gather real proof numbers.</div></div>
+          <div class="ph"><div class="pn">A handful of clients (3–5)</div><div class="pd">Repeatable delivery, growth-stage tooling, the first wave of referrals and case studies.</div></div>
+          <div class="ph"><div class="pn">10+ clients</div><div class="pd">Consolidate operations on GoHighLevel; systematize onboarding and reporting; the roots hold the structure while the branches add execution capacity.</div></div>
+          <div class="ph"><div class="pn">South OC coverage</div><div class="pd">Own the local-service lead-gen market across the South OC cities — multi-channel, multi-vertical, still local.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <p class="noresults" id="noresults">No matches. Clear the search to see the full page.</p>
+  </main>
+</div>
+
+<footer class="foot">
+  <p class="ft">Grounded in strategy. Automated for growth.</p>
+  <p>Branch &amp; Root Consulting · Internal company reference · leads.branchandrootconsulting.com</p>
+</footer>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Playbook</span>
+    <a href="/" aria-label="Lead preview portal home">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Portal</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Local Growth</span>
+    </span>
+    <a href="/playbook/sales-script" aria-label="Sales Script field playbook">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Sales Script</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return root.getAttribute("data-theme")||sys();}
+  var tb=document.querySelector(".theme-toggle");
+  if(tb)tb.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});
+
+  /* brand wordmark → scroll to top (sticky header makes #top a no-op, so do it in JS) */
+  var brand=document.querySelector(".brand-wrap");
+  if(brand)brand.addEventListener("click",function(e){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"});if(history.replaceState)history.replaceState(null,"",location.pathname+location.search);});
+
+  /* search filter */
+  var q=document.getElementById("q");
+  var units=Array.prototype.slice.call(document.querySelectorAll(".f"));
+  var secs=Array.prototype.slice.call(document.querySelectorAll(".sec"));
+  var noresults=document.getElementById("noresults");
+  if(q)q.addEventListener("input",function(){
+    var term=q.value.trim().toLowerCase();
+    var anyVisible=false;
+    units.forEach(function(u){
+      var match=!term||u.textContent.toLowerCase().indexOf(term)>-1;
+      u.style.display=match?"":"none";
+      if(match)anyVisible=true;
+    });
+    secs.forEach(function(s){
+      var fs=s.querySelectorAll(".f");
+      if(!fs.length)return;
+      var vis=Array.prototype.some.call(fs,function(u){return u.style.display!=="none";});
+      s.style.display=(!term||vis)?"":"none";
+    });
+    noresults.style.display=(term&&!anyVisible)?"block":"none";
+  });
+
+  /* nav: collapse toggles */
+  document.querySelectorAll(".toc-caret").forEach(function(btn){
+    btn.addEventListener("click",function(){var g=btn.closest(".toc-group");var open=g.classList.toggle("open");btn.setAttribute("aria-expanded",open?"true":"false");});
+  });
+  /* TOC active section + sub-item highlight + auto-expand */
+  var secLinks={};document.querySelectorAll(".toc-link").forEach(function(a){secLinks[a.getAttribute("href").slice(1)]=a;});
+  var groups={};document.querySelectorAll(".toc-group").forEach(function(g){groups[g.getAttribute("data-sec")]=g;});
+  var subScroll={};document.querySelectorAll(".toc-sub a").forEach(function(a){if(!a.hasAttribute("data-tab"))subScroll[a.getAttribute("href").slice(1)]=a;});
+  function clearSubScroll(){for(var k in subScroll)subScroll[k].classList.remove("active");}
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          for(var k in secLinks)secLinks[k].classList.remove("active");
+          var a=secLinks[en.target.id];if(a)a.classList.add("active");
+          var g=groups[en.target.id];if(g){g.classList.add("open");var c=g.querySelector(".toc-caret");if(c)c.setAttribute("aria-expanded","true");}
+        }
+      });
+    },{rootMargin:"-80px 0px -70% 0px"});
+    secs.forEach(function(s){io.observe(s);});
+    var subTargets=Object.keys(subScroll).map(function(id){return document.getElementById(id);}).filter(Boolean);
+    if(subTargets.length){
+      var subIO=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){if(en.isIntersecting){clearSubScroll();var a=subScroll[en.target.id];if(a)a.classList.add("active");}});
+      },{rootMargin:"-86px 0px -72% 0px"});
+      subTargets.forEach(function(t){subIO.observe(t);});
+    }
+  }
+
+  /* page switcher toggle */
+  var nav=document.querySelector(".br-nav");
+  if(nav){var t=nav.querySelector(".br-nav-toggle");
+    t.addEventListener("click",function(e){e.stopPropagation();nav.classList.toggle("open");});
+    document.addEventListener("click",function(e){if(!nav.contains(e.target))nav.classList.remove("open");});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape")nav.classList.remove("open");});
+  }
+
+  /* print */
+  var printBtn=document.getElementById("printBtn");
+  if(printBtn)printBtn.addEventListener("click",function(){window.print();});
+})();
+</script>
+</body>
+</html>
