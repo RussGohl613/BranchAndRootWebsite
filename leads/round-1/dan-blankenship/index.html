@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dan Blankenship | Luxury Real Estate — South Orange County</title>
+<meta name="description" content="Discreet, white-glove representation for luxury homes across Mission Viejo, Rancho Santa Margarita, Ladera Ranch, Aliso Viejo and Lake Forest. Work with Dan Blankenship — a South Orange County real estate agent who treats you like a neighbor, not a transaction." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FBFAF7">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080E1A">
+
+<!-- RealEstateAgent structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Dan Blankenship",
+  "description": "Residential real estate agent serving Mission Viejo and South Orange County, California — buyers, sellers, luxury, and relocation.",
+  "areaServed": [
+    { "@type": "City", "name": "Mission Viejo" },
+    { "@type": "City", "name": "Rancho Santa Margarita" },
+    { "@type": "City", "name": "Ladera Ranch" },
+    { "@type": "City", "name": "Aliso Viejo" },
+    { "@type": "City", "name": "Lake Forest" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "CA",
+    "addressLocality": "Mission Viejo",
+    "addressCountry": "US"
+  },
+  "knowsAbout": ["Residential real estate", "Home buying", "Home selling", "Luxury homes", "Relocation"],
+  "sameAs": [
+    "https://www.zillow.com/profile/dansellsoc",
+    "https://www.homes.com/real-estate-agents/dan-blankenship/e0dm8kq/"
+  ]
+}
+</script>
+
+<style>
+  :root{
+    color-scheme: light dark;
+    /* Luxury gold + deep-navy on warm off-white */
+    --navy:        #0E1726;   /* deep navy ground */
+    --navy-2:      #142235;   /* elevated navy */
+    --navy-3:      #1C2A44;
+    --gold:        #C9933A;   /* primary accent — large fills only in light */
+    --gold-light:  #E8AC47;   /* lighter gold */
+    --gold-ink:    #8a6516;   /* AA-safe gold for TEXT on light (5.09:1 on paper) */
+    --gold-faint:  rgba(201,147,58,.12);
+    --gold-border: rgba(138,101,22,.34);
+    --ink:         #1E2530;   /* body text on light */
+    --ink-soft:    #56606E;   /* muted text */
+    --paper:       #FBFAF7;   /* warm off-white page */
+    --paper-2:     #F4F1EA;   /* secondary surface */
+    --surface:     #FFFFFF;
+    --line:        #E7E1D6;
+    --on-dark:     #ECEFF4;   /* text on navy */
+    --on-dark-mut: #A7B4C6;
+    --star:        #C9933A;
+    --shadow:      0 1px 2px rgba(14,23,38,.06), 0 10px 30px -10px rgba(14,23,38,.14);
+    --shadow-lg:   0 30px 70px -28px rgba(14,23,38,.42);
+    --radius: 16px;
+    --maxw: 1180px;
+    --fh:"Playfair Display", Georgia, serif;
+    --fb:"Inter", system-ui, -apple-system, sans-serif;
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--gold);
+  }
+  /* ===== DARK MODE — deep navy ground; bright gold is AA on dark, so reuse it for text ===== */
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ink:#ECEFF4; --ink-soft:#A7B4C6; --paper:#080E1A; --paper-2:#0F1C30; --surface:#0F1C30;
+    --line:#1F2B40; --on-dark:#ECEFF4; --on-dark-mut:#A7B4C6;
+    --gold:#E8AC47; --gold-light:#F0C067; --gold-ink:#E8AC47; --gold-faint:rgba(232,172,71,.14); --gold-border:rgba(232,172,71,.32);
+    --star:#E8AC47;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }}
+  :root[data-theme="dark"]{
+    --ink:#ECEFF4; --ink-soft:#A7B4C6; --paper:#080E1A; --paper-2:#0F1C30; --surface:#0F1C30;
+    --line:#1F2B40; --on-dark:#ECEFF4; --on-dark-mut:#A7B4C6;
+    --gold:#E8AC47; --gold-light:#F0C067; --gold-ink:#E8AC47; --gold-faint:rgba(232,172,71,.14); --gold-border:rgba(232,172,71,.32);
+    --star:#E8AC47;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  h1,h2,h3,.display{font-family:var(--fh);font-weight:700;line-height:1.14;letter-spacing:-0.01em;color:var(--ink);margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  ::selection{background:var(--gold-faint);}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--fb);font-weight:600;font-size:1rem;letter-spacing:.01em;padding:15px 28px;border-radius:11px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .14s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;line-height:1;}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .btn-primary{background:var(--gold);color:#1A1206;box-shadow:0 10px 26px -10px rgba(201,147,58,.7);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(201,147,58,.8);}
+  /* Ghost = secondary over imagery: tinted fill + strong border so it always reads as a button (boundary ≥3:1) */
+  .btn-ghost{background:rgba(10,15,26,.42);color:#fff;border-color:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+  .btn-ghost:hover{background:rgba(232,172,71,.18);border-color:var(--gold-light);color:#fff;}
+  /* Outline = secondary on solid surfaces: 2px gold border for a clear, high-contrast boundary in both themes */
+  .btn-outline{background:transparent;color:var(--gold-ink);border-width:2px;border-color:var(--gold);}
+  .btn-outline:hover{background:var(--gold-faint);transform:translateY(-2px);border-color:var(--gold-light);}
+  .btn-lg{padding:17px 32px;font-size:1.05rem;}
+
+  /* ---------- Inline brand logo (SVG) ---------- */
+  .brand{display:inline-flex;align-items:center;text-decoration:none;}
+  .brand:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:6px;}
+  .brand-logo{display:block;height:46px;width:auto;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--paper) 86%, transparent);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-bottom:1px solid var(--line);}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .nav-links{display:none;align-items:center;gap:.1rem;list-style:none;margin:0 auto;padding:0;}
+  .nav-links a{font-family:var(--fb);font-weight:500;font-size:.9rem;color:var(--ink-soft);padding:.4rem .85rem;border-radius:8px;text-decoration:none;transition:color .15s,background-color .15s;}
+  .nav-links a:hover{color:var(--ink);background:var(--paper-2);}
+  @media(min-width:1000px){.nav-links{display:flex;}}
+  .topbar-cta{display:flex;align-items:center;gap:12px;}
+  @media(max-width:880px){ .topbar .btn{display:none;} }
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,transform .12s;flex:none;}
+  .theme-toggle:hover{background:var(--paper-2);border-color:var(--gold-border);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ================= HERO — cinematic video ================= */
+  .hero{position:relative;min-height:clamp(500px,72vh,680px);display:flex;align-items:center;overflow:hidden;background:var(--navy);isolation:isolate;}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  /* Side-weighted scrim: anchors text on the LEFT, keeps the open horizon on the RIGHT visible.
+     White text over the dark left band passes WCAG AA. */
+  .hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(7,11,20,.90) 0%, rgba(7,11,20,.78) 30%, rgba(8,12,22,.42) 56%, rgba(8,12,22,.10) 78%, transparent 100%),
+      linear-gradient(180deg, rgba(7,11,20,.40) 0%, transparent 26%, transparent 70%, rgba(6,10,18,.55) 100%);}
+  .hero-inner{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .hero-content{max-width:600px;padding:64px 0;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px;}
+  .hero-eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light));display:inline-block;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.9rem);color:#fff;font-weight:600;line-height:1.07;letter-spacing:-0.02em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.5);}
+  .hero h1 .accent{font-style:italic;color:var(--gold-light);font-weight:500;}
+  .hero-sub{font-size:clamp(1.02rem,1.6vw,1.18rem);color:#EAEDF3;margin:20px 0 0;max-width:50ch;line-height:1.6;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,.55);}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18);}
+  .hero-meta .m{display:flex;align-items:center;gap:11px;font-size:.94rem;color:#D7DCE6;font-weight:400;}
+  .hero-meta .m .dia{width:9px;height:9px;flex:none;background:var(--gold-light);transform:rotate(45deg);box-shadow:0 0 12px rgba(232,172,71,.6);}
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{display:none;}
+    .hero{background:url('/round-1/dan-blankenship/media/hero-poster.jpg') center/cover no-repeat, var(--navy);}
+  }
+
+  /* ================= Locale strip ================= */
+  .locale{background:var(--navy);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.06);}
+  :root[data-theme="light"] .locale{background:var(--navy);}
+  .locale-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;padding:22px 24px;max-width:var(--maxw);margin:0 auto;}
+  .locale-lead{font-family:var(--fh);font-style:italic;font-size:.98rem;color:var(--gold-light);padding:0 22px;white-space:nowrap;}
+  .locale-item{font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:500;padding:6px 22px;position:relative;}
+  .locale-item + .locale-item::before,.locale-lead + .locale-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:clamp(64px,9vw,116px) 0;}
+  .kicker{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:18px;}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--gold);}
+  .h-lead{font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.12;text-wrap:balance;}
+  .p-lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.7;}
+
+  /* ================= ABOUT — asymmetric editorial split ================= */
+  .about{background:var(--paper);position:relative;overflow:hidden;}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,84px);align-items:center;}
+  .about-figure{position:relative;}
+  .about-frame{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:var(--shadow-lg);}
+  .about-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.92;}
+  .about-frame .frame-grad{position:absolute;inset:0;background:linear-gradient(160deg, rgba(8,12,22,.05) 0%, rgba(8,12,22,.55) 100%);}
+  .about-frame .frame-cap{position:absolute;left:22px;bottom:20px;right:22px;z-index:2;color:#EfEbe2;font-family:var(--fh);font-style:italic;font-size:1.02rem;line-height:1.4;text-shadow:0 1px 14px rgba(0,0,0,.5);}
+  .about-frame::after{content:"";position:absolute;inset:0;border:1px solid var(--gold-border);border-radius:var(--radius);pointer-events:none;}
+  /* floating monogram badge overlapping the frame */
+  .about-badge{position:absolute;right:-22px;top:-22px;width:118px;height:118px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:3;}
+  .about-badge .dia{width:54px;height:54px;border:2px solid var(--gold);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;}
+  .about-badge .dia b{transform:rotate(-45deg);font-family:var(--fh);font-weight:700;color:var(--gold-ink);font-size:1.3rem;}
+  .about-badge .est{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-top:8px;}
+  .about-copy h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:8px;}
+  .about-copy p{color:var(--ink-soft);font-size:1.1rem;margin:20px 0 0;line-height:1.72;}
+  .about-pull{font-family:var(--fh);font-style:italic;font-size:1.3rem;color:var(--ink);line-height:1.5;margin:26px 0 0;padding-left:22px;border-left:2px solid var(--gold);}
+  .about-vals{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:16px;}
+  .about-vals li{display:flex;gap:14px;align-items:flex-start;font-size:1.02rem;color:var(--ink);}
+  .about-vals .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  .about-vals b{font-weight:600;}
+
+  /* ================= APPROACH — offset alternating rows ================= */
+  .approach{background:var(--paper-2);border-top:1px solid var(--line);}
+  .approach-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,6vw,72px);}
+  .approach-head .h-lead{max-width:18ch;}
+  .approach-head p{max-width:42ch;margin:0;color:var(--ink-soft);font-size:1.06rem;}
+  .rows{display:flex;flex-direction:column;gap:0;}
+  .erow{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,4vw,56px);align-items:center;padding:34px 0;border-top:1px solid var(--line);transition:background .2s ease;}
+  .erow:last-child{border-bottom:1px solid var(--line);}
+  .erow:hover{background:color-mix(in srgb, var(--gold) 5%, transparent);}
+  .erow .idx{font-family:var(--fh);font-style:italic;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--gold);line-height:1;width:1.6em;text-align:center;opacity:.9;}
+  .erow .body{max-width:62ch;}
+  .erow .body h3{font-size:clamp(1.4rem,2.6vw,1.9rem);margin-bottom:8px;}
+  .erow .body p{margin:0;color:var(--ink-soft);font-size:1.05rem;line-height:1.66;}
+  .erow .go{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.92rem;color:var(--gold-ink);text-decoration:none;white-space:nowrap;border:1px solid var(--gold-border);padding:11px 18px;border-radius:999px;transition:background .18s ease,border-color .18s,transform .14s;}
+  .erow .go::after{content:"→";transition:transform .16s ease;}
+  .erow .go:hover{background:var(--gold-faint);border-color:var(--gold);transform:translateX(2px);}
+  .erow .go:hover::after{transform:translateX(3px);}
+  .erow .go:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  @media(max-width:760px){
+    .erow{grid-template-columns:auto 1fr;gap:18px;padding:26px 0;}
+    .erow .go{grid-column:1 / -1;justify-self:start;margin-top:4px;}
+  }
+
+  /* ================= PROCESS — refined trio (distinct from rows) ================= */
+  .process{background:var(--paper);}
+  .proc-head{max-width:60ch;margin-bottom:clamp(40px,6vw,64px);}
+  .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,28px);counter-reset:proc;}
+  .pcard{position:relative;padding:34px 30px 30px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;transition:transform .16s ease,border-color .2s ease;}
+  .pcard:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .pcard::before{counter-increment:proc;content:"0" counter(proc);position:absolute;top:18px;right:22px;font-family:var(--fh);font-size:2.4rem;font-weight:700;color:var(--gold);opacity:.16;line-height:1;}
+  .pcard .pmark{width:46px;height:46px;border:1.5px solid var(--gold-border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold-ink);}
+  .pcard .pmark svg{width:22px;height:22px;}
+  .pcard h3{font-size:1.32rem;margin-bottom:8px;}
+  .pcard p{margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.65;}
+
+  /* ================= FEATURE AD — Canva still ================= */
+  .adband{background:var(--paper-2);border-top:1px solid var(--line);}
+  .adband-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(36px,6vw,72px);align-items:center;}
+  .adband-figure{margin:0;justify-self:center;}
+  .adband-figure img{width:100%;max-width:400px;height:auto;border-radius:var(--radius);box-shadow:var(--shadow-lg);border:1px solid var(--gold-border);display:block;}
+  .adband-figure figcaption{margin-top:12px;font-size:.84rem;color:var(--ink-soft);text-align:center;font-style:italic;}
+  .adband-copy h2{font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.12;text-wrap:balance;}
+  .adband-copy p{color:var(--ink-soft);font-size:1.1rem;margin:18px 0 0;line-height:1.7;max-width:46ch;}
+  .adband-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  @media(max-width:880px){
+    .adband-grid{grid-template-columns:1fr;gap:36px;}
+    .adband-copy{text-align:center;}
+    .adband-copy p{margin-left:auto;margin-right:auto;}
+    .adband-cta{justify-content:center;}
+  }
+
+  /* ================= THEMES band — honest social proof ================= */
+  .themes{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden;}
+  .themes::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 80% 0%, rgba(201,147,58,.14), transparent 60%);}
+  .themes .kicker{color:var(--gold-light);}
+  .themes .kicker::before{background:var(--gold-light);}
+  .themes-head{position:relative;max-width:64ch;margin-bottom:clamp(36px,5vw,56px);}
+  .themes-head h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem);}
+  .themes-head p{color:var(--on-dark-mut);font-size:1.1rem;margin:16px 0 0;line-height:1.7;}
+  .themes-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .tcard{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:30px 28px;backdrop-filter:blur(2px);}
+  .tcard .ti{display:flex;align-items:center;gap:13px;margin-bottom:14px;}
+  .tcard .ti .dia{width:38px;height:38px;flex:none;border:1.5px solid var(--gold-light);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;}
+  .tcard .ti .dia svg{width:18px;height:18px;transform:rotate(-45deg);color:var(--gold-light);}
+  .tcard .ti h3{color:#fff;font-size:1.22rem;}
+  .tcard p{margin:0;color:#CBD3DF;font-size:1.02rem;line-height:1.62;}
+  .themes-note{position:relative;margin-top:28px;color:var(--on-dark-mut);font-size:.92rem;line-height:1.6;font-style:italic;max-width:70ch;}
+
+  /* ================= PROOF links — checkable receipts ================= */
+  .proof{background:var(--paper-2);border-top:1px solid var(--line);}
+  .proof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,72px);align-items:center;}
+  .proof-copy h2{font-size:clamp(1.8rem,3.2vw,2.5rem);}
+  .proof-copy p{color:var(--ink-soft);font-size:1.1rem;margin:18px 0 0;line-height:1.7;}
+  .proof-links{display:grid;gap:16px;}
+  .plink{display:flex;align-items:center;gap:18px;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .2s ease,box-shadow .2s;}
+  .plink:hover{transform:translateY(-3px);border-color:var(--gold-border);box-shadow:var(--shadow-lg);}
+  .plink:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .plink .pl-mark{width:52px;height:52px;flex:none;border-radius:13px;background:var(--paper-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;font-size:1.15rem;color:var(--gold-ink);}
+  .plink .pl-body{flex:1;}
+  .plink .pl-body .pl-name{font-family:var(--fh);font-weight:700;font-size:1.18rem;line-height:1.1;}
+  .plink .pl-body .pl-sub{font-size:.92rem;color:var(--ink-soft);margin-top:3px;}
+  .plink .pl-go{flex:none;color:var(--gold-ink);transition:transform .16s ease;}
+  .plink:hover .pl-go{transform:translate(3px,-3px);}
+  .plink .pl-go svg{width:20px;height:20px;display:block;}
+
+  /* ================= CONTACT ================= */
+  .contact{background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,60px);align-items:start;}
+  .contact-copy h2{font-size:clamp(2rem,3.4vw,2.7rem);}
+  .contact-copy p{color:var(--ink-soft);font-size:1.12rem;margin:18px 0 26px;line-height:1.7;}
+  .contact-perks{list-style:none;padding:0;margin:0 0 30px;}
+  .contact-perks li{display:flex;gap:14px;align-items:flex-start;padding:11px 0;font-size:1.04rem;color:var(--ink);font-weight:400;}
+  .contact-perks .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  .signoff{display:flex;align-items:center;gap:16px;padding-top:26px;border-top:1px solid var(--line);}
+  .signoff .so-dia{width:50px;height:50px;flex:none;border:1.5px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:700;color:var(--gold-ink);font-size:1.1rem;}
+  .signoff .so-name{font-family:var(--fh);font-weight:700;font-size:1.15rem;color:var(--ink);line-height:1.1;}
+  .signoff .so-role{font-size:.88rem;color:var(--ink-soft);margin-top:2px;}
+
+  .formcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px 30px;box-shadow:var(--shadow-lg);}
+  .formcard h3{font-size:1.5rem;margin-bottom:6px;}
+  .formcard .fsub{color:var(--ink-soft);font-size:.99rem;margin:0 0 22px;}
+  .field{margin-bottom:17px;}
+  .field label{display:block;font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:8px;}
+  .field input,.field select,.field textarea{width:100%;font-family:var(--fb);font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:11px;padding:14px 16px;transition:border .15s ease, box-shadow .15s ease;}
+  .field textarea{min-height:104px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-faint);background:var(--surface);}
+  .field input::placeholder,.field textarea::placeholder{color:var(--ink-soft);opacity:.65;}
+  form .btn{width:100%;margin-top:8px;}
+  .form-fine{font-size:.82rem;color:var(--ink-soft);text-align:center;margin:14px 0 0;line-height:1.5;}
+  .form-success{display:none;text-align:center;padding:32px 12px;}
+  .form-success.show{display:block;}
+  .form-success .badge{width:68px;height:68px;border-radius:50%;background:var(--gold-faint);border:2px solid var(--gold);margin:0 auto 18px;position:relative;}
+  .form-success .badge::after{content:"";position:absolute;left:25px;top:18px;width:12px;height:23px;border:3px solid var(--gold);border-top:0;border-left:0;transform:rotate(40deg);}
+  .form-success h3{font-size:1.4rem;margin-bottom:6px;}
+  .form-success p{color:var(--ink-soft);margin:0;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:var(--on-dark-mut);padding:64px 0 32px;}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;}
+  .foot-brand .brand-logo{height:60px;}
+  .foot-brand p{margin:18px 0 0;font-size:.98rem;color:var(--on-dark-mut);max-width:42ch;line-height:1.65;}
+  .foot-col h4{font-family:var(--fh);font-weight:600;color:#fff;font-size:1.04rem;margin:0 0 16px;}
+  .foot-col a,.foot-col p{color:var(--on-dark-mut);text-decoration:none;font-size:.98rem;display:block;margin-bottom:10px;line-height:1.5;}
+  .foot-col a{transition:color .15s;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bar{margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;align-items:center;}
+  .foot-bar .cpy{font-size:.9rem;color:var(--on-dark-mut);}
+  .foot-bar .pwr{font-size:.82rem;color:#7C889A;}
+  .foot-bar .lic{font-size:.8rem;color:#7C889A;}
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .mcta{display:none;}
+  @media(max-width:768px){
+    .mcta{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 22px rgba(14,23,38,.18);}
+    .mcta .btn{width:100%;padding:14px 10px;font-size:1rem;}
+    body{padding-bottom:78px;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .about-grid{grid-template-columns:1fr;gap:48px;}
+    .about-figure{max-width:440px;margin:0 auto;width:100%;}
+    .proc-grid,.themes-grid{grid-template-columns:1fr;}
+    .proof-grid{grid-template-columns:1fr;gap:36px;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero{min-height:clamp(440px,64vh,560px);}
+    .hero-content{padding:48px 0;max-width:100%;}
+    /* On mobile, text spans full width — switch to a stronger vertical wash for AA */
+    .hero-scrim{background:
+      linear-gradient(180deg, rgba(7,11,20,.58) 0%, rgba(8,12,22,.30) 34%, rgba(7,11,20,.74) 100%),
+      linear-gradient(90deg, rgba(7,11,20,.62), rgba(7,11,20,.28) 70%, transparent);}
+    .contact-grid{grid-template-columns:1fr;gap:30px;}
+    .approach-head{flex-direction:column;align-items:flex-start;gap:14px;}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .foot-bar{justify-content:flex-start;}
+    .about-badge{width:96px;height:96px;right:-12px;top:-16px;}
+    .locale-lead{white-space:normal;text-align:center;}
+  }
+
+  /* ===== BR page switcher ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media(max-width:768px){.br-nav{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
+  @media print{.br-nav{display:none!important;}}
+
+  .br-portal-foot{display:inline-flex;align-items:center;gap:0;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--on-dark-mut);opacity:.85;transition:color .2s,opacity .2s;}
+  .br-portal-foot:hover,.br-portal-foot:focus-visible{opacity:1;color:#fff;outline:none;}
+  .br-portal-foot svg{width:14px;height:14px;flex:0 0 auto;display:block;}
+  .br-portal-foot .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal-foot:hover .br-portal-lbl,.br-portal-foot:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:6px;}
+</style>
+</head>
+<body>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="Dan Blankenship, Real Estate, South Orange County — home">
+      <img class="brand-logo" src="/round-1/dan-blankenship/media/logo.png" alt="Dan Blankenship — Real Estate, South Orange County" width="1512" height="560">
+    </a>
+    <nav aria-label="Page sections">
+      <ul class="nav-links">
+        <li><a href="#about">About Dan</a></li>
+        <li><a href="#approach">How I Help</a></li>
+        <li><a href="#process">The Process</a></li>
+        <li><a href="#themes">Client Themes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="topbar-cta">
+      <a class="btn btn-primary" href="#contact">Request a consultation</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero — cinematic video ===== -->
+  <section class="hero" aria-labelledby="hero-h">
+    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
+      <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Luxury Real Estate · South Orange County</div>
+        <h1 id="hero-h">Where South&nbsp;OC's finest homes <span class="accent">find their people</span></h1>
+        <p class="hero-sub">Discreet, white-glove representation across Mission Viejo, Rancho Santa Margarita, Ladera Ranch, Aliso Viejo and Lake Forest — with an agent who knows these neighborhoods street by street and treats you like a neighbor, not a transaction.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#contact">Request a consultation</a>
+          <a class="btn btn-ghost btn-lg" href="#approach">Explore how I help</a>
+        </div>
+        <div class="hero-meta">
+          <span class="m"><span class="dia" aria-hidden="true"></span>Local South-OC specialist</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span>Buyers, sellers &amp; luxury listings</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span>Honest, hands-on, responsive</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Locale strip ===== -->
+  <div class="locale" aria-label="Communities served">
+    <div class="locale-inner">
+      <span class="locale-lead">Serving the communities of&nbsp;—</span>
+      <span class="locale-item">Mission Viejo</span>
+      <span class="locale-item">Rancho Santa Margarita</span>
+      <span class="locale-item">Ladera Ranch</span>
+      <span class="locale-item">Aliso Viejo</span>
+      <span class="locale-item">Lake Forest</span>
+    </div>
+  </div>
+
+  <!-- ===== About — asymmetric editorial split ===== -->
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-figure">
+          <div class="about-frame">
+            <video autoplay muted loop playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
+              <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
+            </video>
+            <div class="frame-grad" aria-hidden="true"></div>
+            <p class="frame-cap">Golden hour over the hills of South Orange County — the market Dan knows by heart.</p>
+          </div>
+          <div class="about-badge" aria-hidden="true">
+            <span class="dia"><b>DB</b></span>
+            <span class="est">South OC</span>
+          </div>
+        </div>
+        <div class="about-copy">
+          <span class="kicker">About Dan</span>
+          <h2 id="about-h">A local agent who actually picks up the phone</h2>
+          <p>Dan Blankenship is a South Orange County real estate agent who built his reputation the old-fashioned way — by being honest, available, and genuinely invested in the families he works with. He knows the difference between Casta del Sol and Melinda Heights, between a fair price and a wishful one, and between selling a house and guiding someone through one of the biggest decisions of their life.</p>
+          <p class="about-pull">"You'll talk to Dan directly — not a call center, not an assistant."</p>
+          <ul class="about-vals">
+            <li><span class="dia" aria-hidden="true"></span><span><b>Honest, every time.</b> Straight answers on pricing, timelines, and trade-offs — even when it's not what you hoped to hear.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>Always reachable.</b> You'll work with Dan personally, start to close, with the responsiveness a major sale deserves.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>Neighborhood-deep.</b> Real, current knowledge of South-OC communities, schools, and market trends.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Approach — offset alternating rows ===== -->
+  <section class="approach" id="approach" aria-labelledby="appr-h">
+    <div class="wrap">
+      <div class="approach-head">
+        <div>
+          <span class="kicker">How I help</span>
+          <h2 class="h-lead" id="appr-h">One agent, every kind of move</h2>
+        </div>
+        <p>First home, forever home, or a luxury sale — you get the same hands-on, neighbor-first service from first conversation to closing table.</p>
+      </div>
+      <div class="rows">
+        <div class="erow">
+          <div class="idx" aria-hidden="true">i</div>
+          <div class="body">
+            <h3>Buyers</h3>
+            <p>From first-time buyers to move-up families — I help you find the right home in the right neighborhood, then negotiate hard to win it without overpaying.</p>
+          </div>
+          <a class="go" href="#contact">Start your search</a>
+        </div>
+        <div class="erow">
+          <div class="idx" aria-hidden="true">ii</div>
+          <div class="body">
+            <h3>Sellers</h3>
+            <p>Strategic pricing on real, recent comps; professional prep and marketing; and an agent who personally follows up on every showing and every offer.</p>
+          </div>
+          <a class="go" href="#contact">Get your home's value</a>
+        </div>
+        <div class="erow">
+          <div class="idx" aria-hidden="true">iii</div>
+          <div class="body">
+            <h3>Luxury</h3>
+            <p>Discreet, white-glove representation for South-OC's premium homes — presentation, positioning, and a buyer network that matches the property.</p>
+          </div>
+          <a class="go" href="#contact">Discuss a luxury listing</a>
+        </div>
+        <div class="erow">
+          <div class="idx" aria-hidden="true">iv</div>
+          <div class="body">
+            <h3>Relocation</h3>
+            <p>Moving to Orange County? I'll be your local guide — neighborhoods, schools, commutes and lifestyle — so the area feels like home before you arrive.</p>
+          </div>
+          <a class="go" href="#contact">Plan your relocation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Process — refined trio ===== -->
+  <section class="process" id="process" aria-labelledby="proc-h">
+    <div class="wrap">
+      <div class="proc-head">
+        <span class="kicker">The process</span>
+        <h2 class="h-lead" id="proc-h">A calm, considered path — start to close</h2>
+        <p class="p-lead">A high-stakes move shouldn't feel chaotic. Here's the simple, three-step rhythm I keep with every client.</p>
+      </div>
+      <div class="proc-grid">
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/><path d="M9 20v-6h6v6"/></svg></div>
+          <h3>Listen first</h3>
+          <p>We start with a no-pressure conversation about your goals, your timeline, and the home or move you have in mind — no scripts, no rush.</p>
+        </article>
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+          <h3>A clear plan</h3>
+          <p>Real comps, honest pricing, and a strategy built around the South-OC market — so you always know the next step and the reasoning behind it.</p>
+        </article>
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Hands-on to close</h3>
+          <p>I personally manage showings, negotiations, and details all the way through — keeping you informed and protected at every turn.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Feature ad — Canva still ===== -->
+  <section class="adband" id="feature" aria-labelledby="ad-h">
+    <div class="wrap">
+      <div class="adband-grid">
+        <figure class="adband-figure">
+          <img src="/round-1/dan-blankenship/media/ad-southoc.png" width="1080" height="1350"
+               alt="Advertisement reading 'Buying or selling in South OC?' — Dan Blankenship, luxury real estate for South Orange County, in gold lettering on a deep navy background." loading="lazy" decoding="async" />
+          <figcaption>Now serving buyers &amp; sellers across South Orange County.</figcaption>
+        </figure>
+        <div class="adband-copy">
+          <span class="kicker">Buying or selling in South OC?</span>
+          <h2 id="ad-h">Let's make your next move the easy part</h2>
+          <p>Whether you're listing a luxury home or searching for the right neighborhood, you'll have one local agent in your corner — honest pricing, hands-on service, and answers when you need them.</p>
+          <div class="adband-cta">
+            <a class="btn btn-primary btn-lg" href="#contact">Request a consultation</a>
+            <a class="btn btn-outline btn-lg" href="#approach">See how I help</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Client themes — honest social proof band ===== -->
+  <section class="themes" id="themes" aria-labelledby="themes-h">
+    <div class="wrap">
+      <div class="themes-head">
+        <span class="kicker">What clients consistently say</span>
+        <h2 id="themes-h">The themes that come up, again and again</h2>
+        <p>Rather than dress up individual quotes, here's an honest read on the qualities clients tend to highlight when they describe working with Dan — communication, candor, and a personal touch that makes a big decision feel manageable.</p>
+      </div>
+      <div class="themes-grid">
+        <article class="tcard">
+          <div class="ti">
+            <span class="dia" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <h3>Communication</h3>
+          </div>
+          <p>Clients describe Dan as easy to reach and quick to respond — kept in the loop at every step, never left wondering what's happening next.</p>
+        </article>
+        <article class="tcard">
+          <div class="ti">
+            <span class="dia" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <h3>Honesty</h3>
+          </div>
+          <p>A recurring note is candor — straight talk on pricing and trade-offs, with advice that puts the client's interest ahead of a quick close.</p>
+        </article>
+        <article class="tcard">
+          <div class="ti">
+            <span class="dia" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+            <h3>A personal touch</h3>
+          </div>
+          <p>People describe feeling like more than a transaction — patient, family-oriented guidance through what's often the biggest decision of their lives.</p>
+        </article>
+      </div>
+      <p class="themes-note">An honest note: these are themes, not verified review counts or star ratings. Dan's public profiles are linked below so you can read what clients have actually written and judge for yourself.</p>
+    </div>
+  </section>
+
+  <!-- ===== Proof links — checkable receipts ===== -->
+  <section class="proof" id="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div class="proof-copy">
+          <span class="kicker">See for yourself</span>
+          <h2 id="proof-h">Real profiles, real reviews — read them firsthand</h2>
+          <p>No inflated numbers here. Visit Dan's public agent profiles to see his listings and read client reviews in their own words, on platforms you already trust.</p>
+        </div>
+        <div class="proof-links">
+          <a class="plink" href="https://www.zillow.com/profile/dansellsoc" target="_blank" rel="noopener" aria-label="View Dan Blankenship's Zillow profile (opens in a new tab)">
+            <span class="pl-mark" aria-hidden="true">Z</span>
+            <span class="pl-body">
+              <span class="pl-name">Zillow profile</span>
+              <span class="pl-sub">Listings &amp; client reviews on Zillow</span>
+            </span>
+            <span class="pl-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          </a>
+          <a class="plink" href="https://www.homes.com/real-estate-agents/dan-blankenship/e0dm8kq/" target="_blank" rel="noopener" aria-label="View Dan Blankenship's Homes.com profile (opens in a new tab)">
+            <span class="pl-mark" aria-hidden="true">H</span>
+            <span class="pl-body">
+              <span class="pl-name">Homes.com profile</span>
+              <span class="pl-sub">Agent profile &amp; reviews on Homes.com</span>
+            </span>
+            <span class="pl-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact" aria-labelledby="con-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <span class="kicker">Let's talk</span>
+          <h2 id="con-h">Tell me about your move — I'll be in touch personally</h2>
+          <p>Thinking about buying or selling in South Orange County? Share a few details and I'll reach out with a clear, no-pressure next step.</p>
+          <ul class="contact-perks">
+            <li><span class="dia" aria-hidden="true"></span>Complimentary, no-obligation home valuation for sellers</li>
+            <li><span class="dia" aria-hidden="true"></span>Buyer consultations tailored to your neighborhoods &amp; budget</li>
+            <li><span class="dia" aria-hidden="true"></span>Serving Mission Viejo, RSM, Ladera Ranch, Aliso Viejo &amp; Lake Forest</li>
+          </ul>
+          <div class="signoff">
+            <span class="so-dia" aria-hidden="true">DB</span>
+            <div>
+              <div class="so-name">Dan Blankenship</div>
+              <div class="so-role">Licensed California Real Estate Agent · South Orange County</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formcard">
+          <div id="form-live">
+            <h3>Request a consultation</h3>
+            <p class="fsub">A few quick details and Dan will reach out personally.</p>
+            <!-- FORMSPREE: change action="#" to action="https://formspree.io/f/XXReplaceXX" and delete the JS interceptor to go live -->
+            <!-- PRIVACY NOTICE (uncomment when this site goes live, together with the Formspree action):
+<p class="form-fine">We use your details only to contact you about your request.
+<a href="https://branchandrootconsulting.com/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a> ·
+<a href="https://branchandrootconsulting.com/your-privacy-choices" target="_blank" rel="noopener">Your Privacy Choices</a>.</p>
+-->
+            <form id="lead-form" action="#" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="New lead from Dan Blankenship site" />
+              <input type="hidden" name="lead" value="dan-blankenship" />
+              <div class="field">
+                <label for="f-name">Your name</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" placeholder="First and last name" required />
+              </div>
+              <div class="field">
+                <label for="f-email">Email address</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="f-intent">I'm looking to…</label>
+                <select id="f-intent" name="intent">
+                  <option value="">Select…</option>
+                  <option>Sell a home</option>
+                  <option>Buy a home</option>
+                  <option>Buy and sell</option>
+                  <option>Explore a luxury listing</option>
+                  <option>Relocate to OC</option>
+                  <option>Just exploring</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-msg">A little about your move</label>
+                <textarea id="f-msg" name="message" placeholder="e.g. Thinking of selling our home in Mission Viejo this fall — what's it worth?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Request my consultation</button>
+              <p class="form-fine">I'll only use your details to reach you about your real estate goals.</p>
+            </form>
+          </div>
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="badge" aria-hidden="true"></div>
+            <h3>Thanks — I'll be in touch shortly.</h3>
+            <p>Dan will personally follow up to talk through your next step. Talk soon!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer aria-labelledby="foot-h">
+  <h2 id="foot-h" class="sr-only">Dan Blankenship contact information</h2>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="Dan Blankenship, Real Estate — home">
+          <img class="brand-logo" src="/round-1/dan-blankenship/media/logo.png" alt="Dan Blankenship — Real Estate, South Orange County" width="1512" height="560">
+        </a>
+        <p>South Orange County real estate — local, trusted, and personal. Helping buyers and sellers across Mission Viejo and the surrounding communities.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Areas served</h4>
+        <a href="#contact">Mission Viejo</a>
+        <a href="#contact">Rancho Santa Margarita</a>
+        <a href="#contact">Ladera Ranch</a>
+        <a href="#contact">Aliso Viejo &amp; Lake Forest</a>
+      </div>
+      <div class="foot-col">
+        <h4>Find me online</h4>
+        <a href="https://www.zillow.com/profile/dansellsoc" target="_blank" rel="noopener">Zillow profile</a>
+        <a href="https://www.homes.com/real-estate-agents/dan-blankenship/e0dm8kq/" target="_blank" rel="noopener">Homes.com profile</a>
+        <a href="#contact">Request a consultation</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <a class="br-portal-foot" href="/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
+      <span class="cpy">© 2026 Dan Blankenship. All rights reserved.</span>
+      <span class="lic">Licensed California Real Estate Agent · Equal Housing Opportunity</span>
+      <span class="pwr">Powered by Branch &amp; Root</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Sticky mobile CTA ===== -->
+<nav class="mcta" aria-label="Quick contact">
+  <a class="btn btn-primary" href="#contact">Consultation</a>
+  <a class="btn btn-outline" href="#contact">Contact Dan</a>
+</nav>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </span>
+    <a href="/round-1/dan-blankenship/audit" aria-label="Internal brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </a>
+    <a href="/round-1/dan-blankenship/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-1/dan-blankenship/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+  // Static lead form: intercept, show inline success (demo feels live, no backend).
+  (function(){
+    var form = document.getElementById('lead-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      document.getElementById('form-live').style.display = 'none';
+      var ok = document.getElementById('form-success');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+      if(typeof gtag === 'function'){ gtag('event','form_submit',{form_id:'lead-form'}); gtag('event','generate_lead',{form_id:'lead-form'}); }
+    });
+  })();
+</script>
+<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

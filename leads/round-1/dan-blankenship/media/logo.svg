@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" role="img" aria-label="Dan Blankenship — Real Estate">
+  <!-- Monogram mark: gold diamond with serif DB -->
+  <g>
+    <rect x="2" y="8" width="44" height="44" rx="7" transform="rotate(45 24 30)" fill="none" stroke="#C9933A" stroke-width="2"/>
+    <text x="24" y="30" text-anchor="middle" dominant-baseline="central"
+          font-family="'Playfair Display', Georgia, serif" font-size="20" font-weight="700" fill="#C9933A">DB</text>
+  </g>
+  <!-- Wordmark -->
+  <text x="64" y="27" font-family="'Playfair Display', Georgia, serif" font-size="22" font-weight="600"
+        letter-spacing="0.3" fill="currentColor">Dan Blankenship</text>
+  <text x="65" y="45" font-family="'Inter', system-ui, sans-serif" font-size="8.5" font-weight="600"
+        letter-spacing="2.4" fill="#C9933A">REAL ESTATE · SOUTH ORANGE COUNTY</text>
+</svg>
