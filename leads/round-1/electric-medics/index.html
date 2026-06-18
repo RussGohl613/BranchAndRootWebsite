@@ -48,8 +48,8 @@
   ],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "117",
+    "ratingValue": "4.9",
+    "reviewCount": "463",
     "bestRating": "5"
   }
 }
@@ -98,7 +98,7 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
 
   body {
     font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
@@ -107,6 +107,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   h1, h2, h3, .display {
@@ -137,14 +138,9 @@
   }
 
   .brand { display: flex; align-items: center; gap: 13px; }
-  .brand-mark {
-    width: 46px; height: 46px; flex: 0 0 46px;
-    border-radius: 12px;
-    background: var(--amber-500);
-    position: relative;
-    display: grid; place-items: center;
-  }
-  /* CSS lightning bolt — no icon font / emoji */
+  /* real transparent-PNG logo — reads on dark OR light */
+  .brand-logo { height: 42px; width: auto; display: block; }
+  /* CSS lightning bolt — still used by contact-row icons */
   .bolt {
     width: 16px; height: 24px;
     background: var(--navy-900);
@@ -240,29 +236,35 @@
   }
   .btn:hover .btn-arrow::after, .btn-arrow:hover::after { transform: translateX(3px); }
 
-  /* ===== HERO ===== */
+  /* ===== HERO (full-bleed cinematic seamless video) ===== */
   .hero {
-    background:
-      radial-gradient(120% 90% at 100% 0%, var(--navy-800) 0%, var(--navy-900) 58%);
-    color: var(--on-navy);
-    padding: 76px 0 84px;
     position: relative;
+    min-height: clamp(560px, 82vh, 760px);
+    display: flex;
+    align-items: center;
     overflow: hidden;
+    isolation: isolate;
+    background: var(--navy-900);
+    color: var(--on-navy);
     border-bottom: 3px solid var(--amber-500);
   }
-  /* faint spark grid — edge-faded, no radial blob */
-  .hero::before {
-    content: "";
+  .hero-bg {
     position: absolute; inset: 0;
-    background-image:
-      linear-gradient(color-mix(in oklch, var(--on-navy) 4%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklch, var(--on-navy) 4%, transparent) 1px, transparent 1px);
-    background-size: 46px 46px;
-    -webkit-mask-image: linear-gradient(to bottom left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0) 100%);
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: 50% 48%;
+    z-index: 0;
+  }
+  /* side + bottom dark scrim so copy keeps WCAG-AA contrast over the footage */
+  .hero-scrim {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(90deg, oklch(20% 0.040 255 / 0.88) 0%, oklch(20% 0.040 255 / 0.72) 38%, oklch(20% 0.040 255 / 0.34) 66%, oklch(20% 0.040 255 / 0.08) 100%),
+      linear-gradient(0deg, oklch(16% 0.030 255 / 0.78) 0%, oklch(16% 0.030 255 / 0) 46%);
     pointer-events: none;
   }
+  .hero-inner { position: relative; z-index: 2; width: 100%; padding: 72px 0; }
   .hero .wrap { position: relative; }
+  .hero-copy { max-width: 43rem; }
 
   /* hero eyebrow — flat inline row, no pill/border/bg (ref: renewed-carpet-care) */
   .eyebrow {
@@ -311,6 +313,18 @@
   .proof-label { font-size: 0.82rem; color: var(--on-navy-mute); font-weight: 500; }
   .stars-inline { color: var(--amber-500); letter-spacing: 2px; font-size: 1.1rem; }
 
+  /* ===== PROMO AD BAND (Canva still) ===== */
+  .promo { background: var(--navy-900); color: var(--on-navy); border-top: 3px solid var(--amber-500); border-bottom: 3px solid var(--amber-500); }
+  .promo-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+  .promo-copy .sec-kicker { color: var(--amber-400); }
+  .promo-copy h2 { font-size: clamp(1.8rem, 3.8vw, 2.5rem); color: var(--on-navy); margin-bottom: 14px; }
+  .promo-copy > p { color: var(--on-navy-soft); font-size: 1.06rem; margin-bottom: 24px; max-width: 40ch; }
+  .promo-phone { display: inline-flex; align-items: center; gap: 8px; margin-left: 18px; font-family: 'Chivo', sans-serif; font-weight: 800; font-size: 1.12rem; color: var(--amber-400); vertical-align: middle; }
+  .promo-phone:hover { color: var(--amber-500); }
+  .promo-figure { margin: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 50px color-mix(in oklch, var(--navy-900) 55%, transparent); border: 1px solid color-mix(in oklch, var(--on-navy) 10%, transparent); max-width: 420px; justify-self: center; }
+  .promo-figure img { display: block; width: 100%; height: auto; }
+  @media (min-width: 769px) { .promo-grid { grid-template-columns: 1.05fr 0.95fr; gap: 48px; } .promo-figure { justify-self: end; } }
+
   /* ===== SECTION SCAFFOLD ===== */
   section { scroll-margin-top: 76px; }
   .main, #top { scroll-margin-top: 76px; }
@@ -356,7 +370,7 @@
   .svc-body h3 { font-size: 1.12rem; color: var(--navy-900); margin-bottom: 5px; letter-spacing: -0.01em; }
   .svc-body p { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
 
-  /* ===== TRUST / BIG 5.0 ===== */
+  /* ===== TRUST / BIG SCORE ===== */
   .trust {
     background: var(--navy-900);
     color: var(--on-navy);
@@ -598,14 +612,28 @@
       border-bottom: 2px solid var(--amber-500);
     }
     .rail-nav { display: none; }
-    .brand-mark { width: 40px; height: 40px; flex-basis: 40px; }
+    .brand-logo { height: 38px; }
 
     .wrap { padding: 0 20px; }
     .pad { padding: 56px 0; }
-    .hero { padding: 48px 0 56px; }
+
+    /* ---- mobile hero hardening (desktop untouched) ---- */
+    .hero { min-height: clamp(460px, 74vh, 600px); }
+    .hero-bg { object-position: 50% 50%; }
+    .hero-inner { padding: 38px 0 46px; }
+    .hero-scrim {
+      background:
+        linear-gradient(0deg, oklch(15% 0.026 255 / 0.90) 0%, oklch(15% 0.026 255 / 0.52) 48%, oklch(15% 0.026 255 / 0.16) 100%),
+        linear-gradient(90deg, oklch(20% 0.040 255 / 0.55), transparent 76%);
+    }
+    .hero .eyebrow { font-size: .64rem; letter-spacing: .07em; flex-wrap: wrap; margin-bottom: 16px; }
+    .hero h1 { white-space: normal; overflow-wrap: anywhere; }
 
     .hero-proof { gap: 22px 30px; }
     .proof-num { font-size: 1.6rem; }
+
+    .promo-figure { max-width: 340px; }
+    .promo-phone { display: block; margin-left: 0; margin-top: 12px; }
 
     .svc-grid { grid-template-columns: 1fr; }
     .trust-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -715,9 +743,9 @@
     :root:not([data-theme="light"]) .ci-row .val { color: var(--ink); }
     /* keep the amber "spark" emphasis spans amber, not off-white */
     :root:not([data-theme="light"]) .contact-info h2 .spark { color: var(--amber-ink); }
-    /* hero gradient deepened so it reads against the navy-black page */
+    /* hero ground deepened so any letterbox reads against the navy-black page */
     :root:not([data-theme="light"]) .hero {
-      background: radial-gradient(120% 90% at 100% 0%, oklch(22% 0.042 255) 0%, oklch(15% 0.026 255) 58%);
+      background: oklch(15% 0.026 255);
     }
   }
   :root[data-theme="dark"]{
@@ -753,7 +781,7 @@
   :root[data-theme="dark"] .ci-row .val { color: var(--ink); }
   :root[data-theme="dark"] .contact-info h2 .spark { color: var(--amber-ink); }
   :root[data-theme="dark"] .hero {
-    background: radial-gradient(120% 90% at 100% 0%, oklch(22% 0.042 255) 0%, oklch(15% 0.026 255) 58%);
+    background: oklch(15% 0.026 255);
   }
 </style>
 </head>
@@ -764,11 +792,7 @@
   <!-- ===== TOP HEADING BAR ===== -->
   <header class="rail">
     <a class="brand" href="#top" aria-label="Electric Medics — back to top">
-      <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
-      <div>
-        <div class="brand-name">Electric <span>Medics</span></div>
-        <div class="brand-tag">Mission Viejo, CA</div>
-      </div>
+      <img class="brand-logo" src="/round-1/electric-medics/media/logo.png" alt="Electric Medics" width="300" height="178" decoding="async">
     </a>
 
     <nav class="rail-nav" aria-label="Primary">
@@ -784,39 +808,45 @@
   <!-- ===== MAIN ===== -->
   <main class="main" id="top">
 
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <span class="eyebrow"><span class="dot"></span> 5.0 stars · Trusted since 1995</span>
-        <h1 id="hero-title">Mission Viejo's <span class="spark">5-Star</span> Residential Electrician — Trusted Since 1995</h1>
-        <p class="hero-sub">
-          Family-run, licensed (CSLB C-10 729017), and background-checked. From panel upgrades and EV chargers to ceiling fans and emergency repairs, our certified techs diagnose it, fix it, and don't leave until you're satisfied.
-        </p>
+    <!-- HERO (full-bleed cinematic seamless video) -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/electric-medics/media/hero-poster.jpg" aria-hidden="true">
+        <source src="/round-1/electric-medics/media/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="dot"></span> 4.9 stars · Trusted since 1995</span>
+          <h1 id="hero-title">Mission Viejo's <span class="spark">5-Star</span> Residential Electrician — Trusted Since 1995</h1>
+          <p class="hero-sub">
+            Family-run, licensed (CSLB C-10 729017), and background-checked. From panel upgrades and EV chargers to ceiling fans and emergency repairs, our certified techs diagnose it, fix it, and don't leave until you're satisfied.
+          </p>
 
-        <div class="hero-cta">
-          <!-- Desktop: scroll to #contact -->
-          <a href="#contact" class="btn btn-primary btn-arrow desk-only"><span class="btn-arrow">Get a Free Estimate</span></a>
-          <!-- Mobile: click-to-call -->
-          <a href="tel:+19494629200" class="btn btn-primary mob-only">Call (949) 462-9200</a>
-          <a href="#services" class="btn btn-ghost">See our services</a>
-        </div>
+          <div class="hero-cta">
+            <!-- Desktop: scroll to #contact -->
+            <a href="#contact" class="btn btn-primary btn-arrow desk-only"><span class="btn-arrow">Get a Free Estimate</span></a>
+            <!-- Mobile: click-to-call -->
+            <a href="tel:+19494629200" class="btn btn-primary mob-only">Call (949) 462-9200</a>
+            <a href="#services" class="btn btn-ghost">See our services</a>
+          </div>
 
-        <div class="hero-proof">
-          <div class="proof-item">
-            <span class="proof-num">5.0</span>
-            <span class="proof-label"><span class="stars-inline" aria-hidden="true">★★★★★</span> on Yelp (117 reviews)</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-num">30+</span>
-            <span class="proof-label">Years serving South OC</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-num">24/7</span>
-            <span class="proof-label">Emergency service</span>
-          </div>
-          <div class="proof-item">
-            <span class="proof-num">C-10</span>
-            <span class="proof-label">Licensed · bonded · insured</span>
+          <div class="hero-proof">
+            <div class="proof-item">
+              <span class="proof-num">4.9</span>
+              <span class="proof-label"><span class="stars-inline" aria-hidden="true">★★★★★</span> on Google (463 reviews)</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">117</span>
+              <span class="proof-label">5-star reviews on Yelp</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">30+</span>
+              <span class="proof-label">Years serving South OC</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-num">24/7</span>
+              <span class="proof-label">Emergency service</span>
+            </div>
           </div>
         </div>
       </div>
@@ -920,28 +950,28 @@
       </div>
     </section>
 
-    <!-- TRUST / BIG 5.0 -->
+    <!-- TRUST / BIG SCORE -->
     <section id="trust" class="trust pad">
       <div class="wrap">
         <div class="trust-grid">
           <div class="bigscore">
-            <div class="num">5.0</div>
+            <div class="num">4.9</div>
             <div class="stars" aria-hidden="true">★★★★★</div>
-            <div class="src">Rated <b>5.0 on Yelp</b></div>
-            <div class="sub">Across 117 verified reviews</div>
+            <div class="src">Rated <b>4.9 on Google</b></div>
+            <div class="sub">Across 463 verified reviews · plus 117 on Yelp</div>
           </div>
 
           <div class="trust-copy">
             <h2>Three decades of neighbors who <span class="spark">trust us by name.</span></h2>
             <p>
-              Owner Mike Parks and the team are named again and again in reviews for fast, fair, and tidy work. We've earned a perfect 5-star reputation the slow way — one satisfied South Orange County household at a time, since 1995.
+              Owner Mike Parks and the team are named again and again in reviews for fast, fair, and tidy work. We've earned a 4.9-star reputation the slow way — one satisfied South Orange County household at a time, since 1995.
             </p>
 
             <div class="badges">
               <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>CSLB License C-10 729017</b> — licensed, bonded &amp; insured</span></div>
               <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>Background-checked</b> technicians on every job</span></div>
-              <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>5.0 stars</b> across Google &amp; Yelp</span></div>
-              <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>HomeAdvisor</b> screened &amp; approved</span></div>
+              <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>4.9 on Google</b> across 463 reviews</span></div>
+              <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>117 five-star</b> reviews on Yelp</span></div>
               <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>30+ years</b> serving South Orange County</span></div>
               <div class="badge"><span class="tick" aria-hidden="true"></span><span><b>Satisfaction guarantee</b> — we won't leave until you're happy</span></div>
             </div>
@@ -963,6 +993,22 @@
         <span class="chip">San Juan Capistrano</span>
         <span class="chip">Coto de Caza</span>
         <span class="chip">Dana Point</span>
+      </div>
+    </section>
+
+    <!-- PROMO AD BAND -->
+    <section class="promo" id="promo" aria-label="Electric Medics services overview">
+      <div class="wrap promo-grid">
+        <div class="promo-copy">
+          <span class="sec-kicker">South OC electricians</span>
+          <h2>Panels, EV chargers &amp; 24/7 service — one trusted crew</h2>
+          <p>From main-panel upgrades and Level 2 EV chargers to ceiling fans and after-hours emergencies, every job is handled by a certified, background-checked Electric Medics technician. Family-run since 1995, with a satisfaction guarantee on all of it.</p>
+          <a class="btn btn-primary btn-arrow" href="#contact"><span class="btn-arrow">Get a Free Estimate</span></a>
+          <a class="promo-phone" href="tel:+19494629200">(949) 462-9200</a>
+        </div>
+        <figure class="promo-figure">
+          <img src="/round-1/electric-medics/media/ad-services.png" width="1080" height="1350" loading="lazy" decoding="async" alt="Electric Medics — South OC electricians, panel upgrades, EV chargers, 24/7 service">
+        </figure>
       </div>
     </section>
 
@@ -1059,11 +1105,7 @@
         <div class="foot-grid">
           <div class="foot-brand">
             <a class="brand" href="#top" aria-label="Electric Medics — back to top">
-              <div class="brand-mark" aria-hidden="true"><span class="bolt"></span></div>
-              <div>
-                <div class="brand-name" style="color:var(--on-navy);">Electric <span>Medics</span></div>
-                <div class="brand-tag">Mission Viejo, CA</div>
-              </div>
+              <img class="brand-logo" src="/round-1/electric-medics/media/logo.png" alt="Electric Medics" width="300" height="178" style="height:52px;" decoding="async">
             </a>
             <p>Family-run residential electricians serving South Orange County since 1995. We diagnose it, fix it, and don't leave until you're satisfied.</p>
           </div>
@@ -1079,14 +1121,14 @@
             <h4>Credentials</h4>
             <p>CSLB License C-10 729017</p>
             <p>Licensed · Bonded · Insured</p>
-            <p>5.0 stars on Yelp (117 reviews)</p>
+            <p>4.9 on Google (463 reviews) · 117 on Yelp</p>
             <p>24/7 emergency service</p>
           </div>
         </div>
 
         <div class="foot-bottom">
           <a class="br-portal-foot" href="/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
-          <span>© 2026 Electric Medics. All rights reserved.</span>
+          <span>© 2026 Electric Medics. All rights reserved. · <a href="/round-1/electric-medics/privacy" style="color:var(--on-navy-soft);border-bottom:1px solid color-mix(in oklch, var(--on-navy) 22%, transparent);">Privacy</a> · <a href="/round-1/electric-medics/terms" style="color:var(--on-navy-soft);border-bottom:1px solid color-mix(in oklch, var(--on-navy) 22%, transparent);">Terms</a></span>
           <span class="pwr">Powered by <b>Branch &amp; Root</b></span>
         </div>
       </div>
@@ -1159,5 +1201,6 @@
 </nav>
 
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}v.addEventListener('loadeddata',go);go();['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();</script>
 </body>
 </html>

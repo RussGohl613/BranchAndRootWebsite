@@ -44,8 +44,8 @@
   "knowsAbout": ["Roof installation","Roof replacement","Roof repair","Tile roofing","Metal roofing","Shingle roofing","Flat roofing","Gutter installation","Skylight installation","Roof inspection"],
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "14",
+    "ratingValue": "4.9",
+    "reviewCount": "61",
     "bestRating": "5"
   }
 }
@@ -89,7 +89,7 @@
   }
 
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
   body{
     font-family:"Mukta",system-ui,sans-serif;
     color:var(--ink);
@@ -97,7 +97,7 @@
     line-height:1.6;
     font-size:17px;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    overflow-x:clip;
   }
   h1,h2,h3{font-family:"Zilla Slab",Georgia,serif;line-height:1.08;letter-spacing:-0.01em;}
   a{color:inherit;text-decoration:none;}
@@ -129,6 +129,7 @@
   }
   .nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
   .brand{display:flex;align-items:center;gap:13px;color:var(--stone-50);}
+  .brand-logo{height:40px;width:auto;display:block;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.28);}
   .brand .mark{
     width:42px;height:42px;flex:none;position:relative;
     background:var(--clay);border-radius:5px;
@@ -154,20 +155,21 @@
   .roofline{display:block;width:100%;height:34px;line-height:0;}
   .roofline svg{display:block;width:100%;height:100%;}
 
-  /* ---------- hero ---------- */
+  /* ---------- hero (cinematic seamless video) ---------- */
   .hero{
     position:relative;color:var(--stone-50);
-    background:var(--slate-800);
-    padding:64px 0 0;
-    overflow:hidden;
+    background:var(--slate-900);
+    min-height:clamp(560px,82vh,760px);
+    display:flex;align-items:center;
+    overflow:hidden;isolation:isolate;
   }
-  .hero::before{
-    content:"";position:absolute;inset:0;z-index:0;
-    background:
-      repeating-linear-gradient(135deg, oklch(0.985 0.006 70 / 0.032) 0 1px, transparent 1px 26px),
-      repeating-linear-gradient(45deg, oklch(0.985 0.006 70 / 0.018) 0 1px, transparent 1px 52px);
-  }
-  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;gap:38px;align-items:center;}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;z-index:0;}
+  .hero-scrim{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(90deg, oklch(0.205 0.018 250 / 0.90) 0%, oklch(0.205 0.018 250 / 0.74) 36%, oklch(0.205 0.018 250 / 0.34) 64%, oklch(0.205 0.018 250 / 0.08) 100%),
+    linear-gradient(0deg, oklch(0.165 0.012 250 / 0.80) 0%, oklch(0.165 0.012 250 / 0) 46%);}
+  .hero-inner{position:relative;z-index:2;width:100%;padding:72px 0;}
+  .hero .roofline{position:absolute;left:0;right:0;bottom:0;z-index:3;}
+  .hero-copy{max-width:43rem;}
   .eyebrow{
     display:inline-flex;align-items:center;gap:10px;
     font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
@@ -190,44 +192,7 @@
   .proof-item b{color:var(--stone-50);font-weight:700;}
   .stars{color:oklch(0.80 0.13 70);letter-spacing:2px;font-size:1.02rem;}
 
-  /* hero visual — CSS rooftop scene, no stock photo */
-  .hero-art{position:relative;height:340px;display:none;}
-  .roof-card{
-    position:absolute;border-radius:8px;box-shadow:var(--shadow-card);overflow:hidden;
-  }
-  .rc-main{
-    inset:0;background:var(--stone-50);border:1px solid oklch(0.985 0.006 70 / 0.5);
-    display:flex;flex-direction:column;
-  }
-  .rc-sky{flex:1;position:relative;background:linear-gradient(180deg, oklch(0.86 0.05 60) 0%, oklch(0.94 0.03 70) 100%);overflow:hidden;}
-  .rc-roof{
-    position:absolute;bottom:0;left:-4%;width:108%;height:62%;
-    background:var(--slate-800);
-    clip-path:polygon(50% 0, 100% 58%, 100% 100%, 0 100%, 0 58%);
-  }
-  .rc-roof::before{
-    content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(90deg, oklch(0.985 0.006 70 / 0.07) 0 1px, transparent 1px 22px),
-               repeating-linear-gradient(0deg, oklch(0.255 0.018 250 / 0.55) 0 1px, transparent 1px 18px);
-  }
-  .rc-sun{position:absolute;top:22px;right:34px;width:54px;height:54px;border-radius:50%;background:oklch(0.84 0.13 68);box-shadow:0 0 48px oklch(0.84 0.13 68 / 0.6);}
-  .rc-base{height:34px;background:var(--stone-200);display:flex;align-items:center;padding:0 16px;gap:8px;}
-  .rc-base .swatch{width:26px;height:14px;border-radius:3px;}
-  .rc-badge{
-    position:absolute;background:var(--stone-50);border:1px solid var(--clay-line);
-    border-radius:8px;padding:12px 16px;box-shadow:var(--shadow-card);
-  }
-  .rc-license{bottom:-22px;left:-26px;display:flex;align-items:center;gap:12px;}
-  .rc-license .seal{
-    width:40px;height:40px;border-radius:50%;background:var(--clay-tint);border:2px solid var(--clay);
-    display:flex;align-items:center;justify-content:center;font-family:"Zilla Slab",serif;font-weight:700;color:var(--clay-deep);font-size:.82rem;flex:none;
-  }
-  .rc-license .lt b{display:block;font-family:"Zilla Slab",serif;color:var(--slate-900);font-size:.96rem;line-height:1.1;}
-  .rc-license .lt span{font-size:.72rem;color:var(--ink-soft);letter-spacing:.04em;}
-  .rc-rating{top:-20px;right:-18px;text-align:center;}
-  .rc-rating .num{font-family:"Zilla Slab",serif;font-weight:700;font-size:1.5rem;color:var(--slate-900);line-height:1;}
-  .rc-rating .st{color:oklch(0.74 0.13 68);letter-spacing:1px;font-size:.82rem;margin:2px 0;}
-  .rc-rating .src{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;}
+  /* legacy CSS hero-art removed — replaced by cinematic seamless video hero */
 
   /* ---------- section frame ---------- */
   section{padding:74px 0;}
@@ -394,6 +359,16 @@
   .tx-flat-roof-after{background-image:var(--grain-fine),repeating-linear-gradient(180deg,rgba(255,255,255,.22) 0 1px,transparent 1px 79px,rgba(0,0,0,.14) 79px 81px),repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 120px),linear-gradient(160deg,#d4d8d6,#c5c9c7 50%,#bfc3c1);background-size:150px 150px,100% 81px,120px 100%,cover;background-blend-mode:overlay,normal,normal,normal;}
   .tx-flat-roof-before{background-image:var(--grain-soft),radial-gradient(55% 38% at 38% 62%,rgba(40,55,80,.65),transparent 58%),radial-gradient(40% 28% at 72% 38%,rgba(35,50,75,.55),transparent 60%),repeating-linear-gradient(175deg,rgba(200,215,225,.18) 0 1px,transparent 1px 38px),repeating-linear-gradient(180deg,rgba(255,255,255,.12) 0 1px,transparent 1px 79px,rgba(0,0,0,.18) 79px 81px),linear-gradient(160deg,#a8acaa,#959998 50%,#8e9290);background-size:220px 220px,cover,cover,38px 100%,100% 81px,cover;background-blend-mode:overlay,multiply,multiply,normal,normal,normal;filter:saturate(.72) brightness(.92);}
 
+  /* ---------- promo ad band ---------- */
+  .promo{background:var(--slate-900);color:var(--stone-50);}
+  .promo-grid{display:grid;grid-template-columns:1fr;gap:32px;align-items:center;}
+  .promo .kicker{color:var(--clay-line);}
+  .promo h2{font-size:clamp(1.8rem,4.2vw,2.5rem);color:var(--stone-50);margin-bottom:14px;}
+  .promo p{color:var(--slate-300);font-size:1.06rem;margin-bottom:24px;max-width:34em;}
+  .promo-figure{margin:0;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.42);border:1px solid oklch(0.985 0.006 70 / 0.10);max-width:420px;justify-self:center;}
+  .promo-figure img{display:block;width:100%;height:auto;}
+  @media(min-width:768px){.promo-grid{grid-template-columns:1.05fr 0.95fr;gap:48px;}.promo-figure{justify-self:end;}}
+
   /* ===== BR page switcher — collapsed up-arrow that expands on hover / focus / tap ===== */
   .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
   .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
@@ -440,6 +415,8 @@
   .foot-bottom{display:flex;flex-direction:column;gap:8px;padding-top:22px;font-size:.82rem;color:var(--slate-500);}
   .foot-bottom .pwr{color:var(--slate-500);}
   .foot-bottom .pwr b{color:var(--slate-300);font-weight:600;}
+  .foot-bottom a:not(.br-portal-foot){color:var(--slate-300);border-bottom:1px solid var(--hairline);transition:color .15s,border-color .15s;}
+  .foot-bottom a:not(.br-portal-foot):hover{color:var(--stone-50);border-color:var(--clay-line);}
 
   /* ---------- sticky mobile CTA ---------- */
   .mobile-cta{
@@ -466,9 +443,7 @@
     .nav-links{display:flex;}
     .nav-phone{display:flex;}
     .roofline{height:46px;}
-    .hero{padding:84px 0 0;}
-    .hero-grid{grid-template-columns:1.08fr 0.92fr;gap:50px;}
-    .hero-art{display:block;}
+    .hero-inner{padding:92px 0;}
     .svc-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
     .stat-row{grid-template-columns:repeat(4,1fr);}
     .cred-grid{grid-template-columns:repeat(2,1fr);}
@@ -481,6 +456,19 @@
   }
   @media (min-width:1000px){
     .svc-grid{grid-template-columns:repeat(3,1fr);}
+  }
+  /* ---------- mobile hero hardening (desktop untouched) ---------- */
+  @media (max-width:768px){
+    .hero{min-height:clamp(470px,76vh,600px);}
+    .hero-bg{object-position:50% 56%;}
+    .hero-inner{padding:38px 0 46px;}
+    .hero-scrim{background:
+      linear-gradient(0deg, oklch(0.150 0.012 250 / 0.90) 0%, oklch(0.150 0.012 250 / 0.50) 48%, oklch(0.150 0.012 250 / 0.16) 100%),
+      linear-gradient(90deg, oklch(0.205 0.018 250 / 0.55), transparent 76%);}
+    .hero .eyebrow{font-size:.64rem;letter-spacing:.07em;flex-wrap:wrap;margin-bottom:16px;}
+    .hero h1{max-width:18ch;}
+    .hero .sub{font-size:1.05rem;}
+    .promo-figure{max-width:340px;}
   }
 
   /* ---------- theme toggle button ---------- */
@@ -619,11 +607,7 @@
 <header class="site">
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Di Rock General Contracting and Roofing home">
-      <span class="mark" aria-hidden="true"></span>
-      <span class="brand-txt">
-        <span class="b1">Di Rock</span>
-        <span class="b2">Contracting &amp; Roofing</span>
-      </span>
+      <img class="brand-logo" src="/round-1/di-rock-roofing/media/logo.svg" alt="Di Rock General Contracting &amp; Roofing" width="260" height="101">
     </a>
     <nav class="nav-right" aria-label="Primary">
       <div class="nav-links">
@@ -643,13 +627,17 @@
 
 <main id="top">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO (cinematic seamless video) ============ -->
   <section class="hero" id="hero">
-    <div class="wrap hero-grid">
+    <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/di-rock-roofing/media/hero-poster.jpg" aria-hidden="true">
+      <source src="/round-1/di-rock-roofing/media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
       <div class="hero-copy">
         <span class="eyebrow"><span class="dot"></span>Family-owned in Rancho Santa Margarita</span>
         <div class="hero-badges">
-          <span class="pill"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Yelp</span>
+          <span class="pill"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 on Google · 61 reviews</span>
           <span class="pill"><span class="stars" aria-hidden="true">★★★★★</span> 4.9 on Angi</span>
           <span class="pill"><span class="dot"></span> CSLB #943051</span>
         </div>
@@ -667,32 +655,7 @@
           <span class="proof-item">Serving South OC since <b>2009</b></span>
         </div>
       </div>
-
-      <div class="hero-art" aria-hidden="true">
-        <div class="roof-card rc-main">
-          <div class="rc-sky">
-            <span class="rc-sun"></span>
-            <div class="rc-roof"></div>
-          </div>
-          <div class="rc-base">
-            <span class="swatch" style="background:var(--clay)"></span>
-            <span class="swatch" style="background:var(--slate-700)"></span>
-            <span class="swatch" style="background:var(--slate-500)"></span>
-            <span class="swatch" style="background:oklch(0.62 0.07 45)"></span>
-          </div>
-        </div>
-        <div class="rc-badge rc-rating">
-          <div class="num">5.0</div>
-          <div class="st">★★★★★</div>
-          <div class="src">Yelp · 14 reviews</div>
-        </div>
-        <div class="rc-badge rc-license">
-          <span class="seal">B+<br>C39</span>
-          <span class="lt"><b>Licensed &amp; Insured</b><span>CSLB #943051</span></span>
-        </div>
-      </div>
     </div>
-
     <div class="roofline" aria-hidden="true">
       <svg viewBox="0 0 1200 46" preserveAspectRatio="none"><path d="M0,46 L0,30 L120,8 L240,30 L360,8 L480,30 L600,8 L720,30 L840,8 L960,30 L1080,8 L1200,30 L1200,46 Z" fill="oklch(0.985 0.006 70)"/></svg>
     </div>
@@ -773,6 +736,21 @@
     </div>
   </section>
 
+  <!-- ============ PROMO AD BAND ============ -->
+  <section class="promo" id="promo" aria-label="Di Rock roofing services overview">
+    <div class="wrap promo-grid">
+      <div class="promo-copy">
+        <span class="kicker">One crew, every roof</span>
+        <h2>From a single cracked tile to a full re-roof</h2>
+        <p>Tile, shingle, metal, and flat systems — installed, repaired, and inspected by the same licensed Di Rock crew. Straightforward bids, no surprises, and an owner who's on your roof.</p>
+        <a class="btn btn-clay" href="#contact" data-cta="promo-quote">Get a Free Estimate</a>
+      </div>
+      <figure class="promo-figure">
+        <img src="/round-1/di-rock-roofing/media/ad-services.png" width="1080" height="1350" loading="lazy" decoding="async" alt="Di Rock General Contracting &amp; Roofing — roofing South Orange County for 15 years; tile, shingle, TPO and EPDM systems; licensed, bonded and insured.">
+      </figure>
+    </div>
+  </section>
+
   <!-- ============ TRUST ============ -->
   <section class="trust" id="trust">
     <div class="roofline" style="margin-top:-74px;margin-bottom:74px;" aria-hidden="true">
@@ -787,9 +765,9 @@
 
       <div class="stat-row">
         <div class="stat">
-          <span class="big">5.0</span>
+          <span class="big">4.9</span>
           <span class="stars" aria-hidden="true" style="color:oklch(0.87 0.095 58);letter-spacing:2px;">★★★★★</span>
-          <span class="lbl">Yelp rating · 14 reviews</span>
+          <span class="lbl">Google rating · 61 reviews</span>
         </div>
         <div class="stat">
           <span class="big">15</span>
@@ -825,10 +803,10 @@
       </div>
 
       <figure class="owner">
-        <blockquote class="q">"Mark beat the other roofers' bids, showed up himself, and left the property spotless. Straightforward the whole way — exactly the roofer you hope to find."</blockquote>
+        <blockquote class="q">"I give every bid myself, I'm on the roof with my crew, and I leave your property cleaner than I found it. Three generations of my family built that way — I'm not about to stop."</blockquote>
         <figcaption class="who">
           <span class="avt" aria-hidden="true">M</span>
-          <span><b>Mark Di Rocco, Owner</b><span>Third-generation builder family · serving since 2009</span></span>
+          <span><b>Mark Di Rocco, Owner</b><span>Third-generation builder family · serving South OC since 2009</span></span>
         </figcaption>
       </figure>
     </div>
@@ -933,11 +911,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="#top" aria-label="Di Rock General Contracting and Roofing">
-          <span class="mark" aria-hidden="true"></span>
-          <span class="brand-txt">
-            <span class="b1" style="color:var(--stone-50)">Di Rock</span>
-            <span class="b2">Contracting &amp; Roofing</span>
-          </span>
+          <img class="brand-logo" src="/round-1/di-rock-roofing/media/logo.svg" alt="Di Rock General Contracting &amp; Roofing" width="300" height="117" style="height:52px;">
         </a>
         <p>Family-owned, locally operated roofing and general contracting in Rancho Santa Margarita. Licensed (CSLB #943051), bonded &amp; insured — straightforward bids and an owner who shows up.</p>
       </div>
@@ -965,7 +939,7 @@
     </div>
     <div class="foot-bottom">
       <a class="br-portal-foot" href="/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
-      <span>© 2026 Di Rock General Contracting &amp; Roofing. CSLB #943051. All rights reserved.</span>
+      <span>© 2026 Di Rock General Contracting &amp; Roofing. CSLB #943051. · <a href="/round-1/di-rock-roofing/privacy">Privacy</a> · <a href="/round-1/di-rock-roofing/terms">Terms</a></span>
       <span class="pwr">Powered by <b>Branch &amp; Root</b></span>
     </div>
   </div>
@@ -1033,6 +1007,7 @@
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}v.addEventListener('loadeddata',go);go();['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();</script>
 
 </body>
 </html>

@@ -87,7 +87,7 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
   body{
     margin:0;
     font-family:"Karla",system-ui,-apple-system,sans-serif;
@@ -96,6 +96,7 @@
     line-height:1.62;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
+    overflow-x:clip;
   }
   h1,h2,h3,.display{font-family:"Bitter",Georgia,serif;font-weight:700;line-height:1.12;letter-spacing:-0.01em;color:var(--ink);margin:0;}
   a{color:inherit;}
@@ -133,14 +134,10 @@
   .nav-links a{font-family:"Karla",sans-serif;font-weight:700;font-size:.88rem;color:var(--ink-soft);padding:.3rem .6rem;border-radius:8px;text-decoration:none;transition:color .15s,background-color .15s;}
   .nav-links a:hover{color:var(--ink);background:var(--sand-soft);}
   @media(min-width:960px){.nav-links{display:flex;}}
-  .brand-mark{
-    width:42px;height:42px;border-radius:10px;flex:none;position:relative;
-    background:var(--slate-deep);overflow:hidden;border:1px solid var(--slate-900);
-  }
-  .brand-mark::before{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;
-    background:repeating-linear-gradient(90deg,var(--sand-strong) 0 7px, var(--sand) 7px 14px);opacity:.92;}
-  .brand-mark::after{content:"";position:absolute;left:50%;top:9px;width:14px;height:14px;border-radius:50%;
-    transform:translateX(-50%);background:var(--sand-soft);box-shadow:0 0 0 3px rgba(255,255,255,.15);}
+  /* Square logo (name baked in) — sized by height. Header is light, so no chip. */
+  .brand-logo{height:48px;width:auto;display:block;}
+  /* Footer band is dark slate — wrap the same logo in a white rounded chip so it reads. */
+  .foot-brand .brand-logo{height:46px;background:#fff;padding:5px 8px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.28);}
   .brand-name{font-family:"Bitter",serif;font-weight:800;font-size:1.07rem;color:var(--ink);line-height:1.08;letter-spacing:-.01em;}
   .brand-sub{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:700;}
   .topbar-cta{display:flex;align-items:center;gap:14px;}
@@ -148,18 +145,23 @@
   .topbar-phone span.k{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;}
   @media(max-width:768px){ .topbar-phone .num{display:none;} .topbar .btn{display:none;} }
 
-  /* ---------- Hero ---------- */
-  .hero{position:relative;background:var(--slate-deep);color:var(--on-dark);overflow:hidden;}
-  /* Subtle geometric mesh replaces radial blob washes — no orbs */
-  .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
-    background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 52px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 52px),
-      linear-gradient(145deg, oklch(0.30 0.065 248) 0%, oklch(0.24 0.055 248) 50%, oklch(0.20 0.045 252) 100%);
-    -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
-    mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
-  .wave{position:absolute;left:0;right:0;bottom:-1px;height:64px;width:100%;display:block;}
-  .hero-grid{position:relative;display:grid;grid-template-columns:1.18fr .82fr;gap:54px;align-items:center;padding:64px 0 92px;}
+  /* ---------- Hero (cinematic full-bleed seamless video) ---------- */
+  .hero{
+    position:relative;color:var(--on-dark);
+    background:var(--slate-deep);
+    min-height:clamp(560px,82vh,760px);
+    display:flex;align-items:center;
+    overflow:hidden;isolation:isolate;
+  }
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;z-index:0;}
+  /* Dark scrim: footage is BRIGHT (white kitchen/laundry) — heavy left+bottom gradients
+     keep the light hero copy AA-readable. */
+  .hero-scrim{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(90deg, oklch(0.16 0.035 250 / 0.92) 0%, oklch(0.16 0.035 250 / 0.80) 34%, oklch(0.16 0.035 250 / 0.42) 64%, oklch(0.16 0.035 250 / 0.10) 100%),
+    linear-gradient(0deg, oklch(0.14 0.030 252 / 0.86) 0%, oklch(0.14 0.030 252 / 0) 50%);}
+  .hero-inner{position:relative;z-index:2;width:100%;padding:72px 0;}
+  .hero-copy{max-width:43rem;}
+  .wave{position:absolute;left:0;right:0;bottom:-1px;height:64px;width:100%;display:block;z-index:3;}
   /* Hero badges — flat inline row (no pill background/border/radius) */
   .hero-badges{display:inline-flex;flex-wrap:wrap;gap:.4rem 1.5rem;align-items:center;margin-bottom:1.2rem;font-size:.88rem;font-weight:600;color:var(--on-dark-mut);}
   .pill{display:inline-flex;align-items:center;gap:.4rem;}
@@ -170,6 +172,7 @@
   .hero h1{font-size:clamp(1.7rem,3.7vw,2.45rem);color:var(--on-dark);max-width:20ch;}
   .hero h1 .accent{color:var(--sand);}
   .hero-sub{font-size:1.16rem;color:var(--on-dark-mut);margin:22px 0 14px;max-width:46ch;line-height:1.6;}
+  .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;}
   .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;}
   .hero-assure{display:flex;flex-wrap:wrap;gap:18px 24px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);}
   .assure{display:flex;align-items:center;gap:10px;font-size:.95rem;color:var(--on-dark-mut);font-weight:500;}
@@ -256,6 +259,21 @@
   .proof-foot{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:center;text-align:center;color:var(--on-dark-mut);font-size:.95rem;}
   .proof-foot b{color:var(--on-dark);}
 
+  /* ---------- Promo ad band ---------- */
+  .promo{background:var(--slate-deep);color:var(--on-dark);}
+  .promo .kicker{color:var(--sand);}
+  .promo .kicker::before{background:var(--sand-strong);}
+  .promo-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:center;}
+  .promo h2{color:var(--on-dark);font-size:clamp(1.7rem,3vw,2.35rem);}
+  .promo p{color:var(--on-dark-mut);font-size:1.08rem;margin:14px 0 26px;max-width:34em;}
+  .promo .btn-primary{color:var(--slate-deep);}
+  .promo-figure{margin:0;border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.10);max-width:420px;justify-self:center;}
+  .promo-figure img{display:block;width:100%;height:auto;}
+  .promo-call{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-family:"Bitter",serif;font-weight:800;font-size:1.3rem;color:var(--on-dark);text-decoration:none;}
+  .promo-call:hover{color:var(--sand);}
+  .promo-call .k{display:block;font-family:"Karla",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);}
+  @media(min-width:768px){.promo-grid{grid-template-columns:1.05fr 0.95fr;gap:48px;}.promo-figure{justify-self:end;}}
+
   /* ---------- Contact ---------- */
   .contact{background:var(--paper-2);}
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
@@ -307,6 +325,8 @@
   .foot-phone{font-family:"Bitter",serif;font-weight:800;font-size:1.35rem;color:var(--on-dark);}
   .foot-bar{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;}
   .foot-bar .cpy{font-size:.9rem;color:var(--on-dark-mut);}
+  .foot-bar .cpy a{color:var(--on-dark);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.28);transition:color .15s,border-color .15s;}
+  .foot-bar .cpy a:hover{color:var(--sand);border-color:var(--sand);}
   .foot-bar .pwr{font-size:.82rem;color:oklch(0.66 0.02 235);}
 
   /* ---------- Sticky mobile CTA ---------- */
@@ -330,12 +350,23 @@
     .foot-grid{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:768px){
-    .hero-grid{grid-template-columns:1fr;gap:36px;padding:44px 0 70px;}
+    /* ----- mobile hero hardening (desktop untouched) ----- */
+    .hero{min-height:clamp(460px,74vh,600px);}
+    .hero-bg{object-position:50% 50%;}
+    .hero-inner{padding:38px 0 46px;}
+    /* stronger bottom-weighted scrim so light copy stays AA over bright footage */
+    .hero-scrim{background:
+      linear-gradient(0deg, oklch(0.12 0.030 252 / 0.93) 0%, oklch(0.12 0.030 252 / 0.82) 50%, oklch(0.12 0.030 252 / 0.70) 100%),
+      linear-gradient(90deg, oklch(0.16 0.035 250 / 0.30), transparent 92%);}
+    .hero-grid{grid-template-columns:1fr;gap:30px;}
+    .hero-badges{font-size:.64rem;letter-spacing:.04em;gap:.35rem .9rem;flex-wrap:wrap;margin-bottom:1rem;}
+    .hero h1{max-width:none;}
     .contact-grid{grid-template-columns:1fr;gap:28px;}
     .svc-row{grid-template-columns:60px 1fr;gap:16px;padding:20px 18px;}
     .svc-tag,.svc-arrow{display:none;}
     .svc-num{width:54px;height:54px;font-size:1.3rem;}
     section{padding:56px 0;}
+    .promo-figure{max-width:340px;}
     .foot-grid{grid-template-columns:1fr;gap:26px;}
     .foot-bar{justify-content:flex-start;}
   }
@@ -406,12 +437,7 @@
       --shadow:     0 1px 2px rgba(0,0,0,.40), 0 10px 28px rgba(0,0,0,.50);
     }
     :root:not([data-theme="light"]) body{background:oklch(0.160 0.028 248);}
-    :root:not([data-theme="light"]) .hero::before{background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
-      linear-gradient(145deg, oklch(0.22 0.050 248) 0%, oklch(0.17 0.040 250) 50%, oklch(0.14 0.032 252) 100%);
-    -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
-    mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
+    :root:not([data-theme="light"]) .hero{background:oklch(0.155 0.030 250);}
     :root:not([data-theme="light"]) .wave path{fill:oklch(0.190 0.028 248);}
     :root:not([data-theme="light"]) .trustcard{box-shadow:0 24px 60px rgba(0,0,0,.55);}
     :root:not([data-theme="light"]) .formcard{box-shadow:0 18px 48px rgba(0,0,0,.50);}
@@ -447,12 +473,7 @@
     --shadow:     0 1px 2px rgba(0,0,0,.40), 0 10px 28px rgba(0,0,0,.50);
   }
   :root[data-theme="dark"] body{background:oklch(0.160 0.028 248);}
-  :root[data-theme="dark"] .hero::before{background:
-    repeating-linear-gradient(0deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.022) 0 1px, transparent 1px 52px),
-    linear-gradient(145deg, oklch(0.22 0.050 248) 0%, oklch(0.17 0.040 250) 50%, oklch(0.14 0.032 252) 100%);
-  -webkit-mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);
-  mask:radial-gradient(ellipse 110% 100% at 55% 40%, black 30%, transparent 95%);}
+  :root[data-theme="dark"] .hero{background:oklch(0.155 0.030 250);}
   :root[data-theme="dark"] .wave path{fill:oklch(0.190 0.028 248);}
   :root[data-theme="dark"] .trustcard{box-shadow:0 24px 60px rgba(0,0,0,.55);}
   :root[data-theme="dark"] .formcard{box-shadow:0 18px 48px rgba(0,0,0,.50);}
@@ -475,11 +496,7 @@
 <header class="topbar">
   <div class="topbar-inner">
     <a class="brand" href="#top" aria-label="Appliance Care of San Clemente home">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span>
-        <span class="brand-name">Appliance Care</span><br>
-        <span class="brand-sub">of San Clemente</span>
-      </span>
+      <img class="brand-logo" src="/round-1/appliance-care-of-san-clemente/media/logo.png" alt="Appliance Care of San Clemente" width="200" height="200" decoding="async">
     </a>
     <nav aria-label="Page sections">
       <ul class="nav-links">
@@ -501,9 +518,13 @@
 
 <main id="top">
 
-  <!-- ===== Hero ===== -->
-  <section class="hero" aria-labelledby="hero-h" style="padding:0;">
-    <div class="wrap">
+  <!-- ===== Hero (cinematic full-bleed seamless video) ===== -->
+  <section class="hero" id="hero" aria-labelledby="hero-h">
+    <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/appliance-care-of-san-clemente/media/hero-poster.jpg" aria-hidden="true">
+      <source src="/round-1/appliance-care-of-san-clemente/media/hero.mp4" type="video/mp4">
+    </video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
       <div class="hero-grid">
         <div class="hero-copy">
           <div class="hero-badges">
@@ -532,7 +553,7 @@
               <small>Perfect score</small>
             </div>
           </div>
-          <p class="tc-source">Across <strong>97 Yelp reviews</strong> &amp; 17 Google reviews</p>
+          <p class="tc-source">Across <strong>97 Yelp reviews</strong> &amp; 16 Google reviews</p>
           <div class="tc-divide"></div>
           <div class="tc-stats">
             <div class="tc-stat"><div class="big">33<span style="font-size:1rem;">yrs</span></div><div class="lbl">Serving San Clemente</div></div>
@@ -642,7 +663,7 @@
       <div class="sec-head">
         <span class="kicker">In their own words</span>
         <h2 id="rev-h">A 5.0-star reputation, earned one home at a time</h2>
-        <p>Recurring themes from 97 Yelp and 17 Google reviews — both averaging a perfect 5.0.</p>
+        <p>Recurring themes from 97 Yelp and 16 Google reviews — both averaging a perfect 5.0.</p>
       </div>
       <div class="quotes">
         <figure class="quote">
@@ -663,8 +684,26 @@
       </div>
       <div class="proof-foot">
         <span><b>5.0</b> stars on Yelp <b>(97 reviews)</b></span>
-        <span><b>5.0</b> stars on Google <b>(17 reviews)</b></span>
+        <span><b>5.0</b> stars on Google <b>(16 reviews)</b></span>
         <span>Rob &amp; Dane Flowers, named again and again</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Promo ad band ===== -->
+  <section class="promo" aria-labelledby="promo-h">
+    <div class="wrap">
+      <div class="promo-grid">
+        <div class="promo-copy">
+          <span class="kicker">Repaired, not replaced</span>
+          <h2 id="promo-h">San Clemente's appliance repair pros — for 33 years</h2>
+          <p>Washers, dryers, refrigerators, ovens, dishwashers and more — factory-experienced on Whirlpool, Maytag, GE, Speed Queen, Amana, Roper, Hotpoint &amp; KitchenAid. One honest father-and-son crew, 5.0 stars across 97 Yelp reviews.</p>
+          <a class="btn btn-primary btn-lg" href="#contact">Book a repair</a>
+          <a class="promo-call" href="tel:+19494921225"><span><span class="k">Call the shop</span>(949) 492-1225</span></a>
+        </div>
+        <figure class="promo-figure">
+          <img src="/round-1/appliance-care-of-san-clemente/media/ad-services.png" width="1080" height="1350" loading="lazy" decoding="async" alt="Appliance Care of San Clemente — washer, dryer, refrigerator, oven, dishwasher repair">
+        </figure>
       </div>
     </div>
   </section>
@@ -746,8 +785,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="brand" href="#top" aria-label="Appliance Care of San Clemente home">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-name">Appliance Care of San Clemente</span>
+          <img class="brand-logo" src="/round-1/appliance-care-of-san-clemente/media/logo.png" alt="Appliance Care of San Clemente" width="200" height="200" loading="lazy" decoding="async">
         </a>
         <p>The father-and-son appliance repair team San Clemente has trusted since 1993. Honest work, fair prices, done right.</p>
       </div>
@@ -768,7 +806,7 @@
     </div>
     <div class="foot-bar">
       <a class="br-portal-foot" href="/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
-      <span class="cpy">© 2026 Appliance Care of San Clemente. All rights reserved.</span>
+      <span class="cpy">© 2026 Appliance Care of San Clemente. All rights reserved. · <a href="/round-1/appliance-care-of-san-clemente/privacy">Privacy</a> · <a href="/round-1/appliance-care-of-san-clemente/terms">Terms</a></span>
       <span class="pwr">Powered by Branch &amp; Root</span>
     </div>
   </div>
@@ -834,5 +872,6 @@
 </script>
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}v.addEventListener('loadeddata',go);go();['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();</script>
 </body>
 </html>
