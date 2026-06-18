@@ -205,6 +205,14 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 .org-card{background:#15181c;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
 .org-frame{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--dark2);}
 .org-frame img,.org-frame video{width:100%;height:100%;object-fit:cover;display:block;}
+.igc-track{position:absolute;inset:0;display:flex;height:100%;transition:transform .35s ease;cursor:pointer;}
+.igc-track img{min-width:100%;width:100%;height:100%;object-fit:cover;display:block;}
+.igc-arw{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:30px;height:30px;border-radius:50%;border:none;background:rgba(0,0,0,.5);color:#fff;font-size:1.15rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.igc-arw:hover{background:rgba(0,0,0,.78);}
+.igc-prev{left:8px;}.igc-next{right:8px;}
+.igc-dots{position:absolute;top:11px;left:50%;transform:translateX(-50%);z-index:4;display:flex;gap:5px;}
+.igc-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);display:block;transition:background .2s;}
+.igc-dots i.on{background:#fff;}
 .org-frame .org-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,transparent 52%);}
 .org-frame .org-badge{position:absolute;top:11px;left:11px;font-size:.58rem;font-weight:700;letter-spacing:1.2px;
   text-transform:uppercase;padding:5px 9px;border-radius:5px;font-family:'Poppins',sans-serif;
@@ -632,10 +640,18 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 
       <!-- 3: Carousel · Education -->
       <div class="org-card">
-        <div class="org-frame">
-          <img src="/round-1/oc-dents/media/svc-complex.jpg" alt="Bodyline crease being assessed for paintless repair" onerror="this.closest('.org-card')&&(this.style.opacity=0)">
+        <div class="org-frame" data-igc>
+          <div class="igc-track">
+            <img src="/round-1/oc-dents/media/svc-complex.jpg" alt="A bodyline crease — the kind of complex dent PDR fixes">
+            <img src="/round-1/oc-dents/media/svc-ding.jpg" alt="A single door ding before repair">
+            <img src="/round-1/oc-dents/media/ba-before.jpg" alt="Before — a dent distorting the reflection lines">
+            <img src="/round-1/oc-dents/media/ba-after.jpg" alt="After — factory-smooth, reflection lines straight">
+          </div>
           <div class="org-scrim" aria-hidden="true"></div>
           <span class="org-badge">Carousel · Education</span>
+          <button class="igc-arw igc-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+          <button class="igc-arw igc-next" type="button" aria-label="Next image">&rsaquo;</button>
+          <div class="igc-dots" aria-hidden="true"></div>
         </div>
         <div class="org-foot">
           <div class="org-cap">Dent vs. paint: what paintless repair can (and can&rsquo;t) fix. Swipe →  <span class="tag">#cartips #orangecounty #pdr</span></div>
@@ -888,6 +904,26 @@ updateUI();
 
 <!-- ── BR switcher toggle (from OC Dents pages) ── -->
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>
+/* IG-style carousel: clickable next/prev, dots, tap-to-advance, swipe. */
+(function(){
+  document.querySelectorAll('[data-igc]').forEach(function(c){
+    var track=c.querySelector('.igc-track'); if(!track) return;
+    var imgs=track.querySelectorAll('img'); var n=imgs.length; if(n<2) return;
+    var dots=c.querySelector('.igc-dots'); var i=0;
+    if(dots){ for(var k=0;k<n;k++){ var d=document.createElement('i'); if(k===0) d.className='on'; dots.appendChild(d); } }
+    function go(x){ i=(x+n)%n; track.style.transform='translateX(-'+(i*100)+'%)'; if(dots){ [].forEach.call(dots.children,function(el,j){ el.className=(j===i?'on':''); }); } }
+    var prev=c.querySelector('.igc-prev'), next=c.querySelector('.igc-next');
+    if(prev) prev.addEventListener('click',function(e){ e.stopPropagation(); go(i-1); });
+    if(next) next.addEventListener('click',function(e){ e.stopPropagation(); go(i+1); });
+    if(dots) dots.addEventListener('click',function(e){ var t=[].indexOf.call(dots.children,e.target); if(t>=0){ e.stopPropagation(); go(t); } });
+    track.addEventListener('click',function(e){ e.stopPropagation(); go(i+1); });
+    var sx=null;
+    c.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+    c.addEventListener('touchend',function(e){ if(sx==null) return; var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>30) go(dx<0?i+1:i-1); sx=null; },{passive:true});
+  });
+})();
+</script>
 <script>
 /* Reels: play the active slide's reel videos when they become visible, pause when hidden. */
 (function(){
