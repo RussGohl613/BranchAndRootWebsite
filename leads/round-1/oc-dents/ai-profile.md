@@ -225,6 +225,12 @@ Animate this still: the striped reflection board slides slowly across the glossy
 Animate this still: subtle, slow motion of the PDR rod working behind the panel and a tiny tap-knockdown on the surface, the metal easing back to smooth. Quiet, meditative, macro feel, soft natural light. Photoreal, minimal motion. 8–12s, vertical 9:16.
 ```
 
+**B4 — UGC montage reel (vertical, authentic "trades creator" style)**
+> Style ref: trades-creator UGC montage (mixed real settings, natural daylight, handheld) — borrow the *ideas*, not the content. Build per-scene stills, image-to-video each, assemble.
+```
+20–40s vertical 9:16 montage of quick, real-feel handheld clips — NOT studio-polished. Cut between: Mark's branded work truck pulling into / parked at an Orange County home; Mark (bald, short gray beard, ~6'2", dark hoodie) walking up to a [relatable vehicle — Tesla Model 3/Y, Toyota Tacoma/4Runner/RAV4, Honda Civic/CR-V, Ford F-150, Rivian R1T] and eyeing the dent; over-the-shoulder + macro of the reflection board + PDR rod working the panel; the dent easing smooth; a clean before/after reveal; Mark nodding / handing keys back. Natural OC daylight or golden hour, real driveways. Overlay BOLD WHITE caption bars (black text, centered, CapCut/TikTok style) that build a story line by line, e.g. "That dent's been bugging you for weeks." → "Skip the body shop." → "No repaint. No filler." → "We come to you." → "OC Dents · 5.0★ · (949) 763-3890". End on the result + logo. Use Mark's uploaded photo as the character reference and his uploaded truck as the vehicle reference.
+```
+
 ### (c) Canva — static ads
 > Brand kit: orange `#E07C40`, near-black `#181A1B`, white `#FFFFFF`, off-white `#E8E6E3`; fonts Manrope/Poppins (headlines), Inter (body). Place `logo.png` on a dark area.
 
