@@ -141,7 +141,9 @@
 
   /* ================= HERO — cinematic video ================= */
   .hero{position:relative;min-height:clamp(500px,72vh,680px);display:flex;align-items:center;overflow:hidden;background:var(--navy);isolation:isolate;}
-  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  .hero-video{position:absolute;inset:0;z-index:-2;}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .55s linear;}
+  .hero-bg.is-next{opacity:0;}
   /* Side-weighted scrim: anchors text on the LEFT, keeps the open horizon on the RIGHT visible.
      White text over the dark left band passes WCAG AA. */
   .hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
@@ -255,6 +257,18 @@
   }
 
   /* ================= THEMES band — honest social proof ================= */
+  /* ===== Showcase — South OC living ===== */
+  .showcase{background:var(--paper);}
+  .showcase h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:20ch;}
+  .showcase p{color:var(--ink-soft);font-size:1.1rem;margin:14px 0 26px;max-width:54ch;line-height:1.7;}
+  .showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .showcase figure{margin:0;min-width:0;}
+  .showcase img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);}
+  .showcase-hero{grid-column:1 / -1;}
+  .showcase-hero img{aspect-ratio:16/9;}
+  .showcase-cell img{aspect-ratio:4/3;}
+  @media(max-width:760px){.showcase-grid{grid-template-columns:1fr;}}
+
   .themes{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden;}
   .themes::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 80% 0%, rgba(201,147,58,.14), transparent 60%);}
   .themes .kicker{color:var(--gold-light);}
@@ -421,9 +435,14 @@
 
   <!-- ===== Hero — cinematic video ===== -->
   <section class="hero" aria-labelledby="hero-h">
-    <video class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/round-1/dan-blankenship/media/hero-poster.jpg" aria-hidden="true">
-      <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
-    </video>
+    <div class="hero-video" aria-hidden="true">
+      <video class="hero-bg" data-a autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/round-1/dan-blankenship/media/hero-poster.jpg">
+        <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
+      </video>
+      <video class="hero-bg is-next" data-b muted loop playsinline webkit-playsinline preload="metadata">
+        <source src="/round-1/dan-blankenship/media/hero.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="hero-scrim"></div>
     <div class="hero-inner">
       <div class="hero-content">
@@ -454,6 +473,26 @@
       <span class="locale-item">Lake Forest</span>
     </div>
   </div>
+
+  <!-- ===== Showcase — South OC living ===== -->
+  <section class="showcase" aria-labelledby="show-h">
+    <div class="wrap">
+      <span class="kicker">A sense of place</span>
+      <h2 id="show-h">Life in South Orange County</h2>
+      <p>From gated hillside estates to bright, open floor plans — a feel for the homes and neighborhoods Dan represents across South&nbsp;OC.</p>
+      <div class="showcase-grid">
+        <figure class="showcase-hero">
+          <img src="/round-1/dan-blankenship/media/home-exterior.jpg" width="1600" height="900" loading="lazy" alt="A modern South Orange County luxury home at golden hour" />
+        </figure>
+        <figure class="showcase-cell">
+          <img src="/round-1/dan-blankenship/media/home-interior.jpg" width="1000" height="750" loading="lazy" alt="A bright luxury kitchen and great room with a hillside view" />
+        </figure>
+        <figure class="showcase-cell">
+          <img src="/round-1/dan-blankenship/media/home-traditional.jpg" width="1000" height="750" loading="lazy" alt="A traditional Southern California luxury home with manicured landscaping" />
+        </figure>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== About — asymmetric editorial split ===== -->
   <section class="about" id="about" aria-labelledby="about-h">
@@ -806,9 +845,34 @@
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
 <script>
-(function(){var v=document.querySelector('.hero-bg');if(!v)return;function go(){var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}
-v.addEventListener('loadeddata',go);go();
-['touchstart','scroll','pointerdown'].forEach(function(ev){window.addEventListener(ev,function h(){go();window.removeEventListener(ev,h);},{passive:true});});})();
+/* Hero loop = dual-buffer crossfade. Two stacked <video> of the same clip: the idle layer
+   starts ~0.6s before the active one ends and we crossfade opacity, alternating. Hides both the
+   montage loop-seam and the Safari/iOS decode hitch. Native `loop` stays on as a no-JS fallback. */
+(function(){
+  var box=document.querySelector('.hero-video'); if(!box) return;
+  var a=box.querySelector('[data-a]'), b=box.querySelector('[data-b]');
+  function play(v){ if(!v) return; var p=v.play&&v.play(); if(p&&p.catch) p.catch(function(){}); }
+  if(!a||!b){ play(a||box.querySelector('.hero-bg')); return; }
+  var LAP=0.6, FADE=0.55, active=a, idle=b, swapping=false, primed=false;
+  function arm(){
+    active.addEventListener('timeupdate', function tick(){
+      var d=active.duration; if(!d||isNaN(d)) return;
+      if(!primed){ idle.preload='auto'; idle.load(); primed=true; }
+      if(swapping || active.currentTime < d-LAP) return;
+      swapping=true;
+      active.removeEventListener('timeupdate', tick);
+      idle.currentTime=0; play(idle);
+      idle.style.opacity=1; active.style.opacity=0;
+      var prev=active; active=idle; idle=prev;
+      setTimeout(function(){ idle.pause(); swapping=false; arm(); }, FADE*1000+80);
+    });
+  }
+  function start(){ play(active); arm(); }
+  if(a.readyState>=2){ start(); } else { a.addEventListener('loadeddata', start, {once:true}); }
+  ['touchstart','pointerdown','scroll'].forEach(function(ev){
+    window.addEventListener(ev, function h(){ play(active); window.removeEventListener(ev,h); }, {passive:true});
+  });
+})();
 </script>
 </body>
 </html>
