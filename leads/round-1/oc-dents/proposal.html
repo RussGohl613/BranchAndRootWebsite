@@ -169,35 +169,59 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 .pdef{margin:0 0 16px;font-size:.88rem;color:var(--muted);font-style:italic;line-height:1.55;
   background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 15px;}
 
-/* ── S7 ADS ── */
+/* ── S7 ADS — real Meta feed ad units ── */
 #s7{background:var(--dark);}
-.ads-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;}
-.ig-ad{background:#15181c;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
-.ig-head{display:flex;align-items:center;gap:9px;padding:11px 13px;}
-.ig-avatar{width:32px;height:32px;border-radius:50%;flex:none;
+.ads-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;}
+.ig-ad{background:#fff;border:1px solid rgba(255,255,255,.12);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;color:#1a1d21;}
+.ig-head{display:flex;align-items:center;gap:8px;padding:10px 11px 9px;}
+.ig-avatar{width:30px;height:30px;border-radius:50%;flex:none;overflow:hidden;
   background:linear-gradient(135deg,var(--orange),#9a4d1d);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Poppins',sans-serif;font-size:.66rem;font-weight:800;color:#fff;}
-.ig-name{font-size:.82rem;font-weight:700;color:#fff;line-height:1.1;}
-.ig-sub{font-size:.66rem;color:var(--muted);}
+  display:flex;align-items:center;justify-content:center;}
+.ig-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.ig-name{font-size:.8rem;font-weight:800;color:#1a1d21;line-height:1.15;}
+.ig-sub{font-size:.64rem;color:#65676b;}
+.ig-primary{font-size:.76rem;color:#1a1d21;line-height:1.5;padding:0 11px 9px;}
+.ig-primary strong{font-weight:700;}
 .ig-frame{position:relative;width:100%;aspect-ratio:1;overflow:hidden;background:var(--dark2);}
 .ig-frame img{width:100%;height:100%;object-fit:cover;display:block;}
-.ig-frame .ig-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,transparent 55%);}
-.ig-frame .ig-tagband{position:absolute;top:11px;left:11px;font-size:.6rem;font-weight:700;letter-spacing:1.5px;
-  text-transform:uppercase;padding:5px 10px;border-radius:5px;font-family:'Poppins',sans-serif;
-  background:rgba(13,17,23,.75);color:var(--orange2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
-.ig-frame .ig-baked{position:absolute;left:14px;right:14px;bottom:13px;}
-.ig-baked .bk-h{font-family:'Poppins',sans-serif;font-size:1rem;font-weight:800;color:#fff;line-height:1.2;text-shadow:0 1px 8px rgba(0,0,0,.6);}
-.ig-foot{padding:11px 13px 13px;display:flex;flex-direction:column;gap:9px;}
-.ig-cap{font-size:.78rem;color:var(--text);line-height:1.5;}
-.ig-cap strong{color:#fff;}
-.ig-cta{width:100%;background:var(--orange);color:#1a0e06;border:none;border-radius:7px;
-  padding:9px;font-size:.8rem;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;text-align:center;}
-.targeting{margin-top:22px;display:flex;gap:13px;align-items:flex-start;background:var(--card);
+.ig-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:#f0f2f5;padding:9px 11px;border-top:1px solid #e4e6eb;}
+.ig-bar .bk-h{font-family:'Inter',sans-serif;font-size:.72rem;font-weight:700;color:#1a1d21;line-height:1.25;}
+.ig-cta{flex:none;background:#e4e6eb;color:#1a1d21;border:1px solid #d0d3d8;border-radius:6px;
+  padding:7px 12px;font-size:.72rem;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;text-align:center;white-space:nowrap;}
+.ig-react{display:flex;align-items:center;justify-content:space-around;gap:6px;
+  padding:7px 8px;border-top:1px solid #e4e6eb;color:#65676b;}
+.ig-react .rx{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:600;}
+.ig-react svg{width:15px;height:15px;display:block;}
+.targeting{margin-top:20px;display:flex;gap:13px;align-items:flex-start;background:var(--card);
   border:1px dashed var(--border);border-radius:12px;padding:16px 20px;}
 .targeting .dia{width:11px;height:11px;flex:none;margin-top:5px;background:var(--orange);transform:rotate(45deg);}
 .targeting p{font-size:.92rem;color:var(--text);line-height:1.6;}
 .targeting b{color:#fff;}
+
+/* ── S7b ORGANIC content mockups ── */
+#s7b{background:var(--dark);}
+.org-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;width:100%;}
+.org-card{background:#15181c;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.org-frame{position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:var(--dark2);}
+.org-frame img{width:100%;height:100%;object-fit:cover;display:block;}
+.org-frame .org-scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,transparent 52%);}
+.org-frame .org-badge{position:absolute;top:11px;left:11px;font-size:.58rem;font-weight:700;letter-spacing:1.2px;
+  text-transform:uppercase;padding:5px 9px;border-radius:5px;font-family:'Poppins',sans-serif;
+  background:rgba(13,17,23,.8);color:var(--orange2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+.org-frame .org-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;background:rgba(13,17,23,.55);border:1.5px solid rgba(255,255,255,.85);
+  display:flex;align-items:center;justify-content:center;color:#fff;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+.org-frame .org-play svg{width:18px;height:18px;margin-left:2px;}
+.org-frame .org-overlay{position:absolute;left:13px;right:13px;bottom:12px;
+  font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;color:#fff;line-height:1.35;
+  font-style:italic;text-shadow:0 1px 8px rgba(0,0,0,.7);}
+.org-foot{padding:10px 12px 12px;display:flex;flex-direction:column;gap:9px;}
+.org-cap{font-size:.76rem;color:var(--text);line-height:1.5;}
+.org-cap .tag{display:inline;padding:0;background:none;color:var(--orange2);font-weight:600;font-size:.76rem;letter-spacing:0;}
+.org-react{display:flex;align-items:center;gap:14px;color:var(--muted);padding-top:2px;}
+.org-react svg{width:17px;height:17px;display:block;}
+.org-note{margin-top:20px;text-align:center;font-size:.92rem;color:var(--cream);font-style:italic;line-height:1.55;}
 
 /* ── S8 ROADMAP ── */
 #s8{background:linear-gradient(160deg,#0d1117,#191307);}
@@ -291,7 +315,7 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 
 @media(max-width:960px){
   .slide{padding:44px 26px 92px;}
-  .split2,.svc-layout,.grid2,.grid3,.ads-row,.provide-grid,.qa-grid,.team-grid,.invest-wrap{grid-template-columns:1fr;}
+  .split2,.svc-layout,.grid2,.grid3,.ads-row,.org-row,.provide-grid,.qa-grid,.team-grid,.invest-wrap{grid-template-columns:1fr;}
   .cover-inner,.close-inner{padding:44px 26px;}
   .h1{font-size:clamp(1.7rem,7vw,2.4rem);}
 }
@@ -367,7 +391,7 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
         <h3>The problem</h3>
         <div class="sub-h">Almost invisible online</div>
         <ul class="audit-list bad">
-          <li><b>A hacked website</b> — the homepage has hidden foreign-language casino-spam links injected into it (a compromised WordPress plugin) that can quietly suppress your rankings.</li>
+          <li><b>A hacked website</b> — the live homepage hides &mdash; off-screen via <code style="font-family:monospace;font-size:.85em;color:var(--gold);">position:absolute; left:-7296px</code> &mdash; a block of injected foreign-language online-casino links (e.g. online-casino-website.com, bestonlinecasinosegypt.com, novomaticcasinos.org). Invisible to visitors, but visible to Google &mdash; the signature of a compromised WordPress plugin. Your developer can confirm it in the page source in seconds. We remove it and harden the site in Phase 1.</li>
           <li><b>No local SEO</b> — no city landing pages, no schema, so the 5.0&#9733; reputation never shows up where drivers search.</li>
           <li><b>Sporadic social</b> — the before/afters that stop the scroll mostly stay on Mark&rsquo;s phone (337 IG followers).</li>
         </ul>
@@ -420,7 +444,7 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
         </ul>
       </div>
       <div class="svc-side">
-        <img class="svc-img" src="/round-1/oc-dents/media/show-hail.jpg" alt="Paintless dent repair work on an Orange County vehicle" style="aspect-ratio:4/3;" onerror="this.style.display='none'">
+        <img class="svc-img" src="/round-1/oc-dents/media/show-hail.jpg" alt="Paintless dent repair tools laid out beside a reflection board setup" style="aspect-ratio:4/3;" onerror="this.style.display='none'">
         <div class="goal-box">
           <div class="gl">The goal</div>
           <p>Top of the Google map pack for &ldquo;dent repair&rdquo; across the Orange County cities you serve — Aliso Viejo, Irvine, Mission Viejo, Newport Beach, Laguna Hills, and beyond.</p>
@@ -496,62 +520,157 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 
 <!-- ═══════════════ S7 META ADS ═══════════════ -->
 <div class="slide" id="s7">
-  <div style="width:100%;max-width:1000px;">
+  <div style="width:100%;max-width:1060px;">
     <div class="label">Pillar 04 &mdash; Paid</div>
     <h2 class="h2" style="margin-bottom:6px;">Meta ads that drive quotes.</h2>
-    <p class="sub" style="margin-bottom:24px;font-size:.95rem;">The same profile becomes scroll-stopping Instagram &amp; Facebook ads, geo-targeted across Orange County. Real creatives, built from your real work.</p>
+    <p class="sub" style="margin-bottom:22px;font-size:.95rem;">The same profile becomes scroll-stopping Instagram &amp; Facebook ads, geo-targeted across Orange County &mdash; real feed units, built from your real work.</p>
     <div class="ads-row">
 
-      <!-- AD 1: Before/after proof -->
+      <!-- AD 1: Before/After PDR -->
       <div class="ig-ad">
-        <div class="ig-head"><div class="ig-avatar">OC</div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
-        <div class="ig-frame">
-          <img src="/round-1/oc-dents/media/ba-after.jpg" alt="Dent removed — factory finish kept" onerror="this.style.display='none'">
-          <div class="ig-scrim" aria-hidden="true"></div>
-          <span class="ig-tagband">Before / After</span>
-          <div class="ig-baked"><div class="bk-h">Dents gone.<br>Factory finish kept.</div></div>
-        </div>
-        <div class="ig-foot">
-          <div class="ig-cap">Mobile paintless dent repair, anywhere in OC. <strong>No paint, no filler, often under an hour.</strong></div>
-          <div class="ig-cta">Get a free quote</div>
+        <div class="ig-head"><div class="ig-avatar"><img src="/round-1/oc-dents/media/logo.png" alt="" onerror="this.closest('.ig-avatar')&&(this.style.opacity=0)"></div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
+        <div class="ig-primary">That door ding? Gone — and your factory paint never left the car.</div>
+        <div class="ig-frame"><img src="/round-1/oc-dents/media/ba-after.jpg" alt="After paintless dent repair — door ding removed, factory paint intact" onerror="this.closest('.ig-ad')&&(this.style.opacity=0)"></div>
+        <div class="ig-bar"><div class="bk-h">Free photo quote</div><div class="ig-cta">Get quote</div></div>
+        <div class="ig-react">
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zM7 11l4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 18 20H7"/></svg>Like</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>Comment</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8M16 6l-4-4-4 4M12 2v14"/></svg>Share</span>
         </div>
       </div>
 
-      <!-- AD 2: Trust / owner -->
+      <!-- AD 2: Hail -->
       <div class="ig-ad">
-        <div class="ig-head"><div class="ig-avatar">OC</div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
-        <div class="ig-frame">
-          <img src="/round-1/oc-dents/media/show-luxury.jpg" alt="Luxury vehicle restored by OC Dents" onerror="this.style.display='none'">
-          <div class="ig-scrim" aria-hidden="true"></div>
-          <span class="ig-tagband">Trust</span>
-          <div class="ig-baked"><div class="bk-h">25 years. 5.0&#9733;.<br>We come to you.</div></div>
-        </div>
-        <div class="ig-foot">
-          <div class="ig-cap">The owner does every job himself — luxury and daily drivers alike. <strong>Orange County since 2001.</strong></div>
-          <div class="ig-cta">Message for a quote</div>
+        <div class="ig-head"><div class="ig-avatar"><img src="/round-1/oc-dents/media/logo.png" alt="" onerror="this.closest('.ig-avatar')&&(this.style.opacity=0)"></div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
+        <div class="ig-primary">Hail dimples on the roof? We come to you and pull them — paintless.</div>
+        <div class="ig-frame"><img src="/round-1/oc-dents/media/svc-hail.jpg" alt="Hail dimples across a vehicle panel" onerror="this.closest('.ig-ad')&&(this.style.opacity=0)"></div>
+        <div class="ig-bar"><div class="bk-h">Mobile hail repair · all of OC</div><div class="ig-cta">Message us</div></div>
+        <div class="ig-react">
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zM7 11l4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 18 20H7"/></svg>Like</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>Comment</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8M16 6l-4-4-4 4M12 2v14"/></svg>Share</span>
         </div>
       </div>
 
-      <!-- AD 3: Offer / retarget -->
+      <!-- AD 3: Bumper / Ding -->
       <div class="ig-ad">
-        <div class="ig-head"><div class="ig-avatar">OC</div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
-        <div class="ig-frame">
-          <img src="/round-1/oc-dents/media/ad-oc.png" alt="Text a photo, get a price" onerror="this.style.display='none'">
-          <div class="ig-scrim" aria-hidden="true"></div>
-          <span class="ig-tagband">Offer</span>
-          <div class="ig-baked"><div class="bk-h">Text a photo,<br>get a price.</div></div>
+        <div class="ig-head"><div class="ig-avatar"><img src="/round-1/oc-dents/media/logo.png" alt="" onerror="this.closest('.ig-avatar')&&(this.style.opacity=0)"></div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
+        <div class="ig-primary">Bumper dents &amp; door dings fixed in your driveway, usually under an hour.</div>
+        <div class="ig-frame"><img src="/round-1/oc-dents/media/show-bumper.jpg" alt="Bumper dent repaired on a vehicle in a driveway" onerror="this.closest('.ig-ad')&&(this.style.opacity=0)"></div>
+        <div class="ig-bar"><div class="bk-h">Same-day mobile PDR</div><div class="ig-cta">Book now</div></div>
+        <div class="ig-react">
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zM7 11l4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 18 20H7"/></svg>Like</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>Comment</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8M16 6l-4-4-4 4M12 2v14"/></svg>Share</span>
         </div>
-        <div class="ig-foot">
-          <div class="ig-cap">No shop visit needed. <strong>Snap it, send it, we handle the rest</strong> — at your home or office.</div>
-          <div class="ig-cta">Free quote</div>
+      </div>
+
+      <!-- AD 4: Trust -->
+      <div class="ig-ad">
+        <div class="ig-head"><div class="ig-avatar"><img src="/round-1/oc-dents/media/logo.png" alt="" onerror="this.closest('.ig-avatar')&&(this.style.opacity=0)"></div><div><div class="ig-name">OC Dents</div><div class="ig-sub">Sponsored</div></div></div>
+        <div class="ig-primary">25 years. 5.0&#9733; on Google. From daily drivers to dream builds — we come to you.</div>
+        <div class="ig-frame"><img src="/round-1/oc-dents/media/show-luxury.jpg" alt="Ford Raptor truck serviced by OC Dents" onerror="this.closest('.ig-ad')&&(this.style.opacity=0)"></div>
+        <div class="ig-bar"><div class="bk-h">Orange County's mobile dent pros</div><div class="ig-cta">Get quote</div></div>
+        <div class="ig-react">
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3zM7 11l4-7a2 2 0 0 1 2 2v3h5a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 18 20H7"/></svg>Like</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>Comment</span>
+          <span class="rx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8M16 6l-4-4-4 4M12 2v14"/></svg>Share</span>
         </div>
       </div>
 
     </div>
     <div class="targeting">
       <span class="dia" aria-hidden="true"></span>
-      <p><b>Who we target:</b> OC zip codes &middot; luxury &amp; late-model vehicle owners &middot; in-market auto audiences &middot; lookalikes of past customers &middot; and retargeting everyone who visited the site or profile but didn&rsquo;t reach out yet.</p>
+      <p><b>Targeting:</b> OC zip codes &middot; truck/SUV &amp; luxury owners &middot; in-market for auto services &middot; lookalikes of past customers &middot; retargeting site &amp; profile visitors.</p>
     </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S7b ORGANIC CONTENT ═══════════════ -->
+<div class="slide" id="s7b">
+  <div style="width:100%;max-width:1060px;">
+    <div class="label">Pillar 03 &mdash; Organic in action</div>
+    <h2 class="h2" style="margin-bottom:6px;">Organic content, on tap.</h2>
+    <p class="sub" style="margin-bottom:22px;font-size:.95rem;">Reels, carousels, and posts in the OC Dents voice &mdash; the work you already do, turned into a steady feed across Instagram, TikTok &amp; Facebook.</p>
+    <div class="org-row">
+
+      <!-- 1: Reel · Before/After -->
+      <div class="org-card">
+        <div class="org-frame">
+          <img src="/round-1/oc-dents/media/ba-after.jpg" alt="After paintless dent repair — door ding gone" onerror="this.closest('.org-card')&&(this.style.opacity=0)">
+          <div class="org-scrim" aria-hidden="true"></div>
+          <span class="org-badge">Reel · Before/After</span>
+          <span class="org-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l16 9-16 9z"/></svg></span>
+        </div>
+        <div class="org-foot">
+          <div class="org-cap">Drag-to-reveal: a 60-second door-ding rescue 👀  <span class="tag">#paintlessdentrepair #ocdents #beforeandafter</span></div>
+          <div class="org-react" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: Reel · ASMR / How it works -->
+      <div class="org-card">
+        <div class="org-frame">
+          <img src="/round-1/oc-dents/media/show-hail.jpg" alt="PDR tools laid out beside a reflection board setup" onerror="this.closest('.org-card')&&(this.style.opacity=0)">
+          <div class="org-scrim" aria-hidden="true"></div>
+          <span class="org-badge">Reel · ASMR</span>
+          <span class="org-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l16 9-16 9z"/></svg></span>
+        </div>
+        <div class="org-foot">
+          <div class="org-cap">The satisfying part — watching the reflection lines go straight again.  <span class="tag">#PDR #asmr #dentrepair</span></div>
+          <div class="org-react" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3: Carousel · Education -->
+      <div class="org-card">
+        <div class="org-frame">
+          <img src="/round-1/oc-dents/media/svc-complex.jpg" alt="Bodyline crease being assessed for paintless repair" onerror="this.closest('.org-card')&&(this.style.opacity=0)">
+          <div class="org-scrim" aria-hidden="true"></div>
+          <span class="org-badge">Carousel · Education</span>
+        </div>
+        <div class="org-foot">
+          <div class="org-cap">Dent vs. paint: what paintless repair can (and can&rsquo;t) fix. Swipe →  <span class="tag">#cartips #orangecounty #pdr</span></div>
+          <div class="org-react" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: Post · Testimonial -->
+      <div class="org-card">
+        <div class="org-frame">
+          <img src="/round-1/oc-dents/media/show-luxury.jpg" alt="Ford Raptor truck serviced at a customer's home" onerror="this.closest('.org-card')&&(this.style.opacity=0)">
+          <div class="org-scrim" aria-hidden="true"></div>
+          <span class="org-badge">Post · Testimonial</span>
+          <div class="org-overlay">&ldquo;Mark is an artist&hellip; saved me time and money by coming to the house.&rdquo;<br>&mdash; Matt B.</div>
+        </div>
+        <div class="org-foot">
+          <div class="org-cap">Another 5-star, another driveway. 🙏  <span class="tag">#ocdents #5star</span></div>
+          <div class="org-react" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 22l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8 9.6 9.6 0 0 1-4-.9L3 20l1.4-4a8.3 8.3 0 0 1-1-4A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="org-note">Every post is generated from the OC Dents profile &mdash; no weekly photoshoots.</p>
   </div>
 </div>
 
@@ -662,7 +781,7 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
       </div>
       <div class="qa-card">
         <div class="qa-q">&ldquo;My site&rsquo;s fine.&rdquo;</div>
-        <div class="qa-a">It&rsquo;s currently <strong>hacked and invisible</strong> — hidden casino-spam links in the homepage HTML. Fixing it isn&rsquo;t optional; it&rsquo;s step one.</div>
+        <div class="qa-a">It&rsquo;s currently <strong>hacked and invisible</strong> — foreign-language casino-spam links hidden off-screen in the homepage HTML (a compromised WordPress plugin). Fixing it isn&rsquo;t optional; it&rsquo;s step one.</div>
       </div>
     </div>
   </div>
@@ -728,7 +847,7 @@ ul.check-list li::before{content:'';position:absolute;left:0;top:8px;width:9px;h
 </div>
 
 <!-- ── COUNTER: fixed bottom-right ── -->
-<span class="slide-counter" id="counter">1 / 13</span>
+<span class="slide-counter" id="counter">1 / 14</span>
 
 <!-- ── BR page switcher (current = Proposal) ── -->
 <nav class="br-nav" aria-label="Branch &amp; Root page switcher">

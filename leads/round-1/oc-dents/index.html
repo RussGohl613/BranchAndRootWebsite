@@ -489,12 +489,12 @@
 
   <!-- ===== Hero — cinematic video ===== -->
   <section class="hero" aria-labelledby="hero-h">
-    <div class="hero-video" aria-hidden="true">
+    <div class="hero-video" aria-hidden="true" data-clips="/round-1/oc-dents/media/hero.mp4,/round-1/oc-dents/media/hero-2.mp4,/round-1/oc-dents/media/hero-3.mp4">
       <video class="hero-bg" data-a autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/round-1/oc-dents/media/hero-poster.jpg">
         <source src="/round-1/oc-dents/media/hero.mp4" type="video/mp4">
       </video>
-      <video class="hero-bg is-next" data-b muted loop playsinline webkit-playsinline preload="metadata">
-        <source src="/round-1/oc-dents/media/hero.mp4" type="video/mp4">
+      <video class="hero-bg is-next" data-b muted loop playsinline webkit-playsinline preload="auto">
+        <source src="/round-1/oc-dents/media/hero-2.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero-scrim"></div>
@@ -606,13 +606,13 @@
       <p>From luxury and exotic cars to daily drivers and storm-hit hoods — a look at the kind of dents Mark makes disappear across Orange County.</p>
       <div class="showcase-grid">
         <figure class="showcase-hero">
-          <img src="/round-1/oc-dents/media/show-luxury.jpg" width="1600" height="900" loading="lazy" alt="A luxury car panel being repaired with paintless dent removal, factory finish intact" />
+          <img src="/round-1/oc-dents/media/show-luxury.jpg" width="1600" height="900" loading="lazy" alt="A clean Ford Raptor in an Orange County driveway — factory finish preserved by mobile paintless dent repair" />
         </figure>
         <figure class="showcase-cell">
           <img src="/round-1/oc-dents/media/show-bumper.jpg" width="1000" height="750" loading="lazy" alt="A bumper dent repaired without repainting" />
         </figure>
         <figure class="showcase-cell">
-          <img src="/round-1/oc-dents/media/show-hail.jpg" width="1000" height="750" loading="lazy" alt="A hood with hail damage smoothed back to a clean factory finish" />
+          <img src="/round-1/oc-dents/media/show-hail.jpg" width="1000" height="750" loading="lazy" alt="Paintless dent repair tools and a reflection board set up over a car panel at the start of a mobile job" />
         </figure>
       </div>
     </div>
@@ -955,25 +955,29 @@
 <script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
 <script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
 <script>
-/* Hero loop = dual-buffer crossfade. Two stacked <video> of the same clip: the idle layer
-   starts ~0.6s before the active one ends and we crossfade opacity, alternating. Hides both the
-   montage loop-seam and the Safari/iOS decode hitch. Native `loop` stays on as a no-JS fallback. */
+/* Hero loop = multi-clip dual-buffer crossfade. Two stacked <video> cycle through a playlist
+   (data-clips): the idle layer holds the NEXT clip, we crossfade ~0.6s before the active clip ends,
+   then queue the following clip into the now-idle buffer. Crossfading between DIFFERENT clips hides
+   the loop seam + the Safari/iOS decode hitch. Native `loop` is the no-JS fallback. */
 (function(){
   var box=document.querySelector('.hero-video'); if(!box) return;
+  var clips=(box.getAttribute('data-clips')||'').split(',').map(function(s){return s.trim();}).filter(Boolean);
   var a=box.querySelector('[data-a]'), b=box.querySelector('[data-b]');
   function play(v){ if(!v) return; var p=v.play&&v.play(); if(p&&p.catch) p.catch(function(){}); }
   if(!a||!b){ play(a||box.querySelector('.hero-bg')); return; }
-  var LAP=0.6, FADE=0.55, active=a, idle=b, swapping=false, primed=false;
+  function setSrc(v,url){ var s=v.querySelector('source'); if(s&&s.getAttribute('src')!==url){ s.setAttribute('src',url); v.load(); } }
+  var LAP=0.6, FADE=0.55, active=a, idle=b, swapping=false, idx=Math.min(1,clips.length-1);
+  if(clips.length>1){ a.loop=false; b.loop=false; }   /* we advance manually; loop attr = no-JS fallback */
   function arm(){
     active.addEventListener('timeupdate', function tick(){
       var d=active.duration; if(!d||isNaN(d)) return;
-      if(!primed){ idle.preload='auto'; idle.load(); primed=true; }
       if(swapping || active.currentTime < d-LAP) return;
       swapping=true;
       active.removeEventListener('timeupdate', tick);
       idle.currentTime=0; play(idle);
       idle.style.opacity=1; active.style.opacity=0;
       var prev=active; active=idle; idle=prev;
+      if(clips.length>1){ idx=(idx+1)%clips.length; setSrc(idle, clips[idx]); }
       setTimeout(function(){ idle.pause(); swapping=false; arm(); }, FADE*1000+80);
     });
   }
