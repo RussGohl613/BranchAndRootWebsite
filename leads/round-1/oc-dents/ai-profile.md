@@ -26,7 +26,7 @@
 - **You always get Mark** — owner-operator, 25+ years, personal service start to finish.
 - **Fast** — many jobs done in 20 min–1 hr.
 - **Honest, no-upsell** — fair/transparent pricing; Mark declines work he can't do perfectly (he doesn't do paint or rock chips).
-- **Luxury & exotic credible** — BMW 7-Series, Mercedes S63 AMG, Audi R8, Tesla, plus trucks/SUVs and daily drivers.
+- **Works the cars OC actually drives ($30–100k)** — Tesla Model 3/Y, Rivian R1T, Toyota (Tacoma, 4Runner, RAV4, Camry), Honda (Civic, CR-V, Accord), Ford F-150/Raptor, plus attainable-premium BMW/Lexus. Daily drivers to weekend trucks — not six-figure exotics.
 - **Proof** — Google 5.0★ (129) · Yelp 4.9★ (74).
 
 **Tone words:** honest · punctual · friendly · detail-obsessed · precise · craftsman · reassuring · transparent · convenient · perfectionist. **Not** flashy, salesy, or corporate.
@@ -85,11 +85,11 @@
 
 ## 3. Subject Library
 
-**Vehicles**
-- **Luxury & exotic:** BMW 7-Series, Mercedes S63 AMG, Audi (incl. R8), Cadillac, Tesla. (Credibility builders — use regularly.)
-- **Daily drivers:** Toyota (Avalon, Camry), Honda, sedans, hatchbacks — the bread-and-butter relatable car.
-- **Trucks & SUVs:** Toyota Tacoma / Tundra / 4Runner / Sequoia, black pickups, family SUVs.
-- **EVs:** Tesla (and EVs generally).
+**Vehicles — the $30–100k cars OC actually drives (Mark's real class; lead with these, not exotics)**
+- **EV / new-wave:** Tesla Model 3 / Model Y, Rivian R1T / R1S — common + photogenic in South OC.
+- **Trucks & SUVs:** Ford F-150 / Raptor, Toyota Tacoma / Tundra / 4Runner / Highlander / RAV4, Honda CR-V / Pilot, Chevy Tahoe.
+- **Daily drivers:** Toyota Camry / Corolla, Honda Civic / Accord — the bread-and-butter relatable car.
+- **Attainable-premium (upper edge, occasional):** BMW 3/5-Series, Lexus RX/ES, Audi Q5 — keep it believable for a $30–100k clientele; avoid six-figure exotics.
 - *(to confirm with Mark: actively feature motorcycles / RV / specialty panels, or keep to consumer auto?)*
 
 **Dent types**
@@ -147,7 +147,7 @@ The before/after is the brand's highest-performing format. A convincing pair sel
 
 - **Local-first:** `#OrangeCountyPDR #PaintlessDentRepair #MobileDentRepair #OCDents #AlisoViejo #IrvineCA #NewportBeach #MissionViejo #DentRemovalOC`
 - **Craft / PDR community:** `#PDR #DentRepair #PaintlessDentRemoval #DentRemoval #AutoBody #CarCare #FactoryFinish #PDRlife #DentlessRepair`
-- **Luxury / car-enthusiast:** `#Tesla #BMW #Mercedes #Audi #LuxuryCars #ExoticCars #CarDetailing #DailyDriver #KeepItFactory`
+- **Car-enthusiast / relatable:** `#Tesla #Rivian #Toyota #Honda #Ford #TrucksOfInstagram #DailyDriver #CarDetailing #KeepItFactory #OrangeCounty`
 
 **CTA patterns** (rotate)
 - "Text a photo of your dent to **(949) 763-3890** for a fast, free quote."
