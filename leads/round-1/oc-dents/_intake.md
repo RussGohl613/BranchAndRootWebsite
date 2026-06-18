@@ -58,8 +58,8 @@ Grouped (all are paintless / no-repaint methods):
 ---
 
 ## Contact / NAP
-- **Phone (primary, VERIFIED — matches website + GBP):** (949) 763-3890
-  - ⚠️ Conflicting older number on Yelp + several third-party listings: **(949) 877-9884**. GBP and the live site both show 763-3890, so treat 763-3890 as current; 877-9884 likely old/secondary. CONFIRM with Mark.
+- **Phone (PRIMARY, per Mark 2026-06-18 — the number on his work truck):** (949) 877-9884
+  - The website + Google Business Profile still show **(949) 763-3890** — update them to the truck number. (Some older third-party listings vary.)
 - **Email:** **mark@ocdents.com** (confirmed by Mark 2026-06-18). Not published on the public site (contact is phone/text or the "Send Photos For Quote" form) — add it to the new build.
 - **Address / NAP:**
   - Website footer: "Aliso Viejo, CA 92656" (city only, no street — mobile business)
@@ -79,7 +79,7 @@ Grouped (all are paintless / no-repaint methods):
 - **Primary category:** Auto dent removal service
 - **Rating:** **5.0 ★**
 - **Review count:** **129 reviews**
-- **Attributes:** "LGBTQ+ friendly"; website ocdents.com; phone (949) 763-3890
+- **Attributes:** "LGBTQ+ friendly"; website ocdents.com; phone (949) 877-9884
 - **Hours:** opens 8 AM (see above)
 - **Owner engagement:** Mark personally replies to essentially every review, by name, referencing the customer's vehicle + city.
 - **Recurring review THEMES (Google keyword chips w/ counts):**
@@ -124,7 +124,7 @@ Grouped (all are paintless / no-repaint methods):
 - **Suggested palette for downstream:** orange `#E07C40` (primary CTA/accent) · near-black `#181A1B` (dark sections) · white `#FFFFFF` · off-white `#E8E6E3` (text on dark) · grey `#333333` (body text on light).
 - **Fonts (from computed styles):** Manrope (sans), Inter (sans), Poppins (sans). Clean modern geometric sans-serif system. Display/headlines are heavy-weight sans (the giant "OC Dents" hero wordmark).
 - **Logo:** wordmark "OC Dents" with "PAINTLESS DENT REMOVAL" subtext under it and a side-profile pickup-truck silhouette; "OC" + truck rendered in the orange `#E07C40`, on transparent/dark. Files saved (see inventory). IG profile pic = same logo on black circle.
-- **Photographic style of real photos:** Real, phone-shot, outdoor-daylight images of actual vehicles being worked on at customers' homes/driveways/parking lots. Dark cars (black trucks/SUVs), plus a red sports car and Tesla. Heavy use of **PDR reflection boards** (striped light boards laid over panels to reveal dents) — a signature, recognizable PDR visual. Close-ups of clean body panels and bodylines. Mark (a middle-aged man) shown hands-on with PDR rods/tools (GBP cover photo). Honest, un-staged, "real work" aesthetic — not stock. IG posts add orange/yellow text overlays ("Tesla Before Dent Removal," "OC DENTS (949) 763-3890") and before/after pairs.
+- **Photographic style of real photos:** Real, phone-shot, outdoor-daylight images of actual vehicles being worked on at customers' homes/driveways/parking lots. Dark cars (black trucks/SUVs), plus a red sports car and Tesla. Heavy use of **PDR reflection boards** (striped light boards laid over panels to reveal dents) — a signature, recognizable PDR visual. Close-ups of clean body panels and bodylines. Mark (a middle-aged man) shown hands-on with PDR rods/tools (GBP cover photo). Honest, un-staged, "real work" aesthetic — not stock. IG posts add orange/yellow text overlays ("Tesla Before Dent Removal," "OC DENTS (949) 877-9884") and before/after pairs.
 
 ---
 
@@ -158,7 +158,7 @@ All files in `leads/round-1/oc-dents/media/_raw/`. Downloaded via browser-sessio
   - **PDR process shots** with striped **reflection boards** over panels (signature look)
   - At least one **reel/video** (PDR in action)
   - **Carousel** multi-image posts
-  - Branded text overlays in the orange/yellow brand color ("Tesla Before Dent Removal," "OC DENTS (949) 763-3890")
+  - Branded text overlays in the orange/yellow brand color ("Tesla Before Dent Removal," "OC DENTS (949) 877-9884")
   - Subjects: black trucks/SUVs, Tesla, red sports car, luxury panels — at customer locations
 - IG was reachable (no hard login wall this session); deeper per-post captions/engagement not individually catalogued (time-boxed).
 
@@ -198,7 +198,7 @@ Common competitor playbook: all stress **mobile / "we come to you," factory-pain
 ---
 
 ## Open questions / to confirm with Mark
-1. ✅ **RESOLVED 2026-06-18:** Phone **(949) 763-3890** (confirmed). Old **(949) 877-9884** is stale — remove from Yelp / third-party listings.
+1. ✅ **RESOLVED 2026-06-18:** Primary phone **(949) 877-9884** (the truck number, per Mark). The site + GBP still show **(949) 763-3890** — update them to match.
 2. ✅ **RESOLVED 2026-06-18:** Hours **Mon–Fri 8AM–5PM, Sat 8AM–1PM, Sun closed**. Website footer (7AM–8PM) is wrong — fix on the new build.
 3. ✅ **RESOLVED 2026-06-18:** Contact email **mark@ocdents.com**.
 4. **Warranty / guarantee:** Is there a formal workmanship guarantee to advertise? (None published; reviews imply strong satisfaction.)

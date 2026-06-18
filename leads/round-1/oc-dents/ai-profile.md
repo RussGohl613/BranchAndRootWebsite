@@ -107,7 +107,7 @@
 
 **Branding / uniform** *(keep generic unless confirmed)*
 - Clean, simple workwear; OC-Dents-orange accent (cap / shirt / tool case). *(to confirm with Mark: actual uniform/branding.)*
-- Branded text overlays in orange/yellow ("OC DENTS · (949) 763-3890", "Tesla — Before Dent Removal").
+- Branded text overlays in orange/yellow ("OC DENTS · (949) 877-9884", "Tesla — Before Dent Removal").
 
 **Mark's likeness:** use **sparingly** and always **on the work** — hands on rods, eyes on the panel, an over-the-shoulder of the repair. Keep the craft the hero, not a personality. *(to confirm with Mark: photo/likeness use + which real photos he's happy to reuse.)*
 
@@ -150,7 +150,7 @@ The before/after is the brand's highest-performing format. A convincing pair sel
 - **Car-enthusiast / relatable:** `#Tesla #Rivian #Toyota #Honda #Ford #TrucksOfInstagram #DailyDriver #CarDetailing #KeepItFactory #OrangeCounty`
 
 **CTA patterns** (rotate)
-- "Text a photo of your dent to **(949) 763-3890** for a fast, free quote."
+- "Text a photo of your dent to **(949) 877-9884** for a fast, free quote."
 - "We come to you — anywhere in Orange County. Book today."
 - "Got a ding? Send a pic, get a price. No shop visit needed."
 - "Factory finish, no repaint, often under an hour. Call Mark."
@@ -160,7 +160,7 @@ The before/after is the brand's highest-performing format. A convincing pair sel
 
 1. **Before / After**
    > BEFORE → AFTER. [Vehicle] in [city] had a [dent type] on the [panel]. Pulled it paintless — no filler, no repaint, factory finish intact. [Time]. This is what restoration looks like.
-   > 📲 Text a photo to (949) 763-3890 for a free quote.
+   > 📲 Text a photo to (949) 877-9884 for a free quote.
 
 2. **Educational — "How PDR works"**
    > How does paintless dent repair actually work? We work specialized rods behind the panel and massage the metal back to its original shape — gently, precisely, no paint touched. Your factory finish stays exactly as the manufacturer made it. That's why it looks like the dent was never there.
@@ -173,10 +173,10 @@ The before/after is the brand's highest-performing format. A convincing pair sel
 
 5. **Testimonial repost**
    > "[Customer quote]." — [First name], [city] ([vehicle]) ⭐⭐⭐⭐⭐
-   > 129 five-star Google reviews and counting. We come to you anywhere in OC. (949) 763-3890.
+   > 129 five-star Google reviews and counting. We come to you anywhere in OC. (949) 877-9884.
 
 6. **Seasonal / hail offer**
-   > Storm rolled through OC? Hail leaves dozens of little dents — and most lift out **paintless**, factory finish untouched. We come to your driveway, anywhere in Orange County. 📲 Send photos for a fast hail-damage quote: (949) 763-3890.
+   > Storm rolled through OC? Hail leaves dozens of little dents — and most lift out **paintless**, factory finish untouched. We come to your driveway, anywhere in Orange County. 📲 Send photos for a fast hail-damage quote: (949) 877-9884.
 
 ---
 
@@ -228,7 +228,7 @@ Animate this still: subtle, slow motion of the PDR rod working behind the panel 
 **B4 — UGC montage reel (vertical, authentic "trades creator" style)**
 > Style ref: trades-creator UGC montage (mixed real settings, natural daylight, handheld) — borrow the *ideas*, not the content. Build per-scene stills, image-to-video each, assemble.
 ```
-20–40s vertical 9:16 montage of quick, real-feel handheld clips — NOT studio-polished. Cut between: Mark's branded work truck pulling into / parked at an Orange County home; Mark (bald, short gray beard, ~6'2", dark hoodie) walking up to a [relatable vehicle — Tesla Model 3/Y, Toyota Tacoma/4Runner/RAV4, Honda Civic/CR-V, Ford F-150, Rivian R1T] and eyeing the dent; over-the-shoulder + macro of the reflection board + PDR rod working the panel; the dent easing smooth; a clean before/after reveal; Mark nodding / handing keys back. Natural OC daylight or golden hour, real driveways. Overlay BOLD WHITE caption bars (black text, centered, CapCut/TikTok style) that build a story line by line, e.g. "That dent's been bugging you for weeks." → "Skip the body shop." → "No repaint. No filler." → "We come to you." → "OC Dents · 5.0★ · (949) 763-3890". End on the result + logo. Use Mark's uploaded photo as the character reference and his uploaded truck as the vehicle reference.
+20–40s vertical 9:16 montage of quick, real-feel handheld clips — NOT studio-polished. Cut between: Mark's branded work truck pulling into / parked at an Orange County home; Mark (bald, short gray beard, ~6'2", dark hoodie) walking up to a [relatable vehicle — Tesla Model 3/Y, Toyota Tacoma/4Runner/RAV4, Honda Civic/CR-V, Ford F-150, Rivian R1T] and eyeing the dent; over-the-shoulder + macro of the reflection board + PDR rod working the panel; the dent easing smooth; a clean before/after reveal; Mark nodding / handing keys back. Natural OC daylight or golden hour, real driveways. Overlay BOLD WHITE caption bars (black text, centered, CapCut/TikTok style) that build a story line by line, e.g. "That dent's been bugging you for weeks." → "Skip the body shop." → "No repaint. No filler." → "We come to you." → "OC Dents · 5.0★ · (949) 877-9884". End on the result + logo. Use Mark's uploaded photo as the character reference and his uploaded truck as the vehicle reference.
 ```
 
 ### (c) Canva — static ads
@@ -236,17 +236,17 @@ Animate this still: subtle, slow motion of the PDR rod working behind the panel 
 
 **C1 — Before/After ad (square 1080×1080)**
 ```
-Square ad, near-black (#181A1B) frame. Split layout: left half "BEFORE" (dent + warped reflection), right half "AFTER" (clean glossy panel). Small orange (#E07C40) BEFORE/AFTER labels. Headline (Poppins bold, off-white): "[Door ding gone. Factory finish kept.]" Subline (Inter): "Mobile paintless dent repair · all of Orange County." OC Dents logo bottom-left. Orange CTA chip bottom-right: "Text a photo → (949) 763-3890". Google 5.0★ badge.
+Square ad, near-black (#181A1B) frame. Split layout: left half "BEFORE" (dent + warped reflection), right half "AFTER" (clean glossy panel). Small orange (#E07C40) BEFORE/AFTER labels. Headline (Poppins bold, off-white): "[Door ding gone. Factory finish kept.]" Subline (Inter): "Mobile paintless dent repair · all of Orange County." OC Dents logo bottom-left. Orange CTA chip bottom-right: "Text a photo → (949) 877-9884". Google 5.0★ badge.
 ```
 
 **C2 — Offer / hail ad (vertical story 1080×1920)**
 ```
-Vertical story, near-black background, full-bleed photo of a glossy panel with hail dimples at top. Headline (Poppins, off-white): "[Hail damage? Keep your factory finish.]" Three bullets (Inter, off-white) with small orange ticks: "We come to you" · "No paint, no filler" · "Often under an hour". Orange (#E07C40) CTA button: "Get a free quote — (949) 763-3890". OC Dents logo + "Serving OC since 2001". 4.9★ Yelp · 5.0★ Google.
+Vertical story, near-black background, full-bleed photo of a glossy panel with hail dimples at top. Headline (Poppins, off-white): "[Hail damage? Keep your factory finish.]" Three bullets (Inter, off-white) with small orange ticks: "We come to you" · "No paint, no filler" · "Often under an hour". Orange (#E07C40) CTA button: "Get a free quote — (949) 877-9884". OC Dents logo + "Serving OC since 2001". 4.9★ Yelp · 5.0★ Google.
 ```
 
 **C3 — Trust / authority ad (square 1080×1080)**
 ```
-Square ad, off-white (#E8E6E3) background, charcoal text (#33373D). Big orange (#E07C40) stat block: "5.0★ · 129 Google reviews". Headline (Poppins): "[The owner does every job himself.]" Body (Inter): "25+ years. Paintless dent repair that preserves your original factory finish — at your home or office, anywhere in Orange County." OC Dents logo + truck. Orange CTA: "Book Mark today → (949) 763-3890".
+Square ad, off-white (#E8E6E3) background, charcoal text (#33373D). Big orange (#E07C40) stat block: "5.0★ · 129 Google reviews". Headline (Poppins): "[The owner does every job himself.]" Body (Inter): "25+ years. Paintless dent repair that preserves your original factory finish — at your home or office, anywhere in Orange County." OC Dents logo + truck. Orange CTA: "Book Mark today → (949) 877-9884".
 ```
 
 ---
@@ -258,12 +258,12 @@ Square ad, off-white (#E8E6E3) background, charcoal text (#33373D). Big orange (
 OC Dents
 Mobile Paintless Dent Repair (service-area business)
 Aliso Viejo, CA 92656
-Phone: (949) 763-3890
+Phone: (949) 877-9884
 Email: mark@ocdents.com
 Web: https://ocdents.com
 Hours: Mon–Fri 8:00 AM–5:00 PM · Sat 8:00 AM–1:00 PM · Sun closed
 ```
-*(Confirmed with Mark 2026-06-18: phone (949) 763-3890, email mark@ocdents.com, hours above. To confirm: whether to publish the street address — Yelp lists 9236 Capobella, Aliso Viejo, CA 92656 — and retire the old (949) 877-9884 from all listings.)*
+*(Confirmed with Mark 2026-06-18: primary phone (949) 877-9884 — the number on his work truck; email mark@ocdents.com; hours above. To confirm: whether to publish the street address (Yelp lists 9236 Capobella, Aliso Viejo, CA 92656), and update the site + GBP — which still show (949) 763-3890 — to the truck number.)*
 
 ### Google Business Profile
 - **Primary category:** Auto dent removal service *(current GBP primary)*
@@ -299,7 +299,7 @@ Build pages/posts/GBP content around `[service] + [city]`:
    Yes. OC Dents is fully mobile — Mark drives to your home or workplace anywhere in Orange County. There's no shop to visit.
 
 3. **How much does dent repair cost?**
-   Pricing depends on the dent's size, location, and depth. Text a photo to (949) 763-3890 for a fast, free, no-obligation quote.
+   Pricing depends on the dent's size, location, and depth. Text a photo to (949) 877-9884 for a fast, free, no-obligation quote.
 
 4. **How long does it take?**
    Most paintless repairs take about 20 minutes to an hour, done on-site.
@@ -318,7 +318,7 @@ Build pages/posts/GBP content around `[service] + [city]`:
 
 ### GEO / structured-data hints
 - **Schema type:** `LocalBusiness` → more specific `AutoRepair` (use `additionalType` to note paintless dent repair). Mark it a **service-area business**, not a storefront.
-- **Key fields:** `name` (OC Dents), `image` (logo + work photos), `telephone` (+1-949-763-3890), `priceRange`, `areaServed` (list OC cities + "Orange County, CA"), `address` (Aliso Viejo, CA 92656 — city/region only for service-area), `geo`, `openingHoursSpecification`, `aggregateRating` (5.0 / 129 — source GBP), `sameAs` (ocdents.com, IG, Facebook, Yelp, Nextdoor GBP), `makesOffer` / `hasOfferCatalog` (the six PDR services), `founder` / `employee` (Mark Magill), `foundingDate` (2001).
+- **Key fields:** `name` (OC Dents), `image` (logo + work photos), `telephone` (+1-949-877-9884), `priceRange`, `areaServed` (list OC cities + "Orange County, CA"), `address` (Aliso Viejo, CA 92656 — city/region only for service-area), `geo`, `openingHoursSpecification`, `aggregateRating` (5.0 / 129 — source GBP), `sameAs` (ocdents.com, IG, Facebook, Yelp, Nextdoor GBP), `makesOffer` / `hasOfferCatalog` (the six PDR services), `founder` / `employee` (Mark Magill), `foundingDate` (2001).
 - Add **`FAQPage`** schema using the 8 AEO pairs above.
 - **Entity-consistency notes:** keep name/phone/city byte-identical across site, GBP, Yelp, Facebook, Nextdoor, BBB, and all directories (one phone, one spelling — "OC Dents"). Pick **one** canonical phone and **one** hours set and propagate everywhere. Always pair the brand with the same entities — *Mark Magill, Aliso Viejo, Orange County, paintless dent repair, since 2001* — so search engines and LLMs reliably associate them.
 - ⚠️ **Site hygiene (flag to Mark):** ocdents.com currently has injected hidden casino/spam links in its homepage HTML (likely a compromised WordPress plugin). This can tank rankings and entity trust — recommend Mark / his web dev clean it before scaling content/SEO.
