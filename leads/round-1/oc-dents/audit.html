@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#181A1B">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F10">
+<title>OC Dents — Brand Intelligence Report | Branch &amp; Root</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. Accent = OC Dents orange.
+     On light backgrounds, text/rules use --accent-text (#C75F28) for AA. ============================ */
+  :root{
+    color-scheme: light dark;
+    --accent:#E07C40;            /* PER-BRAND accent (OC Dents orange) — surfaces/fills */
+    --accent-text:#C75F28;       /* AA-safe orange for text/rules on light */
+    --accent-ink:#FFFFFF;        /* text on accent fill */
+    --slate:#3A6B7A;             /* secondary accent (steel teal-blue) */
+
+    --page:#F7F6F4;
+    --surface:#FFFFFF;
+    --surface-2:#FBFAF8;
+    --sidebar-bg:#FFFFFF;
+    --ink:#181A1B;
+    --muted:#5B5F63;
+    --line:#E4E1DC;
+
+    --heading:#181A1B;           /* heading TEXT */
+    --brand:#C75F28;             /* rules / lead-in text (AA orange) */
+    --band:#181A1B;              /* table header / voice bands */
+    --band-ink:#FFFFFF;
+    --cover-bg:#181A1B;
+
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,17,18,.05), 0 10px 30px -12px rgba(15,17,18,.16);
+    --shadow-sm:0 1px 2px rgba(15,17,18,.05);
+    --fh:"Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --fb:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* page-switcher palette hooks — reference vars that already flip per mode */
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--accent);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#F08A4B; --accent-text:#F4A06B; --accent-ink:#1A0E04; --slate:#7FB1C2;
+    --page:#0E0F10; --surface:#16181A; --surface-2:#1B1E20; --sidebar-bg:#131517;
+    --ink:#F3F1EE; --muted:#A8ABAE; --line:#26292C;
+    --heading:#F3F1EE; --brand:#F4A06B; --band:#1F2326; --band-ink:#F3F1EE; --cover-bg:#101315;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
+  :root[data-theme="dark"]{
+    --accent:#F08A4B; --accent-text:#F4A06B; --accent-ink:#1A0E04; --slate:#7FB1C2;
+    --page:#0E0F10; --surface:#16181A; --surface-2:#1B1E20; --sidebar-bg:#131517;
+    --ink:#F3F1EE; --muted:#A8ABAE; --line:#26292C;
+    --heading:#F3F1EE; --brand:#F4A06B; --band:#1F2326; --band-ink:#F3F1EE; --cover-bg:#101315;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.55);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-text);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.18;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:700;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#D7D5D1;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--ink);}
+  .panel.alert{border-left-color:#C23B22;border-left-width:5px;}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent-text);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent-text);font-style:italic;font-weight:600;}
+
+  /* ============================ CONFIDENCE BADGES ============================ */
+  .conf{display:inline-block;font-family:var(--fb);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;vertical-align:middle;margin-left:6px;border:1px solid transparent;}
+  .conf-high{background:rgba(45,106,79,.14);color:#2D6A4F;border-color:rgba(45,106,79,.3);}
+  .conf-med{background:rgba(199,95,40,.14);color:#A24E1F;border-color:rgba(199,95,40,.32);}
+  .conf-low{background:rgba(194,59,34,.12);color:#A2331C;border-color:rgba(194,59,34,.3);}
+  .conf-inf{background:rgba(58,107,122,.12);color:#345E6B;border-color:rgba(58,107,122,.3);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    .conf-high{background:rgba(127,184,155,.16);color:#9FD8BE;border-color:rgba(127,184,155,.34);}
+    .conf-med{background:rgba(240,138,75,.16);color:#F4A06B;border-color:rgba(240,138,75,.34);}
+    .conf-low{background:rgba(232,128,111,.16);color:#E8806F;border-color:rgba(232,128,111,.34);}
+    .conf-inf{background:rgba(127,177,194,.16);color:#7FB1C2;border-color:rgba(127,177,194,.34);}
+  }}
+  :root[data-theme="dark"]{
+    .conf-high{background:rgba(127,184,155,.16);color:#9FD8BE;border-color:rgba(127,184,155,.34);}
+    .conf-med{background:rgba(240,138,75,.16);color:#F4A06B;border-color:rgba(240,138,75,.34);}
+    .conf-low{background:rgba(232,128,111,.16);color:#E8806F;border-color:rgba(232,128,111,.34);}
+    .conf-inf{background:rgba(127,177,194,.16);color:#7FB1C2;border-color:rgba(127,177,194,.34);}
+  }
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent-text);font-weight:700;white-space:nowrap;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .stars{color:var(--accent);}}
+  :root[data-theme="dark"] .stars{color:var(--accent);}
+
+  /* ============================ GAUGE ============================ */
+  .gauge-row{display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:18px 20px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .gauge-wrap{flex:0 0 auto;text-align:center;}
+  .gauge-wrap svg{width:170px;height:96px;display:block;overflow:visible;}
+  .gauge-score{font-family:var(--fh);font-size:2rem;font-weight:700;color:var(--accent-text);line-height:1;margin-top:-50px;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gauge-score{color:var(--accent);}}
+  :root[data-theme="dark"] .gauge-score{color:var(--accent);}
+  .gauge-score small{font-size:1rem;color:var(--muted);font-weight:600;}
+  .gauge-lbl{font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:30px;font-weight:700;}
+  .gauge-txt{flex:1;min-width:230px;}
+  .gauge-txt .big{font-family:var(--fh);font-size:1.05rem;color:var(--heading);font-weight:700;}
+  .score-arc-bg{stroke:var(--line);stroke-width:13;fill:none;stroke-linecap:round;}
+  /* dashoffset for 58/100 on a 251.33 semicircle: 251.33*(1-0.58)=105.6 */
+  .score-arc{stroke:url(#orangeGrad);stroke-width:13;fill:none;stroke-linecap:round;stroke-dasharray:251.33;stroke-dashoffset:105.6;animation:gaugeIn 1.4s cubic-bezier(.4,0,.2,1) forwards;}
+  @media (prefers-reduced-motion:reduce){.score-arc{animation:none;}}
+  @keyframes gaugeIn{from{stroke-dashoffset:251.33;}to{stroke-dashoffset:105.6;}}
+
+  /* ============================ PROGRESS BARS ============================ */
+  .metric-row{margin-bottom:12px;}
+  .metric-label-row{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:5px;}
+  .metric-name{color:var(--muted);font-weight:600;}
+  .metric-val{font-weight:700;font-size:.76rem;}
+  .progress-track{height:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .progress-bar{height:100%;border-radius:3px;background:var(--accent);}
+  .bar-red{background:#C23B22;} .bar-amber{background:var(--accent);} .bar-slate{background:var(--slate);} .bar-green{background:#2D6A4F;}
+
+  /* ============================ ANALYSIS CARDS ============================ */
+  .acards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+  .acard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 15px;box-shadow:var(--shadow-sm);}
+  .acard-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:6px;}
+  .acard-h h4{font-size:.92rem;font-weight:700;margin:0;color:var(--heading);}
+  .acard p{font-size:.83rem;color:var(--muted);margin:0;line-height:1.5;}
+  .acard .rec{font-size:.83rem;color:var(--accent-text);font-style:italic;margin-top:6px;font-weight:600;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .acard .rec{color:var(--accent);}}
+  :root[data-theme="dark"] .acard .rec{color:var(--accent);}
+  .chip{flex:0 0 auto;font-size:.6rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:11px;white-space:nowrap;}
+  .chip-bad{background:rgba(194,59,34,.12);color:#A2331C;} .chip-warn{background:rgba(199,95,40,.16);color:#A24E1F;} .chip-inf{background:rgba(58,107,122,.12);color:#345E6B;} .chip-good{background:rgba(45,106,79,.14);color:#2D6A4F;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    .chip-bad{background:rgba(232,128,111,.16);color:#E8806F;} .chip-warn{background:rgba(240,138,75,.16);color:#F4A06B;} .chip-inf{background:rgba(127,177,194,.16);color:#7FB1C2;} .chip-good{background:rgba(127,184,155,.16);color:#9FD8BE;}
+  }}
+  :root[data-theme="dark"]{
+    .chip-bad{background:rgba(232,128,111,.16);color:#E8806F;} .chip-warn{background:rgba(240,138,75,.16);color:#F4A06B;} .chip-inf{background:rgba(127,177,194,.16);color:#7FB1C2;} .chip-good{background:rgba(127,184,155,.16);color:#9FD8BE;}
+  }
+
+  /* ============================ BENCHMARKS ============================ */
+  .bench-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0;}
+  .bench-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow-sm);}
+  .bench-card.top{border-top:3px solid var(--accent);}
+  .bench-card.mid{border-top:3px solid var(--slate);}
+  .bench-card.low{border-top:3px solid #C23B22;}
+  .bench-tier{font-size:.64rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:4px;}
+  .bench-tier.top{color:var(--accent-text);} .bench-tier.mid{color:var(--slate);} .bench-tier.low{color:#A2331C;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .bench-tier.top{color:var(--accent);}}
+  :root[data-theme="dark"] .bench-tier.top{color:var(--accent);}
+  .bench-label{font-size:.84rem;font-weight:700;color:var(--heading);margin-bottom:10px;}
+  .bench-stat{display:flex;justify-content:space-between;font-size:.8rem;padding:5px 0;border-bottom:1px solid var(--line);}
+  .bench-stat:last-child{border-bottom:none;}
+  .bench-stat .bl{color:var(--muted);} .bench-stat .bv{font-weight:700;color:var(--ink);}
+
+  /* ============================ MATRIX ============================ */
+  .matrix{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;margin:10px 0;box-shadow:var(--shadow-sm);}
+  .mcell{padding:16px 16px;border:1px solid var(--line);}
+  .mcell.q1{background:rgba(224,124,64,.07);} .mcell.q2{background:rgba(58,107,122,.06);}
+  .mcell.q3{background:rgba(45,106,79,.06);} .mcell.q4{background:rgba(194,59,34,.05);}
+  .mcell-lbl{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px;}
+  .q1 .mcell-lbl{color:var(--accent-text);} .q2 .mcell-lbl{color:var(--slate);} .q3 .mcell-lbl{color:#2D6A4F;} .q4 .mcell-lbl{color:var(--muted);}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .q1 .mcell-lbl{color:var(--accent);}}
+  :root[data-theme="dark"] .q1 .mcell-lbl{color:var(--accent);}
+  .maction{display:flex;gap:8px;align-items:flex-start;margin-bottom:9px;font-size:.83rem;color:var(--ink);}
+  .anum{flex:0 0 auto;width:19px;height:19px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;color:var(--muted);}
+  .matrix-axes{display:flex;justify-content:space-between;font-size:.66rem;color:var(--muted);margin:2px 4px 0;text-transform:uppercase;letter-spacing:.06em;}
+
+  /* ============================ TIER ============================ */
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .swc{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2,.acards{grid-template-columns:1fr;}
+    .bench-grid{grid-template-columns:1fr;}
+    .matrix{grid-template-columns:1fr;}
+  }
+
+  /* ============================ FLOATING CONTROLS ============================ */
+  .br-portal{position:fixed;left:16px;bottom:16px;z-index:1000;display:inline-flex;align-items:center;gap:0;text-decoration:none;border-radius:999px;font-family:var(--fb);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:8px 13px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:13px;opacity:.9}
+  .br-portal:hover{transform:translateY(-2px);opacity:1;border-color:var(--accent)}
+  .br-portal svg{color:var(--accent)}
+  .br-portal .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal:hover .br-portal-lbl,.br-portal:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:8px;}
+  @media print{.br-portal{display:none}}
+
+  /* ===== BR page switcher — collapsed up-arrow that expands on hover / focus / tap ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media print{.br-nav{display:none!important;}}
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | OC Dents"; font-family:"Inter",Arial,sans-serif; font-size:7.5pt; color:#6B6F73; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Inter",Arial,sans-serif; font-size:7.5pt; color:#6B6F73; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1A1C1D;--muted:#55595D;--line:#DEDBD6;--heading:#181A1B;--brand:#C75F28;--band:#181A1B;--band-ink:#fff;--cover-bg:#181A1B;--accent:#E07C40;--accent-text:#C75F28; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.acard,.bench-card,.gauge-row,.matrix{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
+
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">OC Dents</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Framework Score</a>
+        <a href="#sec-4"><span class="i">4</span> Critical: Site Security</a>
+        <a href="#sec-5"><span class="i">5</span> SEO / AEO / GEO</a>
+        <a href="#sec-6"><span class="i">6</span> Brand Voice</a>
+        <a href="#sec-7"><span class="i">7</span> Customer Intelligence</a>
+        <a href="#sec-8"><span class="i">8</span> Competitive Landscape</a>
+        <a href="#sec-9"><span class="i">9</span> Priority Action Matrix</a>
+        <a href="#sec-10"><span class="i">10</span> Recommendation</a>
+        <a href="#sec-11"><span class="i">11</span> Methodology</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Engagement</div>
+        <div class="v">The Full-Stack Growth System</div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>OC Dents</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 18, 2026 &nbsp;|&nbsp; Auto dent removal service &nbsp;·&nbsp; Aliso Viejo &amp; Orange County, CA &nbsp;·&nbsp; Serving since 2001</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">58<small style="font-size:1rem;color:var(--muted)">/100</small></div><div class="lbl">Digital Score</div></div>
+        <div class="stat"><div class="num">5.0<small style="font-size:1rem;color:var(--muted)">★ · 129</small></div><div class="lbl">Google Reviews</div></div>
+        <div class="stat"><div class="num">4.9<small style="font-size:1rem;color:var(--muted)">★ · 74</small></div><div class="lbl">Yelp Reviews</div></div>
+        <div class="stat"><div class="num">Weak</div><div class="lbl">Website &amp; Content</div></div>
+      </div>
+
+      <!-- ============= 1. BUSINESS OVERVIEW ============= -->
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>OC Dents</strong> is a mobile <strong>paintless dent repair (PDR)</strong> specialist serving all of <strong>Orange County, CA</strong>, owner-operated by <strong>Mark Magill</strong> &mdash; the sole technician on every job &mdash; since <strong>2001</strong> (~25 years). It is a fully mobile, no-storefront operation: Mark drives to the customer's home or workplace and restores the panel to its <strong>original factory finish</strong> with no repainting or body-shop downtime, often in under an hour. Core services are PDR (flagship), door-ding repair, complex/bodyline dents, bumper dents, hail damage, and minor-collision dents &mdash; explicitly <strong>not</strong> paint work or rock-chip touch-ups. The brand's reputation is exceptional (<strong>Google 5.0★ across 129 reviews</strong>, <strong>Yelp 4.9★ across 74</strong>), built on punctuality, honest no-upsell consultation, fair pricing, and competence on luxury and exotic vehicles. Home base is <strong>Aliso Viejo 92656</strong>; phone <strong>(949) 763-3890</strong>.</p>
+        <div class="panel forest">
+          <h3>What we could confirm &mdash; and what we could not</h3>
+          <div class="grid2">
+            <div class="works">
+              <h3>Confirmed</h3>
+              <ul>
+                <li>Owner-operator Mark Magill, mobile PDR <span class="conf conf-high">High</span></li>
+                <li>Serving OC since 2001 (~25 years) <span class="conf conf-high">High</span></li>
+                <li>Google Business Profile 5.0★ / 129 reviews <span class="conf conf-high">High</span></li>
+                <li>Yelp 4.9★ / 74 reviews <span class="conf conf-high">High</span></li>
+                <li>Primary phone (949) 763-3890 (site + GBP) <span class="conf conf-high">High</span></li>
+                <li>Aliso Viejo 92656 base; live site ocdents.com <span class="conf conf-high">High</span></li>
+                <li>Hours: Mon&ndash;Fri 8am&ndash;5pm, Sat 8am&ndash;1pm, Sun closed <span class="conf conf-high">High</span></li>
+                <li>Contact email mark@ocdents.com <span class="conf conf-high">High</span></li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>Still unverified &mdash; confirm via questionnaire</h3>
+              <ul>
+                <li>Formal warranty / workmanship guarantee <span class="conf conf-low">Not found</span></li>
+                <li>Insurance-claim / financing support <span class="conf conf-low">Not found</span></li>
+                <li>Secondary phone (949) 877-9884 status <span class="conf conf-low">Conflicting</span></li>
+              </ul>
+            </div>
+          </div>
+          <p class="gapnote">The confirmed column is cross-verified across the live ocdents.com site, the Google Business Profile, and Yelp. Every "still unverified" item is a direct question in the attached questionnaire &mdash; none has been assumed or fabricated.</p>
+        </div>
+      </section>
+
+      <!-- ============= 2. DIGITAL PRESENCE AUDIT ============= -->
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+        <p class="lead-in">Platform Presence Scorecard</p>
+        <p>Where OC Dents shows up today, how strong each presence is, and how much each platform is worth as a lead source for a mobile auto-service business. "Lead Value" reflects each platform's general conversion quality for local service businesses per industry data &mdash; the ratings and review counts shown are OC Dents' verified figures.</p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Platform</th><th>Status</th><th>Strength</th><th class="center">Lead Value</th><th>Priority</th></tr>
+            <tr><td><strong>Google Business Profile</strong><br><span class="gapnote">"Auto dent removal service"</span></td><td>● Excellent</td><td>5.0★ · 129 reviews · owner replies <span class="conf conf-high">High</span></td><td class="center"><span class="stars">★★★★★</span></td><td>MAINTAIN</td></tr>
+            <tr><td><strong>Yelp</strong><br><span class="gapnote">oc-dents-aliso-viejo-2</span></td><td>● Excellent</td><td>4.9★ · 74 reviews · 64 photos <span class="conf conf-high">High</span></td><td class="center"><span class="stars">★★★★☆</span></td><td>MAINTAIN</td></tr>
+            <tr><td><strong>Website</strong><br><span class="gapnote">ocdents.com (WordPress)</span></td><td>● Compromised</td><td>Live but hacked &amp; thin <span class="conf conf-high">High</span></td><td class="center"><span class="stars">★★★★★</span></td><td>CRITICAL</td></tr>
+            <tr><td><strong>Instagram</strong><br><span class="gapnote">@ocdents</span></td><td>● Active — small</td><td>337 followers · 116 posts <span class="conf conf-high">High</span></td><td class="center"><span class="stars">★★★☆☆</span></td><td>MEDIUM</td></tr>
+            <tr><td><strong>Owned Content / Blog</strong></td><td>○ None</td><td>No original articles published <span class="conf conf-high">High</span></td><td class="center"><span class="stars">★★★★☆</span></td><td>HIGH</td></tr>
+            <tr><td><strong>Facebook</strong></td><td>● Active</td><td>Page exists — depth unverified <span class="conf conf-low">Not found</span></td><td class="center"><span class="stars">★★★☆☆</span></td><td>LOW</td></tr>
+            <tr><td><strong>Nextdoor / BBB</strong></td><td>● Listed</td><td>Pages exist — stats unverified <span class="conf conf-low">Not found</span></td><td class="center"><span class="stars">★★★☆☆</span></td><td>LOW</td></tr>
+          </table>
+        </div>
+        <div class="panel slate">
+          <h3>Read</h3>
+          <p class="kv">OC Dents has the asset most local businesses spend years chasing: a <b>flawless review reputation</b> &mdash; 5.0★ on Google across 129 reviews and 4.9★ on Yelp across 74, with Mark personally replying to nearly every one. The problem is the exact inverse of most prospects: the <b>reputation is elite, but the owned web presence actively works against it</b>. The website (ocdents.com) is both <b>compromised</b> (see Section 4) and thin &mdash; mobile-only, no city landing pages, no schema, no content &mdash; so it neither ranks nor converts the goodwill the reviews generate. Instagram is on-brand but under-leveraged at 337 followers. The opportunity is not building a reputation; it's <b>building an owned digital foundation worthy of the reputation that already exists</b>.</p>
+        </div>
+      </section>
+
+      <!-- ============= 3. FRAMEWORK SCORE ============= -->
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Framework Score</h2></div>
+        <div class="gauge-row">
+          <div class="gauge-wrap">
+            <svg viewBox="0 0 180 95" aria-label="Digital framework score 58 out of 100">
+              <defs><linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#A24E1F"/><stop offset="100%" stop-color="#F08A4B"/></linearGradient></defs>
+              <path class="score-arc-bg" d="M 12 90 A 78 78 0 0 1 168 90"/>
+              <path class="score-arc" d="M 12 90 A 78 78 0 0 1 168 90"/>
+            </svg>
+            <div class="gauge-score">58<small>/100</small></div>
+            <div class="gauge-lbl">Composite</div>
+          </div>
+          <div class="gauge-txt">
+            <p class="big">58% — a reputation-rich, web-poor profile.</p>
+            <p style="margin:0;color:var(--muted);font-size:.9rem;">The score is held <b style="color:var(--ink)">up</b> by an exceptional, verifiable reputation (5.0★/129 Google, 4.9★/74 Yelp), 25 years' tenure, and strong owner engagement &mdash; and held <b style="color:var(--ink)">down</b> by a compromised, content-thin website, no service&times;city landing pages, no LocalBusiness/AutoRepair schema, no blog, and an under-leveraged social presence. Cleaning the security issue and building a real owned foundation moves the controllable half of the score; comparable shops with an elite reputation <em>and</em> a converting, schema-rich site typically reach <b style="color:var(--ink)">80+</b>. The reputation is already top-decile &mdash; the gap is entirely in owned digital. <span class="conf conf-inf">Composite of verified + inferred</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============= 4. CRITICAL: SITE SECURITY ============= -->
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Critical Finding — Website Security</h2></div>
+        <div class="panel alert">
+          <h3>⚠ High severity — fix now: ocdents.com appears compromised</h3>
+          <p class="kv">During research, the live homepage HTML of <b>ocdents.com</b> was found to contain a large injected block of <b>hidden, multilingual online-casino spam links</b> (Arabic, Spanish, Romanian, Polish and others) embedded in the page body &mdash; content that has nothing to do with OC Dents. This is a textbook symptom of a <b>hacked or abused WordPress installation</b> (a compromised plugin or injected database content), <b>not</b> legitimate site copy. <span class="conf conf-high">High &mdash; observed on the live page</span></p>
+        </div>
+        <p class="lead-in">Why this matters &mdash; and why it ranks above everything else</p>
+        <div class="acards">
+          <div class="acard"><div class="acard-h"><h4>Damages Google rankings</h4><span class="chip chip-bad">Active harm</span></div><p>Hidden spam links are a known black-hat signal. Google can suppress rankings or flag the domain for "this site may be hacked," erasing the local-search visibility the reviews would otherwise earn.</p><p class="rec">→ Treat as the #1 priority before any SEO work.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Erodes trust &amp; safety</h4><span class="chip chip-bad">Reputation risk</span></div><p>A "may be hacked" interstitial or a flagged listing undercuts a brand whose entire value is honesty and reliability. The site contradicts the 5.0★ reputation at the worst possible moment &mdash; first contact.</p><p class="rec">→ Protect the brand equity the reviews built.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Signals an open vulnerability</h4><span class="chip chip-warn">Security gap</span></div><p>If spam can be injected, so can malware or redirects. The underlying WordPress (plugin/theme/credentials) is exploitable until hardened &mdash; a standing liability, not a one-time cleanup.</p><p class="rec">→ Clean AND harden, not just remove the visible text.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Recommended remediation</h4><span class="chip chip-inf">Action plan</span></div><p>Have the web developer (Diffrnt Media) scan the install, remove injected content, update/replace the compromised plugin, rotate credentials, and add a security/firewall layer &mdash; or migrate to a clean, hardened build.</p><p class="rec">→ Verify in Google Search Console afterward.</p></div>
+        </div>
+        <div class="panel">
+          <p class="kv" style="margin-bottom:0;"><b>Bottom line:</b> Every other web recommendation in this report assumes a clean foundation. Until ocdents.com is audited, cleaned, and hardened, the business is investing reputation in a storefront that may be actively penalized by search engines. This is the single highest-leverage fix available right now. <span class="conf conf-high">High</span></p>
+        </div>
+      </section>
+
+      <!-- ============= 5. SEO / AEO / GEO ============= -->
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>SEO / AEO / GEO Gap Analysis</h2></div>
+        <p class="lead-in">SEO — Search Engine Optimization</p>
+        <p>How OC Dents ranks when drivers search "paintless dent repair [city]," "mobile dent removal near me," or "[city] dent repair." The critical local-SEO factors for a mobile auto-service business:</p>
+        <div class="acards">
+          <div class="acard"><div class="acard-h"><h4>Google Business Profile</h4><span class="chip chip-good">Excellent</span></div><p>5.0★ across 129 reviews in the "Auto dent removal service" category, with the owner replying to nearly every review. This is the single strongest asset &mdash; it already wins much of the local pack.</p><p class="rec">→ Maintain review velocity; add fresh photos &amp; service posts.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Website Health &amp; Crawlability</h4><span class="chip chip-bad">Compromised</span></div><p>ocdents.com is live but compromised (Section 4) and thin. Injected spam plus no real content means it captures little SEO equity and may be actively penalized.</p><p class="rec">→ Clean &amp; harden first, then rebuild as the SEO foundation. Priority #1.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Service &times; City Pages</h4><span class="chip chip-bad">Not found</span></div><p>The site names only San Clemente, Newport Beach &amp; Aliso Viejo. There are no dedicated "paintless dent repair {city}" pages &mdash; so OC Dents misses the high-intent capture for Irvine, Mission Viejo, Laguna Hills, Huntington Beach and more, all of which appear in real reviews.</p><p class="rec">→ Build one page per core OC city: "Mobile PDR in {city}."</p></div>
+          <div class="acard"><div class="acard-h"><h4>Review Count &amp; Velocity</h4><span class="chip chip-good">Strong — extend</span></div><p>Reviews are the #1 local ranking signal. 129 Google + 74 Yelp is strong, but top competitors carry 200&ndash;550+. Velocity (new reviews/month) matters as much as total.</p><p class="rec">→ Automate the review ask at every completed job.</p></div>
+          <div class="acard"><div class="acard-h"><h4>NAP Citation Consistency</h4><span class="chip chip-warn">Inconsistent</span></div><p>Hours are now confirmed (Mon&ndash;Fri 8&ndash;5, Sat 8&ndash;1, Sun closed), but the website footer still shows the wrong M&ndash;F 7&ndash;8, and an older phone number (877-9884) still lingers on Yelp and third-party listings. Inconsistent NAP confuses search engines and customers.</p><p class="rec">→ Standardize Name/Address/Phone/Hours everywhere after confirming with Mark.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Schema &amp; Core Web Vitals</h4><span class="chip chip-bad">Not present</span></div><p>No LocalBusiness / AutoRepair / Service / AggregateRating schema. AggregateRating schema would surface the 5.0★/129 directly in results &mdash; a major missed advantage given the rating.</p><p class="rec">→ Full schema + 90+ PageSpeed on a Next.js/Vercel rebuild.</p></div>
+        </div>
+
+        <div style="margin:18px 0 6px;"><span class="lead-in">SEO Readiness by Category</span></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Google Business Profile</span><span class="metric-val" style="color:#2D6A4F">90%</span></div><div class="progress-track"><div class="progress-bar bar-green" style="width:90%"></div></div></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Review Presence &amp; Velocity</span><span class="metric-val" style="color:#2D6A4F">80%</span></div><div class="progress-track"><div class="progress-bar bar-green" style="width:80%"></div></div></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Website Health</span><span class="metric-val" style="color:#C23B22">10%</span></div><div class="progress-track"><div class="progress-bar bar-red" style="width:10%"></div></div></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">City / Service Landing Pages</span><span class="metric-val" style="color:var(--accent-text)">15%</span></div><div class="progress-track"><div class="progress-bar bar-amber" style="width:15%"></div></div></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Local Citation Consistency</span><span class="metric-val" style="color:var(--accent-text)">45%</span></div><div class="progress-track"><div class="progress-bar bar-amber" style="width:45%"></div></div></div>
+        <div class="metric-row"><div class="metric-label-row"><span class="metric-name">Content &amp; Blog</span><span class="metric-val" style="color:#C23B22">0%</span></div><div class="progress-track"><div class="progress-bar bar-red" style="width:2%"></div></div></div>
+
+        <div style="margin:20px 0 6px;"><span class="lead-in">AEO — Answer Engine Optimization</span></div>
+        <p>Optimizes for featured snippets, People-Also-Ask boxes, and voice search. When someone asks "how much does paintless dent repair cost in Irvine?" or "can a door ding be fixed without painting?", OC Dents' site should own that answer box.</p>
+        <div class="acards">
+          <div class="acard"><div class="acard-h"><h4>FAQ Schema</h4><span class="chip chip-bad">Not present</span></div><p>FAQPage JSON-LD tells Google to show Q&amp;A as rich results. The current site carries no FAQ schema &mdash; despite Mark fielding the same questions daily (cost, paintless vs. body shop, mobile area).</p><p class="rec">→ FAQPage schema with the real questions customers ask.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Featured-Snippet Targeting</h4><span class="chip chip-bad">Not targeted</span></div><p>No content pages to win snippet positions. "What is paintless dent repair?" and "Will PDR work on my dent?" win those boxes for whoever publishes the clearest answer.</p><p class="rec">→ Structure H2s as questions; answer in the first sentence.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Voice Search</h4><span class="chip chip-bad">Not present</span></div><p>"Who does mobile dent repair near me in Mission Viejo?" needs natural-language content to surface. Mobile, convenience-first service is exactly the voice-search use case.</p><p class="rec">→ Conversational Q&amp;A copy; full-question H2s.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Content Topic Clusters</h4><span class="chip chip-bad">Not present</span></div><p>AEO rewards related-answer hubs (PDR &rarr; cost, time, paint-safety, hail, bumpers &mdash; interlinked). OC Dents has six service types but no connective content.</p><p class="rec">→ A PDR education hub linking each service page.</p></div>
+        </div>
+
+        <div style="margin:20px 0 6px;"><span class="lead-in">GEO — Generative Engine Optimization</span></div>
+        <p>Optimizes for AI search (ChatGPT, Perplexity, Google AI Overviews, Gemini). When someone asks an AI "who's the best mobile dent repair in Orange County?", OC Dents needs to be the answer &mdash; which requires entity clarity and structured, attributable content.</p>
+        <div class="acards">
+          <div class="acard"><div class="acard-h"><h4>Entity Clarity</h4><span class="chip chip-warn">Partial</span></div><p>GBP, Yelp and Instagram establish the OC Dents / Mark Magill / mobile-PDR identity, but the website &mdash; compromised and thin &mdash; is too weak to serve as a strong canonical entity anchor an AI can confidently cite.</p><p class="rec">→ Make the homepage a real entity anchor: full story, schema, consistent NAP.</p></div>
+          <div class="acard"><div class="acard-h"><h4>AI Search Indexability</h4><span class="chip chip-bad">Low</span></div><p>Perplexity/ChatGPT cite substantive crawlable pages. OC Dents owns the domain but has no original content for them to attribute &mdash; and injected spam actively undermines trust in the source.</p><p class="rec">→ Clean the site, then add original PDR/market content.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Not Currently Surfaced</h4><span class="chip chip-bad">Not cited</span></div><p>OC Dents does not yet appear in AI answer-engine results for OC dent-repair queries, despite the strongest review profile in the set &mdash; because that reputation lives on third-party platforms, not on an authoritative owned page AI can cite.</p><p class="rec">→ Publish owned, attributable proof of the reputation.</p></div>
+          <div class="acard"><div class="acard-h"><h4>Author / Owner Authority</h4><span class="chip chip-warn">Underused</span></div><p>Mark's 25 years and luxury-vehicle expertise are a powerful E-E-A-T signal that's invisible online. AI and Google favor attributed, credentialed content from a real expert.</p><p class="rec">→ Owner bio + author schema; attribute content to Mark.</p></div>
+        </div>
+      </section>
+
+      <!-- ============= 6. BRAND VOICE ============= -->
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;">
+          <div style="text-align:center;background:var(--band);color:var(--band-ink);border-radius:9px;padding:13px 8px;"><div style="font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;">Honest</div><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;">No upsell</div></div>
+          <div style="text-align:center;background:var(--band);color:var(--band-ink);border-radius:9px;padding:13px 8px;"><div style="font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;">Punctual</div><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;">Came to me</div></div>
+          <div style="text-align:center;background:var(--band);color:var(--band-ink);border-radius:9px;padding:13px 8px;"><div style="font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;">Meticulous</div><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;">Factory finish</div></div>
+        </div>
+        <p>Drawn from recurring review themes, OC Dents' voice reads as professional, plain-spoken, and craftsman-honest &mdash; a perfectionist who shows up on time, comes to you, fixes the dent right, and won't sell you work you don't need. The brand frames itself as <b>"restoration, not just repair,"</b> and the recurring proof points are convenience (mobile), integrity (no weird sales talk), precision (attention to detail), and competence on high-end vehicles. The implied positioning is the antidote to the body-shop experience: a trusted individual expert, not an estimate desk.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: public Google &amp; Yelp reviews)</span></h3>
+          <blockquote style="margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">"He pulled both dents out using paintless dent repair and honestly you'd never know they were there… no weird sales talk." &mdash; Silva H. <span class="conf conf-high">High</span></blockquote>
+          <blockquote style="margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">"Mark is an artist. He did an amazing job on my seven-series BMW… saved so much time and money by having Mark come to the house." &mdash; Matt B. <span class="conf conf-high">High</span></blockquote>
+          <blockquote style="margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">"Quickest and best quote… finished in like 20 minutes and charged me less than quoted." &mdash; Nelson H. <span class="conf conf-high">High</span></blockquote>
+          <p class="gapnote">Quotes are real, publicly posted customer reviews captured during research (Google &amp; Yelp). A signature brand strength: <b>Mark personally replies to nearly every review</b>, by name, referencing the customer's vehicle and city &mdash; a level of owner engagement most competitors don't match. Confirm preferred tone and any featured testimonials via the questionnaire.</p>
+        </div>
+      </section>
+
+      <!-- ============= 7. CUSTOMER INTELLIGENCE ============= -->
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Recurring praise themes, drawn from review keyword chips and sentiment across Google &amp; Yelp:</p>
+        <div class="panel slate">
+          <h3>1 &nbsp;·&nbsp; Punctuality &amp; speed</h3>
+          <blockquote style="margin:6px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">The single most-cited theme (punctuality tagged 17&times; on Google). Customers note Mark arrives on time &mdash; often early &mdash; and finishes fast, frequently in 20 minutes to an hour. <span class="conf conf-high">High</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; Honesty &amp; fair pricing</h3>
+          <blockquote style="margin:6px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">"No weird sales talk," "didn't make me feel ripped off," and "charged me less than quoted" recur across both platforms &mdash; a powerful differentiator in an industry customers approach warily. <span class="conf conf-high">High</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Convenience &amp; luxury-car competence</h3>
+          <blockquote style="margin:6px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;">"He came to me" appears in roughly 60 Yelp reviews; reviewers repeatedly trust Mark with BMW 7-series, Mercedes S63 AMG, Tesla, and Audi panels &mdash; high-stakes vehicles, factory finish preserved. <span class="conf conf-high">High</span></blockquote>
+        </div>
+        <div class="panel gaps">
+          <h3>The friction is discoverability, not service</h3>
+          <p class="kv">No recurring service complaints surfaced &mdash; sentiment is overwhelmingly positive across 200+ combined reviews. The friction is purely structural: OC Dents delivers elite service that is <b>hard to find online beyond the review platforms themselves</b>. The website doesn't rank, carries no city pages or content, and is compromised; the brand is largely invisible to AI answer engines; and there's no owned channel turning that goodwill into discoverable, compounding search visibility. The reputation is exceptional; the infrastructure to surface it to new customers is missing. <span class="conf conf-inf">Inferred</span></p>
+        </div>
+      </section>
+
+      <!-- ============= 8. COMPETITIVE LANDSCAPE ============= -->
+      <section class="sec" id="sec-8">
+        <div class="sec-head"><span class="n">8</span><h2>Competitive Landscape</h2></div>
+        <p>OC's mobile-PDR field is crowded and highly rated. OC Dents is <b>top-tier on reputation quality</b> (5.0★ Google) but sits <b>mid-pack on review volume</b> and <b>last on owned digital</b> (no city pages, no content, compromised site) versus the more established players. Every competitor stresses the same table-stakes &mdash; "we come to you," factory-paint preservation, decades of experience &mdash; so the differentiation must lean on what's genuinely unique to OC Dents. <span class="conf conf-high">High &mdash; public review data</span></p>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Rating</th><th class="center">Reviews</th><th>Note</th></tr>
+            <tr><td><strong>OC Dents</strong> <span class="gapnote">(subject)</span></td><td class="center"><span class="stars">5.0 / 4.9</span></td><td class="center">129 G · 74 Y</td><td>Aliso Viejo · Mark Magill · mobile · 25 yrs</td></tr>
+            <tr><td>Auto Cosmetic Solutions</td><td class="center">5.0</td><td class="center">~559</td><td>Body shop + mobile dent; high volume</td></tr>
+            <tr><td>Supreme Smart Repairs</td><td class="center">4.9</td><td class="center">~286</td><td>Mobile dent repair</td></tr>
+            <tr><td>Dentco</td><td class="center">4.9</td><td class="center">~214</td><td>Body shops + mobile, ~3.8 mi away</td></tr>
+            <tr><td>Dents Done Rite</td><td class="center">5.0</td><td class="center">~143</td><td>Mobile dent repair</td></tr>
+            <tr><td>Dent Specialist (OC)</td><td class="center">High</td><td class="center">~118</td><td>Mobile PDR · "25 years" · OC 92630</td></tr>
+          </table>
+        </div>
+        <div class="bench-grid">
+          <div class="bench-card top">
+            <div class="bench-tier top">Where OC Dents wins</div>
+            <div class="bench-label">Reputation &amp; Trust</div>
+            <div class="bench-stat"><span class="bl">Google Rating</span><span class="bv" style="color:var(--accent-text)">5.0 ★</span></div>
+            <div class="bench-stat"><span class="bl">Owner-operator</span><span class="bv" style="color:#2D6A4F">Always Mark</span></div>
+            <div class="bench-stat"><span class="bl">Owner replies</span><span class="bv" style="color:#2D6A4F">Nearly all</span></div>
+            <div class="bench-stat"><span class="bl">Luxury competence</span><span class="bv" style="color:#2D6A4F">Proven</span></div>
+            <div class="bench-stat"><span class="bl">Honesty / no-upsell</span><span class="bv" style="color:#2D6A4F">Signature</span></div>
+            <div class="bench-stat"><span class="bl">Tenure</span><span class="bv">25 years</span></div>
+          </div>
+          <div class="bench-card mid">
+            <div class="bench-tier mid">Where it's mid-pack</div>
+            <div class="bench-label">Volume &amp; Reach</div>
+            <div class="bench-stat"><span class="bl">Review volume</span><span class="bv">129 / 74</span></div>
+            <div class="bench-stat"><span class="bl">Leaders carry</span><span class="bv" style="color:var(--accent-text)">200–550+</span></div>
+            <div class="bench-stat"><span class="bl">Instagram reach</span><span class="bv">337 followers</span></div>
+            <div class="bench-stat"><span class="bl">Review velocity</span><span class="bv">Unverified</span></div>
+            <div class="bench-stat"><span class="bl">Named cities (site)</span><span class="bv">3</span></div>
+            <div class="bench-stat"><span class="bl">Brand awareness</span><span class="bv">Local</span></div>
+          </div>
+          <div class="bench-card low">
+            <div class="bench-tier low">Where it's behind</div>
+            <div class="bench-label">Owned Digital</div>
+            <div class="bench-stat"><span class="bl">Website health</span><span class="bv" style="color:#A2331C">Compromised</span></div>
+            <div class="bench-stat"><span class="bl">City landing pages</span><span class="bv" style="color:#A2331C">None</span></div>
+            <div class="bench-stat"><span class="bl">Schema</span><span class="bv" style="color:#A2331C">None</span></div>
+            <div class="bench-stat"><span class="bl">Blog / content</span><span class="bv" style="color:#A2331C">None</span></div>
+            <div class="bench-stat"><span class="bl">AI-engine presence</span><span class="bv" style="color:#A2331C">Not cited</span></div>
+            <div class="bench-stat"><span class="bl">NAP consistency</span><span class="bv" style="color:var(--accent-text)">Mixed</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h3>The strategic read</h3>
+          <p class="kv">OC Dents cannot out-volume Auto Cosmetic Solutions (~559 reviews) overnight, and it doesn't need to. Its edge is <b>quality of reputation + owner-operator intimacy + luxury credibility + honesty</b> &mdash; a positioning the high-volume shops can't authentically claim. The losing move is competing as a generic "mobile PDR" (table stakes everyone shares). The winning move is converting that distinctive reputation into <b>owned search real estate</b> &mdash; clean site, city pages, schema-surfaced 5.0★ &mdash; so the brand is as easy to <em>find</em> as it is easy to <em>recommend</em>. <span class="conf conf-inf">Inferred &mdash; confirm priorities with Mark</span></p>
+        </div>
+      </section>
+
+      <!-- ============= 9. PRIORITY ACTION MATRIX ============= -->
+      <section class="sec" id="sec-9">
+        <div class="sec-head"><span class="n">9</span><h2>Priority Action Matrix</h2></div>
+        <p>15 prioritized actions across four quadrants. Start top-left — highest impact, lowest effort.</p>
+        <div class="matrix-axes"><span>← Low effort</span><span>High effort →</span></div>
+        <div class="matrix">
+          <div class="mcell q1">
+            <div class="mcell-lbl">⚡ Do Now</div>
+            <div class="maction"><span class="anum">1</span><span>Clean &amp; harden the compromised website — remove injected casino spam (Section 4)</span></div>
+            <div class="maction"><span class="anum">2</span><span>Standardize NAP everywhere: confirm phone (763-3890) &amp; real hours, then sync</span></div>
+            <div class="maction"><span class="anum">3</span><span>Keep the review engine going — request a review at every completed job</span></div>
+            <div class="maction"><span class="anum">4</span><span>Add fresh GBP photos &amp; a weekly service post</span></div>
+          </div>
+          <div class="mcell q2">
+            <div class="mcell-lbl">📋 Plan For</div>
+            <div class="maction"><span class="anum">5</span><span>Rebuild ocdents.com as a clean, fast lead engine (this project)</span></div>
+            <div class="maction"><span class="anum">6</span><span>Build a "Mobile PDR in {city}" page for each core OC city</span></div>
+            <div class="maction"><span class="anum">7</span><span>Add LocalBusiness / AutoRepair / FAQ / AggregateRating schema</span></div>
+            <div class="maction"><span class="anum">8</span><span>Launch a short PDR education hub (cost, paint-safety, hail, bumpers)</span></div>
+          </div>
+          <div class="mcell q3">
+            <div class="mcell-lbl">✓ Quick Wins</div>
+            <div class="maction"><span class="anum">9</span><span>Add the full OC service-area city list to the site</span></div>
+            <div class="maction"><span class="anum">10</span><span>Wire "Send Photos for Quote" into a tracked lead inbox</span></div>
+            <div class="maction"><span class="anum">11</span><span>Post before/after reels to Instagram on a set cadence</span></div>
+            <div class="maction"><span class="anum">12</span><span>Add an owner bio + author schema featuring Mark's 25 years</span></div>
+          </div>
+          <div class="mcell q4">
+            <div class="mcell-lbl">↓ Defer</div>
+            <div class="maction"><span class="anum">13</span><span>Paid local search / Google Ads</span></div>
+            <div class="maction"><span class="anum">14</span><span>Dealer / fleet program (if pursued)</span></div>
+            <div class="maction"><span class="anum">15</span><span>YouTube PDR explainer series</span></div>
+          </div>
+        </div>
+        <div class="matrix-axes"><span>← Low impact</span><span>High impact →</span></div>
+      </section>
+
+      <!-- ============= 10. RECOMMENDATION ============= -->
+      <section class="sec" id="sec-10">
+        <div class="sec-head"><span class="n">10</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Engagement</div>
+          <div class="v">The Full-Stack Growth System</div>
+        </div>
+        <p>OC Dents has spent 25 years earning a reputation most businesses never reach &mdash; 5.0★ across 129 Google reviews, 4.9★ across 74 on Yelp, and an owner who personally answers nearly every one. The problem isn't service, and it isn't reputation. It's that the owned web presence is <b>compromised, thin, and invisible to search</b> &mdash; so that elite reputation doesn't translate into the discoverability it deserves. The Full-Stack Growth System closes those gaps at once:</p>
+        <ul>
+          <li><b>Site cleanup + custom rebuild</b> &mdash; remediate and harden the compromised WordPress (or migrate), then replace the thin site with a fast Poppins/Inter build: service pages, "Mobile PDR in {city}" pages for the core OC cities, full LocalBusiness/AutoRepair/FAQ/AggregateRating schema, and 90+ Core Web Vitals on Next.js/Vercel.</li>
+          <li><b>Local SEO / AEO / GEO</b> &mdash; standardize NAP, surface the 5.0★/129 rating in search via schema, build the city &amp; education content, and position OC Dents to be cited by AI answer engines for OC dent-repair queries.</li>
+          <li><b>Review &amp; reputation engine</b> &mdash; systematize the ask at every completed job to extend an already-strong review profile toward the 200+ volume of the category leaders, compounding the #1 local ranking signal.</li>
+        </ul>
+        <div class="panel forest">
+          <h3>The opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">OC Dents is the rare case where the hardest asset to build &mdash; a flawless, trusted reputation &mdash; already exists, and the easiest asset to fix &mdash; the owned digital foundation &mdash; is the bottleneck. Cleaning the site and converting that reputation into owned search real estate is the highest-leverage move available: it protects the brand from active search penalties today and turns "easy to recommend" into "easy to find" for every new OC driver searching for dent repair. Exact scope and the recommended engagement are best set in a short consult. <span class="conf conf-inf">Inferred &mdash; confirm scope &amp; goals in a consult</span></p>
+        </div>
+      </section>
+
+      <!-- ============= 11. METHODOLOGY ============= -->
+      <section class="sec" id="sec-11">
+        <div class="sec-head"><span class="n">11</span><h2>Methodology &amp; Disclaimer</h2></div>
+        <div class="panel">
+          <p class="kv"><b>Data sourcing:</b> This report draws on publicly accessible information cross-verified across multiple sources: the live <b>ocdents.com</b> website, the <b>Google Business Profile</b> (category, rating, review count, hours, attributes, review keyword themes), the <b>Yelp</b> business page (rating, review count, owner bio, payments, address, review quotes), and the <b>Instagram</b> profile (@ocdents). The rating and review figures &mdash; <b>Google 5.0★ / 129</b> and <b>Yelp 4.9★ / 74</b> &mdash; the owner identity (<b>Mark Magill</b>), tenure (<b>since 2001</b>), primary phone (<b>(949) 763-3890</b>), and Aliso Viejo 92656 base are cross-confirmed and marked <span class="conf conf-high">High</span>.</p>
+          <p class="kv"><b>Website security finding:</b> The hidden online-casino link-spam injected into the ocdents.com homepage was observed directly in the live page HTML during research and is marked <span class="conf conf-high">High</span>. It is reported as a security/SEO issue for the owner and the web developer to remediate; it was surfaced as found, not acted upon. <b>No</b> ratings, review counts, or testimonials have been invented &mdash; all quotes are real, publicly posted customer reviews.</p>
+          <p class="kv"><b>Conflicts &amp; unverified items:</b> Two fields conflict between sources and are flagged for confirmation: <b>hours</b> (site footer M&ndash;F 7AM&ndash;8PM vs. GBP/Yelp M&ndash;F 8&ndash;5, Sat 8&ndash;12) and a <b>secondary phone</b> (older (949) 877-9884 on some listings vs. current (949) 763-3890). Contact email, any formal warranty/guarantee, insurance-claim support, and the full mobile service-area city list were not published and are marked "Not found" &mdash; each is a question in the attached questionnaire.</p>
+          <p class="kv"><b>Framework scoring:</b> The 58/100 composite weights observable strengths (elite verified reputation, 25-year tenure, strong owner engagement) against controllable gaps (compromised &amp; thin website, no city pages, no schema, no content, under-leveraged social). It is a directional indicator; comparable shops with an equally strong reputation and a clean, schema-rich, content-backed site typically reach 80+.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Benchmarks:</b> Competitor ratings and review counts are best-effort figures from public Yelp/Google listings at time of research and are directional, not guarantees. This report was <b>pre-filled from public research</b> &mdash; please confirm anything marked "unverified," "conflicting," or "Not found" before it is treated as final.</p>
+        </div>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;·&nbsp; OC Dents &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
+  </div>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-1/oc-dents" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </span>
+    <a href="/round-1/oc-dents/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-1/oc-dents/questionnaire" aria-label="Discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+    <a href="/round-1/oc-dents/proposal" aria-label="Engagement proposal">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5M14 3l5 5v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 13h6M9 17h4"/></svg></span>
+      <span class="lbl">Proposal</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+<a class="br-portal" href="/" aria-label="Return to the Branch &amp; Root lead portal">
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+  <span class="br-portal-lbl">Return to Portal</span>
+</a>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

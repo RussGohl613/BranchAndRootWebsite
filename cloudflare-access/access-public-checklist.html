@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Make two lead pages public — Cloudflare Access checklist</title>
+<style>
+  :root {
+    --navy: #0f2740;
+    --navy-deep: #0a1d31;
+    --navy-soft: #1b3a5b;
+    --gold: #c9a14a;
+    --gold-soft: #e8d9b0;
+    --ink: #1a2230;
+    --paper: #f6f4ef;
+    --paper-card: #ffffff;
+    --line: #d9d4c8;
+    --muted: #5c6573;
+    --ok: #1f7a4d;
+    --warn-bg: #fdf4e0;
+    --warn-line: #e3c777;
+    --danger-bg: #fbeceb;
+    --danger-line: #e0a9a4;
+    --danger-ink: #8a2b22;
+    --code-bg: #eef1f4;
+    --code-ink: #15233a;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --navy: #cfe0f1;
+      --navy-deep: #e7eff8;
+      --navy-soft: #aac2dd;
+      --gold: #d9b65f;
+      --gold-soft: #6b5a2e;
+      --ink: #e9edf3;
+      --paper: #0c141f;
+      --paper-card: #131e2c;
+      --line: #2a3a4d;
+      --muted: #9aa7b7;
+      --ok: #5fca8f;
+      --warn-bg: #2a2415;
+      --warn-line: #6b5a2e;
+      --danger-bg: #2c1715;
+      --danger-line: #7a3b34;
+      --danger-ink: #f0b4ad;
+      --code-bg: #0a131e;
+      --code-ink: #d4e2f2;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--font);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sticky-title {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--navy-deep);
+    color: #f6f4ef;
+    border-bottom: 3px solid var(--gold);
+    padding: 14px 24px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .sticky-title { background: #060d16; color: var(--ink); }
+  }
+  .sticky-title .kicker {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+  .sticky-title h1 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 28px 24px 80px;
+  }
+
+  .lede {
+    font-size: 17px;
+    color: var(--ink);
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin: 0 0 14px;
+  }
+  .lede strong { color: var(--navy); }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 28px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta-pill {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+
+  section {
+    background: var(--paper-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin: 0 0 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  h2 .num {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #f6f4ef;
+    font-size: 15px;
+    font-weight: 700;
+    transform: translateY(2px);
+  }
+  @media (prefers-color-scheme: dark) {
+    h2 .num { background: var(--navy-soft); color: #060d16; }
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 22px 0 10px;
+  }
+
+  p { margin: 0 0 12px; }
+  p:last-child { margin-bottom: 0; }
+
+  .leaves-alone {
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 14px 0 0;
+  }
+  .leaves-alone .h {
+    font-weight: 600;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .leaves-alone ul { margin: 0; padding-left: 20px; }
+  .leaves-alone li { margin: 5px 0; }
+
+  ol.steps {
+    counter-reset: step;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ol.steps > li {
+    counter-increment: step;
+    position: relative;
+    padding: 0 0 0 44px;
+    margin: 0 0 18px;
+    min-height: 30px;
+  }
+  ol.steps > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy-deep);
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  ol.steps > li:last-child { margin-bottom: 0; }
+  ol.steps .step-title { font-weight: 600; color: var(--navy); }
+
+  /* Checkbox rows */
+  .check {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    margin: 0 0 10px;
+    background: var(--paper);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .check:last-child { margin-bottom: 0; }
+  .check:hover { border-color: var(--gold); }
+  .check input[type="checkbox"] {
+    flex: 0 0 auto;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--navy-soft);
+    border-radius: 7px;
+    background: var(--paper-card);
+    cursor: pointer;
+    margin: 1px 0 0;
+    position: relative;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .check input[type="checkbox"]:checked {
+    background: var(--ok);
+    border-color: var(--ok);
+  }
+  .check input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 3px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .check input[type="checkbox"]:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .check .ctext { flex: 1; }
+  .check input:checked ~ .ctext { color: var(--muted); }
+  .check input:checked ~ .ctext .step-title { text-decoration: line-through; }
+
+  code, .val {
+    font-family: var(--mono);
+    background: var(--code-bg);
+    color: var(--code-ink);
+    padding: 2px 7px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    word-break: break-word;
+  }
+
+  /* Copyable value block */
+  .field-list { margin: 10px 0 0; }
+  .field {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--line);
+  }
+  .field:first-child { border-top: none; }
+  .field .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .field .value {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .copy {
+    font-family: var(--mono);
+    background: var(--code-bg);
+    color: var(--code-ink);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13.5px;
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .copy:hover { border-color: var(--gold); }
+  .copy:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .copy.copied {
+    border-color: var(--ok);
+    background: var(--paper-card);
+  }
+  .copy .copied-tag {
+    color: var(--ok);
+    font-weight: 700;
+    font-family: var(--font);
+    font-size: 12px;
+    margin-left: 8px;
+  }
+  @media (max-width: 560px) {
+    .field { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  .paths-note {
+    font-size: 13.5px;
+    color: var(--muted);
+    margin: 12px 0 0;
+  }
+
+  .callout {
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 16px 0 0;
+    font-size: 14.5px;
+  }
+  .callout .h { font-weight: 700; display: block; margin-bottom: 4px; }
+  .callout.warn { background: var(--warn-bg); border: 1px solid var(--warn-line); }
+  .callout.warn .h { color: #8a6a14; }
+  @media (prefers-color-scheme: dark) { .callout.warn .h { color: var(--gold); } }
+  .callout.danger { background: var(--danger-bg); border: 1px solid var(--danger-line); }
+  .callout.danger .h { color: var(--danger-ink); }
+
+  /* Verify URL rows */
+  .url-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    margin: 0 0 9px;
+    background: var(--paper);
+  }
+  .url-row:last-child { margin-bottom: 0; }
+  .url-row input[type="checkbox"] {
+    flex: 0 0 auto;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--navy-soft);
+    border-radius: 6px;
+    background: var(--paper-card);
+    cursor: pointer;
+    position: relative;
+  }
+  .url-row input[type="checkbox"]:checked { background: var(--ok); border-color: var(--ok); }
+  .url-row input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  .url-row input[type="checkbox"]:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .url-row .u { flex: 1; min-width: 0; }
+  .url-row a {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    color: var(--navy);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .url-row a:hover { text-decoration: underline; text-decoration-color: var(--gold); }
+  .url-row .expect {
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .expect.pass { background: rgba(31,122,77,0.14); color: var(--ok); }
+  .expect.gate { background: rgba(201,161,74,0.18); color: #8a6a14; }
+  @media (prefers-color-scheme: dark) { .expect.gate { color: var(--gold); } }
+  @media (max-width: 560px) {
+    .url-row { flex-wrap: wrap; }
+    .url-row .u { flex-basis: 100%; order: 2; }
+    .url-row .expect { order: 3; }
+  }
+
+  .group-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 18px 0 8px;
+  }
+  .group-label:first-of-type { margin-top: 8px; }
+
+  ul.plain { margin: 8px 0 0; padding-left: 22px; }
+  ul.plain li { margin: 8px 0; }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 28px;
+  }
+  footer .gold { color: var(--gold); font-weight: 600; }
+
+  @media print {
+    .sticky-title { position: static; }
+    body { background: #fff; color: #000; }
+    section, .lede { break-inside: avoid; box-shadow: none; }
+    .check, .url-row { break-inside: avoid; }
+    a { color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sticky-title">
+  <p class="kicker">Branch &amp; Root · Internal ops · Not published</p>
+  <h1>Make two lead pages public in Cloudflare Access</h1>
+</div>
+
+<div class="wrap">
+
+  <p class="lede">
+    This checklist walks you, step by step, through making <strong>just two clients'</strong> lead
+    pages open to anyone with the link &mdash; <strong>Dan Blankenship</strong> and
+    <strong>OC Dents</strong> &mdash; while every other client's pages keep asking visitors to log in.
+    You do all of this in the <strong>Cloudflare Zero Trust dashboard</strong>. There is no file to
+    edit, no website to re-publish, and nothing to commit. Your changes go live within seconds of saving.
+  </p>
+
+  <div class="meta-row">
+    <span class="meta-pill">Time needed: about 10 minutes</span>
+    <span class="meta-pill">Where: Cloudflare Zero Trust dashboard (browser)</span>
+    <span class="meta-pill">Risk: low &mdash; fully reversible (see Rollback)</span>
+  </div>
+
+  <!-- 1. WHAT THIS DOES -->
+  <section id="what">
+    <h2><span class="num">1</span> What this does &mdash; and what it won't touch</h2>
+    <p>
+      The leads website lives at <code>leads.branchandrootconsulting.com</code>. Right now, a single
+      Cloudflare Access "catch-all" rule sits in front of that whole address and asks every visitor to
+      sign in before they can see anything. You are going to add <strong>two small, narrowly-targeted
+      exceptions</strong> &mdash; one for Dan Blankenship's pages, one for OC Dents' pages &mdash; that
+      let those (and only those) pages load with no login. This works because Cloudflare always obeys
+      the <strong>most specific</strong> rule for a given web address, so a rule aimed at one client's
+      folder quietly overrides the broad catch-all gate for that folder alone.
+    </p>
+
+    <div class="leaves-alone">
+      <span class="h">This leaves the following completely alone:</span>
+      <ul>
+        <li><strong>The site-wide login gate</strong> &mdash; the existing catch-all application that
+          protects everything stays exactly as it is. You will not edit or delete it.</li>
+        <li><strong>The existing public bypass for mini-audits and questionnaires</strong> &mdash; there
+          is already a rule that makes any <code>*/mini-audit*</code> and <code>*/questionnaire*</code>
+          page public for every client. Do not touch it. It keeps doing its job.</li>
+        <li><strong>Every other client</strong> &mdash; all other demos, audits, and proposals stay
+          behind the login screen, just as they are today.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. BEFORE YOU START -->
+  <section id="before">
+    <h2><span class="num">2</span> Before you start</h2>
+    <p>Get yourself into the right screen and find your bearings. Tick each box as you go.</p>
+
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Log in to Cloudflare.</span> Go to
+        <code>dash.cloudflare.com</code> and sign in with the Branch &amp; Root account.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Open Zero Trust.</span> In the left-hand menu, click
+        <code>Zero Trust</code>. (This opens the separate Zero Trust dashboard, which is where Access
+        lives.)</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Go to Access &rarr; Applications.</span> In the Zero
+        Trust menu, click <code>Access</code>, then <code>Applications</code>. You should see a list of
+        existing applications.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Find the existing catch-all, but do not open it.</span>
+        Look for the application that covers the whole leads site (its domain will be
+        <code>leads.branchandrootconsulting.com</code> with no specific folder after it). Just confirm
+        it's there. <strong>Leave it untouched</strong> &mdash; you're only adding new applications, never
+        editing this one.</span>
+    </label>
+
+    <div class="callout warn">
+      <span class="h">A quick note on wording</span>
+      Cloudflare occasionally renames buttons. If you don't see the exact label, look for the closest
+      match (for example "Add an application" may read "Create application"). The order of the steps stays
+      the same.
+    </div>
+  </section>
+
+  <!-- 3. APP 1 -->
+  <section id="app1">
+    <h2><span class="num">3</span> Add application 1 &mdash; Dan Blankenship</h2>
+    <p>
+      You're creating a brand-new Access application that points only at Dan's pages and waves visitors
+      straight through.
+    </p>
+
+    <ol class="steps">
+      <li>
+        <span class="step-title">Start a new application.</span> On the Applications screen, click
+        <code>Add an application</code>.
+      </li>
+      <li>
+        <span class="step-title">Choose the type.</span> Select <code>Self-hosted</code>.
+      </li>
+      <li>
+        <span class="step-title">Name it.</span> In the application name field, type exactly:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Application name</span>
+            <span class="value">
+              <button class="copy" type="button">Public — Dan Blankenship</button>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="step-title">Set the two application paths.</span> Find the <code>Application
+        domain</code> / paths area. You need to add <strong>two</strong> entries, both on the host
+        <code>leads.branchandrootconsulting.com</code>. Add the first, then use "Add" (or the
+        <code>+</code>) to add the second. Click each box below to copy the exact path:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Path 1 (the page itself)</span>
+            <span class="value">
+              <button class="copy" type="button">leads.branchandrootconsulting.com/round-1/dan-blankenship</button>
+            </span>
+          </div>
+          <div class="field">
+            <span class="label">Path 2 (everything under it)</span>
+            <span class="value">
+              <button class="copy" type="button">leads.branchandrootconsulting.com/round-1/dan-blankenship/*</button>
+            </span>
+          </div>
+        </div>
+        <p class="paths-note">
+          You need <strong>both</strong>. The first covers the landing page on its own (the demo). The
+          second &mdash; with the <code>/*</code> on the end &mdash; covers every sub-page beneath it,
+          such as the audit and the images in the <code>/media/</code> folder. If your screen splits the
+          host and the path into two separate boxes, put
+          <code>leads.branchandrootconsulting.com</code> in the host box and
+          <code>/round-1/dan-blankenship</code> (then <code>/round-1/dan-blankenship/*</code>) in the
+          path box.
+        </p>
+      </li>
+      <li>
+        <span class="step-title">Move on to the policy.</span> Continue (e.g. <code>Next</code>) until
+        you reach the policies step. Click <code>Add a policy</code> (or use the default policy block).
+      </li>
+      <li>
+        <span class="step-title">Set the policy to let everyone in.</span> Give the policy any clear name
+        (for example <code>Public bypass</code>), then set these two values exactly:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Action</span>
+            <span class="value"><span class="val">Bypass</span></span>
+          </div>
+          <div class="field">
+            <span class="label">Include &rarr; Selector</span>
+            <span class="value"><span class="val">Everyone</span></span>
+          </div>
+        </div>
+        <p class="paths-note">
+          "Bypass" means "skip the login for these pages." "Everyone" means "for all visitors." Together
+          they make the pages public.
+        </p>
+      </li>
+      <li>
+        <span class="step-title">Save.</span> Finish the wizard and click <code>Save</code> /
+        <code>Add application</code>. You'll land back on the Applications list with
+        <strong>Public — Dan Blankenship</strong> now showing.
+      </li>
+    </ol>
+
+    <div class="callout danger">
+      <span class="h">Double-check the Action before saving</span>
+      The Action <em>must</em> be <span class="val">Bypass</span>. If it's left on "Allow", visitors
+      could still be asked to authenticate. Bypass is the setting that makes a page truly public.
+    </div>
+  </section>
+
+  <!-- 4. APP 2 -->
+  <section id="app2">
+    <h2><span class="num">4</span> Add application 2 &mdash; OC Dents</h2>
+    <p>
+      Exactly the same process as above, with OC Dents' name and paths. Repeat every step.
+    </p>
+
+    <ol class="steps">
+      <li><span class="step-title">Start a new application.</span> Click <code>Add an application</code>.</li>
+      <li><span class="step-title">Choose the type.</span> Select <code>Self-hosted</code>.</li>
+      <li>
+        <span class="step-title">Name it.</span> Type exactly:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Application name</span>
+            <span class="value">
+              <button class="copy" type="button">Public — OC Dents</button>
+            </span>
+          </div>
+        </div>
+      </li>
+      <li>
+        <span class="step-title">Set the two application paths.</span> Add both entries on the host
+        <code>leads.branchandrootconsulting.com</code>:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Path 1 (the page itself)</span>
+            <span class="value">
+              <button class="copy" type="button">leads.branchandrootconsulting.com/round-1/oc-dents</button>
+            </span>
+          </div>
+          <div class="field">
+            <span class="label">Path 2 (everything under it)</span>
+            <span class="value">
+              <button class="copy" type="button">leads.branchandrootconsulting.com/round-1/oc-dents/*</button>
+            </span>
+          </div>
+        </div>
+        <p class="paths-note">
+          Same reasoning as before: the bare path covers the demo landing page; the <code>/*</code>
+          version covers the audit, the proposal, and the <code>/media/</code> images.
+        </p>
+      </li>
+      <li><span class="step-title">Move on to the policy.</span> Continue to the policies step and click
+        <code>Add a policy</code>.</li>
+      <li>
+        <span class="step-title">Set the policy to let everyone in.</span> Name it (e.g.
+        <code>Public bypass</code>) and set:
+        <div class="field-list">
+          <div class="field">
+            <span class="label">Action</span>
+            <span class="value"><span class="val">Bypass</span></span>
+          </div>
+          <div class="field">
+            <span class="label">Include &rarr; Selector</span>
+            <span class="value"><span class="val">Everyone</span></span>
+          </div>
+        </div>
+      </li>
+      <li><span class="step-title">Save.</span> Finish and click <code>Save</code>. You should now see
+        <strong>both</strong> new applications &mdash; "Public — Dan Blankenship" and "Public — OC
+        Dents" &mdash; in your list.</li>
+    </ol>
+  </section>
+
+  <!-- 5. VERIFY -->
+  <section id="verify">
+    <h2><span class="num">5</span> Verify it worked</h2>
+    <p>
+      Always test in a <strong>private / incognito window</strong> (in Chrome:
+      <code>File &rarr; New Incognito Window</code>; in Safari: <code>File &rarr; New Private
+      Window</code>). A normal window may already be signed in to Cloudflare, which would hide whether
+      the page is truly public. Open each link below and confirm the result matches the badge on its row.
+    </p>
+
+    <div class="group-label">These should open with NO login prompt</div>
+
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/dan-blankenship" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/dan-blankenship</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/dan-blankenship/audit" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/dan-blankenship/audit</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/oc-dents" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/oc-dents</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/oc-dents/audit" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/oc-dents/audit</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/oc-dents/proposal" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/oc-dents/proposal</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/oc-dents/mini-audit" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/oc-dents/mini-audit</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/oc-dents/questionnaire" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/oc-dents/questionnaire</a></span>
+      <span class="expect pass">No login</span>
+    </div>
+
+    <p class="paths-note">
+      Note: the mini-audit and questionnaire above were already public via the existing site-wide bypass,
+      so they should have opened without a login even before today. Confirming them here just proves
+      nothing you did broke them.
+    </p>
+
+    <div class="group-label">This should STILL ask for a login (proves you didn't open the whole site)</div>
+
+    <div class="url-row">
+      <input type="checkbox" />
+      <span class="u"><a href="https://leads.branchandrootconsulting.com/round-1/mission-auto-center" target="_blank" rel="noopener">https://leads.branchandrootconsulting.com/round-1/mission-auto-center</a></span>
+      <span class="expect gate">Login expected</span>
+    </div>
+
+    <div class="callout warn">
+      <span class="h">If the "still gated" page does NOT ask for a login</span>
+      Stop. That would mean the gate is wider open than intended. Re-check your two new applications &mdash;
+      a path typed too broadly (for example just <code>leads.branchandrootconsulting.com/*</code>) could
+      expose the whole site. Fix or delete the offending application, then re-test.
+    </div>
+  </section>
+
+  <!-- 6. ROLLBACK -->
+  <section id="rollback">
+    <h2><span class="num">6</span> Rollback &mdash; re-gate instantly</h2>
+    <p>
+      If you ever need Dan's or OC Dents' pages to be private again, you simply delete the matching
+      application. The moment it's gone, the site-wide login gate takes back over for those pages
+      &mdash; usually within seconds. You are not undoing anything else.
+    </p>
+
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Go back to Access &rarr; Applications.</span> The same
+        list where you added them.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Delete "Public — Dan Blankenship".</span> Open its
+        menu (the <code>&hellip;</code> or row actions) and choose <code>Delete</code>. Confirm.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Delete "Public — OC Dents".</span> Same steps.</span>
+    </label>
+    <label class="check">
+      <input type="checkbox" />
+      <span class="ctext"><span class="step-title">Re-test in a private window.</span> Re-open Dan's and
+        OC Dents' demo links from section 5 &mdash; they should now ask for a login again.</span>
+    </label>
+
+    <div class="callout danger">
+      <span class="h">Only delete the two applications you created</span>
+      Never delete the site-wide catch-all application or the existing mini-audit / questionnaire bypass.
+      Removing those would change behaviour for every client. Delete <em>only</em>
+      "Public — Dan Blankenship" and "Public — OC Dents".
+    </div>
+  </section>
+
+  <!-- 7. TROUBLESHOOTING -->
+  <section id="trouble">
+    <h2><span class="num">7</span> Troubleshooting</h2>
+    <p>If a page that should be public is still asking visitors to log in, work down this list:</p>
+
+    <ul class="plain">
+      <li>
+        <strong>Check the path spelling.</strong> The path is case- and character-sensitive. It must read
+        exactly <code>/round-1/dan-blankenship</code> or <code>/round-1/oc-dents</code> &mdash; with a
+        hyphen, no spaces, no <code>.html</code>, and no trailing slash. A single typo means the rule
+        doesn't match the page.
+      </li>
+      <li>
+        <strong>Make sure BOTH paths exist on the application.</strong> Open the application and confirm
+        it lists <em>both</em> the bare path <em>and</em> the <code>/*</code> version. If only the bare
+        path is there, the landing page works but the audit, proposal, and images will still be gated
+        (and vice-versa).
+      </li>
+      <li>
+        <strong>Remember that the most specific path wins.</strong> Cloudflare Access applies the rule
+        whose path most closely matches the page being visited. Your two new applications are more
+        specific than the site-wide catch-all, which is exactly why they override it for those folders.
+        If a page is still gated, it usually means no specific rule matched it &mdash; so the broad gate
+        is correctly taking over. Re-check the path.
+      </li>
+      <li>
+        <strong>Give it a few seconds.</strong> Changes are near-instant but not always instantaneous.
+        Wait 15&ndash;30 seconds after saving, then try again.
+      </li>
+      <li>
+        <strong>Use a fresh private window or clear your cache.</strong> Your browser may be holding an
+        old login session or a cached copy of the page. Open a <em>new</em> private / incognito window
+        (close any old ones first), or clear the browser cache, then re-test. This rules out a stale
+        result rather than a real problem with the rule.
+      </li>
+      <li>
+        <strong>Confirm the Action is "Bypass", not "Allow".</strong> Open the application's policy and
+        verify the Action reads <span class="val">Bypass</span> with Include set to
+        <span class="val">Everyone</span>. "Allow" can still trigger an authentication step.
+      </li>
+    </ul>
+
+    <div class="callout warn">
+      <span class="h">When in doubt, roll back</span>
+      If something looks wrong and you can't pin it down, it is always safe to delete the two new
+      applications (section 6). That returns everything to the known-good "everything is gated" state, and
+      you can try again with a clear head.
+    </div>
+  </section>
+
+  <footer>
+    <span class="gold">Branch &amp; Root Consulting</span> · Internal operations checklist ·
+    Cloudflare Access · Not published to the public site
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    var original = btn.textContent;
+    btn.addEventListener('click', function () {
+      var text = original;
+      var done = function () {
+        btn.classList.add('copied');
+        btn.innerHTML = original + '<span class="copied-tag">Copied</span>';
+        setTimeout(function () {
+          btn.classList.remove('copied');
+          btn.textContent = original;
+        }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

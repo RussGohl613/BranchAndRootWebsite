@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OC Dents — AI Growth Proposal | Branch &amp; Root</title>
+<meta name="description" content="A proposal for OC Dents: an always-on, AI-powered content and visibility engine that runs off a one-time profile of the business — so Mark stays focused on fixing cars, not feeding feeds. Google, search, social, and ads, with no recurring photoshoots." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F6F4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F10">
+
+<style>
+  :root{
+    color-scheme: light dark;
+    /* OC Dents — orange accent + near-black on warm paper */
+    --navy:        #181A1B;   /* dark band ground (kept var name for parity) */
+    --navy-2:      #1F2123;   /* elevated dark */
+    --navy-3:      #26292C;
+    --gold:        #E07C40;   /* primary accent — large fills only in light */
+    --gold-light:  #F08A4B;   /* lighter accent */
+    --gold-ink:    #C75F28;   /* AA-safe accent for TEXT on light */
+    --gold-faint:  rgba(224,124,64,.12);
+    --gold-border: rgba(199,95,40,.34);
+    --ink:         #181A1B;   /* body text on light */
+    --ink-soft:    #5B5F63;   /* muted text */
+    --paper:       #F7F6F4;   /* warm paper page */
+    --paper-2:     #FFFFFF;   /* secondary surface (cards lift off paper) */
+    --surface:     #FFFFFF;
+    --line:        #E4E1DC;
+    --on-dark:     #F3F1EE;   /* text on dark band */
+    --on-dark-mut: #A8ABAE;
+    --star:        #E07C40;
+    --shadow:      0 1px 2px rgba(24,26,27,.06), 0 10px 30px -10px rgba(24,26,27,.16);
+    --shadow-lg:   0 30px 70px -28px rgba(24,26,27,.40);
+    --radius: 16px;
+    --maxw: 1180px;
+    --fh:"Poppins", system-ui, -apple-system, sans-serif;
+    --fb:"Inter", system-ui, -apple-system, sans-serif;
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--gold);
+  }
+  /* ===== DARK MODE — deep charcoal ground; brighter orange stays AA on dark, reuse for text ===== */
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ink:#F3F1EE; --ink-soft:#A8ABAE; --paper:#0E0F10; --paper-2:#16181A; --surface:#16181A;
+    --line:#26292C; --on-dark:#F3F1EE; --on-dark-mut:#A8ABAE;
+    --gold:#F08A4B; --gold-light:#F49E68; --gold-ink:#F08A4B; --gold-faint:rgba(240,138,75,.14); --gold-border:rgba(240,138,75,.32);
+    --star:#F08A4B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }}
+  :root[data-theme="dark"]{
+    --ink:#F3F1EE; --ink-soft:#A8ABAE; --paper:#0E0F10; --paper-2:#16181A; --surface:#16181A;
+    --line:#26292C; --on-dark:#F3F1EE; --on-dark-mut:#A8ABAE;
+    --gold:#F08A4B; --gold-light:#F49E68; --gold-ink:#F08A4B; --gold-faint:rgba(240,138,75,.14); --gold-border:rgba(240,138,75,.32);
+    --star:#F08A4B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
+  body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;}
+  h1,h2,h3,.display{font-family:var(--fh);font-weight:700;line-height:1.14;letter-spacing:-0.01em;color:var(--ink);margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  ::selection{background:var(--gold-faint);}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--fb);font-weight:600;font-size:1rem;letter-spacing:.01em;padding:15px 28px;border-radius:11px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .14s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;line-height:1;}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .btn-primary{background:var(--gold);color:#1A0E06;box-shadow:0 10px 26px -10px rgba(224,124,64,.7);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(224,124,64,.8);}
+  /* Ghost = secondary over imagery: tinted fill + strong border so it always reads as a button (boundary ≥3:1) */
+  .btn-ghost{background:rgba(12,12,12,.42);color:#fff;border-color:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+  .btn-ghost:hover{background:rgba(240,138,75,.20);border-color:var(--gold-light);color:#fff;}
+  /* Outline = secondary on solid surfaces: 2px accent border for a clear, high-contrast boundary in both themes */
+  .btn-outline{background:transparent;color:var(--gold-ink);border-width:2px;border-color:var(--gold);}
+  .btn-outline:hover{background:var(--gold-faint);transform:translateY(-2px);border-color:var(--gold-light);}
+  .btn-lg{padding:17px 32px;font-size:1.05rem;}
+
+  /* ---------- Inline brand logo ---------- */
+  .brand{display:inline-flex;align-items:center;text-decoration:none;}
+  .brand:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:6px;}
+  .brand-logo{display:block;height:44px;width:auto;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--paper) 86%, transparent);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-bottom:1px solid var(--line);}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .nav-links{display:none;align-items:center;gap:.1rem;list-style:none;margin:0 auto;padding:0;}
+  .nav-links a{font-family:var(--fb);font-weight:500;font-size:.9rem;color:var(--ink-soft);padding:.4rem .85rem;border-radius:8px;text-decoration:none;transition:color .15s,background-color .15s;}
+  .nav-links a:hover{color:var(--ink);background:var(--paper-2);}
+  @media(min-width:1000px){.nav-links{display:flex;}}
+  .topbar-cta{display:flex;align-items:center;gap:12px;}
+  @media(max-width:880px){ .topbar .btn{display:none;} }
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,transform .12s;flex:none;}
+  .theme-toggle:hover{background:var(--paper-2);border-color:var(--gold-border);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ---------- Consult chip in topbar ---------- */
+  .topbar-phone{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-weight:700;font-size:.95rem;color:var(--gold-ink);text-decoration:none;padding:.5rem .9rem;border-radius:10px;border:1.5px solid var(--gold-border);transition:background .15s,border-color .15s,transform .12s;white-space:nowrap;}
+  .topbar-phone:hover{background:var(--gold-faint);border-color:var(--gold);transform:translateY(-1px);}
+  .topbar-phone:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .topbar-phone svg{width:16px;height:16px;flex:none;}
+
+  /* ================= HERO — static brand gradient + image ================= */
+  .hero{position:relative;min-height:clamp(520px,74vh,700px);display:flex;align-items:center;overflow:hidden;background:var(--navy);isolation:isolate;}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;opacity:.55;}
+  /* Brand wash so the hero stays rich even if the image is slow / missing */
+  .hero-grad{position:absolute;inset:0;z-index:-2;background:
+      radial-gradient(ellipse 78% 70% at 88% 12%, rgba(224,124,64,.42), transparent 60%),
+      radial-gradient(ellipse 60% 60% at 0% 100%, rgba(224,124,64,.16), transparent 60%),
+      linear-gradient(155deg, #1F2123 0%, #141516 60%, #101112 100%);}
+  /* Side-weighted scrim: anchors text on the LEFT. White text over the dark left band passes WCAG AA. */
+  .hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,.90) 0%, rgba(10,10,10,.78) 30%, rgba(12,12,12,.46) 56%, rgba(12,12,12,.14) 78%, transparent 100%),
+      linear-gradient(180deg, rgba(10,10,10,.40) 0%, transparent 26%, transparent 70%, rgba(8,8,8,.55) 100%);}
+  .hero-inner{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .hero-content{max-width:660px;padding:70px 0;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:#FFF3E9;margin-bottom:18px;text-shadow:0 1px 10px rgba(0,0,0,.55);}
+  .hero-eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light));display:inline-block;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.8rem);color:#fff;font-weight:700;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.5);}
+  .hero h1 .accent{color:var(--gold-light);font-weight:700;text-shadow:0 2px 22px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5);}
+  .hero-sub{font-size:clamp(1.02rem,1.6vw,1.18rem);color:#EAEDF3;margin:20px 0 0;max-width:56ch;line-height:1.6;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,.55);}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18);}
+  .hero-meta .m{display:flex;align-items:center;gap:11px;font-size:.94rem;color:#E4E0DB;font-weight:400;}
+  .hero-meta .m .dia{width:9px;height:9px;flex:none;background:var(--gold-light);transform:rotate(45deg);box-shadow:0 0 12px rgba(240,138,75,.6);}
+  .hero-meta .m b{font-weight:700;color:#fff;}
+
+  /* ================= Locale / intro strip ================= */
+  .locale{background:var(--navy);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.06);}
+  :root[data-theme="light"] .locale{background:var(--navy);}
+  .locale-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;padding:22px 24px;max-width:var(--maxw);margin:0 auto;}
+  .locale-lead{font-family:var(--fh);font-weight:600;font-size:.95rem;color:var(--gold-light);padding:0 22px;white-space:nowrap;}
+  .locale-item{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:500;padding:6px 20px;position:relative;}
+  .locale-item + .locale-item::before,.locale-lead + .locale-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:clamp(64px,9vw,116px) 0;}
+  .kicker{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:18px;}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--gold);}
+  .h-lead{font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.12;text-wrap:balance;}
+  .p-lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.7;}
+  .sec-head{max-width:64ch;margin-bottom:clamp(40px,6vw,64px);}
+  .sec-head p{color:var(--ink-soft);font-size:1.12rem;margin:14px 0 0;line-height:1.7;}
+
+  /* ================= PROBLEM ================= */
+  .problem{background:var(--paper);}
+  .prob-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.2vw,22px);}
+  .prob-card{position:relative;padding:30px 28px 26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .16s ease,border-color .2s ease;}
+  .prob-card:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .prob-card .pmark{width:46px;height:46px;border:1.5px solid var(--gold-border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--gold-ink);background:var(--surface);}
+  .prob-card .pmark svg{width:23px;height:23px;}
+  .prob-card h3{font-size:1.16rem;margin-bottom:8px;}
+  .prob-card p{margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.62;}
+  .prob-note{margin:clamp(28px,4vw,40px) 0 0;display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px dashed var(--gold-border);font-size:1.04rem;color:var(--ink);line-height:1.6;}
+  .prob-note .dia{width:11px;height:11px;flex:none;margin-top:7px;background:var(--gold);transform:rotate(45deg);}
+  @media(max-width:760px){.prob-grid{grid-template-columns:1fr;}}
+
+  /* ================= SOLUTION — one profile ================= */
+  .solution{background:var(--paper-2);border-top:1px solid var(--line);}
+  .sol-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(40px,5vw,72px);align-items:center;}
+  .sol-copy h2{font-size:clamp(2rem,3.6vw,2.85rem);margin-top:8px;}
+  .sol-copy p{color:var(--ink-soft);font-size:1.1rem;margin:20px 0 0;line-height:1.72;}
+  .sol-steps{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px;}
+  .sol-steps li{display:flex;gap:14px;align-items:flex-start;font-size:1.04rem;color:var(--ink);line-height:1.6;}
+  .sol-steps .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  .sol-steps b{font-weight:600;}
+  /* Quotable profile preview callout */
+  .profile-card{position:relative;border-radius:20px;overflow:hidden;background:var(--navy);color:var(--on-dark);box-shadow:var(--shadow-lg);border:1px solid var(--gold-border);}
+  .profile-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 86% 0%, rgba(224,124,64,.28), transparent 60%);}
+  .profile-head{position:relative;display:flex;align-items:center;gap:12px;padding:20px 26px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .profile-head .pc-dot{width:11px;height:11px;flex:none;background:var(--gold-light);transform:rotate(45deg);box-shadow:0 0 12px rgba(240,138,75,.6);}
+  .profile-head .pc-label{font-family:var(--fh);font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);}
+  .profile-body{position:relative;padding:28px 30px 30px;}
+  .profile-body .pc-quote{font-family:var(--fh);font-weight:700;color:#fff;font-size:1.12rem;line-height:1.4;margin:0 0 14px;}
+  .profile-body p{margin:0;color:#E0DCD7;font-size:1.02rem;line-height:1.66;}
+  .profile-body p + p{margin-top:14px;}
+  .profile-foot{position:relative;display:flex;align-items:center;gap:12px;padding:18px 30px 26px;}
+  .profile-foot .pf-pill{font-family:var(--fb);font-weight:600;font-size:.82rem;color:var(--gold-light);background:rgba(224,124,64,.16);border:1px solid var(--gold-border);border-radius:999px;padding:6px 14px;}
+  @media(max-width:920px){.sol-grid{grid-template-columns:1fr;gap:44px;}}
+
+  /* ================= PILLARS — 4 rich cards ================= */
+  .pillars{background:var(--paper);}
+  .pil-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,26px);}
+  .pcard2{position:relative;padding:36px 32px 30px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;transition:transform .16s ease,border-color .2s ease;}
+  .pcard2:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .pcard2::before{content:"0" attr(data-n);}
+  .pcard2 .pnum{position:absolute;top:22px;right:26px;font-family:var(--fh);font-size:2.6rem;font-weight:800;color:var(--gold);opacity:.16;line-height:1;}
+  .pcard2 .pmark{width:50px;height:50px;border:1.5px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold-ink);background:var(--surface);}
+  .pcard2 .pmark svg{width:25px;height:25px;}
+  .pcard2 h3{font-size:1.4rem;margin-bottom:6px;}
+  .pcard2 .psub{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:14px;}
+  .pcard2 > p{margin:0;color:var(--ink-soft);font-size:1.02rem;line-height:1.65;}
+  .pcard2 .pdo{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px;}
+  .pcard2 .pdo li{display:flex;gap:11px;align-items:flex-start;font-size:.97rem;color:var(--ink);line-height:1.5;}
+  .pcard2 .pdo .dia{width:9px;height:9px;flex:none;margin-top:7px;background:var(--gold);transform:rotate(45deg);}
+  .pcard2 .pout{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:.98rem;line-height:1.55;color:var(--ink);}
+  .pcard2 .pout b{color:var(--gold-ink);font-weight:700;}
+  .pdef{margin:10px 0 0;font-size:.92rem;color:var(--ink-soft);font-style:italic;line-height:1.55;}
+  @media(max-width:820px){.pil-grid{grid-template-columns:1fr;}}
+
+  /* ================= ENGINE FLOW — no daily photos ================= */
+  .engine{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden;}
+  .engine::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 82% 0%, rgba(224,124,64,.16), transparent 60%);}
+  .engine .kicker{color:var(--gold-light);}
+  .engine .kicker::before{background:var(--gold-light);}
+  .engine-head{position:relative;max-width:64ch;margin-bottom:clamp(36px,5vw,52px);}
+  .engine-head h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem);}
+  .engine-head p{color:var(--on-dark-mut);font-size:1.12rem;margin:16px 0 0;line-height:1.7;}
+  .flow{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:flow;}
+  .fstep{position:relative;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:30px 26px 28px;}
+  .fstep::before{counter-increment:flow;content:"0" counter(flow);position:absolute;top:16px;right:20px;font-family:var(--fh);font-size:2.2rem;font-weight:800;color:var(--gold-light);opacity:.22;line-height:1;}
+  .fstep .fmark{width:48px;height:48px;border-radius:12px;background:rgba(224,124,64,.16);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold-light);margin-bottom:18px;}
+  .fstep .fmark svg{width:24px;height:24px;}
+  .fstep h3{color:#fff;font-size:1.18rem;margin-bottom:8px;}
+  .fstep p{margin:0;color:#CFCBC6;font-size:.98rem;line-height:1.6;}
+  /* connector arrow between steps */
+  .fstep:not(:last-child)::after{content:"";position:absolute;top:54px;right:-13px;z-index:2;width:18px;height:18px;border-top:2px solid var(--gold-border);border-right:2px solid var(--gold-border);transform:rotate(45deg);}
+  .engine-note{position:relative;margin:clamp(30px,4vw,44px) 0 0;display:flex;gap:14px;align-items:flex-start;padding:24px 26px;border-radius:var(--radius);background:rgba(224,124,64,.10);border:1px solid var(--gold-border);font-size:1.06rem;color:#F1EDE6;line-height:1.6;}
+  .engine-note .dia{width:12px;height:12px;flex:none;margin-top:7px;background:var(--gold-light);transform:rotate(45deg);}
+  .engine-note b{color:#fff;}
+  @media(max-width:880px){.flow{grid-template-columns:1fr 1fr;}.fstep:nth-child(2)::after{display:none;}}
+  @media(max-width:520px){.flow{grid-template-columns:1fr;}.fstep::after{display:none!important;}}
+
+  /* ================= PHASES — engagement ================= */
+  .phases{background:var(--paper-2);border-top:1px solid var(--line);}
+  .phase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,26px);}
+  .phcard{position:relative;display:flex;flex-direction:column;padding:34px 30px 30px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .16s ease,border-color .2s ease;}
+  .phcard:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .phcard.flag{border-color:var(--gold-border);background:linear-gradient(180deg, var(--gold-faint), var(--surface) 46%);}
+  .phcard .ph-tag{display:inline-flex;align-self:flex-start;font-family:var(--fb);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);background:var(--gold-faint);border:1px solid var(--gold-border);padding:5px 12px;border-radius:999px;margin-bottom:16px;}
+  .phcard h3{font-size:1.32rem;margin-bottom:10px;}
+  .phcard .ph-lead{margin:0 0 16px;color:var(--ink-soft);font-size:1rem;line-height:1.6;}
+  .phcard ul{list-style:none;padding:0;margin:0 0 auto;display:grid;gap:11px;}
+  .phcard ul li{display:flex;gap:11px;align-items:flex-start;font-size:.98rem;color:var(--ink);line-height:1.5;}
+  .phcard ul .dia{width:9px;height:9px;flex:none;margin-top:7px;background:var(--gold);transform:rotate(45deg);}
+  .phcard .ph-out{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:.96rem;line-height:1.55;color:var(--ink);}
+  .phcard .ph-out b{color:var(--gold-ink);font-weight:700;}
+  .phase-foot{margin:clamp(28px,4vw,40px) 0 0;display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px dashed var(--gold-border);font-size:1.04rem;color:var(--ink);line-height:1.6;}
+  .phase-foot .dia{width:11px;height:11px;flex:none;margin-top:7px;background:var(--gold);transform:rotate(45deg);}
+  @media(max-width:920px){.phase-grid{grid-template-columns:1fr;}}
+
+  /* ================= SAMPLE CREATIVES ================= */
+  .gallery{background:var(--paper);}
+  .gallery h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:24ch;}
+  .gallery > .wrap > p{color:var(--ink-soft);font-size:1.1rem;margin:14px 0 26px;max-width:58ch;line-height:1.7;}
+  .gal-grid{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:18px;}
+  .gallery figure{margin:0;min-width:0;position:relative;}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);background:var(--navy);}
+  .gal-hero{grid-row:1 / span 2;}
+  .gal-hero img{aspect-ratio:4/5;}
+  .gal-cell img{aspect-ratio:16/11;}
+  .gal-ad img{aspect-ratio:16/11;object-fit:contain;background:var(--navy);}
+  .gallery figcaption{position:absolute;left:12px;bottom:12px;font-family:var(--fb);font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(12,12,12,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:6px 11px;border-radius:999px;}
+  .gal-note{text-align:center;margin:20px auto 0;max-width:62ch;font-size:.9rem;color:var(--ink-soft);font-style:italic;}
+  @media(max-width:760px){.gal-grid{grid-template-columns:1fr 1fr;}.gal-hero{grid-row:auto;grid-column:1 / -1;}.gal-hero img{aspect-ratio:16/9;}}
+  @media(max-width:480px){.gal-grid{grid-template-columns:1fr;}}
+
+  /* ================= CONTACT ================= */
+  .contact{background:var(--paper-2);border-top:1px solid var(--line);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,60px);align-items:start;}
+  .contact-copy h2{font-size:clamp(2rem,3.4vw,2.7rem);}
+  .contact-copy p{color:var(--ink-soft);font-size:1.12rem;margin:18px 0 26px;line-height:1.7;}
+  .contact-perks{list-style:none;padding:0;margin:0 0 28px;}
+  .contact-perks li{display:flex;gap:14px;align-items:flex-start;padding:11px 0;font-size:1.04rem;color:var(--ink);font-weight:400;}
+  .contact-perks .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  /* Phone call-out card */
+  .contact-call{display:flex;align-items:center;gap:18px;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .2s ease,box-shadow .2s;}
+  .contact-call:hover{transform:translateY(-2px);border-color:var(--gold-border);box-shadow:var(--shadow-lg);}
+  .contact-call:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .contact-call .cc-mark{width:52px;height:52px;flex:none;border-radius:13px;background:var(--gold-faint);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold-ink);}
+  .contact-call .cc-mark svg{width:24px;height:24px;}
+  .contact-call .cc-num{font-family:var(--fh);font-weight:700;font-size:1.32rem;line-height:1.1;color:var(--ink);}
+  .contact-call .cc-sub{font-size:.9rem;color:var(--ink-soft);margin-top:3px;}
+  .contact-mail{display:inline-flex;align-items:center;gap:10px;margin-top:14px;font-weight:600;font-size:1rem;color:var(--gold-ink);text-decoration:none;}
+  .contact-mail:hover{text-decoration:underline;}
+  .contact-mail svg{width:18px;height:18px;flex:none;}
+  .signoff{display:flex;align-items:center;gap:16px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line);}
+  .signoff .so-dia{width:50px;height:50px;flex:none;border:1.5px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:800;color:var(--gold-ink);font-size:1rem;}
+  .signoff .so-name{font-family:var(--fh);font-weight:700;font-size:1.12rem;color:var(--ink);line-height:1.1;}
+  .signoff .so-role{font-size:.88rem;color:var(--ink-soft);margin-top:2px;}
+
+  .formcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px 30px;box-shadow:var(--shadow-lg);}
+  .formcard h3{font-size:1.5rem;margin-bottom:6px;}
+  .formcard .fsub{color:var(--ink-soft);font-size:.99rem;margin:0 0 22px;}
+  .field{margin-bottom:17px;}
+  .field label{display:block;font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:8px;}
+  .field input,.field select,.field textarea{width:100%;font-family:var(--fb);font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:11px;padding:14px 16px;transition:border .15s ease, box-shadow .15s ease;}
+  .field textarea{min-height:104px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-faint);background:var(--surface);}
+  .field input::placeholder,.field textarea::placeholder{color:var(--ink-soft);opacity:.65;}
+  form .btn{width:100%;margin-top:8px;}
+  .form-fine{font-size:.82rem;color:var(--ink-soft);text-align:center;margin:14px 0 0;line-height:1.5;}
+  .form-success{display:none;text-align:center;padding:32px 12px;}
+  .form-success.show{display:block;}
+  .form-success .badge{width:68px;height:68px;border-radius:50%;background:var(--gold-faint);border:2px solid var(--gold);margin:0 auto 18px;position:relative;}
+  .form-success .badge::after{content:"";position:absolute;left:25px;top:18px;width:12px;height:23px;border:3px solid var(--gold);border-top:0;border-left:0;transform:rotate(40deg);}
+  .form-success h3{font-size:1.4rem;margin-bottom:6px;}
+  .form-success p{color:var(--ink-soft);margin:0;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:var(--on-dark-mut);padding:64px 0 32px;}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;}
+  .foot-brand .brand-logo{height:54px;}
+  .foot-brand p{margin:18px 0 0;font-size:.98rem;color:var(--on-dark-mut);max-width:42ch;line-height:1.65;}
+  .foot-col h4{font-family:var(--fh);font-weight:600;color:#fff;font-size:1.04rem;margin:0 0 16px;}
+  .foot-col a,.foot-col p{color:var(--on-dark-mut);text-decoration:none;font-size:.98rem;display:block;margin-bottom:10px;line-height:1.5;}
+  .foot-col a{transition:color .15s;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bar{margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;align-items:center;}
+  .foot-bar .cpy{font-size:.9rem;color:var(--on-dark-mut);}
+  .foot-bar .pwr{font-size:.82rem;color:#7C7F82;}
+  .foot-bar .lic{font-size:.8rem;color:#7C7F82;}
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .mcta{display:none;}
+  @media(max-width:768px){
+    .mcta{display:grid;grid-template-columns:1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 22px rgba(24,26,27,.18);}
+    .mcta .btn{width:100%;padding:14px 10px;font-size:1rem;}
+    body{padding-bottom:78px;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero{min-height:clamp(460px,66vh,580px);}
+    .hero-content{padding:52px 0;max-width:100%;}
+    /* On mobile, text spans full width — switch to a stronger vertical wash for AA */
+    .hero-scrim{background:
+      linear-gradient(180deg, rgba(10,10,10,.58) 0%, rgba(12,12,12,.30) 34%, rgba(10,10,10,.74) 100%),
+      linear-gradient(90deg, rgba(10,10,10,.62), rgba(10,10,10,.28) 70%, transparent);}
+    .contact-grid{grid-template-columns:1fr;gap:30px;}
+    .sec-head{max-width:100%;}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .foot-bar{justify-content:flex-start;}
+    .locale-lead{white-space:normal;text-align:center;}
+  }
+
+  /* ===== BR page switcher ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media(max-width:768px){.br-nav{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
+  @media print{.br-nav{display:none!important;}}
+
+  .br-portal-foot{display:inline-flex;align-items:center;gap:0;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--on-dark-mut);opacity:.85;transition:color .2s,opacity .2s;}
+  .br-portal-foot:hover,.br-portal-foot:focus-visible{opacity:1;color:#fff;outline:none;}
+  .br-portal-foot svg{width:14px;height:14px;flex:0 0 auto;display:block;}
+  .br-portal-foot .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal-foot:hover .br-portal-lbl,.br-portal-foot:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:6px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{scroll-behavior:auto!important;}
+    .btn:hover,.prob-card:hover,.pcard2:hover,.phcard:hover,.contact-call:hover,.plink:hover{transform:none!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="OC Dents — AI growth proposal — top of page">
+      <img class="brand-logo" src="/round-1/oc-dents/media/logo.png" alt="OC Dents — Paintless Dent Removal" width="1129" height="382">
+    </a>
+    <nav aria-label="Proposal sections">
+      <ul class="nav-links">
+        <li><a href="#problem">The gap</a></li>
+        <li><a href="#solution">The engine</a></li>
+        <li><a href="#pillars">Four pillars</a></li>
+        <li><a href="#phases">Rollout</a></li>
+        <li><a href="#contact">Book a call</a></li>
+      </ul>
+    </nav>
+    <div class="topbar-cta">
+      <a class="topbar-phone" href="#contact" aria-label="Book a free strategy call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>Book a call</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero — static brand image + gradient ===== -->
+  <section class="hero" aria-labelledby="hero-h">
+    <img class="hero-bg" src="/round-1/oc-dents/media/show-luxury.jpg" alt="" aria-hidden="true" loading="eager" decoding="async" onerror="this.style.display='none'">
+    <div class="hero-grad" aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">A growth proposal for OC Dents · by Branch &amp; Root</div>
+        <h1 id="hero-h">An always-on <span class="accent">growth engine</span> for OC Dents.</h1>
+        <p class="hero-sub">AI creates the daily content and keeps you visible across Google, search, and social — so Mark stays focused on fixing cars, not feeding feeds. It all runs off one profile of the business, with no recurring photoshoots.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#contact">Book a free strategy call</a>
+          <a class="btn btn-ghost btn-lg" href="#solution">See how it works</a>
+        </div>
+        <div class="hero-meta">
+          <span class="m"><span class="dia" aria-hidden="true"></span><b>5.0&#9733; Google</b>&nbsp;(129)</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span><b>4.9&#9733; Yelp</b>&nbsp;(74)</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span>Since 2001</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Intro strip ===== -->
+  <div class="locale" aria-label="At a glance">
+    <div class="locale-inner">
+      <span class="locale-lead">One profile in&nbsp;—</span>
+      <span class="locale-item">Endless content out</span>
+      <span class="locale-item">Google &amp; map pack</span>
+      <span class="locale-item">SEO · AEO · GEO</span>
+      <span class="locale-item">Organic social</span>
+      <span class="locale-item">Paid ads</span>
+      <span class="locale-item">No daily photoshoots</span>
+    </div>
+  </div>
+
+  <!-- ===== The problem ===== -->
+  <section class="problem" id="problem" aria-labelledby="prob-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Where you are today</span>
+        <h2 class="h-lead" id="prob-h">Elite work and elite reviews — but hard to find</h2>
+        <p>Mark has built a genuinely rare reputation: a perfect 5.0 on Google across 129 reviews, 4.9 on Yelp, and 25 years of luxury-credible, owner-operated work. The craft isn't the problem. Getting found by the next customer is.</p>
+      </div>
+      <div class="prob-grid">
+        <article class="prob-card">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>Hard to find on Google</h3>
+          <p>The reviews are stellar, but beyond people who already know the name, OC Dents is tough to surface in the Google map pack and search results where new customers actually look.</p>
+        </article>
+        <article class="prob-card">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+          <h3>A website working against you</h3>
+          <p><b>We found it during our audit:</b> your homepage HTML has a hidden block of foreign-language online-casino spam links injected into it — the signature of a hacked or compromised WordPress plugin. Google can quietly suppress your rankings (or flag the site "this site may be hacked"), erasing the visibility your reviews should be earning. The good news: it's fixable fast — Phase 1 below cleans it out.</p>
+        </article>
+        <article class="prob-card">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.5" cy="6.5" r="1.2"/></svg></div>
+          <h3>No steady social presence</h3>
+          <p>The before/afters are the kind of content people stop scrolling for — but posting is sporadic. Without a steady cadence, the work that should be building an audience mostly stays on Mark's phone.</p>
+        </article>
+        <article class="prob-card">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>No time to shoot every week</h3>
+          <p>Mark is a one-person operation — he's in driveways fixing cars all day. There's simply no room to plan, shoot, edit, and schedule photos and video on top of the real work.</p>
+        </article>
+      </div>
+      <p class="prob-note"><span class="dia" aria-hidden="true"></span><span>The bottleneck isn't quality or demand — it's <b>visibility and consistency</b>. That's exactly what an AI-powered engine is built to solve, without adding hours to Mark's week.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== The solution — one profile ===== -->
+  <section class="solution" id="solution" aria-labelledby="sol-h">
+    <div class="wrap">
+      <div class="sol-grid">
+        <div class="sol-copy">
+          <span class="kicker">The core idea</span>
+          <h2 id="sol-h">One profile in. Infinite on-brand content out.</h2>
+          <p>Instead of a never-ending content treadmill, we build a single reusable <b>AI profile</b> of OC Dents and Mark — the brand, the voice, the visual style, the services, and the Orange County geography. Captured once, it becomes the source everything else runs from.</p>
+          <ul class="sol-steps">
+            <li><span class="dia" aria-hidden="true"></span><span><b>We encode the brand once.</b> Logo, the orange-on-charcoal palette, the signature reflection-board photography, Mark's honest no-upsell voice, and the full service and city list.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>AI generates on demand.</b> On-brand before/afters, reels, Google posts, and ad creative — produced from the profile whenever we need them.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>It always sounds like Mark.</b> Because the voice and rules live in the profile, every caption and ad reads like him — never generic, never corporate.</span></li>
+          </ul>
+        </div>
+        <aside class="profile-card" aria-labelledby="pc-h">
+          <div class="profile-head">
+            <span class="pc-dot" aria-hidden="true"></span>
+            <span class="pc-label" id="pc-h">Profile preview</span>
+          </div>
+          <div class="profile-body">
+            <p class="pc-quote">OC Dents — AI Content Profile.</p>
+            <p>OC Dents is Orange County's trusted mobile paintless dent repair specialist, owner-operated by Mark Magill since 2001, with a 5.0-star Google rating across 129 reviews. The brand promise is simple: we come to you, remove the dent without touching your paint, and you keep the factory finish — usually in under an hour.</p>
+            <p>This profile encodes that brand — orange-on-charcoal palette, reflection-board photography, honest no-upsell voice, and ready-to-run prompt templates for images, reels, and ads. The result: unlimited on-brand content — before/afters, PDR explainers, hail offers, testimonials — generated on demand, with no recurring photoshoots. One spec, endless content, always sounding like Mark.</p>
+          </div>
+          <div class="profile-foot">
+            <span class="pf-pill">Excerpt from the OC Dents content profile</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Four pillars ===== -->
+  <section class="pillars" id="pillars" aria-labelledby="pil-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">What the engine drives</span>
+        <h2 class="h-lead" id="pil-h">Four pillars, one source of truth</h2>
+        <p>The profile feeds four channels that work together — each one designed to put OC Dents in front of more of the right Orange County drivers, and turn the work Mark already does into compounding visibility.</p>
+      </div>
+      <div class="pil-grid">
+
+        <article class="pcard2" data-n="1">
+          <span class="pnum" aria-hidden="true">01</span>
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="psub">Get found on the map</div>
+          <h3>Google Business Profile</h3>
+          <p>Your strongest near-term lever. We turn a good listing into a local-search magnet so OC Dents shows up when people search "dent repair near me."</p>
+          <ul class="pdo">
+            <li><span class="dia" aria-hidden="true"></span>Full profile optimization — categories, services, Q&amp;A, attributes</li>
+            <li><span class="dia" aria-hidden="true"></span>Weekly AI-written GBP posts that keep the listing active</li>
+            <li><span class="dia" aria-hidden="true"></span>A review-growth system to keep the 5.0 momentum building</li>
+            <li><span class="dia" aria-hidden="true"></span>Geo-tagged photos and a clean, consistent service list</li>
+          </ul>
+          <p class="pout"><b>The outcome:</b> rank higher in the Google map pack and capture more "near me" searches across OC.</p>
+        </article>
+
+        <article class="pcard2" data-n="2">
+          <span class="pnum" aria-hidden="true">02</span>
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M8 11h6M11 8v6"/></svg></div>
+          <div class="psub">Be the answer everywhere</div>
+          <h3>SEO / AEO / GEO</h3>
+          <p>We make OC Dents the obvious answer in classic search and in the new AI-powered ones — so the brand gets surfaced and cited whether someone Googles it or asks an assistant.</p>
+          <p class="pdef">AEO = Answer Engine Optimization (being the answer in voice and featured snippets). GEO = Generative Engine Optimization (getting cited by AI search like ChatGPT, Perplexity, and Google's AI Overviews).</p>
+          <ul class="pdo">
+            <li><span class="dia" aria-hidden="true"></span>Service &times; city landing pages (e.g. "PDR in Irvine")</li>
+            <li><span class="dia" aria-hidden="true"></span>LocalBusiness / AutoRepair schema so engines read the facts</li>
+            <li><span class="dia" aria-hidden="true"></span>FAQ content tuned for answer engines and voice search</li>
+            <li><span class="dia" aria-hidden="true"></span>Consistent NAP and entity data across the web</li>
+          </ul>
+          <p class="pout"><b>The outcome:</b> get found in Google <i>and</i> cited by AI search — ChatGPT, Perplexity, Google AI Overviews.</p>
+        </article>
+
+        <article class="pcard2" data-n="3">
+          <span class="pnum" aria-hidden="true">03</span>
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.4" cy="6.6" r="1.2"/></svg></div>
+          <div class="psub">Build an audience</div>
+          <h3>Organic social</h3>
+          <p>A steady Instagram, TikTok, and Facebook cadence generated straight from the profile — the scroll-stopping before/afters and explainers that show off the craft, posted consistently.</p>
+          <ul class="pdo">
+            <li><span class="dia" aria-hidden="true"></span>Before/after reels that prove the paintless promise</li>
+            <li><span class="dia" aria-hidden="true"></span>PDR explainers, ASMR rod-work, and myth-busting posts</li>
+            <li><span class="dia" aria-hidden="true"></span>Captions in Mark's honest, plain-spoken voice</li>
+            <li><span class="dia" aria-hidden="true"></span>A reliable schedule — no daily shoots required</li>
+          </ul>
+          <p class="pout"><b>The outcome:</b> a growing local audience and a feed that sells the work for you, around the clock.</p>
+        </article>
+
+        <article class="pcard2" data-n="4">
+          <span class="pnum" aria-hidden="true">04</span>
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l16-7-3 16-4-5-5-1z"/><path d="M11 13l5-6"/></svg></div>
+          <div class="psub">Reach more, faster</div>
+          <h3>Paid ads</h3>
+          <p>When you want to accelerate, we run Meta and Google ads built from the same profile — geo-targeted across Orange County and refreshed continuously, so creative never goes stale.</p>
+          <ul class="pdo">
+            <li><span class="dia" aria-hidden="true"></span>Meta + Google creative variants from the profile</li>
+            <li><span class="dia" aria-hidden="true"></span>Geo-targeted to your real service area across OC</li>
+            <li><span class="dia" aria-hidden="true"></span>Fresh creative on tap — no new photoshoots</li>
+            <li><span class="dia" aria-hidden="true"></span>Continuously tested and optimized for cost-per-lead</li>
+          </ul>
+          <p class="pout"><b>The outcome:</b> a controllable tap of new dent-repair leads, dialed up or down whenever you choose.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How "no daily photos" works ===== -->
+  <section class="engine" id="engine" aria-labelledby="eng-h">
+    <div class="wrap">
+      <div class="engine-head">
+        <span class="kicker">The part owners love</span>
+        <h2 id="eng-h">How "no daily photos" actually works</h2>
+        <p>You don't become a part-time content creator. We capture the brand once, then the engine does the heavy lifting — turning the work Mark already does into a steady stream of content.</p>
+      </div>
+      <div class="flow">
+        <article class="fstep">
+          <div class="fmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <h3>Capture the profile, once</h3>
+          <p>A single onboarding to lock in the brand, voice, visual style, services, and geography — plus a small library of Mark's real shots to anchor it.</p>
+        </article>
+        <article class="fstep">
+          <div class="fmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg></div>
+          <h3>AI generates variants</h3>
+          <p>From that one profile, AI produces on-brand before/afters, reels, posts, and ads on demand — endless variations, all in the OC Dents look and voice.</p>
+        </article>
+        <article class="fstep">
+          <div class="fmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/><path d="m9 15 2 2 4-4"/></svg></div>
+          <h3>We schedule + post</h3>
+          <p>We handle the calendar across Google, Instagram, TikTok, and Facebook — published on a steady cadence, with you in the loop but not in the weeds.</p>
+        </article>
+        <article class="fstep">
+          <div class="fmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 3-3 3 3 5-6"/></svg></div>
+          <h3>We measure + refine</h3>
+          <p>We track what drives calls and visibility, then feed the winners back into the profile — so every month the content gets sharper and works harder.</p>
+        </article>
+      </div>
+      <p class="engine-note"><span class="dia" aria-hidden="true"></span><span>The result: <b>the work Mark already does becomes infinite content.</b> A single repair he'd normally never post turns into a reel, a Google update, a before/after, and an ad — without a single extra photoshoot.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== What's included / engagement phases ===== -->
+  <section class="phases" id="phases" aria-labelledby="ph-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">What's included</span>
+        <h2 class="h-lead" id="ph-h">A phased rollout, built around your goals</h2>
+        <p>We start by fixing the foundation, then layer in the content engine, then amplify what's working. Each phase delivers on its own — you see momentum early, not just at the end.</p>
+      </div>
+      <div class="phase-grid">
+
+        <article class="phcard">
+          <span class="ph-tag">Phase 1</span>
+          <h3>Fix &amp; foundation</h3>
+          <p class="ph-lead">Clean up what's holding you back and set the base every channel depends on.</p>
+          <ul>
+            <li><span class="dia" aria-hidden="true"></span>Clean the hacked site, remove the injected spam links, harden WordPress, and re-verify in Google Search Console</li>
+            <li><span class="dia" aria-hidden="true"></span>Optimize the Google Business Profile end to end</li>
+            <li><span class="dia" aria-hidden="true"></span>Add LocalBusiness / AutoRepair + FAQ schema</li>
+            <li><span class="dia" aria-hidden="true"></span>Lock consistent NAP and entity data across the web</li>
+            <li><span class="dia" aria-hidden="true"></span>Build the reusable OC Dents content profile</li>
+          </ul>
+          <p class="ph-out"><b>Outcome:</b> a clean, trusted footprint that search engines and AI can rank and cite with confidence.</p>
+        </article>
+
+        <article class="phcard flag">
+          <span class="ph-tag">Phase 2</span>
+          <h3>Content engine live</h3>
+          <p class="ph-lead">The profile starts working — steady, on-brand content across every owned channel.</p>
+          <ul>
+            <li><span class="dia" aria-hidden="true"></span>Weekly GBP posts and a running review-growth system</li>
+            <li><span class="dia" aria-hidden="true"></span>Organic social cadence — reels, before/afters, explainers</li>
+            <li><span class="dia" aria-hidden="true"></span>Service &times; city landing pages published over time</li>
+            <li><span class="dia" aria-hidden="true"></span>AEO / GEO content so AI search surfaces OC Dents</li>
+            <li><span class="dia" aria-hidden="true"></span>Scheduling, posting, and monthly reporting handled for you</li>
+          </ul>
+          <p class="ph-out"><b>Outcome:</b> consistent visibility and a growing audience — with zero new photoshoots on Mark's calendar.</p>
+        </article>
+
+        <article class="phcard">
+          <span class="ph-tag">Phase 3</span>
+          <h3>Amplify &amp; optimize</h3>
+          <p class="ph-lead">Pour fuel on what's working and turn visibility into a predictable lead flow.</p>
+          <ul>
+            <li><span class="dia" aria-hidden="true"></span>Meta + Google ads built from the same profile</li>
+            <li><span class="dia" aria-hidden="true"></span>Geo-targeted campaigns across your OC service area</li>
+            <li><span class="dia" aria-hidden="true"></span>Continuous creative refresh — no new shoots</li>
+            <li><span class="dia" aria-hidden="true"></span>Ongoing testing to drive down cost-per-lead</li>
+            <li><span class="dia" aria-hidden="true"></span>Refine the profile from real performance data</li>
+          </ul>
+          <p class="ph-out"><b>Outcome:</b> a controllable, measurable tap of new dent-repair leads you can scale up or down.</p>
+        </article>
+
+      </div>
+      <p class="phase-foot"><span class="dia" aria-hidden="true"></span><span>Every engagement is scoped to your goals on our call — start with the foundation, or move straight into the full engine. We'll recommend the right path for where OC Dents is now.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== Sample creatives ===== -->
+  <section class="gallery" id="creatives" aria-labelledby="gal-h">
+    <div class="wrap">
+      <span class="kicker">A taste of the output</span>
+      <h2 id="gal-h">Examples of on-brand, AI-generated creative</h2>
+      <p>This is the kind of content the engine produces from the profile — the reflective panels, the factory-finish promise, the OC Dents look — ready for social, Google, and ads.</p>
+      <div class="gal-grid">
+        <figure class="gal-hero">
+          <img src="/round-1/oc-dents/media/show-luxury.jpg" width="1000" height="1250" loading="lazy" decoding="async" alt="On-brand creative example: a luxury car panel with the factory finish intact, in the OC Dents style." onerror="this.closest('figure').style.display='none'">
+          <figcaption>Luxury · on-brand</figcaption>
+        </figure>
+        <figure class="gal-cell">
+          <img src="/round-1/oc-dents/media/show-bumper.jpg" width="1000" height="688" loading="lazy" decoding="async" alt="On-brand creative example: a bumper dent repaired without repainting." onerror="this.closest('figure').style.display='none'">
+          <figcaption>Bumper repair</figcaption>
+        </figure>
+        <figure class="gal-cell">
+          <img src="/round-1/oc-dents/media/show-hail.jpg" width="1000" height="688" loading="lazy" decoding="async" alt="On-brand creative example: a hood with hail damage smoothed back to a clean factory finish." onerror="this.closest('figure').style.display='none'">
+          <figcaption>Hail damage</figcaption>
+        </figure>
+        <figure class="gal-ad" style="grid-column:1 / -1;">
+          <img src="/round-1/oc-dents/media/ad-oc.png" width="1080" height="743" loading="lazy" decoding="async" alt="Sample ad creative for OC Dents — mobile paintless dent repair across Orange County." onerror="this.closest('figure').style.display='none'">
+          <figcaption>Sample ad creative</figcaption>
+        </figure>
+      </div>
+      <p class="gal-note">Illustrative examples of AI-generated, on-brand creative. Final assets are produced from the OC Dents profile and tuned to Mark's real work.</p>
+    </div>
+  </section>
+
+  <!-- ===== CTA / contact ===== -->
+  <section class="contact" id="contact" aria-labelledby="con-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <span class="kicker">Next step</span>
+          <h2 id="con-h">Book a free strategy call</h2>
+          <p>Let's walk through where OC Dents stands today and what an always-on engine could look like — built around your goals, with no recurring photoshoots. No pressure, no jargon, just a clear plan.</p>
+          <ul class="contact-perks">
+            <li><span class="dia" aria-hidden="true"></span>A look at your current visibility and quick wins</li>
+            <li><span class="dia" aria-hidden="true"></span>How the profile-driven engine would work for you</li>
+            <li><span class="dia" aria-hidden="true"></span>A phased plan scoped to your goals on the call</li>
+          </ul>
+          <a class="contact-call" href="tel:+19497633890" aria-label="Call Branch & Root at (949) 763-3890">
+            <span class="cc-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span>
+              <span class="cc-num">(949) 763-3890</span>
+              <span class="cc-sub">Call or text to set up your call</span>
+            </span>
+          </a>
+          <a class="contact-mail" href="mailto:rmgohl@branchandrootconsulting.com?subject=OC%20Dents%20%E2%80%94%20proposal%20consult"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>rmgohl@branchandrootconsulting.com</a>
+          <div class="signoff">
+            <span class="so-dia" aria-hidden="true">B&amp;R</span>
+            <div>
+              <div class="so-name">Branch &amp; Root Consulting</div>
+              <div class="so-role">AI-powered growth for local businesses</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formcard">
+          <div id="form-live">
+            <h3>Request your strategy call</h3>
+            <p class="fsub">A few quick details and we'll reach out to set up a time that works.</p>
+            <form id="lead-form" action="https://formspree.io/f/mbdebzor" method="POST" novalidate>
+              <input type="hidden" name="business" value="oc-dents" />
+              <input type="hidden" name="_subject" value="OC Dents — proposal consult" />
+              <div class="field">
+                <label for="f-name">Your name</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" placeholder="First and last name" required />
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(949) 555-1234" />
+              </div>
+              <div class="field">
+                <label for="f-email">Email address</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="f-goal">What would you most like to grow?</label>
+                <input type="text" id="f-goal" name="goal" placeholder="e.g. more calls from Google, a steady social presence" />
+              </div>
+              <div class="field">
+                <label for="f-msg">Anything you'd like us to know?</label>
+                <textarea id="f-msg" name="message" placeholder="Tell us a bit about where OC Dents is now and what you're hoping for."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Book my free strategy call</button>
+              <p class="form-fine">Your details are only used to set up and prepare for your call.</p>
+            </form>
+          </div>
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="badge" aria-hidden="true"></div>
+            <h3>Thanks — we'll be in touch shortly.</h3>
+            <p>We'll reach out to set up your free strategy call and come prepared with a few ideas. Talk soon!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer aria-labelledby="foot-h">
+  <h2 id="foot-h" class="sr-only">OC Dents AI growth proposal — contact</h2>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="OC Dents — top of page">
+          <img class="brand-logo" src="/round-1/oc-dents/media/logo.png" alt="OC Dents — Paintless Dent Removal" width="1129" height="382">
+        </a>
+        <p>An AI-powered content and visibility engine for OC Dents — proposed by Branch &amp; Root Consulting. One profile in, endless on-brand content out, no recurring photoshoots.</p>
+      </div>
+      <div class="foot-col">
+        <h4>In this proposal</h4>
+        <a href="#problem">Where you are today</a>
+        <a href="#solution">The engine</a>
+        <a href="#pillars">Four pillars</a>
+        <a href="#phases">Phased rollout</a>
+      </div>
+      <div class="foot-col">
+        <h4>Talk to us</h4>
+        <a href="#contact">Book a free strategy call</a>
+        <a href="tel:+19497633890">(949) 763-3890</a>
+        <a href="mailto:rmgohl@branchandrootconsulting.com?subject=OC%20Dents%20%E2%80%94%20proposal%20consult">rmgohl@branchandrootconsulting.com</a>
+        <a href="https://leads.branchandrootconsulting.com/">Branch &amp; Root Consulting</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
+      <span class="cpy">© 2026 Branch &amp; Root Consulting · Proposal prepared for OC Dents.</span>
+      <span class="lic">AI growth proposal · for review only</span>
+      <span class="pwr">Powered by Branch &amp; Root</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Sticky mobile CTA ===== -->
+<nav class="mcta" aria-label="Quick action">
+  <a class="btn btn-primary" href="#contact">Book a call</a>
+</nav>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-1/oc-dents" aria-label="Landing page demo">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </a>
+    <a href="/round-1/oc-dents/audit" aria-label="Internal brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </a>
+    <a href="/round-1/oc-dents/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-1/oc-dents/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 14h6M9 17h4"/></svg></span>
+      <span class="lbl">Proposal</span>
+    </span>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+  // Static lead form: posts to Formspree. Intercept to show inline success without a page nav.
+  (function(){
+    var form = document.getElementById('lead-form');
+    if(!form) return;
+    function showSuccess(){
+      document.getElementById('form-live').style.display = 'none';
+      var ok = document.getElementById('form-success');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+      if(typeof gtag === 'function'){ gtag('event','form_submit',{form_id:'lead-form'}); gtag('event','generate_lead',{form_id:'lead-form'}); }
+    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      fetch(form.action, {
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      }).then(function(r){ showSuccess(); }).catch(function(){ showSuccess(); });
+    });
+  })();
+</script>
+<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

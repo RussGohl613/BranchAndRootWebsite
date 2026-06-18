@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="robots" content="noindex,nofollow">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OC Dents | Mobile Paintless Dent Repair — Orange County</title>
+<meta name="description" content="Mobile paintless dent repair across Orange County. Owner-operator Mark Magill comes to your home or office and removes dents while keeping your original factory finish — no fillers, no repaint. Free photo quotes. Serving Aliso Viejo, Mission Viejo, Irvine, Newport Beach and all of OC since 2001." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F7F6F4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E0F10">
+
+<!-- LocalBusiness / AutoRepair structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "OC Dents",
+  "description": "Mobile paintless dent repair (PDR) serving all of Orange County, California. Owner-operator Mark Magill removes dents, door dings, bumper dents and hail damage while preserving the original factory finish — no repaint, no fillers.",
+  "image": "/round-1/oc-dents/media/hero-poster.jpg",
+  "telephone": "+1-949-763-3890",
+  "email": "mark@ocdents.com",
+  "url": "https://leads.branchandrootconsulting.com/round-1/oc-dents",
+  "priceRange": "$$",
+  "founder": { "@type": "Person", "name": "Mark Magill" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Aliso Viejo",
+    "addressRegion": "CA",
+    "postalCode": "92656",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "AdministrativeArea", "name": "Orange County, California" },
+    { "@type": "City", "name": "Aliso Viejo" },
+    { "@type": "City", "name": "Mission Viejo" },
+    { "@type": "City", "name": "Irvine" },
+    { "@type": "City", "name": "Newport Beach" },
+    { "@type": "City", "name": "San Clemente" },
+    { "@type": "City", "name": "Laguna Hills" },
+    { "@type": "City", "name": "Rancho Santa Margarita" },
+    { "@type": "City", "name": "Huntington Beach" }
+  ],
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:00", "closes": "13:00" }
+  ],
+  "knowsAbout": ["Paintless dent repair", "Door ding removal", "Bumper dent repair", "Hail damage repair", "Mobile dent repair", "Factory finish restoration"],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "129",
+    "bestRating": "5"
+  },
+  "sameAs": [
+    "https://ocdents.com",
+    "https://www.instagram.com/ocdents/",
+    "https://www.yelp.com/biz/oc-dents-aliso-viejo-2",
+    "https://www.facebook.com/ocdents/"
+  ]
+}
+</script>
+
+<style>
+  :root{
+    color-scheme: light dark;
+    /* OC Dents — orange accent + near-black on warm paper */
+    --navy:        #181A1B;   /* dark band ground (kept var name for parity) */
+    --navy-2:      #1F2123;   /* elevated dark */
+    --navy-3:      #26292C;
+    --gold:        #E07C40;   /* primary accent — large fills only in light */
+    --gold-light:  #F08A4B;   /* lighter accent */
+    --gold-ink:    #C75F28;   /* AA-safe accent for TEXT on light */
+    --gold-faint:  rgba(224,124,64,.12);
+    --gold-border: rgba(199,95,40,.34);
+    --ink:         #181A1B;   /* body text on light */
+    --ink-soft:    #5B5F63;   /* muted text */
+    --paper:       #F7F6F4;   /* warm paper page */
+    --paper-2:     #FFFFFF;   /* secondary surface (cards lift off paper) */
+    --surface:     #FFFFFF;
+    --line:        #E4E1DC;
+    --on-dark:     #F3F1EE;   /* text on dark band */
+    --on-dark-mut: #A8ABAE;
+    --star:        #E07C40;
+    --shadow:      0 1px 2px rgba(24,26,27,.06), 0 10px 30px -10px rgba(24,26,27,.16);
+    --shadow-lg:   0 30px 70px -28px rgba(24,26,27,.40);
+    --radius: 16px;
+    --maxw: 1180px;
+    --fh:"Poppins", system-ui, -apple-system, sans-serif;
+    --fb:"Inter", system-ui, -apple-system, sans-serif;
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--gold);
+  }
+  /* ===== DARK MODE — deep charcoal ground; brighter orange stays AA on dark, reuse for text ===== */
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ink:#F3F1EE; --ink-soft:#A8ABAE; --paper:#0E0F10; --paper-2:#16181A; --surface:#16181A;
+    --line:#26292C; --on-dark:#F3F1EE; --on-dark-mut:#A8ABAE;
+    --gold:#F08A4B; --gold-light:#F49E68; --gold-ink:#F08A4B; --gold-faint:rgba(240,138,75,.14); --gold-border:rgba(240,138,75,.32);
+    --star:#F08A4B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }}
+  :root[data-theme="dark"]{
+    --ink:#F3F1EE; --ink-soft:#A8ABAE; --paper:#0E0F10; --paper-2:#16181A; --surface:#16181A;
+    --line:#26292C; --on-dark:#F3F1EE; --on-dark-mut:#A8ABAE;
+    --gold:#F08A4B; --gold-light:#F49E68; --gold-ink:#F08A4B; --gold-faint:rgba(240,138,75,.14); --gold-border:rgba(240,138,75,.32);
+    --star:#F08A4B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 34px -14px rgba(0,0,0,.6);
+    --shadow-lg:0 36px 80px -30px rgba(0,0,0,.8);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;overflow-x:clip;}
+  body{margin:0;font-family:var(--fb);color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:clip;}
+  h1,h2,h3,.display{font-family:var(--fh);font-weight:700;line-height:1.14;letter-spacing:-0.01em;color:var(--ink);margin:0;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}
+  ::selection{background:var(--gold-faint);}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:var(--fb);font-weight:600;font-size:1rem;letter-spacing:.01em;padding:15px 28px;border-radius:11px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .14s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;line-height:1;}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .btn-primary{background:var(--gold);color:#1A0E06;box-shadow:0 10px 26px -10px rgba(224,124,64,.7);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 32px -10px rgba(224,124,64,.8);}
+  /* Ghost = secondary over imagery: tinted fill + strong border so it always reads as a button (boundary ≥3:1) */
+  .btn-ghost{background:rgba(12,12,12,.42);color:#fff;border-color:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+  .btn-ghost:hover{background:rgba(240,138,75,.20);border-color:var(--gold-light);color:#fff;}
+  /* Outline = secondary on solid surfaces: 2px accent border for a clear, high-contrast boundary in both themes */
+  .btn-outline{background:transparent;color:var(--gold-ink);border-width:2px;border-color:var(--gold);}
+  .btn-outline:hover{background:var(--gold-faint);transform:translateY(-2px);border-color:var(--gold-light);}
+  .btn-lg{padding:17px 32px;font-size:1.05rem;}
+
+  /* ---------- Inline brand logo ---------- */
+  .brand{display:inline-flex;align-items:center;text-decoration:none;}
+  .brand:focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:6px;}
+  .brand-logo{display:block;height:44px;width:auto;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--paper) 86%, transparent);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);border-bottom:1px solid var(--line);}
+  .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .nav-links{display:none;align-items:center;gap:.1rem;list-style:none;margin:0 auto;padding:0;}
+  .nav-links a{font-family:var(--fb);font-weight:500;font-size:.9rem;color:var(--ink-soft);padding:.4rem .85rem;border-radius:8px;text-decoration:none;transition:color .15s,background-color .15s;}
+  .nav-links a:hover{color:var(--ink);background:var(--paper-2);}
+  @media(min-width:1000px){.nav-links{display:flex;}}
+  .topbar-cta{display:flex;align-items:center;gap:12px;}
+  @media(max-width:880px){ .topbar .btn{display:none;} }
+
+  /* ---------- Theme toggle ---------- */
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,transform .12s;flex:none;}
+  .theme-toggle:hover{background:var(--paper-2);border-color:var(--gold-border);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ---------- Phone link in topbar ---------- */
+  .topbar-phone{display:inline-flex;align-items:center;gap:8px;font-family:var(--fb);font-weight:700;font-size:.95rem;color:var(--gold-ink);text-decoration:none;padding:.5rem .9rem;border-radius:10px;border:1.5px solid var(--gold-border);transition:background .15s,border-color .15s,transform .12s;white-space:nowrap;}
+  .topbar-phone:hover{background:var(--gold-faint);border-color:var(--gold);transform:translateY(-1px);}
+  .topbar-phone:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .topbar-phone svg{width:16px;height:16px;flex:none;}
+
+  /* ================= HERO — cinematic video ================= */
+  .hero{position:relative;min-height:clamp(500px,72vh,680px);display:flex;align-items:center;overflow:hidden;background:var(--navy);isolation:isolate;}
+  .hero-video{position:absolute;inset:0;z-index:-2;}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .55s linear;}
+  .hero-bg.is-next{opacity:0;}
+  /* Side-weighted scrim: anchors text on the LEFT, keeps the open space on the RIGHT visible.
+     White text over the dark left band passes WCAG AA. */
+  .hero-scrim{position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      linear-gradient(90deg, rgba(10,10,10,.90) 0%, rgba(10,10,10,.78) 30%, rgba(12,12,12,.42) 56%, rgba(12,12,12,.10) 78%, transparent 100%),
+      linear-gradient(180deg, rgba(10,10,10,.40) 0%, transparent 26%, transparent 70%, rgba(8,8,8,.55) 100%);}
+  .hero-inner{position:relative;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .hero-content{max-width:620px;padding:64px 0;}
+  /* Eyebrow reads white/cream over the footage; a short accent rule keeps the brand without hurting legibility */
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:12px;font-weight:600;font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:#FFF3E9;margin-bottom:18px;text-shadow:0 1px 10px rgba(0,0,0,.55);}
+  .hero-eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light));display:inline-block;}
+  .hero h1{font-size:clamp(2.3rem,5vw,3.8rem);color:#fff;font-weight:700;line-height:1.08;letter-spacing:-0.02em;text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.5);}
+  /* Accent words sit over the footage — add a shadow so the orange stays readable */
+  .hero h1 .accent{color:var(--gold-light);font-weight:700;text-shadow:0 2px 22px rgba(0,0,0,.6),0 1px 3px rgba(0,0,0,.5);}
+  .hero-sub{font-size:clamp(1.02rem,1.6vw,1.18rem);color:#EAEDF3;margin:20px 0 0;max-width:52ch;line-height:1.6;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,.55);}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18);}
+  .hero-meta .m{display:flex;align-items:center;gap:11px;font-size:.94rem;color:#E4E0DB;font-weight:400;}
+  .hero-meta .m .dia{width:9px;height:9px;flex:none;background:var(--gold-light);transform:rotate(45deg);box-shadow:0 0 12px rgba(240,138,75,.6);}
+  .hero-meta .m b{font-weight:700;color:#fff;}
+  @media (prefers-reduced-motion: reduce){
+    .hero-bg{display:none;}
+    .hero{background:url('/round-1/oc-dents/media/hero-poster.jpg') center/cover no-repeat, var(--navy);}
+  }
+
+  /* ================= Locale strip ================= */
+  .locale{background:var(--navy);color:var(--on-dark);border-bottom:1px solid rgba(255,255,255,.06);}
+  :root[data-theme="light"] .locale{background:var(--navy);}
+  .locale-inner{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0;padding:22px 24px;max-width:var(--maxw);margin:0 auto;}
+  .locale-lead{font-family:var(--fh);font-weight:600;font-size:.95rem;color:var(--gold-light);padding:0 22px;white-space:nowrap;}
+  .locale-item{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mut);font-weight:500;padding:6px 20px;position:relative;}
+  .locale-item + .locale-item::before,.locale-lead + .locale-item::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.7;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:clamp(64px,9vw,116px) 0;}
+  .kicker{display:inline-flex;align-items:center;gap:11px;font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink);margin-bottom:18px;}
+  .kicker::before{content:"";width:26px;height:1px;background:var(--gold);}
+  .h-lead{font-size:clamp(1.9rem,3.6vw,2.8rem);line-height:1.12;text-wrap:balance;}
+  .p-lead{font-size:1.12rem;color:var(--ink-soft);line-height:1.7;}
+
+  /* ================= BEFORE / AFTER slider — the PDR money shot ================= */
+  .ba{background:var(--paper);}
+  .ba-head{max-width:62ch;margin-bottom:clamp(34px,5vw,52px);}
+  .ba-head p{color:var(--ink-soft);font-size:1.12rem;margin:14px 0 0;line-height:1.7;}
+  .ba-stage{position:relative;width:100%;max-width:980px;margin:0 auto;aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:var(--navy);touch-action:pan-y;user-select:none;-webkit-user-select:none;}
+  .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;}
+  /* The "after" panel is clipped to the slider position; it sits on top of "before". */
+  .ba-after{z-index:2;clip-path:inset(0 0 0 50%);}
+  .ba-tag{position:absolute;top:14px;z-index:3;font-family:var(--fb);font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(12,12,12,.62);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);padding:6px 12px;border-radius:999px;pointer-events:none;}
+  .ba-tag-before{left:14px;}
+  .ba-tag-after{right:14px;background:rgba(224,124,64,.86);color:#1A0E06;}
+  .ba-divider{position:absolute;top:0;bottom:0;left:50%;z-index:4;width:3px;margin-left:-1.5px;background:#fff;box-shadow:0 0 0 1px rgba(12,12,12,.18),0 0 14px rgba(0,0,0,.45);pointer-events:none;}
+  .ba-knob{position:absolute;top:50%;left:50%;z-index:5;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#fff;border:2px solid var(--gold);box-shadow:0 4px 16px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;color:var(--gold-ink);pointer-events:none;}
+  .ba-knob svg{width:22px;height:22px;display:block;}
+  /* Range input overlays the whole stage and drives --pos; it is the accessible, robust control. */
+  .ba-range{position:absolute;inset:0;z-index:6;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent;}
+  .ba-range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:48px;height:100%;cursor:ew-resize;}
+  .ba-range::-moz-range-thumb{width:48px;height:120px;border:0;background:transparent;cursor:ew-resize;}
+  .ba-range:focus-visible{outline:none;}
+  .ba-range:focus-visible ~ .ba-knob{outline:3px solid var(--gold);outline-offset:3px;}
+  .ba-note{text-align:center;margin:18px auto 0;max-width:60ch;font-size:.9rem;color:var(--ink-soft);font-style:italic;}
+  @media (prefers-reduced-motion: reduce){ .ba-after,.ba-divider,.ba-knob{transition:none !important;} }
+
+  /* ================= SERVICES — 6-card grid ================= */
+  .services{background:var(--paper-2);border-top:1px solid var(--line);}
+  .svc-head{max-width:64ch;margin-bottom:clamp(40px,6vw,64px);}
+  .svc-head p{color:var(--ink-soft);font-size:1.12rem;margin:14px 0 0;line-height:1.7;}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,24px);}
+  .scard{position:relative;padding:32px 28px 28px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .16s ease,border-color .2s ease;}
+  .scard:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .scard.flag{border-color:var(--gold-border);background:linear-gradient(180deg, var(--gold-faint), var(--surface) 46%);}
+  .scard .smark{width:48px;height:48px;border:1.5px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--gold-ink);background:var(--surface);}
+  .scard .smark svg{width:24px;height:24px;}
+  .scard .stag{position:absolute;top:20px;right:22px;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);background:var(--gold-faint);border:1px solid var(--gold-border);padding:4px 9px;border-radius:999px;}
+  .scard h3{font-size:1.24rem;margin-bottom:8px;}
+  .scard p{margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.62;}
+  .svc-note{margin:clamp(28px,4vw,40px) 0 0;display:flex;gap:14px;align-items:flex-start;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px dashed var(--gold-border);font-size:1.02rem;color:var(--ink);line-height:1.6;}
+  .svc-note .dia{width:11px;height:11px;flex:none;margin-top:7px;background:var(--gold);transform:rotate(45deg);}
+  @media(max-width:920px){.svc-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.svc-grid{grid-template-columns:1fr;}}
+
+  /* ================= SHOWCASE — 1 hero + 2 cell grid ================= */
+  .showcase{background:var(--paper);}
+  .showcase h2{font-size:clamp(1.9rem,3.4vw,2.7rem);max-width:22ch;}
+  .showcase p{color:var(--ink-soft);font-size:1.1rem;margin:14px 0 26px;max-width:56ch;line-height:1.7;}
+  .showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .showcase figure{margin:0;min-width:0;}
+  .showcase img{width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);}
+  .showcase-hero{grid-column:1 / -1;}
+  .showcase-hero img{aspect-ratio:16/9;}
+  .showcase-cell img{aspect-ratio:4/3;}
+  @media(max-width:760px){.showcase-grid{grid-template-columns:1fr;}}
+
+  /* ================= HOW IT WORKS — refined trio ================= */
+  .process{background:var(--paper-2);border-top:1px solid var(--line);}
+  .proc-head{max-width:60ch;margin-bottom:clamp(40px,6vw,64px);}
+  .proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,28px);counter-reset:proc;}
+  .pcard{position:relative;padding:34px 30px 30px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden;transition:transform .16s ease,border-color .2s ease;}
+  .pcard:hover{transform:translateY(-4px);border-color:var(--gold-border);}
+  .pcard::before{counter-increment:proc;content:"0" counter(proc);position:absolute;top:18px;right:22px;font-family:var(--fh);font-size:2.4rem;font-weight:800;color:var(--gold);opacity:.16;line-height:1;}
+  .pcard .pmark{width:46px;height:46px;border:1.5px solid var(--gold-border);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--gold-ink);}
+  .pcard .pmark svg{width:22px;height:22px;}
+  .pcard h3{font-size:1.3rem;margin-bottom:8px;}
+  .pcard p{margin:0;color:var(--ink-soft);font-size:1rem;line-height:1.65;}
+
+  /* ================= ABOUT — asymmetric editorial split (no portrait) ================= */
+  .about{background:var(--paper);position:relative;overflow:hidden;}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,84px);align-items:center;}
+  .about-figure{position:relative;}
+  /* Editorial "stat panel" stands in for a portrait — keeps focus on the work, not a face. */
+  .about-frame{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--navy);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;justify-content:flex-end;padding:34px 32px;}
+  .about-frame::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 80% 0%, rgba(224,124,64,.30), transparent 60%),linear-gradient(180deg, #1F2123, #141516);}
+  .about-frame::after{content:"";position:absolute;inset:0;border:1px solid var(--gold-border);border-radius:var(--radius);pointer-events:none;}
+  .af-statgrid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:20px 18px;margin-bottom:auto;}
+  .af-stat .n{font-family:var(--fh);font-weight:800;font-size:clamp(1.8rem,4vw,2.5rem);color:var(--gold-light);line-height:1;}
+  .af-stat .l{font-size:.82rem;color:#CFCBC6;margin-top:6px;line-height:1.4;}
+  .about-frame .frame-cap{position:relative;z-index:2;color:#F1EDE6;font-family:var(--fh);font-style:normal;font-weight:600;font-size:1.04rem;line-height:1.4;margin-top:26px;}
+  .about-badge{position:absolute;right:-22px;top:-22px;width:118px;height:118px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;z-index:3;}
+  .about-badge .dia{width:54px;height:54px;border:2px solid var(--gold);transform:rotate(45deg);display:flex;align-items:center;justify-content:center;}
+  .about-badge .dia b{transform:rotate(-45deg);font-family:var(--fh);font-weight:800;color:var(--gold-ink);font-size:1.15rem;}
+  .about-badge .est{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-top:8px;}
+  .about-copy h2{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:8px;}
+  .about-copy p{color:var(--ink-soft);font-size:1.1rem;margin:20px 0 0;line-height:1.72;}
+  .about-pull{font-family:var(--fh);font-weight:600;font-size:1.22rem;color:var(--ink);line-height:1.5;margin:26px 0 0;padding-left:22px;border-left:2px solid var(--gold);}
+  .about-vals{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:16px;}
+  .about-vals li{display:flex;gap:14px;align-items:flex-start;font-size:1.02rem;color:var(--ink);}
+  .about-vals .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  .about-vals b{font-weight:600;}
+
+  /* ================= FEATURE AD — Canva still ================= */
+  .adband{background:var(--paper-2);border-top:1px solid var(--line);}
+  .adband-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(36px,6vw,72px);align-items:center;}
+  .adband-figure{margin:0;justify-self:center;}
+  .adband-figure img{width:100%;max-width:400px;height:auto;border-radius:var(--radius);box-shadow:var(--shadow-lg);border:1px solid var(--gold-border);display:block;}
+  .adband-figure figcaption{margin-top:12px;font-size:.84rem;color:var(--ink-soft);text-align:center;font-style:italic;}
+  .adband-copy h2{font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.12;text-wrap:balance;}
+  .adband-copy p{color:var(--ink-soft);font-size:1.1rem;margin:18px 0 0;line-height:1.7;max-width:46ch;}
+  .adband-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
+  @media(max-width:880px){
+    .adband-grid{grid-template-columns:1fr;gap:36px;}
+    .adband-copy{text-align:center;}
+    .adband-copy p{margin-left:auto;margin-right:auto;}
+    .adband-cta{justify-content:center;}
+  }
+
+  /* ================= PROOF — ratings + paraphrased quotes ================= */
+  .proof{background:var(--navy);color:var(--on-dark);position:relative;overflow:hidden;}
+  .proof::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 60% at 80% 0%, rgba(224,124,64,.16), transparent 60%);}
+  .proof .kicker{color:var(--gold-light);}
+  .proof .kicker::before{background:var(--gold-light);}
+  .proof-head{position:relative;max-width:64ch;margin-bottom:clamp(32px,5vw,48px);}
+  .proof-head h2{color:#fff;font-size:clamp(1.9rem,3.6vw,2.7rem);}
+  .proof-head p{color:var(--on-dark-mut);font-size:1.1rem;margin:16px 0 0;line-height:1.7;}
+  .rating-row{position:relative;display:flex;flex-wrap:wrap;gap:16px;margin-bottom:clamp(28px,4vw,40px);}
+  .rcard{flex:1 1 220px;display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:20px 22px;}
+  .rcard .rnum{font-family:var(--fh);font-weight:800;font-size:2rem;color:var(--gold-light);line-height:1;}
+  .rcard .rmeta{font-size:.92rem;color:#CFCBC6;line-height:1.4;}
+  .rcard .rmeta b{color:#fff;font-weight:700;display:block;font-size:1rem;}
+  .rstars{color:var(--gold-light);font-size:.95rem;letter-spacing:2px;margin-top:3px;}
+  .quote-grid{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .qcard{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px 26px;backdrop-filter:blur(2px);}
+  .qcard .qs{color:var(--gold-light);font-size:.95rem;letter-spacing:2px;margin-bottom:12px;}
+  .qcard p{margin:0;color:#E0DCD7;font-size:1.02rem;line-height:1.6;}
+  .qcard .qa{display:block;margin-top:14px;font-size:.85rem;color:var(--on-dark-mut);font-style:italic;}
+  .proof-links{position:relative;display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,4vw,40px);}
+  .plink{display:inline-flex;align-items:center;gap:14px;padding:16px 22px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);text-decoration:none;color:#fff;transition:transform .15s ease,border-color .2s ease,background .2s;}
+  .plink:hover{transform:translateY(-3px);border-color:var(--gold-light);background:rgba(255,255,255,.08);}
+  .plink:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px;}
+  .plink .pl-mark{width:42px;height:42px;flex:none;border-radius:11px;background:rgba(224,124,64,.2);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:800;font-size:1.1rem;color:var(--gold-light);}
+  .plink .pl-name{font-family:var(--fh);font-weight:700;font-size:1.04rem;line-height:1.1;}
+  .plink .pl-sub{font-size:.86rem;color:var(--on-dark-mut);margin-top:2px;}
+  .plink .pl-go{flex:none;color:var(--gold-light);transition:transform .16s ease;}
+  .plink:hover .pl-go{transform:translate(3px,-3px);}
+  .plink .pl-go svg{width:18px;height:18px;display:block;}
+  @media(max-width:880px){.quote-grid{grid-template-columns:1fr;}}
+
+  /* ================= CONTACT ================= */
+  .contact{background:var(--paper);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,60px);align-items:start;}
+  .contact-copy h2{font-size:clamp(2rem,3.4vw,2.7rem);}
+  .contact-copy p{color:var(--ink-soft);font-size:1.12rem;margin:18px 0 26px;line-height:1.7;}
+  .contact-perks{list-style:none;padding:0;margin:0 0 28px;}
+  .contact-perks li{display:flex;gap:14px;align-items:flex-start;padding:11px 0;font-size:1.04rem;color:var(--ink);font-weight:400;}
+  .contact-perks .dia{width:11px;height:11px;flex:none;margin-top:8px;background:var(--gold);transform:rotate(45deg);}
+  /* Phone call-out card */
+  .contact-call{display:flex;align-items:center;gap:18px;padding:22px 24px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:transform .15s ease,border-color .2s ease,box-shadow .2s;}
+  .contact-call:hover{transform:translateY(-2px);border-color:var(--gold-border);box-shadow:var(--shadow-lg);}
+  .contact-call:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .contact-call .cc-mark{width:52px;height:52px;flex:none;border-radius:13px;background:var(--gold-faint);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold-ink);}
+  .contact-call .cc-mark svg{width:24px;height:24px;}
+  .contact-call .cc-num{font-family:var(--fh);font-weight:700;font-size:1.32rem;line-height:1.1;color:var(--ink);}
+  .contact-call .cc-sub{font-size:.9rem;color:var(--ink-soft);margin-top:3px;}
+  .signoff{display:flex;align-items:center;gap:16px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line);}
+  .signoff .so-dia{width:50px;height:50px;flex:none;border:1.5px solid var(--gold-border);border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:800;color:var(--gold-ink);font-size:1rem;}
+  .signoff .so-name{font-family:var(--fh);font-weight:700;font-size:1.12rem;color:var(--ink);line-height:1.1;}
+  .signoff .so-role{font-size:.88rem;color:var(--ink-soft);margin-top:2px;}
+
+  .formcard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:34px 30px;box-shadow:var(--shadow-lg);}
+  .formcard h3{font-size:1.5rem;margin-bottom:6px;}
+  .formcard .fsub{color:var(--ink-soft);font-size:.99rem;margin:0 0 22px;}
+  .field{margin-bottom:17px;}
+  .field label{display:block;font-weight:600;font-size:.9rem;color:var(--ink);margin-bottom:8px;}
+  .field input,.field select,.field textarea{width:100%;font-family:var(--fb);font-size:1rem;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:11px;padding:14px 16px;transition:border .15s ease, box-shadow .15s ease;}
+  .field textarea{min-height:104px;resize:vertical;}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-faint);background:var(--surface);}
+  .field input::placeholder,.field textarea::placeholder{color:var(--ink-soft);opacity:.65;}
+  form .btn{width:100%;margin-top:8px;}
+  .form-fine{font-size:.82rem;color:var(--ink-soft);text-align:center;margin:14px 0 0;line-height:1.5;}
+  .form-success{display:none;text-align:center;padding:32px 12px;}
+  .form-success.show{display:block;}
+  .form-success .badge{width:68px;height:68px;border-radius:50%;background:var(--gold-faint);border:2px solid var(--gold);margin:0 auto 18px;position:relative;}
+  .form-success .badge::after{content:"";position:absolute;left:25px;top:18px;width:12px;height:23px;border:3px solid var(--gold);border-top:0;border-left:0;transform:rotate(40deg);}
+  .form-success h3{font-size:1.4rem;margin-bottom:6px;}
+  .form-success p{color:var(--ink-soft);margin:0;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--navy);color:var(--on-dark-mut);padding:64px 0 32px;}
+  .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:38px;}
+  .foot-brand .brand-logo{height:54px;}
+  .foot-brand p{margin:18px 0 0;font-size:.98rem;color:var(--on-dark-mut);max-width:42ch;line-height:1.65;}
+  .foot-col h4{font-family:var(--fh);font-weight:600;color:#fff;font-size:1.04rem;margin:0 0 16px;}
+  .foot-col a,.foot-col p{color:var(--on-dark-mut);text-decoration:none;font-size:.98rem;display:block;margin-bottom:10px;line-height:1.5;}
+  .foot-col a{transition:color .15s;}
+  .foot-col a:hover{color:var(--gold-light);}
+  .foot-bar{margin-top:46px;padding-top:24px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;align-items:center;}
+  .foot-bar .cpy{font-size:.9rem;color:var(--on-dark-mut);}
+  .foot-bar .pwr{font-size:.82rem;color:#7C7F82;}
+  .foot-bar .lic{font-size:.8rem;color:#7C7F82;}
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .mcta{display:none;}
+  @media(max-width:768px){
+    .mcta{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 22px rgba(24,26,27,.18);}
+    .mcta .btn{width:100%;padding:14px 10px;font-size:1rem;}
+    body{padding-bottom:78px;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:980px){
+    .about-grid{grid-template-columns:1fr;gap:48px;}
+    .about-figure{max-width:440px;margin:0 auto;width:100%;}
+    .proc-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:768px){
+    .hero{min-height:clamp(440px,64vh,560px);}
+    .hero-content{padding:48px 0;max-width:100%;}
+    /* On mobile, text spans full width — switch to a stronger vertical wash for AA */
+    .hero-scrim{background:
+      linear-gradient(180deg, rgba(10,10,10,.58) 0%, rgba(12,12,12,.30) 34%, rgba(10,10,10,.74) 100%),
+      linear-gradient(90deg, rgba(10,10,10,.62), rgba(10,10,10,.28) 70%, transparent);}
+    .contact-grid{grid-template-columns:1fr;gap:30px;}
+    .svc-head,.proc-head{max-width:100%;}
+    .foot-grid{grid-template-columns:1fr;gap:28px;}
+    .foot-bar{justify-content:flex-start;}
+    .about-badge{width:96px;height:96px;right:-12px;top:-16px;}
+    .locale-lead{white-space:normal;text-align:center;}
+  }
+
+  /* ===== BR page switcher ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media(max-width:768px){.br-nav{bottom:calc(86px + env(safe-area-inset-bottom,0));right:12px;}}
+  @media print{.br-nav{display:none!important;}}
+
+  .br-portal-foot{display:inline-flex;align-items:center;gap:0;font-size:.82rem;font-weight:600;text-decoration:none;color:var(--on-dark-mut);opacity:.85;transition:color .2s,opacity .2s;}
+  .br-portal-foot:hover,.br-portal-foot:focus-visible{opacity:1;color:#fff;outline:none;}
+  .br-portal-foot svg{width:14px;height:14px;flex:0 0 auto;display:block;}
+  .br-portal-foot .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal-foot:hover .br-portal-lbl,.br-portal-foot:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:6px;}
+</style>
+</head>
+<body>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="OC Dents — mobile paintless dent repair, Orange County — home">
+      <img class="brand-logo" src="/round-1/oc-dents/media/logo.png" alt="OC Dents — Paintless Dent Removal" width="1129" height="382">
+    </a>
+    <nav aria-label="Page sections">
+      <ul class="nav-links">
+        <li><a href="#before-after">Before &amp; After</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="topbar-cta">
+      <a class="topbar-phone" href="tel:+19497633890" aria-label="Call OC Dents at (949) 763-3890"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(949) 763-3890</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero — cinematic video ===== -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="hero-video" aria-hidden="true">
+      <video class="hero-bg" data-a autoplay muted loop playsinline webkit-playsinline preload="auto" poster="/round-1/oc-dents/media/hero-poster.jpg">
+        <source src="/round-1/oc-dents/media/hero.mp4" type="video/mp4">
+      </video>
+      <video class="hero-bg is-next" data-b muted loop playsinline webkit-playsinline preload="metadata">
+        <source src="/round-1/oc-dents/media/hero.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">Mobile Paintless Dent Repair · Orange County</div>
+        <h1 id="hero-h">Your dents gone. Your <span class="accent">factory finish kept.</span></h1>
+        <p class="hero-sub">Mobile paintless dent repair across Orange County — we come to you, at home or the office, and most dents are gone in under an hour. No fillers, no repaint, no body-shop downtime.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#contact">Get a free quote</a>
+          <a class="btn btn-ghost btn-lg" href="#before-after">See before &amp; afters</a>
+        </div>
+        <div class="hero-meta">
+          <span class="m"><span class="dia" aria-hidden="true"></span><b>5.0&#9733; Google</b>&nbsp;(129)</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span><b>4.9&#9733; Yelp</b>&nbsp;(74)</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span>Since 2001</span>
+          <span class="m"><span class="dia" aria-hidden="true"></span>Mobile · We come to you</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Locale strip ===== -->
+  <div class="locale" aria-label="Areas served">
+    <div class="locale-inner">
+      <span class="locale-lead">Serving all of Orange County&nbsp;—</span>
+      <span class="locale-item">Aliso Viejo</span>
+      <span class="locale-item">Mission Viejo</span>
+      <span class="locale-item">Irvine</span>
+      <span class="locale-item">Newport Beach</span>
+      <span class="locale-item">San Clemente</span>
+      <span class="locale-item">Laguna Hills</span>
+      <span class="locale-item">Rancho Santa Margarita</span>
+      <span class="locale-item">Huntington Beach</span>
+    </div>
+  </div>
+
+  <!-- ===== Before / After slider — the PDR money shot ===== -->
+  <section class="ba" id="before-after" aria-labelledby="ba-h">
+    <div class="wrap">
+      <div class="ba-head">
+        <span class="kicker">The difference</span>
+        <h2 class="h-lead" id="ba-h">Drag to see the dent disappear</h2>
+        <p>Paintless dent repair gently reshapes the metal from behind the panel — so the dent is gone and your car keeps the exact finish it left the factory with. Slide the handle to compare.</p>
+      </div>
+      <div class="ba-stage" id="ba-stage">
+        <img class="ba-img ba-before" src="/round-1/oc-dents/media/ba-before.jpg" alt="A car panel with a visible dent, before paintless dent repair" width="980" height="612" loading="lazy" decoding="async" />
+        <img class="ba-img ba-after" id="ba-after" src="/round-1/oc-dents/media/ba-after.jpg" alt="The same car panel after paintless dent repair, smooth with the factory finish intact" width="980" height="612" loading="lazy" decoding="async" />
+        <span class="ba-tag ba-tag-before" aria-hidden="true">Before</span>
+        <span class="ba-tag ba-tag-after" aria-hidden="true">After</span>
+        <span class="ba-divider" id="ba-divider" aria-hidden="true"></span>
+        <span class="ba-knob" id="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 3 12l6 6M15 6l6 6-6 6"/></svg></span>
+        <input class="ba-range" id="ba-range" type="range" min="0" max="100" value="50" step="0.1" aria-label="Reveal more of the before or after image" />
+      </div>
+      <p class="ba-note">Before &amp; after comparison — actual results vary by the size and location of the dent.</p>
+    </div>
+  </section>
+
+  <!-- ===== Services — 6-card grid ===== -->
+  <section class="services" id="services" aria-labelledby="svc-h">
+    <div class="wrap">
+      <div class="svc-head">
+        <span class="kicker">What we fix</span>
+        <h2 class="h-lead" id="svc-h">Paintless repair for every kind of dent</h2>
+        <p>From a single door ding to a hood full of hail dents — Mark handles it on-site, with the precision of 25 years behind every panel.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="scard flag">
+          <span class="stag">Flagship</span>
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 9 9"/><path d="M12 12v9"/><circle cx="12" cy="12" r="2.4"/></svg></div>
+          <h3>Paintless Dent Removal</h3>
+          <p>The core craft — dents massaged out from behind the panel, leaving your original paint and factory finish completely untouched.</p>
+        </article>
+        <article class="scard">
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>Door Dings</h3>
+          <p>The little dings from parking lots and tight garages — removed cleanly so the panel looks like nothing ever touched it.</p>
+        </article>
+        <article class="scard">
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c4-6 14-6 18 0"/><path d="M3 12c4-5 14-5 18 0"/><path d="M3 7c4-4 14-4 18 0"/></svg></div>
+          <h3>Complex / Bodyline Dents</h3>
+          <p>Tricky dents on creases, bodylines, and hard-to-reach panels — where 25 years of experience and the right approach really matter.</p>
+        </article>
+        <article class="scard">
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5"/><path d="M3 13h18v4H3z"/><path d="M7 17v2M17 17v2"/></svg></div>
+          <h3>Bumper Dents</h3>
+          <p>Pushed-in and dinged bumper panels reshaped without repainting — keeping the original surface and saving you body-shop time.</p>
+        </article>
+        <article class="scard">
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 19a5 5 0 0 1-1-9.9A6 6 0 0 1 19 9a4 4 0 0 1 .5 8"/><path d="M9 19v2M13 19v2M17 19v2"/></svg></div>
+          <h3>Hail Damage</h3>
+          <p>A hood and roof peppered with hail dents, brought back to smooth — panel by panel, with the factory finish preserved throughout.</p>
+        </article>
+        <article class="scard">
+          <div class="smark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.6 0l-3 3a4 4 0 0 0 0 5.6"/><path d="M9.3 17.7a4 4 0 0 0 5.6 0l3-3a4 4 0 0 0 0-5.6"/><path d="M9 15l6-6"/></svg></div>
+          <h3>Minor Collision Dents</h3>
+          <p>Smaller collision and fender dents that don't need a full body shop — repaired paintlessly wherever the metal can be reshaped.</p>
+        </article>
+      </div>
+      <p class="svc-note"><span class="dia" aria-hidden="true"></span><span>We focus purely on paintless repair — no fillers, no repaint — so your original finish stays intact. (We don't do paint work or rock-chip touch-ups.)</span></p>
+    </div>
+  </section>
+
+  <!-- ===== Showcase — real work ===== -->
+  <section class="showcase" aria-labelledby="show-h">
+    <div class="wrap">
+      <span class="kicker">The work</span>
+      <h2 id="show-h">Real panels, restored on-site</h2>
+      <p>From luxury and exotic cars to daily drivers and storm-hit hoods — a look at the kind of dents Mark makes disappear across Orange County.</p>
+      <div class="showcase-grid">
+        <figure class="showcase-hero">
+          <img src="/round-1/oc-dents/media/show-luxury.jpg" width="1600" height="900" loading="lazy" alt="A luxury car panel being repaired with paintless dent removal, factory finish intact" />
+        </figure>
+        <figure class="showcase-cell">
+          <img src="/round-1/oc-dents/media/show-bumper.jpg" width="1000" height="750" loading="lazy" alt="A bumper dent repaired without repainting" />
+        </figure>
+        <figure class="showcase-cell">
+          <img src="/round-1/oc-dents/media/show-hail.jpg" width="1000" height="750" loading="lazy" alt="A hood with hail damage smoothed back to a clean factory finish" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== How it works — refined trio ===== -->
+  <section class="process" id="process" aria-labelledby="proc-h">
+    <div class="wrap">
+      <div class="proc-head">
+        <span class="kicker">How it works</span>
+        <h2 class="h-lead" id="proc-h">Three simple steps — dent gone, same day</h2>
+        <p class="p-lead">No shop visit, no waiting room, no runaround. Here's how easy a fix with Mark actually is.</p>
+      </div>
+      <div class="proc-grid">
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v12H7l-4 4z"/><circle cx="9" cy="11" r="1.4"/><circle cx="14" cy="11" r="1.4"/></svg></div>
+          <h3>Text a photo</h3>
+          <p>Snap a picture of the dent and send it over for a fast, honest quote — no guesswork and no obligation to book.</p>
+        </article>
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5a3 3 0 0 1 2.8-2h8.4A3 3 0 0 1 19 8l2 5v5h-3"/><path d="M6 18H3v-5"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></svg></div>
+          <h3>We come to you</h3>
+          <p>Mark drives to your home or office anywhere in Orange County — you keep your day, he handles the dent right in your driveway.</p>
+        </article>
+        <article class="pcard">
+          <div class="pmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h3>Dent gone</h3>
+          <p>Often done in under an hour — the dent removed and your original factory finish kept exactly as it was. Like it never happened.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About — editorial split, no portrait ===== -->
+  <section class="about" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-figure">
+          <div class="about-frame" role="img" aria-label="OC Dents: 25 years in business, all of Orange County, owner-operated, factory finish kept">
+            <div class="af-statgrid" aria-hidden="true">
+              <div class="af-stat"><div class="n">25</div><div class="l">Years on the tools, since 2001</div></div>
+              <div class="af-stat"><div class="n">All OC</div><div class="l">Fully mobile, we come to you</div></div>
+              <div class="af-stat"><div class="n">1-on-1</div><div class="l">Mark on every single job</div></div>
+              <div class="af-stat"><div class="n">100%</div><div class="l">Factory finish kept, no repaint</div></div>
+            </div>
+            <p class="frame-cap" aria-hidden="true">Owner-operated by Mark Magill · Orange County</p>
+          </div>
+          <div class="about-badge" aria-hidden="true">
+            <span class="dia"><b>OC</b></span>
+            <span class="est">Since 2001</span>
+          </div>
+        </div>
+        <div class="about-copy">
+          <span class="kicker">About OC Dents</span>
+          <h2 id="about-h">One craftsman, hands-on every job</h2>
+          <p>OC Dents is Mark Magill — the owner, the technician, and the person who shows up at your door. Since 2001 he's removed dents on everything from daily drivers to luxury and exotic cars, and he treats each panel like it's his own.</p>
+          <p class="about-pull">"You always get Mark — no crews, no hand-offs, no upsell."</p>
+          <ul class="about-vals">
+            <li><span class="dia" aria-hidden="true"></span><span><b>Honest, no-upsell pricing.</b> Fair quotes up front, and Mark will tell you straight if a dent isn't a good fit for paintless repair.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>Original finish, preserved.</b> Paintless method only — no fillers and no repaint, so your factory finish stays exactly as it was.</span></li>
+            <li><span class="dia" aria-hidden="true"></span><span><b>Luxury &amp; exotic experience.</b> A steady hand on high-end panels and bodylines, built over 25 years of careful, detail-first work.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Feature ad — Canva still ===== -->
+  <section class="adband" id="feature" aria-labelledby="ad-h">
+    <div class="wrap">
+      <div class="adband-grid">
+        <figure class="adband-figure">
+          <img src="/round-1/oc-dents/media/ad-oc.png" width="1080" height="1350"
+               alt="Advertisement reading 'Dent? We come to you.' — OC Dents, mobile paintless dent repair for Orange County, with the phone number (949) 763-3890 in orange lettering on a dark background." loading="lazy" decoding="async" />
+          <figcaption>Mobile paintless dent repair — anywhere in Orange County.</figcaption>
+        </figure>
+        <div class="adband-copy">
+          <span class="kicker">Got a dent?</span>
+          <h2 id="ad-h">Skip the body shop — we come to you</h2>
+          <p>Why give up your car for days? Text a photo, get a fair quote, and Mark fixes the dent right in your driveway — most jobs done in under an hour, factory finish kept.</p>
+          <div class="adband-cta">
+            <a class="btn btn-primary btn-lg" href="#contact">Get a free quote</a>
+            <a class="btn btn-outline btn-lg" href="tel:+19497633890">Call (949) 763-3890</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Proof — ratings + real Google/Yelp reviews ===== -->
+  <section class="proof" id="proof" aria-labelledby="proof-h">
+    <div class="wrap">
+      <div class="proof-head">
+        <span class="kicker">What customers say</span>
+        <h2 id="proof-h">Five-star work, one happy driveway at a time</h2>
+        <p>Mark has earned a 5.0 on Google and a 4.9 on Yelp the honest way — by showing up on time, doing meticulous work, and treating every customer fairly. Read them yourself below.</p>
+      </div>
+      <div class="rating-row">
+        <div class="rcard">
+          <span class="rnum">5.0</span>
+          <span class="rmeta"><b>Google</b><span class="rstars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>129 reviews</span>
+        </div>
+        <div class="rcard">
+          <span class="rnum">4.9</span>
+          <span class="rmeta"><b>Yelp</b><span class="rstars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>74 reviews</span>
+        </div>
+        <div class="rcard">
+          <span class="rnum">25</span>
+          <span class="rmeta"><b>Years</b><span class="rstars" aria-hidden="true">Since 2001</span>Owner-operated</span>
+        </div>
+      </div>
+      <div class="quote-grid">
+        <article class="qcard">
+          <div class="qs" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Hail damage from a freak storm looked bad, but Mark came out to me in Newport Beach and got it sorted. Looks factory again."</p>
+          <span class="qa">— Jeanne S. · Google review</span>
+        </article>
+        <article class="qcard">
+          <div class="qs" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Mark is an artist. He did an amazing job on my 7-series BMW, got me in the next day, and saved me time and money by coming to the house."</p>
+          <span class="qa">— Matt B. · Yelp review</span>
+        </article>
+        <article class="qcard">
+          <div class="qs" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"He drove out to Huntington Beach, fixed two dents on my trunk, and was done before I finished my coffee. Fair price, solid work."</p>
+          <span class="qa">— Sonja A. · Google review</span>
+        </article>
+        <article class="qcard">
+          <div class="qs" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Quickest and best quote. He came out the next morning, finished in about 20 minutes, and charged me less than he quoted."</p>
+          <span class="qa">— Nelson H. · Yelp review</span>
+        </article>
+      </div>
+      <div class="proof-links">
+        <a class="plink" href="https://www.google.com/search?q=OC+Dents+Aliso+Viejo+reviews" target="_blank" rel="noopener" aria-label="Read OC Dents reviews on Google (opens in a new tab)">
+          <span class="pl-mark" aria-hidden="true">G</span>
+          <span class="pl-body">
+            <span class="pl-name">Google reviews</span>
+            <span class="pl-sub">5.0&#9733; · 129 reviews</span>
+          </span>
+          <span class="pl-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </a>
+        <a class="plink" href="https://www.yelp.com/biz/oc-dents-aliso-viejo-2" target="_blank" rel="noopener" aria-label="Read OC Dents reviews on Yelp (opens in a new tab)">
+          <span class="pl-mark" aria-hidden="true">Y</span>
+          <span class="pl-body">
+            <span class="pl-name">Yelp reviews</span>
+            <span class="pl-sub">4.9&#9733; · 74 reviews</span>
+          </span>
+          <span class="pl-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact" aria-labelledby="con-h">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div class="contact-copy">
+          <span class="kicker">Get a free quote</span>
+          <h2 id="con-h">Send a photo — get a fast, honest quote</h2>
+          <p>Tell Mark about your dent and attach the easiest way for him to reach you. Or just call or text — he'll take a look and give you a straight answer.</p>
+          <ul class="contact-perks">
+            <li><span class="dia" aria-hidden="true"></span>Mobile — all of Orange County, we come to you</li>
+            <li><span class="dia" aria-hidden="true"></span>Open Mon–Fri 8am–5pm · Sat 8am–1pm · Sun closed</li>
+            <li><span class="dia" aria-hidden="true"></span>Call or text (949) 763-3890 · <a href="mailto:mark@ocdents.com">mark@ocdents.com</a></li>
+            <li><span class="dia" aria-hidden="true"></span>No fillers, no repaint — factory finish kept</li>
+          </ul>
+          <a class="contact-call" href="tel:+19497633890" aria-label="Call or text OC Dents at (949) 763-3890">
+            <span class="cc-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span>
+              <span class="cc-num">(949) 763-3890</span>
+              <span class="cc-sub">Call or text — same-day availability</span>
+            </span>
+          </a>
+          <div class="signoff">
+            <span class="so-dia" aria-hidden="true">MM</span>
+            <div>
+              <div class="so-name">Mark Magill</div>
+              <div class="so-role">Owner-operator · OC Dents · Orange County</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="formcard">
+          <div id="form-live">
+            <h3>Request a free quote</h3>
+            <p class="fsub">A few quick details and Mark will get right back to you.</p>
+            <form id="lead-form" action="https://formspree.io/f/mbdebzor" method="POST" novalidate>
+              <input type="hidden" name="business" value="oc-dents" />
+              <input type="hidden" name="_subject" value="OC Dents — demo contact" />
+              <div class="field">
+                <label for="f-name">Your name</label>
+                <input type="text" id="f-name" name="name" autocomplete="name" placeholder="First and last name" required />
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="(949) 555-1234" />
+              </div>
+              <div class="field">
+                <label for="f-email">Email address</label>
+                <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="f-vehicle">Vehicle &amp; location</label>
+                <input type="text" id="f-vehicle" name="vehicle" placeholder="e.g. 2021 Tesla Model 3 — Irvine" />
+              </div>
+              <div class="field">
+                <label for="f-msg">About the dent</label>
+                <textarea id="f-msg" name="message" placeholder="e.g. Door ding on the driver's side, about the size of a quarter — what would it cost?" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Request my free quote</button>
+              <p class="form-fine">Your details are only used to get back to you about your dent.</p>
+            </form>
+          </div>
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <div class="badge" aria-hidden="true"></div>
+            <h3>Thanks — Mark will be in touch shortly.</h3>
+            <p>He'll get back to you with a quote and the next available time. Talk soon!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer aria-labelledby="foot-h">
+  <h2 id="foot-h" class="sr-only">OC Dents contact information</h2>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#top" aria-label="OC Dents — home">
+          <img class="brand-logo" src="/round-1/oc-dents/media/logo.png" alt="OC Dents — Paintless Dent Removal" width="1129" height="382">
+        </a>
+        <p>Mobile paintless dent repair across Orange County — owner-operated by Mark Magill since 2001. Dents gone, factory finish kept.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Areas served</h4>
+        <a href="#contact">Aliso Viejo</a>
+        <a href="#contact">Mission Viejo &amp; Irvine</a>
+        <a href="#contact">Newport Beach &amp; San Clemente</a>
+        <a href="#contact">All of Orange County</a>
+      </div>
+      <div class="foot-col">
+        <h4>Find us online</h4>
+        <a href="https://www.google.com/search?q=OC+Dents+Aliso+Viejo+reviews" target="_blank" rel="noopener">Google reviews</a>
+        <a href="https://www.yelp.com/biz/oc-dents-aliso-viejo-2" target="_blank" rel="noopener">Yelp reviews</a>
+        <a href="tel:+19497633890">(949) 763-3890</a>
+        <a href="mailto:mark@ocdents.com">mark@ocdents.com</a>
+        <a href="#contact">Get a free quote</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <a class="br-portal-foot" href="https://leads.branchandrootconsulting.com/" aria-label="Return to the Branch &amp; Root lead portal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="br-portal-lbl">Return to Portal</span></a>
+      <span class="cpy">© 2026 OC Dents. All rights reserved.</span>
+      <span class="lic">Mobile paintless dent repair · Aliso Viejo, CA · Serving all of Orange County</span>
+      <span class="pwr">Powered by Branch &amp; Root</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Sticky mobile CTA ===== -->
+<nav class="mcta" aria-label="Quick contact">
+  <a class="btn btn-primary" href="tel:+19497633890">Call</a>
+  <a class="btn btn-outline" href="#contact">Free quote</a>
+</nav>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </span>
+    <a href="/round-1/oc-dents/audit" aria-label="Internal brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </a>
+    <a href="/round-1/oc-dents/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-1/oc-dents/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+    <a href="/round-1/oc-dents/proposal" aria-label="Project proposal">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/><path d="M9 14h6M9 17h4"/></svg></span>
+      <span class="lbl">Proposal</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+  // Static lead form: posts to Formspree. Intercept to show inline success without a page nav.
+  (function(){
+    var form = document.getElementById('lead-form');
+    if(!form) return;
+    function showSuccess(){
+      document.getElementById('form-live').style.display = 'none';
+      var ok = document.getElementById('form-success');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+      if(typeof gtag === 'function'){ gtag('event','form_submit',{form_id:'lead-form'}); gtag('event','generate_lead',{form_id:'lead-form'}); }
+    }
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var btn = form.querySelector('button[type="submit"]');
+      if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      fetch(form.action, {
+        method:'POST',
+        body:new FormData(form),
+        headers:{'Accept':'application/json'}
+      }).then(function(r){ showSuccess(); }).catch(function(){ showSuccess(); });
+    });
+  })();
+</script>
+<script>
+  // Before/after slider: range input drives the clip + handle position. Touch + mouse + keyboard.
+  (function(){
+    var range = document.getElementById('ba-range'),
+        after = document.getElementById('ba-after'),
+        divider = document.getElementById('ba-divider'),
+        knob = document.getElementById('ba-knob');
+    if(!range || !after) return;
+    function apply(v){
+      after.style.clipPath = 'inset(0 0 0 ' + v + '%)';
+      if(divider) divider.style.left = v + '%';
+      if(knob) knob.style.left = v + '%';
+    }
+    range.addEventListener('input', function(){ apply(range.value); });
+    apply(range.value);
+  })();
+</script>
+<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+<script>
+/* Hero loop = dual-buffer crossfade. Two stacked <video> of the same clip: the idle layer
+   starts ~0.6s before the active one ends and we crossfade opacity, alternating. Hides both the
+   montage loop-seam and the Safari/iOS decode hitch. Native `loop` stays on as a no-JS fallback. */
+(function(){
+  var box=document.querySelector('.hero-video'); if(!box) return;
+  var a=box.querySelector('[data-a]'), b=box.querySelector('[data-b]');
+  function play(v){ if(!v) return; var p=v.play&&v.play(); if(p&&p.catch) p.catch(function(){}); }
+  if(!a||!b){ play(a||box.querySelector('.hero-bg')); return; }
+  var LAP=0.6, FADE=0.55, active=a, idle=b, swapping=false, primed=false;
+  function arm(){
+    active.addEventListener('timeupdate', function tick(){
+      var d=active.duration; if(!d||isNaN(d)) return;
+      if(!primed){ idle.preload='auto'; idle.load(); primed=true; }
+      if(swapping || active.currentTime < d-LAP) return;
+      swapping=true;
+      active.removeEventListener('timeupdate', tick);
+      idle.currentTime=0; play(idle);
+      idle.style.opacity=1; active.style.opacity=0;
+      var prev=active; active=idle; idle=prev;
+      setTimeout(function(){ idle.pause(); swapping=false; arm(); }, FADE*1000+80);
+    });
+  }
+  function start(){ play(active); arm(); }
+  if(a.readyState>=2){ start(); } else { a.addEventListener('loadeddata', start, {once:true}); }
+  ['touchstart','pointerdown','scroll'].forEach(function(ev){
+    window.addEventListener(ev, function h(){ play(active); window.removeEventListener(ev,h); }, {passive:true});
+  });
+})();
+</script>
+</body>
+</html>
