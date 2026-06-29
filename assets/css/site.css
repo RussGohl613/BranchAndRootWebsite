@@ -546,9 +546,6 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 1200px 700px at 85% -10%, rgba(82, 148, 111, 0.22), transparent 60%),
-    radial-gradient(ellipse 900px 500px at -10% 110%, rgba(82, 148, 111, 0.18), transparent 60%);
   pointer-events: none;
 }
 .hero-grid {
@@ -675,7 +672,6 @@ a:hover { color: var(--moss); text-decoration-color: var(--moss); }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 1000px 600px at 90% 0%, rgba(82, 148, 111, 0.16), transparent 60%);
   pointer-events: none;
 }
 .page-hero .container { position: relative; }
@@ -1995,8 +1991,6 @@ main > section + section.bridge {
     radial-gradient(ellipse 1100px 700px at 78% -8%, rgba(82, 148, 111, 0.28), transparent 60%),
     radial-gradient(ellipse 900px 500px at -8% 110%, rgba(82, 148, 111, 0.22), transparent 60%),
     radial-gradient(ellipse 1400px 800px at 50% 50%, rgba(15, 42, 30, 0.0) 0%, rgba(0,0,0,0.18) 90%);
-  animation: heroDrift 22s var(--ease) infinite alternate;
-  will-change: transform;
 }
 .hero::after {
   content: "";
@@ -2010,9 +2004,15 @@ main > section + section.bridge {
 }
 .hero > .container { position: relative; z-index: 1; }
 
-@keyframes heroDrift {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  100% { transform: translate3d(-2%, 1%, 0) scale(1.04); }
+/* Hero drift: gated on user's motion preference.
+   Removed will-change — avoids pre-allocating a compositor layer on mobile. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero::before { animation: heroDrift 22s var(--ease) infinite alternate; }
+  .page-hero::before { animation: heroDrift 28s var(--ease) infinite alternate; }
+  @keyframes heroDrift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-2%, 1%, 0) scale(1.04); }
+  }
 }
 
 /* Feathered bottom edge — softens the forest→cream cut.
@@ -2028,7 +2028,6 @@ main > section + section.bridge {
   background:
     radial-gradient(ellipse 1000px 600px at 88% -4%, rgba(82, 148, 111, 0.22), transparent 60%),
     radial-gradient(ellipse 800px 500px at 0% 110%, rgba(82, 148, 111, 0.15), transparent 60%);
-  animation: heroDrift 28s var(--ease) infinite alternate;
 }
 .page-hero::after {
   content: "";
@@ -2304,7 +2303,7 @@ main > section + section.bridge {
 }
 
 /* ---- Gutter numerals — slow parallax drift --------------------------- */
-.gutter-numeral { transition: transform 1.4s var(--ease-out); will-change: transform; }
+.gutter-numeral { transition: transform 1.4s var(--ease-out); }
 /* JS will set --parallax based on scroll position */
 .gutter-numeral { transform: translate3d(0, var(--parallax, 0px), 0); }
 
