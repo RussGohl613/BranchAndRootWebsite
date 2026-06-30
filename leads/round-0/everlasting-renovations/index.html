@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>try{var t=localStorage.getItem("er_theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Everlasting Renovations Inc. | Lake Forest, CA Remodeling &amp; Painting</title>
@@ -9,361 +10,258 @@
   <meta property="og:title" content="Everlasting Renovations Inc. | Lake Forest, CA Remodeling &amp; Painting">
   <meta property="og:description" content="Licensed remodeling &amp; painting, Lake Forest OC, 3-yr warranty. CSLB #1097824.">
   <meta property="og:type" content="website">
-  <!-- GA4 gtag.js placeholder -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script> -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcf9f8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e0a08">
+  <!-- GA4 placeholder -->
   <script>window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Everlasting Renovations Inc.",
-    "telephone": "(714) 745-2777",
-    "email": "everlastingrenovationsinc@gmail.com",
-    "url": "https://www.everlastingrenovationsinc.com",
-    "description": "Family-owned general building contractor specializing in kitchen remodeling, bathroom remodeling, interior and exterior painting, flooring, ADU additions across Orange County, CA.",
-    "foundingDate": "2015",
-    "areaServed": "Orange County",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "25422 Trabuco Rd, Ste 212",
-      "addressLocality": "Lake Forest",
-      "addressRegion": "CA",
-      "postalCode": "92630",
-      "addressCountry": "US"
-    }
-  }
+  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Everlasting Renovations Inc.","telephone":"(714) 745-2777","email":"everlastingrenovationsinc@gmail.com","url":"https://www.everlastingrenovationsinc.com","description":"Family-owned general building contractor specializing in kitchen remodeling, bathroom remodeling, interior and exterior painting, flooring, ADU additions across Orange County, CA.","foundingDate":"2015","areaServed":"Orange County","address":{"@type":"PostalAddress","streetAddress":"25422 Trabuco Rd, Ste 212","addressLocality":"Lake Forest","addressRegion":"CA","postalCode":"92630","addressCountry":"US"}}
   </script>
   <style>
     /* ── Reset ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Work Sans', system-ui, sans-serif; color: #1a1a1a; background: #fcf9f8; line-height: 1.6; font-size: 16px; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    button { font-family: 'Work Sans', system-ui, sans-serif; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+    button{font-family:inherit;cursor:pointer;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+    /* ── Tokens ── */
+    :root{
+      color-scheme:light dark;
+      --bg:#fcf9f8; --surface:#ffffff; --surface-dim:#f0eded; --warm-bone:#f6f3f2;
+      --primary:#461800; --cta:#662a08; --cta-hover:#7a3210; --on-cta:#ffffff;
+      --secondary:#39637f;
+      --text:#1a1a1a; --muted:#54433c; --border:#d9c2b8;
+      --nav-bg:rgba(252,249,248,.94);
+      --card-shadow:0px 4px 20px rgba(102,42,8,.08);
+      --hover-shadow:0px 8px 32px rgba(102,42,8,.14);
+      --btn-shadow:0px 2px 8px rgba(102,42,8,.22);
+    }
+    @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+      --bg:#0e0a08; --surface:#1e1410; --surface-dim:#1a1208; --warm-bone:#181210;
+      --primary:#ffb694; --cta:#d97348; --cta-hover:#e8845c; --on-cta:#ffffff;
+      --secondary:#6ab3d4;
+      --text:#f0ede9; --muted:#b8a89e; --border:#3d2a1e;
+      --nav-bg:rgba(14,10,8,.94);
+      --card-shadow:0px 4px 20px rgba(0,0,0,.45);
+      --hover-shadow:0px 8px 32px rgba(0,0,0,.55);
+      --btn-shadow:0px 2px 8px rgba(0,0,0,.4);
+    }}
+    :root[data-theme="dark"]{
+      --bg:#0e0a08; --surface:#1e1410; --surface-dim:#1a1208; --warm-bone:#181210;
+      --primary:#ffb694; --cta:#d97348; --cta-hover:#e8845c; --on-cta:#ffffff;
+      --secondary:#6ab3d4;
+      --text:#f0ede9; --muted:#b8a89e; --border:#3d2a1e;
+      --nav-bg:rgba(14,10,8,.94);
+      --card-shadow:0px 4px 20px rgba(0,0,0,.45);
+      --hover-shadow:0px 8px 32px rgba(0,0,0,.55);
+      --btn-shadow:0px 2px 8px rgba(0,0,0,.4);
+    }
+    :root[data-theme="light"]{
+      --bg:#fcf9f8; --surface:#ffffff; --surface-dim:#f0eded; --warm-bone:#f6f3f2;
+      --primary:#461800; --cta:#662a08; --cta-hover:#7a3210; --on-cta:#ffffff;
+      --secondary:#39637f;
+      --text:#1a1a1a; --muted:#54433c; --border:#d9c2b8;
+      --nav-bg:rgba(252,249,248,.94);
+      --card-shadow:0px 4px 20px rgba(102,42,8,.08);
+      --hover-shadow:0px 8px 32px rgba(102,42,8,.14);
+      --btn-shadow:0px 2px 8px rgba(102,42,8,.22);
     }
 
-    /* ── Design tokens ── */
-    :root {
-      --bg:           #fcf9f8;
-      --surface:      #ffffff;
-      --surface-dim:  #f0eded;
-      --warm-bone:    #f6f3f2;
-      --primary:      #461800;
-      --cta:          #662a08;
-      --cta-hover:    #7a3210;
-      --on-primary:   #ffffff;
-      --secondary:    #39637f;
-      --body-text:    #1a1a1a;
-      --muted:        #54433c;
-      --border:       #d9c2b8;
-      --card-shadow:  0px 4px 20px rgba(102,42,8,0.08);
-      --hover-shadow: 0px 8px 32px rgba(102,42,8,0.14);
-      --btn-shadow:   0px 2px 8px rgba(102,42,8,0.25);
-    }
+    /* ── Base ── */
+    body{font-family:'Work Sans',system-ui,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;font-size:16px;transition:background .3s,color .3s;}
 
     /* ── Layout ── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .section-pad { padding: 80px 0; }
+    .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+    .section-pad{padding:80px 0;}
 
-    /* ── Type helpers ── */
-    .eyebrow {
-      display: inline-block; font-size: 14px; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase; color: var(--cta); margin-bottom: 12px;
-    }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-header h2 {
-      font-size: clamp(26px, 4vw, 32px); font-weight: 600; color: var(--primary);
-      line-height: 1.2; margin-top: 4px;
-    }
-    .section-header p { font-size: 18px; color: var(--muted); margin-top: 12px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    /* ── Type ── */
+    .eyebrow{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--cta);margin-bottom:12px;}
+    .section-header{text-align:center;margin-bottom:56px;}
+    .section-header h2{font-size:clamp(26px,4vw,32px);font-weight:600;color:var(--primary);line-height:1.2;margin-top:4px;}
+    .section-header p{font-size:18px;color:var(--muted);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;}
 
     /* ── Buttons ── */
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--cta); color: var(--on-primary);
-      border: none; border-radius: 12px; padding: 14px 28px;
-      font-size: 16px; font-weight: 600; cursor: pointer;
-      box-shadow: var(--btn-shadow);
-      transition: background 200ms ease, box-shadow 200ms ease;
-      text-decoration: none; white-space: nowrap; min-height: 44px;
-    }
-    .btn-primary:hover { background: var(--cta-hover); box-shadow: var(--hover-shadow); }
-    .btn-primary:focus-visible { outline: 3px solid var(--cta); outline-offset: 3px; }
-    .btn-primary.pill { border-radius: 9999px; padding: 10px 20px; font-size: 14px; }
-
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: #fff;
-      border: 2px solid rgba(255,255,255,0.8); border-radius: 12px; padding: 12px 28px;
-      font-size: 16px; font-weight: 600; cursor: pointer;
-      transition: background 200ms ease, border-color 200ms ease;
-      text-decoration: none; white-space: nowrap; min-height: 44px;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
-    .btn-ghost:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--cta);color:var(--on-cta);border:none;border-radius:12px;padding:14px 28px;font-size:16px;font-weight:600;box-shadow:var(--btn-shadow);transition:background .2s,box-shadow .2s;text-decoration:none;white-space:nowrap;min-height:44px;}
+    .btn-primary:hover{background:var(--cta-hover);box-shadow:var(--hover-shadow);}
+    .btn-primary:focus-visible{outline:3px solid var(--cta);outline-offset:3px;}
+    .btn-primary.pill{border-radius:9999px;padding:10px 20px;font-size:14px;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:#fff;border:2px solid rgba(255,255,255,.8);border-radius:12px;padding:12px 28px;font-size:16px;font-weight:600;transition:background .2s,border-color .2s;text-decoration:none;white-space:nowrap;min-height:44px;}
+    .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;}
 
     /* ── Navbar ── */
-    .navbar {
-      position: sticky; top: 0; z-index: 900;
-      background: rgba(252,249,248,0.92);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      height: 64px; display: flex; align-items: center; padding: 0 24px;
-    }
-    .navbar-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
-      display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    }
-    .navbar-brand { font-size: 18px; font-weight: 700; color: var(--primary); letter-spacing: -0.01em; white-space: nowrap; }
-    .navbar-links { display: flex; gap: 32px; list-style: none; }
-    .navbar-links a { font-size: 15px; font-weight: 500; color: var(--muted); transition: color 200ms ease; }
-    .navbar-links a:hover { color: var(--primary); }
-    .navbar-right { display: flex; align-items: center; gap: 14px; }
-    .navbar-hamburger {
-      display: none; background: none; border: none;
-      cursor: pointer; color: var(--primary); padding: 8px; min-height: 44px; min-width: 44px;
-      align-items: center; justify-content: center;
-    }
+    .navbar{position:sticky;top:0;z-index:900;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 24px;transition:background .3s,border-color .3s;}
+    .navbar-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .navbar-brand{font-size:18px;font-weight:700;color:var(--primary);letter-spacing:-.01em;white-space:nowrap;transition:color .3s;}
+    .navbar-links{display:flex;gap:32px;list-style:none;}
+    .navbar-links a{font-size:15px;font-weight:500;color:var(--muted);transition:color .2s;}
+    .navbar-links a:hover{color:var(--primary);}
+    .navbar-right{display:flex;align-items:center;gap:12px;}
+    .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--primary);cursor:pointer;transition:border-color .2s,background .3s,color .3s;}
+    .theme-toggle:hover{border-color:var(--cta);}
+    .theme-toggle svg{width:18px;height:18px;display:block;}
+    .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+    @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+    :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+    :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+    .navbar-hamburger{display:none;background:none;border:none;color:var(--primary);padding:8px;min-height:44px;min-width:44px;align-items:center;justify-content:center;}
 
     /* ── Hero ── */
-    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; color: #fff; }
-    .hero-vid-wrap { position: absolute; inset: 0; z-index: 0; }
-    .hero-vid { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.8s ease; }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom, rgba(70,24,0,0.52) 0%, rgba(30,10,0,0.72) 100%);
-    }
-    .hero-content { position: relative; z-index: 2; width: 100%; padding: 80px 0 60px; }
-    .hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-    .hero-eyebrow { font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #ffb694; margin-bottom: 16px; }
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 56px); font-weight: 700; letter-spacing: -0.02em;
-      line-height: 1.1; color: #fff; margin-bottom: 20px; max-width: 700px;
-    }
-    .hero-sub { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 36px; }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
-    .hero-trust {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
-      color: rgba(255,255,255,0.7); display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
-    }
-    .hero-trust span { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;color:#fff;}
+    .hero-vid-wrap{position:absolute;inset:0;z-index:0;}
+    .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .6s linear;}
+    .hero-bg.is-idle{opacity:0;}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(50,16,0,.45) 0%,rgba(20,6,0,.75) 100%);pointer-events:none;}
+    .hero-content{position:relative;z-index:2;width:100%;padding:90px 0 70px;}
+    .hero-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+    .hero-eyebrow{font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#ffb694;margin-bottom:16px;}
+    .hero h1{font-size:clamp(36px,6vw,58px);font-weight:700;letter-spacing:-.02em;line-height:1.08;color:#fff;margin-bottom:20px;max-width:720px;text-shadow:0 2px 24px rgba(0,0,0,.35);}
+    .hero-sub{font-size:18px;color:rgba(255,255,255,.88);margin-bottom:36px;text-shadow:0 1px 12px rgba(0,0,0,.3);}
+    .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:44px;}
+    .hero-trust{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.7);display:flex;gap:20px;flex-wrap:wrap;justify-content:center;padding-top:20px;border-top:1px solid rgba(255,255,255,.18);}
+    .hero-trust span{display:flex;align-items:center;gap:6px;white-space:nowrap;}
 
     /* ── Trust Bar ── */
-    .trust-bar { background: var(--surface-dim); padding: 28px 0; border-bottom: 1px solid var(--border); }
-    .trust-bar-inner { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
-    .trust-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 8px 28px; font-size: 14px; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
-    }
-    .trust-item + .trust-item { border-left: 1px solid var(--border); }
-    .trust-item svg { color: var(--cta); flex-shrink: 0; }
+    .trust-bar{background:var(--surface-dim);padding:24px 0;border-bottom:1px solid var(--border);transition:background .3s,border-color .3s;}
+    .trust-bar-inner{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;}
+    .trust-item{display:flex;align-items:center;gap:10px;padding:8px 28px;font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);transition:color .3s;}
+    .trust-item+.trust-item{border-left:1px solid var(--border);}
+    .trust-item svg{color:var(--cta);flex-shrink:0;transition:color .3s;}
 
     /* ── Services ── */
-    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-      padding: 28px 24px; box-shadow: var(--card-shadow);
-      transition: box-shadow 200ms ease, border-color 200ms ease, transform 200ms ease;
-    }
-    .service-card:hover { box-shadow: var(--hover-shadow); border-color: var(--cta); transform: translateY(-2px); }
-    .service-icon-wrap {
-      width: 48px; height: 48px; background: var(--warm-bone); border-radius: 12px;
-      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
-    }
-    .service-icon-wrap svg { color: var(--cta); }
-    .service-card h3 { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-    .service-card p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .service-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px 24px;box-shadow:var(--card-shadow);transition:box-shadow .2s,border-color .2s,transform .2s,background .3s;}
+    .service-card:hover{box-shadow:var(--hover-shadow);border-color:var(--cta);transform:translateY(-2px);}
+    .service-icon-wrap{width:48px;height:48px;background:var(--warm-bone);border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:background .3s;}
+    .service-icon-wrap svg{color:var(--cta);transition:color .3s;}
+    .service-card h3{font-size:18px;font-weight:600;color:var(--primary);margin-bottom:8px;transition:color .3s;}
+    .service-card p{font-size:15px;color:var(--muted);line-height:1.6;transition:color .3s;}
 
-    /* ── Before/After Gallery ── */
-    .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .gallery-item-label { font-size: 15px; font-weight: 600; color: var(--primary); margin-bottom: 14px; }
-    .ba-wrap {
-      position: relative; overflow: hidden; border-radius: 16px;
-      height: 320px; user-select: none; box-shadow: var(--card-shadow); cursor: ew-resize;
-    }
-    .ba-before, .ba-after { position: absolute; inset: 0; }
-    .ba-before img, .ba-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .ba-after { clip-path: inset(0 50% 0 0); }
-    .ba-range {
-      position: absolute; inset: 0; width: 100%; height: 100%;
-      opacity: 0; cursor: ew-resize; z-index: 10; -webkit-appearance: none; appearance: none;
-    }
-    .ba-divider {
-      position: absolute; top: 0; bottom: 0; width: 2px;
-      background: #fff; left: 50%; transform: translateX(-50%);
-      pointer-events: none; z-index: 5; box-shadow: 0 0 8px rgba(0,0,0,0.4);
-    }
-    .ba-handle {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 36px; height: 36px; background: #fff; border-radius: 9999px;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.3); pointer-events: none; z-index: 6;
-    }
-    .ba-handle svg { color: var(--cta); }
-    .ba-chip {
-      position: absolute; top: 14px; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      padding: 4px 10px; border-radius: 9999px; z-index: 7; pointer-events: none;
-    }
-    .ba-chip-before { left: 14px; background: rgba(0,0,0,0.55); color: #fff; }
-    .ba-chip-after  { right: 14px; background: rgba(102,42,8,0.85); color: #fff; }
-
-    /* ── 3D Visualizer (preserved) ── */
-    .viz-section { background: #111; color: #fff; padding: 80px 0 56px; }
-    .viz-header { text-align: center; margin-bottom: 30px; }
-    .viz-header h2 { color: #fff; font-size: clamp(26px, 4vw, 32px); font-weight: 600; }
-    .viz-header p { color: #aaa; margin-top: 8px; font-size: 18px; }
-    .viz-eyebrow { display: inline-block; font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #B8704A; margin-bottom: 10px; }
-    .viz-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 18px; flex-wrap: wrap; }
-    .viz-tab { background: rgba(255,255,255,.08); color: #ccc; border: 1px solid rgba(255,255,255,.15); border-radius: 6px; padding: 9px 20px; font-family: 'Work Sans',sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: all .18s; }
-    .viz-tab:hover { background: rgba(255,255,255,.14); color: #fff; }
-    .viz-tab.active { background: #662A08; color: #fff; border-color: #662A08; }
-    .viz-canvas-wrap { position: relative; width: 100%; max-width: 900px; margin: 0 auto; border-radius: 12px; overflow: hidden; background: #1a1a2e; aspect-ratio: 16/9; }
-    #viz-canvas { display: block; width: 100%!important; height: 100%!important; }
-    .viz-loader { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(17,17,34,.88); z-index: 10; gap: 14px; }
-    .viz-loader-text { font-size: .88rem; color: #aaa; font-weight: 600; }
-    .viz-loader-bar { width: 190px; height: 3px; background: rgba(255,255,255,.14); border-radius: 999px; overflow: hidden; }
-    .viz-loader-fill { height: 100%; background: #662A08; border-radius: 999px; width: 0; animation: loadBar 1.2s ease-out forwards; }
-    @keyframes loadBar { to { width: 100%; } }
-    .viz-fallback { position: absolute; inset: 0; background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px; gap: 22px; }
-    .viz-fallback p { color: #bbb; text-align: center; }
-    .viz-ba-fallback { display: flex; gap: 18px; }
-    .viz-ba-before, .viz-ba-after { width: 190px; height: 120px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .88rem; }
-    .viz-ba-before { background: #3a3530; color: #9a9080; }
-    .viz-ba-after  { background: #f5f0ea; color: #5a4a3a; }
-    .viz-controls { max-width: 900px; margin: 18px auto 0; display: flex; gap: 26px; flex-wrap: wrap; align-items: flex-start; }
-    .viz-control-group { flex: 1; min-width: 150px; }
-    .viz-control-group label { display: block; font-size: .73rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #888; margin-bottom: 7px; }
-    .viz-swatches { display: flex; gap: 7px; flex-wrap: wrap; }
-    .viz-swatch { width: 30px; height: 30px; border-radius: 6px; border: 2px solid transparent; cursor: pointer; transition: border-color .15s, transform .1s; }
-    .viz-swatch:hover { transform: scale(1.12); }
-    .viz-swatch.active { border-color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
-    .viz-hint { text-align: center; margin-top: 13px; font-size: .76rem; color: #666; }
+    /* ── Gallery ── */
+    .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+    .gallery-label{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:14px;transition:color .3s;}
+    .ba-wrap{position:relative;overflow:hidden;border-radius:16px;height:300px;user-select:none;box-shadow:var(--card-shadow);cursor:ew-resize;}
+    .ba-before,.ba-after{position:absolute;inset:0;}
+    .ba-before img,.ba-after img{width:100%;height:100%;object-fit:cover;display:block;}
+    .ba-after{clip-path:inset(0 50% 0 0);}
+    .ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:10;-webkit-appearance:none;appearance:none;}
+    .ba-divider{position:absolute;top:0;bottom:0;width:2px;background:#fff;left:50%;transform:translateX(-50%);pointer-events:none;z-index:5;box-shadow:0 0 8px rgba(0,0,0,.4);}
+    .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:#fff;border-radius:9999px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3);pointer-events:none;z-index:6;}
+    .ba-handle svg{color:#662a08;}
+    .ba-chip{position:absolute;top:14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:9999px;z-index:7;pointer-events:none;}
+    .ba-chip-before{left:14px;background:rgba(0,0,0,.55);color:#fff;}
+    .ba-chip-after{right:14px;background:rgba(102,42,8,.88);color:#fff;}
+    .gallery-photos{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px;}
+    .gallery-photo-wrap{position:relative;border-radius:16px;overflow:hidden;height:240px;box-shadow:var(--card-shadow);}
+    .gallery-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+    .gallery-photo-chip{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:9999px;background:rgba(102,42,8,.88);color:#fff;pointer-events:none;}
 
     /* ── Reviews ── */
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .review-card { background: var(--surface); border-radius: 16px; padding: 28px; box-shadow: var(--card-shadow); display: flex; flex-direction: column; gap: 14px; }
-    .review-stars { display: flex; gap: 3px; }
-    .review-stars svg { color: var(--cta); }
-    .review-text { font-size: 16px; color: var(--body-text); line-height: 1.65; font-style: italic; flex: 1; }
-    .review-byline { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .review-name { font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
-    .review-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; background: var(--warm-bone); color: var(--muted); border: 1px solid var(--border); border-radius: 9999px; padding: 3px 10px; }
-    .reviews-yelp { text-align: center; margin-top: 36px; }
-    .yelp-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--warm-bone); border: 1px solid var(--border); border-radius: 9999px; padding: 10px 24px; font-size: 15px; font-weight: 600; color: var(--muted); }
+    .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .review-card{background:var(--surface);border-radius:16px;padding:28px;box-shadow:var(--card-shadow);display:flex;flex-direction:column;gap:14px;transition:background .3s,box-shadow .3s;}
+    .review-stars{display:flex;gap:3px;}
+    .review-stars svg{color:#e07c1a;}
+    .review-text{font-size:16px;color:var(--text);line-height:1.65;font-style:italic;flex:1;transition:color .3s;}
+    .review-byline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    .review-name{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);transition:color .3s;}
+    .review-badge{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--warm-bone);color:var(--muted);border:1px solid var(--border);border-radius:9999px;padding:3px 10px;transition:background .3s,color .3s,border-color .3s;}
+    .reviews-footer{text-align:center;margin-top:36px;}
+    .review-platform-pill{display:inline-flex;align-items:center;gap:8px;background:var(--warm-bone);border:1px solid var(--border);border-radius:9999px;padding:10px 24px;font-size:15px;font-weight:600;color:var(--muted);transition:background .3s,color .3s,border-color .3s;}
 
     /* ── About ── */
-    .about-inner { display: grid; grid-template-columns: 1fr 440px; gap: 64px; align-items: center; }
-    .about-content .eyebrow { margin-bottom: 12px; }
-    .about-content h2 { font-size: clamp(26px, 4vw, 32px); font-weight: 600; color: var(--primary); line-height: 1.2; max-width: 520px; margin-top: 4px; margin-bottom: 20px; }
-    .about-body { font-size: 18px; color: var(--muted); line-height: 1.65; max-width: 520px; margin-bottom: 28px; }
-    .about-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .about-bullet { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; font-weight: 500; color: var(--body-text); }
-    .about-bullet svg { color: var(--cta); flex-shrink: 0; margin-top: 2px; }
-    .stat-card { display: inline-flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 28px; box-shadow: var(--card-shadow); }
-    .stat-number { font-size: 32px; font-weight: 700; color: var(--cta); line-height: 1; }
-    .stat-label { font-size: 14px; color: var(--muted); font-weight: 500; line-height: 1.4; }
-    .about-photo-wrap { display: flex; flex-direction: column; align-items: center; }
-    .about-photo { width: 100%; max-width: 440px; border-radius: 24px; object-fit: cover; box-shadow: var(--hover-shadow); aspect-ratio: 4/5; }
-    .about-photo-placeholder {
-      width: 100%; max-width: 440px; border-radius: 24px;
-      background: linear-gradient(135deg, #662a08, #8a3810);
-      display: flex; align-items: center; justify-content: center; aspect-ratio: 4/5;
-    }
-    .about-photo-placeholder span { font-size: 96px; font-weight: 700; color: rgba(255,255,255,0.3); }
-    .about-caption { font-size: 14px; color: var(--muted); text-align: center; margin-top: 12px; font-style: italic; }
+    .about-inner{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center;}
+    .about-content h2{font-size:clamp(26px,4vw,32px);font-weight:600;color:var(--primary);line-height:1.2;max-width:520px;margin-top:4px;margin-bottom:20px;transition:color .3s;}
+    .about-body{font-size:18px;color:var(--muted);line-height:1.65;max-width:520px;margin-bottom:28px;transition:color .3s;}
+    .about-bullets{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px;}
+    .about-bullet{display:flex;align-items:flex-start;gap:12px;font-size:16px;font-weight:500;color:var(--text);transition:color .3s;}
+    .about-bullet svg{color:var(--cta);flex-shrink:0;margin-top:2px;transition:color .3s;}
+    .stat-row{display:flex;gap:16px;flex-wrap:wrap;}
+    .stat-card{display:inline-flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 24px;box-shadow:var(--card-shadow);transition:background .3s,border-color .3s;}
+    .stat-number{font-size:30px;font-weight:700;color:var(--cta);line-height:1;transition:color .3s;}
+    .stat-label{font-size:13px;color:var(--muted);font-weight:500;line-height:1.4;transition:color .3s;}
+    .about-photo-wrap{display:flex;flex-direction:column;align-items:center;}
+    .about-photo{width:100%;max-width:420px;border-radius:24px;object-fit:cover;box-shadow:var(--hover-shadow);aspect-ratio:3/4;}
+    .about-caption{font-size:14px;color:var(--muted);text-align:center;margin-top:12px;font-style:italic;transition:color .3s;}
 
     /* ── Quote Form ── */
-    .quote-section { background: var(--cta); padding: 80px 0; }
-    .quote-center { text-align: center; }
-    .quote-eyebrow { display: inline-block; font-size: 14px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,182,148,0.85); margin-bottom: 12px; }
-    .quote-section h2 { font-size: clamp(28px, 4vw, 36px); font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .quote-sub { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 40px; }
-    .quote-form-wrap { max-width: 640px; margin: 0 auto; }
-    .qform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .qform-full { grid-column: 1 / -1; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
-    .form-input {
-      background: #fff; color: var(--muted); font-family: 'Work Sans', sans-serif;
-      font-size: 16px; border: 1px solid rgba(255,255,255,0.3); border-radius: 10px;
-      padding: 12px 14px; min-height: 44px; transition: border-color 200ms ease;
-    }
-    .form-input:focus { outline: none; border-color: #fff; box-shadow: 0 0 0 3px rgba(255,255,255,0.2); }
-    .form-input::placeholder { color: #aaa; }
-    .form-textarea { resize: vertical; min-height: 100px; }
-    .quote-submit {
-      margin-top: 8px; width: 100%; min-height: 44px;
-      background: #fff; color: var(--cta); border: none; border-radius: 12px;
-      padding: 14px 28px; font-family: 'Work Sans', sans-serif; font-size: 16px; font-weight: 600;
-      cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: background 200ms ease, box-shadow 200ms ease;
-    }
-    .quote-submit:hover { background: var(--warm-bone); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
-    .quote-submit:focus-visible { outline: 3px solid rgba(255,255,255,0.8); outline-offset: 3px; }
+    .quote-section{background:#662a08;padding:80px 0;}
+    .quote-center{text-align:center;}
+    .quote-eyebrow{display:inline-block;font-size:14px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,182,148,.88);margin-bottom:12px;}
+    .quote-section h2{font-size:clamp(28px,4vw,36px);font-weight:700;color:#fff;margin-bottom:12px;}
+    .quote-sub{font-size:18px;color:rgba(255,255,255,.85);margin-bottom:40px;}
+    .quote-form-wrap{max-width:640px;margin:0 auto;}
+    .qform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .qform-full{grid-column:1/-1;}
+    .form-group{display:flex;flex-direction:column;gap:6px;}
+    .form-label{font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.82);}
+    .form-input{background:#fff;color:#3a2a22;font-family:'Work Sans',sans-serif;font-size:16px;border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:12px 14px;min-height:44px;transition:border-color .2s;}
+    .form-input:focus{outline:none;border-color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.2);}
+    .form-input::placeholder{color:#aaa;}
+    .form-textarea{resize:vertical;min-height:100px;}
+    .quote-submit{margin-top:8px;width:100%;min-height:44px;background:#fff;color:#662a08;border:none;border-radius:12px;padding:14px 28px;font-family:'Work Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:background .2s,box-shadow .2s;}
+    .quote-submit:hover{background:#fcf9f8;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+    .quote-submit:focus-visible{outline:3px solid rgba(255,255,255,.8);outline-offset:3px;}
 
     /* ── Footer ── */
-    .footer { background: var(--primary); color: #fff; padding: 64px 0 32px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-brand { font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 14px; }
-    .footer-col p { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; }
-    .footer-col-head { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 16px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { font-size: 15px; color: rgba(255,255,255,0.75); transition: color 200ms ease; }
-    .footer-links a:hover { color: #fff; }
-    .footer-phone-link { font-size: 22px; font-weight: 700; color: #fff; display: block; margin-bottom: 14px; transition: color 200ms ease; }
-    .footer-phone-link:hover { color: #ffb694; }
-    .footer-contact-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .footer-contact-row a { font-size: 15px; color: rgba(255,255,255,0.8); transition: color 200ms ease; }
-    .footer-contact-row a:hover { color: #fff; }
-    .footer-contact-row svg { color: rgba(255,255,255,0.45); flex-shrink: 0; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 24px; font-size: 14px; color: rgba(255,255,255,0.45); text-align: center; }
-    .footer-demo-note { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 6px; }
+    .footer{background:#2b1206;color:#fff;padding:64px 0 32px;}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+    .footer-brand{font-size:20px;font-weight:600;color:#fff;margin-bottom:14px;}
+    .footer-col p{font-size:15px;color:rgba(255,255,255,.62);line-height:1.7;}
+    .footer-col-head{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px;}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+    .footer-links a{font-size:15px;color:rgba(255,255,255,.72);transition:color .2s;}
+    .footer-links a:hover{color:#fff;}
+    .footer-phone-link{font-size:22px;font-weight:700;color:#fff;display:block;margin-bottom:14px;transition:color .2s;}
+    .footer-phone-link:hover{color:#ffb694;}
+    .footer-contact-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+    .footer-contact-row a{font-size:15px;color:rgba(255,255,255,.78);transition:color .2s;}
+    .footer-contact-row a:hover{color:#fff;}
+    .footer-contact-row svg{color:rgba(255,255,255,.4);flex-shrink:0;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:14px;color:rgba(255,255,255,.4);text-align:center;}
+    .footer-demo-note{font-size:12px;color:rgba(255,255,255,.22);margin-top:6px;}
 
     /* ── Nav Hub ── */
-    .nav-hub { position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: system-ui; }
-    .nav-hub-trigger { display: inline-flex; align-items: center; gap: 7px; background: #fff; color: #1B4332; border: 1px solid #D9D2C2; border-radius: 999px; padding: 10px 16px; font-weight: 700; font-size: 13.5px; cursor: pointer; box-shadow: 0 6px 22px rgba(0,0,0,.14); transition: border-color .2s, transform .04s; }
-    .nav-hub-trigger:hover { border-color: #2D6A4F; }
-    .nav-hub-trigger:active { transform: translateY(1px); }
-    .nav-hub-trigger .chevron { transition: transform .2s; }
-    .nav-hub.open .nav-hub-trigger .chevron { transform: rotate(180deg); }
-    .nav-hub-menu { list-style: none; margin: 0; padding: 6px 0; position: absolute; bottom: calc(100% + 8px); right: 0; min-width: 210px; background: #fff; border: 1px solid #D9D2C2; border-radius: 14px; box-shadow: 0 12px 36px rgba(0,0,0,.15); opacity: 0; transform: translateY(6px); pointer-events: none; transition: opacity .18s, transform .18s; }
-    .nav-hub.open .nav-hub-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .nav-hub-menu li a { display: block; padding: 9px 16px; font-size: 13.5px; font-weight: 600; color: #1B4332; text-decoration: none; transition: background .12s; }
-    .nav-hub-menu li a:hover { background: #F0EBE0; }
-    .nav-hub-menu li a[aria-current="page"] { color: #2D6A4F; background: #F0EBE0; }
-    .nav-hub-menu li.nav-sep { height: 1px; background: #D9D2C2; margin: 4px 0; }
-    @media print { .nav-hub { display: none; } }
+    .nav-hub{position:fixed;bottom:20px;right:20px;z-index:1000;}
+    .nav-hub-trigger{display:inline-flex;align-items:center;gap:7px;background:var(--surface);color:var(--primary);border:1px solid var(--border);border-radius:999px;padding:10px 16px;font-weight:700;font-size:13.5px;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.14);transition:border-color .2s,background .3s,color .3s;}
+    .nav-hub-trigger:hover{border-color:var(--cta);}
+    .nav-hub-trigger .chevron{transition:transform .2s;}
+    .nav-hub.open .nav-hub-trigger .chevron{transform:rotate(180deg);}
+    .nav-hub-menu{list-style:none;margin:0;padding:6px 0;position:absolute;bottom:calc(100% + 8px);right:0;min-width:210px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 12px 36px rgba(0,0,0,.18);opacity:0;transform:translateY(6px);pointer-events:none;transition:opacity .18s,transform .18s;}
+    .nav-hub.open .nav-hub-menu{opacity:1;transform:translateY(0);pointer-events:auto;}
+    .nav-hub-menu li a{display:block;padding:9px 16px;font-size:13.5px;font-weight:600;color:var(--primary);text-decoration:none;transition:background .12s,color .3s;}
+    .nav-hub-menu li a:hover{background:var(--warm-bone);}
+    .nav-hub-menu li a[aria-current="page"]{color:var(--cta);background:var(--warm-bone);}
+    .nav-hub-menu li.nav-sep{height:1px;background:var(--border);margin:4px 0;}
+    @media print{.nav-hub{display:none;}}
 
     /* ── Responsive ── */
-    @media (max-width: 900px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid  { grid-template-columns: repeat(2, 1fr); }
-      .about-inner   { grid-template-columns: 1fr; }
-      .about-photo-wrap { order: -1; }
-      .footer-grid   { grid-template-columns: 1fr 1fr; }
+    @media(max-width:900px){
+      .services-grid{grid-template-columns:repeat(2,1fr);}
+      .reviews-grid{grid-template-columns:repeat(2,1fr);}
+      .about-inner{grid-template-columns:1fr;}
+      .about-photo-wrap{order:-1;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
     }
-    @media (max-width: 768px) {
-      .section-pad { padding: 48px 0; }
-      .navbar-links { display: none; }
-      .navbar-hamburger { display: inline-flex; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .quote-section { padding: 48px 0; }
-      .qform-grid { grid-template-columns: 1fr; }
-      .trust-item + .trust-item { border-left: none; }
-      .trust-item { padding: 6px 14px; }
+    @media(max-width:768px){
+      .section-pad{padding:48px 0;}
+      .navbar-links{display:none;}
+      .navbar-hamburger{display:inline-flex;}
+      .gallery-grid{grid-template-columns:1fr;}
+      .gallery-photos{grid-template-columns:1fr;}
+      .quote-section{padding:48px 0;}
+      .qform-grid{grid-template-columns:1fr;}
+      .trust-item+.trust-item{border-left:none;}
+      .trust-item{padding:6px 14px;}
     }
-    @media (max-width: 600px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .reviews-grid  { grid-template-columns: 1fr; }
-      .footer-grid   { grid-template-columns: 1fr; gap: 32px; }
+    @media(max-width:600px){
+      .services-grid{grid-template-columns:1fr;}
+      .reviews-grid{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr;gap:32px;}
+      .stat-row{flex-direction:column;}
     }
   </style>
 </head>
@@ -377,42 +275,42 @@
       <ul class="navbar-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">Warranty</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#quote-form">Contact</a></li>
       </ul>
     </nav>
     <div class="navbar-right">
-      <a href="#quote-form" class="btn-primary pill">Get a Quote</a>
+      <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <a href="tel:+17147452777" class="btn-primary pill">Call Now</a>
+      <a href="#quote-form" class="btn-primary pill" style="background:var(--secondary);color:#fff;">Get a Quote</a>
       <button class="navbar-hamburger" aria-label="Open menu" type="button">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
 </header>
 
-<!-- ── SECTION 1: HERO ── -->
+<!-- ── HERO ── -->
 <section class="hero" aria-labelledby="hero-heading">
-  <div class="hero-vid-wrap">
-    <video id="heroVid" class="hero-vid" autoplay muted playsinline
-      poster="/round-0/everlasting-renovations/media/kitchen-after.png"
-      aria-hidden="true">
+  <div class="hero-vid-wrap" aria-hidden="true">
+    <video id="heroA" class="hero-bg" autoplay muted loop playsinline webkit-playsinline preload="auto"
+      poster="/round-0/everlasting-renovations/media/kitchen-after.png">
       <source src="/round-0/everlasting-renovations/media/hero-kitchen.mp4" type="video/mp4">
     </video>
+    <video id="heroB" class="hero-bg is-idle" muted playsinline webkit-playsinline preload="metadata"></video>
   </div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-inner">
-      <p class="hero-eyebrow">Lake Forest, CA &middot; Est. 2015</p>
+      <p class="hero-eyebrow">Lake Forest, CA &middot; Family-Owned Since 2015</p>
       <h1 id="hero-heading">Kitchens. Bathrooms.<br>Exteriors. Done Right.</h1>
       <p class="hero-sub">Licensed &middot; Bonded &middot; Insured &middot; 3-Year Written Warranty</p>
       <div class="hero-ctas">
         <a href="#quote-form" class="btn-primary">Get a Free Estimate</a>
-        <a href="#gallery" class="btn-ghost">
-          See Our Work
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </a>
+        <a href="#gallery" class="btn-ghost">See Our Work &darr;</a>
       </div>
       <div class="hero-trust">
         <span>
@@ -421,11 +319,11 @@
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          Est. 2015
+          4.6&#x2605; on Yelp
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          3-Year Warranty
+          3-Year Written Warranty
         </span>
         <span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -436,7 +334,7 @@
   </div>
 </section>
 
-<!-- ── SECTION 2: TRUST BAR ── -->
+<!-- ── TRUST BAR ── -->
 <section class="trust-bar" aria-label="Trust indicators">
   <div class="container">
     <div class="trust-bar-inner">
@@ -450,7 +348,7 @@
       </div>
       <div class="trust-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        4.6&#x2605; on Yelp
+        4.6&#x2605; Yelp &middot; 28 Reviews
       </div>
       <div class="trust-item">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -464,8 +362,8 @@
   </div>
 </section>
 
-<!-- ── SECTION 3: SERVICES GRID ── -->
-<section class="section-pad" id="services" style="background: var(--bg);" aria-labelledby="services-heading">
+<!-- ── SERVICES ── -->
+<section class="section-pad" id="services" style="background:var(--bg);" aria-labelledby="services-heading">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Our Services</span>
@@ -473,78 +371,68 @@
       <p>Full-scope renovation from concept to completion &mdash; backed by a 3-year written warranty.</p>
     </div>
     <div class="services-grid">
-
-      <div class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>
-        </div>
-        <h3>Kitchen Remodeling</h3>
-        <p>Cabinet, countertop, island, and full gut renovations</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21H4a2 2 0 0 1-2-2v-2"/><path d="M22 15v4a2 2 0 0 1-2 2h-3"/><path d="M7 3H4a2 2 0 0 0-2 2v2"/><path d="M22 9V5a2 2 0 0 0-2-2h-3"/><path d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0"/></svg>
-        </div>
-        <h3>Bathroom Remodeling</h3>
-        <p>Walk-in showers, vanities, tile, and fixture upgrades</p>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/><path d="M3 13v3a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-3"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
-        </div>
-        <h3>Interior Painting</h3>
-        <p>Color consultation, thorough prep, and clean execution</p>
-      </div>
-
       <div class="service-card">
         <div class="service-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h3>Exterior Painting</h3>
-        <p>Siding, trim, stucco, pressure wash, and prime</p>
+        <h3>Kitchen Remodeling</h3>
+        <p>Cabinets, countertops, islands, and full gut renovations. Design-to-install.</p>
       </div>
-
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4z"/><path d="M4 12h16v4H4z"/><path d="M4 20h16"/></svg>
+        </div>
+        <h3>Bathroom Remodeling</h3>
+        <p>Walk-in showers, floating vanities, tile, and fixture upgrades.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Interior Painting</h3>
+        <p>Color consultation, thorough prep, dust protection, clean execution.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 20 7 20 17 12 22 4 17 4 7 12 2"/></svg>
+        </div>
+        <h3>Exterior Painting</h3>
+        <p>Siding, stucco, trim, pressure wash and prime. Curb appeal that lasts.</p>
+      </div>
       <div class="service-card">
         <div class="service-icon-wrap">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="14" width="20" height="7" rx="1"/><rect x="2" y="7" width="20" height="6" rx="1"/><line x1="6" y1="7" x2="6" y2="4"/><line x1="18" y1="7" x2="18" y2="4"/></svg>
         </div>
         <h3>Flooring</h3>
-        <p>Hardwood, LVP, tile &mdash; installation and refinishing</p>
+        <p>Hardwood, LVP, tile &mdash; installation and refinishing. All materials.</p>
       </div>
-
       <div class="service-card">
         <div class="service-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="21" x2="21" y2="21"/><polyline points="8 21 8 13 16 13 16 21"/><path d="M3 10l9-7 9 7"/><line x1="16" y1="21" x2="16" y2="10"/><line x1="12" y1="3" x2="12" y2="21"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="21" x2="21" y2="21"/><polyline points="8 21 8 13 16 13 16 21"/><path d="M3 10l9-7 9 7"/></svg>
         </div>
         <h3>ADU &amp; Additions</h3>
-        <p>Accessory dwelling units and room additions</p>
+        <p>Accessory dwelling units, room additions, and permitted structural work.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ── SECTION 4: BEFORE/AFTER GALLERY ── -->
-<section class="section-pad" id="gallery" style="background: var(--warm-bone);" aria-labelledby="gallery-heading">
+<!-- ── GALLERY ── -->
+<section class="section-pad" id="gallery" style="background:var(--warm-bone);" aria-labelledby="gallery-heading">
   <div class="container">
     <div class="section-header">
       <span class="eyebrow">Our Portfolio</span>
       <h2 id="gallery-heading">Proven Results</h2>
-      <p>Drag the slider to reveal each transformation.</p>
+      <p>Drag the slider to reveal each transformation. Real jobs, real OC homes.</p>
     </div>
-    <div class="gallery-grid">
 
+    <!-- Before/After Sliders -->
+    <div class="gallery-grid">
       <div>
-        <p class="gallery-item-label">Kitchen Remodel &middot; Lake Forest</p>
+        <p class="gallery-label">Kitchen Remodel &middot; Lake Forest</p>
         <div class="ba-wrap" id="baKitchen">
-          <div class="ba-before" style="background: linear-gradient(135deg,#2a2520,#3a3028);">
-            <img src="/round-0/everlasting-renovations/media/kitchen-before.png" alt="Kitchen before remodel" loading="lazy">
-          </div>
-          <div class="ba-after" id="baKitchenAfter" style="background: linear-gradient(135deg,#f5f0ea,#ece4d8);">
-            <img src="/round-0/everlasting-renovations/media/kitchen-after.png" alt="Kitchen after remodel" loading="lazy">
-          </div>
+          <div class="ba-before"><img src="/round-0/everlasting-renovations/media/kitchen-before.png" alt="Kitchen before remodel" loading="lazy"></div>
+          <div class="ba-after" id="baKitchenAfter"><img src="/round-0/everlasting-renovations/media/kitchen-after.png" alt="Kitchen after remodel" loading="lazy"></div>
           <div class="ba-divider" id="kDiv"></div>
           <div class="ba-handle" id="kHandle">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12H3"/><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>
@@ -554,16 +442,11 @@
           <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Kitchen before/after slider">
         </div>
       </div>
-
       <div>
-        <p class="gallery-item-label">Exterior Repaint &middot; Orange County</p>
+        <p class="gallery-label">Exterior Repaint &middot; Orange County</p>
         <div class="ba-wrap" id="baExt">
-          <div class="ba-before" style="background: linear-gradient(135deg,#3a3020,#2a2018);">
-            <img src="/round-0/everlasting-renovations/media/exterior-before.png" alt="Exterior before painting" loading="lazy">
-          </div>
-          <div class="ba-after" id="baExtAfter" style="background: linear-gradient(135deg,#eee5d4,#e4d9c5);">
-            <img src="/round-0/everlasting-renovations/media/exterior-after.png" alt="Exterior after painting" loading="lazy">
-          </div>
+          <div class="ba-before"><img src="/round-0/everlasting-renovations/media/exterior-before.png" alt="Exterior before painting" loading="lazy"></div>
+          <div class="ba-after" id="baExtAfter"><img src="/round-0/everlasting-renovations/media/exterior-after.png" alt="Exterior after painting" loading="lazy"></div>
           <div class="ba-divider" id="eDiv"></div>
           <div class="ba-handle" id="eHandle">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12H3"/><path d="M8 7l-5 5 5 5"/><path d="M16 7l5 5-5 5"/></svg>
@@ -573,187 +456,181 @@
           <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Exterior before/after slider">
         </div>
       </div>
+    </div>
 
+    <!-- Completed Project Photos -->
+    <div class="gallery-photos">
+      <div>
+        <p class="gallery-label">Bathroom Remodel &middot; Lake Forest</p>
+        <div class="gallery-photo-wrap">
+          <img src="/round-0/everlasting-renovations/media/bathroom-after.png" alt="Completed bathroom remodel" loading="lazy">
+          <span class="gallery-photo-chip">Completed</span>
+        </div>
+      </div>
+      <div>
+        <p class="gallery-label">LVP Flooring &middot; Orange County</p>
+        <div class="gallery-photo-wrap">
+          <img src="/round-0/everlasting-renovations/media/flooring-after.png" alt="Completed flooring installation" loading="lazy">
+          <span class="gallery-photo-chip">Completed</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ── SECTION 5: 3D VISUALIZER (verbatim structure) ── -->
-<div id="visualizer" class="viz-section">
-  <div class="container">
-    <div class="viz-header">
-      <span class="viz-eyebrow">Interactive Demo</span>
-      <h2>See It Before We Build It</h2>
-      <p>Explore your renovation in 3D &mdash; pick a room, swap materials, orbit and zoom.</p>
-    </div>
-    <div class="viz-tabs">
-      <button class="viz-tab active" data-scene="kitchen">Kitchen</button>
-      <button class="viz-tab" data-scene="bathroom">Bathroom</button>
-      <button class="viz-tab" data-scene="living">Living Room</button>
-      <button class="viz-tab" data-scene="exterior">Exterior</button>
-    </div>
-    <div class="viz-canvas-wrap">
-      <canvas id="viz-canvas"></canvas>
-      <div class="viz-loader" id="vizLoader">
-        <div class="viz-loader-text">Building scene&hellip;</div>
-        <div class="viz-loader-bar"><div class="viz-loader-fill"></div></div>
-      </div>
-      <div class="viz-fallback" id="vizFallback" style="display:none;">
-        <p>3D not supported in this browser. Here&rsquo;s a before/after preview instead:</p>
-        <div class="viz-ba-fallback">
-          <div class="viz-ba-before">Before</div>
-          <div class="viz-ba-after">After</div>
-        </div>
-      </div>
-    </div>
-    <div class="viz-controls" id="vizControls"></div>
-    <p class="viz-hint">Drag to orbit &middot; Scroll to zoom &middot; Click materials to update instantly</p>
-  </div>
-</div>
-
-<!-- ── SECTION 6: REVIEWS ── -->
-<section class="section-pad" id="reviews" style="background: var(--bg);" aria-labelledby="reviews-heading">
+<!-- ── REVIEWS ── -->
+<section class="section-pad" style="background:var(--surface-dim);" aria-labelledby="reviews-heading">
   <div class="container">
     <div class="section-header">
-      <span class="eyebrow">Testimonials</span>
-      <h2 id="reviews-heading">Trusted by Neighbors</h2>
+      <span class="eyebrow">Client Reviews</span>
+      <h2 id="reviews-heading">What Our Clients Say</h2>
+      <p>4.6 stars across Yelp &amp; Google. Real homeowners, real results.</p>
     </div>
     <div class="reviews-grid">
-
       <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">
+        <div class="review-stars" aria-label="5 stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">&ldquo;Matthew&rsquo;s crew did amazing work! They were prompt, polite and our house just looks amazing! We are very happy!&rdquo;</p>
+        <p class="review-text">"Matthew's crew did amazing work! They were prompt, polite and our house just looks amazing! We are very happy!"</p>
         <div class="review-byline">
-          <span class="review-name">&mdash; Kathleen, Westminster CA</span>
-          <span class="review-badge">Networx</span>
+          <span class="review-name">Kathleen &middot; Westminster, CA</span>
+          <span class="review-badge">Yelp</span>
         </div>
       </div>
-
       <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">
+        <div class="review-stars" aria-label="5 stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">&ldquo;They were professional, reliable and the attention to detail is beyond anything you are likely to experience in today&rsquo;s service industry. You couldn&rsquo;t find a better company to hire.&rdquo;</p>
+        <p class="review-text">"They were professional, reliable and the attention to detail is beyond anything you are likely to experience in today's service industry."</p>
         <div class="review-byline">
-          <span class="review-name">&mdash; Jackie C.</span>
-          <span class="review-badge">Website</span>
+          <span class="review-name">Jackie C.</span>
+          <span class="review-badge">Yelp</span>
         </div>
       </div>
-
       <div class="review-card">
-        <div class="review-stars" aria-label="5 out of 5 stars">
+        <div class="review-stars" aria-label="5 stars">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <p class="review-text">&ldquo;Since they are also a Christian business, I felt even more assured. The result exceeded my expectations, and I&rsquo;m truly satisfied.&rdquo;</p>
+        <p class="review-text">"The result exceeded my expectations, and I'm truly satisfied. They treat your home with real care and do what they say they'll do."</p>
         <div class="review-byline">
-          <span class="review-name">&mdash; Jessica S.</span>
-          <span class="review-badge">Website</span>
+          <span class="review-name">Jessica S.</span>
+          <span class="review-badge">Yelp</span>
         </div>
       </div>
-
     </div>
-    <div class="reviews-yelp">
-      <span class="yelp-pill">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color: var(--cta);" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        4.6&#x2605; on Yelp &middot; 28 reviews
+    <div class="reviews-footer">
+      <span class="review-platform-pill">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        4.6&#x2605; &middot; 28 Reviews on Yelp
       </span>
     </div>
   </div>
 </section>
 
-<!-- ── SECTION 7: ABOUT ── -->
-<section class="section-pad" id="about" style="background: var(--warm-bone);" aria-labelledby="about-heading">
+<!-- ── ABOUT ── -->
+<section class="section-pad" id="about" style="background:var(--bg);" aria-labelledby="about-heading">
   <div class="container">
     <div class="about-inner">
       <div class="about-content">
-        <span class="eyebrow">Why Everlasting</span>
+        <span class="eyebrow">About Us</span>
         <h2 id="about-heading">The Difference a Warranty Makes</h2>
-        <p class="about-body">We back every job with a 3-year written warranty because we want you calling us to book your next project &mdash; not to fix the last one. Family-owned since 2015, fully licensed (CSLB #1097824), bonded, and insured. Matthew and his crew treat your home like it&rsquo;s theirs.</p>
+        <p class="about-body">We back every job with a 3-year written warranty because we want you calling us to book your next project &mdash; not to fix the last one. Matthew and his crew have been serving Orange County since 2015, fully licensed, bonded, and insured.</p>
         <ul class="about-bullets">
           <li class="about-bullet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            11 years in business (since 2015)
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            11 years in business &mdash; family-owned &amp; operated
           </li>
           <li class="about-bullet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            CSLB Licensed &amp; Bonded &middot; #1097824
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            CSLB Licensed &amp; Bonded &middot; Workers&rsquo; Comp Covered
           </li>
           <li class="about-bullet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            3-Year Written Warranty on all work
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            3-Year written warranty on every job
           </li>
           <li class="about-bullet">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            Workers&rsquo; Comp &amp; Insurance Covered
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Orange County&rsquo;s renovation company that still answers the phone
+          </li>
+          <li class="about-bullet">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Se Habla Espa&ntilde;ol
           </li>
         </ul>
-        <div class="stat-card">
-          <div class="stat-number">9+</div>
-          <div class="stat-label">Years Building<br>Orange County Homes</div>
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-number">11+</span>
+            <span class="stat-label">Years<br>in Business</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">3-Yr</span>
+            <span class="stat-label">Written<br>Warranty</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">4.6&#x2605;</span>
+            <span class="stat-label">on Yelp<br>&middot; 28 reviews</span>
+          </div>
         </div>
       </div>
       <div class="about-photo-wrap">
-        <img
-          src="/round-0/everlasting-renovations/media/owner.png"
-          alt="Matthew, owner of Everlasting Renovations, reviewing renovation plans on site"
-          class="about-photo" loading="lazy"
-          onerror="this.style.display='none';document.getElementById('ownerFallback').style.display='flex';">
-        <div class="about-photo-placeholder" id="ownerFallback" style="display:none;" aria-hidden="true">
-          <span>M</span>
-        </div>
-        <p class="about-caption">Matthew &middot; Owner, Everlasting Renovations Inc.</p>
+        <img class="about-photo" src="/round-0/everlasting-renovations/media/owner.png" alt="Matthew, owner of Everlasting Renovations Inc." loading="lazy">
+        <p class="about-caption">Matthew &mdash; Owner, Everlasting Renovations Inc.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SECTION 8: QUOTE FORM ── -->
+<!-- ── QUOTE FORM ── -->
 <section class="quote-section" id="quote-form" aria-labelledby="quote-heading">
-  <div class="container quote-center">
-    <span class="quote-eyebrow">Free Estimate</span>
-    <h2 id="quote-heading">Get Your Free Estimate</h2>
-    <p class="quote-sub">We respond within 1 business day.</p>
+  <div class="container">
+    <div class="quote-center">
+      <span class="quote-eyebrow">Free Estimate</span>
+      <h2 id="quote-heading">Get Your Free Estimate</h2>
+      <p class="quote-sub">We respond within 1 business day. No pressure, no obligation.</p>
+    </div>
     <div class="quote-form-wrap">
-      <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <form action="https://formspree.io/f/mbdebzor" method="POST" id="quoteForm" novalidate>
+        <input type="hidden" name="_subject" value="Free Estimate Request — Everlasting Renovations Demo">
+        <input type="hidden" name="business_name" value="Everlasting Renovations Inc.">
+        <input type="hidden" name="round" value="Round-00">
         <div class="qform-grid">
           <div class="form-group">
-            <label class="form-label" for="q-name">Name</label>
-            <input class="form-input" type="text" id="q-name" name="name" placeholder="Jane Smith" required>
+            <label class="form-label" for="qName">Name</label>
+            <input class="form-input" type="text" id="qName" name="name" placeholder="Your name" autocomplete="name" required>
           </div>
           <div class="form-group">
-            <label class="form-label" for="q-phone">Phone</label>
-            <input class="form-input" type="tel" id="q-phone" name="phone" placeholder="(714) 555-1234" required>
+            <label class="form-label" for="qPhone">Phone</label>
+            <input class="form-input" type="tel" id="qPhone" name="phone" placeholder="(714) 555-0000" autocomplete="tel">
           </div>
           <div class="form-group qform-full">
-            <label class="form-label" for="q-service">Service Needed</label>
-            <select class="form-input" id="q-service" name="service">
+            <label class="form-label" for="qService">Service Needed</label>
+            <select class="form-input" id="qService" name="service">
               <option value="">Select a service&hellip;</option>
               <option>Kitchen Remodel</option>
               <option>Bathroom Remodel</option>
               <option>Interior Painting</option>
               <option>Exterior Painting</option>
               <option>Flooring</option>
-              <option>ADU / Room Addition</option>
+              <option>ADU / Addition</option>
+              <option>Multiple Services</option>
               <option>Other</option>
             </select>
           </div>
           <div class="form-group qform-full">
-            <label class="form-label" for="q-msg">Project Description</label>
-            <textarea class="form-input form-textarea" id="q-msg" name="message" placeholder="Tell us about your project, timeline, or any questions&hellip;"></textarea>
+            <label class="form-label" for="qDesc">Tell Us About Your Project</label>
+            <textarea class="form-input form-textarea" id="qDesc" name="description" placeholder="Describe your project, timeline, any questions&hellip;"></textarea>
           </div>
         </div>
         <button type="submit" class="quote-submit">Send My Request &rarr;</button>
@@ -762,409 +639,164 @@
   </div>
 </section>
 
-<!-- ── SECTION 9: FOOTER ── -->
-<footer class="footer" aria-label="Site footer">
+<!-- ── FOOTER ── -->
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
-
       <div class="footer-col">
-        <div class="footer-brand">Everlasting Renovations Inc.</div>
-        <p>
-          25422 Trabuco Rd, Ste 212<br>
-          Lake Forest, CA 92630<br><br>
-          CSLB #1097824 &middot; B General Building<br>
-          Licensed &middot; Bonded &middot; Insured<br>
-          Family-owned since 2015
-        </p>
+        <p class="footer-brand">Everlasting Renovations Inc.</p>
+        <p>Family-owned remodeling &amp; painting serving Orange County since 2015. Licensed, bonded, and insured. CSLB #1097824.</p>
       </div>
-
       <div class="footer-col">
-        <div class="footer-col-head">Quick Links</div>
+        <p class="footer-col-head">Services</p>
         <ul class="footer-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#about">Warranty</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#quote-form">Get a Quote</a></li>
+          <li><a href="#services">Kitchen Remodeling</a></li>
+          <li><a href="#services">Bathroom Remodeling</a></li>
+          <li><a href="#services">Interior Painting</a></li>
+          <li><a href="#services">Exterior Painting</a></li>
+          <li><a href="#services">Flooring</a></li>
+          <li><a href="#services">ADU &amp; Additions</a></li>
         </ul>
       </div>
-
       <div class="footer-col">
-        <div class="footer-col-head">Contact</div>
-        <a href="tel:7147452777" class="footer-phone-link" id="footerCallLink">(714) 745-2777</a>
+        <p class="footer-col-head">Contact</p>
+        <a href="tel:+17147452777" class="footer-phone-link">(714) 745-2777</a>
         <div class="footer-contact-row">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:everlastingrenovationsinc@gmail.com">everlastingrenovationsinc@gmail.com</a>
         </div>
         <div class="footer-contact-row">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          <a href="https://www.instagram.com/everlastingrenovationsinc/" target="_blank" rel="noopener">@everlastingrenovationsinc</a>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a href="https://maps.google.com/?q=25422+Trabuco+Rd+Lake+Forest+CA" target="_blank" rel="noopener">25422 Trabuco Rd, Ste 212<br>Lake Forest, CA 92630</a>
         </div>
-        <p style="margin-top:10px;font-size:14px;color:rgba(255,255,255,0.5);">Se Habla Espa&ntilde;ol</p>
       </div>
-
     </div>
     <div class="footer-bottom">
       &copy; 2026 Everlasting Renovations Inc. &middot; Family-owned since 2015 &middot; Orange County, CA
-      <div class="footer-demo-note">This page is a private demo prepared by Branch &amp; Root Consulting and is not yet publicly indexed.</div>
+      <p class="footer-demo-note">Branch &amp; Root Consulting — Demo Page &middot; Round 00</p>
     </div>
   </div>
 </footer>
 
 <!-- ── NAV HUB ── -->
 <div class="nav-hub" id="navHub">
-  <button class="nav-hub-trigger" id="navTrigger" aria-haspopup="true" aria-expanded="false" type="button">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-    Navigate
-    <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+  <button class="nav-hub-trigger" type="button" id="navHubTrigger" aria-expanded="false" aria-controls="navHubMenu">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    B&amp;R Portal
+    <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
-  <ul class="nav-hub-menu" id="navMenu" role="menu">
-    <li role="none"><a role="menuitem" href="/round-0/everlasting-renovations" aria-current="page">&#128421; Landing Page</a></li>
-    <li role="none"><a role="menuitem" href="/round-0/everlasting-renovations/audit">&#128203; Full Audit</a></li>
-    <li role="none"><a role="menuitem" href="/round-0/everlasting-renovations/mini-audit">&#9889; Mini Audit</a></li>
-    <li role="none"><a role="menuitem" href="/round-0/everlasting-renovations/questionnaire">&#128221; Questionnaire</a></li>
-    <li class="nav-sep" role="none"></li>
-    <li role="none"><a role="menuitem" href="/round-0/">&larr; Round 00</a></li>
-    <li role="none"><a role="menuitem" href="/">&larr; All Rounds</a></li>
+  <ul class="nav-hub-menu" id="navHubMenu" role="menu">
+    <li role="none"><a href="/round-0/everlasting-renovations" role="menuitem" aria-current="page">Landing Page</a></li>
+    <li role="none"><a href="/round-0/everlasting-renovations/audit" role="menuitem">Brand Audit</a></li>
+    <li role="none"><a href="/round-0/everlasting-renovations/mini-audit" role="menuitem">Mini Audit</a></li>
+    <li role="none"><a href="/round-0/everlasting-renovations/questionnaire" role="menuitem">Questionnaire</a></li>
+    <li class="nav-sep" role="separator"></li>
+    <li role="none"><a href="/round-0" role="menuitem">Round 00 Index</a></li>
+    <li role="none"><a href="/" role="menuitem">All Rounds</a></li>
   </ul>
 </div>
 
-<!-- ── INLINE SCRIPTS ── -->
 <script>
-(function () {
-  'use strict';
+/* ── Theme toggle ── */
+(function(){
+  var r=document.documentElement;
+  function sys(){return matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+  function cur(){return r.getAttribute('data-theme')||sys();}
+  var btn=document.querySelector('.theme-toggle');
+  if(btn){btn.addEventListener('click',function(){
+    var n=cur()==='dark'?'light':'dark';
+    r.setAttribute('data-theme',n);
+    try{localStorage.setItem('er_theme',n);}catch(e){}
+  });}
+})();
 
-  // Nav hub
-  var hub = document.getElementById('navHub');
-  var navBtn = document.getElementById('navTrigger');
-  if (hub && navBtn) {
-    navBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var open = hub.classList.toggle('open');
-      navBtn.setAttribute('aria-expanded', String(open));
-    });
-    document.addEventListener('click', function () {
-      hub.classList.remove('open');
-      navBtn.setAttribute('aria-expanded', 'false');
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { hub.classList.remove('open'); navBtn.setAttribute('aria-expanded', 'false'); }
-    });
+/* ── Hero — dual-buffer 4-clip cycling ── */
+(function(){
+  var clips=[
+    '/round-0/everlasting-renovations/media/hero-kitchen.mp4',
+    '/round-0/everlasting-renovations/media/hero-bathroom.mp4',
+    '/round-0/everlasting-renovations/media/hero-exterior.mp4',
+    '/round-0/everlasting-renovations/media/hero-flooring.mp4'
+  ];
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var va=document.getElementById('heroA'),vb=document.getElementById('heroB');
+  if(!va||!vb)return;
+  var active=va,idle=vb,cur=0,LAP=0.9,FADE=0.6,swapping=false;
+  /* Preload clip[1] into idle buffer */
+  idle.src=clips[1%clips.length];
+  idle.load();
+  function arm(){
+    active.ontimeupdate=function(){
+      if(swapping)return;
+      var d=active.duration;
+      if(!d||isNaN(d)||active.currentTime<d-LAP)return;
+      swapping=true;
+      idle.play().catch(function(){});
+      idle.style.opacity='1';
+      active.style.opacity='0';
+      setTimeout(function(){
+        active.pause();
+        var tmp=active;active=idle;idle=tmp;
+        cur=(cur+1)%clips.length;
+        /* Load next-next into now-idle buffer */
+        idle.src=clips[(cur+1)%clips.length];
+        idle.load();
+        swapping=false;
+        arm();
+      },FADE*1000+80);
+    };
   }
+  arm();
+  /* Fallback: if active video errors, show poster */
+  va.addEventListener('error',function(){va.style.display='none';});
+})();
 
-  // GA4: click-to-call
-  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
-    a.addEventListener('click', function () {
-      if (window.gtag) gtag('event', 'click_to_call', { event_category: 'engagement' });
-    });
-  });
-
-  // GA4: form submit
-  document.querySelectorAll('form').forEach(function (f) {
-    f.addEventListener('submit', function () {
-      if (window.gtag) gtag('event', 'form_submit', { event_category: 'lead' });
-    });
-  });
-
-  // Before/after sliders
-  document.querySelectorAll('.ba-wrap').forEach(function (wrap) {
-    var range   = wrap.querySelector('.ba-range');
-    var after   = wrap.querySelector('.ba-after');
-    var divider = wrap.querySelector('.ba-divider');
-    var handle  = wrap.querySelector('.ba-handle');
-    if (!range || !after) return;
-    function upd() {
-      var v = range.value;
-      after.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
-      if (divider) divider.style.left = v + '%';
-      if (handle)  { handle.style.left = v + '%'; handle.style.transform = 'translate(-50%, -50%)'; }
+/* ── Before/After sliders ── */
+(function(){
+  [
+    {wrap:'baKitchen',after:'baKitchenAfter',div:'kDiv',handle:'kHandle'},
+    {wrap:'baExt',    after:'baExtAfter',    div:'eDiv',handle:'eHandle'}
+  ].forEach(function(s){
+    var wrap=document.getElementById(s.wrap);
+    if(!wrap)return;
+    var range=wrap.querySelector('.ba-range');
+    var afterEl=document.getElementById(s.after);
+    var divEl=document.getElementById(s.div);
+    var handleEl=document.getElementById(s.handle);
+    if(!range||!afterEl||!divEl||!handleEl)return;
+    function update(v){
+      afterEl.style.clipPath='inset(0 '+(100-v)+'% 0 0)';
+      divEl.style.left=v+'%';
+      handleEl.style.left=v+'%';
     }
-    range.addEventListener('input', upd);
-    upd();
+    range.addEventListener('input',function(){update(+this.value);});
+    update(50);
   });
+})();
 
-  // Hero video crossfade cycle
-  var heroVid = document.getElementById('heroVid');
-  if (heroVid) {
-    var heroClips = [
-      '/round-0/everlasting-renovations/media/hero-kitchen.mp4',
-      '/round-0/everlasting-renovations/media/hero-bathroom.mp4',
-      '/round-0/everlasting-renovations/media/hero-exterior.mp4',
-      '/round-0/everlasting-renovations/media/hero-flooring.mp4'
-    ];
-    var clipIdx = 0;
-    heroVid.removeAttribute('loop');
-
-    heroVid.addEventListener('ended', function () {
-      clipIdx = (clipIdx + 1) % heroClips.length;
-      heroVid.style.opacity = '0';
-      setTimeout(function () {
-        heroVid.src = heroClips[clipIdx];
-        heroVid.load();
-        heroVid.play().catch(function () {});
-        heroVid.style.opacity = '1';
-      }, 800);
-    });
-
-    // Graceful fallback: if first src errors, hide video (poster remains via CSS bg)
-    heroVid.addEventListener('error', function () {
-      heroVid.style.display = 'none';
-    });
-
-    heroVid.play().catch(function () {});
-  }
-}());
-</script>
-
-<!-- Three.js import map -->
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"
-  }
-}
-</script>
-
-<!-- 3D Visualizer module -->
-<script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
-function hasWebGL(){
-  try{const c=document.createElement('canvas');return!!(c.getContext('webgl2')||c.getContext('webgl')||c.getContext('experimental-webgl'));}catch(e){return false;}
-}
-
-const vizCanvas=document.getElementById('viz-canvas');
-const vizLoader=document.getElementById('vizLoader');
-const vizFallback=document.getElementById('vizFallback');
-const vizControls=document.getElementById('vizControls');
-
-if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!hasWebGL()){
-  vizFallback.style.display='flex';
-  vizCanvas.style.display='none';
-  vizLoader.style.display='none';
-}else{
-  initViz();
-}
-
-function initViz(){
-  const wrap=vizCanvas.parentElement;
-
-  const renderer=new THREE.WebGLRenderer({canvas:vizCanvas,antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.shadowMap.enabled=true;
-  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-
-  const scene=new THREE.Scene();
-  scene.background=new THREE.Color('#1a1a2e');
-
-  const camera=new THREE.PerspectiveCamera(50,wrap.clientWidth/wrap.clientHeight,0.1,100);
-
-  const ambient=new THREE.AmbientLight(0xffffff,0.55);
-  scene.add(ambient);
-  const sun=new THREE.DirectionalLight(0xfff5e0,1.2);
-  sun.position.set(5,8,5);
-  sun.castShadow=true;
-  sun.shadow.mapSize.set(1024,1024);
-  scene.add(sun);
-  const fill=new THREE.DirectionalLight(0xc8d8f0,0.4);
-  fill.position.set(-4,3,-4);
-  scene.add(fill);
-
-  const orbit=new OrbitControls(camera,renderer.domElement);
-  orbit.enableDamping=true;
-  orbit.dampingFactor=0.05;
-  orbit.autoRotate=true;
-  orbit.autoRotateSpeed=0.5;
-
-  function resize(){
-    const w=wrap.clientWidth,h=wrap.clientHeight;
-    renderer.setSize(w,h,false);
-    camera.aspect=w/h;
-    camera.updateProjectionMatrix();
-  }
-  new ResizeObserver(resize).observe(wrap);
-  resize();
-
-  let activeGroup=null;
-  let isVisible=false;
-  let rafId=null;
-
-  new IntersectionObserver(entries=>{
-    isVisible=entries[0].isIntersecting;
-    if(isVisible&&!rafId)loop();
-  },{threshold:0.1}).observe(vizCanvas);
-
-  function loop(){
-    if(!isVisible){rafId=null;return;}
-    rafId=requestAnimationFrame(loop);
-    orbit.update();
-    renderer.render(scene,camera);
-  }
-
-  // Material helpers
-  function mat(color,roughness=0.72,metalness=0){
-    return new THREE.MeshStandardMaterial({color:new THREE.Color(color),roughness,metalness});
-  }
-  function box(w,h,d,m){return new THREE.Mesh(new THREE.BoxGeometry(w,h,d),m);}
-
-  // Shared mutable materials per scene
-  const kMat={wall:mat('#F5F0E8'),cab:mat('#FFFFFF',0.8),ctr:mat('#F0EDE8',0.3,0.05)};
-  const bMat={wallTile:mat('#F8F8F6',0.6),floorTile:mat('#D9D4CC',0.8)};
-  const lMat={wall:mat('#F0EDE8'),accent:mat('#1a2b4a'),floor:mat('#C9A96E',0.85)};
-  const eMat={facade:mat('#F5F0E8',0.85),trim:mat('#FFFFFF',0.7),door:mat('#662A08',0.7),ground:mat('#4A7A3A',0.95)};
-
-  function buildKitchen(){
-    const g=new THREE.Group();
-    g.add(Object.assign(box(5,0.05,5,mat('#C4A97A',0.9)),{position:new THREE.Vector3(0,0,0)}));
-    const bw=box(5,3,0.1,kMat.wall);bw.position.set(0,1.5,-2.5);g.add(bw);
-    const lw=box(0.1,3,5,kMat.wall);lw.position.set(-2.5,1.5,0);g.add(lw);
-    const loCab=box(2.2,0.9,0.6,kMat.cab);loCab.position.set(-1.0,0.45,-2.1);g.add(loCab);
-    const upCab=box(2.2,0.65,0.4,kMat.cab);upCab.position.set(-1.0,2.1,-2.3);g.add(upCab);
-    const ctr=box(2.3,0.05,0.65,kMat.ctr);ctr.position.set(-1.0,0.925,-2.08);g.add(ctr);
-    const isle=box(1.2,0.9,0.7,kMat.cab);isle.position.set(0.8,0.45,0.2);g.add(isle);
-    const isleTop=box(1.25,0.05,0.75,kMat.ctr);isleTop.position.set(0.8,0.925,0.2);g.add(isleTop);
-    const stove=box(0.6,0.92,0.58,mat('#888',0.3,0.6));stove.position.set(-2.1,0.46,-2.1);g.add(stove);
-    camera.position.set(3.5,2.5,4);orbit.target.set(0,1,0);orbit.update();
-    return g;
-  }
-
-  function buildBathroom(){
-    const g=new THREE.Group();
-    const fl=box(3,0.05,4,bMat.floorTile);fl.position.set(0,0,0);g.add(fl);
-    const bw=box(3,2.8,0.1,bMat.wallTile);bw.position.set(0,1.4,-2);g.add(bw);
-    const lw=box(0.1,2.8,4,bMat.wallTile);lw.position.set(-1.5,1.4,0);g.add(lw);
-    const rw=box(0.1,2.8,4,bMat.wallTile);rw.position.set(1.5,1.4,0);g.add(rw);
-    const van=box(1.0,0.85,0.5,mat('#E8E4DE',0.8));van.position.set(-0.5,0.425,-1.75);g.add(van);
-    const basin=box(0.7,0.08,0.35,mat('#F5F5F5',0.3,0.1));basin.position.set(-0.5,0.9,-1.75);g.add(basin);
-    const mirror=box(0.85,0.8,0.05,mat('#A8C8D8',0.1,0.8));mirror.position.set(-0.5,1.7,-1.97);g.add(mirror);
-    const tub=box(1.6,0.45,0.7,mat('#F0EEE8',0.4));tub.position.set(0.6,0.225,0.6);g.add(tub);
-    camera.position.set(2.5,2,3);orbit.target.set(0,1,-0.5);orbit.update();
-    return g;
-  }
-
-  function buildLiving(){
-    const g=new THREE.Group();
-    const fl=box(5,0.05,5,lMat.floor);fl.position.set(0,0,0);g.add(fl);
-    const bw=box(5,3,0.1,lMat.wall);bw.position.set(0,1.5,-2.5);g.add(bw);
-    const lw=box(0.1,3,5,lMat.wall);lw.position.set(-2.5,1.5,0);g.add(lw);
-    const acc=box(5,3,0.06,lMat.accent);acc.position.set(0,1.5,-2.46);g.add(acc);
-    const seat=box(2.2,0.45,0.9,mat('#7A6A58',0.9));seat.position.set(-0.8,0.225,-1.8);g.add(seat);
-    const back=box(2.2,0.65,0.25,mat('#7A6A58',0.9));back.position.set(-0.8,0.7,-2.18);g.add(back);
-    const arm=box(0.45,0.65,0.9,mat('#7A6A58',0.9));arm.position.set(0.45,0.45,-1.8);g.add(arm);
-    const cof=box(1.0,0.35,0.5,mat('#5A4030',0.85));cof.position.set(-0.3,0.175,-0.6);g.add(cof);
-    const rug=box(2,0.02,1.5,mat('#9B7B6A',0.95));rug.position.set(-0.3,0.02,-0.9);g.add(rug);
-    camera.position.set(3.5,2.5,4.5);orbit.target.set(0,1,0);orbit.update();
-    return g;
-  }
-
-  function buildExterior(){
-    const g=new THREE.Group();
-    const gnd=box(8,0.1,6,eMat.ground);gnd.position.set(0,-0.05,0);g.add(gnd);
-    const drv=box(1.5,0.06,3,mat('#888880',0.9));drv.position.set(0,0.02,2);g.add(drv);
-    const house=box(4,2.5,3,eMat.facade);house.position.set(0,1.25,0);g.add(house);
-    const roofBase=box(4.5,0.18,3.5,mat('#4A3828',0.9));roofBase.position.set(0,2.59,0);g.add(roofBase);
-    const roofCap=box(3.8,1.1,3.0,mat('#3A2818',0.85));roofCap.position.set(0,3.05,0);g.add(roofCap);
-    const door=box(0.7,1.8,0.1,eMat.door);door.position.set(0,0.9,1.55);g.add(door);
-    const wL=box(0.9,0.8,0.08,mat('#A8C8D8',0.1,0.5));wL.position.set(-1.2,1.5,1.55);g.add(wL);
-    const wR=box(0.9,0.8,0.08,mat('#A8C8D8',0.1,0.5));wR.position.set(1.2,1.5,1.55);g.add(wR);
-    [wL,wR].forEach(w=>{
-      const tf=box(w.geometry.parameters.width+0.12,w.geometry.parameters.height+0.12,0.05,eMat.trim);
-      tf.position.copy(w.position);tf.position.z+=0.005;g.add(tf);
-    });
-    [-2.05,2.05].forEach(x=>{const ct=box(0.1,2.5,0.1,eMat.trim);ct.position.set(x,1.25,1.5);g.add(ct);});
-    camera.position.set(6,4,7);orbit.target.set(0,1.5,0);orbit.update();
-    return g;
-  }
-
-  const scenes={
-    kitchen:{build:buildKitchen,group:null,built:false},
-    bathroom:{build:buildBathroom,group:null,built:false},
-    living:{build:buildLiving,group:null,built:false},
-    exterior:{build:buildExterior,group:null,built:false}
-  };
-
-  const controlDefs={
-    kitchen:[
-      {label:'Wall Paint',getMat:()=>kMat.wall,swatches:[{c:'#F5F0E8',n:'Warm White'},{c:'#8FAF8B',n:'Sage Green'},{c:'#2B5672',n:'Steel Blue'},{c:'#3A3A3A',n:'Charcoal'}]},
-      {label:'Cabinet Finish',getMat:()=>kMat.cab,swatches:[{c:'#FFFFFF',n:'White Shaker'},{c:'#B8B4B0',n:'Warm Gray'},{c:'#C9A96E',n:'Natural Oak'}]},
-      {label:'Counter',getMat:()=>kMat.ctr,swatches:[{c:'#F0EDE8',n:'White Quartz'},{c:'#3D3B3B',n:'Dark Granite'},{c:'#C4895A',n:'Butcher Block'}]}
-    ],
-    bathroom:[
-      {label:'Wall Tile',getMat:()=>bMat.wallTile,swatches:[{c:'#F8F8F6',n:'White'},{c:'#EEE5D4',n:'Warm Ivory'},{c:'#2E2E2E',n:'Charcoal'},{c:'#C4714A',n:'Terracotta'}]},
-      {label:'Floor Tile',getMat:()=>bMat.floorTile,swatches:[{c:'#F8F8F6',n:'White'},{c:'#EEE5D4',n:'Warm Ivory'},{c:'#2E2E2E',n:'Charcoal'},{c:'#C4714A',n:'Terracotta'}]}
-    ],
-    living:[
-      {label:'Wall Color',getMat:()=>lMat.wall,swatches:[{c:'#F0EDE8',n:'Warm White'},{c:'#D9D4CC',n:'Greige'},{c:'#C8D4DE',n:'Soft Blue'},{c:'#D4C8BE',n:'Blush'}]},
-      {label:'Accent Wall',getMat:()=>lMat.accent,swatches:[{c:'#1a2b4a',n:'Deep Navy'},{c:'#1B4332',n:'Forest Green'},{c:'#662A08',n:'Rust'},{c:'#4a2040',n:'Plum'}]},
-      {label:'Floor',getMat:()=>lMat.floor,swatches:[{c:'#C9A96E',n:'Oak'},{c:'#6B3A2A',n:'Walnut'},{c:'#E8E0D4',n:'Light Tile'}]}
-    ],
-    exterior:[
-      {label:'Facade Color',getMat:()=>eMat.facade,swatches:[{c:'#F5F0E8',n:'Warm White'},{c:'#8B9099',n:'Gray'},{c:'#EDE5CE',n:'Cream'},{c:'#8FAF8B',n:'Sage'}]},
-      {label:'Trim Color',getMat:()=>eMat.trim,swatches:[{c:'#FFFFFF',n:'White'},{c:'#1a1a1a',n:'Black'},{c:'#2B5672',n:'Navy'},{c:'#662A08',n:'Rust'}]},
-      {label:'Door Color',getMat:()=>eMat.door,swatches:[{c:'#662A08',n:'Rust'},{c:'#2B5672',n:'Navy'},{c:'#1a1a1a',n:'Black'},{c:'#FFFFFF',n:'White'}]}
-    ]
-  };
-
-  function buildControls(name){
-    vizControls.innerHTML='';
-    (controlDefs[name]||[]).forEach(def=>{
-      const grp=document.createElement('div');
-      grp.className='viz-control-group';
-      const lbl=document.createElement('label');
-      lbl.textContent=def.label;
-      grp.appendChild(lbl);
-      const sw=document.createElement('div');
-      sw.className='viz-swatches';
-      def.swatches.forEach((s,i)=>{
-        const btn=document.createElement('button');
-        btn.className='viz-swatch'+(i===0?' active':'');
-        btn.style.background=s.c;
-        btn.title=s.n;
-        btn.setAttribute('aria-label',s.n);
-        btn.addEventListener('click',()=>{
-          sw.querySelectorAll('.viz-swatch').forEach(b=>b.classList.remove('active'));
-          btn.classList.add('active');
-          const m=def.getMat();
-          if(m) m.color.set(s.c);
-        });
-        sw.appendChild(btn);
-      });
-      grp.appendChild(sw);
-      vizControls.appendChild(grp);
-    });
-  }
-
-  async function showScene(name){
-    vizLoader.style.display='flex';
-    const fill=vizLoader.querySelector('.viz-loader-fill');
-    fill.style.animation='none';
-    void fill.offsetWidth;
-    fill.style.animation='loadBar 1.2s ease-out forwards';
-    await new Promise(r=>setTimeout(r,900));
-    if(activeGroup) scene.remove(activeGroup);
-    const s=scenes[name];
-    if(!s.built){s.group=s.build();s.built=true;}
-    activeGroup=s.group;
-    scene.add(activeGroup);
-    vizLoader.style.display='none';
-    buildControls(name);
-    orbit.autoRotate=true;
-    if(!rafId) loop();
-  }
-
-  document.querySelectorAll('.viz-tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      document.querySelectorAll('.viz-tab').forEach(t=>t.classList.remove('active'));
-      tab.classList.add('active');
-      showScene(tab.dataset.scene);
-    });
+/* ── Nav Hub ── */
+(function(){
+  var hub=document.getElementById('navHub');
+  var btn=document.getElementById('navHubTrigger');
+  if(!hub||!btn)return;
+  btn.addEventListener('click',function(){
+    var open=hub.classList.toggle('open');
+    btn.setAttribute('aria-expanded',String(open));
   });
+  document.addEventListener('click',function(e){
+    if(!hub.contains(e.target)){hub.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  });
+})();
 
-  showScene('kitchen');
-}
+/* ── GA4 events ── */
+(function(){
+  if(typeof gtag!=='function')return;
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(a){
+    a.addEventListener('click',function(){gtag('event','click_to_call',{event_category:'engagement'});});
+  });
+  var qf=document.getElementById('quoteForm');
+  if(qf)qf.addEventListener('submit',function(){gtag('event','form_submit',{event_category:'lead'});});
+})();
 </script>
-
 </body>
 </html>
