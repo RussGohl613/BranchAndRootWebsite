@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF6F2">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#140806">
+<title>Everlasting Renovations Inc. — Mini Digital Audit | Branch &amp; Root</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+  :root{
+    color-scheme:light dark;
+    --forest:#662A08; --moss:#99421A; --cream:#FAF6F2; --slate:#5A4A42; --warm:#D4744A;
+    --ink:#2A1E1A; --muted:#6B5A54; --line:#E8DDD8; --surface:#FFFFFF; --surface2:#FBF6F2;
+    --good:#2D6A4F; --warn:#B8704A; --bad:#9A3B2E;
+    --radius:16px; --radius-sm:11px;
+    --shadow:0 1px 2px rgba(40,15,5,.05),0 14px 34px -16px rgba(40,15,5,.18);
+    --shadow-sm:0 1px 2px rgba(40,15,5,.06);
+    --fh:"Bitter",Georgia,serif; --fb:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    --band-deep:#1E0A02; /* fixed deep burnt-orange band bg — stays dark in both modes */
+    --brsw-surface:var(--surface); --brsw-ink:var(--ink); --brsw-line:var(--line); --brsw-accent:#2D6A4F;
+  }
+  /* ===== DARK MODE ===== */
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --forest:#F4A080; --moss:#D4784A; --cream:#140806; --slate:#A09590; --warm:#E8917A;
+    --ink:#EDE8E5; --muted:#A69A95; --line:#2E1A14; --surface:#1E0E08; --surface2:#241008;
+    --good:#5FA07F; --warn:#E0A179; --bad:#E8806F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.55); --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+  }}
+  :root[data-theme="dark"]{
+    --forest:#F4A080; --moss:#D4784A; --cream:#140806; --slate:#A09590; --warm:#E8917A;
+    --ink:#EDE8E5; --muted:#A69A95; --line:#2E1A14; --surface:#1E0E08; --surface2:#241008;
+    --good:#5FA07F; --warn:#E0A179; --bad:#E8806F;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 14px 34px -16px rgba(0,0,0,.55); --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+  }
+  /* dark element fixes */
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .gauge{background:conic-gradient(var(--moss) calc(var(--p)*1%), #2E1410 0);}
+    :root:not([data-theme="light"]) .sec-h .n{background:#99421A;}
+    :root:not([data-theme="light"]) .next .cta{background:#A84020;}
+  }
+  :root[data-theme="dark"] .gauge{background:conic-gradient(var(--moss) calc(var(--p)*1%), #2E1410 0);}
+  :root[data-theme="dark"] .sec-h .n{background:#99421A;}
+  :root[data-theme="dark"] .next .cta{background:#A84020;}
+  /* ===== THEME TOGGLE ===== */
+  .theme-toggle{position:fixed;top:16px;left:16px;z-index:1001;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--forest);cursor:pointer;box-shadow:var(--shadow-sm);transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--warm);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--moss);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+  /* ===== BR page switcher — collapsed up-arrow ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media print{.br-nav{display:none!important;}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:30px 22px 80px;}
+  h1,h2,h3{font-family:var(--fh);color:var(--forest);margin:0;}
+  p{margin:0 0 .6rem;}
+  .doc-tag{display:flex;align-items:center;gap:10px;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--moss);font-weight:700;margin-bottom:14px;}
+  .doc-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--warm);}
+  /* COVER */
+  .cover{background:var(--band-deep);color:#fff;border-radius:var(--radius);padding:30px 32px;position:relative;overflow:hidden;box-shadow:var(--shadow);margin-bottom:22px;}
+  .cover::after{content:"";position:absolute;right:-50px;top:-50px;width:190px;height:190px;border-radius:50%;background:#662A08;opacity:.45;}
+  .cover::before{content:"";position:absolute;right:34px;bottom:-60px;width:120px;height:120px;border-radius:50%;background:#D4744A;opacity:.3;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#F4A884;margin:0 0 8px;position:relative;}
+  .cover h1{color:#fff;font-size:clamp(1.55rem,1.1rem+1.6vw,2.15rem);line-height:1.12;font-weight:800;position:relative;}
+  .cover .sub{margin-top:12px;font-size:.92rem;color:#F2D8CC;position:relative;}
+  .cover .sub b{color:#fff;}
+  /* SECTION HEADERS */
+  .sec{margin-top:30px;}
+  .sec-h{display:flex;align-items:center;gap:11px;margin-bottom:14px;}
+  .sec-h .n{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--moss);color:#fff;font-family:var(--fh);font-weight:700;font-size:.92rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-h h2{font-size:1.28rem;font-weight:700;}
+  .sec-h .ln{flex:1;height:1px;background:var(--line);}
+  /* SCORECARD */
+  .meta-row{font-size:.9rem;color:var(--muted);margin:-4px 0 16px;}
+  .meta-row b{color:var(--forest);}
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:13px 11px;text-align:center;box-shadow:var(--shadow-sm);border-top:3px solid var(--moss);}
+  .card .lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);font-weight:700;min-height:2.2em;display:flex;align-items:center;justify-content:center;}
+  .card .val{font-family:var(--fh);font-size:1.18rem;font-weight:700;color:var(--forest);margin-top:6px;line-height:1.15;}
+  .card .val.sm{font-size:.88rem;}
+  .card.is-good{border-top-color:var(--good);} .card.is-warn{border-top-color:var(--warn);} .card.is-bad{border-top-color:var(--bad);}
+  .card .val.good{color:var(--good);} .card .val.warn{color:var(--warn);} .card .val.bad{color:var(--bad);}
+  /* HEALTH GAUGE */
+  .health{display:flex;align-items:center;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px 18px;margin-top:14px;box-shadow:var(--shadow-sm);}
+  .gauge{flex:0 0 auto;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--moss) calc(var(--p)*1%), #E8DDD8 0);}
+  .gauge .inner{width:64px;height:64px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--fh);font-weight:800;font-size:1.32rem;color:var(--forest);}
+  .health .t b{color:var(--forest);} .health .t{font-size:.92rem;color:var(--muted);}
+  .health .t .big{font-family:var(--fh);font-size:1.05rem;color:var(--forest);font-weight:700;display:block;margin-bottom:2px;}
+  /* GAPS */
+  .gap{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warm);border-radius:var(--radius-sm);padding:15px 18px;margin-bottom:12px;box-shadow:var(--shadow-sm);}
+  .gap h3{font-size:1.04rem;color:var(--forest);display:flex;gap:9px;align-items:baseline;}
+  .gap h3 .gn{font-family:var(--fh);color:var(--warm);font-size:.95rem;}
+  .gap .cost{margin:6px 0 4px;}
+  .gap .fix{color:var(--moss);font-weight:600;}
+  .gap .fix::before{content:"\2192  ";font-weight:700;}
+  /* RECO */
+  .reco{background:var(--band-deep);color:#fff;border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow);}
+  .reco .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.16em;color:#F4A884;font-weight:700;}
+  .reco .tier{font-family:var(--fh);font-size:1.42rem;font-weight:800;color:#fff;margin:3px 0 12px;}
+  .reco p{color:#F2D8CC;}
+  .reco .rev{margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.2);font-size:.94rem;}
+  .reco .rev b{color:#fff;}
+  /* NEXT STEP */
+  .next{background:linear-gradient(135deg,#99421A,var(--band-deep));color:#fff;border-radius:var(--radius);padding:24px 26px;text-align:center;box-shadow:var(--shadow);}
+  .next h2{color:#fff;font-size:1.3rem;}
+  .next p{color:#F2D8CC;margin:8px auto 0;max-width:48ch;}
+  .next .cta{display:inline-block;margin-top:16px;background:#662A08;color:#fff;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:10px;font-size:1rem;box-shadow:0 8px 20px -8px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.18);}
+  .next .cta:hover{background:#7D3410;}
+  .next .email{display:block;margin-top:12px;color:#F4A884;font-weight:600;}
+  .next .pos{margin-top:14px;font-size:.86rem;color:rgba(255,255,255,.78);}
+  .foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);text-align:center;}
+  .foot .tag{font-family:var(--fh);font-style:italic;color:var(--moss);}
+  .print-btn{position:fixed;top:16px;right:16px;background:var(--surface);border:1px solid var(--line);color:var(--forest);font-weight:700;font-family:var(--fb);border-radius:999px;padding:9px 16px;cursor:pointer;box-shadow:var(--shadow);font-size:13px;display:inline-flex;gap:7px;align-items:center;}
+  .print-btn:hover{border-color:var(--warm);}
+  @media (max-width:680px){.cards{grid-template-columns:repeat(2,1fr);} .wrap{padding:64px 14px 64px;}}
+  @media print{
+    :root,:root[data-theme="dark"]{
+      --forest:#662A08; --moss:#99421A; --cream:#FAF6F2; --slate:#5A4A42; --warm:#D4744A;
+      --ink:#2A1E1A; --muted:#6B5A54; --line:#E8DDD8; --surface:#FFFFFF; --surface2:#FBF6F2;
+      --good:#2D6A4F; --warn:#B8704A; --bad:#9A3B2E; --band-deep:#1E0A02;
+    }
+    body{background:#fff;} .print-btn{display:none;} .theme-toggle{display:none!important;} .wrap{max-width:none;padding:0;}
+    .cover,.reco,.next,.card,.gap,.health{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none;}
+    .gauge{background:conic-gradient(#99421A calc(var(--p)*1%), #E8DDD8 0)!important;}
+    .sec-h .n{background:#99421A!important;} .next .cta{background:#662A08!important;}
+    .sec{break-inside:avoid;} .gap{break-inside:avoid;}
+    @page{size:Letter;margin:14mm;}
+  }
+</style>
+</head>
+<body>
+<button class="print-btn" onclick="window.print()" type="button">&#x238E; Print / Save PDF</button>
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark">
+  <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+</button>
+
+<div class="wrap">
+  <div class="doc-tag"><span class="dot"></span> Branch &amp; Root Consulting &nbsp;&middot;&nbsp; Mini Digital Audit</div>
+
+  <header class="cover">
+    <p class="eyebrow">Complimentary Digital Snapshot</p>
+    <h1>Everlasting Renovations Inc.</h1>
+    <p class="sub"><b>Matthew</b> &nbsp;&middot;&nbsp; Lake Forest, CA &nbsp;&middot;&nbsp; Remodeling &amp; Painting &nbsp;&middot;&nbsp; Round 00</p>
+  </header>
+
+  <!-- SECTION 1: QUICK SCORECARD -->
+  <section class="sec">
+    <div class="sec-h"><span class="n">1</span><h2>Quick Scorecard</h2><span class="ln"></span></div>
+    <p class="meta-row"><b>Everlasting Renovations Inc.</b> &nbsp;&middot;&nbsp; Matthew &nbsp;&middot;&nbsp; Lake Forest, CA &nbsp;&middot;&nbsp; Remodeling &amp; Painting</p>
+    <div class="cards">
+      <div class="card is-warn">
+        <div class="lbl">Website Quality</div>
+        <div class="val warn">2 / 5</div>
+      </div>
+      <div class="card is-warn">
+        <div class="lbl">Review Volume</div>
+        <div class="val sm warn">28 Yelp (4.6&#9733;) &middot; Google unverified</div>
+      </div>
+      <div class="card is-bad">
+        <div class="lbl">GBP Status</div>
+        <div class="val sm bad">Not Optimized</div>
+      </div>
+      <div class="card is-warn">
+        <div class="lbl">Social Presence</div>
+        <div class="val sm warn">Instagram only</div>
+      </div>
+      <div class="card is-bad">
+        <div class="lbl">Digital Advertising</div>
+        <div class="val sm bad">None Detected</div>
+      </div>
+    </div>
+    <div class="health">
+      <div class="gauge" style="--p:38"><div class="inner">38%</div></div>
+      <div class="t">
+        <span class="big">Overall Digital Health: 38%</span>
+        Strong offline reputation and a differentiating 3-year written warranty; weak online capture infrastructure holds digital health down. Five signals scored 0&ndash;100 and averaged.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TOP 3 REVENUE GAPS -->
+  <section class="sec">
+    <div class="sec-h"><span class="n">2</span><h2>Top 3 Revenue Gaps</h2><span class="ln"></span></div>
+
+    <div class="gap">
+      <h3><span class="gn">1</span> No Lead Capture Form</h3>
+      <p class="cost">Every visitor who doesn&rsquo;t call walks away &mdash; zero digital leads even if they love the site. The Wix platform has a contact page, but no embedded estimate form with SMS notification to close the loop instantly.</p>
+      <p class="fix">A simple embedded form with SMS notification turns the website into a 24/7 estimate machine.</p>
+    </div>
+
+    <div class="gap">
+      <h3><span class="gn">2</span> Review Volume 10&times; Below Market Leader</h3>
+      <p class="cost">Xenak Painting &amp; Remodeling shows 329 Yelp reviews against Everlasting&rsquo;s 28. When homeowners comparison-shop contractors on Yelp or Google, they default to the louder voice &mdash; even when quality is equal or lower.</p>
+      <p class="fix">An automated post-job review request (SMS + email) can systematically close this gap over 6&ndash;12 months.</p>
+    </div>
+
+    <div class="gap">
+      <h3><span class="gn">3</span> The 3-Year Warranty Is Buried</h3>
+      <p class="cost">A 3-year written warranty is a genuine market differentiator &mdash; none of the three main local competitors offer it publicly. Right now it&rsquo;s mentioned once in small print on the Wix site instead of anchoring every page above the fold.</p>
+      <p class="fix">Putting the warranty badge above the fold drives conversion without any new ad spend.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: B&R RECOMMENDATION -->
+  <section class="sec">
+    <div class="sec-h"><span class="n">3</span><h2>Branch &amp; Root Recommendation</h2><span class="ln"></span></div>
+    <div class="reco">
+      <div class="k">Recommended Service Tier</div>
+      <div class="tier">Local Growth Engine</div>
+      <p>Matthew&rsquo;s business has the service quality and real differentiators &mdash; the 3-year warranty, active CSLB license, bond and workers&rsquo; comp, faith-alignment &mdash; that close jobs. What&rsquo;s missing is the digital infrastructure to fill the top of funnel and capture leads who find him online. The Local Growth Engine builds exactly that: a converting landing page, automated review-request flows, and GBP optimization &mdash; so Everlasting competes at the volume of Xenak with the character of a family business.</p>
+      <div class="rev"><b>Revenue opportunity:</b> 2 additional kitchen remodels per quarter at Orange County averages ($35k&ndash;$65k each) = <b>$70k&ndash;$130k incremental revenue per year.</b></div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: NEXT STEP -->
+  <section class="sec">
+    <div class="sec-h"><span class="n">4</span><h2>Your Next Step</h2><span class="ln"></span></div>
+    <div class="next">
+      <h2>Book a free 30-minute diagnosis call</h2>
+      <p>No pitch, no obligation &mdash; just a straight read on what&rsquo;s working, what&rsquo;s leaking, and what to fix first.</p>
+      <a class="cta" href="mailto:sales@branchandrootconsulting.com?subject=Everlasting%20Renovations%20%E2%80%94%20Free%20Diagnosis%20Call">Schedule My Call</a>
+      <span class="email">sales@branchandrootconsulting.com</span>
+      <p class="pos">We&rsquo;re local OC &mdash; you can shake our hands.</p>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="tag">Branching your business out from a rooted foundation.</p>
+    <p>Branch &amp; Root Consulting &mdash; Confidential &nbsp;&middot;&nbsp; Everlasting Renovations Inc. &nbsp;&middot;&nbsp; Round 00 Mini Audit &nbsp;&middot;&nbsp; June 2026<br>
+    Yelp figures browser-verified June 2026. Google Business Profile status based on public search results &mdash; manual verification recommended. No data fabricated.</p>
+  </footer>
+</div>
+
+<!-- BR PAGE SWITCHER -->
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-0/everlasting-renovations" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">&#x1F5A5; Landing Page</span>
+    </a>
+    <a href="/round-0/everlasting-renovations/audit" aria-label="Full brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">&#x1F4CB; Full Audit</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">&#x26A1; Mini Audit</span>
+    </span>
+    <a href="/round-0/everlasting-renovations/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">&#x1F4DD; Questionnaire</span>
+    </a>
+    <li class="nav-sep" role="none" style="height:1px;background:var(--brsw-line);margin:4px 6px;"></li>
+    <a href="/round-0/" aria-label="Back to Round 00">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span>
+      <span class="lbl">&#x2190; Round 00</span>
+    </a>
+    <a href="/" aria-label="Back to all rounds">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      <span class="lbl">&#x2190; All Rounds</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>(function(){var r=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return r.getAttribute("data-theme")||sys();}var b=document.querySelector(".theme-toggle");if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

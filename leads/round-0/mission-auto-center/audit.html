@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1A1A1E">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121216">
+<title>Mission Auto Center — Brand Intelligence Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+  /* ============================ TOKENS ============================
+     Semantic split: --brand/--band are SURFACES, --heading is TEXT.
+     One accent var per brand drives the whole report. Light + dark
+     defined once; print resets to light below. ============================ */
+  :root{
+    color-scheme: light dark;
+    --accent:#C41E3A;            /* PER-BRAND accent (Mission Auto Center red) */
+    --accent-ink:#FFFFFF;        /* text on accent */
+    --slate:#3E5C76;             /* secondary accent (steel slate-blue) */
+
+    --page:#F4F2EF;
+    --surface:#FFFFFF;
+    --surface-2:#FAF8F6;
+    --sidebar-bg:#FFFFFF;
+    --ink:#23211F;
+    --muted:#615C57;
+    --line:#E5E0DA;
+
+    --heading:#1A1A1E;           /* heading TEXT — near-black graphite */
+    --brand:#9A1830;             /* rules / lead-in text — deep red */
+    --band:#1A1A1E;              /* table header / voice bands — graphite */
+    --band-ink:#FFFFFF;
+    --cover-bg:#1A1A1E;
+
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(26,26,30,.05), 0 10px 30px -12px rgba(26,26,30,.16);
+    --shadow-sm:0 1px 2px rgba(26,26,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* page-switcher palette hooks — reference vars that already flip per mode */
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--accent);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#F0556E; --accent-ink:#1A1012; --slate:#8FB4D6;
+    --page:#121216; --surface:#1C1C21; --surface-2:#202026; --sidebar-bg:#17171B;
+    --ink:#E9E7E4; --muted:#A8A29B; --line:#33333A;
+    --heading:#F2EFEC; --brand:#F08093; --band:#262630; --band-ink:#F2EFEC; --cover-bg:#1A1A20;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
+  :root[data-theme="dark"]{
+    --accent:#F0556E; --accent-ink:#1A1012; --slate:#8FB4D6;
+    --page:#121216; --surface:#1C1C21; --surface-2:#202026; --sidebar-bg:#17171B;
+    --ink:#E9E7E4; --muted:#A8A29B; --line:#33333A;
+    --heading:#F2EFEC; --brand:#F08093; --band:#262630; --band-ink:#F2EFEC; --cover-bg:#1A1A20;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.20;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#D8D6D2;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ FLOATING CONTROLS ============================ */
+  .br-portal{position:fixed;left:16px;bottom:16px;z-index:1000;display:inline-flex;align-items:center;gap:0;text-decoration:none;border-radius:999px;font-family:var(--fb);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:8px 13px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:13px;opacity:.9}
+  .br-portal:hover{transform:translateY(-2px);opacity:1;border-color:var(--accent)}
+  .br-portal svg{color:var(--accent)}
+  .br-portal .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal:hover .br-portal-lbl,.br-portal:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:8px;}
+  @media print{.br-portal{display:none}}
+
+  /* ===== BR page switcher — collapsed up-arrow that expands on hover / focus / tap ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media print{.br-nav{display:none!important;}}
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting — Confidential | Mission Auto Center"; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B6560; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B6560; }
+  }
+  @media print{
+    /* force light for print regardless of theme toggle */
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAF8F6;--ink:#201E1C;--muted:#55504B;--line:#DEDAD4;--heading:#1A1A1E;--brand:#9A1830;--band:#1A1A1E;--band-ink:#fff;--cover-bg:#1A1A1E; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
+
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">Mission Auto Center</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">The Full-Stack Growth System</div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>Mission Auto Center</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 01 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Auto Repair &nbsp;·&nbsp; Lake Forest, CA</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">Since 2019</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">4.9&#9733;</div><div class="lbl">Yelp (333 reviews)</div></div>
+        <div class="stat"><div class="num">~65</div><div class="lbl">Google reviews</div></div>
+        <div class="stat"><div class="num">3 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>Mission Auto Center</strong> is an independent auto-repair shop serving Lake Forest, California and the surrounding south Orange County communities. Operating from <strong>20761 Lake Forest Dr, Unit K, Lake Forest, CA 92630</strong> and reachable at <strong>(949) 461-0985</strong>, the shop has served the area since 2019. Its service line is broad &mdash; spanning oil changes &amp; quick lube, brakes, alignments, tires, AC &amp; heating, diagnostics, electrical and electronic services, engine &amp; transmission, and undercar work &mdash; covering both <strong>domestic and import cars &amp; trucks</strong>, plus <strong>electric &amp; hybrid vehicle repair</strong> and 4x4 services. The shop is listed as a <strong>Bosch Service</strong> partner and stands behind its repairs with a <strong>12-month / 12,000-mile warranty</strong>. Owner name is <span class="flag">Not found on the public site &mdash; recommend confirming via phone outreach.</span> No ASE-certification badge is published on the website; <span class="flag">technician certifications (ASE / manufacturer) Not found &mdash; recommend verifying.</span></p>
+      </section>
+
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; missionautocenteroc.com &nbsp;·&nbsp; Quality 3 / 5 &nbsp;·&nbsp; Repair Shop Websites (Template 78)</h3>
+          <p class="kv">The site runs on a white-label <em>Repair Shop Websites</em> template. It is a clear improvement over a DIY page &mdash; it lists the full service line, hours, and a click-to-call phone number &mdash; but it is a stock template shared by countless shops, and its top banner currently leads with a logistics note (<em>&ldquo;We Moved Across the Street Next to the Chevron Gas Station&rdquo;</em>) rather than a conversion-focused offer.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Complete service list with dedicated service pages and clear hours (Mon&ndash;Sat 8&ndash;6)</li>
+                <li>Click-to-call phone number present; Bosch Service affiliation displayed</li>
+                <li>Published 12-month / 12,000-mile repair warranty &mdash; a real trust signal</li>
+                <li>Covers a wide vehicle range, including EV/hybrid &mdash; broad search relevance</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>Generic stock template (Template 78) &mdash; visually indistinguishable from competitors on the same platform</li>
+                <li>No above-the-fold lead-capture / appointment-request form &mdash; phone is the only path</li>
+                <li>Hero leads with a &ldquo;we moved&rdquo; notice instead of a value proposition or online booking</li>
+                <li>The 4.9&#9733; / 333-review Yelp reputation is not surfaced on the homepage</li>
+                <li>No visible online-scheduling integration despite the &ldquo;Your time is important!&rdquo; promise</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &mdash; Reputation is the Standout Asset</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Source</th></tr>
+              <tr><td>Yelp</td><td class="center">333</td><td class="center"><span class="stars">4.9 &#9733;</span></td><td>Largest review base; page listed &ldquo;Updated April 2026&rdquo; &mdash; active and current. <em>[SEARCH SNIPPET &mdash; live page returned HTTP&nbsp;403]</em></td></tr>
+              <tr><td>Google</td><td class="center">~65</td><td class="center"><span class="stars">~4.8&ndash;5.0 &#9733;</span></td><td>High-intent discovery surface. <em>[AGGREGATOR ESTIMATE via Birdeye (65/4.8); CARFAX reports 5.0 across 79 verified visits]</em></td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> An auto shop only six years old with <b>333 Yelp reviews at 4.9&#9733;</b> is exceptional &mdash; that is a high-velocity, genuinely loved reputation. Yelp carries the volume; Google, the surface most new customers search first, sits materially lower (~65). The reputation is best-in-class; the gap is that it is concentrated on Yelp and barely surfaced on the shop&rsquo;s own site or on Google.</p>
+          <p class="gapnote">Data note: the Yelp count/rating is from search-result snippets (the live Yelp page returned HTTP 403 and could not be browser-verified). The Google figure is an aggregator estimate (Birdeye: 65 reviews, 4.8&#9733;), with CARFAX separately reporting 5.0 across 79 verified-customer visits. Treat as high-confidence but unverified &mdash; recommend confirming the live Google Business Profile count via phone outreach.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><b>Yelp</b> &mdash; the shop&rsquo;s strongest channel by far (333 reviews); actively maintained listing.</li>
+              <li><b>Facebook / Instagram</b> &mdash; no active brand presence surfaced in research. <span class="flag">Not found &mdash; recommend verifying via phone outreach.</span></li>
+            </ul>
+            <p class="gapnote">Organic social is effectively dormant as a marketing channel today; Yelp is doing the heavy lifting.</p>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv">A Google presence exists (reviews surface via aggregators), but a verified, fully optimized GBP could not be confirmed in research, and the review count (~65) badly trails the 333 on Yelp. <span class="flag">GBP optimization status Not found &mdash; recommend verifying (and claiming/optimizing) via phone outreach.</span></p>
+            <p class="gapnote">For a 4.9&#9733; shop, an under-built Google profile is the single biggest leak in local discovery.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Trustworthy</div><div class="s">Honest &amp; reliable</div></div>
+          <div class="vw"><div class="w">Community-minded</div><div class="s">Local to Lake Forest</div></div>
+          <div class="vw"><div class="w">Convenient</div><div class="s">&ldquo;Your time is important&rdquo;</div></div>
+        </div>
+        <p>The voice is straightforward, service-first, and community-oriented &mdash; a neighborhood shop that frames itself around reliability, affordability, and respect for the customer&rsquo;s time. It leans on a literal &ldquo;mission&rdquo; framing (serve the local community with dependable, fair-priced repair) rather than performance or enthusiast positioning. The tone is practical and welcoming rather than corporate or high-pressure.</p>
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: missionautocenteroc.com)</span></h3>
+          <blockquote>&ldquo;It&rsquo;s our mission to provide the Lake Forest area and its communities with reliable, affordable automotive maintenance and repair services.&rdquo;</blockquote>
+          <blockquote>&ldquo;Mission Auto Center: Leading Car and Truck Repair in Lake Forest&rdquo;</blockquote>
+          <blockquote>&ldquo;Your time is important!&rdquo;</blockquote>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Top three praise themes, drawn from recurring review sentiment across Yelp and Google:</p>
+        <div class="panel slate">
+          <h3>1 &nbsp;·&nbsp; Honest, no-pressure, no upsell</h3>
+          <blockquote>Customers repeatedly describe a shop that is <em>honest and transparent about what the car actually needs</em>, without upselling &mdash; the single most-cited theme across reviews.<span class="who">Recurring theme — Yelp / Google reviews</span></blockquote>
+          <h3 style="margin-top:10px;">2 &nbsp;·&nbsp; Professional staff &amp; clear explanations</h3>
+          <blockquote>Reviewers note staff who are <em>professional, knowledgeable, and explain the work in detail</em> before doing it.<span class="who">Verbatim — Ken R., Lake Forest (shop testimonials page)</span></blockquote>
+          <h3 style="margin-top:10px;">3 &nbsp;·&nbsp; Quick, reliable turnaround &mdash; done right the first time</h3>
+          <blockquote>The shop is praised for <em>timely, reliable service that gets the job done right the first time</em>, reflecting the &ldquo;your time is important&rdquo; promise.<span class="who">Recurring theme — Yelp / Google reviews</span></blockquote>
+        </div>
+        <p class="gapnote">Theme 1 and Theme 3 paraphrase aggregated review sentiment captured in research; verbatim individual-reviewer text was not extractable from the Yelp page (HTTP 403). Theme 2 quotes a testimonial published on the shop&rsquo;s own site (Ken R.: &ldquo;Very professional staff, they went above and beyond&hellip; and explained in detail exactly what was gonna be done to my car.&rdquo;). No fabricated quotes are presented.</p>
+        <div class="panel gaps">
+          <h3>Recurring friction points</h3>
+          <p class="kv">No recurring customer complaints surfaced in research &mdash; sentiment is strongly positive (4.9&#9733; on Yelp). The friction is operational, not reputational: 333 happy Yelp reviewers have no easy on-site path to book or to leave a Google review, the homepage hides the reputation behind a &ldquo;we moved&rdquo; banner, and there is no online scheduling despite a stated respect for the customer&rsquo;s time.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th class="center">Site /5</th><th class="center">Reviews</th><th class="center">Rating</th><th>Key differentiator</th></tr>
+            <tr><td><b>Benz N&rsquo; Beyond</b></td><td class="center">4</td><td class="center">324</td><td class="center"><span class="stars">4.9&#9733;</span></td><td>Dedicated, modern website positioned around Mercedes-Benz &amp; foreign-car specialization &mdash; a clear, ownable niche and a deep review base.</td></tr>
+            <tr><td><b>Hernandez Auto Repair</b></td><td class="center">3</td><td class="center">65</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>European-vehicle focus with a same-day-service reputation (&ldquo;brakes in and done the same day&rdquo;); strong communication and &ldquo;no hidden fees&rdquo; messaging.</td></tr>
+            <tr><td><b>Jerry&rsquo;s Complete Automotive Repair</b></td><td class="center">2</td><td class="center">&mdash;</td><td class="center"><span class="stars">5.0&#9733;</span></td><td>Long-tenured Lake Forest shop trading on honesty and no-upsell (&ldquo;did not upsell, very kind and informative&rdquo;); thin web presence.</td></tr>
+          </table>
+        </div>
+        <div class="panel">
+          <h3>Where Mission Auto Center leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads:</b> On raw reputation, Mission Auto Center is at the top of the field &mdash; <b>333 Yelp reviews at 4.9&#9733;</b> is the deepest review base in the set (vs. 324 / 65 / &mdash;), built in only six years, and it serves the broadest vehicle range (domestic, import, EV/hybrid, 4x4) rather than a single niche. Volume and breadth are its strengths.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags:</b> On <i>positioning and conversion</i>, rivals out-execute it. Benz N&rsquo; Beyond owns a crisp specialty and a purpose-built site; Mission Auto Center runs a stock <em>Repair Shop Websites</em> template that looks like every other shop on the platform, leads with a relocation notice instead of an offer, has no lead form or online booking, and buries its category-leading reputation. The reviews are best-in-class; the storefront that should convert them is generic.</p>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;Lake Forest&rsquo;s 4.9-Star Auto Repair &mdash; Honest Work, Done Right the First Time&rdquo;</p>
+          <p class="kv"><b>Sub-headline:</b> Reliable, affordable repair and maintenance for every make &mdash; domestic, import, hybrid &amp; EV &mdash; backed by a 12-month / 12,000-mile warranty. Serving Lake Forest since 2019.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span class="pill">BOOK YOUR APPOINTMENT</span> &nbsp;·&nbsp; secondary: <span class="pill">CALL (949) 461-0985</span></p>
+        </div>
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Above-the-fold trust signals</p>
+            <ul>
+              <li>4.9&#9733; across 333 Yelp reviews</li>
+              <li>Serving Lake Forest &amp; south OC since 2019</li>
+              <li>12-month / 12,000-mile repair warranty</li>
+              <li>All makes &mdash; domestic, import, hybrid &amp; EV</li>
+              <li>Bosch Service partner</li>
+              <li>Honest, no-pressure diagnosis &mdash; &ldquo;your time is important&rdquo;</li>
+            </ul>
+          </div>
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Signal red + graphite + steel-blue</b> on white &mdash; confident, mechanical, and trustworthy, carrying the shop&rsquo;s existing red brand cue. Personality: dependable, modern, automotive.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#C41E3A;"></div><div class="cap">Signal red<br>#C41E3A</div></div>
+              <div class="sw"><div class="chip" style="background:#1A1A1E;"></div><div class="cap">Graphite<br>#1A1A1E</div></div>
+              <div class="sw"><div class="chip" style="background:#3E5C76;"></div><div class="cap">Steel-blue<br>#3E5C76</div></div>
+            </div>
+            <p class="kv" style="margin-bottom:0;"><b>Fonts:</b> <i>Barlow Condensed</i> for headlines (industrial, automotive) paired with <i>Barlow</i> for body (clean, mechanical-modern).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">The Full-Stack Growth System</div>
+        </div>
+        <p>A six-year-old shop with a 4.9&#9733; / 333-review Yelp reputation is being held back by a stock <em>Repair Shop Websites</em> template (quality 3/5) that has no lead form, no online booking, an under-built Google Business Profile, and a homepage that leads with a relocation banner instead of its category-leading reputation. The reputation is already best-in-class &mdash; what is missing is the infrastructure to capture and compound it. The Full-Stack Growth System is the right fit because it addresses all three gaps at once:</p>
+        <ul>
+          <li><b>Full website rebuild</b> &mdash; a distinctive, mobile-first site with above-the-fold online booking and a &ldquo;BOOK YOUR APPOINTMENT&rdquo; CTA, replacing the generic 3/5 template and putting the 4.9&#9733; reputation front and center.</li>
+          <li><b>Local SEO / AEO + Google Business Profile</b> &mdash; claim and optimize the GBP, run a review-routing flow to close the 333-vs-65 gap between Yelp and Google, and add service / vehicle-type pages to capture &ldquo;Lake Forest auto repair&rdquo; demand.</li>
+          <li><b>Booking &amp; reactivation system</b> &mdash; online scheduling that honors the &ldquo;your time is important&rdquo; promise, plus a service-reminder flow that turns one-time repairs into repeat maintenance visits.</li>
+        </ul>
+        <div class="panel forest">
+          <h3>Estimated revenue opportunity</h3>
+          <p class="kv" style="margin-bottom:0;">Auto-repair tickets routinely run into the hundreds of dollars, so capturing even a handful of additional booked jobs per month &mdash; via online scheduling, a Google profile that finally matches the Yelp reputation, and a service-reminder flow that brings past customers back for maintenance &mdash; represents a meaningful five-figure annual revenue lift for this shop, and the highest-leverage investment available to it.</p>
+        </div>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;·&nbsp; Mission Auto Center &nbsp;·&nbsp; Round 01 Brand Intelligence Report</footer>
+
+    </main>
+  </div>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-0/mission-auto-center" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </span>
+    <a href="/round-0/mission-auto-center/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-0/mission-auto-center/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+<a class="br-portal" href="/" aria-label="Return to the Branch &amp; Root lead portal">
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+  <span class="br-portal-lbl">Return to Portal</span>
+</a>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

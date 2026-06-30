@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#1B4332">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0F1B14">
+<title>Everlasting Renovations Inc. &mdash; Brand Intelligence Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================ TOKENS ============================
+     Accent: #662A08 — client burnt orange. Slate: #2B5672 — steel blue.
+     One accent var drives the whole report. Light + dark defined once. */
+  :root{
+    color-scheme: light dark;
+    --accent:#662A08;            /* PER-BRAND accent — burnt orange */
+    --accent-ink:#FFFFFF;        /* text on accent */
+    --slate:#2B5672;             /* brand secondary — steel blue */
+
+    --page:#F4F1EA;
+    --surface:#FFFFFF;
+    --surface-2:#FBF9F4;
+    --sidebar-bg:#FFFFFF;
+    --ink:#222824;
+    --muted:#5A655E;
+    --line:#E4DFD4;
+
+    --heading:#1B4332;
+    --brand:#1B4332;
+    --band:#1B4332;
+    --band-ink:#FFFFFF;
+    --cover-bg:#1B4332;
+
+    --radius:14px; --radius-sm:9px;
+    --maxw:760px;
+    --shadow:0 1px 2px rgba(15,42,30,.05), 0 10px 30px -12px rgba(15,42,30,.14);
+    --shadow-sm:0 1px 2px rgba(15,42,30,.05);
+    --fh:"Bitter", Georgia, "Times New Roman", serif;
+    --fb:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --brsw-surface: var(--surface);
+    --brsw-ink: var(--ink);
+    --brsw-line: var(--line);
+    --brsw-accent: var(--accent);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --accent:#C8541A; --accent-ink:#1B0800; --slate:#7BAAC8;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }}
+  :root[data-theme="dark"]{
+    --accent:#C8541A; --accent-ink:#1B0800; --slate:#7BAAC8;
+    --page:#0F1B14; --surface:#16241C; --surface-2:#1A2A21; --sidebar-bg:#13201A;
+    --ink:#E7ECE3; --muted:#9FB0A6; --line:#2C3A32;
+    --heading:#EAF1EA; --brand:#7FB89B; --band:#1F3328; --band-ink:#EAF1EA; --cover-bg:#14231B;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 12px 30px -12px rgba(0,0,0,.5);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+
+  /* ============================ BASE ============================ */
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--fh);color:var(--heading);}
+  p{margin:0 0 .7rem;}
+  a{color:inherit}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:0 0 8px 0;z-index:60;font-weight:700;}
+  .skip:focus{left:0}
+
+  /* ============================ LAYOUT ============================ */
+  .layout{display:grid;grid-template-columns:264px minmax(0,1fr);max-width:1200px;margin:0 auto;}
+  .main{padding:38px 44px 90px;min-width:0;}
+  .main>*{max-width:var(--maxw);margin-inline:auto;}
+
+  /* ============================ SIDEBAR / TOC ============================ */
+  .toc{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;background:var(--sidebar-bg);border-right:1px solid var(--line);padding:24px 18px;display:flex;flex-direction:column;gap:16px;z-index:30;}
+  .toc-head{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .toc-brand{font-family:var(--fh);font-weight:700;color:var(--heading);font-size:1.02rem;letter-spacing:.2px;}
+  .toc-eyebrow{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0;}
+  .toc-title{font-family:var(--fh);font-weight:600;font-size:1.05rem;color:var(--heading);margin:-6px 0 2px;line-height:1.2;}
+  .toc-nav{display:flex;flex-direction:column;gap:2px;}
+  .toc-nav a{display:flex;align-items:center;gap:11px;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;transition:background .15s,color .15s;}
+  .toc-nav a .i{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--surface-2);color:var(--brand);font-family:var(--fh);font-size:.74rem;font-weight:700;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);}
+  .toc-nav a:hover{background:var(--surface-2);color:var(--ink);}
+  .toc-nav a.active{background:var(--surface-2);color:var(--heading);border-left-color:var(--accent);}
+  .toc-nav a.active .i{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .toc-foot{margin-top:auto;background:var(--cover-bg);border-radius:var(--radius-sm);padding:12px 14px;}
+  .toc-foot .k{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;}
+  .toc-foot .v{font-family:var(--fh);font-weight:700;color:#fff;font-size:.98rem;line-height:1.2;margin-top:2px;}
+
+  /* ============================ THEME TOGGLE ============================ */
+  .theme-toggle{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--heading);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .theme-toggle .i-sun{display:none;}.theme-toggle .i-moon{display:block;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .theme-toggle .i-moon{display:none;}:root:not([data-theme="light"]) .theme-toggle .i-sun{display:block;}}
+  :root[data-theme="dark"] .theme-toggle .i-moon{display:none;}:root[data-theme="dark"] .theme-toggle .i-sun{display:block;}
+  :root[data-theme="light"] .theme-toggle .i-moon{display:block;}:root[data-theme="light"] .theme-toggle .i-sun{display:none;}
+
+  /* ============================ COVER ============================ */
+  .cover{background:var(--cover-bg);color:#fff;border-radius:var(--radius);padding:34px 36px;box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:18px;}
+  .cover::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:var(--accent);opacity:.16;}
+  .cover .eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--accent);margin:0 0 10px;}
+  .cover h1{font-size:clamp(1.7rem,1.2rem+1.7vw,2.4rem);line-height:1.12;font-weight:800;margin:0 0 16px;color:#fff;}
+  .cover .meta{font-size:.9rem;color:#DCE6E0;border-top:1px solid rgba(255,255,255,.2);padding-top:13px;}
+  .cover .meta strong{color:#fff;}
+
+  /* ============================ SNAPSHOT ============================ */
+  .snapshot{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:26px;}
+  .stat{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius-sm);padding:15px 12px;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat .num{font-family:var(--fh);font-size:1.55rem;font-weight:700;color:var(--heading);line-height:1.08;}
+  .stat .lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:5px;font-weight:600;}
+
+  /* ============================ SECTIONS ============================ */
+  .sec{margin-bottom:34px;scroll-margin-top:24px;}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid var(--line);}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-size:1.35rem;font-weight:700;margin:0;}
+  .lead-in{font-weight:600;color:var(--brand);}
+  ul{margin:.3rem 0 .7rem;padding-left:20px;}
+  li{margin-bottom:.32rem;}
+
+  /* ============================ PANELS ============================ */
+  .panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius-sm);padding:15px 17px;margin:12px 0;box-shadow:var(--shadow-sm);}
+  .panel.slate{border-left-color:var(--slate);}
+  .panel.forest{border-left-color:var(--brand);}
+  .panel h3{font-size:1.02rem;margin:0 0 7px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .works h3,.gaps h3{font-size:.92rem;margin:0 0 5px;}
+  .works h3{color:var(--heading);} .gaps h3{color:var(--accent);}
+  .kv b{color:var(--brand);}
+  .gapnote{font-size:.82rem;color:var(--muted);font-style:italic;}
+  .flag{color:var(--accent);font-style:italic;font-weight:600;}
+
+  /* ============================ TABLE ============================ */
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm);margin:10px 0;box-shadow:var(--shadow-sm);}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:440px;}
+  th{background:var(--band);color:var(--band-ink);text-align:left;padding:9px 12px;font-family:var(--fb);font-weight:600;font-size:.82rem;letter-spacing:.02em;}
+  td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;background:var(--surface);}
+  tr:last-child td{border-bottom:none;}
+  tr:nth-child(even) td{background:var(--surface-2);}
+  td.center,th.center{text-align:center;}
+  .stars{color:var(--accent);font-weight:700;white-space:nowrap;}
+
+  /* ============================ QUOTES / VOICE ============================ */
+  blockquote{margin:8px 0;padding:5px 0 5px 15px;border-left:3px solid var(--slate);font-style:italic;color:var(--ink);}
+  blockquote .who{display:block;font-style:normal;font-size:.78rem;color:var(--muted);margin-top:3px;}
+  .voice-words{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:6px 0 12px;}
+  .vw{text-align:center;background:var(--band);color:var(--band-ink);border-radius:var(--radius-sm);padding:13px 8px;}
+  .vw .w{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:#fff;}
+  .vw .s{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-top:3px;}
+
+  /* ============================ SWATCHES / TIER ============================ */
+  .swatches{display:flex;gap:9px;margin:9px 0;}
+  .sw{flex:1;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:var(--surface);}
+  .sw .chip{height:38px;}
+  .sw .cap{font-size:.7rem;padding:5px 6px;color:var(--muted);}
+  .pill{display:inline-block;background:var(--accent);color:var(--accent-ink);padding:3px 11px;border-radius:6px;font-weight:700;}
+  .tier-banner{background:var(--cover-bg);color:#fff;border-radius:var(--radius-sm);padding:15px 18px;margin:6px 0 12px;box-shadow:var(--shadow-sm);}
+  .tier-banner .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-weight:700;}
+  .tier-banner .v{font-family:var(--fh);font-size:1.35rem;font-weight:700;color:#fff;margin-top:2px;}
+
+  .rep-foot{margin-top:42px;padding-top:16px;border-top:1px solid var(--line);font-size:.78rem;color:var(--muted);}
+
+  /* ============================ CONFIDENCE BADGES ============================ */
+  .badge{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;vertical-align:middle;margin-left:4px;}
+  .badge-high{background:#19A97420;color:#0E6B47;border:1px solid #19A97440;}
+  .badge-med{background:#E0820020;color:#924F00;border:1px solid #E0820040;}
+  .badge-low{background:#2B567220;color:#1A3B52;border:1px solid #2B567240;}
+  .badge-inf{background:#66280820;color:#662A08;border:1px solid #66280840;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge-high{background:#19A97430;color:#5DD9A8;border-color:#19A97450;}
+  :root:not([data-theme="light"]) .badge-med{background:#E0820030;color:#F4A84E;border-color:#E0820050;}
+  :root:not([data-theme="light"]) .badge-low{background:#2B567230;color:#7BAAC8;border-color:#2B567250;}
+  :root:not([data-theme="light"]) .badge-inf{background:#C8541A30;color:#E8A070;border-color:#C8541A50;}}
+  :root[data-theme="dark"] .badge-high{background:#19A97430;color:#5DD9A8;border-color:#19A97450;}
+  :root[data-theme="dark"] .badge-med{background:#E0820030;color:#F4A84E;border-color:#E0820050;}
+  :root[data-theme="dark"] .badge-low{background:#2B567230;color:#7BAAC8;border-color:#2B567250;}
+  :root[data-theme="dark"] .badge-inf{background:#C8541A30;color:#E8A070;border-color:#C8541A50;}
+
+  /* ============================ FLOATING CONTROLS ============================ */
+  .br-portal{position:fixed;left:16px;bottom:16px;z-index:1000;display:inline-flex;align-items:center;gap:8px;text-decoration:none;border-radius:999px;font-family:var(--fb);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,box-shadow .14s ease,border-color .2s,opacity .2s;padding:8px 13px;background:var(--surface);color:var(--ink);border:1px solid var(--line);font-weight:600;font-size:13px;opacity:.9}
+  .br-portal:hover{transform:translateY(-2px);opacity:1;border-color:var(--accent)}
+  .br-portal svg{color:var(--accent)}
+  .br-portal{gap:0;}
+  .br-portal .br-portal-lbl{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .25s ease,opacity .2s ease,margin .25s ease;}
+  .br-portal:hover .br-portal-lbl,.br-portal:focus-visible .br-portal-lbl{max-width:160px;opacity:1;margin-left:8px;}
+  @media print{.br-portal{display:none}}
+
+  /* ===== BR page switcher ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:200px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  .br-nav-sep{height:1px;background:var(--brsw-line);margin:4px 8px;}
+  @media print{.br-nav{display:none!important;}}
+
+  /* ============================ RESPONSIVE ============================ */
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;}
+    .toc{position:sticky;top:0;height:auto;flex-direction:row;align-items:center;gap:10px;overflow-x:auto;border-right:none;border-bottom:1px solid var(--line);padding:10px 14px;}
+    .toc-eyebrow,.toc-title,.toc-foot{display:none;}
+    .toc-head{order:-1;}
+    .toc-nav{flex-direction:row;flex-wrap:nowrap;gap:6px;}
+    .toc-nav a{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:6px 9px;}
+    .toc-nav a.active{border-left:none;border-bottom-color:var(--accent);}
+    .sec{scroll-margin-top:70px;}
+    .main{padding:24px 18px 64px;}
+    .snapshot{grid-template-columns:repeat(2,1fr);}
+    .grid2{grid-template-columns:1fr;}
+    .voice-words{grid-template-columns:1fr;}
+  }
+
+  /* ============================ PRINT ============================ */
+  @page{ size:Letter; margin:18mm 16mm 20mm 16mm;
+    @bottom-left{ content:"Branch & Root Consulting \2014 Confidential | Everlasting Renovations Inc."; font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font-family:"Source Sans 3",Arial,sans-serif; font-size:7.5pt; color:#6B756F; }
+  }
+  @media print{
+    :root,:root[data-theme="dark"]{ --page:#fff;--surface:#fff;--surface-2:#FAFAF7;--ink:#1F2421;--muted:#55605A;--line:#DDE3DF;--heading:#1B4332;--brand:#1B4332;--band:#1B4332;--band-ink:#fff;--cover-bg:#1B4332;--accent:#662A08;--accent-ink:#fff;--slate:#2B5672; }
+    .toc,.theme-toggle,.skip{display:none!important;}
+    .layout{display:block;max-width:none;margin:0;}
+    .main{padding:0;max-width:none;} .main>*{max-width:none;margin:0;}
+    body{background:#fff;color:#000;font-size:10pt;}
+    .sec{margin-bottom:14px;} .sec-head{break-after:avoid;} .panel,.table-wrap,.stat,.tier-banner,.voice-words{break-inside:avoid;}
+    .cover,.tier-banner,.toc-foot,.vw,th{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .badge{border:1px solid #999;background:#f5f5f5 !important;color:#333 !important;}
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to report</a>
+  <div class="layout">
+
+    <aside class="toc">
+      <div class="toc-head">
+        <span class="toc-brand">Branch &amp; Root</span>
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark">
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+        </button>
+      </div>
+      <p class="toc-eyebrow">Brand Intelligence Report</p>
+      <p class="toc-title">Everlasting Renovations</p>
+      <nav class="toc-nav" aria-label="Report sections">
+        <a href="#sec-1"><span class="i">1</span> Business Overview</a>
+        <a href="#sec-2"><span class="i">2</span> Digital Presence</a>
+        <a href="#sec-3"><span class="i">3</span> Brand Voice</a>
+        <a href="#sec-4"><span class="i">4</span> Customer Intelligence</a>
+        <a href="#sec-5"><span class="i">5</span> Competitive Landscape</a>
+        <a href="#sec-6"><span class="i">6</span> Landing Page Strategy</a>
+        <a href="#sec-7"><span class="i">7</span> Recommendation</a>
+      </nav>
+      <div class="toc-foot">
+        <div class="k">Recommended Tier</div>
+        <div class="v">Local Growth Engine</div>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+
+      <header class="cover">
+        <p class="eyebrow">Brand Intelligence Report</p>
+        <h1>Everlasting Renovations Inc.</h1>
+        <div class="meta"><strong>Branch &amp; Root Consulting</strong> &nbsp;|&nbsp; Round 00 &nbsp;|&nbsp; June 2026 &nbsp;|&nbsp; Painting &amp; General Remodeling &nbsp;&middot;&nbsp; Lake Forest, CA</div>
+      </header>
+
+      <div class="snapshot">
+        <div class="stat"><div class="num">11 yrs</div><div class="lbl">In Operation</div></div>
+        <div class="stat"><div class="num">4.6&#9733;</div><div class="lbl">Yelp (28 reviews)</div></div>
+        <div class="stat"><div class="num">CSLB #1097824</div><div class="lbl">Active License</div></div>
+        <div class="stat"><div class="num">2 / 5</div><div class="lbl">Website Quality</div></div>
+      </div>
+
+      <!-- ==================== SECTION 1 ==================== -->
+      <section class="sec" id="sec-1">
+        <div class="sec-head"><span class="n">1</span><h2>Business Overview</h2></div>
+        <p><strong>Everlasting Renovations Inc.</strong> is a Christian, family-owned painting and general remodeling company based at <strong>25422 Trabuco Rd, Ste 212, Lake Forest, CA 92630</strong>, owned and operated by <strong>Matthew</strong> (co-owner <strong>Crystal</strong>) and reachable at <strong>(714) 745-2777</strong> or <strong>everlastingrenovationsinc@gmail.com</strong>. The company has been in operation for <strong>11 years (since 2015)</strong> and was formally incorporated in 2022. <span class="badge badge-high">HIGH</span></p>
+
+        <div class="panel slate">
+          <h3>Dual-brand identity note</h3>
+          <p class="kv">The business operates under two names: <b>Everlasting Renovations Inc.</b> (current legal entity) and <b>Everlasting Painting, Inc.</b> (legacy DBA). Both names appear across review platforms, directories, and prior marketing materials. The dual-name situation may fragment search visibility and create confusion for prospects who encounter the old name. Consolidating to the current legal name across all profiles is a foundational cleanup step. <span class="badge badge-high">HIGH</span></p>
+        </div>
+
+        <p><strong>Services (verified):</strong> Interior &amp; Exterior Painting &middot; Kitchen Remodeling &middot; Bathroom Remodeling &middot; Flooring (installation + repair) &middot; ADU &amp; Room Additions &middot; Windows &amp; Doors &middot; Drywall Repair / Texture &middot; Acoustic Ceiling Removal &middot; Pressure Washing &middot; General Remodeling</p>
+
+        <p><strong>Service area:</strong> Orange County, CA &mdash; Lake Forest, Ladera Ranch, Laguna Hills, Irvine, Mission Viejo, San Clemente, Dana Point, Newport Beach, and 20+ additional OC cities per Networx listing. <span class="badge badge-high">HIGH</span></p>
+
+        <div class="panel">
+          <h3>Licensing, bonding &amp; insurance</h3>
+          <ul>
+            <li><b>CSLB License #1097824 &mdash; B (General Building Contractor)</b> &middot; Active through October 2026 <span class="badge badge-high">HIGH</span></li>
+            <li><b>Bond:</b> Hudson Insurance Company &middot; Active <span class="badge badge-high">HIGH</span></li>
+            <li><b>Workers&rsquo; Comp:</b> Pie Casualty Insurance Company &middot; Active through December 2026 <span class="badge badge-high">HIGH</span></li>
+            <li><b>BBB:</b> Not accredited &middot; Profile opened 1/10/2024 &middot; 0 complaints on record <span class="badge badge-high">HIGH</span></li>
+          </ul>
+        </div>
+
+        <p><strong>Notable differentiators:</strong> 3-year written warranty <span class="badge badge-high">HIGH</span> &middot; Se Habla Espa&ntilde;ol <span class="badge badge-high">HIGH</span> &middot; Christian family-owned business (stated on site and cited by reviewers) <span class="badge badge-high">HIGH</span></p>
+      </section>
+
+      <!-- ==================== SECTION 2 ==================== -->
+      <section class="sec" id="sec-2">
+        <div class="sec-head"><span class="n">2</span><h2>Digital Presence Audit</h2></div>
+
+        <div class="panel forest">
+          <h3>Website &mdash; everlastingrenovationsinc.com &nbsp;&middot;&nbsp; Quality 2 / 5 &nbsp;&middot;&nbsp; Wix Platform</h3>
+          <p class="kv">The site is <b>functional but conversion-thin and visually generic</b>. Built on Wix with a mobile-responsive layout in Work Sans, it surfaces services and a reference to the 3-year warranty, but buries contact information and lacks any inbound lead capture. The Christian/family-owned identity is stated, which differentiates from competitors, but the Wix template design fails to express the brand&rsquo;s warmth or craftsmanship at a glance.</p>
+          <div class="grid2">
+            <div class="works">
+              <h3>What works</h3>
+              <ul>
+                <li>Christian / family-owned differentiator is stated on site &mdash; a real conversion signal</li>
+                <li>Full services list is present and readable</li>
+                <li>Before/after photo section gives visual proof of work quality</li>
+                <li>Review CTA directing to Google is present</li>
+                <li>3-year written warranty is mentioned (though below the fold)</li>
+                <li>Mobile-responsive Wix build; Work Sans font is clean and legible</li>
+              </ul>
+            </div>
+            <div class="gaps">
+              <h3>What does not</h3>
+              <ul>
+                <li>Generic Wix design template &mdash; no visual differentiation from dozens of competitors</li>
+                <li>Phone number buried &mdash; not prominently in the hero or sticky header</li>
+                <li>No lead capture form &mdash; phone call is the only inbound channel</li>
+                <li>No verified GBP link found during audit <span class="badge badge-med">MEDIUM</span></li>
+                <li>Weak local SEO signals &mdash; Wix produces no structured schema markup out of the box</li>
+                <li>Social presence Instagram-only &mdash; no review widget embedded on site</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel slate">
+          <h3>Reviews &mdash; Solid Sentiment, Thin Volume</h3>
+          <div class="table-wrap">
+            <table>
+              <tr><th>Platform</th><th class="center">Reviews</th><th class="center">Rating</th><th>Notes</th></tr>
+              <tr><td>Yelp</td><td class="center">28</td><td class="center"><span class="stars">4.6 &#9733;</span></td><td>Verified. Owner left a public note directing users away from Yelp toward Google &mdash; a trust risk (see Section 4).</td></tr>
+              <tr><td>Google</td><td class="center"><span class="flag">Not found</span></td><td class="center"><span class="flag">Manual check needed</span></td><td>No GBP rating or review count surfaced in automated audit. <span class="badge badge-low">LOW</span></td></tr>
+              <tr><td>Networx</td><td class="center">Multiple</td><td class="center"><span class="stars">5.0 &#9733;</span></td><td>Search snippet verified. Kathleen (Westminster) 5&starf; review confirmed. 3-yr warranty also listed here.</td></tr>
+              <tr><td>BBB</td><td class="center">0 complaints</td><td class="center">&mdash;</td><td>Profile opened Jan 2024. Not accredited. Clean record. <span class="badge badge-high">HIGH</span></td></tr>
+            </table>
+          </div>
+          <p class="kv"><b>Trend read:</b> Sentiment is genuinely positive &mdash; Yelp&rsquo;s 4.6 / 28 is respectable &mdash; but volume is the primary gap. Top competitors carry 128&ndash;329 reviews. The bigger risk is the missing Google presence: if GBP exists but is unoptimized, it is costing map-pack visibility daily.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Social Channels</h3>
+            <ul>
+              <li><b>Instagram</b> &mdash; @everlastingrenovationsinc &middot; Active. Post count and follower data not retrievable (JS-gated). <span class="badge badge-med">MEDIUM</span></li>
+              <li><b>Facebook</b> &mdash; No page found in audit. <span class="badge badge-inf">INFERRED</span></li>
+              <li><b>LinkedIn</b> &mdash; No profile found. <span class="badge badge-inf">INFERRED</span></li>
+              <li>No review widget or social feed is embedded on the website.</li>
+            </ul>
+          </div>
+          <div class="panel">
+            <h3>Google Business Profile</h3>
+            <p class="kv"><b>No GBP verified during audit.</b> The website includes a CTA directing visitors to leave a Google review, suggesting an account exists &mdash; but no profile URL, star rating, or review count surfaced in the automated audit. This is the single highest-impact local-SEO gap. <span class="flag">Manual check needed &mdash; search &ldquo;Everlasting Renovations Lake Forest CA&rdquo; in Google Maps.</span></p>
+            <p class="gapnote">If a GBP exists but is unoptimized (no posts, incomplete hours, no photo uploads), it may still be suppressing map-pack visibility.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION 3 ==================== -->
+      <section class="sec" id="sec-3">
+        <div class="sec-head"><span class="n">3</span><h2>Brand Voice Analysis</h2></div>
+        <div class="voice-words">
+          <div class="vw"><div class="w">Trustworthy</div><div class="s">Licensed, bonded, warranted</div></div>
+          <div class="vw"><div class="w">Family-Centered</div><div class="s">Faith and values forward</div></div>
+          <div class="vw"><div class="w">Detail-Driven</div><div class="s">Attention beyond expectations</div></div>
+        </div>
+        <p>Everlasting communicates with a warm personal register grounded in reliability &mdash; phrases like &ldquo;ironclad warranty&rdquo; and &ldquo;we lead the industry&rdquo; signal self-confidence without boast. The Christian-business angle is raised exactly once per context, letting it function as a signal rather than a sermon &mdash; and at least one reviewer cites it as a direct conversion driver. Their copy leans transactional (services, price signals, license numbers) but would gain significant lift from a stronger narrative arc around the renovation journey: the home before, the process, the result.</p>
+
+        <div class="panel">
+          <h3>Verbatim copy samples <span class="gapnote">(source: everlastingrenovationsinc.com)</span></h3>
+          <blockquote>&ldquo;Everlasting life, seek Him. Everlasting Renovations, call us!&rdquo;<span class="who">Website homepage headline (everlastingrenovationsinc.com)</span></blockquote>
+          <blockquote>&ldquo;Since beginning our journey in 2015, we have lead the industry in expertise, quality workmanship and attention to detail in Orange County.&rdquo;<span class="who">About page body copy</span></blockquote>
+          <blockquote>&ldquo;[W]e offer a 3-year written warranty on all of our services, giving you the peace of mind that you deserve&rdquo;<span class="who">Services / warranty language (site)</span></blockquote>
+        </div>
+
+        <div class="panel slate">
+          <h3>Voice opportunities</h3>
+          <p class="kv"><b>Lead with the 3-year warranty above the fold.</b> It is stated on the site but buried &mdash; this is a class-leading differentiator that most competitors do not match, and it should be the first thing a prospect reads, not a footnote.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Tighten the grammar to match the craftsmanship.</b> &ldquo;we have lead the industry&rdquo; (should be &ldquo;led&rdquo;) is a small error that undercuts the detail-driven brand voice. A copy audit before any ad spend is recommended.</p>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION 4 ==================== -->
+      <section class="sec" id="sec-4">
+        <div class="sec-head"><span class="n">4</span><h2>Customer Intelligence</h2></div>
+        <p class="lead-in">Across Yelp (4.6), Networx (5.0), and website testimonials, the praise clusters consistently on three themes &mdash; crew behavior, faith-aligned trust, and outcomes that exceed expectations.</p>
+
+        <div class="panel slate">
+          <h3>1 &nbsp;&middot;&nbsp; Speed + Professionalism</h3>
+          <blockquote>&ldquo;Matthew&rsquo;s crew did amazing work! They were prompt, polite and our house just looks amazing! We are very happy!&rdquo;<span class="who">Kathleen, Westminster CA &mdash; Networx 5&#9733; (Verified)</span></blockquote>
+          <p class="kv">Multiple reviews highlight promptness and crew courtesy. This is a top-of-funnel trust signal for OC homeowners who have been burned by no-show contractors.</p>
+
+          <h3 style="margin-top:12px;">2 &nbsp;&middot;&nbsp; Faith-Aligned Trust</h3>
+          <blockquote>&ldquo;Since they are also a Christian business, I felt even more assured. Thankfully, they handled everything professionally, neatly, and with great care. The result exceeded my expectations, and I&rsquo;m truly satisfied.&rdquo;<span class="who">Jessica S. &mdash; Website testimonial</span></blockquote>
+          <p class="kv">The Christian identity is cited explicitly as a conversion driver. This is a micro-niche positioning signal that Everlasting&rsquo;s direct competitors do not hold &mdash; it functions as social proof for a specific buyer segment (faith-motivated homeowners) who will seek this out.</p>
+
+          <h3 style="margin-top:12px;">3 &nbsp;&middot;&nbsp; Results That Exceed Expectations</h3>
+          <blockquote>&ldquo;The attention to detail is beyond anything you are likely to experience in today&rsquo;s service industry. You couldn&rsquo;t find a better company to hire.&rdquo;<span class="who">Jackie C. &mdash; Website testimonial</span></blockquote>
+          <p class="kv">Reviewers consistently describe outcomes beyond what was anticipated. This is an invitation to build a &ldquo;before and after&rdquo; content strategy that visually proves what the reviews describe.</p>
+        </div>
+
+        <div class="panel gaps">
+          <h3>Friction point &mdash; Yelp owner response</h3>
+          <p class="kv">The Yelp listing contains a public note from the owner explicitly directing prospects away from Yelp and toward Google: <em>&ldquo;Don&rsquo;t use Yelp. Use Google. They don&rsquo;t treat their contractors well. Thieves.&rdquo;</em> <span class="badge badge-high">HIGH risk</span></p>
+          <p class="kv">This is a significant trust signal risk. A prospect who lands on Yelp &mdash; still among the top referral sources in the home-services category &mdash; sees the owner publicly directing them elsewhere and disparaging the platform. Regardless of how justified the sentiment is, it reads as evasive or combative to a cold prospect. <b>Recommendation: remove or soften this note.</b> A neutral statement (&ldquo;We prefer to be reached directly at&hellip;&rdquo;) achieves the redirect without the reputational cost.</p>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION 5 ==================== -->
+      <section class="sec" id="sec-5">
+        <div class="sec-head"><span class="n">5</span><h2>Competitive Landscape</h2></div>
+        <div class="table-wrap">
+          <table>
+            <tr><th>Competitor</th><th>Location</th><th class="center">Site /5</th><th class="center">Yelp</th><th class="center">Rating</th><th>Key differentiator</th></tr>
+            <tr><td><b>Streamline Painting &amp; Coatings</b></td><td>Lake Forest, CA</td><td class="center">3</td><td class="center">128</td><td class="center"><span class="stars">&#9733;&#9733;&#9733;&#9733;+</span></td><td>Same city, same drywall scope, 4&times; the Yelp volume &mdash; local name recognition advantage.</td></tr>
+            <tr><td><b>Neilson&rsquo;s Painting</b></td><td>Mission Viejo, CA</td><td class="center">3</td><td class="center">141</td><td class="center"><span class="stars">&#9733;&#9733;&#9733;&#9733;+</span></td><td>Painting-only (no remodeling), but dominates the pure-painting adjacent market with 5&times; review volume.</td></tr>
+            <tr><td><b>Xenak Painting &amp; Remodeling</b></td><td>Irvine, CA</td><td class="center">4</td><td class="center">329</td><td class="center"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></td><td>Nearly identical service mix (painting + remodeling + flooring). Market leader by social proof &mdash; 10&times; Everlasting&rsquo;s Yelp count.</td></tr>
+            <tr><td><b>Everlasting Renovations</b></td><td>Lake Forest, CA</td><td class="center">2</td><td class="center">28</td><td class="center"><span class="stars">4.6 &#9733;</span></td><td>3-yr warranty + CSLB license + Christian family-owned &mdash; real differentiators, but currently buried.</td></tr>
+          </table>
+        </div>
+
+        <div class="panel">
+          <h3>Where Everlasting leads &mdash; and where it lags</h3>
+          <p class="kv"><b>Leads on credentials and differentiators.</b> The 3-year written warranty is rare in this market &mdash; none of the three main competitors surface a comparable written warranty commitment. ADU and room addition capability sets them distinctly above painter-only competitors like Neilson&rsquo;s. The Christian family-owned positioning is a micro-niche trust signal none of the three competitors carry or can authentically claim.</p>
+          <p class="kv" style="margin-bottom:0;"><b>Lags on volume and discoverability.</b> At 28 Yelp reviews versus 128&ndash;329 for the competition, Everlasting is effectively invisible in organic social-proof comparisons. There is no confirmed GBP optimization, no landing pages for individual OC cities, and no blog or AEO content. The differentiators are real; the distribution of those differentiators is not.</p>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION 6 ==================== -->
+      <section class="sec" id="sec-6">
+        <div class="sec-head"><span class="n">6</span><h2>Landing Page Strategy</h2></div>
+
+        <div class="panel slate">
+          <h3>Recommended Hero</h3>
+          <p class="kv"><b>Headline:</b> &ldquo;Kitchens. Bathrooms. Exteriors. Done Right.&rdquo;</p>
+          <p class="kv"><b>Sub-headline:</b> Licensed, bonded &amp; insured &middot; 3-year written warranty &middot; Lake Forest, CA</p>
+          <p class="kv" style="margin-bottom:0;"><b>Primary CTA:</b> <span class="pill">GET MY FREE ESTIMATE</span> &mdash; above-the-fold lead form replacing the current phone-only inbound channel. Reinforce with click-to-call for mobile users.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Above-the-fold trust signals</h3>
+          <ul>
+            <li>CSLB #1097824 &mdash; B General Building Contractor &middot; Active</li>
+            <li>11 years in business (since 2015) &middot; Family-owned</li>
+            <li>3-Year Written Warranty &mdash; your biggest differentiator, above the fold</li>
+            <li>Se Habla Espa&ntilde;ol &mdash; expands the convertible audience in OC</li>
+            <li>Workers&rsquo; Comp Covered &middot; Bonded &amp; Insured &mdash; homeowner peace of mind</li>
+            <li>Yelp 4.6&#9733; / 28 reviews (and Google rating once verified)</li>
+          </ul>
+        </div>
+
+        <div class="grid2">
+          <div>
+            <p class="lead-in">Color &amp; typography direction</p>
+            <p class="kv"><b>Burnt orange + steel blue</b> on warm white and cream &mdash; the client&rsquo;s existing palette already communicates heritage warmth and professional authority. The combination is visually distinctive in a market dominated by safe grays and blues. Lean into it rather than fighting it.</p>
+            <div class="swatches">
+              <div class="sw"><div class="chip" style="background:#662A08;"></div><div class="cap">Primary Burnt Orange<br>#662A08</div></div>
+              <div class="sw"><div class="chip" style="background:#2B5672;"></div><div class="cap">Steel Blue<br>#2B5672</div></div>
+              <div class="sw"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--line);"></div><div class="cap">Clean White<br>#FFFFFF</div></div>
+              <div class="sw"><div class="chip" style="background:#F5F0E8;"></div><div class="cap">Warm Off-White<br>#F5F0E8</div></div>
+            </div>
+          </div>
+          <div>
+            <p class="lead-in">Font pairing</p>
+            <p class="kv"><b>Work Sans</b> (match existing brand identity &mdash; keeps the look consistent and reduces the client&rsquo;s re-learning curve) for UI and body copy. Pair with <b>Georgia</b> or <b>Source Serif Pro</b> for testimonial pull-quotes and section headers &mdash; the serif signals craftsmanship and permanence against the clean sans-serif utility of Work Sans.</p>
+            <p class="kv" style="margin-bottom:0;">Avoid generic display fonts. The goal is to look <em>intentional</em> &mdash; like a business that sweated the details, which is exactly what reviewers say about the work.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SECTION 7 ==================== -->
+      <section class="sec" id="sec-7">
+        <div class="sec-head"><span class="n">7</span><h2>Branch &amp; Root Recommendation</h2></div>
+        <div class="tier-banner">
+          <div class="k">Recommended Service Tier</div>
+          <div class="v">Local Growth Engine &mdash; $1,500 setup + $497&ndash;$997 / mo</div>
+        </div>
+
+        <p><strong>Why this tier.</strong> Everlasting has the foundational assets that most businesses at this stage lack: a real license, a real warranty, authentic reviews, and a values-based differentiator that competitors cannot copy. What it lacks is infrastructure to turn those assets into inbound leads:</p>
+        <ul>
+          <li><b>No online lead capture form</b> &mdash; phone calls are their only inbound channel; any prospect who visits the website outside business hours or isn&rsquo;t ready to call is lost. Our Instant Responder + booking widget fills this gap immediately.</li>
+          <li><b>Review volume is the #1 competitive gap</b> &mdash; at 28 Yelp reviews versus 329 for Xenak, Everlasting is functionally invisible in the social-proof comparison prospects make during consideration. Our Customer Reactivation Engine deploys automated review-request sequences to past clients to close this gap fast.</li>
+          <li><b>GBP is unoptimized</b> &mdash; the site references Google reviews but the profile was not locatable in the audit. Local Growth Engine includes full GBP setup and optimization, which is the highest single-leverage action for map-pack visibility.</li>
+          <li><b>No structured follow-up for estimates that don&rsquo;t close immediately</b> &mdash; home renovation is a consideration-cycle purchase; most prospects get 2&ndash;3 quotes. A follow-up sequence keeps Everlasting top of mind while competitors go silent.</li>
+          <li><b>The 3-year written warranty is buried</b> &mdash; it is a class-leading differentiator that competitors do not match, but it currently lives below the fold in fine print. Our landing page architecture brings it above the fold in the hero and repeats it in every trust badge.</li>
+        </ul>
+
+        <div class="panel forest">
+          <h3>Revenue opportunity</h3>
+          <p class="kv">Kitchen remodels average <b>$25,000&ndash;$65,000</b> in Orange County. Bathroom remodels average <b>$12,000&ndash;$35,000</b>. If the landing page, GBP optimization, and follow-up automation convert just <b>2 additional kitchen clients per quarter</b>, that is <b>$50,000&ndash;$130,000 in incremental revenue per year</b> against a &lt;$12,000/yr engagement cost &mdash; an ROI of <b>4&ndash;11&times;</b> in the kitchen segment alone. Adding 2&ndash;4 additional bathroom remodels per quarter compounds the return further.</p>
+          <p class="kv" style="margin-bottom:0;">The brand already converts when prospects find it &mdash; the constraint is discovery volume and capture. This engagement solves both.</p>
+        </div>
+
+        <p class="gapnote" style="margin-top:14px;"><b>Data gaps noted in this report (all recommend verifying before first sales call):</b>
+          <br>&middot; Google review count and rating &mdash; search &ldquo;Everlasting Renovations Lake Forest CA&rdquo; in Google Maps <span class="flag">[manual check needed]</span>
+          <br>&middot; Owner last name &mdash; not publicly available in any verified source <span class="flag">[verify via phone outreach]</span>
+          <br>&middot; Current monthly lead volume &mdash; unknown <span class="flag">[verify via phone outreach]</span>
+          <br>&middot; Average job ticket / service mix by revenue &mdash; unknown <span class="flag">[verify via phone outreach]</span>
+          <br>No review counts, ratings, or quotes in this report were fabricated; every claim traces to the Round 00 research record.</p>
+      </section>
+
+      <footer class="rep-foot">Branch &amp; Root Consulting &mdash; Confidential &nbsp;&middot;&nbsp; Everlasting Renovations Inc. &nbsp;&middot;&nbsp; Round 00 Brand Intelligence Report</footer>
+
+    </main>
+  </div>
+
+<!-- ===== Bottom-right page switcher ===== -->
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-0/everlasting-renovations" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </span>
+    <a href="/round-0/everlasting-renovations/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <a href="/round-0/everlasting-renovations/questionnaire" aria-label="Website discovery questionnaire">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </a>
+    <div class="br-nav-sep"></div>
+    <a href="/round-0/" aria-label="Round 00 index">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></span>
+      <span class="lbl">Round 00</span>
+    </a>
+    <a href="/" aria-label="All rounds portal">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+      <span class="lbl">All Rounds</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<a class="br-portal" href="/" aria-label="Return to the Branch &amp; Root lead portal">
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+  <span class="br-portal-lbl">Return to Portal</span>
+</a>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-nav a'));
+  function setActive(id){links.forEach(function(a){var on=a.getAttribute('href')==='#'+id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');});}
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+    setActive(secs[0].id);
+  }
+  var r=document.documentElement;
+  function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}
+  function cur(){return r.getAttribute("data-theme")||sys();}
+  var b=document.querySelector(".theme-toggle");
+  if(b){b.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}
+})();
+</script>
+<script>(function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();</script>
+</body>
+</html>

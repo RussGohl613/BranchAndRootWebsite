@@ -25,7 +25,13 @@
     { "source": "/packages", "destination": "/bundles", "permanent": true },
     { "source": "/packages.html", "destination": "/bundles", "permanent": true },
     { "source": "/blog", "destination": "/guides", "permanent": true },
-    { "source": "/blog/:path*", "destination": "/guides/:path*", "permanent": true }
+    { "source": "/blog/:path*", "destination": "/guides/:path*", "permanent": true },
+    { "source": "/round-1/dan-blankenship",            "destination": "/round-0/dan-blankenship",            "permanent": true },
+    { "source": "/round-1/dan-blankenship/:path*",     "destination": "/round-0/dan-blankenship/:path*",     "permanent": true },
+    { "source": "/round-1/mission-auto-center",        "destination": "/round-0/mission-auto-center",        "permanent": true },
+    { "source": "/round-1/mission-auto-center/:path*", "destination": "/round-0/mission-auto-center/:path*", "permanent": true },
+    { "source": "/round-1/oc-dents",                   "destination": "/round-0/oc-dents",                   "permanent": true },
+    { "source": "/round-1/oc-dents/:path*",            "destination": "/round-0/oc-dents/:path*",            "permanent": true }
   ],
   "rewrites": [
     {

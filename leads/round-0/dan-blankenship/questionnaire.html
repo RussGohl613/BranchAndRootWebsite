@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F1EA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1726">
+<title>Dan Blankenship — Website Discovery Questionnaire | Branch &amp; Root</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+  :root{
+    color-scheme:light dark;
+    --accent:#C9933A; --accent-soft:#C9933A33; --accent-ink:#0E1726;
+    --navy:#0E1726; --panel:#15203420; --card:#172339; --card-2:#1C2A44;
+    --ink:#E8EDF5; --muted:#93A1B8; --line:#27344C; --line-soft:#1F2B40;
+    --good:#5BC98C;
+    --fh:"Bitter",Georgia,serif; --fb:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    --radius:14px; --radius-sm:10px;
+    --brsw-surface:var(--card); --brsw-ink:var(--ink); --brsw-line:var(--line); --brsw-accent:var(--accent);
+  }
+  /* ===== LIGHT MODE — base palette above is dark (navy); light via system pref + toggle.
+     --accent / --accent-soft / --accent-ink are intentionally NOT overridden (per-business
+     accent carries into both modes; accent-ink stays dark = AA on the accent button). ===== */
+  @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+    --navy:#F4F1EA; --panel:#FFFFFF; --card:#FFFFFF; --card-2:#F1ECE0;
+    --ink:#222824; --muted:#5A655E; --line:#DCD6C8; --line-soft:#E7E1D4; --good:#2E8B57;
+  }}
+  :root[data-theme="light"]{
+    --navy:#F4F1EA; --panel:#FFFFFF; --card:#FFFFFF; --card-2:#F1ECE0;
+    --ink:#222824; --muted:#5A655E; --line:#DCD6C8; --line-soft:#E7E1D4; --good:#2E8B57;
+  }
+  /* light-mode fixes for hardcoded colors that don't ride a CSS var */
+  @media (prefers-color-scheme:light){
+    :root:not([data-theme="dark"]) .progress{background:rgba(244,241,234,.92);}
+    :root:not([data-theme="dark"]) .menu-btn{box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+    :root:not([data-theme="dark"]) .sel{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235A655E' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");}
+  }
+  :root[data-theme="light"] .progress{background:rgba(244,241,234,.92);}
+  :root[data-theme="light"] .menu-btn{box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+  :root[data-theme="light"] .sel{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235A655E' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");}
+  /* light-mode AA: the gold accent fails as small text on the pale ground — use ink instead */
+  @media (prefers-color-scheme:light){
+    :root:not([data-theme="dark"]) .progress .pct{color:var(--ink);}
+    :root:not([data-theme="dark"]) .head .pill{color:var(--ink);}
+    :root:not([data-theme="dark"]) .save-note a{color:var(--ink);text-decoration:underline;}
+  }
+  :root[data-theme="light"] .progress .pct{color:var(--ink);}
+  :root[data-theme="light"] .head .pill{color:var(--ink);}
+  :root[data-theme="light"] .save-note a{color:var(--ink);text-decoration:underline;}
+  /* ===== THEME TOGGLE (floats over the right edge of the progress bar) ===== */
+  .theme-toggle{position:fixed;top:6px;right:14px;z-index:62;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:17px;height:17px;display:block;}
+  .progress .meta{padding-right:62px;}
+  /* base state is DARK → show the sun (offer switch-to-light); flips per effective mode */
+  .theme-toggle .i-sun{display:block;}.theme-toggle .i-moon{display:none;}
+  @media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .theme-toggle .i-sun{display:none;}:root:not([data-theme="dark"]) .theme-toggle .i-moon{display:block;}}
+  :root[data-theme="light"] .theme-toggle .i-sun{display:none;}:root[data-theme="light"] .theme-toggle .i-moon{display:block;}
+  :root[data-theme="dark"] .theme-toggle .i-sun{display:block;}:root[data-theme="dark"] .theme-toggle .i-moon{display:none;}
+  /* ===== BR page switcher — collapsed up-arrow that expands on hover / focus / tap ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media print{.br-nav{display:none!important;}}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--navy);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent)}
+  /* progress bar */
+  .progress{position:fixed;top:0;left:0;right:0;height:auto;z-index:60;background:rgba(14,23,38,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .progress .bar{height:5px;background:var(--line-soft);}
+  .progress .fill{height:5px;width:0;background:var(--accent);transition:width .35s ease;}
+  .progress .meta{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;font-size:.82rem;color:var(--muted);}
+  .progress .meta b{color:var(--ink);font-family:var(--fh);}
+  .progress .pct{color:var(--accent);font-weight:700;}
+  /* layout */
+  .layout{display:grid;grid-template-columns:288px minmax(0,1fr);max-width:1240px;margin:0 auto;padding-top:46px;}
+  .side{position:sticky;top:46px;align-self:start;height:calc(100vh - 46px);overflow:auto;padding:22px 16px;border-right:1px solid var(--line);}
+  .brand{font-family:var(--fh);font-weight:800;color:var(--ink);font-size:1.05rem;}
+  .brand .amp{color:var(--accent);}
+  .side .eyebrow{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:14px 0 4px;}
+  .side .who{font-size:.9rem;color:var(--muted);margin-bottom:14px;}
+  .navq{display:flex;flex-direction:column;gap:3px;}
+  .navq a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;}
+  .navq a:hover{background:var(--card);color:var(--ink);}
+  .navq a.active{background:var(--card);color:var(--ink);border-left-color:var(--accent);}
+  .navq a .em{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:var(--card-2);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;}
+  .navq a .tx{flex:1;line-height:1.15;}
+  .navq a .ck{flex:0 0 auto;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;color:transparent;}
+  .navq a.done .ck{background:var(--good);border-color:var(--good);color:#06210f;}
+  .navq a .cnt{font-size:.66rem;color:var(--muted);font-weight:700;}
+  /* main */
+  .main{padding:26px 40px 120px;min-width:0;}
+  .head h1{font-family:var(--fh);font-size:clamp(1.5rem,1.1rem+1.4vw,2rem);font-weight:800;color:var(--ink);margin:0 0 6px;}
+  .head p{color:var(--muted);margin:0 0 4px;}
+  .head .pill{display:inline-block;margin-top:10px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);font-weight:700;font-size:.78rem;padding:4px 12px;border-radius:999px;}
+  .sec{margin-top:34px;scroll-margin-top:64px;}
+  .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:6px;}
+  .sec-head .badge{flex:0 0 auto;width:42px;height:42px;border-radius:11px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.25rem;position:relative;}
+  .sec-head .badge .num{position:absolute;bottom:-6px;right:-6px;width:19px;height:19px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:800;font-size:.68rem;display:flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--ink);margin:0;}
+  .sec-head .st{font-size:.85rem;color:var(--muted);}
+  .sec-body{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 20px 14px;}
+  .q{padding:16px 0;border-bottom:1px solid var(--line-soft);}
+  .q:last-child{border-bottom:none;}
+  .q-label{display:block;font-weight:600;color:var(--ink);margin-bottom:3px;font-size:.97rem;}
+  .opt-tag{font-size:.64rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
+  .req-tag{font-size:.6rem;background:var(--accent);color:var(--accent-ink);font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
+  .pre-tag{font-size:.6rem;background:var(--good);color:#06210f;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
+  .q-help{font-size:.82rem;color:var(--muted);margin:0 0 9px;font-style:italic;}
+  .q-field{margin-top:7px;}
+  .inp{width:100%;background:var(--navy);border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:10px 12px;font-family:var(--fb);font-size:.95rem;}
+  .inp:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  textarea.ta{min-height:78px;resize:vertical;}
+  .sel{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2393A1B8' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;}
+  .counter{display:block;text-align:right;font-size:.72rem;color:var(--muted);margin-top:3px;}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;}
+  .opts.check, .opts.radio{flex-direction:column;gap:7px;}
+  .opts.cards{flex-direction:row;}
+  .opt{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:.93rem;color:var(--ink);}
+  .opts.radio .opt, .opts.check .opt{background:var(--navy);border:1px solid var(--line);border-radius:9px;padding:9px 12px;}
+  .opts.radio .opt:hover, .opts.check .opt:hover{border-color:var(--accent);}
+  .opt input{accent-color:var(--accent);width:17px;height:17px;flex:0 0 auto;}
+  .opt.card{flex:1 1 calc(33% - 8px);justify-content:center;text-align:center;background:var(--navy);border:1px solid var(--line);border-radius:10px;padding:14px 10px;font-weight:600;}
+  .opt.card:hover{border-color:var(--accent);}
+  .opt.card input{display:none;}
+  .opt.card.sel-card{border-color:var(--accent);background:var(--accent-soft);}
+  .multi{display:flex;flex-direction:column;gap:8px;}
+  .triple{display:flex;gap:10px;} .tn{flex:1;} .tnl{display:block;font-size:.74rem;color:var(--muted);margin-bottom:3px;}
+  .cr{display:flex;gap:10px;} .cr .inp{flex:1;}
+  .inline-other{margin-top:8px;}
+  .colorset{display:flex;flex-direction:column;gap:9px;}
+  .crow{display:flex;align-items:center;gap:10px;} .crow .cl{width:88px;font-size:.85rem;color:var(--muted);}
+  .cpick{width:46px;height:38px;border:1px solid var(--line);border-radius:8px;background:var(--navy);padding:2px;cursor:pointer;}
+  .crow .hex{max-width:150px;}
+  /* footer copy */
+  .finish{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;text-align:center;}
+  .finish p{color:var(--muted);max-width:54ch;margin:0 auto 14px;}
+  .copy-btn{background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:1rem;border:none;border-radius:10px;padding:13px 28px;cursor:pointer;font-family:var(--fb);box-shadow:0 10px 24px -10px var(--accent);}
+  .copy-btn:hover{filter:brightness(1.06);}
+  .copy-btn.ok{background:var(--good);color:#06210f;}
+  .save-note{margin-top:12px;font-size:.78rem;color:var(--muted);}
+  .foot{margin-top:26px;font-size:.76rem;color:var(--muted);text-align:center;}
+  .foot .tag{font-family:var(--fh);font-style:italic;color:var(--accent);}
+  /* mobile */
+  .menu-btn{display:none;}
+  @media (max-width:920px){
+    .layout{grid-template-columns:1fr;}
+    .side{position:fixed;top:46px;left:0;bottom:0;width:280px;background:var(--navy);z-index:55;transform:translateX(-100%);transition:transform .25s;}
+    .side.open{transform:translateX(0);}
+    .menu-btn{display:inline-flex;align-items:center;gap:7px;position:fixed;bottom:18px;left:18px;z-index:58;background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:11px 16px;font-weight:700;font-family:var(--fb);box-shadow:0 8px 20px -8px #000;cursor:pointer;}
+    .main{padding:22px 16px 120px;}
+    .opt.card{flex:1 1 calc(50% - 8px);}
+  }
+</style>
+</head>
+<body>
+<div class="progress">
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <div class="meta"><span><b id="ans">0</b> of <b id="tot">0</b> questions answered</span><span class="pct" id="pct">0%</span></div>
+</div>
+
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg></button>
+
+<div class="layout">
+  <aside class="side" id="side">
+    <div class="brand">Branch <span class="amp">&amp;</span> Root</div>
+    <p class="eyebrow">Website Discovery</p>
+    <p class="who">Dan Blankenship · Real Estate</p>
+    <nav class="navq" id="navq">
+      <a href="#sec1" data-sec="1"><span class="em">👤</span><span class="tx">About Dan</span><span class="cnt">0/9</span><span class="ck"></span></a>
+      <a href="#sec2" data-sec="2"><span class="em">🗺️</span><span class="tx">Market &amp; Territory</span><span class="cnt">0/7</span><span class="ck"></span></a>
+      <a href="#sec3" data-sec="3"><span class="em">🎯</span><span class="tx">Ideal Client</span><span class="cnt">0/5</span><span class="ck"></span></a>
+      <a href="#sec4" data-sec="4"><span class="em">💡</span><span class="tx">Unique Value Proposition</span><span class="cnt">0/4</span><span class="ck"></span></a>
+      <a href="#sec5" data-sec="5"><span class="em">🎨</span><span class="tx">Brand &amp; Aesthetic</span><span class="cnt">0/7</span><span class="ck"></span></a>
+      <a href="#sec6" data-sec="6"><span class="em">⭐</span><span class="tx">Social Proof</span><span class="cnt">0/8</span><span class="ck"></span></a>
+      <a href="#sec7" data-sec="7"><span class="em">🏆</span><span class="tx">Competition</span><span class="cnt">0/4</span><span class="ck"></span></a>
+      <a href="#sec8" data-sec="8"><span class="em">📈</span><span class="tx">Goals &amp; Lead Strategy</span><span class="cnt">0/6</span><span class="ck"></span></a>
+      <a href="#sec9" data-sec="9"><span class="em">⚙️</span><span class="tx">Technical &amp; Assets</span><span class="cnt">0/8</span><span class="ck"></span></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="head">
+      <h1>Tell us about you, Dan.</h1>
+      <p>This questionnaire is how Branch &amp; Root learns your business in your own words. These answers go straight into your new website — the more specific you are, the better it performs. Spend extra time on Sections 3 and 4. Your progress saves automatically as you go.</p>
+      <p>We've <b>pre-filled</b> a few fields from public research — please confirm or correct anything marked <span style="color:var(--good);font-weight:700;">pre-filled</span>.</p>
+      <span class="pill">Auto-saves to this browser · 58 questions</span>
+    </div>
+
+    <form id="qform" autocomplete="off" action="https://formspree.io/f/mbdebzor" method="POST">
+      <input type="hidden" name="business" value="dan-blankenship">
+      <input type="hidden" name="_subject" value="New Round-01 questionnaire — Dan Blankenship">
+
+      <!-- ===== SECTION 1: ABOUT DAN ===== -->
+      <section class="sec" id="sec1"><div class="sec-head"><span class="badge">👤<span class="num">1</span></span><div><h2>About Dan</h2><div class="st">Background, credentials, and professional story</div></div></div><div class="sec-body">
+        <div class="q" data-sec="1"><label class="q-label">Full name as it should appear on the website</label><div class="q-field"><input class="inp" type="text" name="s1_fullname" value="Dan Blankenship"></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Brokerage / office name</label><p class="q-help">Pre-filled from your DRE record (responsible broker). Please confirm or correct — e.g. if you market under a different team or DBA name.</p><div class="q-field"><input class="inp" type="text" name="s1_brokerage" placeholder="e.g. Coldwell Banker, Compass, Re/Max…" value=""></div></div>
+        <div class="q" data-sec="1"><label class="q-label">How many years have you been licensed?</label><p class="q-help">Pre-filled from your DRE record (licensed 2002) — adjust if needed.</p><div class="q-field"><select class="inp sel" name="s1_years"><option value="">Select…</option><option value="Less than 1 year">Less than 1 year</option><option value="1–3 years">1–3 years</option><option value="3–5 years">3–5 years</option><option value="5–10 years">5–10 years</option><option value="10–20 years">10–20 years</option><option value="20+ years">20+ years</option></select></div></div>
+        <div class="q" data-sec="1"><label class="q-label">CA DRE license number <span class="opt-tag">optional</span></label><p class="q-help">Pre-filled from the California DRE public record — please confirm it's correct.</p><div class="q-field"><input class="inp" type="text" name="s1_license" placeholder="01XXXXXX" value=""></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Do you work solo or with a team?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s1_team" value="Solo — just me"><span>Solo — just me</span></label><label class="opt"><input type="radio" name="s1_team" value="Small team (2–4)"><span>Small team (2–4)</span></label><label class="opt"><input type="radio" name="s1_team" value="Larger team (5+)"><span>Larger team (5+)</span></label></div></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Team member names and roles <span class="opt-tag">optional</span></label><div class="q-field"><textarea class="inp ta" name="s1_teamnames" placeholder="Leave blank if solo. e.g. Sarah Jones — Buyer's Agent, Mark Wu — TC"></textarea></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Professional designations / certifications</label><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s1_certs" value="ABR"><span>ABR — Accredited Buyer's Rep</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="CRS"><span>CRS — Certified Residential Specialist</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="SRES"><span>SRES — Seniors Real Estate Specialist</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="GRI"><span>GRI — Graduate, REALTOR® Institute</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="CNE"><span>CNE — Certified Negotiation Expert</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="e-PRO"><span>e-PRO</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="SFR"><span>SFR — Short Sales &amp; Foreclosure</span></label><label class="opt"><input type="checkbox" name="s1_certs" value="MRP"><span>MRP — Military Relocation Pro</span></label></div><div class="inline-other"><input class="inp" type="text" name="s1_certs_other" placeholder="Other certifications not listed"></div></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Languages spoken (other than English) <span class="opt-tag">optional</span></label><div class="q-field"><input class="inp" type="text" name="s1_langs" placeholder="e.g. Spanish, Mandarin, Tagalog" value=""></div></div>
+        <div class="q" data-sec="1"><label class="q-label">Tell your story — why did you get into real estate?</label><p class="q-help">This becomes your About page anchor. Be honest and specific — the story that sounds most human converts best.</p><div class="q-field"><textarea class="inp ta" name="s1_story" placeholder="e.g. I grew up in Mission Viejo and watched my parents struggle through a bad agent experience. I knew there was a better way…" maxlength="1000" data-counter="1"></textarea><span class="counter"><span class="cc">0</span>/1000</span></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 2: MARKET & TERRITORY ===== -->
+      <section class="sec" id="sec2"><div class="sec-head"><span class="badge">🗺️<span class="num">2</span></span><div><h2>Market &amp; Territory</h2><div class="st">Where you work and what you sell</div></div></div><div class="sec-body">
+        <div class="q" data-sec="2"><label class="q-label">Primary cities / neighborhoods served</label><p class="q-help">We pre-checked South-OC cities detected from your profiles — adjust anytime. These become your SEO keywords and neighborhood pages.</p><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s2_cities" value="Mission Viejo"><span>Mission Viejo</span></label><label class="opt"><input type="checkbox" name="s2_cities" value="Rancho Santa Margarita"><span>Rancho Santa Margarita</span></label><label class="opt"><input type="checkbox" name="s2_cities" value="Ladera Ranch"><span>Ladera Ranch</span></label><label class="opt"><input type="checkbox" name="s2_cities" value="Aliso Viejo"><span>Aliso Viejo</span></label><label class="opt"><input type="checkbox" name="s2_cities" value="Lake Forest"><span>Lake Forest</span></label></div><div class="inline-other"><input class="inp" type="text" name="s2_cities_other" placeholder="Other city / neighborhood"></div></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Primary ZIP codes served</label><div class="q-field"><input class="inp" type="text" name="s2_zips" placeholder="e.g. 92691, 92692, 92688, 92694, 92630" value=""></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Secondary / occasional markets <span class="opt-tag">optional</span></label><div class="q-field"><input class="inp" type="text" name="s2_secondary" placeholder="e.g. Newport Beach, Laguna Niguel, San Clemente — occasional deals" value=""></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Typical price range you work in</label><div class="q-field"><div class="triple"><div class="tn"><span class="tnl">Minimum $</span><input class="inp" type="text" name="s2_price_min" placeholder="$600,000"></div><div class="tn"><span class="tnl">Typical $</span><input class="inp" type="text" name="s2_price_typ" placeholder="$1,000,000"></div><div class="tn"><span class="tnl">Maximum $</span><input class="inp" type="text" name="s2_price_max" placeholder="$2,500,000"></div></div></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Property types you handle</label><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s2_proptypes" value="Single-family homes"><span>Single-family homes</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="Condos & townhomes"><span>Condos &amp; townhomes</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="Luxury estates ($2M+)"><span>Luxury estates ($2M+)</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="New construction"><span>New construction</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="Multi-family (2–4 units)"><span>Multi-family (2–4 units)</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="Investment / flip"><span>Investment / flip</span></label><label class="opt"><input type="checkbox" name="s2_proptypes" value="55+ active adult communities"><span>55+ active adult communities</span></label></div></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Do you serve relocation clients?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s2_relocation" value="Yes — a meaningful part of my business"><span>Yes — a meaningful part of my business</span></label><label class="opt"><input type="radio" name="s2_relocation" value="Occasionally — but not a focus"><span>Occasionally — but not a focus</span></label><label class="opt"><input type="radio" name="s2_relocation" value="No"><span>No</span></label></div></div></div>
+        <div class="q" data-sec="2"><label class="q-label">Neighborhoods you're best known for or most closely associated with</label><p class="q-help">Where do you have the most sold signs? What areas do people call you for first?</p><div class="q-field"><textarea class="inp ta" name="s2_known" placeholder="e.g. I'm most recognized in the Casta del Sol 55+ community in Mission Viejo and Melinda Heights in RSM…"></textarea></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 3: IDEAL CLIENT ===== -->
+      <section class="sec" id="sec3"><div class="sec-head"><span class="badge">🎯<span class="num">3</span></span><div><h2>Ideal Client</h2><div class="st">Who you serve best — and who finds you</div></div></div><div class="sec-body">
+        <div class="q" data-sec="3"><label class="q-label">Approximate buyer vs. seller split</label><div class="q-field"><select class="inp sel" name="s3_split"><option value="">Select…</option><option value="Mostly buyers (70%+ buyers)">Mostly buyers (70%+ buyers)</option><option value="Lean buyer (60/40 buyers)">Lean buyer (60/40 buyers)</option><option value="Roughly 50/50">Roughly 50/50</option><option value="Lean seller (60/40 sellers)">Lean seller (60/40 sellers)</option><option value="Mostly sellers / listings (70%+ sellers)">Mostly sellers / listings (70%+ sellers)</option></select></div></div>
+        <div class="q" data-sec="3"><label class="q-label">Client types you work with most</label><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s3_clients" value="First-time buyers"><span>First-time buyers</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Move-up buyers"><span>Move-up buyers</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Downsizers / empty nesters"><span>Downsizers / empty nesters</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Luxury ($1.5M+)"><span>Luxury ($1.5M+)</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Real estate investors"><span>Real estate investors</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Relocating clients"><span>Relocating clients</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="Divorce / estate / probate"><span>Divorce / estate / probate</span></label><label class="opt"><input type="checkbox" name="s3_clients" value="55+ active adult buyers"><span>55+ active adult buyers</span></label></div></div></div>
+        <div class="q" data-sec="3"><label class="q-label">Typical age range of your clients</label><div class="q-field"><select class="inp sel" name="s3_age"><option value="">Select…</option><option value="25–35">25–35 (entering market)</option><option value="35–45">35–45 (move-up buyers)</option><option value="45–60">45–60 (peak earners)</option><option value="60+">60+ (retirement / downsizing)</option><option value="Mixed">Mixed — no dominant group</option></select></div></div>
+        <div class="q" data-sec="3"><label class="q-label">How do most clients currently find you?</label><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s3_find" value="Referrals from past clients"><span>Referrals from past clients</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Zillow / online portal leads"><span>Zillow / online portal leads</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Sphere of influence"><span>Sphere of influence</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Open houses"><span>Open houses</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Social media"><span>Social media</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Agent referrals / relocation network"><span>Agent referrals / relocation</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Google / personal website"><span>Google / personal website</span></label><label class="opt"><input type="checkbox" name="s3_find" value="Direct mail / farming"><span>Direct mail / farming</span></label></div></div></div>
+        <div class="q" data-sec="3"><label class="q-label">What do clients consistently say about working with you?</label><p class="q-help">Think about the exact phrases you hear at the closing table or in reviews. Specific is better than general.</p><div class="q-field"><textarea class="inp ta" name="s3_say" placeholder="e.g. 'You always answered the phone.' / 'We didn't feel like just a transaction.' / 'You made a scary process feel manageable.'"></textarea></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 4: UNIQUE VALUE PROPOSITION ===== -->
+      <section class="sec" id="sec4"><div class="sec-head"><span class="badge">💡<span class="num">4</span></span><div><h2>Unique Value Proposition</h2><div class="st">What makes Dan the choice — not just a choice</div></div></div><div class="sec-body">
+        <div class="q" data-sec="4"><label class="q-label">In one sentence, what makes you different from every other agent in your market?</label><p class="q-help">Don't say "I'm dedicated to my clients" — every agent says that. What do you actually do differently?</p><div class="q-field"><textarea class="inp ta" name="s4_diff" placeholder="e.g. I'm the only agent in Mission Viejo who pre-stages every listing with professional furniture before the first photo — at no cost to the seller."></textarea></div></div>
+        <div class="q" data-sec="4"><label class="q-label">The top 3 reasons a client should choose you over anyone else</label><div class="q-field"><div class="multi"><input class="inp" type="text" name="s4_reasons_0" placeholder="Reason 1"><input class="inp" type="text" name="s4_reasons_1" placeholder="Reason 2"><input class="inp" type="text" name="s4_reasons_2" placeholder="Reason 3"></div></div></div>
+        <div class="q" data-sec="4"><label class="q-label">Describe your signature process or approach</label><p class="q-help">What is the actual step-by-step experience of working with you? What do you do at Step 1 that most agents skip?</p><div class="q-field"><textarea class="inp ta" name="s4_process" placeholder="e.g. Every listing starts with a 90-minute walkthrough where I photograph every room myself, then meet with a staging consultant I've used for 8 years. We price on the last 90 days of closed comps…" maxlength="800" data-counter="1"></textarea><span class="counter"><span class="cc">0</span>/800</span></div></div>
+        <div class="q" data-sec="4"><label class="q-label">What do you do that most agents in your market simply don't do?</label><div class="q-field"><textarea class="inp ta" name="s4_unique" placeholder="e.g. I deliver a printed bound market analysis to every seller before we talk price. I personally follow up every offer within 2 hours regardless of time…"></textarea></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 5: BRAND & AESTHETIC ===== -->
+      <section class="sec" id="sec5"><div class="sec-head"><span class="badge">🎨<span class="num">5</span></span><div><h2>Brand &amp; Aesthetic</h2><div class="st">The visual identity and feel of your website</div></div></div><div class="sec-body">
+        <div class="q" data-sec="5"><label class="q-label">Do you have an existing logo?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s5_logo" value="Yes — I'll share the file"><span>Yes — I'll share the file (PNG/SVG/AI)</span></label><label class="opt"><input type="radio" name="s5_logo" value="Yes, but open to update"><span>Yes, but open to update — it feels dated</span></label><label class="opt"><input type="radio" name="s5_logo" value="No — I need a new one"><span>No — I need a new one designed</span></label></div></div></div>
+        <div class="q" data-sec="5"><label class="q-label">Describe your current logo or branding <span class="opt-tag">optional</span></label><div class="q-field"><textarea class="inp ta" name="s5_logodesc" placeholder="e.g. Navy text, serif font, no icon. Or: my name in gold with a small house graphic."></textarea></div></div>
+        <div class="q" data-sec="5"><label class="q-label">Current brand colors — Primary / Secondary / Accent</label><p class="q-help">We pre-filled a gold-and-navy luxury palette detected from your existing materials — adjust anytime.</p><div class="q-field"><div class="colorset"><div class="crow"><span class="cl">Primary</span><input type="color" class="cpick" data-hex="hex_primary" name="color_primary" value="#C9933A"><input class="inp hex" type="text" name="hex_primary" placeholder="#hex" value="#C9933A"></div><div class="crow"><span class="cl">Secondary</span><input type="color" class="cpick" data-hex="hex_secondary" name="color_secondary" value="#0E1726"><input class="inp hex" type="text" name="hex_secondary" placeholder="#hex" value="#0E1726"></div><div class="crow"><span class="cl">Accent</span><input type="color" class="cpick" data-hex="hex_accent" name="color_accent" value="#E8AC47"><input class="inp hex" type="text" name="hex_accent" placeholder="#hex" value=""></div></div></div></div>
+        <div class="q" data-sec="5"><label class="q-label">Design style that best fits your brand</label><div class="q-field"><div class="opts cards"><label class="opt card"><input type="radio" name="s5_style" value="Modern Minimalist"><span>Modern Minimalist</span></label><label class="opt card"><input type="radio" name="s5_style" value="Warm &amp; Approachable"><span>Warm &amp; Approachable</span></label><label class="opt card"><input type="radio" name="s5_style" value="Bold &amp; Energetic"><span>Bold &amp; Energetic</span></label><label class="opt card"><input type="radio" name="s5_style" value="Classic Professional"><span>Classic Professional</span></label><label class="opt card"><input type="radio" name="s5_style" value="Quiet Luxury"><span>Quiet Luxury</span></label><label class="opt card"><input type="radio" name="s5_style" value="Coastal Modern"><span>Coastal Modern</span></label></div></div></div>
+        <div class="q" data-sec="5"><label class="q-label">5 words that describe how your website should feel</label><div class="q-field"><div class="multi"><input class="inp" type="text" name="s5_words_0" placeholder="Word 1"><input class="inp" type="text" name="s5_words_1" placeholder="Word 2"><input class="inp" type="text" name="s5_words_2" placeholder="Word 3"><input class="inp" type="text" name="s5_words_3" placeholder="Word 4"><input class="inp" type="text" name="s5_words_4" placeholder="Word 5"></div></div></div>
+        <div class="q" data-sec="5"><label class="q-label">Real estate websites you admire <span class="opt-tag">optional</span></label><p class="q-help">Think nationally if you like — what feels right visually?</p><div class="q-field"><textarea class="inp ta" name="s5_admire" placeholder="e.g. theagencyre.com — love the dark luxury look; compass neighborhood guides…"></textarea></div></div>
+        <div class="q" data-sec="5"><label class="q-label">Websites you do NOT want to look like <span class="opt-tag">optional</span></label><div class="q-field"><textarea class="inp ta" name="s5_avoid" placeholder="e.g. Anything that looks like a stock KW template — too generic. Avoid the red/white scheme."></textarea></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 6: SOCIAL PROOF ===== -->
+      <section class="sec" id="sec6"><div class="sec-head"><span class="badge">⭐<span class="num">6</span></span><div><h2>Social Proof</h2><div class="st">Numbers and testimonials that build trust instantly</div></div></div><div class="sec-body">
+        <div class="q" data-sec="6"><label class="q-label">Total transactions closed (all-time, if known) <span class="opt-tag">optional</span></label><div class="q-field"><input class="inp" type="text" name="s6_total_tx" placeholder="e.g. 180+ transactions" value=""></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Transactions closed in the last 12 months <span class="opt-tag">optional</span></label><div class="q-field"><input class="inp" type="text" name="s6_recent_tx" placeholder="e.g. 22 transactions" value=""></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Average &amp; highest sale price <span class="opt-tag">optional</span></label><div class="q-field"><div class="cr"><input class="inp" type="text" name="s6_avg_price" placeholder="Average sale price — e.g. $1,050,000"><input class="inp" type="text" name="s6_high_price" placeholder="Highest closed — e.g. $3,200,000"></div></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Zillow review count + rating</label><p class="q-help">We could NOT verify these (your Zillow page is security-blocked to automated tools) — please enter your actual numbers.</p><div class="q-field"><div class="cr"><input class="inp" type="text" name="s6_zillow_count" placeholder="# of reviews" value=""><select class="inp sel" name="s6_zillow_rating"><option value="">Rating…</option><option value="5.0">5.0</option><option value="4.9">4.9</option><option value="4.8">4.8</option><option value="4.7">4.7</option><option value="4.6">4.6</option><option value="4.5">4.5</option><option value="Below 4.5">Below 4.5</option><option value="No reviews yet">No reviews yet</option></select></div></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Google review count + rating</label><p class="q-help">Also unverified in research — please confirm.</p><div class="q-field"><div class="cr"><input class="inp" type="text" name="s6_google_count" placeholder="# of reviews" value=""><select class="inp sel" name="s6_google_rating"><option value="">Rating…</option><option value="5.0">5.0</option><option value="4.9">4.9</option><option value="4.8">4.8</option><option value="4.7">4.7</option><option value="4.6">4.6</option><option value="4.5">4.5</option><option value="Below 4.5">Below 4.5</option><option value="No reviews yet">No reviews yet</option></select></div></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Realtor.com / other platform rating <span class="opt-tag">optional</span></label><div class="q-field"><input class="inp" type="text" name="s6_other_rating" placeholder="e.g. Realtor.com 5.0 (12 reviews), Yelp 4.9" value=""></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Awards, rankings, or recognition <span class="opt-tag">optional</span></label><p class="q-help">Top Producer, Five Star Agent, President's Club, MLS rankings, press mentions, etc.</p><div class="q-field"><textarea class="inp ta" name="s6_awards" placeholder="e.g. Top 1% of OC agents (2022–2025), Five Star Real Estate Agent 4 consecutive years…"></textarea></div></div>
+        <div class="q" data-sec="6"><label class="q-label">Your top 3 client testimonials</label><p class="q-help">Copy exact quotes from your reviews. Include the client's first name and city if possible.</p><div class="q-field"><div class="multi"><input class="inp" type="text" name="s6_testi_0" placeholder="Testimonial 1 — quote, first name, city"><input class="inp" type="text" name="s6_testi_1" placeholder="Testimonial 2"><input class="inp" type="text" name="s6_testi_2" placeholder="Testimonial 3"></div></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 7: COMPETITION ===== -->
+      <section class="sec" id="sec7"><div class="sec-head"><span class="badge">🏆<span class="num">7</span></span><div><h2>Competition</h2><div class="st">Who you're up against and how to outrank them</div></div></div><div class="sec-body">
+        <div class="q" data-sec="7"><label class="q-label">Your top 3–5 local competitors (by name)</label><div class="q-field"><div class="multi"><input class="inp" type="text" name="s7_comp_0" placeholder="Agent, brokerage, or team name"><input class="inp" type="text" name="s7_comp_1" placeholder="Competitor 2"><input class="inp" type="text" name="s7_comp_2" placeholder="Competitor 3"><input class="inp" type="text" name="s7_comp_3" placeholder="Competitor 4 (optional)"><input class="inp" type="text" name="s7_comp_4" placeholder="Competitor 5 (optional)"></div></div></div>
+        <div class="q" data-sec="7"><label class="q-label">What do their websites do well that you want to match or exceed?</label><div class="q-field"><textarea class="inp ta" name="s7_well" placeholder="e.g. Competitor A has beautiful photography and a clean home search. Competitor B's neighborhood guides have school data, walkability, median prices…"></textarea></div></div>
+        <div class="q" data-sec="7"><label class="q-label">What do their websites do poorly that you want to avoid?</label><div class="q-field"><textarea class="inp ta" name="s7_poorly" placeholder="e.g. Everyone's site is slow and feels like a 2015 template. No one writes fresh content. Weak calls-to-action…"></textarea></div></div>
+        <div class="q" data-sec="7"><label class="q-label">The #1 thing you want your website to do better than everyone in your market</label><div class="q-field"><textarea class="inp ta" name="s7_one" placeholder="e.g. I want to own 'Mission Viejo real estate' on Google. I want visitors to feel like they're talking to a real neighbor…"></textarea></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 8: GOALS & LEAD STRATEGY ===== -->
+      <section class="sec" id="sec8"><div class="sec-head"><span class="badge">📈<span class="num">8</span></span><div><h2>Goals &amp; Lead Strategy</h2><div class="st">What the website needs to do for your business</div></div></div><div class="sec-body">
+        <div class="q" data-sec="8"><label class="q-label">Monthly lead target (buyers + sellers combined)</label><div class="q-field"><select class="inp sel" name="s8_target"><option value="">Select…</option><option value="5–10 / month">5–10 / month</option><option value="10–25 / month">10–25 / month</option><option value="25–50 / month">25–50 / month</option><option value="50+ / month">50+ / month</option></select></div></div>
+        <div class="q" data-sec="8"><label class="q-label">Desired lead split</label><div class="q-field"><select class="inp sel" name="s8_split"><option value="">Select…</option><option value="Mostly buyer leads">Mostly buyer leads</option><option value="Lean buyer">Lean buyer</option><option value="Roughly 50/50">Roughly 50/50</option><option value="Lean seller">Lean seller</option><option value="Mostly seller / listing leads">Mostly seller / listing leads</option></select></div></div>
+        <div class="q" data-sec="8"><label class="q-label">CRM / database system you use</label><div class="q-field"><select class="inp sel" name="s8_crm"><option value="">Select…</option><option value="GoHighLevel (GHL)">GoHighLevel (GHL)</option><option value="KvCORE">KvCORE</option><option value="Follow Up Boss">Follow Up Boss</option><option value="BoomTown">BoomTown</option><option value="Wise Agent">Wise Agent</option><option value="Spreadsheet / manual">Spreadsheet / manual</option><option value="None">None</option><option value="Other">Other</option></select><div class="inline-other"><input class="inp" type="text" name="s8_crm_other" placeholder="Other CRM not listed"></div></div></div>
+        <div class="q" data-sec="8"><label class="q-label">Do you want live IDX / MLS property listings on the site?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s8_idx" value="Yes — I already have an IDX provider"><span>Yes — I already have an IDX provider</span></label><label class="opt"><input type="radio" name="s8_idx" value="Yes — I need one set up"><span>Yes — but I need one set up</span></label><label class="opt"><input type="radio" name="s8_idx" value="No — manual featured listings only"><span>No — manual featured listings only</span></label><label class="opt"><input type="radio" name="s8_idx" value="Not sure"><span>Not sure — help me decide</span></label></div><div class="inline-other"><input class="inp" type="text" name="s8_idx_provider" placeholder="IDX provider name, if known (Showcase IDX, iHomefinder…)"></div></div></div>
+        <div class="q" data-sec="8"><label class="q-label">Scheduling / booking tool preference</label><div class="q-field"><select class="inp sel" name="s8_booking"><option value="">Select…</option><option value="Calendly">Calendly</option><option value="Acuity Scheduling">Acuity Scheduling</option><option value="GHL Calendar">GHL Calendar</option><option value="Not sure — help me choose">Not sure — help me choose</option></select><div class="inline-other"><input class="inp" type="text" name="s8_booking_link" placeholder="Booking link URL, if you have one"></div></div></div>
+        <div class="q" data-sec="8"><label class="q-label">Additional integrations needed <span class="opt-tag">optional</span></label><div class="q-field"><div class="opts check"><label class="opt"><input type="checkbox" name="s8_integrations" value="Live chat widget"><span>Live chat widget</span></label><label class="opt"><input type="checkbox" name="s8_integrations" value="WhatsApp button"><span>WhatsApp button</span></label><label class="opt"><input type="checkbox" name="s8_integrations" value="Facebook Pixel"><span>Facebook Pixel</span></label><label class="opt"><input type="checkbox" name="s8_integrations" value="Google Ads tag"><span>Google Ads tag</span></label><label class="opt"><input type="checkbox" name="s8_integrations" value="Email newsletter"><span>Email newsletter</span></label><label class="opt"><input type="checkbox" name="s8_integrations" value="SMS opt-in"><span>SMS opt-in</span></label></div></div></div>
+      </div></section>
+
+      <!-- ===== SECTION 9: TECHNICAL & ASSETS ===== -->
+      <section class="sec" id="sec9"><div class="sec-head"><span class="badge">⚙️<span class="num">9</span></span><div><h2>Technical &amp; Assets</h2><div class="st">Domain, photos, timeline, and content</div></div></div><div class="sec-body">
+        <div class="q" data-sec="9"><label class="q-label">Existing domain name <span class="opt-tag">optional</span></label><p class="q-help">Pre-filled — we found your live site at danblankenshiphome.com. Confirm this is the domain to use (your site also references "danblankenshiphomes.com" with an "s" — let us know which is correct).</p><div class="q-field"><input class="inp" type="text" name="s9_domain" placeholder="e.g. danblankenship.com or dansellsoc.com" value=""></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Professional headshots available?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s9_headshots" value="Yes — high-res files ready"><span>Yes — recent, high-res files ready</span></label><label class="opt"><input type="radio" name="s9_headshots" value="In progress — shoot scheduled"><span>In progress — shoot scheduled</span></label><label class="opt"><input type="radio" name="s9_headshots" value="No — need to arrange a shoot"><span>No — need to arrange a shoot</span></label></div></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Lifestyle / property / neighborhood photography available?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s9_lifestyle" value="Yes — substantial OC library"><span>Yes — substantial OC library</span></label><label class="opt"><input type="radio" name="s9_lifestyle" value="Partial — some property, limited lifestyle"><span>Partial — some property, limited lifestyle</span></label><label class="opt"><input type="radio" name="s9_lifestyle" value="No — stock photography for launch"><span>No — stock photography for launch</span></label></div></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Video content available?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s9_video" value="Yes — existing video"><span>Yes — existing video</span></label><label class="opt"><input type="radio" name="s9_video" value="Willing to shoot new video"><span>Willing to shoot new video</span></label><label class="opt"><input type="radio" name="s9_video" value="No video for now"><span>No video for now</span></label></div></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Any existing written content to use? <span class="opt-tag">optional</span></label><div class="q-field"><textarea class="inp ta" name="s9_content" placeholder="Bio text, old blog posts, neighborhood descriptions, a seller's guide PDF — paste or describe what exists."></textarea></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Desired launch timeline</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s9_timeline" value="ASAP — within 2 weeks"><span>ASAP — within 2 weeks</span></label><label class="opt"><input type="radio" name="s9_timeline" value="Within 1 month"><span>Within 1 month</span></label><label class="opt"><input type="radio" name="s9_timeline" value="2–3 months"><span>2–3 months</span></label><label class="opt"><input type="radio" name="s9_timeline" value="No hard deadline"><span>No hard deadline</span></label></div></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Blog / content after launch — who writes it?</label><div class="q-field"><div class="opts radio"><label class="opt"><input type="radio" name="s9_blog" value="I'll write it myself"><span>I'll write it myself</span></label><label class="opt"><input type="radio" name="s9_blog" value="Templates + AI assist"><span>Templates + AI assist</span></label><label class="opt"><input type="radio" name="s9_blog" value="Hiring a writer / VA"><span>Hiring a writer / VA</span></label><label class="opt"><input type="radio" name="s9_blog" value="Not sure yet"><span>Not sure yet</span></label></div></div></div>
+        <div class="q" data-sec="9"><label class="q-label">Anything else we should know? <span class="opt-tag">optional</span></label><div class="q-field"><textarea class="inp ta" name="s9_else" placeholder="Your market, your clients, past website attempts, your personality — anything that helps us build the best possible site for you."></textarea></div></div>
+      </div></section>
+
+      <div class="finish">
+        <p>All done? Add your email so we can follow up, then send it straight to Branch &amp; Root.</p>
+        <div class="q-field" style="max-width:380px;margin:0 auto 14px;"><input class="inp" type="email" name="email" id="leadEmail" placeholder="you@email.com" required aria-label="Your email address"></div>
+        <button type="submit" class="copy-btn" id="submitBtn">Submit to Branch &amp; Root</button>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite" style="margin-top:12px;font-size:.9rem;min-height:1.2em;"></div>
+        <div class="save-note" id="saveNote">Your answers auto-save to this browser. <a href="#" id="clearBtn">Clear saved answers</a></div>
+      </div>
+
+      <div class="foot">
+        <p class="tag">Branching your business out from a rooted foundation.</p>
+        <p>Branch &amp; Root Consulting · sales@branchandrootconsulting.com · Confidential discovery document for Dan Blankenship</p>
+      </div>
+    </form>
+  </main>
+</div>
+
+<button class="menu-btn" id="menuBtn" type="button">☰ Sections</button>
+
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-0/dan-blankenship" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">Demo</span>
+    </a>
+    <a href="/round-0/dan-blankenship/audit" aria-label="Internal brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">Brand audit</span>
+    </a>
+    <a href="/round-0/dan-blankenship/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">Mini-audit</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">Questionnaire</span>
+    </span>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+(function(){
+  var KEY = "br_q_dan-blankenship";
+  var form = document.getElementById("qform");
+  var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var navItems = Array.prototype.slice.call(document.querySelectorAll(".navq a"));
+  document.getElementById("tot").textContent = qs.length;
+
+  // ===== PRE-POPULATION — only fields confirmed via public research. No invented data. =====
+  // Sources: danblankenshiphome.com (Dan's live site) + CA DRE public license record #01343188.
+  var auditData = {
+    s1_fullname: "Dan Blankenship",                // confirmed: site + Zillow + Homes.com + DRE
+    s1_brokerage: "J. L. Alimohammadi (Janice Lynn Alimohammadi), Rancho Santa Margarita", // confirmed: DRE responsible broker for lic #01343188
+    s1_years: "20+ years",                          // confirmed: DRE shows licensed since 2002
+    s1_license: "01343188",                        // confirmed: site footer + DRE record
+    s2_cities: ["Mission Viejo", "Rancho Santa Margarita"], // confirmed: Zillow (Mission Viejo) + DRE broker address (RSM)
+    s9_domain: "danblankenshiphome.com",           // confirmed: Dan's live personal website
+    color_primary: "#C9933A",                      // detected brand gold
+    hex_primary: "#C9933A",
+    color_secondary: "#0E1726",                    // luxury navy pairing
+    hex_secondary: "#0E1726",
+    color_accent: "#E8AC47"                         // lighter gold accent
+  };
+  function prefill(){
+    Object.keys(auditData).forEach(function(name){
+      var val = auditData[name];
+      var els = form.querySelectorAll('[name="'+name+'"]');
+      if(!els.length) return;
+      els.forEach(function(el){
+        if(el.type==="checkbox"||el.type==="radio"){
+          if(Array.isArray(val)? val.indexOf(el.value)>-1 : el.value===val) el.checked=true;
+        } else { el.value = val; }
+      });
+      // tag the question with a [pre-filled] label (once per question)
+      var q = els[0].closest(".q");
+      if(q){ var lbl=q.querySelector(".q-label"); if(lbl && !lbl.querySelector(".pre-tag")){ var s=document.createElement("span"); s.className="pre-tag"; s.textContent="pre-filled"; lbl.appendChild(s); } }
+    });
+  }
+
+  function isAnswered(q){
+    var els=q.querySelectorAll("input,select,textarea");
+    var hasGroup=false,groupChecked=false,anyPrimary=false,allPrimaryFilled=true;
+    for(var i=0;i<els.length;i++){
+      var el=els[i];
+      if(el.type==="color")continue;
+      if(el.closest&&el.closest(".inline-other"))continue;                 // "Other" text never blocks
+      if(el.type==="checkbox"||el.type==="radio"){hasGroup=true;if(el.checked)groupChecked=true;}
+      else{
+        if(/optional/i.test(el.getAttribute("placeholder")||""))continue;  // optional sub-field doesn't block
+        anyPrimary=true;
+        if(((el.value||"").trim())==="")allPrimaryFilled=false;            // every primary box needs real data
+      }
+    }
+    if(hasGroup&&!groupChecked)return false;
+    if(anyPrimary&&!allPrimaryFilled)return false;
+    return hasGroup||anyPrimary;
+  }
+
+  function refresh(){
+    var answered=0;
+    var perSec={};
+    qs.forEach(function(q){
+      var sec=q.getAttribute("data-sec");
+      if(!perSec[sec]) perSec[sec]={a:0,t:0};
+      perSec[sec].t++;
+      if(isAnswered(q)){ answered++; perSec[sec].a++; }
+    });
+    var pct = qs.length? Math.round(answered/qs.length*100):0;
+    document.getElementById("ans").textContent=answered;
+    document.getElementById("pct").textContent=pct+"%";
+    document.getElementById("fill").style.width=pct+"%";
+    navItems.forEach(function(a){
+      var sec=a.getAttribute("data-sec");
+      var p=perSec[sec]||{a:0,t:0};
+      var cnt=a.querySelector(".cnt"); if(cnt) cnt.textContent=p.a+"/"+p.t;
+      if(p.t>0 && p.a===p.t){ a.classList.add("done"); var ck=a.querySelector(".ck"); if(ck) ck.textContent="✓"; }
+      else { a.classList.remove("done"); var ck2=a.querySelector(".ck"); if(ck2) ck2.textContent=""; }
+    });
+  }
+
+  // counters
+  function updateCounters(){
+    document.querySelectorAll("textarea[data-counter]").forEach(function(t){
+      var c=t.parentNode.querySelector(".cc"); if(c) c.textContent=t.value.length;
+    });
+  }
+  // option card visual
+  function syncCards(){
+    document.querySelectorAll(".opt.card").forEach(function(l){
+      var inp=l.querySelector("input"); l.classList.toggle("sel-card", inp && inp.checked);
+    });
+  }
+  // color <-> hex sync
+  document.querySelectorAll(".cpick").forEach(function(cp){
+    var hexName=cp.getAttribute("data-hex");
+    var hex=form.querySelector('[name="'+hexName+'"]');
+    cp.addEventListener("input",function(){ if(hex){hex.value=cp.value; save(); refresh();} });
+    if(hex){ hex.addEventListener("input",function(){ if(/^#?[0-9a-fA-F]{3,8}$/.test(hex.value)){ var v=hex.value[0]==="#"?hex.value:"#"+hex.value; try{cp.value=v;}catch(e){} } }); }
+  });
+
+  // save / restore
+  function save(){
+    var data={};
+    var els=form.querySelectorAll("input,select,textarea");
+    els.forEach(function(el){
+      if(!el.name) return;
+      if(el.type==="checkbox"||el.type==="radio"){
+        if(el.checked){ (data[el.name]=data[el.name]||[]).push(el.value); }
+      } else { data[el.name]=el.value; }
+    });
+    try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+  }
+  function restore(){
+    var raw; try{ raw=localStorage.getItem(KEY); }catch(e){}
+    if(!raw) return false;
+    var data; try{ data=JSON.parse(raw); }catch(e){ return false; }
+    var els=form.querySelectorAll("input,select,textarea");
+    els.forEach(function(el){
+      if(!el.name||!(el.name in data)) return;
+      var v=data[el.name];
+      if(el.type==="checkbox"||el.type==="radio"){ el.checked = Array.isArray(v)&&v.indexOf(el.value)>-1; }
+      else { el.value=v; }
+    });
+    return true;
+  }
+
+  form.addEventListener("input", function(){ save(); updateCounters(); syncCards(); refresh(); });
+  form.addEventListener("change", function(){ save(); syncCards(); refresh(); });
+
+  var submitBtn=document.getElementById("submitBtn"), formMsg=document.getElementById("formMsg");
+  if(form&&submitBtn){
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      submitBtn.disabled=true; submitBtn.textContent="Sending…"; if(formMsg){formMsg.style.color="var(--muted)";formMsg.textContent="";}
+      fetch(form.action,{method:"POST",body:new FormData(form),headers:{"Accept":"application/json"}})
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+        .then(function(res){
+          if(res.ok){ submitBtn.textContent="✓ Sent — thank you!"; submitBtn.classList.add("ok"); if(formMsg){formMsg.style.color="var(--good)";formMsg.textContent="Your answers were sent to Branch & Root. We'll be in touch shortly.";} try{localStorage.removeItem(KEY);}catch(e){} if(formMsg&&formMsg.scrollIntoView){formMsg.scrollIntoView({behavior:"smooth",block:"center"});} }
+          else { submitBtn.disabled=false; submitBtn.textContent="Submit to Branch & Root"; var m=(res.d&&res.d.errors&&res.d.errors.map(function(x){return x.message;}).join(", "))||"Something went wrong — please email sales@branchandrootconsulting.com."; if(formMsg){formMsg.style.color="var(--accent)";formMsg.textContent=m;} }
+        })
+        .catch(function(){ submitBtn.disabled=false; submitBtn.textContent="Submit to Branch & Root"; if(formMsg){formMsg.style.color="var(--accent)";formMsg.textContent="Network error — please try again, or email sales@branchandrootconsulting.com.";} });
+    });
+  }
+
+  document.getElementById("clearBtn").addEventListener("click",function(e){
+    e.preventDefault();
+    if(confirm("Clear all saved answers in this browser? This cannot be undone.")){ try{localStorage.removeItem(KEY);}catch(e){} location.reload(); }
+  });
+
+  // scroll-spy
+  if('IntersectionObserver' in window){
+    var secs=Array.prototype.slice.call(document.querySelectorAll(".sec"));
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ var id=en.target.id; navItems.forEach(function(a){a.classList.toggle("active", a.getAttribute("href")==="#"+id);}); } });
+    },{rootMargin:"-40% 0px -55% 0px"});
+    secs.forEach(function(s){io.observe(s);});
+  }
+  // mobile menu
+  var side=document.getElementById("side"), menuBtn=document.getElementById("menuBtn");
+  menuBtn.addEventListener("click",function(){ side.classList.toggle("open"); });
+  navItems.forEach(function(a){ a.addEventListener("click",function(){ side.classList.remove("open"); }); });
+
+  // first run: prefill confirmed fields, then let any saved answers override; tag pre-filled questions
+  prefill();
+  restore();
+  updateCounters(); syncCards(); refresh();
+
+  // theme toggle — nested IIFE with own locals; does not touch form/save/KEY/observers above
+  (function(){var rr=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return rr.getAttribute("data-theme")||sys();}var tb=document.querySelector(".theme-toggle");if(tb){tb.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";rr.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();
+
+  // required-badge: any question label without an "optional" or "pre-filled" tag gets a "required" badge
+  document.querySelectorAll(".q .q-label").forEach(function(lbl){
+    if(!lbl.querySelector(".opt-tag") && !lbl.querySelector(".pre-tag")){var s=document.createElement("span");s.className="req-tag";s.textContent="required";lbl.appendChild(s);}
+  });
+
+  // page-switcher toggle — collapsed up-arrow expands on tap; closes on outside-click / Escape
+  (function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();
+})();
+</script>
+</body>
+</html>

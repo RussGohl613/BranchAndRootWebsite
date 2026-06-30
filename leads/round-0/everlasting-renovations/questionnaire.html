@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4F1EA">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#080E1A">
+<title>Everlasting Renovations Inc. — Website Discovery Questionnaire | Branch &amp; Root</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+  :root{
+    color-scheme:light dark;
+    --accent:#662A08; --accent-soft:#662A0820; --accent-ink:#FFF5F0;
+    --navy:#080E1A; --panel:#15203420; --card:#0F1929; --card-2:#162234;
+    --ink:#E8EDF5; --muted:#8A9BB5; --line:#1E2D42; --line-soft:#172338;
+    --good:#5BC98C;
+    --fh:"Bitter",Georgia,serif; --fb:"Source Sans 3",system-ui,-apple-system,sans-serif;
+    --radius:14px; --radius-sm:10px;
+    --brsw-surface:var(--card); --brsw-ink:var(--ink); --brsw-line:var(--line); --brsw-accent:#2D6A4F;
+  }
+  @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+    --navy:#F4F1EA; --card:#FFFFFF; --card-2:#F1ECE0;
+    --ink:#222824; --muted:#5A655E; --line:#DCD6C8; --line-soft:#E7E1D4; --good:#2E8B57;
+  }}
+  :root[data-theme="light"]{
+    --navy:#F4F1EA; --card:#FFFFFF; --card-2:#F1ECE0;
+    --ink:#222824; --muted:#5A655E; --line:#DCD6C8; --line-soft:#E7E1D4; --good:#2E8B57;
+  }
+  @media (prefers-color-scheme:light){
+    :root:not([data-theme="dark"]) .progress{background:rgba(244,241,234,.92);}
+    :root:not([data-theme="dark"]) .menu-btn{box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+    :root:not([data-theme="dark"]) .sel{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235A655E' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");}
+  }
+  :root[data-theme="light"] .progress{background:rgba(244,241,234,.92);}
+  :root[data-theme="light"] .menu-btn{box-shadow:0 8px 20px -8px rgba(0,0,0,.25);}
+  :root[data-theme="light"] .sel{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235A655E' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");}
+  @media (prefers-color-scheme:light){
+    :root:not([data-theme="dark"]) .progress .pct{color:var(--ink);}
+    :root:not([data-theme="dark"]) .head .pill{color:var(--ink);}
+    :root:not([data-theme="dark"]) .save-note a{color:var(--ink);text-decoration:underline;}
+  }
+  :root[data-theme="light"] .progress .pct{color:var(--ink);}
+  :root[data-theme="light"] .head .pill{color:var(--ink);}
+  :root[data-theme="light"] .save-note a{color:var(--ink);text-decoration:underline;}
+  /* pre-tag: burnt orange italic inline label */
+  .pre-tag{font-size:11px;color:#662A08;font-style:italic;font-weight:600;margin-left:6px;vertical-align:middle;}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pre-tag{color:#E8917A;}}
+  :root[data-theme="dark"] .pre-tag{color:#E8917A;}
+  /* ===== THEME TOGGLE ===== */
+  .theme-toggle{position:fixed;top:6px;right:14px;z-index:62;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;transition:border-color .15s,transform .12s;}
+  .theme-toggle:hover{border-color:var(--accent);transform:translateY(-1px);}
+  .theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .theme-toggle svg{width:17px;height:17px;display:block;}
+  .progress .meta{padding-right:62px;}
+  .theme-toggle .i-sun{display:block;}.theme-toggle .i-moon{display:none;}
+  @media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .theme-toggle .i-sun{display:none;}:root:not([data-theme="dark"]) .theme-toggle .i-moon{display:block;}}
+  :root[data-theme="light"] .theme-toggle .i-sun{display:none;}:root[data-theme="light"] .theme-toggle .i-moon{display:block;}
+  :root[data-theme="dark"] .theme-toggle .i-sun{display:block;}:root[data-theme="dark"] .theme-toggle .i-moon{display:none;}
+  /* ===== BR PAGE SWITCHER ===== */
+  .br-nav{position:fixed;right:16px;bottom:16px;z-index:1000;font-family:var(--fb,inherit);}
+  .br-nav-toggle{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;cursor:pointer;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);box-shadow:0 6px 22px rgba(0,0,0,.16);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);transition:transform .14s ease,border-color .2s ease,box-shadow .2s ease;}
+  .br-nav-toggle:hover{border-color:var(--brsw-accent);transform:translateY(-1px);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+  .br-nav-toggle:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;}
+  .br-nav-chev{width:18px;height:18px;display:block;transition:transform .2s ease;}
+  .br-nav-list{position:absolute;right:0;bottom:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;min-width:190px;padding:7px;border-radius:15px;background:var(--brsw-surface);border:1px solid var(--brsw-line);box-shadow:0 10px 30px rgba(0,0,0,.22);-webkit-backdrop-filter:saturate(1.2) blur(8px);backdrop-filter:saturate(1.2) blur(8px);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;}
+  .br-nav:hover .br-nav-list,.br-nav:focus-within .br-nav-list,.br-nav.open .br-nav-list{opacity:1;visibility:visible;transform:none;}
+  .br-nav:hover .br-nav-chev,.br-nav:focus-within .br-nav-chev,.br-nav.open .br-nav-chev{transform:rotate(180deg);}
+  .br-nav-h{display:flex;align-items:center;gap:7px;padding:3px 10px 4px;font-size:.6rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--brsw-ink);opacity:.6;}
+  .br-nav-h .dot{width:6px;height:6px;border-radius:50%;background:var(--brsw-accent);flex:0 0 auto;}
+  .br-nav-list a,.br-nav-list .cur{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:9px;text-decoration:none;font-weight:600;font-size:13.5px;color:var(--brsw-ink);border-left:3px solid transparent;transition:background .15s ease,transform .1s ease;white-space:nowrap;}
+  .br-nav-list a{opacity:.84;}
+  .br-nav-list a:hover{opacity:1;background:var(--brsw-line);transform:translateX(-1px);}
+  .br-nav-list a:focus-visible{outline:2px solid var(--brsw-accent);outline-offset:2px;opacity:1;}
+  .br-nav-list .cur{background:var(--brsw-line);border-left-color:var(--brsw-accent);font-weight:800;cursor:default;}
+  .br-nav-list .ic{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:var(--brsw-surface);color:var(--brsw-ink);border:1px solid var(--brsw-line);}
+  .br-nav-list .cur .ic{border-color:var(--brsw-accent);}
+  .br-nav-list svg{width:14px;height:14px;display:block;}
+  @media print{.br-nav{display:none!important;}}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--navy);color:var(--ink);font-family:var(--fb);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent)}
+  .progress{position:fixed;top:0;left:0;right:0;height:auto;z-index:60;background:rgba(8,14,26,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .progress .bar{height:5px;background:var(--line-soft);}
+  .progress .fill{height:5px;width:0;background:var(--accent);transition:width .35s ease;}
+  .progress .meta{display:flex;align-items:center;justify-content:space-between;padding:8px 18px;font-size:.82rem;color:var(--muted);}
+  .progress .meta b{color:var(--ink);font-family:var(--fh);}
+  .progress .pct{color:var(--accent);font-weight:700;}
+  .layout{display:grid;grid-template-columns:288px minmax(0,1fr);max-width:1240px;margin:0 auto;padding-top:46px;}
+  .side{position:sticky;top:46px;align-self:start;height:calc(100vh - 46px);overflow:auto;padding:22px 16px;border-right:1px solid var(--line);}
+  .brand{font-family:var(--fh);font-weight:800;color:var(--ink);font-size:1.05rem;}
+  .brand .amp{color:var(--accent);}
+  .side .eyebrow{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:14px 0 4px;}
+  .side .who{font-size:.9rem;color:var(--muted);margin-bottom:14px;}
+  .navq{display:flex;flex-direction:column;gap:3px;}
+  .navq a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;border-left:3px solid transparent;}
+  .navq a:hover{background:var(--card);color:var(--ink);}
+  .navq a.active{background:var(--card);color:var(--ink);border-left-color:var(--accent);}
+  .navq a .em{flex:0 0 auto;width:26px;height:26px;border-radius:7px;background:var(--card-2);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;}
+  .navq a .tx{flex:1;line-height:1.15;}
+  .navq a .ck{flex:0 0 auto;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;color:transparent;}
+  .navq a.done .ck{background:var(--good);border-color:var(--good);color:#06210f;}
+  .navq a .cnt{font-size:.66rem;color:var(--muted);font-weight:700;}
+  .main{padding:26px 40px 120px;min-width:0;}
+  .head h1{font-family:var(--fh);font-size:clamp(1.5rem,1.1rem+1.4vw,2rem);font-weight:800;color:var(--ink);margin:0 0 6px;}
+  .head p{color:var(--muted);margin:0 0 4px;}
+  .head .pill{display:inline-block;margin-top:10px;background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);font-weight:700;font-size:.78rem;padding:4px 12px;border-radius:999px;}
+  .sec{margin-top:34px;scroll-margin-top:64px;}
+  .sec-head{display:flex;align-items:center;gap:13px;margin-bottom:6px;}
+  .sec-head .badge{flex:0 0 auto;width:42px;height:42px;border-radius:11px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.25rem;position:relative;}
+  .sec-head .badge .num{position:absolute;bottom:-6px;right:-6px;width:19px;height:19px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:var(--fh);font-weight:800;font-size:.68rem;display:flex;align-items:center;justify-content:center;}
+  .sec-head h2{font-family:var(--fh);font-size:1.3rem;font-weight:700;color:var(--ink);margin:0;}
+  .sec-head .st{font-size:.85rem;color:var(--muted);}
+  .sec-body{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 20px 14px;}
+  .q{padding:16px 0;border-bottom:1px solid var(--line-soft);}
+  .q:last-child{border-bottom:none;}
+  .q-label{display:block;font-weight:600;color:var(--ink);margin-bottom:3px;font-size:.97rem;}
+  .opt-tag{font-size:.64rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
+  .req-tag{font-size:.6rem;background:var(--accent);color:var(--accent-ink);font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-radius:5px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
+  .q-help{font-size:.82rem;color:var(--muted);margin:0 0 9px;font-style:italic;}
+  .q-field{margin-top:7px;}
+  .inp{width:100%;background:var(--navy);border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:10px 12px;font-family:var(--fb);font-size:.95rem;}
+  .inp:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+  textarea.ta{min-height:78px;resize:vertical;}
+  .sel{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238A9BB5' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 12px center;padding-right:34px;}
+  .counter{display:block;text-align:right;font-size:.72rem;color:var(--muted);margin-top:3px;}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;}
+  .opts.check,.opts.radio{flex-direction:column;gap:7px;}
+  .opts.cards{flex-direction:row;}
+  .opt{display:flex;align-items:center;gap:9px;cursor:pointer;font-size:.93rem;color:var(--ink);}
+  .opts.radio .opt,.opts.check .opt{background:var(--navy);border:1px solid var(--line);border-radius:9px;padding:9px 12px;}
+  .opts.radio .opt:hover,.opts.check .opt:hover{border-color:var(--accent);}
+  .opt input{accent-color:var(--accent);width:17px;height:17px;flex:0 0 auto;}
+  .opt.card{flex:1 1 calc(33% - 8px);justify-content:center;text-align:center;background:var(--navy);border:1px solid var(--line);border-radius:10px;padding:14px 10px;font-weight:600;}
+  .opt.card:hover{border-color:var(--accent);}
+  .opt.card input{display:none;}
+  .opt.card.sel-card{border-color:var(--accent);background:var(--accent-soft);}
+  .multi{display:flex;flex-direction:column;gap:8px;}
+  .triple{display:flex;gap:10px;} .tn{flex:1;} .tnl{display:block;font-size:.74rem;color:var(--muted);margin-bottom:3px;}
+  .cr{display:flex;gap:10px;} .cr .inp{flex:1;}
+  .inline-other{margin-top:8px;}
+  .colorset{display:flex;flex-direction:column;gap:9px;}
+  .crow{display:flex;align-items:center;gap:10px;} .crow .cl{width:88px;font-size:.85rem;color:var(--muted);}
+  .cpick{width:46px;height:38px;border:1px solid var(--line);border-radius:8px;background:var(--navy);padding:2px;cursor:pointer;}
+  .crow .hex{max-width:150px;}
+  .finish{margin-top:34px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;text-align:center;}
+  .finish p{color:var(--muted);max-width:54ch;margin:0 auto 14px;}
+  .copy-btn{background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:1rem;border:none;border-radius:10px;padding:13px 28px;cursor:pointer;font-family:var(--fb);box-shadow:0 10px 24px -10px var(--accent);}
+  .copy-btn:hover{filter:brightness(1.12);}
+  .copy-btn.ok{background:var(--good);color:#06210f;}
+  .save-note{margin-top:12px;font-size:.78rem;color:var(--muted);}
+  .foot{margin-top:26px;font-size:.76rem;color:var(--muted);text-align:center;}
+  .foot .tag{font-family:var(--fh);font-style:italic;color:var(--accent);}
+  .menu-btn{display:none;}
+  @media (max-width:920px){
+    .layout{grid-template-columns:1fr;}
+    .side{position:fixed;top:46px;left:0;bottom:0;width:280px;background:var(--navy);z-index:55;transform:translateX(-100%);transition:transform .25s;}
+    .side.open{transform:translateX(0);}
+    .menu-btn{display:inline-flex;align-items:center;gap:7px;position:fixed;bottom:18px;left:18px;z-index:58;background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:11px 16px;font-weight:700;font-family:var(--fb);box-shadow:0 8px 20px -8px #000;cursor:pointer;}
+    .main{padding:22px 16px 120px;}
+    .opt.card{flex:1 1 calc(50% - 8px);}
+  }
+</style>
+</head>
+<body>
+<div class="progress">
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <div class="meta"><span><b id="ans">0</b> of <b id="tot">0</b> questions answered</span><span class="pct" id="pct">0%</span></div>
+</div>
+
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle light / dark">
+  <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+</button>
+
+<div class="layout">
+  <aside class="side" id="side">
+    <div class="brand">Branch <span class="amp">&amp;</span> Root</div>
+    <p class="eyebrow">Website Discovery</p>
+    <p class="who">Matthew &middot; Everlasting Renovations</p>
+    <nav class="navq" id="navq">
+      <a href="#sec1" data-sec="1"><span class="em">&#x1F464;</span><span class="tx">About Matthew</span><span class="cnt">0/9</span><span class="ck"></span></a>
+      <a href="#sec2" data-sec="2"><span class="em">&#x1F5FA;&#xFE0F;</span><span class="tx">Service Area &amp; Territory</span><span class="cnt">0/7</span><span class="ck"></span></a>
+      <a href="#sec3" data-sec="3"><span class="em">&#x1F3AF;</span><span class="tx">Ideal Client</span><span class="cnt">0/5</span><span class="ck"></span></a>
+      <a href="#sec4" data-sec="4"><span class="em">&#x1F4A1;</span><span class="tx">Unique Value Prop</span><span class="cnt">0/4</span><span class="ck"></span></a>
+      <a href="#sec5" data-sec="5"><span class="em">&#x1F3A8;</span><span class="tx">Brand &amp; Aesthetic</span><span class="cnt">0/7</span><span class="ck"></span></a>
+      <a href="#sec6" data-sec="6"><span class="em">&#x2B50;</span><span class="tx">Social Proof</span><span class="cnt">0/8</span><span class="ck"></span></a>
+      <a href="#sec7" data-sec="7"><span class="em">&#x1F3C6;</span><span class="tx">Competition</span><span class="cnt">0/4</span><span class="ck"></span></a>
+      <a href="#sec8" data-sec="8"><span class="em">&#x1F4C8;</span><span class="tx">Goals &amp; Lead Strategy</span><span class="cnt">0/6</span><span class="ck"></span></a>
+      <a href="#sec9" data-sec="9"><span class="em">&#x2699;&#xFE0F;</span><span class="tx">Technical &amp; Assets</span><span class="cnt">0/8</span><span class="ck"></span></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <div class="head">
+      <h1>Tell us about your business, Matthew.</h1>
+      <p>This questionnaire is how Branch &amp; Root learns Everlasting Renovations in your own words. These answers go straight into your new website &mdash; the more specific you are, the better it performs. Spend extra time on Sections 3 and 4. Your progress saves automatically as you go.</p>
+      <p>We&rsquo;ve <b>pre-filled</b> a few fields from public research &mdash; please confirm or correct anything marked <span style="color:#662A08;font-style:italic;font-weight:600;font-size:.9rem;">pre-filled</span>.</p>
+      <span class="pill">Auto-saves to this browser &nbsp;&middot;&nbsp; 58 questions</span>
+    </div>
+
+    <form id="qform" autocomplete="off" action="https://formspree.io/f/mbdebzor" method="POST">
+      <input type="hidden" name="_subject" value="Questionnaire &mdash; Everlasting Renovations Inc. &mdash; Lake Forest">
+      <input type="hidden" name="business_name" value="Everlasting Renovations Inc.">
+      <input type="hidden" name="owner_name" value="Matthew">
+      <input type="hidden" name="round" value="Round-00">
+
+      <!-- ===== SECTION 1: ABOUT MATTHEW ===== -->
+      <section class="sec" id="sec1">
+        <div class="sec-head"><span class="badge">&#x1F464;<span class="num">1</span></span><div><h2>About Matthew</h2><div class="st">Background, credentials, and professional story</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Your name as it should appear on the website</label>
+            <p class="q-help">First name only is fine, or add your last name if you&rsquo;d like it displayed publicly.</p>
+            <div class="q-field"><input class="inp" type="text" name="s1_fullname" value="Matthew" placeholder="Your name"></div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Business name</label>
+            <div class="q-field"><input class="inp" type="text" name="s1_business" value="Everlasting Renovations Inc." placeholder="Legal business name"></div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Years in operation</label>
+            <p class="q-help">Pre-filled: operating since 2015 (incorporated 2022) &mdash; 11 years in the field. Correct if needed.</p>
+            <div class="q-field"><input class="inp" type="text" name="s1_years" value="11" placeholder="e.g. 11"></div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">CSLB license number <span class="opt-tag">optional</span></label>
+            <p class="q-help">Pre-filled from the CSLB public record: B &mdash; General Building Contractor, active through Oct 2026.</p>
+            <div class="q-field"><input class="inp" type="text" name="s1_license" value="CSLB #1097824" placeholder="e.g. CSLB #1097824"></div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Do you work solo or with a team?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s1_team" value="Solo &mdash; just me"><span>Solo &mdash; just me</span></label>
+                <label class="opt"><input type="radio" name="s1_team" value="Small team (2&ndash;4)"><span>Small team (2&ndash;4 people)</span></label>
+                <label class="opt"><input type="radio" name="s1_team" value="Larger team (5+)"><span>Larger team (5+ people)</span></label>
+              </div>
+              <div class="inline-other" style="margin-top:10px;"><textarea class="inp ta" name="s1_teamroles" placeholder="Team member names and roles (leave blank if solo) &mdash; e.g. Crystal &mdash; co-owner / operations; Jose &mdash; lead painter" style="min-height:56px;"></textarea></div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Certifications &amp; specialty licenses</label>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s1_certs" value="B &mdash; General Building Contractor (CSLB)"><span>B &mdash; General Building Contractor (CSLB)</span></label>
+                <label class="opt"><input type="checkbox" name="s1_certs" value="Lead Paint Renovation, Repair &amp; Painting (RRP) &mdash; EPA certified"><span>Lead Paint RRP &mdash; EPA certified</span></label>
+                <label class="opt"><input type="checkbox" name="s1_certs" value="Asbestos Awareness Training"><span>Asbestos Awareness Training</span></label>
+                <label class="opt"><input type="checkbox" name="s1_certs" value="Spray Systems &amp; Airless Equipment"><span>Spray Systems &amp; Airless Equipment</span></label>
+                <label class="opt"><input type="checkbox" name="s1_certs" value="OSHA 10"><span>OSHA 10</span></label>
+                <label class="opt"><input type="checkbox" name="s1_certs" value="Bond &amp; Workers&rsquo; Comp (Pie Casualty + Hudson Insurance)"><span>Bond &amp; Workers&rsquo; Comp (Pie Casualty + Hudson Insurance)</span></label>
+              </div>
+              <div class="inline-other"><input class="inp" type="text" name="s1_certs_other" placeholder="Other certifications not listed above"></div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Languages spoken</label>
+            <p class="q-help">Pre-filled based on &ldquo;Se Habla Espa&ntilde;ol&rdquo; displayed on your current site.</p>
+            <div class="q-field"><input class="inp" type="text" name="s1_langs" value="Spanish (Se Habla Espa&ntilde;ol), English" placeholder="e.g. Spanish, English"></div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Everlasting Renovations is a Christian family business &mdash; are you comfortable mentioning this on the website?</label>
+            <p class="q-help">Some clients specifically seek faith-aligned contractors. This can be a trust signal, not just a value statement.</p>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s1_christian" value="Yes &mdash; I&rsquo;d like to mention it proudly"><span>Yes &mdash; I&rsquo;d like to mention it proudly</span></label>
+                <label class="opt"><input type="radio" name="s1_christian" value="Subtly &mdash; a reference without making it the focus"><span>Subtly &mdash; a reference without making it the focus</span></label>
+                <label class="opt"><input type="radio" name="s1_christian" value="Prefer not to mention it publicly"><span>Prefer not to mention it publicly</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="1">
+            <label class="q-label">Tell your story &mdash; why did you start Everlasting Renovations?</label>
+            <p class="q-help">This becomes your About page anchor. The specific, personal version outperforms generic every time. What moment made you go all-in?</p>
+            <div class="q-field">
+              <textarea class="inp ta" name="s1_story" placeholder="e.g. I&rsquo;d been in construction for years working for other people, and I kept seeing homeowners get shortchanged &mdash; rushed jobs, no warranty, no follow-through. In 2015 I decided to build something I could be proud of&hellip;" maxlength="1000" data-counter="1"></textarea>
+              <span class="counter"><span class="cc">0</span>/1000</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 2: SERVICE AREA & TERRITORY ===== -->
+      <section class="sec" id="sec2">
+        <div class="sec-head"><span class="badge">&#x1F5FA;&#xFE0F;<span class="num">2</span></span><div><h2>Service Area &amp; Territory</h2><div class="st">Where you work and what you offer</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Primary cities served</label>
+            <p class="q-help">Pre-checked cities detected from your current web presence &mdash; adjust anytime. These become your local SEO keywords.</p>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Lake Forest"><span>Lake Forest</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Irvine"><span>Irvine</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Mission Viejo"><span>Mission Viejo</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="San Clemente"><span>San Clemente</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Dana Point"><span>Dana Point</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Ladera Ranch"><span>Ladera Ranch</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Rancho Santa Margarita"><span>Rancho Santa Margarita</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Laguna Hills"><span>Laguna Hills</span></label>
+                <label class="opt"><input type="checkbox" name="s2_cities" value="Newport Beach"><span>Newport Beach</span></label>
+              </div>
+              <div class="inline-other"><input class="inp" type="text" name="s2_cities_other" placeholder="Other cities not listed above"></div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Primary ZIP codes served</label>
+            <div class="q-field"><input class="inp" type="text" name="s2_zips" placeholder="e.g. 92630, 92618, 92691, 92672, 92629"></div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Primary vs. secondary markets</label>
+            <p class="q-help">Which cities keep your crew busiest? Are there any you actively don&rsquo;t serve (too far, wrong job type, etc.)?</p>
+            <div class="q-field"><textarea class="inp ta" name="s2_markets" placeholder="e.g. Lake Forest and Ladera Ranch are our bread and butter. We&rsquo;ll go to Newport Beach for the right job but don&rsquo;t chase it. We don&rsquo;t typically go north of the 5&hellip;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Services you currently offer</label>
+            <p class="q-help">Pre-filled from your website and CSLB license scope &mdash; check or uncheck as needed.</p>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s2_services" value="Interior Painting"><span>Interior Painting</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Exterior Painting"><span>Exterior Painting</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Kitchen Remodeling"><span>Kitchen Remodeling</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Bathroom Remodeling"><span>Bathroom Remodeling</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Flooring"><span>Flooring</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="ADU &amp; Room Additions"><span>ADU &amp; Room Additions</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Windows &amp; Doors"><span>Windows &amp; Doors</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Drywall Repair"><span>Drywall Repair</span></label>
+                <label class="opt"><input type="checkbox" name="s2_services" value="Pressure Washing"><span>Pressure Washing</span></label>
+              </div>
+              <div class="inline-other"><input class="inp" type="text" name="s2_services_other" placeholder="Other services not listed above"></div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Typical job ticket range by category</label>
+            <p class="q-help">Give us a sense of low / typical / high for your main project types. Ballpark estimates are fine.</p>
+            <div class="q-field"><textarea class="inp ta" name="s2_ticket_range" placeholder="e.g. Exterior paint: $3,500&ndash;$6,000 typical. Interior: $2,000&ndash;$4,500. Kitchen remodel: $25k&ndash;$60k. Bathroom: $8k&ndash;$20k. ADU addition: $80k&ndash;$150k. Small jobs (drywall patch, pressure wash): $300&ndash;$800."></textarea></div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Do you take weekend or after-hours work?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s2_weekends" value="Yes &mdash; regularly available"><span>Yes &mdash; regularly available</span></label>
+                <label class="opt"><input type="radio" name="s2_weekends" value="Occasionally &mdash; for the right job"><span>Occasionally &mdash; for the right job</span></label>
+                <label class="opt"><input type="radio" name="s2_weekends" value="No &mdash; weekdays only"><span>No &mdash; weekdays only</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="2">
+            <label class="q-label">Minimum job size you&rsquo;ll take on</label>
+            <div class="q-field">
+              <select class="inp sel" name="s2_min_job">
+                <option value="">Select&hellip;</option>
+                <option value="No minimum &mdash; we take all sizes">No minimum &mdash; we take all sizes</option>
+                <option value="$300&ndash;$500 minimum">$300&ndash;$500 minimum</option>
+                <option value="$500&ndash;$1,000 minimum">$500&ndash;$1,000 minimum</option>
+                <option value="$1,000&ndash;$2,500 minimum">$1,000&ndash;$2,500 minimum</option>
+                <option value="$2,500+ (larger projects only)">$2,500+ (larger projects only)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 3: IDEAL CLIENT ===== -->
+      <section class="sec" id="sec3">
+        <div class="sec-head"><span class="badge">&#x1F3AF;<span class="num">3</span></span><div><h2>Ideal Client</h2><div class="st">Who you serve best &mdash; and who finds you</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="3">
+            <label class="q-label">Client types you work with most</label>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s3_clients" value="Homeowner (owner-occupied)"><span>Homeowner (owner-occupied)</span></label>
+                <label class="opt"><input type="checkbox" name="s3_clients" value="Condo or townhome owner"><span>Condo or townhome owner</span></label>
+                <label class="opt"><input type="checkbox" name="s3_clients" value="HOA / property management"><span>HOA / property management</span></label>
+                <label class="opt"><input type="checkbox" name="s3_clients" value="Small commercial / office"><span>Small commercial / office</span></label>
+                <label class="opt"><input type="checkbox" name="s3_clients" value="Rental property owner / landlord"><span>Rental property owner / landlord</span></label>
+                <label class="opt"><input type="checkbox" name="s3_clients" value="Real estate investor (flip / turnover)"><span>Real estate investor (flip / turnover)</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="3">
+            <label class="q-label">How do clients typically find you?</label>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s3_find" value="Referral from past client"><span>Referral from past client</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Google search"><span>Google search</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Yelp"><span>Yelp</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Networx / lead aggregator"><span>Networx / lead aggregator</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Door hangers / flyers"><span>Door hangers / flyers</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Neighbor saw your truck or sign"><span>Neighbor saw your truck or sign</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Social media (Instagram / Facebook)"><span>Social media (Instagram / Facebook)</span></label>
+                <label class="opt"><input type="checkbox" name="s3_find" value="Repeat client"><span>Repeat client</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="3">
+            <label class="q-label">What do clients consistently say about working with Everlasting?</label>
+            <p class="q-help">Think about the phrases you hear after a job finishes, or the words that show up in your reviews. Specific beats generic every time.</p>
+            <div class="q-field"><textarea class="inp ta" name="s3_say" placeholder="e.g. &ldquo;You showed up when you said you would.&rdquo; / &ldquo;The crew was clean and respectful.&rdquo; / &ldquo;We didn&rsquo;t feel like just a job number.&rdquo; / &ldquo;The warranty gave us confidence to go with you.&rdquo;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="3">
+            <label class="q-label">What&rsquo;s your favorite type of job, and why?</label>
+            <p class="q-help">Where do you do your best work and feel most proud when you hand over the keys?</p>
+            <div class="q-field"><textarea class="inp ta" name="s3_fave" placeholder="e.g. Kitchen remodels &mdash; the transformation is dramatic and the homeowner reaction at reveal is everything. I love when a client cries happy tears&hellip;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="3">
+            <label class="q-label">Walk us through a typical first conversation with a new homeowner</label>
+            <p class="q-help">What do you ask? What do you assess? What makes them trust you enough to book?</p>
+            <div class="q-field"><textarea class="inp ta" name="s3_convo" placeholder="e.g. I always start by asking what triggered the project today &mdash; not just what they want to change, but why now. Then I walk through the space with them and look at things most contractors don&rsquo;t even mention&hellip;"></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 4: UNIQUE VALUE PROPOSITION ===== -->
+      <section class="sec" id="sec4">
+        <div class="sec-head"><span class="badge">&#x1F4A1;<span class="num">4</span></span><div><h2>Unique Value Proposition</h2><div class="st">What makes Everlasting the choice &mdash; not just a choice</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="4">
+            <label class="q-label">In one sentence, what makes Everlasting Renovations different from every other contractor in Orange County?</label>
+            <p class="q-help">Don&rsquo;t say &ldquo;we&rsquo;re dedicated to quality.&rdquo; Every contractor says that. Hint: you have a 3-year written warranty, a faith-aligned family ownership, 11 years without a single BBB complaint, and a bilingual crew. What&rsquo;s the real story?</p>
+            <div class="q-field"><textarea class="inp ta" name="s4_diff" placeholder="e.g. We&rsquo;re the only licensed general contractor in Lake Forest who backs every project &mdash; paint to full remodel &mdash; with a written 3-year warranty and a bilingual crew you&rsquo;ll actually recognize job-to-job."></textarea></div>
+          </div>
+
+          <div class="q" data-sec="4">
+            <label class="q-label">The top 3 reasons a homeowner should choose Everlasting over anyone else</label>
+            <div class="q-field">
+              <div class="multi">
+                <input class="inp" type="text" name="s4_reasons_0" placeholder="Reason 1 &mdash; e.g. 3-year written warranty on every project">
+                <input class="inp" type="text" name="s4_reasons_1" placeholder="Reason 2">
+                <input class="inp" type="text" name="s4_reasons_2" placeholder="Reason 3">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="4">
+            <label class="q-label">Your 3-year written warranty &mdash; how do you describe it to a client?</label>
+            <p class="q-help">This is one of your strongest differentiators. Give us the version you say out loud in an estimate meeting.</p>
+            <div class="q-field"><textarea class="inp ta" name="s4_warranty" placeholder="e.g. We back everything we do with a written 3-year warranty. If paint peels, caulk cracks, or a cabinet door won&rsquo;t close right &mdash; you call us and we come back, no charge, no argument. It&rsquo;s in writing so you know it&rsquo;s real&hellip;" maxlength="800" data-counter="1"></textarea><span class="counter"><span class="cc">0</span>/800</span></div>
+          </div>
+
+          <div class="q" data-sec="4">
+            <label class="q-label">What do you do on a job that most contractors in your market simply don&rsquo;t do?</label>
+            <div class="q-field"><textarea class="inp ta" name="s4_unique" placeholder="e.g. We mask and protect every surface &mdash; not just the obvious ones. We do a final walkthrough with the homeowner before we pack up, not after we&rsquo;re gone. We send a written care guide after a paint job so the client knows how to keep it looking new&hellip;"></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 5: BRAND & AESTHETIC ===== -->
+      <section class="sec" id="sec5">
+        <div class="sec-head"><span class="badge">&#x1F3A8;<span class="num">5</span></span><div><h2>Brand &amp; Aesthetic</h2><div class="st">The visual identity and feel of your website</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Do you have an existing logo?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s5_logo" value="Yes &mdash; I&rsquo;ll share the file"><span>Yes &mdash; I&rsquo;ll share the file (PNG / SVG / AI)</span></label>
+                <label class="opt"><input type="radio" name="s5_logo" value="Yes, but open to a refresh"><span>Yes, but open to a refresh &mdash; it&rsquo;s feeling dated</span></label>
+                <label class="opt"><input type="radio" name="s5_logo" value="No &mdash; need a new one designed"><span>No &mdash; I need a new one designed</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Describe your current logo or branding <span class="opt-tag">optional</span></label>
+            <div class="q-field"><textarea class="inp ta" name="s5_logodesc" placeholder="e.g. Orange text, bold sans-serif font, small house or hammer icon. Or: just the business name in a script font on a white background."></textarea></div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Brand colors &mdash; Primary / Secondary</label>
+            <p class="q-help">Pre-filled from your current website and materials &mdash; adjust the pickers or type hex values directly.</p>
+            <div class="q-field">
+              <div class="colorset">
+                <div class="crow"><span class="cl">Primary</span><input type="color" class="cpick" data-hex="hex_primary" name="color_primary" value="#662A08"><input class="inp hex" type="text" name="hex_primary" placeholder="#hex" value="#662A08"></div>
+                <div class="crow"><span class="cl">Secondary</span><input type="color" class="cpick" data-hex="hex_secondary" name="color_secondary" value="#2B5672"><input class="inp hex" type="text" name="hex_secondary" placeholder="#hex" value="#2B5672"></div>
+                <div class="crow"><span class="cl">Accent <span class="opt-tag">optional</span></span><input type="color" class="cpick" data-hex="hex_accent" name="color_accent" value="#D4744A"><input class="inp hex" type="text" name="hex_accent" placeholder="#hex" value=""></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Design style that best fits your brand</label>
+            <div class="q-field">
+              <div class="opts cards">
+                <label class="opt card"><input type="radio" name="s5_style" value="Modern / Clean"><span>Modern / Clean</span></label>
+                <label class="opt card"><input type="radio" name="s5_style" value="Traditional / Warm"><span>Traditional / Warm</span></label>
+                <label class="opt card"><input type="radio" name="s5_style" value="Rustic / Natural"><span>Rustic / Natural</span></label>
+                <label class="opt card"><input type="radio" name="s5_style" value="Minimalist"><span>Minimalist</span></label>
+                <label class="opt card"><input type="radio" name="s5_style" value="Bold / Colorful"><span>Bold / Colorful</span></label>
+                <label class="opt card"><input type="radio" name="s5_style" value="Professional / Corporate"><span>Professional / Corporate</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">5 words that describe how your website should feel</label>
+            <div class="q-field">
+              <div class="multi">
+                <input class="inp" type="text" name="s5_words_0" placeholder="Word 1 &mdash; e.g. Trustworthy">
+                <input class="inp" type="text" name="s5_words_1" placeholder="Word 2 &mdash; e.g. Warm">
+                <input class="inp" type="text" name="s5_words_2" placeholder="Word 3 &mdash; e.g. Professional">
+                <input class="inp" type="text" name="s5_words_3" placeholder="Word 4 &mdash; e.g. Local">
+                <input class="inp" type="text" name="s5_words_4" placeholder="Word 5 &mdash; e.g. Family">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Contractor or home service websites you admire <span class="opt-tag">optional</span></label>
+            <p class="q-help">Think nationally if you need to &mdash; just sites whose look and feel resonates with you.</p>
+            <div class="q-field"><textarea class="inp ta" name="s5_admire" placeholder="e.g. I love the before/after layout on thisoldhouse.com. Liked the trust-badge section on a local roofer site I can&rsquo;t remember the name of&hellip;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="5">
+            <label class="q-label">Websites you do NOT want to look like <span class="opt-tag">optional</span></label>
+            <div class="q-field"><textarea class="inp ta" name="s5_avoid" placeholder="e.g. Anything that looks like a generic Wix or Squarespace template. Avoid cluttered &ldquo;contractor blue&rdquo; sites. Don&rsquo;t want stock photos of random people in hard hats."></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 6: SOCIAL PROOF ===== -->
+      <section class="sec" id="sec6">
+        <div class="sec-head"><span class="badge">&#x2B50;<span class="num">6</span></span><div><h2>Social Proof</h2><div class="st">Numbers and testimonials that build trust instantly</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Total completed projects (all-time estimate) <span class="opt-tag">optional</span></label>
+            <div class="q-field"><input class="inp" type="text" name="s6_total_jobs" placeholder="e.g. 400+ projects" value=""></div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Yelp review count + rating</label>
+            <p class="q-help">Pre-filled from public Yelp page, verified June 2026. Please confirm or correct.</p>
+            <div class="q-field">
+              <div class="cr">
+                <input class="inp" type="text" name="s6_yelp_count" placeholder="# of reviews" value="28">
+                <input class="inp" type="text" name="s6_yelp_rating" placeholder="Rating (e.g. 4.6)" value="4.6">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Google review count + rating</label>
+            <p class="q-help">We could not confirm a claimed Google Business Profile in our research &mdash; please check your GBP dashboard or Google Maps and enter your actual figures.</p>
+            <div class="q-field">
+              <div class="cr">
+                <input class="inp" type="text" name="s6_google_count" placeholder="# of Google reviews" value="">
+                <input class="inp" type="text" name="s6_google_rating" placeholder="Google rating (e.g. 4.8)" value="">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Networx &mdash; are you currently active? Any reviews there?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s6_networx" value="Yes &mdash; active and have reviews"><span>Yes &mdash; active and have reviews</span></label>
+                <label class="opt"><input type="radio" name="s6_networx" value="Active but no reviews yet"><span>Active but no reviews yet</span></label>
+                <label class="opt"><input type="radio" name="s6_networx" value="Was active, paused"><span>Was active &mdash; paused or inactive now</span></label>
+                <label class="opt"><input type="radio" name="s6_networx" value="Not on Networx"><span>Not on Networx</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Angi / HomeAdvisor / other platforms <span class="opt-tag">optional</span></label>
+            <div class="q-field"><input class="inp" type="text" name="s6_angi" placeholder="e.g. Angi 4.8 (12 reviews), Houzz profile, Thumbtack" value=""></div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Your top 3 client testimonials</label>
+            <p class="q-help">Copy exact quotes from Yelp, Google, or Networx reviews. Include the reviewer&rsquo;s first name and city if possible. These go directly into your website.</p>
+            <div class="q-field">
+              <div class="multi">
+                <input class="inp" type="text" name="s6_testi_0" placeholder="Testimonial 1 &mdash; quote · first name · city">
+                <input class="inp" type="text" name="s6_testi_1" placeholder="Testimonial 2">
+                <input class="inp" type="text" name="s6_testi_2" placeholder="Testimonial 3">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Do you have a before/after photo portfolio we can feature?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s6_photos" value="Yes &mdash; strong library across multiple project types"><span>Yes &mdash; strong library across multiple project types</span></label>
+                <label class="opt"><input type="radio" name="s6_photos" value="Some &mdash; a few good pairs, not comprehensive"><span>Some &mdash; a few good pairs, not comprehensive</span></label>
+                <label class="opt"><input type="radio" name="s6_photos" value="No &mdash; we&rsquo;ll start shooting going forward"><span>No &mdash; we&rsquo;ll start shooting going forward</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="6">
+            <label class="q-label">Awards, recognition, or press coverage <span class="opt-tag">optional</span></label>
+            <div class="q-field"><textarea class="inp ta" name="s6_awards" placeholder="e.g. Best of Houzz 2024, featured in OC Register home improvement section, Yelp &ldquo;People Love Us&rdquo; window sticker, etc."></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 7: COMPETITION ===== -->
+      <section class="sec" id="sec7">
+        <div class="sec-head"><span class="badge">&#x1F3C6;<span class="num">7</span></span><div><h2>Competition</h2><div class="st">Who you&rsquo;re up against and how to outrank them</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="7">
+            <label class="q-label">Your top 3 local competitors (by name)</label>
+            <p class="q-help">Pre-filled from our market research of South OC painting and remodeling contractors.</p>
+            <div class="q-field">
+              <div class="multi">
+                <input class="inp" type="text" name="s7_comp_0" placeholder="Competitor 1" value="Streamline Painting &amp; Coatings">
+                <input class="inp" type="text" name="s7_comp_1" placeholder="Competitor 2" value="Neilson&rsquo;s Painting">
+                <input class="inp" type="text" name="s7_comp_2" placeholder="Competitor 3" value="Xenak Painting &amp; Remodeling">
+                <input class="inp" type="text" name="s7_comp_3" placeholder="Competitor 4 (optional)">
+                <input class="inp" type="text" name="s7_comp_4" placeholder="Competitor 5 (optional)">
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="7">
+            <label class="q-label">What do your competitors do well that you want to match or exceed?</label>
+            <div class="q-field"><textarea class="inp ta" name="s7_well" placeholder="e.g. Xenak has 329 Yelp reviews and looks established. Streamline has a professional-looking website with a clear estimate CTA. Neilson&rsquo;s has a long track record in Mission Viejo&hellip;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="7">
+            <label class="q-label">What do your competitors do poorly that you want to avoid?</label>
+            <div class="q-field"><textarea class="inp ta" name="s7_poorly" placeholder="e.g. None of them offer a written warranty. Most don&rsquo;t have bilingual crews. Their websites feel generic &mdash; no personality, no story, no reason to trust them beyond a logo&hellip;"></textarea></div>
+          </div>
+
+          <div class="q" data-sec="7">
+            <label class="q-label">The #1 thing you want your website to do better than anyone in your market</label>
+            <div class="q-field"><textarea class="inp ta" name="s7_one" placeholder="e.g. I want homeowners who Google &ldquo;kitchen remodel Lake Forest&rdquo; to find us first and immediately feel like they&rsquo;re talking to a family they can trust, not a corporate contractor machine&hellip;"></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 8: GOALS & LEAD STRATEGY ===== -->
+      <section class="sec" id="sec8">
+        <div class="sec-head"><span class="badge">&#x1F4C8;<span class="num">8</span></span><div><h2>Goals &amp; Lead Strategy</h2><div class="st">What the website needs to do for your business</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="8">
+            <label class="q-label">Monthly project goal</label>
+            <div class="q-field">
+              <select class="inp sel" name="s8_goal">
+                <option value="">Select&hellip;</option>
+                <option value="1&ndash;2 projects / month (maintaining current pace)">1&ndash;2 projects / month (maintaining current pace)</option>
+                <option value="3&ndash;5 projects / month (steady growth)">3&ndash;5 projects / month (steady growth)</option>
+                <option value="5&ndash;10 projects / month (aggressive growth)">5&ndash;10 projects / month (aggressive growth)</option>
+                <option value="Prefer fewer but larger jobs (kitchens, ADUs, additions)">Prefer fewer, larger jobs (kitchens, ADUs, additions)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="q" data-sec="8">
+            <label class="q-label">Primary lead channel goal &mdash; where do you most want new clients to come from?</label>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Google organic search"><span>Google organic search (show up when they search)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Google Ads (paid)"><span>Google Ads (paid reach)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Referrals from past clients"><span>Referrals from past clients</span></label>
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Repeat clients"><span>Repeat clients (same homeowner, new project)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Social media (Instagram / Facebook)"><span>Social media (Instagram / Facebook)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_lead_channel" value="Networx or other lead aggregator"><span>Networx or other lead aggregator</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="8">
+            <label class="q-label">Online booking or scheduling preference</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s8_booking" value="Yes &mdash; I want an online estimate request form"><span>Yes &mdash; I want an online estimate request form</span></label>
+                <label class="opt"><input type="radio" name="s8_booking" value="Yes &mdash; I want a calendar link (Calendly / GHL)"><span>Yes &mdash; I want a calendar link (Calendly / GHL)</span></label>
+                <label class="opt"><input type="radio" name="s8_booking" value="Phone call only &mdash; no online scheduling"><span>Phone call only &mdash; no online scheduling</span></label>
+                <label class="opt"><input type="radio" name="s8_booking" value="Not sure &mdash; help me decide"><span>Not sure &mdash; help me decide</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="8">
+            <label class="q-label">CRM or scheduling tool you currently use</label>
+            <div class="q-field">
+              <select class="inp sel" name="s8_crm">
+                <option value="">Select&hellip;</option>
+                <option value="None &mdash; managing manually">None &mdash; managing manually</option>
+                <option value="GoHighLevel (GHL)">GoHighLevel (GHL)</option>
+                <option value="Jobber">Jobber</option>
+                <option value="Housecall Pro">Housecall Pro</option>
+                <option value="ServiceTitan">ServiceTitan</option>
+                <option value="Spreadsheet / Google Sheets">Spreadsheet / Google Sheets</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="inline-other"><input class="inp" type="text" name="s8_crm_other" placeholder="Other CRM or tool not listed above"></div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="8">
+            <label class="q-label">Would you use automated post-job review requests (SMS + email)?</label>
+            <p class="q-help">After a job closes, the system sends a text: &ldquo;Thanks for choosing Everlasting! 30 seconds on Yelp / Google means the world to a family business.&rdquo; No manual work on your end.</p>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s8_auto_review" value="Yes &mdash; absolutely, let&rsquo;s do it"><span>Yes &mdash; absolutely, let&rsquo;s do it</span></label>
+                <label class="opt"><input type="radio" name="s8_auto_review" value="Maybe &mdash; want to see how it works first"><span>Maybe &mdash; want to see how it works first</span></label>
+                <label class="opt"><input type="radio" name="s8_auto_review" value="No &mdash; I prefer to ask personally"><span>No &mdash; I prefer to ask personally</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="8">
+            <label class="q-label">Other integrations you&rsquo;d like on the website <span class="opt-tag">optional</span></label>
+            <div class="q-field">
+              <div class="opts check">
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="Live chat widget"><span>Live chat widget</span></label>
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="WhatsApp button"><span>WhatsApp button (great for Spanish-speaking clients)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="Facebook Pixel (retargeting ads)"><span>Facebook Pixel (retargeting ads)</span></label>
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="Google Ads tag"><span>Google Ads conversion tag</span></label>
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="SMS opt-in for follow-up"><span>SMS opt-in for follow-up</span></label>
+                <label class="opt"><input type="checkbox" name="s8_integrations" value="Financing partner badge (e.g. GreenSky / Hearth)"><span>Financing partner badge (e.g. GreenSky / Hearth)</span></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== SECTION 9: TECHNICAL & ASSETS ===== -->
+      <section class="sec" id="sec9">
+        <div class="sec-head"><span class="badge">&#x2699;&#xFE0F;<span class="num">9</span></span><div><h2>Technical &amp; Assets</h2><div class="st">Domain, photos, timeline, and content</div></div></div>
+        <div class="sec-body">
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Existing domain name</label>
+            <p class="q-help">Pre-filled from our research. Confirm this is the domain to use, or provide a preferred one.</p>
+            <div class="q-field"><input class="inp" type="text" name="s9_domain" placeholder="e.g. everlastingrenovationsinc.com" value="everlastingrenovationsinc.com"></div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Do you have professional before/after photos we can use?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_photos" value="Yes &mdash; high-res files ready to share"><span>Yes &mdash; high-res files ready to share</span></label>
+                <label class="opt"><input type="radio" name="s9_photos" value="Some &mdash; phone photos, decent quality"><span>Some &mdash; phone photos, decent quality</span></label>
+                <label class="opt"><input type="radio" name="s9_photos" value="No &mdash; will start capturing on next jobs"><span>No &mdash; will start capturing on next jobs</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Video content available?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_video" value="Yes &mdash; existing Instagram / project walk-through video"><span>Yes &mdash; existing Instagram / walk-through video</span></label>
+                <label class="opt"><input type="radio" name="s9_video" value="Willing to shoot short video clips"><span>Willing to shoot short video clips (phone is fine)</span></label>
+                <label class="opt"><input type="radio" name="s9_video" value="No video for now"><span>No video for now</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Drone footage of projects or the home exterior?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_drone" value="Yes &mdash; have existing drone footage"><span>Yes &mdash; have existing drone footage</span></label>
+                <label class="opt"><input type="radio" name="s9_drone" value="Open to it &mdash; don&rsquo;t have it yet"><span>Open to it &mdash; don&rsquo;t have it yet</span></label>
+                <label class="opt"><input type="radio" name="s9_drone" value="Not applicable for my work type"><span>Not applicable for my work type</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Logo files available (AI / SVG / PNG)?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_logo_files" value="Yes &mdash; vector file (AI or SVG) ready"><span>Yes &mdash; vector file (AI or SVG) ready</span></label>
+                <label class="opt"><input type="radio" name="s9_logo_files" value="PNG only &mdash; no vector"><span>PNG only &mdash; no vector file</span></label>
+                <label class="opt"><input type="radio" name="s9_logo_files" value="No logo files &mdash; just on the current website"><span>No files &mdash; just on the current Wix site</span></label>
+                <label class="opt"><input type="radio" name="s9_logo_files" value="No logo at all &mdash; need one created"><span>No logo at all &mdash; need one created</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Preferred launch timeline</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_timeline" value="ASAP &mdash; within 2 weeks"><span>ASAP &mdash; within 2 weeks</span></label>
+                <label class="opt"><input type="radio" name="s9_timeline" value="Within 1 month"><span>Within 1 month</span></label>
+                <label class="opt"><input type="radio" name="s9_timeline" value="2&ndash;3 months"><span>2&ndash;3 months</span></label>
+                <label class="opt"><input type="radio" name="s9_timeline" value="No hard deadline"><span>No hard deadline &mdash; let&rsquo;s get it right</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Are you ready to have a budget conversation?</label>
+            <div class="q-field">
+              <div class="opts radio">
+                <label class="opt"><input type="radio" name="s9_budget" value="Yes &mdash; I know what I want to invest"><span>Yes &mdash; I know what I want to invest</span></label>
+                <label class="opt"><input type="radio" name="s9_budget" value="Getting there &mdash; exploring options"><span>Getting there &mdash; still exploring options</span></label>
+                <label class="opt"><input type="radio" name="s9_budget" value="I&rsquo;d like to discuss options first"><span>I&rsquo;d like to discuss options with you before committing</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="q" data-sec="9">
+            <label class="q-label">Anything else we should know? <span class="opt-tag">optional</span></label>
+            <p class="q-help">Your market, your clients, past website experiences, your personality, seasonal patterns, specific goals not covered above &mdash; anything that helps us build the right site for Everlasting Renovations.</p>
+            <div class="q-field"><textarea class="inp ta" name="s9_else" placeholder="Anything you want us to know before we build&hellip;"></textarea></div>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="finish">
+        <p>All done? Add your email so we can follow up, then send it straight to Branch &amp; Root.</p>
+        <div class="q-field" style="max-width:380px;margin:0 auto 14px;"><input class="inp" type="email" name="email" id="leadEmail" placeholder="your@email.com" required aria-label="Your email address"></div>
+        <button type="submit" class="copy-btn" id="submitBtn">Submit to Branch &amp; Root</button>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite" style="margin-top:12px;font-size:.9rem;min-height:1.2em;"></div>
+        <div class="save-note" id="saveNote">Your answers auto-save to this browser. <a href="#" id="clearBtn">Clear saved answers</a></div>
+      </div>
+
+      <div class="foot">
+        <p class="tag">Branching your business out from a rooted foundation.</p>
+        <p>Branch &amp; Root Consulting &nbsp;&middot;&nbsp; sales@branchandrootconsulting.com &nbsp;&middot;&nbsp; Confidential discovery document for Everlasting Renovations Inc.</p>
+      </div>
+    </form>
+  </main>
+</div>
+
+<button class="menu-btn" id="menuBtn" type="button">&#x2630; Sections</button>
+
+<!-- BR PAGE SWITCHER -->
+<nav class="br-nav" aria-label="Branch &amp; Root page switcher">
+  <div class="br-nav-list">
+    <span class="br-nav-h"><span class="dot" aria-hidden="true"></span>Pages</span>
+    <a href="/round-0/everlasting-renovations" aria-label="Prospect demo landing page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></span>
+      <span class="lbl">&#x1F5A5; Landing Page</span>
+    </a>
+    <a href="/round-0/everlasting-renovations/audit" aria-label="Full brand audit report">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M20 20H3"/></svg></span>
+      <span class="lbl">&#x1F4CB; Full Audit</span>
+    </a>
+    <a href="/round-0/everlasting-renovations/mini-audit" aria-label="Mini digital audit">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18a8 8 0 1 1 14 0"/><path d="M12 14l4-3"/></svg></span>
+      <span class="lbl">&#x26A1; Mini Audit</span>
+    </a>
+    <span class="cur" aria-current="page">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9zM8 5H6v15h12V5h-2"/></svg></span>
+      <span class="lbl">&#x1F4DD; Questionnaire</span>
+    </span>
+    <li style="height:1px;background:var(--brsw-line);margin:4px 6px;list-style:none;"></li>
+    <a href="/round-0/" aria-label="Back to Round 00">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg></span>
+      <span class="lbl">&#x2190; Round 00</span>
+    </a>
+    <a href="/" aria-label="Back to all rounds">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span>
+      <span class="lbl">&#x2190; All Rounds</span>
+    </a>
+  </div>
+  <button class="br-nav-toggle" type="button" aria-expanded="false" aria-label="Open page switcher" title="Page switcher">
+    <svg class="br-nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>
+  </button>
+</nav>
+
+<script>
+(function(){
+  var KEY = "br_q_everlasting-renovations";
+  var form = document.getElementById("qform");
+  var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var navItems = Array.prototype.slice.call(document.querySelectorAll(".navq a"));
+  document.getElementById("tot").textContent = qs.length;
+
+  // ===== PRE-POPULATION — only fields confirmed via public research =====
+  var auditData = {
+    s1_fullname:     "Matthew",
+    s1_business:     "Everlasting Renovations Inc.",
+    s1_years:        "11",
+    s1_license:      "CSLB #1097824",
+    s1_langs:        "Spanish (Se Habla Español), English",
+    s2_cities:       ["Lake Forest","Irvine","Mission Viejo","San Clemente","Dana Point"],
+    s2_services:     ["Interior Painting","Exterior Painting","Kitchen Remodeling","Bathroom Remodeling","Flooring","ADU & Room Additions","Windows & Doors","Drywall Repair","Pressure Washing"],
+    s6_yelp_count:   "28",
+    s6_yelp_rating:  "4.6",
+    s7_comp_0:       "Streamline Painting & Coatings",
+    s7_comp_1:       "Neilson’s Painting",
+    s7_comp_2:       "Xenak Painting & Remodeling",
+    s9_domain:       "everlastingrenovationsinc.com",
+    color_primary:   "#662A08",
+    hex_primary:     "#662A08",
+    color_secondary: "#2B5672",
+    hex_secondary:   "#2B5672"
+  };
+
+  function prefill(){
+    Object.keys(auditData).forEach(function(name){
+      var val = auditData[name];
+      var els = form.querySelectorAll('[name="'+name+'"]');
+      if(!els.length) return;
+      els.forEach(function(el){
+        if(el.type==="checkbox"||el.type==="radio"){
+          if(Array.isArray(val)? val.indexOf(el.value)>-1 : el.value===val) el.checked=true;
+        } else { el.value = val; }
+      });
+      var q = els[0].closest(".q");
+      if(q){ var lbl=q.querySelector(".q-label"); if(lbl && !lbl.querySelector(".pre-tag")){ var s=document.createElement("span"); s.className="pre-tag"; s.textContent="pre-filled"; lbl.appendChild(s); } }
+    });
+  }
+
+  function isAnswered(q){
+    var els=q.querySelectorAll("input,select,textarea");
+    var hasGroup=false,groupChecked=false,anyPrimary=false,allPrimaryFilled=true;
+    for(var i=0;i<els.length;i++){
+      var el=els[i];
+      if(el.type==="color")continue;
+      if(el.closest&&el.closest(".inline-other"))continue;
+      if(el.type==="checkbox"||el.type==="radio"){hasGroup=true;if(el.checked)groupChecked=true;}
+      else{
+        if(/optional/i.test(el.getAttribute("placeholder")||""))continue;
+        anyPrimary=true;
+        if(((el.value||"").trim())==="")allPrimaryFilled=false;
+      }
+    }
+    if(hasGroup&&!groupChecked)return false;
+    if(anyPrimary&&!allPrimaryFilled)return false;
+    return hasGroup||anyPrimary;
+  }
+
+  function refresh(){
+    var answered=0;
+    var perSec={};
+    qs.forEach(function(q){
+      var sec=q.getAttribute("data-sec");
+      if(!perSec[sec]) perSec[sec]={a:0,t:0};
+      perSec[sec].t++;
+      if(isAnswered(q)){ answered++; perSec[sec].a++; }
+    });
+    var pct = qs.length? Math.round(answered/qs.length*100):0;
+    document.getElementById("ans").textContent=answered;
+    document.getElementById("pct").textContent=pct+"%";
+    document.getElementById("fill").style.width=pct+"%";
+    navItems.forEach(function(a){
+      var sec=a.getAttribute("data-sec");
+      var p=perSec[sec]||{a:0,t:0};
+      var cnt=a.querySelector(".cnt"); if(cnt) cnt.textContent=p.a+"/"+p.t;
+      if(p.t>0 && p.a===p.t){ a.classList.add("done"); var ck=a.querySelector(".ck"); if(ck) ck.textContent="✓"; }
+      else { a.classList.remove("done"); var ck2=a.querySelector(".ck"); if(ck2) ck2.textContent=""; }
+    });
+  }
+
+  function updateCounters(){
+    document.querySelectorAll("textarea[data-counter]").forEach(function(t){
+      var c=t.parentNode.querySelector(".cc"); if(c) c.textContent=t.value.length;
+    });
+  }
+  function syncCards(){
+    document.querySelectorAll(".opt.card").forEach(function(l){
+      var inp=l.querySelector("input"); l.classList.toggle("sel-card", inp && inp.checked);
+    });
+  }
+  document.querySelectorAll(".cpick").forEach(function(cp){
+    var hexName=cp.getAttribute("data-hex");
+    var hex=form.querySelector('[name="'+hexName+'"]');
+    cp.addEventListener("input",function(){ if(hex){hex.value=cp.value; save(); refresh();} });
+    if(hex){ hex.addEventListener("input",function(){ if(/^#?[0-9a-fA-F]{3,8}$/.test(hex.value)){ var v=hex.value[0]==="#"?hex.value:"#"+hex.value; try{cp.value=v;}catch(e){} } }); }
+  });
+
+  function save(){
+    var data={};
+    var els=form.querySelectorAll("input,select,textarea");
+    els.forEach(function(el){
+      if(!el.name) return;
+      if(el.type==="checkbox"||el.type==="radio"){
+        if(el.checked){ (data[el.name]=data[el.name]||[]).push(el.value); }
+      } else { data[el.name]=el.value; }
+    });
+    try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){}
+  }
+  function restore(){
+    var raw; try{ raw=localStorage.getItem(KEY); }catch(e){}
+    if(!raw) return false;
+    var data; try{ data=JSON.parse(raw); }catch(e){ return false; }
+    var els=form.querySelectorAll("input,select,textarea");
+    els.forEach(function(el){
+      if(!el.name||!(el.name in data)) return;
+      var v=data[el.name];
+      if(el.type==="checkbox"||el.type==="radio"){ el.checked = Array.isArray(v)&&v.indexOf(el.value)>-1; }
+      else { el.value=v; }
+    });
+    return true;
+  }
+
+  form.addEventListener("input", function(){ save(); updateCounters(); syncCards(); refresh(); });
+  form.addEventListener("change", function(){ save(); syncCards(); refresh(); });
+
+  var submitBtn=document.getElementById("submitBtn"), formMsg=document.getElementById("formMsg");
+  if(form&&submitBtn){
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      submitBtn.disabled=true; submitBtn.textContent="Sending…"; if(formMsg){formMsg.style.color="var(--muted)";formMsg.textContent="";}
+      fetch(form.action,{method:"POST",body:new FormData(form),headers:{"Accept":"application/json"}})
+        .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
+        .then(function(res){
+          if(res.ok){ submitBtn.textContent="✓ Sent — thank you!"; submitBtn.classList.add("ok"); if(formMsg){formMsg.style.color="var(--good)";formMsg.textContent="Your answers were sent to Branch & Root. We’ll be in touch shortly.";} try{localStorage.removeItem(KEY);}catch(e){} if(formMsg&&formMsg.scrollIntoView){formMsg.scrollIntoView({behavior:"smooth",block:"center"});} }
+          else { submitBtn.disabled=false; submitBtn.textContent="Submit to Branch & Root"; var m=(res.d&&res.d.errors&&res.d.errors.map(function(x){return x.message;}).join(", "))||"Something went wrong — please email sales@branchandrootconsulting.com."; if(formMsg){formMsg.style.color="var(--accent)";formMsg.textContent=m;} }
+        })
+        .catch(function(){ submitBtn.disabled=false; submitBtn.textContent="Submit to Branch & Root"; if(formMsg){formMsg.style.color="var(--accent)";formMsg.textContent="Network error — please try again, or email sales@branchandrootconsulting.com.";} });
+    });
+  }
+
+  document.getElementById("clearBtn").addEventListener("click",function(e){
+    e.preventDefault();
+    if(confirm("Clear all saved answers in this browser? This cannot be undone.")){ try{localStorage.removeItem(KEY);}catch(e){} location.reload(); }
+  });
+
+  if('IntersectionObserver' in window){
+    var secs=Array.prototype.slice.call(document.querySelectorAll(".sec"));
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ var id=en.target.id; navItems.forEach(function(a){a.classList.toggle("active", a.getAttribute("href")==="#"+id);}); } });
+    },{rootMargin:"-40% 0px -55% 0px"});
+    secs.forEach(function(s){io.observe(s);});
+  }
+
+  var side=document.getElementById("side"), menuBtn=document.getElementById("menuBtn");
+  menuBtn.addEventListener("click",function(){ side.classList.toggle("open"); });
+  navItems.forEach(function(a){ a.addEventListener("click",function(){ side.classList.remove("open"); }); });
+
+  prefill();
+  restore();
+  updateCounters(); syncCards(); refresh();
+
+  // required-badge: labels without opt-tag or pre-tag get a required badge
+  document.querySelectorAll(".q .q-label").forEach(function(lbl){
+    if(!lbl.querySelector(".opt-tag") && !lbl.querySelector(".pre-tag")){var s=document.createElement("span");s.className="req-tag";s.textContent="required";lbl.appendChild(s);}
+  });
+
+  // theme toggle
+  (function(){var rr=document.documentElement;function sys(){return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}function cur(){return rr.getAttribute("data-theme")||sys();}var tb=document.querySelector(".theme-toggle");if(tb){tb.addEventListener("click",function(){var n=cur()==="dark"?"light":"dark";rr.setAttribute("data-theme",n);try{localStorage.setItem("theme",n);}catch(e){}});}})();
+
+  // page-switcher toggle
+  (function(){var n=document.querySelector(".br-nav");if(!n)return;var t=n.querySelector(".br-nav-toggle");if(!t)return;t.addEventListener("click",function(e){e.stopPropagation();var o=n.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false");});document.addEventListener("click",function(e){if(!n.contains(e.target)&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&n.classList.contains("open")){n.classList.remove("open");t.setAttribute("aria-expanded","false");}});})();
+})();
+</script>
+</body>
+</html>
